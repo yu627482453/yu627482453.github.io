@@ -4,8 +4,13 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Hello World, 怪诞Blog">
-    <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hex">
+    <meta name="keywords" content="怪诞Blog">
+    <meta name="description" content="03_Maven 构建生命周期Metadata:
+Keywords: [[Maven]], [[包管理]]
+URL:  maven.apache.org
+Version: [[Version 1]]
+attach: 
+Publish Dat">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +22,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Hello World | 怪诞Blog</title>
+    <title>怪诞Blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -336,12 +341,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/12.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Hello World</h1>
+                    <h1 class="description center-align post-title"></h1>
                 </div>
             </div>
         </div>
@@ -363,9 +368,13 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/%F0%9F%9B%A0%EF%B8%8F-%E5%8C%85%E7%AE%A1%E7%90%86-Maven/">
+                                <span class="chip bg-color">🛠️/包管理/Maven</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
@@ -398,19 +407,204 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+                <h1 id="03-Maven-构建生命周期"><a href="#03-Maven-构建生命周期" class="headerlink" title="03_Maven 构建生命周期"></a>03_Maven 构建生命周期</h1><h2 id="Metadata"><a href="#Metadata" class="headerlink" title="Metadata:"></a>Metadata:</h2><ul>
+<li><code>Keywords:</code> [[Maven]], [[包管理]]</li>
+<li><code>URL: </code> <a target="_blank" rel="noopener" href="https://maven.apache.org/">maven.apache.org</a></li>
+<li><code>Version:</code> [[Version 1]]</li>
+<li><code>attach:</code> </li>
+<li><code>Publish Date:</code> [[]]</li>
+</ul>
+<h2 id="03-Maven-构建生命周期-笔记"><a href="#03-Maven-构建生命周期-笔记" class="headerlink" title="03_Maven 构建生命周期 笔记"></a>03_Maven 构建生命周期 笔记</h2><h2 id="相关链接"><a href="#相关链接" class="headerlink" title="相关链接"></a>相关链接</h2><p>[[|上一篇]]</p>
+<p>[[|下一篇]]</p>
+<p><a target="_blank" rel="noopener" href="https://www.runoob.com/maven/maven-build-life-cycle.html">相关链接</a></p>
+<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>Maven 构建生命周期定义了一个项目构建跟发布的过程。</p>
+<p>一个典型的 Maven 构建（build）生命周期是由以下几个阶段的序列组成的：</p>
+<p><img src="https://www.runoob.com/wp-content/uploads/2018/09/maven-package-build-phase.png"></p>
+<table>
+<thead>
+<tr>
+<th>阶段</th>
+<th>处理</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>验证  validate</td>
+<td>验证项目</td>
+<td>验证项目是否正确且所有必须信息是可用的</td>
+</tr>
+<tr>
+<td>编译  compile</td>
+<td>执行编译</td>
+<td>源代码编译在此阶段完成</td>
+</tr>
+<tr>
+<td>测试  Test</td>
+<td>测试</td>
+<td>使用适当的单元测试框架（例如JUnit）运行测试。</td>
+</tr>
+<tr>
+<td>包装  package</td>
+<td>打包</td>
+<td>创建JAR/WAR包如在 pom.xml 中定义提及的包</td>
+</tr>
+<tr>
+<td>检查  verify</td>
+<td>检查</td>
+<td>对集成测试的结果进行检查，以保证质量达标</td>
+</tr>
+<tr>
+<td>安装 install</td>
+<td>安装</td>
+<td>安装打包的项目到本地仓库，以供其他项目使用</td>
+</tr>
+<tr>
+<td>部署 deploy</td>
+<td>部署</td>
+<td>拷贝最终的工程包到远程仓库中，以共享给其他开发人员和工程</td>
+</tr>
+</tbody></table>
+<p>为了完成 default 生命周期，这些阶段（包括其他未在上面罗列的生命周期阶段）将被按顺序地执行。</p>
+<p>Maven 有以下三个标准的生命周期：</p>
+<ul>
+<li>clean：项目清理的处理</li>
+<li>default(或 build)：项目部署的处理</li>
+<li>site：项目站点文档创建的处理</li>
+</ul>
+<h2 id="Clean-生命周期"><a href="#Clean-生命周期" class="headerlink" title="Clean 生命周期"></a>Clean 生命周期</h2><p>当我们执行 mvn post-clean 命令时，Maven 调用 clean 生命周期，它包含以下阶段：</p>
+<ul>
+<li>pre-clean：执行一些需要在clean之前完成的工作</li>
+<li>clean：移除所有上一次构建生成的文件</li>
+<li>post-clean：执行一些需要在clean之后立刻完成的工作</li>
+</ul>
+<p><code>mvn clean</code> 中的 clean 就是上面的 clean，在一个生命周期中，运行某个阶段的时候，它之前的所有阶段都会被运行，也就是说，如果执行 <code>mvn clean</code> 将运行以下两个生命周期阶段：</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pre-clean, clean</span><br></pre></td></tr></tbody></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>如果我们运行 <code>mvn post-clean</code> ，则运行以下三个生命周期阶段：</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pre-clean, clean, post-clean</span><br></pre></td></tr></tbody></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<p>Maven 将会开始处理并显示 clean 生命周期的所有阶段。</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">[INFO] Scanning for projects...</span><br><span class="line">[INFO] ------------------------------------------------------------------</span><br><span class="line">[INFO] Building Unnamed - com.companyname.projectgroup:project:jar:1.0</span><br><span class="line">[INFO]    task-segment: [post-clean]</span><br><span class="line">[INFO] ------------------------------------------------------------------</span><br><span class="line">[INFO] [antrun:run {execution: id.pre-clean}]</span><br><span class="line">[INFO] Executing tasks</span><br><span class="line">     [echo] pre-clean phase</span><br><span class="line">[INFO] Executed tasks</span><br><span class="line">[INFO] [clean:clean {execution: default-clean}]</span><br><span class="line">[INFO] [antrun:run {execution: id.clean}]</span><br><span class="line">[INFO] Executing tasks</span><br><span class="line">     [echo] clean phase</span><br><span class="line">[INFO] Executed tasks</span><br><span class="line">[INFO] [antrun:run {execution: id.post-clean}]</span><br><span class="line">[INFO] Executing tasks</span><br><span class="line">     [echo] post-clean phase</span><br><span class="line">[INFO] Executed tasks</span><br><span class="line">[INFO] ------------------------------------------------------------------</span><br><span class="line">[INFO] BUILD SUCCESSFUL</span><br><span class="line">[INFO] ------------------------------------------------------------------</span><br><span class="line">[INFO] Total time: &lt; 1 second</span><br><span class="line">[INFO] Finished at: Sat Jul 07 13:38:59 IST 2012</span><br><span class="line">[INFO] Final Memory: 4M/44M</span><br><span class="line">[INFO] ------------------------------------------------------------------</span><br></pre></td></tr></tbody></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<h2 id="Default-Build-生命周期"><a href="#Default-Build-生命周期" class="headerlink" title="Default (Build) 生命周期"></a>Default (Build) 生命周期</h2><p>这是 Maven 的主要生命周期，被用于构建应用，包括下面的 23 个阶段：</p>
+<table>
+<thead>
+<tr>
+<th>生命周期阶段</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>validate（校验）</td>
+<td>校验项目是否正确并且所有必要的信息可以完成项目的构建过程。</td>
+</tr>
+<tr>
+<td>initialize（初始化）</td>
+<td>初始化构建状态，比如设置属性值。</td>
+</tr>
+<tr>
+<td>generate-sources（生成源代码）</td>
+<td>生成包含在编译阶段中的任何源代码。</td>
+</tr>
+<tr>
+<td>process-sources（处理源代码）</td>
+<td>处理源代码，比如说，过滤任意值。</td>
+</tr>
+<tr>
+<td>generate-resources（生成资源文件）</td>
+<td>生成将会包含在项目包中的资源文件。</td>
+</tr>
+<tr>
+<td>process-resources （处理资源文件）</td>
+<td>复制和处理资源到目标目录，为打包阶段最好准备。</td>
+</tr>
+<tr>
+<td>compile（编译）</td>
+<td>编译项目的源代码。</td>
+</tr>
+<tr>
+<td>process-classes（处理类文件）</td>
+<td>处理编译生成的文件，比如说对Java class文件做字节码改善优化。</td>
+</tr>
+<tr>
+<td>generate-test-sources（生成测试源代码）</td>
+<td>生成包含在编译阶段中的任何测试源代码。</td>
+</tr>
+<tr>
+<td>process-test-sources（处理测试源代码）</td>
+<td>处理测试源代码，比如说，过滤任意值。</td>
+</tr>
+<tr>
+<td>generate-test-resources（生成测试资源文件）</td>
+<td>为测试创建资源文件。</td>
+</tr>
+<tr>
+<td>process-test-resources（处理测试资源文件）</td>
+<td>复制和处理测试资源到目标目录。</td>
+</tr>
+<tr>
+<td>test-compile（编译测试源码）</td>
+<td>编译测试源代码到测试目标目录.</td>
+</tr>
+<tr>
+<td>process-test-classes（处理测试类文件）</td>
+<td>处理测试源码编译生成的文件。</td>
+</tr>
+<tr>
+<td>test（测试）</td>
+<td>使用合适的单元测试框架运行测试（Juint是其中之一）。</td>
+</tr>
+<tr>
+<td>prepare-package（准备打包）</td>
+<td>在实际打包之前，执行任何的必要的操作为打包做准备。</td>
+</tr>
+<tr>
+<td>package（打包）</td>
+<td>将编译后的代码打包成可分发格式的文件，比如JAR、WAR或者EAR文件。</td>
+</tr>
+<tr>
+<td>pre-integration-test（集成测试前）</td>
+<td>在执行集成测试前进行必要的动作。比如说，搭建需要的环境。</td>
+</tr>
+<tr>
+<td>integration-test（集成测试）</td>
+<td>处理和部署项目到可以运行集成测试环境中。</td>
+</tr>
+<tr>
+<td>post-integration-test（集成测试后）</td>
+<td>在执行集成测试完成后进行必要的动作。比如说，清理集成测试环境。</td>
+</tr>
+<tr>
+<td>verify （验证）</td>
+<td>运行任意的检查来验证项目包有效且达到质量标准。</td>
+</tr>
+<tr>
+<td>install（安装）</td>
+<td>安装项目包到本地仓库，这样项目包可以用作其他本地项目的依赖。</td>
+</tr>
+<tr>
+<td>deploy（部署）</td>
+<td>将最终的项目包复制到远程仓库中与其他开发者和项目共享。</td>
+</tr>
+</tbody></table>
+<p>有一些与 Maven 生命周期相关的重要概念需要说明：</p>
+<ul>
+<li>当一个阶段通过 Maven 命令调用时，例如 mvn compile，只有该阶段之前以及包括该阶段在内的所有阶段会被执行。</li>
+<li>不同的 maven 目标将根据打包的类型（JAR / WAR / EAR），被绑定到不同的 Maven 生命周期阶段。</li>
+</ul>
+<h2 id="Site-生命周期"><a href="#Site-生命周期" class="headerlink" title="Site 生命周期"></a>Site 生命周期</h2><p>Maven Site 插件一般用来创建新的报告文档、部署站点等。</p>
+<ul>
+<li>pre-site：执行一些需要在生成站点文档之前完成的工作</li>
+<li>site：生成项目的站点文档</li>
+<li>post-site： 执行一些需要在生成站点文档之后完成的工作，并且为部署做准备</li>
+<li>site-deploy：将生成的站点文档部署到特定的服务器上</li>
+</ul>
+<p>这里经常用到的是site阶段和site-deploy阶段，用以生成和发布Maven站点，这可是Maven相当强大的功能，Manager比较喜欢，文档及统计数据自动生成，很好看。 在下面的例子中，我们将 maven-antrun-plugin:run 目标添加到 Site 生命周期的所有阶段中。这样我们可以显示生命周期的所有文本信息。</p>
+<p>我们已经更新了 <code>C:\MVN\project</code> 目录下的 pom.xml 文件。</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mvn site</span><br></pre></td></tr></tbody></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">[INFO] Scanning for projects...</span><br><span class="line">[INFO] ------------------------------------------------------------------</span><br><span class="line">[INFO] Building Unnamed - com.companyname.projectgroup:project:jar:1.0</span><br><span class="line">[INFO]    task-segment: [site]</span><br><span class="line">[INFO] ------------------------------------------------------------------</span><br><span class="line">[INFO] [antrun:run {execution: id.pre-site}]</span><br><span class="line">[INFO] Executing tasks</span><br><span class="line">     [echo] pre-site phase</span><br><span class="line">[INFO] Executed tasks</span><br><span class="line">[INFO] [site:site {execution: default-site}]</span><br><span class="line">[INFO] Generating "About" report.</span><br><span class="line">[INFO] Generating "Issue Tracking" report.</span><br><span class="line">[INFO] Generating "Project Team" report.</span><br><span class="line">[INFO] Generating "Dependencies" report.</span><br><span class="line">[INFO] Generating "Project Plugins" report.</span><br><span class="line">[INFO] Generating "Continuous Integration" report.</span><br><span class="line">[INFO] Generating "Source Repository" report.</span><br><span class="line">[INFO] Generating "Project License" report.</span><br><span class="line">[INFO] Generating "Mailing Lists" report.</span><br><span class="line">[INFO] Generating "Plugin Management" report.</span><br><span class="line">[INFO] Generating "Project Summary" report.</span><br><span class="line">[INFO] [antrun:run {execution: id.site}]</span><br><span class="line">[INFO] Executing tasks</span><br><span class="line">     [echo] site phase</span><br><span class="line">[INFO] Executed tasks</span><br><span class="line">[INFO] ------------------------------------------------------------------</span><br><span class="line">[INFO] BUILD SUCCESSFUL</span><br><span class="line">[INFO] ------------------------------------------------------------------</span><br><span class="line">[INFO] Total time: 3 seconds</span><br><span class="line">[INFO] Finished at: Sat Jul 07 15:25:10 IST 2012</span><br><span class="line">[INFO] Final Memory: 24M/149M</span><br><span class="line">[INFO] ------------------------------------------------------------------</span><br></pre></td></tr></tbody></table></figure>
+
 
                 
             </div>
@@ -437,7 +631,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://yu627482453.github.io/2022/08/06/hello-world/">https://yu627482453.github.io/2022/08/06/hello-world/</a>
+                    <a href="https://yu627482453.github.io/2022/08/06/utility/bao-guan-li/maven/jiao-cheng/03-maven-gou-jian-sheng-ming-zhou-qi/">https://yu627482453.github.io/2022/08/06/utility/bao-guan-li/maven/jiao-cheng/03-maven-gou-jian-sheng-ming-zhou-qi/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -474,7 +668,11 @@
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
+                            
+                                <a href="/tags/%F0%9F%9B%A0%EF%B8%8F-%E5%8C%85%E7%AE%A1%E7%90%86-Maven/">
+                                    <span class="chip bg-color">🛠️/包管理/Maven</span>
+                                </a>
+                            
                         </div>
                     
                 </div>
@@ -557,7 +755,7 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2022/08/06/utility/bao-guan-li/maven/maven/">
+                <a href="/2022/08/06/utility/bao-guan-li/maven/jiao-cheng/04-maven-gou-jian-pei-zhi-wen-jian/">
                     <div class="card-image">
                         
                         
@@ -599,16 +797,16 @@
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">
-                本篇&nbsp;<i class="far fa-dot-circle"></i>
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022/08/06/hello-world/">
+                <a href="/2022/08/06/utility/bao-guan-li/maven/jiao-cheng/02-pom/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="Hello World">
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="">
                         
-                        <span class="card-title">Hello World</span>
+                        <span class="card-title"></span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -629,7 +827,14 @@
                         </span>
                     </div>
                 </div>
-
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%F0%9F%9B%A0%EF%B8%8F-%E5%8C%85%E7%AE%A1%E7%90%86-Maven/">
+                        <span class="chip bg-color">🛠️/包管理/Maven</span>
+                    </a>
+                    
+                </div>
                 
             </div>
         </div>

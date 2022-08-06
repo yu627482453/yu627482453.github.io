@@ -4,8 +4,13 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Hello World, 怪诞Blog">
-    <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hex">
+    <meta name="keywords" content="怪诞Blog">
+    <meta name="description" content="04_Maven 构建配置文件Metadata:
+Keywords: [[Maven]], [[包管理]]
+URL:  maven.apache.org
+Version: [[Version 1]]
+attach: 
+Publish Dat">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +22,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Hello World | 怪诞Blog</title>
+    <title>怪诞Blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -336,12 +341,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/12.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Hello World</h1>
+                    <h1 class="description center-align post-title"></h1>
                 </div>
             </div>
         </div>
@@ -363,9 +368,13 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/%F0%9F%9B%A0%EF%B8%8F-%E5%8C%85%E7%AE%A1%E7%90%86-Maven/">
+                                <span class="chip bg-color">🛠️/包管理/Maven</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
@@ -398,19 +407,82 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+                <h1 id="04-Maven-构建配置文件"><a href="#04-Maven-构建配置文件" class="headerlink" title="04_Maven 构建配置文件"></a>04_Maven 构建配置文件</h1><h2 id="Metadata"><a href="#Metadata" class="headerlink" title="Metadata:"></a>Metadata:</h2><ul>
+<li><code>Keywords:</code> [[Maven]], [[包管理]]</li>
+<li><code>URL: </code> <a target="_blank" rel="noopener" href="https://maven.apache.org/">maven.apache.org</a></li>
+<li><code>Version:</code> [[Version 1]]</li>
+<li><code>attach:</code> </li>
+<li><code>Publish Date:</code> [[]]</li>
+</ul>
+<h2 id="04-Maven-构建配置文件-笔记"><a href="#04-Maven-构建配置文件-笔记" class="headerlink" title="04_Maven 构建配置文件 笔记"></a>04_Maven 构建配置文件 笔记</h2><h2 id="相关链接"><a href="#相关链接" class="headerlink" title="相关链接"></a>相关链接</h2><p>[[|上一篇]]</p>
+<p>[[|下一篇]]</p>
+<p><a target="_blank" rel="noopener" href="https://www.runoob.com/maven/maven-build-profiles.html">相关链接</a></p>
+<h2 id="构建配置文件的类型"><a href="#构建配置文件的类型" class="headerlink" title="构建配置文件的类型"></a>构建配置文件的类型</h2><p>构建配置文件大体上有三种类型:</p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>在哪定义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>项目级（Per Project）</td>
+<td>定义在项目的POM文件pom.xml中</td>
+</tr>
+<tr>
+<td>用户级 （Per User）</td>
+<td>定义在Maven的设置xml文件中 (<code>%USER_HOME%/.m2/settings.xml</code>)</td>
+</tr>
+<tr>
+<td>全局（Global）</td>
+<td>定义在 Maven 全局的设置 xml 文件中 (<code>%M2_HOME%/conf/settings.xml</code>)</td>
+</tr>
+</tbody></table>
+<h2 id="配置文件激活"><a href="#配置文件激活" class="headerlink" title="配置文件激活"></a>配置文件激活</h2><p>Maven的构建配置文件可以通过多种方式激活。</p>
+<ul>
+<li>使用命令控制台输入显式激活。</li>
+<li>通过 maven 设置。</li>
+<li>基于环境变量（用户或者系统变量）。</li>
+<li>操作系统设置（比如说，Windows系列）。</li>
+<li>文件的存在或者缺失。</li>
+</ul>
+<h3 id="1-配置文件激活"><a href="#1-配置文件激活" class="headerlink" title="1. 配置文件激活"></a>1. 配置文件激活</h3><p>profile 可以让我们定义一系列的配置信息，然后指定其激活条件。这样我们就可以定义多个 profile，然后每个 profile 对应不同的激活条件和配置信息，从而达到不同环境使用不同配置信息的效果。</p>
+<p>以下实例，我们将 maven-antrun-plugin:run 目标添加到测试阶段中。这样我们可以在不同的 profile 中输出文本信息。我们将使用 pom.xml 来定义不同的 profile，并在命令控制台中使用 maven 命令激活 profile。</p>
+<p>注意：构建配置文件采用的是 <code>&lt;profiles&gt;</code> 节点。</p>
+<p>说明：上面新建了三个 <code>&lt;profiles&gt;</code>，其中 <code>&lt;id&gt;</code> 区分了不同的 <code>&lt;profiles&gt;</code> 执行不同的 AntRun 任务；而 AntRun 的任务可以这么理解，AntRun 监听 test 的 Maven 生命周期阶段，当 Maven 执行 test 时，就触发了 AntRun 的任务，任务里面为输出文本并复制文件到指定的位置；而至于要执行哪个 AntRun 任务，此时构建配置文件起到了传输指定的作用，比如，通过命令行参数输入指定的 <code>&lt;id&gt;</code>。</p>
+<p>执行命令：</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mvn test -Ptest</span><br></pre></td></tr></tbody></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>提示：第一个 test 为 Maven 生命周期阶段，第 2 个 test 为构建配置文件指定的<code> &lt;id&gt;</code> 参数，这个参数通过 -P 来传输，当然，它可以是 prod 或者 normal 这些由你定义的<code>&lt;id&gt;</code>。</p>
+<h3 id="2-通过Maven设置激活配置文件"><a href="#2-通过Maven设置激活配置文件" class="headerlink" title="2. 通过Maven设置激活配置文件"></a>2. 通过Maven设置激活配置文件</h3><p>打开 <code>%USER_HOME%/.m2</code> 目录下的 <code>settings.xml</code> 文件，其中 <code>%USER_HOME%</code> 代表用户主目录。如果 <code>setting.xml</code> 文件不存在就直接拷贝 <code>%M2_HOME%/conf/settings.xml</code> 到 <code>.m2</code> 目录，其中 <code>%M2_HOME%</code> 代表 Maven 的安装目录。</p>
+<p>配置 <code>setting.xml</code> 文件，增加 <code>&lt;activeProfiles&gt;</code>属性：</p>
+<figure class="highlight xml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">settings</span> <span class="attr">xmlns</span>=<span class="string">"http://maven.apache.org/POM/4.0.0"</span></span></span><br><span class="line"><span class="tag">   <span class="attr">xmlns:xsi</span>=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span></span></span><br><span class="line"><span class="tag">   <span class="attr">xsi:schemaLocation</span>=<span class="string">"http://maven.apache.org/POM/4.0.0</span></span></span><br><span class="line"><span class="string"><span class="tag">   http://maven.apache.org/xsd/settings-1.0.0.xsd"</span>&gt;</span></span><br><span class="line">   ...</span><br><span class="line">   <span class="tag">&lt;<span class="name">activeProfiles</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">activeProfile</span>&gt;</span>test<span class="tag">&lt;/<span class="name">activeProfile</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">activeProfiles</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">settings</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<p>执行命令：</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mvn test</span><br></pre></td></tr></tbody></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>提示 1</strong>：此时不需要使用 -Ptest 来输入参数了，上面的 setting.xml 文件的 <code>&lt;activeprofile&gt;</code> 已经指定了 test 参数代替了。</li>
+<li><strong>提示 2</strong>：同样可以使用在 <code>%M2_HOME%/conf/settings.xml</code> 的文件进行配置，效果一致。</li>
+</ul>
+<h3 id="3-通过环境变量激活配置文件"><a href="#3-通过环境变量激活配置文件" class="headerlink" title="3. 通过环境变量激活配置文件"></a>3. 通过环境变量激活配置文件</h3><p>先把上一步测试的 setting.xml 值全部去掉。</p>
+<p>然后在 pom.xml 里面的 <code>&lt;id&gt;</code> 为 test 的 <code>&lt;profile&gt;</code> 节点，加入 <code>&lt;activation&gt;</code> 节点：</p>
+<figure class="highlight xml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">activation</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">name</span>&gt;</span>env<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">value</span>&gt;</span>test<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">activation</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+<p>执行命令：</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mvn test -Denv=test</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li><strong>提示 1</strong>：上面使用 -D 传递环境变量，其中 env 对应刚才设置的 <code>&lt;name&gt;</code> 值，test 对应<code>&lt;value&gt;</code>。</li>
+<li><strong>提示 2</strong>：在 Windows 10 上测试了系统的环境变量，但是不生效，所以，只能通过 <strong>-D</strong> 传递。</li>
+</ul>
+<h3 id="4-通过操作系统激活配置文件"><a href="#4-通过操作系统激活配置文件" class="headerlink" title="4. 通过操作系统激活配置文件"></a>4. 通过操作系统激活配置文件</h3><p>activation 元素包含下面的操作系统信息。当系统为 windows XP 时，test Profile 将会被触发。</p>
+<figure class="highlight xml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">profile</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">id</span>&gt;</span>test<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">activation</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">os</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">name</span>&gt;</span>Windows XP<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">family</span>&gt;</span>Windows<span class="tag">&lt;/<span class="name">family</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">arch</span>&gt;</span>x86<span class="tag">&lt;/<span class="name">arch</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">version</span>&gt;</span>5.1.2600<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">os</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">activation</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">profile</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="5-通过文件的存在或者缺失激活配置文件"><a href="#5-通过文件的存在或者缺失激活配置文件" class="headerlink" title="5. 通过文件的存在或者缺失激活配置文件"></a>5. 通过文件的存在或者缺失激活配置文件</h3><p>现在使用 activation 元素包含下面的操作系统信息。当 target/generated-sources/axistools/wsdl2java/com/companyname/group 缺失时，test Profile 将会被触发。</p>
+<figure class="highlight xml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">profile</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">id</span>&gt;</span>test<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">activation</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">file</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">missing</span>&gt;</span>target/generated-sources/axistools/wsdl2java/</span><br><span class="line">         com/companyname/group<span class="tag">&lt;/<span class="name">missing</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">file</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">activation</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">profile</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
+
+
 
                 
             </div>
@@ -437,7 +509,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://yu627482453.github.io/2022/08/06/hello-world/">https://yu627482453.github.io/2022/08/06/hello-world/</a>
+                    <a href="https://yu627482453.github.io/2022/08/06/utility/bao-guan-li/maven/jiao-cheng/04-maven-gou-jian-pei-zhi-wen-jian/">https://yu627482453.github.io/2022/08/06/utility/bao-guan-li/maven/jiao-cheng/04-maven-gou-jian-pei-zhi-wen-jian/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -474,7 +546,11 @@
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
+                            
+                                <a href="/tags/%F0%9F%9B%A0%EF%B8%8F-%E5%8C%85%E7%AE%A1%E7%90%86-Maven/">
+                                    <span class="chip bg-color">🛠️/包管理/Maven</span>
+                                </a>
+                            
                         </div>
                     
                 </div>
@@ -557,7 +633,7 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2022/08/06/utility/bao-guan-li/maven/maven/">
+                <a href="/2022/08/06/utility/bao-guan-li/maven/jiao-cheng/05-maven-cang-ku/">
                     <div class="card-image">
                         
                         
@@ -599,16 +675,16 @@
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">
-                本篇&nbsp;<i class="far fa-dot-circle"></i>
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022/08/06/hello-world/">
+                <a href="/2022/08/06/utility/bao-guan-li/maven/jiao-cheng/03-maven-gou-jian-sheng-ming-zhou-qi/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="Hello World">
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="">
                         
-                        <span class="card-title">Hello World</span>
+                        <span class="card-title"></span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -629,7 +705,14 @@
                         </span>
                     </div>
                 </div>
-
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%F0%9F%9B%A0%EF%B8%8F-%E5%8C%85%E7%AE%A1%E7%90%86-Maven/">
+                        <span class="chip bg-color">🛠️/包管理/Maven</span>
+                    </a>
+                    
+                </div>
                 
             </div>
         </div>
