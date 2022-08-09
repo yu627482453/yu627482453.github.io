@@ -4,11 +4,69 @@
   
     
     <entry>
+      <title>hexo-个人博客-索引</title>
+      <link href="/hexo/hexo-ge-ren-bo-ke-suo-yin/"/>
+      <url>/hexo/hexo-ge-ren-bo-ke-suo-yin/</url>
+      
+        <content type="html"><![CDATA[<h1 id="hexo-个人博客-索引"><a href="#hexo-个人博客-索引" class="headerlink" title="hexo-个人博客-索引"></a>hexo-个人博客-索引</h1><h2 id="Metadata"><a href="#Metadata" class="headerlink" title="Metadata"></a>Metadata</h2><pre><code class="line-numbers language-yml">- title: hexo-个人博客-索引- date: 2022-08-09 14:42- version: Version 1.0.0- updateTime: 2022-08-09 14:42- summary: hexo的个人博客的相关文章索引- tags:  - hexo  - Blog  - index- categories:  - hexo</code></pre><h2 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h2><h3 id="hexo-个人博客-构建教程"><a href="#hexo-个人博客-构建教程" class="headerlink" title="hexo-个人博客-构建教程"></a>hexo-个人博客-构建教程</h3><p><a href="../hexo-ge-ren-bo-ke-gou-jian-jiao-cheng">点我跳转</a></p><p><strong>TOC</strong></p><ul><li>安装及配置</li><li>hexo 的相关命令</li></ul><h3 id="hexo-个人博客-个性化-matery主题"><a href="#hexo-个人博客-个性化-matery主题" class="headerlink" title="hexo-个人博客-个性化-matery主题"></a>hexo-个人博客-个性化-matery主题</h3><p><a href="../hexo-ge-ren-bo-ke-ge-xing-hua-matery-zhu-ti">点我跳转</a></p><p><strong>TOC</strong></p><ul><li>简介</li><li>下载</li><li>配置</li><li>文章 Front-matter 介绍</li><li>效果截图</li><li>自定制修改</li><li>版本变更记录</li><li>更多部署方式</li></ul><h2 id="更新日志"><a href="#更新日志" class="headerlink" title="更新日志"></a>更新日志</h2><h3 id="Version-1-0-0"><a href="#Version-1-0-0" class="headerlink" title="Version 1.0.0"></a>Version 1.0.0</h3><p><strong>Done</strong></p><ul><li>hexo-个人博客-构建教程</li><li>hexo-个人博客-个性化-matery主题</li></ul><p><strong>TODO</strong></p><p>- </p>]]></content>
+      
+      
+      <categories>
+          
+          <category> hexo </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> hexo </tag>
+            
+            <tag> Blog </tag>
+            
+            <tag> index </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Java基础-索引</title>
+      <link href="/java/java-ji-chu/java-ji-chu-suo-yin/"/>
+      <url>/java/java-ji-chu/java-ji-chu-suo-yin/</url>
+      
+        <content type="html"><![CDATA[<h1 id="Java基础-索引"><a href="#Java基础-索引" class="headerlink" title="Java基础-索引"></a>Java基础-索引</h1><h2 id="Metadata"><a href="#Metadata" class="headerlink" title="Metadata"></a>Metadata</h2><pre><code class="line-numbers language-yml">- title: Java基础-索引- date: 2022-08-09 14:19- version: Version 1.0.0- updateTime: 2022-08-09 14:19- summary: Java 基础的文章相关索引- tags:  - java  - java 基础  - index- categories:  - java 基础</code></pre><h2 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h2><h2 id="更新日志"><a href="#更新日志" class="headerlink" title="更新日志"></a>更新日志</h2><h3 id="Version-1-0-0"><a href="#Version-1-0-0" class="headerlink" title="Version 1.0.0"></a>Version 1.0.0</h3><p><strong>Done</strong></p><p>- </p><p><strong>TODO</strong></p><p>- </p>]]></content>
+      
+      
+      <categories>
+          
+          <category> java 基础 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> index </tag>
+            
+            <tag> java </tag>
+            
+            <tag> java 基础 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>版本更新日志</title>
       <link href="/ban-ben-geng-xin-ri-zhi/"/>
       <url>/ban-ben-geng-xin-ri-zhi/</url>
       
-        <content type="html"><![CDATA[<h1 id="版本更新日志"><a href="#版本更新日志" class="headerlink" title="版本更新日志"></a>版本更新日志</h1><h2 id="Metadata"><a href="#Metadata" class="headerlink" title="Metadata"></a>Metadata</h2><pre><code class="line-numbers language-yml">- title: 版本更新日志- date: 2022-08-09 11:47- version: Version 1.0.0- updateTime: 2022-08-09 11:47- summary: 记录版本更新的相关日志- tags:  - system  - 版本更新- categories:  - system</code></pre><h2 id="更新日志"><a href="#更新日志" class="headerlink" title="更新日志"></a>更新日志</h2><h3 id="2022-08-09"><a href="#2022-08-09" class="headerlink" title="2022-08-09"></a>2022-08-09</h3><ul><li>11:49 增加文章 - hexo-个人博客-个性化-matery主题</li><li>11:56 <code>root</code> <code>_config.yml</code> 增加 subtitle: Bipher 的 Blog</li><li>12:22 修改 logo</li><li>13:37 删除了 <code>live2d-widget</code> 和 <code>live2d-widget-model-shizuku</code></li><li>13:37 添加 <code>hexo-helper-live2d</code></li></ul>]]></content>
+        <content type="html"><![CDATA[<h1 id="版本更新日志"><a href="#版本更新日志" class="headerlink" title="版本更新日志"></a>版本更新日志</h1><h2 id="Metadata"><a href="#Metadata" class="headerlink" title="Metadata"></a>Metadata</h2><pre><code class="line-numbers language-yml">- title: 版本更新日志- date: 2022-08-09 11:47- version: Version 1.0.0- updateTime: 2022-08-09 11:47- summary: 记录版本更新的相关日志- tags:  - system  - 版本更新- categories:  - system</code></pre><h2 id="更新日志"><a href="#更新日志" class="headerlink" title="更新日志"></a>更新日志</h2><h3 id="2022-08-09"><a href="#2022-08-09" class="headerlink" title="2022-08-09"></a>2022-08-09</h3><ul><li>11:49 增加文章 - hexo-个人博客-个性化-matery主题</li><li>11:56 <code>root</code> <code>_config.yml</code> 增加 subtitle: Bipher 的 Blog</li><li>12:22 修改 logo</li><li>13:37 删除了 <code>live2d-widget</code> 和 <code>live2d-widget-model-shizuku</code></li><li>13:37 添加 <code>hexo-helper-live2d</code></li><li>15:06 添加 hexo-个人博客-索引</li><li>15:06 添加 java-基础-索引</li></ul>]]></content>
       
       
       <categories>
@@ -49,9 +107,9 @@
             
             <tag> hexo </tag>
             
-            <tag> hexo-theme </tag>
-            
             <tag> Blog </tag>
+            
+            <tag> hexo-theme </tag>
             
             <tag> matery </tag>
             
@@ -80,9 +138,9 @@
             
             <tag> hexo </tag>
             
-            <tag> Blog </tag>
-            
             <tag> gitlab </tag>
+            
+            <tag> Blog </tag>
             
         </tags>
       
