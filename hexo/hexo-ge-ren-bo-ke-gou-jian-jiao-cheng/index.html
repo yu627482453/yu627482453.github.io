@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="hexo-个人博客 构建教程, 庄生梦蝶">
+    <meta name="keywords" content="01_hexo-个人博客-构建教程, 庄生梦蝶">
     <meta name="description" content="hexo的个人博客搭建教程 - 包括基础的配置，bug的修复，与github的连接以及 matery主题的简记">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -17,7 +17,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>hexo-个人博客 构建教程 | 庄生梦蝶</title>
+    <title>01_hexo-个人博客-构建教程 | 庄生梦蝶</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -336,12 +336,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/Assets/Image/hexo.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/Assets/hexo/Image/hexo.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">hexo-个人博客 构建教程</h1>
+                    <h1 class="description center-align post-title">01_hexo-个人博客-构建教程</h1>
                 </div>
             </div>
         </div>
@@ -419,10 +419,10 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="hexo-个人博客-构建教程"><a href="#hexo-个人博客-构建教程" class="headerlink" title="hexo-个人博客 构建教程"></a>hexo-个人博客 构建教程</h1><h2 id="Metadata"><a href="#Metadata" class="headerlink" title="Metadata"></a>Metadata</h2><pre><code class="line-numbers language-yml">- title: hexo-个人博客 构建教程
+                <h1 id="hexo-个人博客-构建教程"><a href="#hexo-个人博客-构建教程" class="headerlink" title="hexo-个人博客-构建教程"></a>hexo-个人博客-构建教程</h1><h2 id="Metadata"><a href="#Metadata" class="headerlink" title="Metadata"></a>Metadata</h2><pre><code class="line-numbers language-yml">- title: hexo-个人博客 构建教程
 - date: 2022-08-07 15:44
-- version: Version 1
-- updateTime: 2022-08-07 17:40
+- version: Version 1.0.1
+- updateTime: 2022-08-09 10:49
 - summary: hexo的个人博客搭建教程 - 包括基础的配置，bug的修复，与github的连接以及 matery主题的简记
 - tags:
   - hexo
@@ -431,14 +431,14 @@
 - categories:
   - hexo
 </code></pre>
-<h2 id="前置操作"><a href="#前置操作" class="headerlink" title="前置操作"></a>前置操作</h2><h3 id="安装-Node-js"><a href="#安装-Node-js" class="headerlink" title="安装 Node.js"></a>安装 Node.js</h3><ol>
+<h2 id="安装及配置"><a href="#安装及配置" class="headerlink" title="安装及配置"></a>安装及配置</h2><h3 id="安装-Node-js"><a href="#安装-Node-js" class="headerlink" title="安装 Node.js"></a>安装 Node.js</h3><ol>
 <li>下载Node.js。</li>
 <li>安装选项全部默认，一路点击Next。</li>
 <li>输入node -v和npm -v，如果出现版本号，那么就安装成功了。</li>
 </ol>
 <h3 id="安装-git"><a href="#安装-git" class="headerlink" title="安装 git"></a>安装 git</h3><p>安装选项还是全部默认，只不过最后一步添加路径时选择Use Git from the Windows Command Prompt，这样我们就可以直接在命令提示符里打开git了。</p>
 <p>安装完成后在命令提示符中输入git –version验证是否安装成功。</p>
-<h3 id="Github-配置"><a href="#Github-配置" class="headerlink" title="Github 配置"></a>Github 配置</h3><p>打开<a target="_blank" rel="noopener" href="https://github.com/%EF%BC%8C%E6%96%B0%E5%BB%BA%E4%B8%80%E4%B8%AA%E9%A1%B9%E7%9B%AE%E3%80%82">https://github.com/，新建一个项目。</a></p>
+<h3 id="Github-配置"><a href="#Github-配置" class="headerlink" title="Github 配置"></a>Github 配置</h3><p>打开 <code>https://github.com/</code> ，新建一个项目。</p>
 <p>然后如下图所示，输入自己的项目名字，后面一定要加.github.io后缀，README初始化也要勾上。名称一定要和你的github名字完全一样，比如你github名字叫abc，那么仓库名字一定要是abc.github.io。</p>
 <p>然后项目就建成了，点击Settings，向下拉到最后有个GitHub Pages，点击Choose a theme选择一个主题。然后等一会儿，再回到GitHub Pages。</p>
 <p>点击那个链接，就会出现自己的网页。</p>
@@ -578,11 +578,21 @@
 <p>该命令可以简写为：</p>
 <pre><code class="line-numbers language-bash">$ hexo d
 </code></pre>
-<h3 id="render"><a href="#render" class="headerlink" title="render"></a>render</h3><pre><code>$ hexo render &lt;file1&gt; [file2] ...
+<h3 id="render"><a href="#render" class="headerlink" title="render"></a>render</h3><pre><code class="line-numbers language-bash">$ hexo render &lt;file1&gt; [file2] ...
 </code></pre>
 <p>渲染文件。</p>
-<table><thead><tr><th>参数</th><th>描述</th></tr></thead><tbody><tr><td><code>-o</code>, <code>--output</code></td><td>设置输出路径</td></tr></tbody></table>
-
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-o, –output</td>
+<td>设置输出路径</td>
+</tr>
+</tbody></table>
 <h3 id="migrate"><a href="#migrate" class="headerlink" title="migrate"></a>migrate</h3><pre><code class="line-numbers language-bash">$ hexo migrate &lt;type&gt;
 </code></pre>
 <p>从其他博客系统 <a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/migration">迁移内容</a>。</p>
@@ -623,31 +633,22 @@ $ hexo generate --config custom.yml,custom2.json,custom3.yml
 <h4 id="自定义-CWD"><a href="#自定义-CWD" class="headerlink" title="自定义-CWD"></a>自定义-CWD</h4><pre><code class="line-numbers language-bash">$ hexo --cwd /path/to/cwd
 </code></pre>
 <p>自定义当前工作目录（Current working directory）的路径。</p>
-<h2 id="个性化定义"><a href="#个性化定义" class="headerlink" title="个性化定义"></a>个性化定义</h2><h3 id="hexo-theme-matery-主题"><a href="#hexo-theme-matery-主题" class="headerlink" title="hexo-theme-matery 主题"></a>hexo-theme-matery 主题</h3><p><a target="_blank" rel="noopener" href="https://github.com/blinkfox/hexo-theme-matery/blob/develop/README_CN.md">点我跳转</a></p>
-<h2 id="BUG-及-解决"><a href="#BUG-及-解决" class="headerlink" title="BUG 及 解决"></a>BUG 及 解决</h2><h2 id="更新日志"><a href="#更新日志" class="headerlink" title="更新日志"></a>更新日志</h2><h3 id="Version-1"><a href="#Version-1" class="headerlink" title="Version 1"></a>Version 1</h3><p><strong>Done</strong></p>
+<h2 id="BUG-及-解决"><a href="#BUG-及-解决" class="headerlink" title="BUG 及 解决"></a>BUG 及 解决</h2><p>- </p>
+<h2 id="更新日志"><a href="#更新日志" class="headerlink" title="更新日志"></a>更新日志</h2><h3 id="Version-1-0-1"><a href="#Version-1-0-1" class="headerlink" title="Version 1.0.1"></a>Version 1.0.1</h3><p><strong>Done</strong></p>
 <ul>
 <li>创建笔记</li>
-<li>简单的介绍</li>
-</ul>
-<p><strong>TODO</strong></p>
-<ul>
-<li>Matery 主题的介绍</li>
-<li>Bug及解决</li>
+<li>hexo 的安装及配置</li>
+<li>笔记的拆分</li>
 </ul>
 <h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><ul>
 <li><a target="_blank" rel="noopener" href="https://godweiyang.com/2018/04/13/hexo-blog/#toc-heading-1">超详细Hexo+Github博客搭建小白教程</a><ul>
 <li>韦阳的博客</li>
-<li>前置条件</li>
+<li>笔记的安装及配置</li>
 </ul>
 </li>
 <li><a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/commands">指令</a><ul>
 <li>hexo 官网</li>
 <li>hexo 的指令</li>
-</ul>
-</li>
-<li><a target="_blank" rel="noopener" href="https://github.com/blinkfox/hexo-theme-matery/blob/develop/README_CN.md">hexo-theme-matery</a><ul>
-<li>matery - github</li>
-<li>matery 主题</li>
 </ul>
 </li>
 </ul>
@@ -813,9 +814,9 @@ $ hexo generate --config custom.yml,custom2.json,custom3.yml
                 <a href="/hexo/hexo-ge-ren-bo-ke-gou-jian-jiao-cheng/">
                     <div class="card-image">
                         
-                        <img src="/Assets/Image/hexo.jpg" class="responsive-img" alt="hexo-个人博客 构建教程">
+                        <img src="/Assets/hexo/Image/hexo.jpg" class="responsive-img" alt="01_hexo-个人博客-构建教程">
                         
-                        <span class="card-title">hexo-个人博客 构建教程</span>
+                        <span class="card-title">01_hexo-个人博客-构建教程</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -864,35 +865,55 @@ $ hexo generate --config custom.yml,custom2.json,custom3.yml
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+                本篇&nbsp;<i class="far fa-dot-circle"></i>
             </div>
             <div class="card">
-                <a href="/hello-world/">
+                <a href="/hexo/hexo-ge-ren-bo-ke-gou-jian-jiao-cheng/">
                     <div class="card-image">
                         
+                        <img src="/Assets/hexo/Image/hexo.jpg" class="responsive-img" alt="01_hexo-个人博客-构建教程">
                         
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="Hello World">
-                        
-                        <span class="card-title">Hello World</span>
+                        <span class="card-title">01_hexo-个人博客-构建教程</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
+                            hexo的个人博客搭建教程 - 包括基础的配置，bug的修复，与github的连接以及 matery主题的简记
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-08-06
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-08-07
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            Bill Cypher
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/hexo/" class="post-category">
+                                    hexo
+                                </a>
+                            
                             
                         </span>
                     </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/hexo/">
+                        <span class="chip bg-color">hexo</span>
+                    </a>
+                    
+                    <a href="/tags/gitlab/">
+                        <span class="chip bg-color">gitlab</span>
+                    </a>
+                    
+                    <a href="/tags/Blog/">
+                        <span class="chip bg-color">Blog</span>
+                    </a>
+                    
                 </div>
                 
             </div>
