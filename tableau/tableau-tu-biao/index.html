@@ -1,0 +1,448 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>tableau-图表 | 怪诞小镇</title><meta name="keywords" content="tableau,BI 报表,数据分析"><meta name="author" content="Bill Cypher"><meta name="copyright" content="Bill Cypher"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="tableau 图表">
+<meta property="og:type" content="article">
+<meta property="og:title" content="tableau-图表">
+<meta property="og:url" content="https://yu627482453.github.io/tableau/tableau-tu-biao/index.html">
+<meta property="og:site_name" content="怪诞小镇">
+<meta property="og:description" content="tableau 图表">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://yu627482453.github.io/Assets/tableau/Image/cover.png">
+<meta property="article:published_time" content="2022-08-13T13:25:00.000Z">
+<meta property="article:modified_time" content="2022-08-13T13:25:00.000Z">
+<meta property="article:author" content="Bill Cypher">
+<meta property="article:tag" content="tableau">
+<meta property="article:tag" content="BI 报表">
+<meta property="article:tag" content="数据分析">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://yu627482453.github.io/Assets/tableau/Image/cover.png"><link rel="shortcut icon" href="../../img/favicon.png"><link rel="canonical" href="https://yu627482453.github.io/tableau/tableau-tu-biao/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="../../css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: undefined,
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: Bill Cypher","link":"链接: ","source":"来源: 怪诞小镇","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'tableau-图表',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-08-13 21:25:00'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.2.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="../img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="../archives/"><div class="headline">文章</div><div class="length-num">11</div></a><a href="../tags/"><div class="headline">标签</div><div class="length-num">13</div></a><a href="../categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="../index.html"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="../archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="../tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="../categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="../music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="../movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="../link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="../about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('../../Assets/tableau/Image/cover.png')"><nav id="nav"><span id="blog_name"><a id="site-name" href="../index.html">怪诞小镇</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="../index.html"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="../archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="../tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="../categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="../music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="../movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="../link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="../about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">tableau-图表</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-08-13T13:25:00.000Z" title="发表于 2022-08-13 21:25:00">2022-08-13</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-08-13T13:25:00.000Z" title="更新于 2022-08-13 21:25:00">2022-08-13</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="../../categories/tableau/">tableau</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="tableau-图表"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1>tableau-图表</h1>
+<h2 id="Metadata-3">Metadata</h2>
+<pre><code class="language-yml">- title: tableau-图表
+- date: 2022-08-13 21:25
+- version: Version 1.0.0
+- updated: 2022-08-13 21:25
+- aside: true
+- top_img: /Assets/tableau/Image/cover.png
+- comments: true
+- cover: /Assets/tableau/Image/cover.png
+- toc: true
+- toc_number: true
+- toc_style_simple: false
+- katex: false
+- highlight_shrink: false
+- tags: 
+  - tableau
+  - BI 报表
+  - 数据分析
+- categories:
+  - tableau
+- keywords:
+  - tableau
+  - BI 报表
+  - 数据分析
+- description: tableau 图表
+</code></pre>
+<h2 id="条形图">条形图</h2>
+<p>条形图表示矩形条中的数据，条的长度与变量的值成比例。当您将维度拖动到行搁架并测量到列搁架时，Tableau 会自动生成条形图。我们还可以使用 Show Me 按钮中显示的条形图选项。如果数据不适合条形图，那么此选项将自动变灰。</p>
+<p>在 Tableau 中，可以通过使用维和度量来创建各种类型的条形图。</p>
+<h3 id="简单的条形图">简单的条形图</h3>
+<p>从 Sample-Superstore 中，我们选择维度，我们利用列的架子和子类别到行架。 它会自动生成一个水平条形图，如下所示。 如果没有，您可以从显示工具中选择图表类型，以获得以下结果。</p>
+<p><img src="https://atts.w3cschool.cn/attachments/day_161227/201612271917133064.jpg" alt=""></p>
+<h3 id="与颜色范围的长条图">与颜色范围的长条图</h3>
+<p>我们可以根据其范围对颜色应用颜色。较长的条形变得更暗，而较小的条形变得更浅。为此，我们将利润字段拖动到 “标记窗格 " 下的颜色调色板中。还要注意，它为负条产生不同的颜色。</p>
+<p><img src="https://atts.w3cschool.cn/attachments/day_161227/201612271917343699.jpg" alt=""></p>
+<h3 id="堆积条形图">堆积条形图</h3>
+<p>我们可以向上面的条形图添加另一个维度，以生成一个堆叠条形图，其中在每个条中显示不同的颜色。 我们将名为 segment 的维度字段拖动到 “标记 " 窗格中，并将其拖放到颜色中。 下面的图表显示每个条中每个段的分布。</p>
+<p><img src="https://atts.w3cschool.cn/attachments/day_161227/201612271917459385.jpg" alt=""></p>
+<h2 id="折线图">折线图</h2>
+<p>在折线图中，度量和尺寸是沿着图表区域的两个轴进行的。每个观察值的一对值成为一个点，所有这些点的连接创建一条线，显示所选尺寸和度量之间的变化或关系。</p>
+<h3 id="简单的折线图">简单的折线图</h3>
+<p>我们选择一个维度和一个度量来创建一个简单的折线图。让我们将维度运输模式拖动到列搁架，销售拖到行搁板。从标记卡选择折线图。我们得到下面的折线图，显示不同船舶模式的销售额变化。</p>
+<p><img src="https://atts.w3cschool.cn/attachments/day_161227/201612271919279931.jpg" alt=""></p>
+<h3 id="多测量线图">多测量线图</h3>
+<p>我们可以在折线图中使用带有两个或多个度量的一个维度。这将在一个窗格中生成多个折线图。每个窗格都表示具有度量之一的维度的变化。</p>
+<p><img src="https://atts.w3cschool.cn/attachments/day_161227/201612271919334767.jpg" alt=""></p>
+<h3 id="带有标签的折线图">带有标签的折线图</h3>
+<p>可以标记构成折线图的每个点，以使度量的值可见。在这种情况下，我们将另一个度量利润率放入标记卡中的标签窗格中。选择平均值作为聚合，我们得到下面的图表显示标签。</p>
+<p><img src="https://atts.w3cschool.cn/attachments/day_161227/201612271919402307.jpg" alt=""></p>
+<h2 id="饼图">饼图</h2>
+<p>饼图将数据表示为具有不同大小和颜色的圆的切片。片被标记，并且对应于每个片的数字也在图表中表示。我们可以从标记卡中选择饼图选项以创建饼图。</p>
+<h3 id="简单的饼图">简单的饼图</h3>
+<p>我们可以选择一个维度和一个度量来创建一个简单的饼图。在我们的示例中，我们使用名为 profit 的度量命名为 profit 的维度。删除颜色和标签标记中的区域维度。将利润度量降低到大小标记。选择图表类型为饼图。显示下面的图表，显示不同颜色的 4 个区域。</p>
+<p><img src="https://atts.w3cschool.cn/attachments/day_161227/201612271924083548.jpg" alt=""></p>
+<h3 id="下钻饼图">下钻饼图</h3>
+<p>我们可以选择具有层次结构的维度，当我们更深入到层次结构中时，图表的变化反映所选择的维度的级别。在下面的示例中，我们将维度子类别有两个级别 - 制造商和产品名称。 我们将度量利润放到 “标签 " 标记。将显示下面的饼图，其中显示每个切片的值。</p>
+<p><img src="https://atts.w3cschool.cn/attachments/day_161227/201612271925026991.jpg" alt=""></p>
+<p>再进一步到层次结构，我们得到制造商作为标签，上面的饼图更改如下所示。</p>
+<p><img src="https://atts.w3cschool.cn/attachments/day_161227/201612271925127228.jpg" alt=""></p>
+<h2 id="交叉表">交叉表</h2>
+<p>表格中的交叉表图表也称为文本表，以文本形式显示数据。图表由一个或多个维度和一个或多个度量组成。此图表还可以显示对度量字段的值的各种计算，如运行总计，总百分比等。</p>
+<blockquote>
+<p>本文由 <a target="_blank" rel="noopener" href="http://ksria.com/simpread/">简悦 SimpRead</a> 转码， 原文地址 <a target="_blank" rel="noopener" href="https://www.w3cschool.cn/tableau/tableau_crosstab.html">www.w3cschool.cn</a></p>
+</blockquote>
+<blockquote>
+<p>表格中的交叉表图表也称为文本表，以文本形式显示数据。</p>
+</blockquote>
+<p>表格中的交叉表图表也称为文本表，以文本形式显示数据。图表由一个或多个维度和一个或多个度量组成。此图表还可以显示对度量字段的值的各种计算，如运行总计，总百分比等。</p>
+<h3 id="简单交叉表">简单交叉表</h3>
+<p>使用 Sample-superstore，我们计划获取每个区域中每个细分的销售额。 我们需要使用可用的订单日期显示每年的此数据。 为了实现这个目标，我们遵循以下步骤。</p>
+<ul>
+<li><strong>第 1 步</strong> 将维度订单日期拖放到列栏框。</li>
+<li><strong>第 2 步</strong> 将尺寸区域和细分拖放到行搁板。</li>
+<li><strong>第 3 步</strong> 将度量 Sales 拖到标记下的标签 Shelf。</li>
+</ul>
+<p>下面的图表显示交叉表</p>
+<p><img src="https://atts.w3cschool.cn/attachments/tuploads/tableau/cross_tab1.jpg" alt=""></p>
+<h3 id="交叉表-颜色编码">交叉表 - 颜色编码</h3>
+<p>我们可以通过将度量字段放到颜色支架中来获取交叉表图表中的颜色编码值，如下所示。 此颜色编码根据度量的值显示颜色的强度。 较大的值具有比较亮的值更暗的色调。</p>
+<p><img src="https://atts.w3cschool.cn/attachments/tuploads/tableau/cross_tab2.jpg" alt=""></p>
+<h3 id="带有行百分比的交叉表">带有行百分比的交叉表</h3>
+<p>除了颜色编码，我们还可以获取计算应用于值的计算。 在上面的示例中，我们应用计算查找每行中销售额的百分比，而不仅仅是销售额。 为此，我们右键单击标记卡中的 SUM(销售)，然后选择添加表计算选项。 然后我们选择总数的百分比，并将其汇总为表格 (横向)。</p>
+<p><img src="https://atts.w3cschool.cn/attachments/tuploads/tableau/cross_tab3.jpg" alt=""></p>
+<p>在上面的屏幕中单击确定，我们找到使用百分比值创建的交叉表图表，如下所示。</p>
+<p><img src="https://atts.w3cschool.cn/attachments/day_161228/201612281018336454.JPG" alt=""></p>
+<h2 id="散点图">散点图</h2>
+<p>顾名思义，散点图显示散布在笛卡尔平面中的许多点。 它是通过在笛卡尔平面中将数值变量的值绘制为 X 和 Y 坐标而创建的。 Tableau 在行搁架中至少使用一个度量，在列搁架中使用一个度量来创建散点图。 但是我们可以向散点图中添加维度字段，这对在散点图中已经存在的点标记不同颜色起到了作用。</p>
+<h3 id="简单散点图">简单散点图</h3>
+<p>使用 Sample-superstore，我们旨在找到销售和利润数据的变化作为根据它们的子类别分布的笛卡尔平面的 2 轴。 为了实现这个目标，我们遵循以下步骤。</p>
+<ul>
+<li><strong>第 1 步</strong> 将度量 Sales 拖放到列框架。</li>
+<li><strong>第 2 步</strong> 将度量<strong>利润</strong>拖放到行架。</li>
+<li><strong>第 3 步</strong> 将维度子类别拖动到标记下的标签 Shelf。</li>
+</ul>
+<p>下面的图表显示了如何分配利润和销售在我们有产品的子类别。</p>
+<p><img src="https://atts.w3cschool.cn/attachments/tuploads/tableau/sactter_1.jpg" alt=""></p>
+<h3 id="散点图-颜色编码">散点图 - 颜色编码</h3>
+<p>我们可以通过将维度子类别拖动到标记卡下面的颜色 Shelf 来获取颜色编码的值。 此图表显示每个点具有不同颜色的散点。</p>
+<p><img src="https://atts.w3cschool.cn/attachments/tuploads/tableau/sactter_2.jpg" alt=""></p>
+<h3 id="下钻散点图">下钻散点图</h3>
+<p>当我们选择具有层次结构的维度时，相同的散点图可以显示不同的值。 在上面的示例中，我们展开子类别字段以显示 Manufacturers 的散点图值。</p>
+<p><img src="https://atts.w3cschool.cn/attachments/tuploads/tableau/sactter_3.jpg" alt=""></p>
+<h2 id="气泡图">气泡图</h2>
+<p>气泡图将数据显示为圆形群集。维度字段中的每个值表示一个圆，而度量值表示这些圆的大小。由于值不会显示在任何行或列中，因此我们将必填字段拖到标记卡下的不同货架上。</p>
+<h3 id="简单气泡图">简单气泡图</h3>
+<p>使用 Sample-superstore，我们计划找到不同船舶模式的利润大小。为了实现这个目标，我们遵循以下步骤。</p>
+<ul>
+<li><strong>第 1 步</strong> 将度量利润拖放到标记卡下的尺寸架。</li>
+<li><strong>第 2 步</strong> 将尺寸出货模式拖放到标记卡下的标签架。</li>
+<li><strong>第 3 步</strong> 将尺寸出货模式拉到标记卡下的颜色 Shelf。</li>
+</ul>
+<p>出现下图。</p>
+<p><img src="https://atts.w3cschool.cn/attachments/tuploads/tableau/bubble_1.jpg" alt=""></p>
+<h3 id="带有测量值的气泡图">带有测量值的气泡图</h3>
+<p>我们还可以显示决定圆形大小的度量字段的值。为此，我们将销售度量拖动到 “标签 " 货架中。出现下图。</p>
+<p><img src="https://atts.w3cschool.cn/attachments/tuploads/tableau/bubble_2.jpg" alt=""></p>
+<h3 id="与措施颜色的泡影图">与措施颜色的泡影图</h3>
+<p>我们可以使用不同颜色的单个颜色，而不是用不同的颜色为每个圆着色。为此，我们将度量销售拖入颜色货架。较高的值表示较暗的阴影，而较小的值表示较浅的阴影。</p>
+<p><img src="https://atts.w3cschool.cn/attachments/tuploads/tableau/bubble_3.jpg" alt=""></p>
+<h2 id="项目符号图">项目符号图</h2>
+<blockquote>
+<p>本文由 <a target="_blank" rel="noopener" href="http://ksria.com/simpread/">简悦 SimpRead</a> 转码， 原文地址 <a target="_blank" rel="noopener" href="https://www.w3cschool.cn/tableau/tableau_bullet_graph.html">www.w3cschool.cn</a></p>
+</blockquote>
+<blockquote>
+<p>项目符号图是条形图的变体。</p>
+</blockquote>
+<p>项目符号图是条形图的变体。在这个图表中，我们比较一个测量的值与在第二个测量的变化范围内找到第一个测量的变化的上下文中的另一个测量。它类似于在彼此上绘制的两个条，以在图中的相同位置处指示它们的各个值。可以认为将两个图组合为一个以容易地查看比较结果。</p>
+<h3 id="创建气泡图">创建气泡图</h3>
+<p>使用 Sample-superstore，我们计划找出每个子类别中各个销售额的利润大小。为了实现这个目标，我们遵循以下步骤。</p>
+<p><strong>第 1 步</strong></p>
+<p>将维子类别从数据窗格拖放到列栏框中。</p>
+<p><strong>第 2 步</strong></p>
+<p>将度量收益和销售额拖放到行架。</p>
+<p>将显示下面的图表，其中将两个度量显示为条形图的两个单独类别，每个条形图表示子类别的值。</p>
+<p><img src="https://atts.w3cschool.cn/attachments/tuploads/tableau/bullet_step_2.jpg" alt=""></p>
+<p><strong>第 3 步</strong></p>
+<p>将销售度量拖动到标记卡。 使用 show me 选择项目符号图选项。 下图显示了项目符号图。</p>
+<p><img src="https://atts.w3cschool.cn/attachments/tuploads/tableau/bullet_step_3.jpg" alt=""></p>
+<h2 id="盒行图">盒行图</h2>
+<p>盒形图也称为盒 - 须图。 它们显示沿轴的值的分布。框表示中间 50％的数据，即数据分布的中间两个四分位数。剩余 50％的数据在两侧由线也称为晶须，以显示 1.5 倍四分位距范围内的所有点，该范围是邻接框宽度的 1.5 倍内的所有点，或在数据最大范围内的所有点。</p>
+<p>箱形图采用一个或多个零个或多个维度的度量。</p>
+<h3 id="创建箱图">创建箱图</h3>
+<p>使用 Sample-superstore，我们计划为每个 Ship 模式值找到相应类别的利润大小。为了实现这个目标，我们遵循以下步骤。</p>
+<p><strong>第 1 步</strong></p>
+<p>将维度类别拖放到列栏架，并在行框架中获利。还要将维度运输模式拖动到列栏框中的类别右侧。</p>
+<p><strong>第 2 步</strong></p>
+<p>从 Show me 中选择 Box-and-Whisker plot。显示下图显示框图。在这里，Tableau 会自动将出货模式重新分配给标记卡。</p>
+<p><img src="https://atts.w3cschool.cn/attachments/tuploads/tableau/box_plot_1.jpg" alt=""></p>
+<h3 id="具有两个尺寸的箱线图">具有两个尺寸的箱线图</h3>
+<p>我们可以通过向列栏架添加另一个维度来创建具有两个维度的箱线图。在上面的图表中，我们将区域维添加到列架。这将生成一个图表，显示每个区域的箱线图。</p>
+<p><img src="https://atts.w3cschool.cn/attachments/tuploads/tableau/box_plot_2.jpg" alt=""></p>
+<h2 id="树图">树图</h2>
+<p>树图在嵌套矩形中显示数据。定义树图结构的维度和定义单个矩形的大小或颜色的度量。 矩形容易可视化，因为矩形的颜色的大小和阴影反映了度量的值。</p>
+<p>使用具有一个或两个度量的一个或多个维创建树映射。</p>
+<h3 id="创建树图">创建树图</h3>
+<p>使用 Sample-superstore，我们计划找出每个 Ship 模式值的利润大小。为了实现这个目标，我们遵循以下步骤。</p>
+<p><strong>第 1 步</strong></p>
+<p>将度量利润拖放到马克卡两次。一次到规模的货架，再到颜色货架。</p>
+<p><strong>第 2 步</strong></p>
+<p>将维度出货模式拖放到标签架。 从显示我选择图表类型树图。 出现下图。</p>
+<p><img src="https://atts.w3cschool.cn/attachments/tuploads/tableau/tree_map_1.jpg" alt=""></p>
+<h3 id="有两个维度的树映射">有两个维度的树映射</h3>
+<p>让我们将尺寸 Region 添加到上面的 Tree map 图表中。我们拖放它两次。一次颜色货架和再次标签架。出现下图，其中显示四个区域的四个外框，然后是嵌套在其中的出货模式的框。请注意，所有不同的地区现在有不同的颜色。</p>
+<p><img src="https://atts.w3cschool.cn/attachments/tuploads/tableau/tree_map_2.jpg" alt=""></p>
+<h2 id="凹凸图">凹凸图</h2>
+<p>凹凸图用于使用 Measure 值之一来比较两个尺寸。它们对于探索时间维度或地方维度或与分析相关的其他维度的值的变化非常有用。</p>
+<p>凹凸图采用两个维度，零个或多个度量。</p>
+<h3 id="创建凹凸图">创建凹凸图</h3>
+<p>使用 Sample-superstore，我们计划找到产品的船舶模式随子类别变化的变化。为了实现这个目标，我们遵循以下步骤。</p>
+<p><strong>第 1 步</strong></p>
+<p>将维子类别拖放到列框。还可将标注运输模式拖动到标记卡下的颜色货架。 将图表类型保留为自动。然后我们得到下面的图表。</p>
+<p><img src="https://atts.w3cschool.cn/attachments/tuploads/tableau/bump_chart_1.jpg" alt=""></p>
+<p><strong>第 2 步</strong></p>
+<p>接下来我们创建一个名为 Rank 的计算字段。转到分析 - &gt; 创建计算字段。 使用 Rank 作为字段名称，并在计算区域中写入表达式 index()。它是一个内置函数，用于为分区中的当前行创建索引。单击确定，新字段将显示在度量部分。 右键单击字段 Rank 并将其转换为离散。</p>
+<p><strong>第 3 步</strong></p>
+<p>将 Rank 拖动到行搁板。下图显示尺寸子类别，每个船舶模式按其 Rank 值的升序排列。</p>
+<p><img src="https://atts.w3cschool.cn/attachments/tuploads/tableau/bump_chart_2_create_rank.jpg" alt=""></p>
+<p><strong>第 4 步</strong></p>
+<p>接下来，我们使用度量利润对等级字段应用一些更多的计算。在排名上，选择编辑表计算。 选择按字段利润排序，使用按子类别划分和按船模式寻址。下图显示了应用的计算。</p>
+<p><img src="https://atts.w3cschool.cn/attachments/tuploads/tableau/bump_chart_3.jpg" alt=""></p>
+<p>完成上述步骤后，我们得到凹凸图，如下所示。它显示了不同子类别下每种船舶模式的利润变化。</p>
+<p><img src="https://atts.w3cschool.cn/attachments/tuploads/tableau/bump_chart_4.jpg" alt=""></p>
+<h2 id="甘特图">甘特图</h2>
+<p>甘特图显示了一段时间内任务或资源的值的进度。它广泛用于项目管理和其他类型的变化在一段时间的研究。 因此，在甘特图中，时间维度是一个重要领域。</p>
+<p>除了时间维度之外，甘特图至少还需要一个维度和一个度量。</p>
+<h3 id="创建甘特图">创建甘特图</h3>
+<p>使用 Sample-superstore，我们计划在一定时间范围内根据其船舶模式找到不同子类别产品的数量变化。为了实现这个目标，我们遵循以下步骤。</p>
+<p><strong>第 1 步</strong></p>
+<p>将维度订单日期拖动到列框架和子类别到行搁架。接下来，我们将订单日期添加到过滤器架。还要右键点击订单日期，将其转换为确切的日期值。它是如下图所示。</p>
+<p><img src="https://atts.w3cschool.cn/attachments/tuploads/tableau/gannt_chart_1.jpg" alt=""></p>
+<p><strong>第 2 步</strong></p>
+<p>接下来，我们编辑过滤条件以选择日期范围。这是因为我们需要单独的日期值，并且数据中有非常多的日期。创建范围如下所示。</p>
+<p><img src="https://atts.w3cschool.cn/attachments/tuploads/tableau/gannt_chart_21.jpg" alt=""></p>
+<p><strong>第 3 步</strong></p>
+<p>接下来，我们将尺寸出货模式拖动到颜色货架，将度量数量拖到标记卡下面的尺寸货架。这将产生甘特图，如下所示。</p>
+<p><img src="https://atts.w3cschool.cn/attachments/tuploads/tableau/gannt_chart_final.jpg" alt=""></p>
+<h2 id="直方图">直方图</h2>
+<p>直方图表示被存储到范围中的变量的值的频率。 直方图类似于条形图，但它将值分组为连续范围。直方图中的每个柱表示该范围中存在的值的数量的高度。</p>
+<p>Tableau 通过采取一个度量创建直方图。它为创建直方图中使用的度量创建一个附加 bin 字段。</p>
+<h3 id="创建直方图">创建直方图</h3>
+<p>使用 Sample-superstore，让我们计划找到不同区域的销售量。为了实现这个目标，我们遵循以下步骤。<br>
+将名为 Quantity 的测量拖动到 Rows 货架。然后打开显示我并选择直方图。 下图显示了创建的图表。它显示的数量自动分为 0 到 4811 之间的值，并分为 12 个箱。</p>
+<p><img src="https://atts.w3cschool.cn/attachments/tuploads/tableau/histogram_1.jpg" alt=""></p>
+<h3 id="使用尺寸创建直方图">使用尺寸创建直方图</h3>
+<p>我们还可以向度量添加维度以创建直方图。这将创建一个堆叠直方图。每个条将具有表示维度值的堆栈。按照上述示例的步骤，我们将区域维度添加到 Marks Card 下的颜色 Shelf。这将创建以下直方图，其中每个条还包括不同区域的可视化。</p>
+<p><img src="https://atts.w3cschool.cn/attachments/tuploads/tableau/histogram_2.jpg" alt=""></p>
+<h2 id="动态图表">动态图表</h2>
+<p>动态图表使用 x 和 y 轴显示数据，通过显示定义空间内数据点的移动以及线颜色的变化来显示随时间的变化。动态图的主要优点是查看数据随时间变化的整个轨迹，而不仅仅是数据的快照。</p>
+<p>Tableau 需要一个时间维和一个度量来创建动态图表。</p>
+<h3 id="创建动态图表">创建动态图表</h3>
+<p>使用 Sample-superstore，我们计划找到几个月的利润变化。为了实现这个目标，我们遵循以下步骤。</p>
+<p><strong>第 1 步</strong></p>
+<p>将维度订单日期拖到列搁架。再次将其拖动到 Pages Shelf。在页面货架上，右键单击订单日期，然后选择月份。然后将度量利润拖到行搁架。将显示以下图表。</p>
+<p><img src="https://atts.w3cschool.cn/attachments/tuploads/tableau/motion_chart_1.jpg" alt=""></p>
+<p><strong>第 2 步</strong></p>
+<p>将复选标记放在显示历史记录旁边的框上，然后单击旁边的下拉箭头。对于 “显示历史记录的标记 “，选择 “全部”。 然后在 “显示 “下，选择 “两者”。 选择 “标记 “仅显示点，选择 “轨迹” 仅显示线。点击播放按钮。将显示以下图表。</p>
+<p><img src="https://atts.w3cschool.cn/attachments/tuploads/tableau/motion_chart_2.jpg" alt=""></p>
+<p><strong>第 3 步</strong></p>
+<p>允许图表从 1 月到 12 月运行，将创建一个图表，显示多年来每个月的利润变化情况。注意，随着数据的变化，最近几个月的颜色变暗，历史数据变得颜色更浅。</p>
+<p>下面是一年中的所有月份播放动态图表之后的图表。</p>
+<p><img src="https://atts.w3cschool.cn/attachments/tuploads/tableau/motion_chart_3.jpg" alt=""></p>
+<h2 id="瀑布图">瀑布图</h2>
+<p>瀑布图有效地显示连续正值和负值的累积效应。它显示一个值的开始，结束和它如何增量地。因此，我们能够看到连续数据点之间的变化的大小和值的差异。</p>
+<p><code>Tableau</code> 需要一个维度和一个度量来创建瀑布图。</p>
+<h3 id="创建瀑布图">创建瀑布图</h3>
+<p>使用 <code>Sample-superstore</code>，我们计划查找每个子类别的 <code>Products</code> 的 <code>Sales</code> 变体。为了实现这个目标，我们遵循以下步骤。</p>
+<p><strong>第 1 步</strong></p>
+<p>将维度子类别拖动到列框架，将度量销售拖到行架。按销售价值的升序对数据进行排序。对于这个使用排序选项出现在垂直轴的中间，当你将鼠标悬停在它。完成此步骤后，将显示以下图表。</p>
+<p><img src="https://atts.w3cschool.cn/attachments/tuploads/tableau/water_fall_1.jpg" alt=""></p>
+<p><strong>第 2 步</strong></p>
+<p>接下来右键单击 <code>SUM(Sales)</code> 值，然后从表计算选项中选择 <code>running total</code>。将图表类型更改为 <code>Gantt</code> 栏。出现下图。</p>
+<p><img src="https://atts.w3cschool.cn/attachments/tuploads/tableau/water_fall_2.jpg" alt=""></p>
+<p><strong>第 3 步</strong></p>
+<p>创建名为 <code>-sales</code> 的计算字段，并为其值提供以下公式。</p>
+<p><img src="https://atts.w3cschool.cn/attachments/tuploads/tableau/water_fall_3.jpg" alt=""></p>
+<p><strong>第 4 步</strong></p>
+<p>将新创建的计算字段<code>(-sales)</code>拖动到 “标记卡 " 下的大小字段。上面的图表现在改变，以产生以下图表是瀑布图。</p>
+<p><img src="https://atts.w3cschool.cn/attachments/tuploads/tableau/water_fall_4.jpg" alt=""></p>
+<h3 id="颜色瀑布图">颜色瀑布图</h3>
+<p>接下来，我们可以通过将销售度量拖动到标记卡下的颜色货架，为图表中的条形提供不同的颜色深浅。我们得到下面的颜色瀑布图。</p>
+<p><img src="https://atts.w3cschool.cn/attachments/tuploads/tableau/water_fall_final.jpg" alt=""></p>
+<h2 id="BUG-及-解决-3">BUG 及 解决</h2>
+<ul>
+<li></li>
+</ul>
+<h2 id="更新日志-3">更新日志</h2>
+<h3 id="Version-1-0-0-3">Version 1.0.0</h3>
+<p><strong>Done</strong></p>
+<ul>
+<li>tableau 图表</li>
+</ul>
+<h2 id="参考文献-3">参考文献</h2>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.w3cschool.cn/tableau/tableau_bar_chart.html">w3c-图表</a></li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a target="_blank" rel="noopener" href="https://github.com/yu627482453">Bill Cypher</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://yu627482453.github.io/tableau/tableau-tu-biao/">https://yu627482453.github.io/tableau/tableau-tu-biao/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://yu627482453.github.io" target="_blank">怪诞小镇</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="../../tags/tableau/">tableau</a><a class="post-meta__tags" href="../../tags/BI-%E6%8A%A5%E8%A1%A8/">BI 报表</a><a class="post-meta__tags" href="../../tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/">数据分析</a></div><div class="post_share"><div class="social-share" data-image="../../Assets/tableau/Image/cover.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="../../img/reward/wechat.jpg" target="_blank"><img class="post-qr-code-img" src="../../img/reward/wechat.jpg" alt="wechat"/></a><div class="post-qr-code-desc">wechat</div></li><li class="reward-item"><a href="../../img/reward/alipay.jpg" target="_blank"><img class="post-qr-code-img" src="../../img/reward/alipay.jpg" alt="alipay"/></a><div class="post-qr-code-desc">alipay</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="../tableau-shu-ju-yuan/"><img class="next-cover" src="../../Assets/tableau/Image/cover.png" onerror="onerror=null;src='../../img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">tableau-数据源</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="../tableau-ji-ben-gai-nian/" title="tableau-基本概念"><img class="cover" src="../../Assets/tableau/Image/cover.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-08-13</div><div class="title">tableau-基本概念</div></div></a></div><div><a href="../tableau-liu-cheng/" title="tableau-流程"><img class="cover" src="../../Assets/tableau/Image/cover.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-08-13</div><div class="title">tableau-流程</div></div></a></div><div><a href="../tableau-suo-yin/" title="tableau-索引"><img class="cover" src="../../Assets/tableau/Image/cover.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-08-13</div><div class="title">tableau-索引</div></div></a></div><div><a href="../tableau-shu-ju-yuan/" title="tableau-数据源"><img class="cover" src="../../Assets/tableau/Image/cover.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-08-13</div><div class="title">tableau-数据源</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="gitalk-container"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="../img/avatar.jpg" onerror="this.onerror=null;this.src='../img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Bill Cypher</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="../archives/"><div class="headline">文章</div><div class="length-num">11</div></a><a href="../tags/"><div class="headline">标签</div><div class="length-num">13</div></a><a href="../categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/yu627482453"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/yu627482453" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="../627482453@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">1.</span> <span class="toc-text">tableau-图表</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Metadata-3"><span class="toc-number">1.1.</span> <span class="toc-text">Metadata</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9D%A1%E5%BD%A2%E5%9B%BE"><span class="toc-number">1.2.</span> <span class="toc-text">条形图</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%80%E5%8D%95%E7%9A%84%E6%9D%A1%E5%BD%A2%E5%9B%BE"><span class="toc-number">1.2.1.</span> <span class="toc-text">简单的条形图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8E%E9%A2%9C%E8%89%B2%E8%8C%83%E5%9B%B4%E7%9A%84%E9%95%BF%E6%9D%A1%E5%9B%BE"><span class="toc-number">1.2.2.</span> <span class="toc-text">与颜色范围的长条图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A0%86%E7%A7%AF%E6%9D%A1%E5%BD%A2%E5%9B%BE"><span class="toc-number">1.2.3.</span> <span class="toc-text">堆积条形图</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8A%98%E7%BA%BF%E5%9B%BE"><span class="toc-number">1.3.</span> <span class="toc-text">折线图</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%80%E5%8D%95%E7%9A%84%E6%8A%98%E7%BA%BF%E5%9B%BE"><span class="toc-number">1.3.1.</span> <span class="toc-text">简单的折线图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%9A%E6%B5%8B%E9%87%8F%E7%BA%BF%E5%9B%BE"><span class="toc-number">1.3.2.</span> <span class="toc-text">多测量线图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%A6%E6%9C%89%E6%A0%87%E7%AD%BE%E7%9A%84%E6%8A%98%E7%BA%BF%E5%9B%BE"><span class="toc-number">1.3.3.</span> <span class="toc-text">带有标签的折线图</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A5%BC%E5%9B%BE"><span class="toc-number">1.4.</span> <span class="toc-text">饼图</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%80%E5%8D%95%E7%9A%84%E9%A5%BC%E5%9B%BE"><span class="toc-number">1.4.1.</span> <span class="toc-text">简单的饼图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8B%E9%92%BB%E9%A5%BC%E5%9B%BE"><span class="toc-number">1.4.2.</span> <span class="toc-text">下钻饼图</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%A4%E5%8F%89%E8%A1%A8"><span class="toc-number">1.5.</span> <span class="toc-text">交叉表</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%80%E5%8D%95%E4%BA%A4%E5%8F%89%E8%A1%A8"><span class="toc-number">1.5.1.</span> <span class="toc-text">简单交叉表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%A4%E5%8F%89%E8%A1%A8-%E9%A2%9C%E8%89%B2%E7%BC%96%E7%A0%81"><span class="toc-number">1.5.2.</span> <span class="toc-text">交叉表 - 颜色编码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%A6%E6%9C%89%E8%A1%8C%E7%99%BE%E5%88%86%E6%AF%94%E7%9A%84%E4%BA%A4%E5%8F%89%E8%A1%A8"><span class="toc-number">1.5.3.</span> <span class="toc-text">带有行百分比的交叉表</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%A3%E7%82%B9%E5%9B%BE"><span class="toc-number">1.6.</span> <span class="toc-text">散点图</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%80%E5%8D%95%E6%95%A3%E7%82%B9%E5%9B%BE"><span class="toc-number">1.6.1.</span> <span class="toc-text">简单散点图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%A3%E7%82%B9%E5%9B%BE-%E9%A2%9C%E8%89%B2%E7%BC%96%E7%A0%81"><span class="toc-number">1.6.2.</span> <span class="toc-text">散点图 - 颜色编码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8B%E9%92%BB%E6%95%A3%E7%82%B9%E5%9B%BE"><span class="toc-number">1.6.3.</span> <span class="toc-text">下钻散点图</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B0%94%E6%B3%A1%E5%9B%BE"><span class="toc-number">1.7.</span> <span class="toc-text">气泡图</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%80%E5%8D%95%E6%B0%94%E6%B3%A1%E5%9B%BE"><span class="toc-number">1.7.1.</span> <span class="toc-text">简单气泡图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%A6%E6%9C%89%E6%B5%8B%E9%87%8F%E5%80%BC%E7%9A%84%E6%B0%94%E6%B3%A1%E5%9B%BE"><span class="toc-number">1.7.2.</span> <span class="toc-text">带有测量值的气泡图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8E%E6%8E%AA%E6%96%BD%E9%A2%9C%E8%89%B2%E7%9A%84%E6%B3%A1%E5%BD%B1%E5%9B%BE"><span class="toc-number">1.7.3.</span> <span class="toc-text">与措施颜色的泡影图</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A1%B9%E7%9B%AE%E7%AC%A6%E5%8F%B7%E5%9B%BE"><span class="toc-number">1.8.</span> <span class="toc-text">项目符号图</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E6%B0%94%E6%B3%A1%E5%9B%BE"><span class="toc-number">1.8.1.</span> <span class="toc-text">创建气泡图</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%92%E8%A1%8C%E5%9B%BE"><span class="toc-number">1.9.</span> <span class="toc-text">盒行图</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E7%AE%B1%E5%9B%BE"><span class="toc-number">1.9.1.</span> <span class="toc-text">创建箱图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B7%E6%9C%89%E4%B8%A4%E4%B8%AA%E5%B0%BA%E5%AF%B8%E7%9A%84%E7%AE%B1%E7%BA%BF%E5%9B%BE"><span class="toc-number">1.9.2.</span> <span class="toc-text">具有两个尺寸的箱线图</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%91%E5%9B%BE"><span class="toc-number">1.10.</span> <span class="toc-text">树图</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E6%A0%91%E5%9B%BE"><span class="toc-number">1.10.1.</span> <span class="toc-text">创建树图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%89%E4%B8%A4%E4%B8%AA%E7%BB%B4%E5%BA%A6%E7%9A%84%E6%A0%91%E6%98%A0%E5%B0%84"><span class="toc-number">1.10.2.</span> <span class="toc-text">有两个维度的树映射</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%B9%E5%87%B8%E5%9B%BE"><span class="toc-number">1.11.</span> <span class="toc-text">凹凸图</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E5%87%B9%E5%87%B8%E5%9B%BE"><span class="toc-number">1.11.1.</span> <span class="toc-text">创建凹凸图</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%98%E7%89%B9%E5%9B%BE"><span class="toc-number">1.12.</span> <span class="toc-text">甘特图</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E7%94%98%E7%89%B9%E5%9B%BE"><span class="toc-number">1.12.1.</span> <span class="toc-text">创建甘特图</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%B4%E6%96%B9%E5%9B%BE"><span class="toc-number">1.13.</span> <span class="toc-text">直方图</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E7%9B%B4%E6%96%B9%E5%9B%BE"><span class="toc-number">1.13.1.</span> <span class="toc-text">创建直方图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E5%B0%BA%E5%AF%B8%E5%88%9B%E5%BB%BA%E7%9B%B4%E6%96%B9%E5%9B%BE"><span class="toc-number">1.13.2.</span> <span class="toc-text">使用尺寸创建直方图</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8A%A8%E6%80%81%E5%9B%BE%E8%A1%A8"><span class="toc-number">1.14.</span> <span class="toc-text">动态图表</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E5%8A%A8%E6%80%81%E5%9B%BE%E8%A1%A8"><span class="toc-number">1.14.1.</span> <span class="toc-text">创建动态图表</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%80%91%E5%B8%83%E5%9B%BE"><span class="toc-number">1.15.</span> <span class="toc-text">瀑布图</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E7%80%91%E5%B8%83%E5%9B%BE"><span class="toc-number">1.15.1.</span> <span class="toc-text">创建瀑布图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%9C%E8%89%B2%E7%80%91%E5%B8%83%E5%9B%BE"><span class="toc-number">1.15.2.</span> <span class="toc-text">颜色瀑布图</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#BUG-%E5%8F%8A-%E8%A7%A3%E5%86%B3-3"><span class="toc-number">1.16.</span> <span class="toc-text">BUG 及 解决</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9B%B4%E6%96%B0%E6%97%A5%E5%BF%97-3"><span class="toc-number">1.17.</span> <span class="toc-text">更新日志</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Version-1-0-0-3"><span class="toc-number">1.17.1.</span> <span class="toc-text">Version 1.0.0</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE-3"><span class="toc-number">1.18.</span> <span class="toc-text">参考文献</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="../tableau/tableau-tu-biao/" title="tableau-图表"><img src="../Assets/tableau/Image/cover.png" onerror="this.onerror=null;this.src='../img/404.jpg'" alt="tableau-图表"/></a><div class="content"><a class="title" href="../tableau/tableau-tu-biao/" title="tableau-图表">tableau-图表</a><time datetime="2022-08-13T13:25:00.000Z" title="发表于 2022-08-13 21:25:00">2022-08-13</time></div></div><div class="aside-list-item"><a class="thumbnail" href="../tableau/tableau-shu-ju-yuan/" title="tableau-数据源"><img src="../Assets/tableau/Image/cover.png" onerror="this.onerror=null;this.src='../img/404.jpg'" alt="tableau-数据源"/></a><div class="content"><a class="title" href="../tableau/tableau-shu-ju-yuan/" title="tableau-数据源">tableau-数据源</a><time datetime="2022-08-13T13:21:00.000Z" title="发表于 2022-08-13 21:21:00">2022-08-13</time></div></div><div class="aside-list-item"><a class="thumbnail" href="../tableau/tableau-liu-cheng/" title="tableau-流程"><img src="../Assets/tableau/Image/cover.png" onerror="this.onerror=null;this.src='../img/404.jpg'" alt="tableau-流程"/></a><div class="content"><a class="title" href="../tableau/tableau-liu-cheng/" title="tableau-流程">tableau-流程</a><time datetime="2022-08-13T13:13:00.000Z" title="发表于 2022-08-13 21:13:00">2022-08-13</time></div></div><div class="aside-list-item"><a class="thumbnail" href="../tableau/tableau-ji-ben-gai-nian/" title="tableau-基本概念"><img src="../Assets/tableau/Image/cover.png" onerror="this.onerror=null;this.src='../img/404.jpg'" alt="tableau-基本概念"/></a><div class="content"><a class="title" href="../tableau/tableau-ji-ben-gai-nian/" title="tableau-基本概念">tableau-基本概念</a><time datetime="2022-08-13T13:04:00.000Z" title="发表于 2022-08-13 21:04:00">2022-08-13</time></div></div><div class="aside-list-item"><a class="thumbnail" href="../tableau/tableau-suo-yin/" title="tableau-索引"><img src="../Assets/tableau/Image/cover.png" onerror="this.onerror=null;this.src='../img/404.jpg'" alt="tableau-索引"/></a><div class="content"><a class="title" href="../tableau/tableau-suo-yin/" title="tableau-索引">tableau-索引</a><time datetime="2022-08-13T13:04:00.000Z" title="发表于 2022-08-13 21:04:00">2022-08-13</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By Bill Cypher</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="../../js/utils.js"></script><script src="../../js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="../../js/search/local-search.js"></script><div class="js-pjax"><script>function addGitalkSource () {
+  const ele = document.createElement('link')
+  ele.rel = 'stylesheet'
+  ele.href= 'https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.css'
+  document.getElementsByTagName('head')[0].appendChild(ele)
+}
+
+function loadGitalk () {
+  function initGitalk () {
+    var gitalk = new Gitalk(Object.assign({
+      clientID: 'c61a274b6f5aa26a58f6',
+      clientSecret: '485a7761d321c8dcc5cae05d7256be9fb196d94a',
+      repo: 'yu627482453.github.io',
+      owner: 'yu627482453',
+      admin: ['yu627482453'],
+      id: 'd41d8cd98f00b204e9800998ecf8427e',
+      updateCountCallback: commentCount
+    },null))
+
+    gitalk.render('gitalk-container')
+  }
+
+  if (typeof Gitalk === 'function') initGitalk()
+  else {
+    addGitalkSource()
+    getScript('https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.js').then(initGitalk)
+  }
+}
+
+function commentCount(n){
+  let isCommentCount = document.querySelector('#post-meta .gitalk-comment-count')
+  if (isCommentCount) {
+    isCommentCount.innerHTML= n
+  }
+}
+
+if ('Gitalk' === 'Gitalk' || !true) {
+  if (true) btf.loadComment(document.getElementById('gitalk-container'), loadGitalk)
+  else loadGitalk()
+} else {
+  function loadOtherComment () {
+    loadGitalk()
+  }
+}</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"scale":1,"hHeadPos":0.5,"vHeadPos":0.618,"jsonPath":"/live2dw/assets/c539_87.model.json"},"display":{"superSample":2,"width":150,"height":300,"position":"right","hOffset":0,"vOffset":160},"mobile":{"show":true,"scale":0.5},"react":{"opacityDefault":0.7,"opacityOnHover":0.2},"log":false});</script></body></html>
