@@ -1,0 +1,3520 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>JMeter 组件详解-Configuration 配置元件 | 蝶梦庄生</title><meta name="keywords" content="JMeter,组件,配置"><meta name="author" content="Bill Cypher"><meta name="copyright" content="Bill Cypher"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="配置元素可用于设置默认值和变量，供采样器稍后使用。注意，这些元素在找到它们的范围的开始处处理，即在同一范围内的任何采样器之前处理。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JMeter 组件详解-Configuration 配置元件">
+<meta property="og:url" content="https://yu627482453.github.io/jmeter/jmeter-zu-jian-xiang-jie-configuration-pei-zhi-yuan-jian/index.html">
+<meta property="og:site_name" content="蝶梦庄生">
+<meta property="og:description" content="配置元素可用于设置默认值和变量，供采样器稍后使用。注意，这些元素在找到它们的范围的开始处处理，即在同一范围内的任何采样器之前处理。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://yu627482453.github.io/cover/JMeter-cover.png">
+<meta property="article:published_time" content="2022-12-13T05:20:00.000Z">
+<meta property="article:modified_time" content="2022-12-13T05:20:00.000Z">
+<meta property="article:author" content="Bill Cypher">
+<meta property="article:tag" content="行动阶段&#x2F;完成">
+<meta property="article:tag" content="主题场景&#x2F;工具">
+<meta property="article:tag" content="笔记空间&#x2F;KnowladgeSpace&#x2F;ToolSpace">
+<meta property="article:tag" content="细化主题&#x2F;JMeter">
+<meta property="article:tag" content="细化主题&#x2F;组件">
+<meta property="article:tag" content="细化主题&#x2F;配置">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://yu627482453.github.io/cover/JMeter-cover.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://yu627482453.github.io/jmeter/jmeter-zu-jian-xiang-jie-configuration-pei-zhi-yuan-jian/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: undefined,
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: Bill Cypher","link":"链接: ","source":"来源: 蝶梦庄生","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'JMeter 组件详解-Configuration 配置元件',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-12-13 13:20:00'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.2.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">12</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">19</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/cover/JMeter-cover.png')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">蝶梦庄生</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">JMeter 组件详解-Configuration 配置元件</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-12-13T05:20:00.000Z" title="发表于 2022-12-13 13:20:00">2022-12-13</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-12-13T05:20:00.000Z" title="更新于 2022-12-13 13:20:00">2022-12-13</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/JMeter/">JMeter</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="JMeter 组件详解-Configuration 配置元件"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="JMeter-组件详解-Configuration-配置元件"><a href="#JMeter-组件详解-Configuration-配置元件" class="headerlink" title="JMeter 组件详解-Configuration 配置元件"></a>JMeter 组件详解-Configuration 配置元件</h1><h2 id="Metadata"><a href="#Metadata" class="headerlink" title="Metadata"></a>Metadata</h2><pre><code class="line-numbers language-yml">title: JMeter 组件详解-Configuration 配置元件
+date: 2022-12-13 13:20
+tags: 
+  - 行动阶段/完成
+  - 主题场景/工具
+  - 笔记空间/KnowladgeSpace/ToolSpace
+  - 细化主题/JMeter
+  - 细化主题/组件
+  - 细化主题/配置
+categories:
+  - JMeter
+keywords:
+  - JMeter
+  - 组件
+  - 配置
+description: 配置元素可用于设置默认值和变量，供采样器稍后使用。注意，这些元素在找到它们的范围的开始处处理，即在同一范围内的任何采样器之前处理。
+</code></pre>
+<h2 id="Configuration-配置元件"><a href="#Configuration-配置元件" class="headerlink" title="Configuration | 配置元件"></a>Configuration | 配置元件</h2><p>配置元素可用于设置默认值和变量，供采样器稍后使用。注意，这些元素在找到它们的范围的开始处处理，即在同一范围内的任何采样器之前处理。</p>
+<h3 id="CSV-Data-Set-Config-CSV-数据集配置"><a href="#CSV-Data-Set-Config-CSV-数据集配置" class="headerlink" title="CSV Data Set Config | CSV 数据集配置"></a>CSV Data Set Config | CSV 数据集配置</h3><p>CSV数据集配置用于从文件中读取行，并将它们分割为变量。它比<code>__CSVRead()</code>和<code>__StringFromFile()</code>函数更容易使用。它非常适合处理大量变量，并且对于使用”随机”和惟一值进行测试也很有用。</p>
+<p>就CPU和内存而言，在运行时生成唯一的随机值非常昂贵，所以只需在测试之前创建数据。如果有必要，文件中的”随机”数据可以与运行时参数结合使用，从而在每次运行中创建不同的值集——例如使用串联——这比在运行时生成所有值要便宜得多。</p>
+<p>JMeter允许值被引用;这允许值包含分隔符。如果启用了 “<code>allow quoted data</code>“(“允许引用数据”)，值可以用双引号括起来。这些都是删除。要在带引号的字段中包含双引号，请使用两个双引号。</p>
+<p>JMeter支持用标题行定义列名的CSV文件。要启用此功能，请将 “<code>Variable Names</code>“ “变量名称”字段保留为空。必须提供正确的分隔符。</p>
+<p>默认情况下，文件只打开一次，每个线程将使用文件中的不同行。但是，将行传递给线程的顺序取决于它们的执行顺序，这在迭代之间可能会有所不同。在每个测试迭代的开始读取行。在第一次迭代中解析文件名和模式。</p>
+<p>有关其他选项，请参阅下面对共享模式的描述。如果希望每个线程都有自己的一组值，那么需要创建一组文件，每个线程一个文件。例如test1.csv, test2.csv，…，testn.csv。使用文件名<code>test${__threadNum}.csv</code>，将”<code>Sharing mode</code>“(“共享模式”)设置为 “<code>Current thread</code>“(“当前线程”)。</p>
+<style>.admonition {
+  margin: 1.5625em 0;
+  padding: .6rem;
+  overflow: hidden;
+  font-size: 1.00rem;
+  page-break-inside: avoid;
+  border-left: .3rem solid #42b983;
+  border-radius: .3rem;
+  box-shadow: 0 0.1rem 0.4rem rgba(0,0,0,.05), 0 0 0.05rem rgba(0,0,0,.1);
+  background-color: #fafafa;
+}
+
+p.admonition-title {
+  position: relative;
+  margin: -.6rem -.6rem .8em -.6rem !important;
+  padding: .4rem .6rem .4rem 2.5rem;
+  font-weight: 700;
+  background-color:rgba(66, 185, 131, .1);
+}
+
+.admonition-title::before {
+  position: absolute;
+  top: .9rem;
+  left: 1rem;
+  width: 12px;
+  height: 12px;
+  background-color: #42b983;
+  border-radius: 50%;
+  content: ' ';
+}
+
+.info>.admonition-title, .todo>.admonition-title {
+  background-color: rgba(0,184,212,.1);
+}
+
+.warning>.admonition-title, .attention>.admonition-title, .caution>.admonition-title {
+  background-color: rgba(255,145,0,.1);
+}
+
+.failure>.admonition-title, .missing>.admonition-title, .fail>.admonition-title, .error>.admonition-title {
+  background-color: rgba(255,82,82,.1);
+}
+
+.admonition.info, .admonition.todo {
+  border-color: #00b8d4;
+}
+
+.admonition.warning, .admonition.attention, .admonition.caution {
+  border-color: #ff9100;
+}
+
+.admonition.failure, .admonition.missing, .admonition.fail, .admonition.error {
+  border-color: #ff5252;
+}
+
+.info>.admonition-title::before, .todo>.admonition-title::before {
+  background-color: #00b8d4;
+  border-radius: 50%;
+}
+
+.warning>.admonition-title::before, .attention>.admonition-title::before, .caution>.admonition-title::before {
+  background-color: #ff9100;
+  border-radius: 50%;
+}
+
+.failure>.admonition-title::before,.missing>.admonition-title::before,.fail>.admonition-title::before,.error>.admonition-title::before{
+  background-color: #ff5252;;
+  border-radius: 50%;
+}
+
+.admonition>:last-child {
+  margin-bottom: 0 !important;
+}
+</style>
+
+<div class="admonition info"><p class="admonition-title">界面</p><p><img src="/attachment%5Cce47f39f5ccee667dcd4f0ef5d3b0baf.png" alt></p>
+</div>
+
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Description</th>
+<th>Required</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Name</td>
+<td>树中显示的这个元素的描述性名称。<br> 要读取的文件的名称。相对文件名根据活动测试计划的路径进行解析。对于分布式测试，CSV文件必须存储在服务器主机系统中启动JMeter服务器的正确相对目录中。也支持绝对文件名，但是请注意，它们不太可能在远程模式下工作，除非远程服务器具有相同的目录结构。如果以两种不同的方式引用同一个物理文件——例如csvdata.txt和./csvdata.txt——那么这些文件将被视为不同的文件。如果操作系统不区分大小写，也会单独打开csvData.TXT。</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>File Encoding</td>
+<td>用于读取文件的编码，如果不是平台默认值的话。</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Variable Names</td>
+<td>变量名列表。名称必须由分隔符分隔。它们可以用双引号引用。JMeter支持CSV标题行:如果变量名字段为空，那么文件的第一行将被读取并解释为列名列表。</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Use first line as Variable Names</td>
+<td>忽略CSV文件的第一行，它只会在变量名不为空时使用，如果变量名为空，第一行必须包含标题。</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Delimiter</td>
+<td>分隔符，用于分割文件中的记录。如果行上的值比变量的值少，那么剩余的变量将不会更新——因此它们将保留以前的值(如果有的话)。</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Allow quoted data?</td>
+<td>CSV文件是否允许值被引用?如果启用，值可以括在 <code>"</code>-双引号-允许值包含分隔符。</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Recycle on EOF?</td>
+<td>文件是否应该在到达EOF时从头重新读取?(默认是<code>true</code>的)</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Stop thread on EOF?</td>
+<td>如果循环是假的，线程应该停止在EOF ?(默认是假的)</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Sharing mode</td>
+<td>- All threads - (the default) 该文件在所有线程之间共享。<br> - Current thread group - 对于出现该元素的每个线程组，每个文件都会打开一次 <br> - Current thread - 每个文件为每个线程分别打开 <br> - Identifier - 共享相同标识符的所有线程共享相同的文件。例如，如果您有4个线程组，您可以为两个或多个组使用一个公共id来在它们之间共享文件。或者可以使用线程号在不同线程组中的相同线程号之间共享文件。</td>
+<td>Yes</td>
+</tr>
+</tbody></table>
+<h3 id="DNS-Cache-Manager-DNS缓存管理器"><a href="#DNS-Cache-Manager-DNS缓存管理器" class="headerlink" title="DNS Cache Manager | DNS缓存管理器"></a>DNS Cache Manager | DNS缓存管理器</h3><p>DNS缓存管理器元素允许测试应用程序，当用户从不同的IP接收内容时，负载均衡器(CDN等)后面有多个服务器。JMeter默认使用JVM DNS缓存。这就是为什么集群中只有一个服务器接收负载的原因。DNS缓存管理器在每次迭代时分别为每个线程解析名称，并将解析结果保存到其内部DNS缓存中，该缓存独立于JVM和OS的DNS缓存。</p>
+<p>静态主机的映射可以用来模拟类似于<code>/etc/hosts</code>文件的内容。这些条目将优先于自定义解析器。如果要使用此映射，必须启用自定义DNS解析器。</p>
+<style>.admonition {
+  margin: 1.5625em 0;
+  padding: .6rem;
+  overflow: hidden;
+  font-size: 1.00rem;
+  page-break-inside: avoid;
+  border-left: .3rem solid #42b983;
+  border-radius: .3rem;
+  box-shadow: 0 0.1rem 0.4rem rgba(0,0,0,.05), 0 0 0.05rem rgba(0,0,0,.1);
+  background-color: #fafafa;
+}
+
+p.admonition-title {
+  position: relative;
+  margin: -.6rem -.6rem .8em -.6rem !important;
+  padding: .4rem .6rem .4rem 2.5rem;
+  font-weight: 700;
+  background-color:rgba(66, 185, 131, .1);
+}
+
+.admonition-title::before {
+  position: absolute;
+  top: .9rem;
+  left: 1rem;
+  width: 12px;
+  height: 12px;
+  background-color: #42b983;
+  border-radius: 50%;
+  content: ' ';
+}
+
+.info>.admonition-title, .todo>.admonition-title {
+  background-color: rgba(0,184,212,.1);
+}
+
+.warning>.admonition-title, .attention>.admonition-title, .caution>.admonition-title {
+  background-color: rgba(255,145,0,.1);
+}
+
+.failure>.admonition-title, .missing>.admonition-title, .fail>.admonition-title, .error>.admonition-title {
+  background-color: rgba(255,82,82,.1);
+}
+
+.admonition.info, .admonition.todo {
+  border-color: #00b8d4;
+}
+
+.admonition.warning, .admonition.attention, .admonition.caution {
+  border-color: #ff9100;
+}
+
+.admonition.failure, .admonition.missing, .admonition.fail, .admonition.error {
+  border-color: #ff5252;
+}
+
+.info>.admonition-title::before, .todo>.admonition-title::before {
+  background-color: #00b8d4;
+  border-radius: 50%;
+}
+
+.warning>.admonition-title::before, .attention>.admonition-title::before, .caution>.admonition-title::before {
+  background-color: #ff9100;
+  border-radius: 50%;
+}
+
+.failure>.admonition-title::before,.missing>.admonition-title::before,.fail>.admonition-title::before,.error>.admonition-title::before{
+  background-color: #ff5252;;
+  border-radius: 50%;
+}
+
+.admonition>:last-child {
+  margin-bottom: 0 !important;
+}
+</style>
+
+<div class="admonition info"><p class="admonition-title">界面</p><p><img src="/attachment%5C6a3ba849bb5754e150f44e07fc37eeed.png" alt></p>
+</div>
+
+
+
+<style>.admonition {
+  margin: 1.5625em 0;
+  padding: .6rem;
+  overflow: hidden;
+  font-size: 1.00rem;
+  page-break-inside: avoid;
+  border-left: .3rem solid #42b983;
+  border-radius: .3rem;
+  box-shadow: 0 0.1rem 0.4rem rgba(0,0,0,.05), 0 0 0.05rem rgba(0,0,0,.1);
+  background-color: #fafafa;
+}
+
+p.admonition-title {
+  position: relative;
+  margin: -.6rem -.6rem .8em -.6rem !important;
+  padding: .4rem .6rem .4rem 2.5rem;
+  font-weight: 700;
+  background-color:rgba(66, 185, 131, .1);
+}
+
+.admonition-title::before {
+  position: absolute;
+  top: .9rem;
+  left: 1rem;
+  width: 12px;
+  height: 12px;
+  background-color: #42b983;
+  border-radius: 50%;
+  content: ' ';
+}
+
+.info>.admonition-title, .todo>.admonition-title {
+  background-color: rgba(0,184,212,.1);
+}
+
+.warning>.admonition-title, .attention>.admonition-title, .caution>.admonition-title {
+  background-color: rgba(255,145,0,.1);
+}
+
+.failure>.admonition-title, .missing>.admonition-title, .fail>.admonition-title, .error>.admonition-title {
+  background-color: rgba(255,82,82,.1);
+}
+
+.admonition.info, .admonition.todo {
+  border-color: #00b8d4;
+}
+
+.admonition.warning, .admonition.attention, .admonition.caution {
+  border-color: #ff9100;
+}
+
+.admonition.failure, .admonition.missing, .admonition.fail, .admonition.error {
+  border-color: #ff5252;
+}
+
+.info>.admonition-title::before, .todo>.admonition-title::before {
+  background-color: #00b8d4;
+  border-radius: 50%;
+}
+
+.warning>.admonition-title::before, .attention>.admonition-title::before, .caution>.admonition-title::before {
+  background-color: #ff9100;
+  border-radius: 50%;
+}
+
+.failure>.admonition-title::before,.missing>.admonition-title::before,.fail>.admonition-title::before,.error>.admonition-title::before{
+  background-color: #ff5252;;
+  border-radius: 50%;
+}
+
+.admonition>:last-child {
+  margin-bottom: 0 !important;
+}
+</style>
+
+<div class="admonition attention"><p class="admonition-title"></p><p>DNS缓存管理器设计用于在线程组或测试计划的根目录中使用。不把它作为子元素的特定HTTP采样</p>
+</div>
+
+
+
+<style>.admonition {
+  margin: 1.5625em 0;
+  padding: .6rem;
+  overflow: hidden;
+  font-size: 1.00rem;
+  page-break-inside: avoid;
+  border-left: .3rem solid #42b983;
+  border-radius: .3rem;
+  box-shadow: 0 0.1rem 0.4rem rgba(0,0,0,.05), 0 0 0.05rem rgba(0,0,0,.1);
+  background-color: #fafafa;
+}
+
+p.admonition-title {
+  position: relative;
+  margin: -.6rem -.6rem .8em -.6rem !important;
+  padding: .4rem .6rem .4rem 2.5rem;
+  font-weight: 700;
+  background-color:rgba(66, 185, 131, .1);
+}
+
+.admonition-title::before {
+  position: absolute;
+  top: .9rem;
+  left: 1rem;
+  width: 12px;
+  height: 12px;
+  background-color: #42b983;
+  border-radius: 50%;
+  content: ' ';
+}
+
+.info>.admonition-title, .todo>.admonition-title {
+  background-color: rgba(0,184,212,.1);
+}
+
+.warning>.admonition-title, .attention>.admonition-title, .caution>.admonition-title {
+  background-color: rgba(255,145,0,.1);
+}
+
+.failure>.admonition-title, .missing>.admonition-title, .fail>.admonition-title, .error>.admonition-title {
+  background-color: rgba(255,82,82,.1);
+}
+
+.admonition.info, .admonition.todo {
+  border-color: #00b8d4;
+}
+
+.admonition.warning, .admonition.attention, .admonition.caution {
+  border-color: #ff9100;
+}
+
+.admonition.failure, .admonition.missing, .admonition.fail, .admonition.error {
+  border-color: #ff5252;
+}
+
+.info>.admonition-title::before, .todo>.admonition-title::before {
+  background-color: #00b8d4;
+  border-radius: 50%;
+}
+
+.warning>.admonition-title::before, .attention>.admonition-title::before, .caution>.admonition-title::before {
+  background-color: #ff9100;
+  border-radius: 50%;
+}
+
+.failure>.admonition-title::before,.missing>.admonition-title::before,.fail>.admonition-title::before,.error>.admonition-title::before{
+  background-color: #ff5252;;
+  border-radius: 50%;
+}
+
+.admonition>:last-child {
+  margin-bottom: 0 !important;
+}
+</style>
+
+<div class="admonition attention"><p class="admonition-title"></p><p>DNS缓存管理器只适用于使用HTTPClient4实现的HTTP请求。</p>
+</div>
+
+
+
+<style>.admonition {
+  margin: 1.5625em 0;
+  padding: .6rem;
+  overflow: hidden;
+  font-size: 1.00rem;
+  page-break-inside: avoid;
+  border-left: .3rem solid #42b983;
+  border-radius: .3rem;
+  box-shadow: 0 0.1rem 0.4rem rgba(0,0,0,.05), 0 0 0.05rem rgba(0,0,0,.1);
+  background-color: #fafafa;
+}
+
+p.admonition-title {
+  position: relative;
+  margin: -.6rem -.6rem .8em -.6rem !important;
+  padding: .4rem .6rem .4rem 2.5rem;
+  font-weight: 700;
+  background-color:rgba(66, 185, 131, .1);
+}
+
+.admonition-title::before {
+  position: absolute;
+  top: .9rem;
+  left: 1rem;
+  width: 12px;
+  height: 12px;
+  background-color: #42b983;
+  border-radius: 50%;
+  content: ' ';
+}
+
+.info>.admonition-title, .todo>.admonition-title {
+  background-color: rgba(0,184,212,.1);
+}
+
+.warning>.admonition-title, .attention>.admonition-title, .caution>.admonition-title {
+  background-color: rgba(255,145,0,.1);
+}
+
+.failure>.admonition-title, .missing>.admonition-title, .fail>.admonition-title, .error>.admonition-title {
+  background-color: rgba(255,82,82,.1);
+}
+
+.admonition.info, .admonition.todo {
+  border-color: #00b8d4;
+}
+
+.admonition.warning, .admonition.attention, .admonition.caution {
+  border-color: #ff9100;
+}
+
+.admonition.failure, .admonition.missing, .admonition.fail, .admonition.error {
+  border-color: #ff5252;
+}
+
+.info>.admonition-title::before, .todo>.admonition-title::before {
+  background-color: #00b8d4;
+  border-radius: 50%;
+}
+
+.warning>.admonition-title::before, .attention>.admonition-title::before, .caution>.admonition-title::before {
+  background-color: #ff9100;
+  border-radius: 50%;
+}
+
+.failure>.admonition-title::before,.missing>.admonition-title::before,.fail>.admonition-title::before,.error>.admonition-title::before{
+  background-color: #ff5252;;
+  border-radius: 50%;
+}
+
+.admonition>:last-child {
+  margin-bottom: 0 !important;
+}
+</style>
+
+<div class="admonition note"><p class="admonition-title">参数说明</p><table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Description</th>
+<th>Required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Name</td>
+<td>树中显示的这个元素的描述性名称。</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Clear cache each Iteration</td>
+<td>如果选中，每次新的迭代开始时，每个线程的DNS缓存都会被清除。</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Use system DNS resolver</td>
+<td>系统DNS解析器将被使用。对于正确的工作编辑 <code>$JAVA_HOME/jre/lib/security/java.security</code> 并且添加 <code>networkaddress.cache.ttl=0</code></td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>Use custom DNS resolver</td>
+<td>将使用自定义DNS解析器(来自dnsjava库)。</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>Hostname or IP address</td>
+<td>使用的DNS服务器列表。如果为空，则使用网络配置DNS。</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Add Button</td>
+<td>在DNS服务器表中添加一条表项。</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>Delete Button</td>
+<td>删除当前选择的表项。</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>Host and Hostname or IP address</td>
+<td>将主机名映射到静态主机条目，该条目将使用自定义DNS解析器进行解析。</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Add static host Button</td>
+<td>在静态主机表中添加一个条目。</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>Delete static host Button</td>
+<td>删除表中当前选择的静态主机。</td>
+<td>N/A</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<h3 id="HTTP-Authorization-Manager-HTTP授权管理器"><a href="#HTTP-Authorization-Manager-HTTP授权管理器" class="headerlink" title="HTTP Authorization Manager | HTTP授权管理器"></a>HTTP Authorization Manager | HTTP授权管理器</h3><style>.admonition {
+  margin: 1.5625em 0;
+  padding: .6rem;
+  overflow: hidden;
+  font-size: 1.00rem;
+  page-break-inside: avoid;
+  border-left: .3rem solid #42b983;
+  border-radius: .3rem;
+  box-shadow: 0 0.1rem 0.4rem rgba(0,0,0,.05), 0 0 0.05rem rgba(0,0,0,.1);
+  background-color: #fafafa;
+}
+
+p.admonition-title {
+  position: relative;
+  margin: -.6rem -.6rem .8em -.6rem !important;
+  padding: .4rem .6rem .4rem 2.5rem;
+  font-weight: 700;
+  background-color:rgba(66, 185, 131, .1);
+}
+
+.admonition-title::before {
+  position: absolute;
+  top: .9rem;
+  left: 1rem;
+  width: 12px;
+  height: 12px;
+  background-color: #42b983;
+  border-radius: 50%;
+  content: ' ';
+}
+
+.info>.admonition-title, .todo>.admonition-title {
+  background-color: rgba(0,184,212,.1);
+}
+
+.warning>.admonition-title, .attention>.admonition-title, .caution>.admonition-title {
+  background-color: rgba(255,145,0,.1);
+}
+
+.failure>.admonition-title, .missing>.admonition-title, .fail>.admonition-title, .error>.admonition-title {
+  background-color: rgba(255,82,82,.1);
+}
+
+.admonition.info, .admonition.todo {
+  border-color: #00b8d4;
+}
+
+.admonition.warning, .admonition.attention, .admonition.caution {
+  border-color: #ff9100;
+}
+
+.admonition.failure, .admonition.missing, .admonition.fail, .admonition.error {
+  border-color: #ff5252;
+}
+
+.info>.admonition-title::before, .todo>.admonition-title::before {
+  background-color: #00b8d4;
+  border-radius: 50%;
+}
+
+.warning>.admonition-title::before, .attention>.admonition-title::before, .caution>.admonition-title::before {
+  background-color: #ff9100;
+  border-radius: 50%;
+}
+
+.failure>.admonition-title::before,.missing>.admonition-title::before,.fail>.admonition-title::before,.error>.admonition-title::before{
+  background-color: #ff5252;;
+  border-radius: 50%;
+}
+
+.admonition>:last-child {
+  margin-bottom: 0 !important;
+}
+</style>
+
+<div class="admonition info"><p class="admonition-title">界面</p><p><img src="/attachment%5Cbc7857565fd9ff73dbe5e04ea209b160.png" alt></p>
+</div>
+
+<p>授权管理器允许您为使用服务器身份验证限制的网页指定一个或多个用户登录。当您使用浏览器访问受限制的页面，并且浏览器显示登录对话框时，您会看到这种类型的身份验证。JMeter在遇到这种类型的页面时传输登录信息。</p>
+<p>授权标头可能不会显示在树视图侦听器的”请求”选项卡中。Java实现执行了先发制人的身份验证，但是当JMeter获取授权报头时，它不返回授权报头。HttpComponents (HC 4.5.X)实现自3.2开始默认为先发制人，头部将显示。要禁用此功能，请设置以下值，在这种情况下，身份验证将只在响应质询时执行。</p>
+<p>在 <code>jmeter.properties</code> 文件中 设置 <code>httpclient4.auth.preemptive=false</code></p>
+<style>.admonition {
+  margin: 1.5625em 0;
+  padding: .6rem;
+  overflow: hidden;
+  font-size: 1.00rem;
+  page-break-inside: avoid;
+  border-left: .3rem solid #42b983;
+  border-radius: .3rem;
+  box-shadow: 0 0.1rem 0.4rem rgba(0,0,0,.05), 0 0 0.05rem rgba(0,0,0,.1);
+  background-color: #fafafa;
+}
+
+p.admonition-title {
+  position: relative;
+  margin: -.6rem -.6rem .8em -.6rem !important;
+  padding: .4rem .6rem .4rem 2.5rem;
+  font-weight: 700;
+  background-color:rgba(66, 185, 131, .1);
+}
+
+.admonition-title::before {
+  position: absolute;
+  top: .9rem;
+  left: 1rem;
+  width: 12px;
+  height: 12px;
+  background-color: #42b983;
+  border-radius: 50%;
+  content: ' ';
+}
+
+.info>.admonition-title, .todo>.admonition-title {
+  background-color: rgba(0,184,212,.1);
+}
+
+.warning>.admonition-title, .attention>.admonition-title, .caution>.admonition-title {
+  background-color: rgba(255,145,0,.1);
+}
+
+.failure>.admonition-title, .missing>.admonition-title, .fail>.admonition-title, .error>.admonition-title {
+  background-color: rgba(255,82,82,.1);
+}
+
+.admonition.info, .admonition.todo {
+  border-color: #00b8d4;
+}
+
+.admonition.warning, .admonition.attention, .admonition.caution {
+  border-color: #ff9100;
+}
+
+.admonition.failure, .admonition.missing, .admonition.fail, .admonition.error {
+  border-color: #ff5252;
+}
+
+.info>.admonition-title::before, .todo>.admonition-title::before {
+  background-color: #00b8d4;
+  border-radius: 50%;
+}
+
+.warning>.admonition-title::before, .attention>.admonition-title::before, .caution>.admonition-title::before {
+  background-color: #ff9100;
+  border-radius: 50%;
+}
+
+.failure>.admonition-title::before,.missing>.admonition-title::before,.fail>.admonition-title::before,.error>.admonition-title::before{
+  background-color: #ff5252;;
+  border-radius: 50%;
+}
+
+.admonition>:last-child {
+  margin-bottom: 0 !important;
+}
+</style>
+
+<div class="admonition attention"><p class="admonition-title"></p><p>注意:上述设置仅适用于HttpClient采样器。</p>
+</div>
+
+
+
+<style>.admonition {
+  margin: 1.5625em 0;
+  padding: .6rem;
+  overflow: hidden;
+  font-size: 1.00rem;
+  page-break-inside: avoid;
+  border-left: .3rem solid #42b983;
+  border-radius: .3rem;
+  box-shadow: 0 0.1rem 0.4rem rgba(0,0,0,.05), 0 0 0.05rem rgba(0,0,0,.1);
+  background-color: #fafafa;
+}
+
+p.admonition-title {
+  position: relative;
+  margin: -.6rem -.6rem .8em -.6rem !important;
+  padding: .4rem .6rem .4rem 2.5rem;
+  font-weight: 700;
+  background-color:rgba(66, 185, 131, .1);
+}
+
+.admonition-title::before {
+  position: absolute;
+  top: .9rem;
+  left: 1rem;
+  width: 12px;
+  height: 12px;
+  background-color: #42b983;
+  border-radius: 50%;
+  content: ' ';
+}
+
+.info>.admonition-title, .todo>.admonition-title {
+  background-color: rgba(0,184,212,.1);
+}
+
+.warning>.admonition-title, .attention>.admonition-title, .caution>.admonition-title {
+  background-color: rgba(255,145,0,.1);
+}
+
+.failure>.admonition-title, .missing>.admonition-title, .fail>.admonition-title, .error>.admonition-title {
+  background-color: rgba(255,82,82,.1);
+}
+
+.admonition.info, .admonition.todo {
+  border-color: #00b8d4;
+}
+
+.admonition.warning, .admonition.attention, .admonition.caution {
+  border-color: #ff9100;
+}
+
+.admonition.failure, .admonition.missing, .admonition.fail, .admonition.error {
+  border-color: #ff5252;
+}
+
+.info>.admonition-title::before, .todo>.admonition-title::before {
+  background-color: #00b8d4;
+  border-radius: 50%;
+}
+
+.warning>.admonition-title::before, .attention>.admonition-title::before, .caution>.admonition-title::before {
+  background-color: #ff9100;
+  border-radius: 50%;
+}
+
+.failure>.admonition-title::before,.missing>.admonition-title::before,.fail>.admonition-title::before,.error>.admonition-title::before{
+  background-color: #ff5252;;
+  border-radius: 50%;
+}
+
+.admonition>:last-child {
+  margin-bottom: 0 !important;
+}
+</style>
+
+<div class="admonition attention"><p class="admonition-title"></p><p>当针对URL查找匹配项时，JMeter依次检查每个条目，并在找到第一个匹配项时停止。因此，最特定的url应该出现在列表的最前面，其次是不那么特定的url。重复的url将被忽略。如果你想为不同的线程使用不同的用户名/密码，你可以使用变量。这些可以使用CSV数据集配置元素(例如)来设置。</p>
+</div>
+
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Description</th>
+<th>Required</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Name</td>
+<td>树中显示的这个元素的描述性名称。</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Clear auth on each iteration?</td>
+<td>用于Kerberos认证。如果勾选此项，将对每一次主线程组循环的迭代进行身份验证，即使它已经在前一次循环中完成了。如果每个主线程组迭代代表一个虚拟用户的行为，这通常是有用的。</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Base URL</td>
+<td>匹配一个或多个HTTP请求URL的部分或完整URL。例如，您指定一个Base URL为 “<code>http://localhost/restricted/</code>“，用户名为”<code>jmeter</code>“，密码为”<code>jmeter</code>“。如果您向URL”<code>http://localhost/restricted/ant/myPage.html</code>“发送HTTP请求，授权管理器将发送名为”jmeter”的用户的登录信息。</td>
+<td>yES</td>
+</tr>
+<tr>
+<td>Username</td>
+<td>需要授权的用户名。</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Password</td>
+<td>用户的密码。(注意，此数据未加密存储在测试计划中)</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Domain</td>
+<td>用于NTLM的域。</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Realm</td>
+<td>用于NTLM的领域。</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Mechanism</td>
+<td>执行的认证类型。JMeter可以基于使用的Http采样器执行不同类型的认证:</td>
+<td>No</td>
+</tr>
+</tbody></table>
+<h3 id="HTTP-Cache-Manager-HTTP-缓存控制器"><a href="#HTTP-Cache-Manager-HTTP-缓存控制器" class="headerlink" title="HTTP Cache Manager | HTTP 缓存控制器"></a>HTTP Cache Manager | HTTP 缓存控制器</h3><p>HTTP缓存管理器用于在其作用域内向HTTP请求添加缓存功能，以模拟浏览器缓存特性。每个虚拟用户线程都有自己的缓存。默认情况下，缓存管理器将使用LRU算法在每个虚拟用户线程的缓存中存储最多5000个条目。使用属性”maxSize”来修改这个值。请注意，这个值增加越多，HTTP缓存管理器消耗的内存就越多，因此一定要相应地调整-Xmx JVM选项。</p>
+<p>如果一个样本是成功的(即有响应代码2xx)，然后最后修改和Etag(和过期，如果相关)的值为URL保存。在执行下一个示例之前，采样器检查缓存中是否有条目，如果有，则为请求设置if - last - modified和if - none - match条件报头。</p>
+<p>此外，如果”使用Cache-Control/Expires头”选项被选中，那么Cache-Control/Expires值将根据当前时间进行检查。如果请求是一个GET请求，并且时间戳在将来，那么采样器将立即返回，而不需要从远程服务器请求URL。这是为了模拟浏览器的行为。注意，如果cache - control报头为”no-cache”，响应将被存储在缓存中，因此将生成一个有条件的GET请求。如果Cache-Control有其他值，则处理”max-age”过期选项来计算条目的生存期，如果缺少则使用过期头，如果也缺少条目将使用RFC 2616章节13.2.4中指定的Last-Modified time和response Date进行缓存。</p>
+<style>.admonition {
+  margin: 1.5625em 0;
+  padding: .6rem;
+  overflow: hidden;
+  font-size: 1.00rem;
+  page-break-inside: avoid;
+  border-left: .3rem solid #42b983;
+  border-radius: .3rem;
+  box-shadow: 0 0.1rem 0.4rem rgba(0,0,0,.05), 0 0 0.05rem rgba(0,0,0,.1);
+  background-color: #fafafa;
+}
+
+p.admonition-title {
+  position: relative;
+  margin: -.6rem -.6rem .8em -.6rem !important;
+  padding: .4rem .6rem .4rem 2.5rem;
+  font-weight: 700;
+  background-color:rgba(66, 185, 131, .1);
+}
+
+.admonition-title::before {
+  position: absolute;
+  top: .9rem;
+  left: 1rem;
+  width: 12px;
+  height: 12px;
+  background-color: #42b983;
+  border-radius: 50%;
+  content: ' ';
+}
+
+.info>.admonition-title, .todo>.admonition-title {
+  background-color: rgba(0,184,212,.1);
+}
+
+.warning>.admonition-title, .attention>.admonition-title, .caution>.admonition-title {
+  background-color: rgba(255,145,0,.1);
+}
+
+.failure>.admonition-title, .missing>.admonition-title, .fail>.admonition-title, .error>.admonition-title {
+  background-color: rgba(255,82,82,.1);
+}
+
+.admonition.info, .admonition.todo {
+  border-color: #00b8d4;
+}
+
+.admonition.warning, .admonition.attention, .admonition.caution {
+  border-color: #ff9100;
+}
+
+.admonition.failure, .admonition.missing, .admonition.fail, .admonition.error {
+  border-color: #ff5252;
+}
+
+.info>.admonition-title::before, .todo>.admonition-title::before {
+  background-color: #00b8d4;
+  border-radius: 50%;
+}
+
+.warning>.admonition-title::before, .attention>.admonition-title::before, .caution>.admonition-title::before {
+  background-color: #ff9100;
+  border-radius: 50%;
+}
+
+.failure>.admonition-title::before,.missing>.admonition-title::before,.fail>.admonition-title::before,.error>.admonition-title::before{
+  background-color: #ff5252;;
+  border-radius: 50%;
+}
+
+.admonition>:last-child {
+  margin-bottom: 0 !important;
+}
+</style>
+
+<div class="admonition attention"><p class="admonition-title"></p><p>如果所请求的文档自缓存以来没有更改，那么响应体将为空。同样，如果过期日期在未来。这可能会给断言带来问题。</p>
+</div>
+
+
+
+<style>.admonition {
+  margin: 1.5625em 0;
+  padding: .6rem;
+  overflow: hidden;
+  font-size: 1.00rem;
+  page-break-inside: avoid;
+  border-left: .3rem solid #42b983;
+  border-radius: .3rem;
+  box-shadow: 0 0.1rem 0.4rem rgba(0,0,0,.05), 0 0 0.05rem rgba(0,0,0,.1);
+  background-color: #fafafa;
+}
+
+p.admonition-title {
+  position: relative;
+  margin: -.6rem -.6rem .8em -.6rem !important;
+  padding: .4rem .6rem .4rem 2.5rem;
+  font-weight: 700;
+  background-color:rgba(66, 185, 131, .1);
+}
+
+.admonition-title::before {
+  position: absolute;
+  top: .9rem;
+  left: 1rem;
+  width: 12px;
+  height: 12px;
+  background-color: #42b983;
+  border-radius: 50%;
+  content: ' ';
+}
+
+.info>.admonition-title, .todo>.admonition-title {
+  background-color: rgba(0,184,212,.1);
+}
+
+.warning>.admonition-title, .attention>.admonition-title, .caution>.admonition-title {
+  background-color: rgba(255,145,0,.1);
+}
+
+.failure>.admonition-title, .missing>.admonition-title, .fail>.admonition-title, .error>.admonition-title {
+  background-color: rgba(255,82,82,.1);
+}
+
+.admonition.info, .admonition.todo {
+  border-color: #00b8d4;
+}
+
+.admonition.warning, .admonition.attention, .admonition.caution {
+  border-color: #ff9100;
+}
+
+.admonition.failure, .admonition.missing, .admonition.fail, .admonition.error {
+  border-color: #ff5252;
+}
+
+.info>.admonition-title::before, .todo>.admonition-title::before {
+  background-color: #00b8d4;
+  border-radius: 50%;
+}
+
+.warning>.admonition-title::before, .attention>.admonition-title::before, .caution>.admonition-title::before {
+  background-color: #ff9100;
+  border-radius: 50%;
+}
+
+.failure>.admonition-title::before,.missing>.admonition-title::before,.fail>.admonition-title::before,.error>.admonition-title::before{
+  background-color: #ff5252;;
+  border-radius: 50%;
+}
+
+.admonition>:last-child {
+  margin-bottom: 0 !important;
+}
+</style>
+
+<div class="admonition info"><p class="admonition-title">界面</p><p><img src="/attachment%5C431a1b16f59e2a2a78ff45601e41b2fa.png" alt></p>
+</div>
+
+
+
+<style>.admonition {
+  margin: 1.5625em 0;
+  padding: .6rem;
+  overflow: hidden;
+  font-size: 1.00rem;
+  page-break-inside: avoid;
+  border-left: .3rem solid #42b983;
+  border-radius: .3rem;
+  box-shadow: 0 0.1rem 0.4rem rgba(0,0,0,.05), 0 0 0.05rem rgba(0,0,0,.1);
+  background-color: #fafafa;
+}
+
+p.admonition-title {
+  position: relative;
+  margin: -.6rem -.6rem .8em -.6rem !important;
+  padding: .4rem .6rem .4rem 2.5rem;
+  font-weight: 700;
+  background-color:rgba(66, 185, 131, .1);
+}
+
+.admonition-title::before {
+  position: absolute;
+  top: .9rem;
+  left: 1rem;
+  width: 12px;
+  height: 12px;
+  background-color: #42b983;
+  border-radius: 50%;
+  content: ' ';
+}
+
+.info>.admonition-title, .todo>.admonition-title {
+  background-color: rgba(0,184,212,.1);
+}
+
+.warning>.admonition-title, .attention>.admonition-title, .caution>.admonition-title {
+  background-color: rgba(255,145,0,.1);
+}
+
+.failure>.admonition-title, .missing>.admonition-title, .fail>.admonition-title, .error>.admonition-title {
+  background-color: rgba(255,82,82,.1);
+}
+
+.admonition.info, .admonition.todo {
+  border-color: #00b8d4;
+}
+
+.admonition.warning, .admonition.attention, .admonition.caution {
+  border-color: #ff9100;
+}
+
+.admonition.failure, .admonition.missing, .admonition.fail, .admonition.error {
+  border-color: #ff5252;
+}
+
+.info>.admonition-title::before, .todo>.admonition-title::before {
+  background-color: #00b8d4;
+  border-radius: 50%;
+}
+
+.warning>.admonition-title::before, .attention>.admonition-title::before, .caution>.admonition-title::before {
+  background-color: #ff9100;
+  border-radius: 50%;
+}
+
+.failure>.admonition-title::before,.missing>.admonition-title::before,.fail>.admonition-title::before,.error>.admonition-title::before{
+  background-color: #ff5252;;
+  border-radius: 50%;
+}
+
+.admonition>:last-child {
+  margin-bottom: 0 !important;
+}
+</style>
+
+<div class="admonition note"><p class="admonition-title">参数说明</p><table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Description</th>
+<th>Required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Name</td>
+<td>树中显示的这个元素的描述性名称。</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Clear cache each iteration</td>
+<td>如果选择该选项，则在线程开始时清除缓存。</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Use Cache Control/Expires header when processing GET requests</td>
+<td>参见上面的描述。</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Max缓存中的元素个数</td>
+<td>参见上面的描述。</td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<h3 id="HTTP-Cookie-Manager-HTTP-Cookie-管理器"><a href="#HTTP-Cookie-Manager-HTTP-Cookie-管理器" class="headerlink" title="HTTP Cookie Manager | HTTP Cookie 管理器"></a>HTTP Cookie Manager | HTTP Cookie 管理器</h3><p>Cookie Manager元素有两个功能:</p>
+<p>首先，它像网络浏览器一样存储和发送cookie。如果您有一个HTTP请求和响应包含一个cookie, cookie管理器自动存储该cookie，并将使用它为所有未来的请求，以特定的网站。每个JMeter线程都有自己的“cookie存储区域”。因此，如果您正在测试一个使用cookie存储会话信息的网站，那么每个JMeter线程将拥有自己的会话。注意，这样的Cookie不会出现在Cookie Manager的显示中，但是可以使用View Results Tree Listener查看它们。</p>
+<p>JMeter检查接收到的cookie对URL是否有效。这意味着不存储跨域cookie。如果您有错误行为或希望使用跨域cookie，定义JMeter属性 “<code>CookieManager.check.cookies=false</code>“</p>
+<p>接收到的cookie可以存储为JMeter线程变量。要将cookie保存为变量，需要定义属性”<code>CookieManager.save.cookies=true</code>“。此外，cookie名称在存储之前会以“COOKIE_”作为前缀(这可以避免局部变量的意外损坏)。要恢复到原来的行为，需要定义属性”<code>CookieManager.name.prefix=</code>“(一个或多个空格)。如果启用，一个名为TEST的cookie的值可以被引用为<code>${COOKIE_TEST}</code>。</p>
+<p>其次，您可以手动添加cookie到cookie管理器。但是，如果您这样做，cookie将被所有JMeter线程共享。</p>
+<p>注意，这样的cookie创建时的过期时间较远</p>
+<p>默认情况下，具有<strong>空值</strong>的cookie将被忽略。这可以通过设置JMeter属性来改变:<code>CookieManager.delete_null_cookies=false</code>。注意，这也适用于手动定义的cookie -任何这样的cookie在更新时将从显示中删除。还要注意cookie名称必须是唯一的——如果第二个cookie定义为相同的名称，它将替换第一个cookie。</p>
+<style>.admonition {
+  margin: 1.5625em 0;
+  padding: .6rem;
+  overflow: hidden;
+  font-size: 1.00rem;
+  page-break-inside: avoid;
+  border-left: .3rem solid #42b983;
+  border-radius: .3rem;
+  box-shadow: 0 0.1rem 0.4rem rgba(0,0,0,.05), 0 0 0.05rem rgba(0,0,0,.1);
+  background-color: #fafafa;
+}
+
+p.admonition-title {
+  position: relative;
+  margin: -.6rem -.6rem .8em -.6rem !important;
+  padding: .4rem .6rem .4rem 2.5rem;
+  font-weight: 700;
+  background-color:rgba(66, 185, 131, .1);
+}
+
+.admonition-title::before {
+  position: absolute;
+  top: .9rem;
+  left: 1rem;
+  width: 12px;
+  height: 12px;
+  background-color: #42b983;
+  border-radius: 50%;
+  content: ' ';
+}
+
+.info>.admonition-title, .todo>.admonition-title {
+  background-color: rgba(0,184,212,.1);
+}
+
+.warning>.admonition-title, .attention>.admonition-title, .caution>.admonition-title {
+  background-color: rgba(255,145,0,.1);
+}
+
+.failure>.admonition-title, .missing>.admonition-title, .fail>.admonition-title, .error>.admonition-title {
+  background-color: rgba(255,82,82,.1);
+}
+
+.admonition.info, .admonition.todo {
+  border-color: #00b8d4;
+}
+
+.admonition.warning, .admonition.attention, .admonition.caution {
+  border-color: #ff9100;
+}
+
+.admonition.failure, .admonition.missing, .admonition.fail, .admonition.error {
+  border-color: #ff5252;
+}
+
+.info>.admonition-title::before, .todo>.admonition-title::before {
+  background-color: #00b8d4;
+  border-radius: 50%;
+}
+
+.warning>.admonition-title::before, .attention>.admonition-title::before, .caution>.admonition-title::before {
+  background-color: #ff9100;
+  border-radius: 50%;
+}
+
+.failure>.admonition-title::before,.missing>.admonition-title::before,.fail>.admonition-title::before,.error>.admonition-title::before{
+  background-color: #ff5252;;
+  border-radius: 50%;
+}
+
+.admonition>:last-child {
+  margin-bottom: 0 !important;
+}
+</style>
+
+<div class="admonition info"><p class="admonition-title">界面</p><p><img src="/attachment%5C230dad077b303fe9551fe423dc86b965.png" alt></p>
+</div>
+
+
+
+<style>.admonition {
+  margin: 1.5625em 0;
+  padding: .6rem;
+  overflow: hidden;
+  font-size: 1.00rem;
+  page-break-inside: avoid;
+  border-left: .3rem solid #42b983;
+  border-radius: .3rem;
+  box-shadow: 0 0.1rem 0.4rem rgba(0,0,0,.05), 0 0 0.05rem rgba(0,0,0,.1);
+  background-color: #fafafa;
+}
+
+p.admonition-title {
+  position: relative;
+  margin: -.6rem -.6rem .8em -.6rem !important;
+  padding: .4rem .6rem .4rem 2.5rem;
+  font-weight: 700;
+  background-color:rgba(66, 185, 131, .1);
+}
+
+.admonition-title::before {
+  position: absolute;
+  top: .9rem;
+  left: 1rem;
+  width: 12px;
+  height: 12px;
+  background-color: #42b983;
+  border-radius: 50%;
+  content: ' ';
+}
+
+.info>.admonition-title, .todo>.admonition-title {
+  background-color: rgba(0,184,212,.1);
+}
+
+.warning>.admonition-title, .attention>.admonition-title, .caution>.admonition-title {
+  background-color: rgba(255,145,0,.1);
+}
+
+.failure>.admonition-title, .missing>.admonition-title, .fail>.admonition-title, .error>.admonition-title {
+  background-color: rgba(255,82,82,.1);
+}
+
+.admonition.info, .admonition.todo {
+  border-color: #00b8d4;
+}
+
+.admonition.warning, .admonition.attention, .admonition.caution {
+  border-color: #ff9100;
+}
+
+.admonition.failure, .admonition.missing, .admonition.fail, .admonition.error {
+  border-color: #ff5252;
+}
+
+.info>.admonition-title::before, .todo>.admonition-title::before {
+  background-color: #00b8d4;
+  border-radius: 50%;
+}
+
+.warning>.admonition-title::before, .attention>.admonition-title::before, .caution>.admonition-title::before {
+  background-color: #ff9100;
+  border-radius: 50%;
+}
+
+.failure>.admonition-title::before,.missing>.admonition-title::before,.fail>.admonition-title::before,.error>.admonition-title::before{
+  background-color: #ff5252;;
+  border-radius: 50%;
+}
+
+.admonition>:last-child {
+  margin-bottom: 0 !important;
+}
+</style>
+
+<div class="admonition attention"><p class="admonition-title"></p><p>如果在一个采样器的范围内有多个Cookie Manager，目前没有办法指定要使用哪个。另外，存储在一个cookie管理器中的cookie对任何其他管理器都不可用，所以要小心使用多个cookie管理器。</p>
+</div>
+
+
+
+<style>.admonition {
+  margin: 1.5625em 0;
+  padding: .6rem;
+  overflow: hidden;
+  font-size: 1.00rem;
+  page-break-inside: avoid;
+  border-left: .3rem solid #42b983;
+  border-radius: .3rem;
+  box-shadow: 0 0.1rem 0.4rem rgba(0,0,0,.05), 0 0 0.05rem rgba(0,0,0,.1);
+  background-color: #fafafa;
+}
+
+p.admonition-title {
+  position: relative;
+  margin: -.6rem -.6rem .8em -.6rem !important;
+  padding: .4rem .6rem .4rem 2.5rem;
+  font-weight: 700;
+  background-color:rgba(66, 185, 131, .1);
+}
+
+.admonition-title::before {
+  position: absolute;
+  top: .9rem;
+  left: 1rem;
+  width: 12px;
+  height: 12px;
+  background-color: #42b983;
+  border-radius: 50%;
+  content: ' ';
+}
+
+.info>.admonition-title, .todo>.admonition-title {
+  background-color: rgba(0,184,212,.1);
+}
+
+.warning>.admonition-title, .attention>.admonition-title, .caution>.admonition-title {
+  background-color: rgba(255,145,0,.1);
+}
+
+.failure>.admonition-title, .missing>.admonition-title, .fail>.admonition-title, .error>.admonition-title {
+  background-color: rgba(255,82,82,.1);
+}
+
+.admonition.info, .admonition.todo {
+  border-color: #00b8d4;
+}
+
+.admonition.warning, .admonition.attention, .admonition.caution {
+  border-color: #ff9100;
+}
+
+.admonition.failure, .admonition.missing, .admonition.fail, .admonition.error {
+  border-color: #ff5252;
+}
+
+.info>.admonition-title::before, .todo>.admonition-title::before {
+  background-color: #00b8d4;
+  border-radius: 50%;
+}
+
+.warning>.admonition-title::before, .attention>.admonition-title::before, .caution>.admonition-title::before {
+  background-color: #ff9100;
+  border-radius: 50%;
+}
+
+.failure>.admonition-title::before,.missing>.admonition-title::before,.fail>.admonition-title::before,.error>.admonition-title::before{
+  background-color: #ff5252;;
+  border-radius: 50%;
+}
+
+.admonition>:last-child {
+  margin-bottom: 0 !important;
+}
+</style>
+
+<div class="admonition note"><p class="admonition-title">参数说明</p><table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Description</th>
+<th>Required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Name</td>
+<td>树中显示的这个元素的描述性名称。</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Clear Cookies each Iteration</td>
+<td>如果选中该选项，则在每次执行主线程组循环时清除所有服务器定义的cookie。在GUI中定义的cookie不会被清除。</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Cookie Policy</td>
+<td>用于管理cookie的cookie策略。"standard"是3.0之后的默认设置，应该在大多数情况下都可以使用。参见Cookie规范和CookieSpec实现<code>[注:"ignoreCookies"等价于省略CookieManager。]</code></td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Implementation</td>
+<td>HC4CookieHandler (HttpClient 4.5。X的API)。从3.0开始默认为HC4CookieHandler。 <code>[注:如果你有一个网站来测试IPv6地址，选择HC4CookieHandler (IPv6兼容)]</code></td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>User-Defined Cookies</td>
+<td>这使您有机会使用将在测试执行期间被所有线程使用的硬编码cookie。 <code>域</code>是服务器的主机名(没有http://);端口当前被忽略。</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>Add Button</td>
+<td>向cookie表中添加一个条目。</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>Delete Button</td>
+<td>删除当前选择的表项。</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>Load Button</td>
+<td>加载之前保存的cookie表，并将条目添加到现有的cookie表条目中。</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>Save As Button</td>
+<td>将当前cookie表保存到一个文件中(不保存从HTTP响应中提取的任何cookie)。</td>
+<td>N/A</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<h3 id="HTTP-Request-Defaults-HTTP-请求默认值"><a href="#HTTP-Request-Defaults-HTTP-请求默认值" class="headerlink" title="HTTP Request Defaults | HTTP 请求默认值"></a>HTTP Request Defaults | HTTP 请求默认值</h3><p>这个元素允许你设置HTTP请求控制器使用的默认值。例如，如果您正在使用25个HTTP请求控制器创建一个Test Plan，并且所有的请求都被发送到相同的服务器，您可以添加一个单独的HTTP Request Defaults元素，填充“服务器名称或IP”字段。然后，当您添加25个HTTP请求控制器时，<mark style="background: #ABF7F7A6;">将“服务器名称或IP”字段保留为空</mark> 。控制器将从HTTP Request Defaults元素继承这个字段值。</p>
+<style>.admonition {
+  margin: 1.5625em 0;
+  padding: .6rem;
+  overflow: hidden;
+  font-size: 1.00rem;
+  page-break-inside: avoid;
+  border-left: .3rem solid #42b983;
+  border-radius: .3rem;
+  box-shadow: 0 0.1rem 0.4rem rgba(0,0,0,.05), 0 0 0.05rem rgba(0,0,0,.1);
+  background-color: #fafafa;
+}
+
+p.admonition-title {
+  position: relative;
+  margin: -.6rem -.6rem .8em -.6rem !important;
+  padding: .4rem .6rem .4rem 2.5rem;
+  font-weight: 700;
+  background-color:rgba(66, 185, 131, .1);
+}
+
+.admonition-title::before {
+  position: absolute;
+  top: .9rem;
+  left: 1rem;
+  width: 12px;
+  height: 12px;
+  background-color: #42b983;
+  border-radius: 50%;
+  content: ' ';
+}
+
+.info>.admonition-title, .todo>.admonition-title {
+  background-color: rgba(0,184,212,.1);
+}
+
+.warning>.admonition-title, .attention>.admonition-title, .caution>.admonition-title {
+  background-color: rgba(255,145,0,.1);
+}
+
+.failure>.admonition-title, .missing>.admonition-title, .fail>.admonition-title, .error>.admonition-title {
+  background-color: rgba(255,82,82,.1);
+}
+
+.admonition.info, .admonition.todo {
+  border-color: #00b8d4;
+}
+
+.admonition.warning, .admonition.attention, .admonition.caution {
+  border-color: #ff9100;
+}
+
+.admonition.failure, .admonition.missing, .admonition.fail, .admonition.error {
+  border-color: #ff5252;
+}
+
+.info>.admonition-title::before, .todo>.admonition-title::before {
+  background-color: #00b8d4;
+  border-radius: 50%;
+}
+
+.warning>.admonition-title::before, .attention>.admonition-title::before, .caution>.admonition-title::before {
+  background-color: #ff9100;
+  border-radius: 50%;
+}
+
+.failure>.admonition-title::before,.missing>.admonition-title::before,.fail>.admonition-title::before,.error>.admonition-title::before{
+  background-color: #ff5252;;
+  border-radius: 50%;
+}
+
+.admonition>:last-child {
+  margin-bottom: 0 !important;
+}
+</style>
+
+<div class="admonition info"><p class="admonition-title">界面</p><p><img src="/attachment%5C4b94edb137f5ce1ac2fc7f273c5b352c.png" alt></p>
+</div>
+
+
+
+<style>.admonition {
+  margin: 1.5625em 0;
+  padding: .6rem;
+  overflow: hidden;
+  font-size: 1.00rem;
+  page-break-inside: avoid;
+  border-left: .3rem solid #42b983;
+  border-radius: .3rem;
+  box-shadow: 0 0.1rem 0.4rem rgba(0,0,0,.05), 0 0 0.05rem rgba(0,0,0,.1);
+  background-color: #fafafa;
+}
+
+p.admonition-title {
+  position: relative;
+  margin: -.6rem -.6rem .8em -.6rem !important;
+  padding: .4rem .6rem .4rem 2.5rem;
+  font-weight: 700;
+  background-color:rgba(66, 185, 131, .1);
+}
+
+.admonition-title::before {
+  position: absolute;
+  top: .9rem;
+  left: 1rem;
+  width: 12px;
+  height: 12px;
+  background-color: #42b983;
+  border-radius: 50%;
+  content: ' ';
+}
+
+.info>.admonition-title, .todo>.admonition-title {
+  background-color: rgba(0,184,212,.1);
+}
+
+.warning>.admonition-title, .attention>.admonition-title, .caution>.admonition-title {
+  background-color: rgba(255,145,0,.1);
+}
+
+.failure>.admonition-title, .missing>.admonition-title, .fail>.admonition-title, .error>.admonition-title {
+  background-color: rgba(255,82,82,.1);
+}
+
+.admonition.info, .admonition.todo {
+  border-color: #00b8d4;
+}
+
+.admonition.warning, .admonition.attention, .admonition.caution {
+  border-color: #ff9100;
+}
+
+.admonition.failure, .admonition.missing, .admonition.fail, .admonition.error {
+  border-color: #ff5252;
+}
+
+.info>.admonition-title::before, .todo>.admonition-title::before {
+  background-color: #00b8d4;
+  border-radius: 50%;
+}
+
+.warning>.admonition-title::before, .attention>.admonition-title::before, .caution>.admonition-title::before {
+  background-color: #ff9100;
+  border-radius: 50%;
+}
+
+.failure>.admonition-title::before,.missing>.admonition-title::before,.fail>.admonition-title::before,.error>.admonition-title::before{
+  background-color: #ff5252;;
+  border-radius: 50%;
+}
+
+.admonition>:last-child {
+  margin-bottom: 0 !important;
+}
+</style>
+
+<div class="admonition attention"><p class="admonition-title"></p><p>所有端口值都被同等对待;一个没有指定端口的采样器将使用HTTP请求默认端口(如果提供了)。</p>
+</div>
+
+
+
+<style>.admonition {
+  margin: 1.5625em 0;
+  padding: .6rem;
+  overflow: hidden;
+  font-size: 1.00rem;
+  page-break-inside: avoid;
+  border-left: .3rem solid #42b983;
+  border-radius: .3rem;
+  box-shadow: 0 0.1rem 0.4rem rgba(0,0,0,.05), 0 0 0.05rem rgba(0,0,0,.1);
+  background-color: #fafafa;
+}
+
+p.admonition-title {
+  position: relative;
+  margin: -.6rem -.6rem .8em -.6rem !important;
+  padding: .4rem .6rem .4rem 2.5rem;
+  font-weight: 700;
+  background-color:rgba(66, 185, 131, .1);
+}
+
+.admonition-title::before {
+  position: absolute;
+  top: .9rem;
+  left: 1rem;
+  width: 12px;
+  height: 12px;
+  background-color: #42b983;
+  border-radius: 50%;
+  content: ' ';
+}
+
+.info>.admonition-title, .todo>.admonition-title {
+  background-color: rgba(0,184,212,.1);
+}
+
+.warning>.admonition-title, .attention>.admonition-title, .caution>.admonition-title {
+  background-color: rgba(255,145,0,.1);
+}
+
+.failure>.admonition-title, .missing>.admonition-title, .fail>.admonition-title, .error>.admonition-title {
+  background-color: rgba(255,82,82,.1);
+}
+
+.admonition.info, .admonition.todo {
+  border-color: #00b8d4;
+}
+
+.admonition.warning, .admonition.attention, .admonition.caution {
+  border-color: #ff9100;
+}
+
+.admonition.failure, .admonition.missing, .admonition.fail, .admonition.error {
+  border-color: #ff5252;
+}
+
+.info>.admonition-title::before, .todo>.admonition-title::before {
+  background-color: #00b8d4;
+  border-radius: 50%;
+}
+
+.warning>.admonition-title::before, .attention>.admonition-title::before, .caution>.admonition-title::before {
+  background-color: #ff9100;
+  border-radius: 50%;
+}
+
+.failure>.admonition-title::before,.missing>.admonition-title::before,.fail>.admonition-title::before,.error>.admonition-title::before{
+  background-color: #ff5252;;
+  border-radius: 50%;
+}
+
+.admonition>:last-child {
+  margin-bottom: 0 !important;
+}
+</style>
+
+<div class="admonition note"><p class="admonition-title">参数说明</p><table>
+<thead>
+<tr>
+<th>Attibute</th>
+<th>Description</th>
+<th>Required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Name</td>
+<td>树中显示的这个元素的描述性名称。</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Server</td>
+<td>web服务器的域名或IP地址。例如,www.example.com。<code>[不包含http://前缀。</code></td>
+<td>No</td>
+</tr>
+<tr>
+<td>Port</td>
+<td>web服务器正在监听的端口。</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Connect Timeout</td>
+<td>连接超时。等待连接打开的毫秒数。</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Response Timeout</td>
+<td>响应超时。等待响应的毫秒数。</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Implementation</td>
+<td>Java, HttpClient4。如果没有指定，默认值取决于JMeter属性JMeter的值。httpsampler，如果失败，则使用Java实现。</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Protocol</td>
+<td>HTTP or HTTPS.</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Content encoding</td>
+<td>用于请求的编码。</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Path</td>
+<td>资源的路径(例如/servlets/myServlet)。如果资源需要查询字符串参数，在下面的“发送请求参数”部分添加它们。注意，该路径是完整路径的默认值，而不是应用于HTTP请求屏幕上指定的路径的前缀。</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Send Parameters With the Request</td>
+<td>查询字符串将从您提供的参数列表中生成。每个参数都有一个名称和值。查询字符串将以正确的方式生成，取决于你所做的“方法”的选择(即，如果你选择了GET，查询字符串将被附加到URL，如果是POST，那么它将被单独发送)。此外，如果您正在使用多部分表单发送文件，那么查询字符串将使用多部分表单规范创建。</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Server (proxy)</td>
+<td>执行请求的代理服务器的主机名或IP地址。<code>[不包含http://前缀。]</code></td>
+<td>No</td>
+</tr>
+<tr>
+<td>Port</td>
+<td>代理服务器正在监听的端口。不能，除非指定了代理主机名</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Username</td>
+<td>代理服务器的用户名(可选)。</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Password</td>
+<td>代理服务器密码(可选)。(注意，此数据未加密存储在测试计划中)</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Retrieve All Embedded Resources from HTML Files</td>
+<td>告诉JMeter解析HTML文件，并对文件中引用的所有图像、Java小程序、JavaScript文件、css等发送HTTP/HTTPS请求。</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Use concurrent pool</td>
+<td>使用并发连接池来获得嵌入式资源。</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Size</td>
+<td>用于获取嵌入式资源的并发连接的池大小。</td>
+<td>No</td>
+</tr>
+<tr>
+<td>URLs must match:</td>
+<td>如果存在，则必须是一个正则表达式，用于匹配找到的任何嵌入式url。因此，如果您只想从<code>http://example.invalid/</code>下载嵌入式资源，请使用表达式:<code>http://example\.invalid/.*</code></td>
+<td>No</td>
+</tr>
+<tr>
+<td>URLs must not match:</td>
+<td>如果存在，则必须是一个正则表达式，用于过滤掉找到的任何嵌入的url。所以，如果你不想从任何来源下载PNG或SVG文件，使用表达式:<code>.*\.(?i: SVG | PNG)</code></td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+
+
+<style>.admonition {
+  margin: 1.5625em 0;
+  padding: .6rem;
+  overflow: hidden;
+  font-size: 1.00rem;
+  page-break-inside: avoid;
+  border-left: .3rem solid #42b983;
+  border-radius: .3rem;
+  box-shadow: 0 0.1rem 0.4rem rgba(0,0,0,.05), 0 0 0.05rem rgba(0,0,0,.1);
+  background-color: #fafafa;
+}
+
+p.admonition-title {
+  position: relative;
+  margin: -.6rem -.6rem .8em -.6rem !important;
+  padding: .4rem .6rem .4rem 2.5rem;
+  font-weight: 700;
+  background-color:rgba(66, 185, 131, .1);
+}
+
+.admonition-title::before {
+  position: absolute;
+  top: .9rem;
+  left: 1rem;
+  width: 12px;
+  height: 12px;
+  background-color: #42b983;
+  border-radius: 50%;
+  content: ' ';
+}
+
+.info>.admonition-title, .todo>.admonition-title {
+  background-color: rgba(0,184,212,.1);
+}
+
+.warning>.admonition-title, .attention>.admonition-title, .caution>.admonition-title {
+  background-color: rgba(255,145,0,.1);
+}
+
+.failure>.admonition-title, .missing>.admonition-title, .fail>.admonition-title, .error>.admonition-title {
+  background-color: rgba(255,82,82,.1);
+}
+
+.admonition.info, .admonition.todo {
+  border-color: #00b8d4;
+}
+
+.admonition.warning, .admonition.attention, .admonition.caution {
+  border-color: #ff9100;
+}
+
+.admonition.failure, .admonition.missing, .admonition.fail, .admonition.error {
+  border-color: #ff5252;
+}
+
+.info>.admonition-title::before, .todo>.admonition-title::before {
+  background-color: #00b8d4;
+  border-radius: 50%;
+}
+
+.warning>.admonition-title::before, .attention>.admonition-title::before, .caution>.admonition-title::before {
+  background-color: #ff9100;
+  border-radius: 50%;
+}
+
+.failure>.admonition-title::before,.missing>.admonition-title::before,.fail>.admonition-title::before,.error>.admonition-title::before{
+  background-color: #ff5252;;
+  border-radius: 50%;
+}
+
+.admonition>:last-child {
+  margin-bottom: 0 !important;
+}
+</style>
+
+<div class="admonition attention"><p class="admonition-title"></p><p>注:单选按钮只有两种状态-开或关。这使得不可能始终如一地覆盖设置——关闭意味着关闭，还是意味着使用当前的默认值?JMeter使用后者(否则默认值根本不起作用)。因此，如果按钮是关闭的，那么后面的元素可以将其设置为开启，但如果按钮是开启的，后面的元素就不能将其设置为关闭。</p>
+</div>
+
+<h3 id="HTTP-Header-Manager-HTTP-头信息管理器"><a href="#HTTP-Header-Manager-HTTP-头信息管理器" class="headerlink" title="HTTP Header Manager | HTTP 头信息管理器"></a>HTTP Header Manager | HTTP 头信息管理器</h3><style>.admonition {
+  margin: 1.5625em 0;
+  padding: .6rem;
+  overflow: hidden;
+  font-size: 1.00rem;
+  page-break-inside: avoid;
+  border-left: .3rem solid #42b983;
+  border-radius: .3rem;
+  box-shadow: 0 0.1rem 0.4rem rgba(0,0,0,.05), 0 0 0.05rem rgba(0,0,0,.1);
+  background-color: #fafafa;
+}
+
+p.admonition-title {
+  position: relative;
+  margin: -.6rem -.6rem .8em -.6rem !important;
+  padding: .4rem .6rem .4rem 2.5rem;
+  font-weight: 700;
+  background-color:rgba(66, 185, 131, .1);
+}
+
+.admonition-title::before {
+  position: absolute;
+  top: .9rem;
+  left: 1rem;
+  width: 12px;
+  height: 12px;
+  background-color: #42b983;
+  border-radius: 50%;
+  content: ' ';
+}
+
+.info>.admonition-title, .todo>.admonition-title {
+  background-color: rgba(0,184,212,.1);
+}
+
+.warning>.admonition-title, .attention>.admonition-title, .caution>.admonition-title {
+  background-color: rgba(255,145,0,.1);
+}
+
+.failure>.admonition-title, .missing>.admonition-title, .fail>.admonition-title, .error>.admonition-title {
+  background-color: rgba(255,82,82,.1);
+}
+
+.admonition.info, .admonition.todo {
+  border-color: #00b8d4;
+}
+
+.admonition.warning, .admonition.attention, .admonition.caution {
+  border-color: #ff9100;
+}
+
+.admonition.failure, .admonition.missing, .admonition.fail, .admonition.error {
+  border-color: #ff5252;
+}
+
+.info>.admonition-title::before, .todo>.admonition-title::before {
+  background-color: #00b8d4;
+  border-radius: 50%;
+}
+
+.warning>.admonition-title::before, .attention>.admonition-title::before, .caution>.admonition-title::before {
+  background-color: #ff9100;
+  border-radius: 50%;
+}
+
+.failure>.admonition-title::before,.missing>.admonition-title::before,.fail>.admonition-title::before,.error>.admonition-title::before{
+  background-color: #ff5252;;
+  border-radius: 50%;
+}
+
+.admonition>:last-child {
+  margin-bottom: 0 !important;
+}
+</style>
+
+<div class="admonition info"><p class="admonition-title">界面</p><p><img src="/attachment%5C0333bdcf912b8486049febc4d746f591.png" alt></p>
+</div>
+
+
+
+<style>.admonition {
+  margin: 1.5625em 0;
+  padding: .6rem;
+  overflow: hidden;
+  font-size: 1.00rem;
+  page-break-inside: avoid;
+  border-left: .3rem solid #42b983;
+  border-radius: .3rem;
+  box-shadow: 0 0.1rem 0.4rem rgba(0,0,0,.05), 0 0 0.05rem rgba(0,0,0,.1);
+  background-color: #fafafa;
+}
+
+p.admonition-title {
+  position: relative;
+  margin: -.6rem -.6rem .8em -.6rem !important;
+  padding: .4rem .6rem .4rem 2.5rem;
+  font-weight: 700;
+  background-color:rgba(66, 185, 131, .1);
+}
+
+.admonition-title::before {
+  position: absolute;
+  top: .9rem;
+  left: 1rem;
+  width: 12px;
+  height: 12px;
+  background-color: #42b983;
+  border-radius: 50%;
+  content: ' ';
+}
+
+.info>.admonition-title, .todo>.admonition-title {
+  background-color: rgba(0,184,212,.1);
+}
+
+.warning>.admonition-title, .attention>.admonition-title, .caution>.admonition-title {
+  background-color: rgba(255,145,0,.1);
+}
+
+.failure>.admonition-title, .missing>.admonition-title, .fail>.admonition-title, .error>.admonition-title {
+  background-color: rgba(255,82,82,.1);
+}
+
+.admonition.info, .admonition.todo {
+  border-color: #00b8d4;
+}
+
+.admonition.warning, .admonition.attention, .admonition.caution {
+  border-color: #ff9100;
+}
+
+.admonition.failure, .admonition.missing, .admonition.fail, .admonition.error {
+  border-color: #ff5252;
+}
+
+.info>.admonition-title::before, .todo>.admonition-title::before {
+  background-color: #00b8d4;
+  border-radius: 50%;
+}
+
+.warning>.admonition-title::before, .attention>.admonition-title::before, .caution>.admonition-title::before {
+  background-color: #ff9100;
+  border-radius: 50%;
+}
+
+.failure>.admonition-title::before,.missing>.admonition-title::before,.fail>.admonition-title::before,.error>.admonition-title::before{
+  background-color: #ff5252;;
+  border-radius: 50%;
+}
+
+.admonition>:last-child {
+  margin-bottom: 0 !important;
+}
+</style>
+
+<div class="admonition note"><p class="admonition-title">参数说明</p><table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Description</th>
+<th>Required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Name</td>
+<td>树中显示的这个元素的描述性名称。</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Name (Header)</td>
+<td>请求头的名称。您可能想要试验的两个常见请求头是"<code>User-Agent</code>"和"<code>Referer</code>"。</td>
+<td>No (You should have at least one, however)</td>
+</tr>
+<tr>
+<td>Value</td>
+<td>请求头的值</td>
+<td>No (You should have at least one, however)</td>
+</tr>
+<tr>
+<td>Add Button</td>
+<td>向标题表中添加一个条目。</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>Delete Button</td>
+<td>删除当前选择的表项。</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>Load Button</td>
+<td>加载先前保存的头表，并将条目添加到现有的头表条目中。</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>Save As Button</td>
+<td>将当前头表保存到一个文件中。</td>
+<td>N/A</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<h3 id="Java-Request-Defaults-java-请求默认值"><a href="#Java-Request-Defaults-java-请求默认值" class="headerlink" title="Java Request Defaults | java 请求默认值"></a>Java Request Defaults | java 请求默认值</h3><p>Java Request Defaults组件允许您为Java测试设置默认值。</p>
+<style>.admonition {
+  margin: 1.5625em 0;
+  padding: .6rem;
+  overflow: hidden;
+  font-size: 1.00rem;
+  page-break-inside: avoid;
+  border-left: .3rem solid #42b983;
+  border-radius: .3rem;
+  box-shadow: 0 0.1rem 0.4rem rgba(0,0,0,.05), 0 0 0.05rem rgba(0,0,0,.1);
+  background-color: #fafafa;
+}
+
+p.admonition-title {
+  position: relative;
+  margin: -.6rem -.6rem .8em -.6rem !important;
+  padding: .4rem .6rem .4rem 2.5rem;
+  font-weight: 700;
+  background-color:rgba(66, 185, 131, .1);
+}
+
+.admonition-title::before {
+  position: absolute;
+  top: .9rem;
+  left: 1rem;
+  width: 12px;
+  height: 12px;
+  background-color: #42b983;
+  border-radius: 50%;
+  content: ' ';
+}
+
+.info>.admonition-title, .todo>.admonition-title {
+  background-color: rgba(0,184,212,.1);
+}
+
+.warning>.admonition-title, .attention>.admonition-title, .caution>.admonition-title {
+  background-color: rgba(255,145,0,.1);
+}
+
+.failure>.admonition-title, .missing>.admonition-title, .fail>.admonition-title, .error>.admonition-title {
+  background-color: rgba(255,82,82,.1);
+}
+
+.admonition.info, .admonition.todo {
+  border-color: #00b8d4;
+}
+
+.admonition.warning, .admonition.attention, .admonition.caution {
+  border-color: #ff9100;
+}
+
+.admonition.failure, .admonition.missing, .admonition.fail, .admonition.error {
+  border-color: #ff5252;
+}
+
+.info>.admonition-title::before, .todo>.admonition-title::before {
+  background-color: #00b8d4;
+  border-radius: 50%;
+}
+
+.warning>.admonition-title::before, .attention>.admonition-title::before, .caution>.admonition-title::before {
+  background-color: #ff9100;
+  border-radius: 50%;
+}
+
+.failure>.admonition-title::before,.missing>.admonition-title::before,.fail>.admonition-title::before,.error>.admonition-title::before{
+  background-color: #ff5252;;
+  border-radius: 50%;
+}
+
+.admonition>:last-child {
+  margin-bottom: 0 !important;
+}
+</style>
+
+<div class="admonition info"><p class="admonition-title">界面</p><p><img src="/attachment%5C18f4c033bd431c9dd7b76f52ce282a52.png" alt></p>
+</div>
+
+<h3 id="JDBC-Connection-Configuration-JDBC-连接-配置"><a href="#JDBC-Connection-Configuration-JDBC-连接-配置" class="headerlink" title="JDBC Connection Configuration | JDBC 连接 配置"></a>JDBC Connection Configuration | JDBC 连接 配置</h3><p>从提供的JDBC connection设置创建一个数据库连接(由JDBC RequestSampler使用)。连接可以在线程之间选择性地池化。否则，每个线程将获得自己的连接。JDBC Sampler使用连接配置名称来选择适当的连接。已用池为DBCP，请参见BasicDataSource配置参数</p>
+<style>.admonition {
+  margin: 1.5625em 0;
+  padding: .6rem;
+  overflow: hidden;
+  font-size: 1.00rem;
+  page-break-inside: avoid;
+  border-left: .3rem solid #42b983;
+  border-radius: .3rem;
+  box-shadow: 0 0.1rem 0.4rem rgba(0,0,0,.05), 0 0 0.05rem rgba(0,0,0,.1);
+  background-color: #fafafa;
+}
+
+p.admonition-title {
+  position: relative;
+  margin: -.6rem -.6rem .8em -.6rem !important;
+  padding: .4rem .6rem .4rem 2.5rem;
+  font-weight: 700;
+  background-color:rgba(66, 185, 131, .1);
+}
+
+.admonition-title::before {
+  position: absolute;
+  top: .9rem;
+  left: 1rem;
+  width: 12px;
+  height: 12px;
+  background-color: #42b983;
+  border-radius: 50%;
+  content: ' ';
+}
+
+.info>.admonition-title, .todo>.admonition-title {
+  background-color: rgba(0,184,212,.1);
+}
+
+.warning>.admonition-title, .attention>.admonition-title, .caution>.admonition-title {
+  background-color: rgba(255,145,0,.1);
+}
+
+.failure>.admonition-title, .missing>.admonition-title, .fail>.admonition-title, .error>.admonition-title {
+  background-color: rgba(255,82,82,.1);
+}
+
+.admonition.info, .admonition.todo {
+  border-color: #00b8d4;
+}
+
+.admonition.warning, .admonition.attention, .admonition.caution {
+  border-color: #ff9100;
+}
+
+.admonition.failure, .admonition.missing, .admonition.fail, .admonition.error {
+  border-color: #ff5252;
+}
+
+.info>.admonition-title::before, .todo>.admonition-title::before {
+  background-color: #00b8d4;
+  border-radius: 50%;
+}
+
+.warning>.admonition-title::before, .attention>.admonition-title::before, .caution>.admonition-title::before {
+  background-color: #ff9100;
+  border-radius: 50%;
+}
+
+.failure>.admonition-title::before,.missing>.admonition-title::before,.fail>.admonition-title::before,.error>.admonition-title::before{
+  background-color: #ff5252;;
+  border-radius: 50%;
+}
+
+.admonition>:last-child {
+  margin-bottom: 0 !important;
+}
+</style>
+
+<div class="admonition info"><p class="admonition-title">界面</p><p><img src="/attachment%5C1833bb3bf3831447c387e587824ac09a.png" alt></p>
+</div>
+
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Description</th>
+<th>Required</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Name</td>
+<td>树中显示的连接配置的描述性名称。</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Variable Name for created pool</td>
+<td>连接绑定到的变量的名称。可以使用多个连接，每个连接绑定到不同的变量，从而允许JDBC sampler选择适当的连接。</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Max Number of Connections</td>
+<td>池中允许的最大连接数。在大多数情况下，设置为0(0)。这意味着每个线程将得到它自己的池，其中有一个连接，即连接不是线程之间共享的。</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Max Wait (ms)</td>
+<td>如果在尝试检索连接的过程中超过了超时时间，池将抛出一个错误</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Time Between Eviction Runs (ms)</td>
+<td>空闲对象回收器线程运行之间休眠的毫秒数。当非正值时，不会运行空闲的对象驱逐符线程。(默认为60000,1分钟)。看到</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Auto Commit</td>
+<td>打开或关闭连接的自动提交。</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Transaction isolation</td>
+<td>事务隔离</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Pool Prepared Statements</td>
+<td>每个连接池中准备语句的最大数量。“-1”禁用池，“0”表示不限制准备语句池的数量。(默认为“1”)</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Preinit Pool</td>
+<td>可以立即初始化连接池。如果设置为False(默认值)，使用该池的JDBC请求采样器可能会为第一次查询度量更高的响应时间—因为包括了整个池的连接建立时间。</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Init SQL statements separated by new line</td>
+<td>一组SQL语句，在第一次创建物理连接时，这些SQL语句将用于初始化它们。这些语句只执行一次—当配置的连接工厂创建连接时。</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Test While Idle</td>
+<td>测试池的空闲连接</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Soft Min Evictable Idle Time(ms)</td>
+<td>在空闲对象回收器有资格回收连接之前，连接在池中空闲的最短时间，附加条件是至少有minIdle连接保留在池中。 默认值为5000(5秒)</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Validation Query</td>
+<td>一个简单的查询，用于确定数据库是否仍在响应。这默认是jdbc驱动程序的’isValid()’方法，它适用于许多数据库。然而，有些可能需要不同的查询;例如，Oracle类似于“SELECT 1 FROM DUAL”可以使用。</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Database URL</td>
+<td>JDBC数据库连接字符串。</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>JDBC Driver class</td>
+<td>驱动程序类的完全限定名称。(必须在JMeter的类路径-最容易复制.jar文件到JMeter的/lib目录)。</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Username</td>
+<td>要连接的用户名。</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Password</td>
+<td>连接的密码。(注意，此数据未加密存储在测试计划中)</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Connection Properties</td>
+<td>建立连接时设置的连接属性(例如Oracle的internal_logon=sysdba)</td>
+<td>No</td>
+</tr>
+</tbody></table>
+<style>.admonition {
+  margin: 1.5625em 0;
+  padding: .6rem;
+  overflow: hidden;
+  font-size: 1.00rem;
+  page-break-inside: avoid;
+  border-left: .3rem solid #42b983;
+  border-radius: .3rem;
+  box-shadow: 0 0.1rem 0.4rem rgba(0,0,0,.05), 0 0 0.05rem rgba(0,0,0,.1);
+  background-color: #fafafa;
+}
+
+p.admonition-title {
+  position: relative;
+  margin: -.6rem -.6rem .8em -.6rem !important;
+  padding: .4rem .6rem .4rem 2.5rem;
+  font-weight: 700;
+  background-color:rgba(66, 185, 131, .1);
+}
+
+.admonition-title::before {
+  position: absolute;
+  top: .9rem;
+  left: 1rem;
+  width: 12px;
+  height: 12px;
+  background-color: #42b983;
+  border-radius: 50%;
+  content: ' ';
+}
+
+.info>.admonition-title, .todo>.admonition-title {
+  background-color: rgba(0,184,212,.1);
+}
+
+.warning>.admonition-title, .attention>.admonition-title, .caution>.admonition-title {
+  background-color: rgba(255,145,0,.1);
+}
+
+.failure>.admonition-title, .missing>.admonition-title, .fail>.admonition-title, .error>.admonition-title {
+  background-color: rgba(255,82,82,.1);
+}
+
+.admonition.info, .admonition.todo {
+  border-color: #00b8d4;
+}
+
+.admonition.warning, .admonition.attention, .admonition.caution {
+  border-color: #ff9100;
+}
+
+.admonition.failure, .admonition.missing, .admonition.fail, .admonition.error {
+  border-color: #ff5252;
+}
+
+.info>.admonition-title::before, .todo>.admonition-title::before {
+  background-color: #00b8d4;
+  border-radius: 50%;
+}
+
+.warning>.admonition-title::before, .attention>.admonition-title::before, .caution>.admonition-title::before {
+  background-color: #ff9100;
+  border-radius: 50%;
+}
+
+.failure>.admonition-title::before,.missing>.admonition-title::before,.fail>.admonition-title::before,.error>.admonition-title::before{
+  background-color: #ff5252;;
+  border-radius: 50%;
+}
+
+.admonition>:last-child {
+  margin-bottom: 0 !important;
+}
+</style>
+
+<div class="admonition note"><p class="admonition-title">Some examples for databases and their parameters are given below.</p><p>MySQL
+Driver class
+com.mysql.jdbc.Driver
+Database URL
+jdbc:mysql://host[:port]/dbname
+PostgreSQL
+Driver class
+org.postgresql.Driver
+Database URL
+jdbc:postgresql:{dbname}
+Oracle
+Driver class
+oracle.jdbc.OracleDriver
+Database URL
+jdbc:oracle:thin:@//host:port/service OR jdbc:oracle:thin:@(description=(address=(host={mc-name})(protocol=tcp)(port={port-no}))(connect_data=(sid={sid})))
+Ingress (2006)
+Driver class
+ingres.jdbc.IngresDriver
+Database URL
+jdbc:ingres://host:port/db[;attr=value]
+Microsoft SQL Server (MS JDBC driver)
+Driver class
+com.microsoft.sqlserver.jdbc.SQLServerDriver
+Database URL
+jdbc:sqlserver://host:port;DatabaseName=dbname
+Apache Derby
+Driver class
+org.apache.derby.jdbc.ClientDriver
+Database URL
+jdbc:derby://server[:port]/databaseName[;URLAttributes=value[;…]]
+MariaDB
+Driver class
+org.mariadb.jdbc.Driver
+Database URL
+jdbc:mariadb://host[:port]/dbname[;URLAttributes=value[;…]]
+Exasol (see also JDBC driver documentation)
+Driver class
+com.exasol.jdbc.EXADriver
+Database URL
+jdbc:exa:host[:port][;schema=SCHEMA_NAME][;prop_x=value_x]</p>
+</div>
+
+<h3 id="Keystore-Configuration-密钥库配置"><a href="#Keystore-Configuration-密钥库配置" class="headerlink" title="Keystore Configuration | 密钥库配置"></a>Keystore Configuration | 密钥库配置</h3><style>.admonition {
+  margin: 1.5625em 0;
+  padding: .6rem;
+  overflow: hidden;
+  font-size: 1.00rem;
+  page-break-inside: avoid;
+  border-left: .3rem solid #42b983;
+  border-radius: .3rem;
+  box-shadow: 0 0.1rem 0.4rem rgba(0,0,0,.05), 0 0 0.05rem rgba(0,0,0,.1);
+  background-color: #fafafa;
+}
+
+p.admonition-title {
+  position: relative;
+  margin: -.6rem -.6rem .8em -.6rem !important;
+  padding: .4rem .6rem .4rem 2.5rem;
+  font-weight: 700;
+  background-color:rgba(66, 185, 131, .1);
+}
+
+.admonition-title::before {
+  position: absolute;
+  top: .9rem;
+  left: 1rem;
+  width: 12px;
+  height: 12px;
+  background-color: #42b983;
+  border-radius: 50%;
+  content: ' ';
+}
+
+.info>.admonition-title, .todo>.admonition-title {
+  background-color: rgba(0,184,212,.1);
+}
+
+.warning>.admonition-title, .attention>.admonition-title, .caution>.admonition-title {
+  background-color: rgba(255,145,0,.1);
+}
+
+.failure>.admonition-title, .missing>.admonition-title, .fail>.admonition-title, .error>.admonition-title {
+  background-color: rgba(255,82,82,.1);
+}
+
+.admonition.info, .admonition.todo {
+  border-color: #00b8d4;
+}
+
+.admonition.warning, .admonition.attention, .admonition.caution {
+  border-color: #ff9100;
+}
+
+.admonition.failure, .admonition.missing, .admonition.fail, .admonition.error {
+  border-color: #ff5252;
+}
+
+.info>.admonition-title::before, .todo>.admonition-title::before {
+  background-color: #00b8d4;
+  border-radius: 50%;
+}
+
+.warning>.admonition-title::before, .attention>.admonition-title::before, .caution>.admonition-title::before {
+  background-color: #ff9100;
+  border-radius: 50%;
+}
+
+.failure>.admonition-title::before,.missing>.admonition-title::before,.fail>.admonition-title::before,.error>.admonition-title::before{
+  background-color: #ff5252;;
+  border-radius: 50%;
+}
+
+.admonition>:last-child {
+  margin-bottom: 0 !important;
+}
+</style>
+
+<div class="admonition info"><p class="admonition-title">界面</p><p><img src="/attachment%5Cfc1e3f1718138d5076fed611399657fd.png" alt></p>
+</div>
+
+<h3 id="Login-Config-Element-登录配置"><a href="#Login-Config-Element-登录配置" class="headerlink" title="Login Config Element | 登录配置"></a>Login Config Element | 登录配置</h3><style>.admonition {
+  margin: 1.5625em 0;
+  padding: .6rem;
+  overflow: hidden;
+  font-size: 1.00rem;
+  page-break-inside: avoid;
+  border-left: .3rem solid #42b983;
+  border-radius: .3rem;
+  box-shadow: 0 0.1rem 0.4rem rgba(0,0,0,.05), 0 0 0.05rem rgba(0,0,0,.1);
+  background-color: #fafafa;
+}
+
+p.admonition-title {
+  position: relative;
+  margin: -.6rem -.6rem .8em -.6rem !important;
+  padding: .4rem .6rem .4rem 2.5rem;
+  font-weight: 700;
+  background-color:rgba(66, 185, 131, .1);
+}
+
+.admonition-title::before {
+  position: absolute;
+  top: .9rem;
+  left: 1rem;
+  width: 12px;
+  height: 12px;
+  background-color: #42b983;
+  border-radius: 50%;
+  content: ' ';
+}
+
+.info>.admonition-title, .todo>.admonition-title {
+  background-color: rgba(0,184,212,.1);
+}
+
+.warning>.admonition-title, .attention>.admonition-title, .caution>.admonition-title {
+  background-color: rgba(255,145,0,.1);
+}
+
+.failure>.admonition-title, .missing>.admonition-title, .fail>.admonition-title, .error>.admonition-title {
+  background-color: rgba(255,82,82,.1);
+}
+
+.admonition.info, .admonition.todo {
+  border-color: #00b8d4;
+}
+
+.admonition.warning, .admonition.attention, .admonition.caution {
+  border-color: #ff9100;
+}
+
+.admonition.failure, .admonition.missing, .admonition.fail, .admonition.error {
+  border-color: #ff5252;
+}
+
+.info>.admonition-title::before, .todo>.admonition-title::before {
+  background-color: #00b8d4;
+  border-radius: 50%;
+}
+
+.warning>.admonition-title::before, .attention>.admonition-title::before, .caution>.admonition-title::before {
+  background-color: #ff9100;
+  border-radius: 50%;
+}
+
+.failure>.admonition-title::before,.missing>.admonition-title::before,.fail>.admonition-title::before,.error>.admonition-title::before{
+  background-color: #ff5252;;
+  border-radius: 50%;
+}
+
+.admonition>:last-child {
+  margin-bottom: 0 !important;
+}
+</style>
+
+<div class="admonition info"><p class="admonition-title">界面</p><p><img src="/attachment%5C2b3e839344fae2210caac4697f84f470.png" alt></p>
+</div>
+
+<h3 id="TCP-Sampler-Config-TCP-采样器-配置"><a href="#TCP-Sampler-Config-TCP-采样器-配置" class="headerlink" title="TCP Sampler Config | TCP 采样器 配置"></a>TCP Sampler Config | TCP 采样器 配置</h3><p>TCP采样器配置为TCP采样器提供缺省数据</p>
+<style>.admonition {
+  margin: 1.5625em 0;
+  padding: .6rem;
+  overflow: hidden;
+  font-size: 1.00rem;
+  page-break-inside: avoid;
+  border-left: .3rem solid #42b983;
+  border-radius: .3rem;
+  box-shadow: 0 0.1rem 0.4rem rgba(0,0,0,.05), 0 0 0.05rem rgba(0,0,0,.1);
+  background-color: #fafafa;
+}
+
+p.admonition-title {
+  position: relative;
+  margin: -.6rem -.6rem .8em -.6rem !important;
+  padding: .4rem .6rem .4rem 2.5rem;
+  font-weight: 700;
+  background-color:rgba(66, 185, 131, .1);
+}
+
+.admonition-title::before {
+  position: absolute;
+  top: .9rem;
+  left: 1rem;
+  width: 12px;
+  height: 12px;
+  background-color: #42b983;
+  border-radius: 50%;
+  content: ' ';
+}
+
+.info>.admonition-title, .todo>.admonition-title {
+  background-color: rgba(0,184,212,.1);
+}
+
+.warning>.admonition-title, .attention>.admonition-title, .caution>.admonition-title {
+  background-color: rgba(255,145,0,.1);
+}
+
+.failure>.admonition-title, .missing>.admonition-title, .fail>.admonition-title, .error>.admonition-title {
+  background-color: rgba(255,82,82,.1);
+}
+
+.admonition.info, .admonition.todo {
+  border-color: #00b8d4;
+}
+
+.admonition.warning, .admonition.attention, .admonition.caution {
+  border-color: #ff9100;
+}
+
+.admonition.failure, .admonition.missing, .admonition.fail, .admonition.error {
+  border-color: #ff5252;
+}
+
+.info>.admonition-title::before, .todo>.admonition-title::before {
+  background-color: #00b8d4;
+  border-radius: 50%;
+}
+
+.warning>.admonition-title::before, .attention>.admonition-title::before, .caution>.admonition-title::before {
+  background-color: #ff9100;
+  border-radius: 50%;
+}
+
+.failure>.admonition-title::before,.missing>.admonition-title::before,.fail>.admonition-title::before,.error>.admonition-title::before{
+  background-color: #ff5252;;
+  border-radius: 50%;
+}
+
+.admonition>:last-child {
+  margin-bottom: 0 !important;
+}
+</style>
+
+<div class="admonition info"><p class="admonition-title">界面</p><p><img src="/attachment%5C3149a737279a4e4563260c1d0fac8e54.png" alt></p>
+</div>
+
+<h3 id="User-Defined-Variables-用户定义变量"><a href="#User-Defined-Variables-用户定义变量" class="headerlink" title="User Defined Variables | 用户定义变量"></a>User Defined Variables | 用户定义变量</h3><p>User Defined Variables元素允许您定义一组初始变量，就像在Test Plan中一样。</p>
+<style>.admonition {
+  margin: 1.5625em 0;
+  padding: .6rem;
+  overflow: hidden;
+  font-size: 1.00rem;
+  page-break-inside: avoid;
+  border-left: .3rem solid #42b983;
+  border-radius: .3rem;
+  box-shadow: 0 0.1rem 0.4rem rgba(0,0,0,.05), 0 0 0.05rem rgba(0,0,0,.1);
+  background-color: #fafafa;
+}
+
+p.admonition-title {
+  position: relative;
+  margin: -.6rem -.6rem .8em -.6rem !important;
+  padding: .4rem .6rem .4rem 2.5rem;
+  font-weight: 700;
+  background-color:rgba(66, 185, 131, .1);
+}
+
+.admonition-title::before {
+  position: absolute;
+  top: .9rem;
+  left: 1rem;
+  width: 12px;
+  height: 12px;
+  background-color: #42b983;
+  border-radius: 50%;
+  content: ' ';
+}
+
+.info>.admonition-title, .todo>.admonition-title {
+  background-color: rgba(0,184,212,.1);
+}
+
+.warning>.admonition-title, .attention>.admonition-title, .caution>.admonition-title {
+  background-color: rgba(255,145,0,.1);
+}
+
+.failure>.admonition-title, .missing>.admonition-title, .fail>.admonition-title, .error>.admonition-title {
+  background-color: rgba(255,82,82,.1);
+}
+
+.admonition.info, .admonition.todo {
+  border-color: #00b8d4;
+}
+
+.admonition.warning, .admonition.attention, .admonition.caution {
+  border-color: #ff9100;
+}
+
+.admonition.failure, .admonition.missing, .admonition.fail, .admonition.error {
+  border-color: #ff5252;
+}
+
+.info>.admonition-title::before, .todo>.admonition-title::before {
+  background-color: #00b8d4;
+  border-radius: 50%;
+}
+
+.warning>.admonition-title::before, .attention>.admonition-title::before, .caution>.admonition-title::before {
+  background-color: #ff9100;
+  border-radius: 50%;
+}
+
+.failure>.admonition-title::before,.missing>.admonition-title::before,.fail>.admonition-title::before,.error>.admonition-title::before{
+  background-color: #ff5252;;
+  border-radius: 50%;
+}
+
+.admonition>:last-child {
+  margin-bottom: 0 !important;
+}
+</style>
+
+<div class="admonition info"><p class="admonition-title">界面</p><p><img src="/attachment%5Cfe2292d00bd006cbb0a5b6d2fa7b0d5e.png" alt></p>
+</div>
+
+
+
+<style>.admonition {
+  margin: 1.5625em 0;
+  padding: .6rem;
+  overflow: hidden;
+  font-size: 1.00rem;
+  page-break-inside: avoid;
+  border-left: .3rem solid #42b983;
+  border-radius: .3rem;
+  box-shadow: 0 0.1rem 0.4rem rgba(0,0,0,.05), 0 0 0.05rem rgba(0,0,0,.1);
+  background-color: #fafafa;
+}
+
+p.admonition-title {
+  position: relative;
+  margin: -.6rem -.6rem .8em -.6rem !important;
+  padding: .4rem .6rem .4rem 2.5rem;
+  font-weight: 700;
+  background-color:rgba(66, 185, 131, .1);
+}
+
+.admonition-title::before {
+  position: absolute;
+  top: .9rem;
+  left: 1rem;
+  width: 12px;
+  height: 12px;
+  background-color: #42b983;
+  border-radius: 50%;
+  content: ' ';
+}
+
+.info>.admonition-title, .todo>.admonition-title {
+  background-color: rgba(0,184,212,.1);
+}
+
+.warning>.admonition-title, .attention>.admonition-title, .caution>.admonition-title {
+  background-color: rgba(255,145,0,.1);
+}
+
+.failure>.admonition-title, .missing>.admonition-title, .fail>.admonition-title, .error>.admonition-title {
+  background-color: rgba(255,82,82,.1);
+}
+
+.admonition.info, .admonition.todo {
+  border-color: #00b8d4;
+}
+
+.admonition.warning, .admonition.attention, .admonition.caution {
+  border-color: #ff9100;
+}
+
+.admonition.failure, .admonition.missing, .admonition.fail, .admonition.error {
+  border-color: #ff5252;
+}
+
+.info>.admonition-title::before, .todo>.admonition-title::before {
+  background-color: #00b8d4;
+  border-radius: 50%;
+}
+
+.warning>.admonition-title::before, .attention>.admonition-title::before, .caution>.admonition-title::before {
+  background-color: #ff9100;
+  border-radius: 50%;
+}
+
+.failure>.admonition-title::before,.missing>.admonition-title::before,.fail>.admonition-title::before,.error>.admonition-title::before{
+  background-color: #ff5252;;
+  border-radius: 50%;
+}
+
+.admonition>:last-child {
+  margin-bottom: 0 !important;
+}
+</style>
+
+<div class="admonition attention"><p class="admonition-title"></p><p>注意，测试计划中的所有UDV元素—无论它们在哪里—都在开始时处理。</p>
+</div>
+
+
+
+<style>.admonition {
+  margin: 1.5625em 0;
+  padding: .6rem;
+  overflow: hidden;
+  font-size: 1.00rem;
+  page-break-inside: avoid;
+  border-left: .3rem solid #42b983;
+  border-radius: .3rem;
+  box-shadow: 0 0.1rem 0.4rem rgba(0,0,0,.05), 0 0 0.05rem rgba(0,0,0,.1);
+  background-color: #fafafa;
+}
+
+p.admonition-title {
+  position: relative;
+  margin: -.6rem -.6rem .8em -.6rem !important;
+  padding: .4rem .6rem .4rem 2.5rem;
+  font-weight: 700;
+  background-color:rgba(66, 185, 131, .1);
+}
+
+.admonition-title::before {
+  position: absolute;
+  top: .9rem;
+  left: 1rem;
+  width: 12px;
+  height: 12px;
+  background-color: #42b983;
+  border-radius: 50%;
+  content: ' ';
+}
+
+.info>.admonition-title, .todo>.admonition-title {
+  background-color: rgba(0,184,212,.1);
+}
+
+.warning>.admonition-title, .attention>.admonition-title, .caution>.admonition-title {
+  background-color: rgba(255,145,0,.1);
+}
+
+.failure>.admonition-title, .missing>.admonition-title, .fail>.admonition-title, .error>.admonition-title {
+  background-color: rgba(255,82,82,.1);
+}
+
+.admonition.info, .admonition.todo {
+  border-color: #00b8d4;
+}
+
+.admonition.warning, .admonition.attention, .admonition.caution {
+  border-color: #ff9100;
+}
+
+.admonition.failure, .admonition.missing, .admonition.fail, .admonition.error {
+  border-color: #ff5252;
+}
+
+.info>.admonition-title::before, .todo>.admonition-title::before {
+  background-color: #00b8d4;
+  border-radius: 50%;
+}
+
+.warning>.admonition-title::before, .attention>.admonition-title::before, .caution>.admonition-title::before {
+  background-color: #ff9100;
+  border-radius: 50%;
+}
+
+.failure>.admonition-title::before,.missing>.admonition-title::before,.fail>.admonition-title::before,.error>.admonition-title::before{
+  background-color: #ff5252;;
+  border-radius: 50%;
+}
+
+.admonition>:last-child {
+  margin-bottom: 0 !important;
+}
+</style>
+
+<div class="admonition note"><p class="admonition-title">参数说明</p><table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Description</th>
+<th>Required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Name</td>
+<td>树中显示的这个元素的描述性名称。</td>
+<td></td>
+</tr>
+<tr>
+<td>User Defined Variables</td>
+<td>变量名称/值对。"<code>Name</code>"列下的字符串是您需要放在<code>${…}</code>构造中方括号内的内容，以便稍后使用变量。整个<code>${…}</code>将被"Value"列中的字符串替换。</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<h3 id="Random-Variable-随机变量"><a href="#Random-Variable-随机变量" class="headerlink" title="Random Variable | 随机变量"></a>Random Variable | 随机变量</h3><p>随机变量配置元素用于生成随机数字字符串，并将它们存储在变量中以备以后使用。它比使用用户定义变量和<code>__Random()</code>函数更简单。</p>
+<style>.admonition {
+  margin: 1.5625em 0;
+  padding: .6rem;
+  overflow: hidden;
+  font-size: 1.00rem;
+  page-break-inside: avoid;
+  border-left: .3rem solid #42b983;
+  border-radius: .3rem;
+  box-shadow: 0 0.1rem 0.4rem rgba(0,0,0,.05), 0 0 0.05rem rgba(0,0,0,.1);
+  background-color: #fafafa;
+}
+
+p.admonition-title {
+  position: relative;
+  margin: -.6rem -.6rem .8em -.6rem !important;
+  padding: .4rem .6rem .4rem 2.5rem;
+  font-weight: 700;
+  background-color:rgba(66, 185, 131, .1);
+}
+
+.admonition-title::before {
+  position: absolute;
+  top: .9rem;
+  left: 1rem;
+  width: 12px;
+  height: 12px;
+  background-color: #42b983;
+  border-radius: 50%;
+  content: ' ';
+}
+
+.info>.admonition-title, .todo>.admonition-title {
+  background-color: rgba(0,184,212,.1);
+}
+
+.warning>.admonition-title, .attention>.admonition-title, .caution>.admonition-title {
+  background-color: rgba(255,145,0,.1);
+}
+
+.failure>.admonition-title, .missing>.admonition-title, .fail>.admonition-title, .error>.admonition-title {
+  background-color: rgba(255,82,82,.1);
+}
+
+.admonition.info, .admonition.todo {
+  border-color: #00b8d4;
+}
+
+.admonition.warning, .admonition.attention, .admonition.caution {
+  border-color: #ff9100;
+}
+
+.admonition.failure, .admonition.missing, .admonition.fail, .admonition.error {
+  border-color: #ff5252;
+}
+
+.info>.admonition-title::before, .todo>.admonition-title::before {
+  background-color: #00b8d4;
+  border-radius: 50%;
+}
+
+.warning>.admonition-title::before, .attention>.admonition-title::before, .caution>.admonition-title::before {
+  background-color: #ff9100;
+  border-radius: 50%;
+}
+
+.failure>.admonition-title::before,.missing>.admonition-title::before,.fail>.admonition-title::before,.error>.admonition-title::before{
+  background-color: #ff5252;;
+  border-radius: 50%;
+}
+
+.admonition>:last-child {
+  margin-bottom: 0 !important;
+}
+</style>
+
+<div class="admonition info"><p class="admonition-title">界面</p><p><img src="/attachment%5Ca323effcee9ceb4d9e663ed1674deb4c.png" alt></p>
+</div>
+
+<table>
+<thead>
+<tr>
+<th>Attibute</th>
+<th>Description</th>
+<th>Required</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Name</td>
+<td>树中显示的这个元素的描述性名称。</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Variable Name</td>
+<td>存储随机字符串的变量的名称。</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Format String</td>
+<td>要使用的<code>java.text.DecimalFormat</code>格式字符串。例如，”000”将生成至少3位的数字，或”<code>USER_000</code>“将生成形式为<code>USER_nnn</code>的输出。如果未指定，则默认使用<code>Long.toString()</code>生成数字。</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Minimum Value</td>
+<td>生成的随机数的最小值(长)。</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Maximum Value</td>
+<td>生成的随机数的最大值(长)。</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Random Seed</td>
+<td>随机数生成器的种子。如果您使用相同的种子值，将Per Thread设置为true，您将为每个Thread获得与每个Random类相同的值。如果没有设置种子，将使用Random的默认构造函数。</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Per Thread(User)?</td>
+<td>如果为False，则线程组中的所有线程共享生成器。如果为True，则每个线程都有自己的随机生成器。</td>
+<td>Yes</td>
+</tr>
+</tbody></table>
+<h3 id="Counter-计数器"><a href="#Counter-计数器" class="headerlink" title="Counter | 计数器"></a>Counter | 计数器</h3><p>允许用户创建一个计数器，该计数器可以在线程组的任何位置引用。计数器配置允许用户配置起始点、最大值和增量。计数器将从开始循环到最大，然后重新开始，像这样继续下去，直到测试结束。</p>
+<style>.admonition {
+  margin: 1.5625em 0;
+  padding: .6rem;
+  overflow: hidden;
+  font-size: 1.00rem;
+  page-break-inside: avoid;
+  border-left: .3rem solid #42b983;
+  border-radius: .3rem;
+  box-shadow: 0 0.1rem 0.4rem rgba(0,0,0,.05), 0 0 0.05rem rgba(0,0,0,.1);
+  background-color: #fafafa;
+}
+
+p.admonition-title {
+  position: relative;
+  margin: -.6rem -.6rem .8em -.6rem !important;
+  padding: .4rem .6rem .4rem 2.5rem;
+  font-weight: 700;
+  background-color:rgba(66, 185, 131, .1);
+}
+
+.admonition-title::before {
+  position: absolute;
+  top: .9rem;
+  left: 1rem;
+  width: 12px;
+  height: 12px;
+  background-color: #42b983;
+  border-radius: 50%;
+  content: ' ';
+}
+
+.info>.admonition-title, .todo>.admonition-title {
+  background-color: rgba(0,184,212,.1);
+}
+
+.warning>.admonition-title, .attention>.admonition-title, .caution>.admonition-title {
+  background-color: rgba(255,145,0,.1);
+}
+
+.failure>.admonition-title, .missing>.admonition-title, .fail>.admonition-title, .error>.admonition-title {
+  background-color: rgba(255,82,82,.1);
+}
+
+.admonition.info, .admonition.todo {
+  border-color: #00b8d4;
+}
+
+.admonition.warning, .admonition.attention, .admonition.caution {
+  border-color: #ff9100;
+}
+
+.admonition.failure, .admonition.missing, .admonition.fail, .admonition.error {
+  border-color: #ff5252;
+}
+
+.info>.admonition-title::before, .todo>.admonition-title::before {
+  background-color: #00b8d4;
+  border-radius: 50%;
+}
+
+.warning>.admonition-title::before, .attention>.admonition-title::before, .caution>.admonition-title::before {
+  background-color: #ff9100;
+  border-radius: 50%;
+}
+
+.failure>.admonition-title::before,.missing>.admonition-title::before,.fail>.admonition-title::before,.error>.admonition-title::before{
+  background-color: #ff5252;;
+  border-radius: 50%;
+}
+
+.admonition>:last-child {
+  margin-bottom: 0 !important;
+}
+</style>
+
+<div class="admonition info"><p class="admonition-title">界面</p><p><img src="/attachment%5C1b0a8607c0781b426f35bd5043f77014.png" alt></p>
+</div>
+
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Description</th>
+<th>Required</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Name</td>
+<td>树中显示的这个元素的描述性名称。</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Starting value</td>
+<td>计数器的起始值。计数器将在第一次迭代期间等于这个值(默认为0)。</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Increment</td>
+<td>在每次迭代之后计数器增加多少(默认为0，表示没有增加)。</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Maximum value</td>
+<td>如果计数器超过最大值，则将其重置为起始值。默认是长。MAX_VALUE</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Format</td>
+<td>可选的格式，例如000将格式为001、002等。它被传递给DecimalFormat，因此可以使用任何有效的格式。如果解释格式有问题，就会忽略它。<code>[默认格式是使用Long.toString()生成的]</code></td>
+<td>No</td>
+</tr>
+<tr>
+<td>Exported Variable Name</td>
+<td>这将是计数器值可用的变量名。如果你把它命名为counterA，你可以使用用户定义值中的<code>${counterA}</code>来访问它(默认情况下，它会创建一个空的字符串变量，可以使用<code>${}</code>来访问，但这是非常不鼓励的)</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Track Counter Independently for each User</td>
+<td>换句话说，这是一个全局计数器，还是每个用户都有自己的计数器?如果未选中，计数器是全局的(即，用户#1将在第一次迭代中获得值“1”，用户#2将获得值“2”)。如果勾选此项，每个用户都有一个独立的计数器。</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Reset counter on each Thread Group Iteration</td>
+<td>此选项仅在每个用户跟踪计数器时可用，如果选中，计数器将在每次线程组迭代时重置为Start值。当计数器在循环控制器中时，这是很有用的。</td>
+<td>No</td>
+</tr>
+</tbody></table>
+<h3 id="Simple-Config-Element-简单配置元件"><a href="#Simple-Config-Element-简单配置元件" class="headerlink" title="Simple Config Element | 简单配置元件"></a>Simple Config Element | 简单配置元件</h3><p>简单配置元素允许您在采样器中添加或重写任意值。您可以选择值的名称和值本身。尽管一些喜欢冒险的用户可能会找到这个元素的用途，但它主要是供开发人员在开发新的JMeter组件时作为基本GUI使用的。</p>
+<style>.admonition {
+  margin: 1.5625em 0;
+  padding: .6rem;
+  overflow: hidden;
+  font-size: 1.00rem;
+  page-break-inside: avoid;
+  border-left: .3rem solid #42b983;
+  border-radius: .3rem;
+  box-shadow: 0 0.1rem 0.4rem rgba(0,0,0,.05), 0 0 0.05rem rgba(0,0,0,.1);
+  background-color: #fafafa;
+}
+
+p.admonition-title {
+  position: relative;
+  margin: -.6rem -.6rem .8em -.6rem !important;
+  padding: .4rem .6rem .4rem 2.5rem;
+  font-weight: 700;
+  background-color:rgba(66, 185, 131, .1);
+}
+
+.admonition-title::before {
+  position: absolute;
+  top: .9rem;
+  left: 1rem;
+  width: 12px;
+  height: 12px;
+  background-color: #42b983;
+  border-radius: 50%;
+  content: ' ';
+}
+
+.info>.admonition-title, .todo>.admonition-title {
+  background-color: rgba(0,184,212,.1);
+}
+
+.warning>.admonition-title, .attention>.admonition-title, .caution>.admonition-title {
+  background-color: rgba(255,145,0,.1);
+}
+
+.failure>.admonition-title, .missing>.admonition-title, .fail>.admonition-title, .error>.admonition-title {
+  background-color: rgba(255,82,82,.1);
+}
+
+.admonition.info, .admonition.todo {
+  border-color: #00b8d4;
+}
+
+.admonition.warning, .admonition.attention, .admonition.caution {
+  border-color: #ff9100;
+}
+
+.admonition.failure, .admonition.missing, .admonition.fail, .admonition.error {
+  border-color: #ff5252;
+}
+
+.info>.admonition-title::before, .todo>.admonition-title::before {
+  background-color: #00b8d4;
+  border-radius: 50%;
+}
+
+.warning>.admonition-title::before, .attention>.admonition-title::before, .caution>.admonition-title::before {
+  background-color: #ff9100;
+  border-radius: 50%;
+}
+
+.failure>.admonition-title::before,.missing>.admonition-title::before,.fail>.admonition-title::before,.error>.admonition-title::before{
+  background-color: #ff5252;;
+  border-radius: 50%;
+}
+
+.admonition>:last-child {
+  margin-bottom: 0 !important;
+}
+</style>
+
+<div class="admonition info"><p class="admonition-title">界面</p><p><img src="/attachment%5C57794dfe00c7db8952e1c7cef2f3d50a.png" alt></p>
+</div>
+
+
+
+<style>.admonition {
+  margin: 1.5625em 0;
+  padding: .6rem;
+  overflow: hidden;
+  font-size: 1.00rem;
+  page-break-inside: avoid;
+  border-left: .3rem solid #42b983;
+  border-radius: .3rem;
+  box-shadow: 0 0.1rem 0.4rem rgba(0,0,0,.05), 0 0 0.05rem rgba(0,0,0,.1);
+  background-color: #fafafa;
+}
+
+p.admonition-title {
+  position: relative;
+  margin: -.6rem -.6rem .8em -.6rem !important;
+  padding: .4rem .6rem .4rem 2.5rem;
+  font-weight: 700;
+  background-color:rgba(66, 185, 131, .1);
+}
+
+.admonition-title::before {
+  position: absolute;
+  top: .9rem;
+  left: 1rem;
+  width: 12px;
+  height: 12px;
+  background-color: #42b983;
+  border-radius: 50%;
+  content: ' ';
+}
+
+.info>.admonition-title, .todo>.admonition-title {
+  background-color: rgba(0,184,212,.1);
+}
+
+.warning>.admonition-title, .attention>.admonition-title, .caution>.admonition-title {
+  background-color: rgba(255,145,0,.1);
+}
+
+.failure>.admonition-title, .missing>.admonition-title, .fail>.admonition-title, .error>.admonition-title {
+  background-color: rgba(255,82,82,.1);
+}
+
+.admonition.info, .admonition.todo {
+  border-color: #00b8d4;
+}
+
+.admonition.warning, .admonition.attention, .admonition.caution {
+  border-color: #ff9100;
+}
+
+.admonition.failure, .admonition.missing, .admonition.fail, .admonition.error {
+  border-color: #ff5252;
+}
+
+.info>.admonition-title::before, .todo>.admonition-title::before {
+  background-color: #00b8d4;
+  border-radius: 50%;
+}
+
+.warning>.admonition-title::before, .attention>.admonition-title::before, .caution>.admonition-title::before {
+  background-color: #ff9100;
+  border-radius: 50%;
+}
+
+.failure>.admonition-title::before,.missing>.admonition-title::before,.fail>.admonition-title::before,.error>.admonition-title::before{
+  background-color: #ff5252;;
+  border-radius: 50%;
+}
+
+.admonition>:last-child {
+  margin-bottom: 0 !important;
+}
+</style>
+
+<div class="admonition note"><p class="admonition-title">参数说明</p><table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Name</td>
+<td>树中显示的这个元素的描述性名称。</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Parameter Name</td>
+<td>每个参数的名称。这些值是JMeter工作的内部值，通常没有文档记录。只有熟悉代码的人才知道这些值。</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Parameter Value</td>
+<td>应用于该参数的值。</td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a target="_blank" rel="noopener" href="https://github.com/yu627482453">Bill Cypher</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://yu627482453.github.io/jmeter/jmeter-zu-jian-xiang-jie-configuration-pei-zhi-yuan-jian/">https://yu627482453.github.io/jmeter/jmeter-zu-jian-xiang-jie-configuration-pei-zhi-yuan-jian/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://yu627482453.github.io" target="_blank">蝶梦庄生</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E8%A1%8C%E5%8A%A8%E9%98%B6%E6%AE%B5-%E5%AE%8C%E6%88%90/">行动阶段/完成</a><a class="post-meta__tags" href="/tags/%E4%B8%BB%E9%A2%98%E5%9C%BA%E6%99%AF-%E5%B7%A5%E5%85%B7/">主题场景/工具</a><a class="post-meta__tags" href="/tags/%E7%AC%94%E8%AE%B0%E7%A9%BA%E9%97%B4-KnowladgeSpace-ToolSpace/">笔记空间/KnowladgeSpace/ToolSpace</a><a class="post-meta__tags" href="/tags/%E7%BB%86%E5%8C%96%E4%B8%BB%E9%A2%98-JMeter/">细化主题/JMeter</a><a class="post-meta__tags" href="/tags/%E7%BB%86%E5%8C%96%E4%B8%BB%E9%A2%98-%E7%BB%84%E4%BB%B6/">细化主题/组件</a><a class="post-meta__tags" href="/tags/%E7%BB%86%E5%8C%96%E4%B8%BB%E9%A2%98-%E9%85%8D%E7%BD%AE/">细化主题/配置</a></div><div class="post_share"><div class="social-share" data-image="/cover/JMeter-cover.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/reward/wechat.jpg" target="_blank"><img class="post-qr-code-img" src="/img/reward/wechat.jpg" alt="wechat"/></a><div class="post-qr-code-desc">wechat</div></li><li class="reward-item"><a href="/img/reward/alipay.jpg" target="_blank"><img class="post-qr-code-img" src="/img/reward/alipay.jpg" alt="alipay"/></a><div class="post-qr-code-desc">alipay</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/jmeter/jmeter-zu-jian-xiang-jie-assertions-duan-yan/"><img class="next-cover" src="/cover/JMeter-cover.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">JMeter 组件详解 -Assertions 断言</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/jmeter/jmeter-zu-jian-xiang-jie-assertions-duan-yan/" title="JMeter 组件详解 -Assertions 断言"><img class="cover" src="/cover/JMeter-cover.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-12-13</div><div class="title">JMeter 组件详解 -Assertions 断言</div></div></a></div><div><a href="/jmeter/jmeter-zu-jian-xiang-jie-listeners-jian-ting-qi/" title="JMeter 组件详解-Listeners 监听器"><img class="cover" src="/cover/JMeter-cover.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-12-13</div><div class="title">JMeter 组件详解-Listeners 监听器</div></div></a></div><div><a href="/jmeter/jmeter-zu-jian-xiang-jie-logic-controllers-luo-ji-kong-zhi-qi/" title="JMeter 组件详解-Logic Controllers 逻辑控制器"><img class="cover" src="/cover/JMeter-cover.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-12-13</div><div class="title">JMeter 组件详解-Logic Controllers 逻辑控制器</div></div></a></div><div><a href="/jmeter/jmeter-zu-jian-xiang-jie-post-processors-hou-zhi-chu-li-qi/" title="JMeter 组件详解-Post-Processors 后置处理器"><img class="cover" src="/cover/JMeter-cover.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-12-13</div><div class="title">JMeter 组件详解-Post-Processors 后置处理器</div></div></a></div><div><a href="/jmeter/jmeter-zu-jian-xiang-jie-pre-processors-qian-zhi-chu-li-qi/" title="JMeter 组件详解-Pre-Processors 前置处理器"><img class="cover" src="/cover/JMeter-cover.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-12-13</div><div class="title">JMeter 组件详解-Pre-Processors 前置处理器</div></div></a></div><div><a href="/jmeter/jmeter-zu-jian-xiang-jie-samplers-cai-yang-qi/" title="JMeter 组件详解-Samplers 采样器"><img class="cover" src="/cover/JMeter-cover.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-12-13</div><div class="title">JMeter 组件详解-Samplers 采样器</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="gitalk-container"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Bill Cypher</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">12</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">19</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/yu627482453"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/yu627482453" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="/627482453@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#JMeter-%E7%BB%84%E4%BB%B6%E8%AF%A6%E8%A7%A3-Configuration-%E9%85%8D%E7%BD%AE%E5%85%83%E4%BB%B6"><span class="toc-number">1.</span> <span class="toc-text">JMeter 组件详解-Configuration 配置元件</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Metadata"><span class="toc-number">1.1.</span> <span class="toc-text">Metadata</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Configuration-%E9%85%8D%E7%BD%AE%E5%85%83%E4%BB%B6"><span class="toc-number">1.2.</span> <span class="toc-text">Configuration | 配置元件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#CSV-Data-Set-Config-CSV-%E6%95%B0%E6%8D%AE%E9%9B%86%E9%85%8D%E7%BD%AE"><span class="toc-number">1.2.1.</span> <span class="toc-text">CSV Data Set Config | CSV 数据集配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DNS-Cache-Manager-DNS%E7%BC%93%E5%AD%98%E7%AE%A1%E7%90%86%E5%99%A8"><span class="toc-number">1.2.2.</span> <span class="toc-text">DNS Cache Manager | DNS缓存管理器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HTTP-Authorization-Manager-HTTP%E6%8E%88%E6%9D%83%E7%AE%A1%E7%90%86%E5%99%A8"><span class="toc-number">1.2.3.</span> <span class="toc-text">HTTP Authorization Manager | HTTP授权管理器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HTTP-Cache-Manager-HTTP-%E7%BC%93%E5%AD%98%E6%8E%A7%E5%88%B6%E5%99%A8"><span class="toc-number">1.2.4.</span> <span class="toc-text">HTTP Cache Manager | HTTP 缓存控制器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HTTP-Cookie-Manager-HTTP-Cookie-%E7%AE%A1%E7%90%86%E5%99%A8"><span class="toc-number">1.2.5.</span> <span class="toc-text">HTTP Cookie Manager | HTTP Cookie 管理器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HTTP-Request-Defaults-HTTP-%E8%AF%B7%E6%B1%82%E9%BB%98%E8%AE%A4%E5%80%BC"><span class="toc-number">1.2.6.</span> <span class="toc-text">HTTP Request Defaults | HTTP 请求默认值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HTTP-Header-Manager-HTTP-%E5%A4%B4%E4%BF%A1%E6%81%AF%E7%AE%A1%E7%90%86%E5%99%A8"><span class="toc-number">1.2.7.</span> <span class="toc-text">HTTP Header Manager | HTTP 头信息管理器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Java-Request-Defaults-java-%E8%AF%B7%E6%B1%82%E9%BB%98%E8%AE%A4%E5%80%BC"><span class="toc-number">1.2.8.</span> <span class="toc-text">Java Request Defaults | java 请求默认值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JDBC-Connection-Configuration-JDBC-%E8%BF%9E%E6%8E%A5-%E9%85%8D%E7%BD%AE"><span class="toc-number">1.2.9.</span> <span class="toc-text">JDBC Connection Configuration | JDBC 连接 配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Keystore-Configuration-%E5%AF%86%E9%92%A5%E5%BA%93%E9%85%8D%E7%BD%AE"><span class="toc-number">1.2.10.</span> <span class="toc-text">Keystore Configuration | 密钥库配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Login-Config-Element-%E7%99%BB%E5%BD%95%E9%85%8D%E7%BD%AE"><span class="toc-number">1.2.11.</span> <span class="toc-text">Login Config Element | 登录配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#TCP-Sampler-Config-TCP-%E9%87%87%E6%A0%B7%E5%99%A8-%E9%85%8D%E7%BD%AE"><span class="toc-number">1.2.12.</span> <span class="toc-text">TCP Sampler Config | TCP 采样器 配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#User-Defined-Variables-%E7%94%A8%E6%88%B7%E5%AE%9A%E4%B9%89%E5%8F%98%E9%87%8F"><span class="toc-number">1.2.13.</span> <span class="toc-text">User Defined Variables | 用户定义变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Random-Variable-%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F"><span class="toc-number">1.2.14.</span> <span class="toc-text">Random Variable | 随机变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Counter-%E8%AE%A1%E6%95%B0%E5%99%A8"><span class="toc-number">1.2.15.</span> <span class="toc-text">Counter | 计数器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Simple-Config-Element-%E7%AE%80%E5%8D%95%E9%85%8D%E7%BD%AE%E5%85%83%E4%BB%B6"><span class="toc-number">1.2.16.</span> <span class="toc-text">Simple Config Element | 简单配置元件</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/jmeter/jmeter-zu-jian-xiang-jie-configuration-pei-zhi-yuan-jian/" title="JMeter 组件详解-Configuration 配置元件"><img src="/cover/JMeter-cover.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="JMeter 组件详解-Configuration 配置元件"/></a><div class="content"><a class="title" href="/jmeter/jmeter-zu-jian-xiang-jie-configuration-pei-zhi-yuan-jian/" title="JMeter 组件详解-Configuration 配置元件">JMeter 组件详解-Configuration 配置元件</a><time datetime="2022-12-13T05:20:00.000Z" title="发表于 2022-12-13 13:20:00">2022-12-13</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/jmeter/jmeter-zu-jian-xiang-jie-assertions-duan-yan/" title="JMeter 组件详解 -Assertions 断言"><img src="/cover/JMeter-cover.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="JMeter 组件详解 -Assertions 断言"/></a><div class="content"><a class="title" href="/jmeter/jmeter-zu-jian-xiang-jie-assertions-duan-yan/" title="JMeter 组件详解 -Assertions 断言">JMeter 组件详解 -Assertions 断言</a><time datetime="2022-12-13T05:20:00.000Z" title="发表于 2022-12-13 13:20:00">2022-12-13</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/jmeter/jmeter-zu-jian-xiang-jie-listeners-jian-ting-qi/" title="JMeter 组件详解-Listeners 监听器"><img src="/cover/JMeter-cover.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="JMeter 组件详解-Listeners 监听器"/></a><div class="content"><a class="title" href="/jmeter/jmeter-zu-jian-xiang-jie-listeners-jian-ting-qi/" title="JMeter 组件详解-Listeners 监听器">JMeter 组件详解-Listeners 监听器</a><time datetime="2022-12-13T05:20:00.000Z" title="发表于 2022-12-13 13:20:00">2022-12-13</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/jmeter/jmeter-zu-jian-xiang-jie-logic-controllers-luo-ji-kong-zhi-qi/" title="JMeter 组件详解-Logic Controllers 逻辑控制器"><img src="/cover/JMeter-cover.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="JMeter 组件详解-Logic Controllers 逻辑控制器"/></a><div class="content"><a class="title" href="/jmeter/jmeter-zu-jian-xiang-jie-logic-controllers-luo-ji-kong-zhi-qi/" title="JMeter 组件详解-Logic Controllers 逻辑控制器">JMeter 组件详解-Logic Controllers 逻辑控制器</a><time datetime="2022-12-13T05:20:00.000Z" title="发表于 2022-12-13 13:20:00">2022-12-13</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/jmeter/jmeter-zu-jian-xiang-jie-post-processors-hou-zhi-chu-li-qi/" title="JMeter 组件详解-Post-Processors 后置处理器"><img src="/cover/JMeter-cover.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="JMeter 组件详解-Post-Processors 后置处理器"/></a><div class="content"><a class="title" href="/jmeter/jmeter-zu-jian-xiang-jie-post-processors-hou-zhi-chu-li-qi/" title="JMeter 组件详解-Post-Processors 后置处理器">JMeter 组件详解-Post-Processors 后置处理器</a><time datetime="2022-12-13T05:20:00.000Z" title="发表于 2022-12-13 13:20:00">2022-12-13</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By Bill Cypher</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>function addGitalkSource () {
+  const ele = document.createElement('link')
+  ele.rel = 'stylesheet'
+  ele.href= 'https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.css'
+  document.getElementsByTagName('head')[0].appendChild(ele)
+}
+
+function loadGitalk () {
+  function initGitalk () {
+    var gitalk = new Gitalk(Object.assign({
+      clientID: 'c61a274b6f5aa26a58f6',
+      clientSecret: '485a7761d321c8dcc5cae05d7256be9fb196d94a',
+      repo: 'yu627482453.github.io',
+      owner: 'yu627482453',
+      admin: ['yu627482453'],
+      id: '902a1f2964b690a756c9e3e2d06bcf50',
+      updateCountCallback: commentCount
+    },null))
+
+    gitalk.render('gitalk-container')
+  }
+
+  if (typeof Gitalk === 'function') initGitalk()
+  else {
+    addGitalkSource()
+    getScript('https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.js').then(initGitalk)
+  }
+}
+
+function commentCount(n){
+  let isCommentCount = document.querySelector('#post-meta .gitalk-comment-count')
+  if (isCommentCount) {
+    isCommentCount.innerHTML= n
+  }
+}
+
+if ('Gitalk' === 'Gitalk' || !true) {
+  if (true) btf.loadComment(document.getElementById('gitalk-container'), loadGitalk)
+  else loadGitalk()
+} else {
+  function loadOtherComment () {
+    loadGitalk()
+  }
+}</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
