@@ -5,7 +5,7 @@
 <meta property="og:site_name" content="蝶梦庄生">
 <meta property="og:description" content="MySQL 默认的事务型存储引擎，**只有在需要它不支持的特性时，才考虑使用其它存储引擎。**">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg">
+<meta property="og:image" content="https://cdn.seovx.com/?mom=302">
 <meta property="article:published_time" content="2022-12-20T08:12:00.000Z">
 <meta property="article:modified_time" content="2022-12-20T08:12:00.000Z">
 <meta property="article:author" content="Bill Cipher">
@@ -14,7 +14,7 @@
 <meta property="article:tag" content="主题场景&#x2F;数据存储">
 <meta property="article:tag" content="细化主题&#x2F;数据存储&#x2F;MySQL">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://yu627482453.github.io/database/mysql/mysql-innodb/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+<meta name="twitter:image" content="https://cdn.seovx.com/?mom=302"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://yu627482453.github.io/database/mysql/mysql-innodb/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
   root: '/',
   algolia: undefined,
   localSearch: {"path":"/search.xml","preload":true,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
@@ -147,9 +147,7 @@
     detectApple()
     })(window)</script><meta name="generator" content="Hexo 6.2.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">240</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">69</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">蝶梦庄生</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">【MySQL】 InnoDB</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-12-20T08:12:00.000Z" title="发表于 2022-12-20 16:12:00">2022-12-20</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-12-20T08:12:00.000Z" title="更新于 2022-12-20 16:12:00">2022-12-20</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/">数据存储</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="【MySQL】 InnoDB"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1>【MySQL】 InnoDB</h1>
-<h2 id="Metadata-6">Metadata</h2>
-<pre><code class="language-yml">title: 【MySQL】 InnoDB
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">240</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">69</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cdn.seovx.com/?mom=302')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">蝶梦庄生</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">【MySQL】 InnoDB</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-12-20T08:12:00.000Z" title="发表于 2022-12-20 16:12:00">2022-12-20</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-12-20T08:12:00.000Z" title="更新于 2022-12-20 16:12:00">2022-12-20</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/">数据存储</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="【MySQL】 InnoDB"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="【MySQL】-InnoDB"><a href="#【MySQL】-InnoDB" class="headerlink" title="【MySQL】 InnoDB"></a>【MySQL】 InnoDB</h1><h2 id="Metadata"><a href="#Metadata" class="headerlink" title="Metadata"></a>Metadata</h2><pre><code class="line-numbers language-yml">title: 【MySQL】 InnoDB
 date: 2022-12-20 16:12
 tags:
   - 行动阶段/完成
@@ -162,18 +160,14 @@ keywords:
   - 数据存储
 description:  MySQL 默认的事务型存储引擎，**只有在需要它不支持的特性时，才考虑使用其它存储引擎。**
 </code></pre>
-<h2 id="概述-4">概述</h2>
-<p>InnoDB是MySQL的默认事务型存储引擎，除非需要其他引擎所支持的特性，否则应该优先考虑使用InnoDB。</p>
-<h3 id="行格式">行格式</h3>
-<p><img src="/attachment/ffcf84f82ac6280384c56151ffc2bd25.png" alt=""></p>
+<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>InnoDB是MySQL的默认事务型存储引擎，除非需要其他引擎所支持的特性，否则应该优先考虑使用InnoDB。</p>
+<h3 id="行格式"><a href="#行格式" class="headerlink" title="行格式"></a>行格式</h3><p><img src="/attachment/ffcf84f82ac6280384c56151ffc2bd25.png"></p>
 <ol>
 <li>InnoDB将数据划分为以页为单位的基本交互单元，页的大小通常为<strong>16KB</strong>。</li>
 <li>行格式是指以<strong>记录</strong>为单位向表中<strong>插入数据</strong>的方式，也被称为记录格式。InnoDB支持多种行格式，包括<strong>Compact</strong>、<strong>Redundant</strong>、<strong>Dynamic</strong>和<strong>Compressed</strong>。</li>
-<li>COMPACT行格式是InnoDB中的一种行格式，记录的<strong>额外信息</strong>包括<strong>变长字段长度列表</strong>和<strong>NULL值列表</strong>。变长字段长度列表存储了<strong>变长字段的真实数据占用的字节长度</strong>，NULL值列表表示记录中<strong>允许存储NULL值的列</strong>。
-<ol>
+<li>COMPACT行格式是InnoDB中的一种行格式，记录的<strong>额外信息</strong>包括<strong>变长字段长度列表</strong>和<strong>NULL值列表</strong>。变长字段长度列表存储了<strong>变长字段的真实数据占用的字节长度</strong>，NULL值列表表示记录中<strong>允许存储NULL值的列</strong>。<ol>
 <li><strong>记录头信息</strong>是固定的5个字节，包含了记录的一些<strong>标识信息</strong>，如<strong>是否被删除</strong>、<strong>记录的拥有者数量</strong>等。</li>
-<li>记录的<strong>真实数据</strong>包括<strong>隐藏列</strong>和<strong>用户自定义列</strong>，隐藏列包括<strong>row id</strong>、<strong>transaction_id</strong>和<strong>roll_pointer</strong>。
-<ol>
+<li>记录的<strong>真实数据</strong>包括<strong>隐藏列</strong>和<strong>用户自定义列</strong>，隐藏列包括<strong>row id</strong>、<strong>transaction_id</strong>和<strong>roll_pointer</strong>。<ol>
 <li>InnoDB对主键的生成策略是优先使用用户自定义主键，如果没有定义主键则选择Unique键，如果连Unique键都没有则默认添加一个名为row_id的隐藏列作为主键。</li>
 </ol>
 </li>
@@ -184,12 +178,10 @@ description:  MySQL 默认的事务型存储引擎，**只有在需要它不支�
 <li>行溢出数据指<strong>记录中超出页空间限制的部分</strong>，如VARCHAR(M)类型的数据。行溢出数据存储在其他页中，存储在记录中的是该列的部分数据和指向溢出页的地址。</li>
 <li><strong>DYNAMIC</strong>和<strong>COMPRESSED</strong>行格式是InnoDB中的其他行格式，它们在处理行溢出数据时与COMPACT和REDUNDANT有所不同，DYNAMIC和COMPRESSED行格式会将所有字节存储在其他页面中，并在记录的真实数据处存储其他页面的地址。COMRESSED行格式还使用<strong>压缩算法</strong>对页面进行压缩以节省空间。</li>
 </ol>
-<h3 id="数据页">数据页</h3>
-<p><img src="/attachment/a31994d655b51a3ad784cdb78a37cdec.png" alt=""></p>
+<h3 id="数据页"><a href="#数据页" class="headerlink" title="数据页"></a>数据页</h3><p><img src="/attachment/a31994d655b51a3ad784cdb78a37cdec.png"></p>
 <ol>
 <li>InnoDB为了不同的目的而设计了不同类型的页，我们把用于<strong>存放记录</strong>的页叫做<strong>数据页</strong>。</li>
-<li>一个数据页可以被大致划分为7个部分，分别是
-<ul>
+<li>一个数据页可以被大致划分为7个部分，分别是<ul>
 <li><strong>File Header</strong> ，表示<strong>页的一些通用信息</strong>，占固定的38字节。</li>
 <li><strong>Page Header</strong> ，表示<strong>数据页专有的一些信息</strong>，占固定的56个字节。</li>
 <li><strong>Infimum + Supremum</strong> ，两个<strong>虚拟的伪记录</strong>，分别表示页中的<strong>最小和最大记录</strong>，占固定的26 个字节。</li>
@@ -200,8 +192,7 @@ description:  MySQL 默认的事务型存储引擎，**只有在需要它不支�
 </ul>
 </li>
 <li>每个记录的头信息中都有一个<strong>next_record</strong> 属性，从而使页中的所有记录串联成一个单链表。</li>
-<li>InnoDB 会为把<strong>页中的记录</strong>划分为若干个<strong>组</strong>，每个组的最后一个记录的地址偏移量作为一个槽，存放在Page Directory 中，所以在一个页中根据主键查找记录是非常快的，分为两步：
-<ul>
+<li>InnoDB 会为把<strong>页中的记录</strong>划分为若干个<strong>组</strong>，每个组的最后一个记录的地址偏移量作为一个槽，存放在Page Directory 中，所以在一个页中根据主键查找记录是非常快的，分为两步：<ul>
 <li>通过<strong>二分法</strong>确定该记录所在的槽。</li>
 <li>通过记录的<strong>next_record属性遍历</strong>该槽所在的组中的各个记录。</li>
 </ul>
@@ -209,18 +200,13 @@ description:  MySQL 默认的事务型存储引擎，**只有在需要它不支�
 <li>每个数据页的File Header 部分都有上一个和下一个页的编号，所以所有的数据页会组成一个<strong>双链表</strong>。</li>
 <li>为保证从内存中同步到磁盘的页的完整性，在页的首部和尾部都会存储页中数据的<strong>校验和</strong>和页面最后修改时<strong>对应的LSN 值</strong>，如果首部和尾部的校验和和LSN 值校验不成功的话，就说明同步过程出现了问题。</li>
 </ol>
-<h2 id="InnoDB-2">InnoDB</h2>
-<p>MySQL 默认的事务型存储引擎，<strong>只有在需要它不支持的特性时，才考虑使用其它存储引擎。</strong></p>
+<h2 id="InnoDB"><a href="#InnoDB" class="headerlink" title="InnoDB"></a>InnoDB</h2><p> MySQL 默认的事务型存储引擎，<strong>只有在需要它不支持的特性时，才考虑使用其它存储引擎。</strong></p>
 <p>将数据划分为若干个页，以页作为磁盘和内存之间交互的基本单位，InnoDB中页的大小一般为16KB。</p>
-<h2 id="行格式-2">行格式</h2>
-<p>以<strong>记录</strong>为单位来向表中插入数据的，这些记录在磁盘上的存放方式也被称为<strong>行格式</strong>或者<strong>记录格式</strong>。</p>
+<h2 id="行格式-1"><a href="#行格式-1" class="headerlink" title="行格式"></a>行格式</h2><p>以<strong>记录</strong>为单位来向表中插入数据的，这些记录在磁盘上的存放方式也被称为<strong>行格式</strong>或者<strong>记录格式</strong>。</p>
 <p>分别是Compact、Redundant、Dynamic和Compressed行格式</p>
-<h3 id="COMPACT行格式">COMPACT行格式</h3>
-<p><img src="/attachment/ffcf84f82ac6280384c56151ffc2bd25.png" alt=""></p>
-<h4 id="记录的额外信息">记录的额外信息</h4>
-<p>服务器为了描述这条记录而不得不额外添加的一些信息</p>
-<h5 id="变长字段长度列表">变长字段长度列表</h5>
-<p>变长字段占用的存储空间:</p>
+<h3 id="COMPACT行格式"><a href="#COMPACT行格式" class="headerlink" title="COMPACT行格式"></a>COMPACT行格式</h3><p><img src="/attachment/ffcf84f82ac6280384c56151ffc2bd25.png"></p>
+<h4 id="记录的额外信息"><a href="#记录的额外信息" class="headerlink" title="记录的额外信息"></a>记录的额外信息</h4><p>服务器为了描述这条记录而不得不额外添加的一些信息</p>
+<h5 id="变长字段长度列表"><a href="#变长字段长度列表" class="headerlink" title="变长字段长度列表"></a>变长字段长度列表</h5><p>变长字段占用的存储空间: </p>
 <ol>
 <li>真正的数据内容</li>
 <li>占用的字节数</li>
@@ -235,8 +221,7 @@ description:  MySQL 默认的事务型存储引擎，**只有在需要它不支�
 <p><strong>规则</strong></p>
 <ul>
 <li>如果M×W &lt;= 255 ，那么使用1个字节来表示真正字符串占用的字节数。</li>
-<li>如果M×W &gt; 255 ，则分为两种情况：
-<ul>
+<li>如果M×W &gt; 255 ，则分为两种情况：<ul>
 <li>如果L &lt;= 127 ，则用1个字节来表示真正字符串占用的字节数。</li>
 <li>如果L &gt; 127 ，则用2个字节来表示真正字符串占用的字节数。</li>
 </ul>
@@ -244,15 +229,13 @@ description:  MySQL 默认的事务型存储引擎，**只有在需要它不支�
 </ul>
 <p>总结一下就是说：如果该可变字段允许存储的最大字节数（ M×W ）超过255字节并且真实存储的字节数（ L ）超过127字节，则使用2个字节，否则使用1个字节。</p>
 <p><strong>变长字段长度列表中只存储值为 非NULL 的列内容占用的长度，值为 NULL 的列的长度是不储存的</strong></p>
-<h5 id="NULL值列表">NULL值列表</h5>
-<ul>
+<h5 id="NULL值列表"><a href="#NULL值列表" class="headerlink" title="NULL值列表"></a>NULL值列表</h5><ul>
 <li>首先统计表中允许存储NULL 的列有哪些。</li>
 <li>如果表中没有允许存储 NULL 的列，则 NULL值列表 也不存在了，否则将每个允许存储NULL 的列对应一个二进制位，二进制位按照列的顺序逆序排列</li>
 <li>MySQL 规定NULL值列表必须用整数个字节的位表示，如果使用的二进制位个数不是整数个字节，则在字节的高位补0 。</li>
 </ul>
-<h5 id="记录头信息">记录头信息</h5>
-<p>固定的5 个字节组成。5 个字节也就是40 个二进制位，不同的位代表不同的意思</p>
-<p><img src="/attachment/92b510b3a75ffc30bdf391748efce9ac.png" alt=""></p>
+<h5 id="记录头信息"><a href="#记录头信息" class="headerlink" title="记录头信息"></a>记录头信息</h5><p>固定的5 个字节组成。5 个字节也就是40 个二进制位，不同的位代表不同的意思</p>
+<p><img src="/attachment/92b510b3a75ffc30bdf391748efce9ac.png"></p>
 <table>
 <thead>
 <tr>
@@ -261,8 +244,7 @@ description:  MySQL 默认的事务型存储引擎，**只有在需要它不支�
 <th>描述</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>预留位1</td>
 <td>1</td>
 <td>没有使用</td>
@@ -302,10 +284,8 @@ description:  MySQL 默认的事务型存储引擎，**只有在需要它不支�
 <td>16</td>
 <td>表示下一条记录的相对位置</td>
 </tr>
-</tbody>
-</table>
-<h4 id="记录的真实数据">记录的真实数据</h4>
-<p>MySQL 会为每个记录默认的添加一些列（也称为隐藏列）</p>
+</tbody></table>
+<h4 id="记录的真实数据"><a href="#记录的真实数据" class="headerlink" title="记录的真实数据"></a>记录的真实数据</h4><p>MySQL 会为每个记录默认的添加一些列（也称为隐藏列）</p>
 <table>
 <thead>
 <tr>
@@ -315,8 +295,7 @@ description:  MySQL 默认的事务型存储引擎，**只有在需要它不支�
 <th>描述</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>row id</td>
 <td>否</td>
 <td>6字节</td>
@@ -334,8 +313,7 @@ description:  MySQL 默认的事务型存储引擎，**只有在需要它不支�
 <td>7字节</td>
 <td>回滚指针</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <p><strong>InnoDB 表对主键的生成策略</strong></p>
 <ul>
 <li>优先使用用户自定义主键作为主键</li>
@@ -343,48 +321,32 @@ description:  MySQL 默认的事务型存储引擎，**只有在需要它不支�
 <li>如果表中连Unique 键都没有定义的话，则InnoDB 会为表默认添加一个名为row_id 的隐藏列作为主键</li>
 </ul>
 <p><strong>InnoDB存储引擎会为每条记录都添加 transaction_id和 roll_pointer 这两个列，但是 row_id 是可选的</strong></p>
-<p><img src="/attachment/164897cb2e3fc44d89528b0d3cf79ca4.png" alt=""></p>
-<h4 id="CHAR-M-列的存储格式">CHAR(M)列的存储格式</h4>
-<p>对于 CHAR(M) 类型的列来说，当列采用的是定长字符集时，该列占用的字节数不会被加到变长字段长度列表，<br>
-而如果采用变长字符集时，该列占用的字节数也会被加到变长字段长度列表。</p>
-<h3 id="Redundant行格式">Redundant行格式</h3>
-<p><img src="/attachment/c8a585e1b88c21da69c71bd0d5b6d2ac.png" alt=""></p>
-<p><img src="/attachment/e615d50c68ae175b01974487ee04f066.png" alt=""></p>
-<p><img src="/attachment/58357277011ad88f08775b314c6f05a1.png" alt=""></p>
-<h4 id="字段长度偏移列表">字段长度偏移列表</h4>
-<ul>
+<p><img src="/attachment/164897cb2e3fc44d89528b0d3cf79ca4.png"></p>
+<h4 id="CHAR-M-列的存储格式"><a href="#CHAR-M-列的存储格式" class="headerlink" title="CHAR(M)列的存储格式"></a>CHAR(M)列的存储格式</h4><p>对于 CHAR(M) 类型的列来说，当列采用的是定长字符集时，该列占用的字节数不会被加到变长字段长度列表，<br>而如果采用变长字符集时，该列占用的字节数也会被加到变长字段长度列表。</p>
+<h3 id="Redundant行格式"><a href="#Redundant行格式" class="headerlink" title="Redundant行格式"></a>Redundant行格式</h3><p><img src="/attachment/c8a585e1b88c21da69c71bd0d5b6d2ac.png"></p>
+<p><img src="/attachment/e615d50c68ae175b01974487ee04f066.png"></p>
+<p><img src="/attachment/58357277011ad88f08775b314c6f05a1.png"></p>
+<h4 id="字段长度偏移列表"><a href="#字段长度偏移列表" class="headerlink" title="字段长度偏移列表"></a>字段长度偏移列表</h4><ul>
 <li>Redundant 行格式会把该条记录中所有列（包括隐藏列）的长度信息都按照逆序存储到字段长度偏移列表</li>
 <li>多了个偏移两个字，这意味着计算列值长度的方式不像Compact 行格式那么直观，它是采用两个相邻数值的差值来计算各个列值的长度。</li>
 </ul>
-<h4 id="记录头信息-2">记录头信息</h4>
-<p>Redundant 行格式的记录头信息占用6 字节， 48 个二进制位</p>
-<h5 id="Redundant-行格式中NULL-值的处理">Redundant 行格式中NULL 值的处理</h5>
-<p>字段长度偏移列表中的各个列对应的偏移量处做了一些特殊处理 —— 将列对应的偏移量值的第一个比特位作为是否为NULL 的依据，该比特位也可以被称之为NULL比特位。</p>
+<h4 id="记录头信息-1"><a href="#记录头信息-1" class="headerlink" title="记录头信息"></a>记录头信息</h4><p>Redundant 行格式的记录头信息占用6 字节， 48 个二进制位</p>
+<h5 id="Redundant-行格式中NULL-值的处理"><a href="#Redundant-行格式中NULL-值的处理" class="headerlink" title="Redundant 行格式中NULL 值的处理"></a>Redundant 行格式中NULL 值的处理</h5><p>字段长度偏移列表中的各个列对应的偏移量处做了一些特殊处理 —— 将列对应的偏移量值的第一个比特位作为是否为NULL 的依据，该比特位也可以被称之为NULL比特位。</p>
 <p>在解析一条记录的某个列时，首先看一下该列对应的偏移量的NULL比特位是不是为1 ，如果为1 ，那么该列的值就是NULL ，否则不是NULL 。</p>
-<h5 id="CHAR-M-列的存储格式-2">CHAR(M)列的存储格式</h5>
-<p>只要是使用CHAR(M) 类型，占用的真实数据空间就是该字符集表示一个字符最多需要的字节数和M 的乘积。</p>
-<h4 id="行溢出数据">行溢出数据</h4>
-<h5 id="VARCHAR-M-最多能存储的数据">VARCHAR(M)最多能存储的数据</h5>
-<p>M 最大值是 65535 / W</p>
-<h5 id="记录中的数据太多产生的溢出">记录中的数据太多产生的溢出</h5>
-<p>在本记录的真实数据处只会存储该列的前768 个字节的数据和一个指向其他页的地址，然后把剩下的数据存放到其他页中，这个过程也叫做<strong>行溢出</strong>，存储超出768 字节的那些页面也被称为<strong>溢出页</strong>。</p>
-<p><img src="/attachment/fa846e68587c3abb51a847d2138c0d10.png" alt=""></p>
-<h5 id="行溢出的临界点">行溢出的临界点</h5>
-<p>MySQL 中规定一个页中至少存放两行记录</p>
+<h5 id="CHAR-M-列的存储格式-1"><a href="#CHAR-M-列的存储格式-1" class="headerlink" title="CHAR(M)列的存储格式"></a>CHAR(M)列的存储格式</h5><p>只要是使用CHAR(M) 类型，占用的真实数据空间就是该字符集表示一个字符最多需要的字节数和M 的乘积。</p>
+<h4 id="行溢出数据"><a href="#行溢出数据" class="headerlink" title="行溢出数据"></a>行溢出数据</h4><h5 id="VARCHAR-M-最多能存储的数据"><a href="#VARCHAR-M-最多能存储的数据" class="headerlink" title="VARCHAR(M)最多能存储的数据"></a>VARCHAR(M)最多能存储的数据</h5><p>M 最大值是 65535 / W</p>
+<h5 id="记录中的数据太多产生的溢出"><a href="#记录中的数据太多产生的溢出" class="headerlink" title="记录中的数据太多产生的溢出"></a>记录中的数据太多产生的溢出</h5><p>在本记录的真实数据处只会存储该列的前768 个字节的数据和一个指向其他页的地址，然后把剩下的数据存放到其他页中，这个过程也叫做<strong>行溢出</strong>，存储超出768 字节的那些页面也被称为<strong>溢出页</strong>。</p>
+<p><img src="/attachment/fa846e68587c3abb51a847d2138c0d10.png"></p>
+<h5 id="行溢出的临界点"><a href="#行溢出的临界点" class="headerlink" title="行溢出的临界点"></a>行溢出的临界点</h5><p>MySQL 中规定一个页中至少存放两行记录</p>
 <p>一个行中存储了很大的数据时，可能发生行溢出的现象</p>
-<h3 id="Dynamic和Compressed行格式">Dynamic和Compressed行格式</h3>
-<p>版本是5.7 ，它的默认行格式就是<strong>Dynamic</strong></p>
-<p>这俩行格式和Compact 行格式挺像，只不过在处理行溢出数据时有点儿分歧<br>
-把所有的字节都存储到其他页面中，只在记录的真实数据处存储其他页面的地址</p>
-<p><img src="/attachment/65e9f4a9a902df32abf850d2fc6caaba.png" alt=""></p>
+<h3 id="Dynamic和Compressed行格式"><a href="#Dynamic和Compressed行格式" class="headerlink" title="Dynamic和Compressed行格式"></a>Dynamic和Compressed行格式</h3><p>版本是5.7 ，它的默认行格式就是<strong>Dynamic</strong></p>
+<p>这俩行格式和Compact 行格式挺像，只不过在处理行溢出数据时有点儿分歧<br>把所有的字节都存储到其他页面中，只在记录的真实数据处存储其他页面的地址</p>
+<p><img src="/attachment/65e9f4a9a902df32abf850d2fc6caaba.png"></p>
 <p>Compressed 行格式和Dynamic 不同的一点是， Compressed 行格式会采用压缩算法对页面进行压缩，以节省空间。</p>
-<h2 id="InnoDB数据页结构">InnoDB数据页结构</h2>
-<h3 id="不同类型的页简介">不同类型的页简介</h3>
-<p>一个页的大小一般是16KB</p>
+<h2 id="InnoDB数据页结构"><a href="#InnoDB数据页结构" class="headerlink" title="InnoDB数据页结构"></a>InnoDB数据页结构</h2><h3 id="不同类型的页简介"><a href="#不同类型的页简介" class="headerlink" title="不同类型的页简介"></a>不同类型的页简介</h3><p>一个页的大小一般是16KB</p>
 <p>InnoDB 为了不同的目的而设计了许多种不同类型的页，比如存放表空间头部信息的页，存放Insert Buffer信息的页，存放INODE 信息的页，存放undo 日志信息的页等等等等</p>
 <p>存放记录的页为索引（ INDEX ）页</p>
-<h3 id="数据页结构的快速浏览">数据页结构的快速浏览</h3>
-<p><img src="/attachment/a31994d655b51a3ad784cdb78a37cdec.png" alt=""></p>
+<h3 id="数据页结构的快速浏览"><a href="#数据页结构的快速浏览" class="headerlink" title="数据页结构的快速浏览"></a>数据页结构的快速浏览</h3><p><img src="/attachment/a31994d655b51a3ad784cdb78a37cdec.png"></p>
 <table>
 <thead>
 <tr>
@@ -394,8 +356,7 @@ description:  MySQL 默认的事务型存储引擎，**只有在需要它不支�
 <th>简单描述</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>File Header</td>
 <td>文件头部</td>
 <td>38字节</td>
@@ -437,12 +398,9 @@ description:  MySQL 默认的事务型存储引擎，**只有在需要它不支�
 <td>8 字节</td>
 <td>校验页是否完整</td>
 </tr>
-</tbody>
-</table>
-<h3 id="记录在页中的存储">记录在页中的存储</h3>
-<p><img src="/attachment/f7714d3da222a5413d0ae4326b8fb6b5.png" alt=""></p>
-<h4 id="记录头信息的秘密">记录头信息的秘密</h4>
-<ul>
+</tbody></table>
+<h3 id="记录在页中的存储"><a href="#记录在页中的存储" class="headerlink" title="记录在页中的存储"></a>记录在页中的存储</h3><p><img src="/attachment/f7714d3da222a5413d0ae4326b8fb6b5.png"></p>
+<h4 id="记录头信息的秘密"><a href="#记录头信息的秘密" class="headerlink" title="记录头信息的秘密"></a>记录头信息的秘密</h4><ul>
 <li>delete_mask</li>
 </ul>
 <p>这个属性标记着当前记录是否被删除，占用1个二进制位，值为0 的时候代表记录并没有被删除，为1 的时候代表记录被删除掉了。</p>
@@ -462,34 +420,27 @@ description:  MySQL 默认的事务型存储引擎，**只有在需要它不支�
 <li>record_type</li>
 </ul>
 <p>表示当前记录的类型</p>
-<p>0 表示普通记录<br>
-1 表示B+树非叶节点记录 (目录项记录)<br>
-2 表示最小记录<br>
-3 表示最大记录</p>
+<p>0 表示普通记录<br>1 表示B+树非叶节点记录 (目录项记录)<br>2 表示最小记录<br>3 表示最大记录</p>
 <ul>
 <li>next_record</li>
 </ul>
 <p>从当前记录的真实数据到下一条记录的真实数据的地址偏移量</p>
 <p>下一条记录指得是按照主键值由小到大的顺序的下一条记录</p>
 <p>规定 Infimum记录（也就是最小记录） 的下一条记录就是本页中主键值最小的用户记录，而本页中主键值最大的用户记录的下一条记录就是 Supremum记录（也就是最大记录）</p>
-<h3 id="Page-Directory（页目录）">Page Directory（页目录）</h3>
-<ol>
+<h3 id="Page-Directory（页目录）"><a href="#Page-Directory（页目录）" class="headerlink" title="Page Directory（页目录）"></a>Page Directory（页目录）</h3><ol>
 <li>将所有正常的记录（包括最大和最小记录，不包括标记为已删除的记录）划分为几个组。</li>
 <li>每个组的最后一条记录（也就是组内最大的那条记录）的头信息中的n_owned 属性表示该记录拥有多少条记录，也就是该组内共有几条记录。</li>
 <li>将每个组的最后一条记录的地址偏移量单独提取出来按顺序存储到靠近页的尾部的地方，这个地方就是所谓的Page Directory ，也就是页目录（此时应该返回头看看页面各个部分的图）。页面目录中的这些地址偏移量被称为槽（英文名： Slot ），所以这个页面目录就是由槽组成的。</li>
 </ol>
-<p>对于最小记录所在的分组只能有 1 条记录，最大记录所在的分组拥有的记录条数只能在 1~8 条之间，剩下的分组中记录的条数范围只能在是 4~8 条之间。</p>
+<p>对于最小记录所在的分组只能有 1 条记录，最大记录所在的分组拥有的记录条数只能在 1<del>8 条之间，剩下的分组中记录的条数范围只能在是 4</del>8 条之间。</p>
 <p><strong>分组是按照下边的步骤进行的</strong></p>
-<p>初始情况下一个数据页里只有最小记录和最大记录两条记录，它们分属于两个分组。<br>
-之后每插入一条记录，都会从页目录中找到主键值比本记录的主键值大并且差值最小的槽，然后把该槽对应的记录的n_owned 值加1，表示本组内又添加了一条记录，直到该组中的记录数等于8个。<br>
-在一个组中的记录数等于8个后再插入一条记录时，会将组中的记录拆分成两个组，一个组中4条记录，另一个5条记录。这个过程会在页目录中新增一个槽来记录这个新增分组中最大的那条记录的偏移量。</p>
+<p>初始情况下一个数据页里只有最小记录和最大记录两条记录，它们分属于两个分组。<br>之后每插入一条记录，都会从页目录中找到主键值比本记录的主键值大并且差值最小的槽，然后把该槽对应的记录的n_owned 值加1，表示本组内又添加了一条记录，直到该组中的记录数等于8个。<br>在一个组中的记录数等于8个后再插入一条记录时，会将组中的记录拆分成两个组，一个组中4条记录，另一个5条记录。这个过程会在页目录中新增一个槽来记录这个新增分组中最大的那条记录的偏移量。</p>
 <p><strong>在一个数据页中查找指定主键值的记录的过程分为两步</strong></p>
 <ol>
 <li>通过二分法确定该记录所在的槽，并找到该槽中主键值最小的那条记录。</li>
 <li>通过记录的next_record 属性遍历该槽所在的组中的各个记录。</li>
 </ol>
-<h3 id="Page-Header（页面头部）">Page Header（页面头部）</h3>
-<p>Page Header 是专门针对数据页记录的各种状态信息，比方说页里头有多少个记录了呀，有多少个槽</p>
+<h3 id="Page-Header（页面头部）"><a href="#Page-Header（页面头部）" class="headerlink" title="Page Header（页面头部）"></a>Page Header（页面头部）</h3><p>Page Header 是专门针对数据页记录的各种状态信息，比方说页里头有多少个记录了呀，有多少个槽</p>
 <table>
 <thead>
 <tr>
@@ -498,8 +449,7 @@ description:  MySQL 默认的事务型存储引擎，**只有在需要它不支�
 <th>占用空间大小</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>PAGE_N_DIR_SLOTS</td>
 <td>2字节</td>
 <td>在页目录中的槽数量</td>
@@ -569,8 +519,7 @@ description:  MySQL 默认的事务型存储引擎，**只有在需要它不支�
 <td>10 字节</td>
 <td>“B+树非叶子段的头部信息,仅在B+树的Root页定义”</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <ul>
 <li>PAGE_DIRECTION</li>
 </ul>
@@ -579,8 +528,7 @@ description:  MySQL 默认的事务型存储引擎，**只有在需要它不支�
 <li>PAGE_N_DIRECTION</li>
 </ul>
 <p>InnoDB 会把沿着同一个方向插入记录的条数记下来，这个条数就用PAGE_N_DIRECTION 这个状态表示</p>
-<h3 id="File-Header（文件头部）">File Header（文件头部）</h3>
-<p>描述了一些针对各种页都通用的一些信息</p>
+<h3 id="File-Header（文件头部）"><a href="#File-Header（文件头部）" class="headerlink" title="File Header（文件头部）"></a>File Header（文件头部）</h3><p>描述了一些针对各种页都通用的一些信息</p>
 <table>
 <thead>
 <tr>
@@ -589,8 +537,7 @@ description:  MySQL 默认的事务型存储引擎，**只有在需要它不支�
 <th>描述</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>FIL_PAGE_SPACE_OR_CHKSUM</td>
 <td>4字节</td>
 <td>页的校验和 (checksum值)</td>
@@ -630,8 +577,7 @@ description:  MySQL 默认的事务型存储引擎，**只有在需要它不支�
 <td>4字节</td>
 <td>页属于哪个表空间</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <ul>
 <li>FIL_PAGE_SPACE_OR_CHKSUM</li>
 </ul>
@@ -649,13 +595,12 @@ description:  MySQL 默认的事务型存储引擎，**只有在需要它不支�
 </ul>
 <p>FIL_PAGE_PREV 和FIL_PAGE_NEXT就分别代表本页的上一个和下一个页的页号</p>
 <p>并不是所有类型的页都有上一个和下一个页的属性</p>
-<h3 id="File-Trailer">File Trailer</h3>
-<p>每个页的尾部都加了一个File Trailer 部分</p>
+<h3 id="File-Trailer"><a href="#File-Trailer" class="headerlink" title="File Trailer"></a>File Trailer</h3><p>每个页的尾部都加了一个File Trailer 部分</p>
 <ul>
 <li>前4个字节代表页的校验和</li>
 <li>后4个字节代表页面被最后修改时对应的日志序列位置（LSN）</li>
 </ul>
-</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a target="_blank" rel="noopener" href="https://github.com/yu627482453">Bill Cipher</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://yu627482453.github.io/database/mysql/mysql-innodb/">https://yu627482453.github.io/database/mysql/mysql-innodb/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://yu627482453.github.io" target="_blank">蝶梦庄生</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E8%A1%8C%E5%8A%A8%E9%98%B6%E6%AE%B5-%E5%AE%8C%E6%88%90/">行动阶段/完成</a><a class="post-meta__tags" href="/tags/%E7%AC%94%E8%AE%B0%E7%A9%BA%E9%97%B4-KnowladgeSpace-ProgramSpace-BasicsSpace/">笔记空间/KnowladgeSpace/ProgramSpace/BasicsSpace</a><a class="post-meta__tags" href="/tags/%E4%B8%BB%E9%A2%98%E5%9C%BA%E6%99%AF-%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/">主题场景/数据存储</a><a class="post-meta__tags" href="/tags/%E7%BB%86%E5%8C%96%E4%B8%BB%E9%A2%98-%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8-MySQL/">细化主题/数据存储/MySQL</a></div><div class="post_share"><div class="social-share" data-image="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/reward/wechat.jpg" target="_blank"><img class="post-qr-code-img" src="/img/reward/wechat.jpg" alt="wechat"/></a><div class="post-qr-code-desc">wechat</div></li><li class="reward-item"><a href="/img/reward/alipay.jpg" target="_blank"><img class="post-qr-code-img" src="/img/reward/alipay.jpg" alt="alipay"/></a><div class="post-qr-code-desc">alipay</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/database/mysql/mysql-cun-chu-yin-qing/"><img class="prev-cover" src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">【MySQL】 存储引擎</div></div></a></div><div class="next-post pull-right"><a href="/database/mysql/mysql-b-shu-suo-yin/"><img class="next-cover" src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">【MySQL】 B+树索引</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/database/mysql/mysql-innodb-de-mvcc-shi-xian-ji-zhi/" title="【MySQL】 InnoDB的MVCC实现机制"><img class="cover" src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-12-20</div><div class="title">【MySQL】 InnoDB的MVCC实现机制</div></div></a></div><div><a href="/database/mysql/mysql-zhu-cong-fu-zhi-yu-du-xie-fen-chi/" title="【MySQL】 主从复制与读写分离"><img class="cover" src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-12-20</div><div class="title">【MySQL】 主从复制与读写分离</div></div></a></div><div><a href="/database/mysql/mysql-xing-neng-you-hua/" title="【MySQL】 性能优化"><img class="cover" src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-12-20</div><div class="title">【MySQL】 性能优化</div></div></a></div><div><a href="/database/mysql/mysql-shu-ju-lei-xing/" title="【MySQL】 数据类型"><img class="cover" src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-12-20</div><div class="title">【MySQL】 数据类型</div></div></a></div><div><a href="/database/mysql/mysql-cun-chu-yin-qing/" title="【MySQL】 存储引擎"><img class="cover" src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-12-20</div><div class="title">【MySQL】 存储引擎</div></div></a></div><div><a href="/database/mysql/mysql-fen-ku-fen-biao/" title="【MySQL】 分库分表"><img class="cover" src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-12-20</div><div class="title">【MySQL】 分库分表</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="gitalk-container"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Bill Cipher</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">240</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">69</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/yu627482453"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/yu627482453" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="/627482453@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">1.</span> <span class="toc-text">【MySQL】 InnoDB</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Metadata-6"><span class="toc-number">1.1.</span> <span class="toc-text">Metadata</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A6%82%E8%BF%B0-4"><span class="toc-number">1.2.</span> <span class="toc-text">概述</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A1%8C%E6%A0%BC%E5%BC%8F"><span class="toc-number">1.2.1.</span> <span class="toc-text">行格式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E9%A1%B5"><span class="toc-number">1.2.2.</span> <span class="toc-text">数据页</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#InnoDB-2"><span class="toc-number">1.3.</span> <span class="toc-text">InnoDB</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A1%8C%E6%A0%BC%E5%BC%8F-2"><span class="toc-number">1.4.</span> <span class="toc-text">行格式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#COMPACT%E8%A1%8C%E6%A0%BC%E5%BC%8F"><span class="toc-number">1.4.1.</span> <span class="toc-text">COMPACT行格式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AE%B0%E5%BD%95%E7%9A%84%E9%A2%9D%E5%A4%96%E4%BF%A1%E6%81%AF"><span class="toc-number">1.4.1.1.</span> <span class="toc-text">记录的额外信息</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%8F%98%E9%95%BF%E5%AD%97%E6%AE%B5%E9%95%BF%E5%BA%A6%E5%88%97%E8%A1%A8"><span class="toc-number">1.4.1.1.1.</span> <span class="toc-text">变长字段长度列表</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#NULL%E5%80%BC%E5%88%97%E8%A1%A8"><span class="toc-number">1.4.1.1.2.</span> <span class="toc-text">NULL值列表</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%AE%B0%E5%BD%95%E5%A4%B4%E4%BF%A1%E6%81%AF"><span class="toc-number">1.4.1.1.3.</span> <span class="toc-text">记录头信息</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AE%B0%E5%BD%95%E7%9A%84%E7%9C%9F%E5%AE%9E%E6%95%B0%E6%8D%AE"><span class="toc-number">1.4.1.2.</span> <span class="toc-text">记录的真实数据</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#CHAR-M-%E5%88%97%E7%9A%84%E5%AD%98%E5%82%A8%E6%A0%BC%E5%BC%8F"><span class="toc-number">1.4.1.3.</span> <span class="toc-text">CHAR(M)列的存储格式</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Redundant%E8%A1%8C%E6%A0%BC%E5%BC%8F"><span class="toc-number">1.4.2.</span> <span class="toc-text">Redundant行格式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AD%97%E6%AE%B5%E9%95%BF%E5%BA%A6%E5%81%8F%E7%A7%BB%E5%88%97%E8%A1%A8"><span class="toc-number">1.4.2.1.</span> <span class="toc-text">字段长度偏移列表</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AE%B0%E5%BD%95%E5%A4%B4%E4%BF%A1%E6%81%AF-2"><span class="toc-number">1.4.2.2.</span> <span class="toc-text">记录头信息</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#Redundant-%E8%A1%8C%E6%A0%BC%E5%BC%8F%E4%B8%ADNULL-%E5%80%BC%E7%9A%84%E5%A4%84%E7%90%86"><span class="toc-number">1.4.2.2.1.</span> <span class="toc-text">Redundant 行格式中NULL 值的处理</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#CHAR-M-%E5%88%97%E7%9A%84%E5%AD%98%E5%82%A8%E6%A0%BC%E5%BC%8F-2"><span class="toc-number">1.4.2.2.2.</span> <span class="toc-text">CHAR(M)列的存储格式</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A1%8C%E6%BA%A2%E5%87%BA%E6%95%B0%E6%8D%AE"><span class="toc-number">1.4.2.3.</span> <span class="toc-text">行溢出数据</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#VARCHAR-M-%E6%9C%80%E5%A4%9A%E8%83%BD%E5%AD%98%E5%82%A8%E7%9A%84%E6%95%B0%E6%8D%AE"><span class="toc-number">1.4.2.3.1.</span> <span class="toc-text">VARCHAR(M)最多能存储的数据</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%AE%B0%E5%BD%95%E4%B8%AD%E7%9A%84%E6%95%B0%E6%8D%AE%E5%A4%AA%E5%A4%9A%E4%BA%A7%E7%94%9F%E7%9A%84%E6%BA%A2%E5%87%BA"><span class="toc-number">1.4.2.3.2.</span> <span class="toc-text">记录中的数据太多产生的溢出</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%A1%8C%E6%BA%A2%E5%87%BA%E7%9A%84%E4%B8%B4%E7%95%8C%E7%82%B9"><span class="toc-number">1.4.2.3.3.</span> <span class="toc-text">行溢出的临界点</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Dynamic%E5%92%8CCompressed%E8%A1%8C%E6%A0%BC%E5%BC%8F"><span class="toc-number">1.4.3.</span> <span class="toc-text">Dynamic和Compressed行格式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#InnoDB%E6%95%B0%E6%8D%AE%E9%A1%B5%E7%BB%93%E6%9E%84"><span class="toc-number">1.5.</span> <span class="toc-text">InnoDB数据页结构</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8D%E5%90%8C%E7%B1%BB%E5%9E%8B%E7%9A%84%E9%A1%B5%E7%AE%80%E4%BB%8B"><span class="toc-number">1.5.1.</span> <span class="toc-text">不同类型的页简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E9%A1%B5%E7%BB%93%E6%9E%84%E7%9A%84%E5%BF%AB%E9%80%9F%E6%B5%8F%E8%A7%88"><span class="toc-number">1.5.2.</span> <span class="toc-text">数据页结构的快速浏览</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%B0%E5%BD%95%E5%9C%A8%E9%A1%B5%E4%B8%AD%E7%9A%84%E5%AD%98%E5%82%A8"><span class="toc-number">1.5.3.</span> <span class="toc-text">记录在页中的存储</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AE%B0%E5%BD%95%E5%A4%B4%E4%BF%A1%E6%81%AF%E7%9A%84%E7%A7%98%E5%AF%86"><span class="toc-number">1.5.3.1.</span> <span class="toc-text">记录头信息的秘密</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Page-Directory%EF%BC%88%E9%A1%B5%E7%9B%AE%E5%BD%95%EF%BC%89"><span class="toc-number">1.5.4.</span> <span class="toc-text">Page Directory（页目录）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Page-Header%EF%BC%88%E9%A1%B5%E9%9D%A2%E5%A4%B4%E9%83%A8%EF%BC%89"><span class="toc-number">1.5.5.</span> <span class="toc-text">Page Header（页面头部）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#File-Header%EF%BC%88%E6%96%87%E4%BB%B6%E5%A4%B4%E9%83%A8%EF%BC%89"><span class="toc-number">1.5.6.</span> <span class="toc-text">File Header（文件头部）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#File-Trailer"><span class="toc-number">1.5.7.</span> <span class="toc-text">File Trailer</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/design/she-ji-mo-shi/" title="无题"><img src="https://cdn.seovx.com/?mom=302" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/design/she-ji-mo-shi/" title="无题">无题</a><time datetime="2023-07-15T09:13:39.871Z" title="发表于 2023-07-15 17:13:39">2023-07-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/design/xing-wei-mo-shi/xing-wei-mo-shi/" title="无题"><img src="https://cdn.seovx.com/?mom=302" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/design/xing-wei-mo-shi/xing-wei-mo-shi/" title="无题">无题</a><time datetime="2023-07-15T09:13:37.615Z" title="发表于 2023-07-15 17:13:37">2023-07-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/design/jie-gou-mo-shi/jie-gou-mo-shi/" title="无题"><img src="https://cdn.seovx.com/?mom=302" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/design/jie-gou-mo-shi/jie-gou-mo-shi/" title="无题">无题</a><time datetime="2023-07-15T09:13:33.180Z" title="发表于 2023-07-15 17:13:33">2023-07-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/design/chuang-jian-mo-shi/chuang-jian-mo-shi/" title="无题"><img src="https://cdn.seovx.com/?mom=302" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/design/chuang-jian-mo-shi/chuang-jian-mo-shi/" title="无题">无题</a><time datetime="2023-07-15T09:13:23.913Z" title="发表于 2023-07-15 17:13:23">2023-07-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/java/java-duo-xian-cheng-bing-fa/java-duo-xian-cheng-bing-fa-xian-cheng/java-duo-xian-cheng-bing-fa-xian-cheng/" title="【Java 多线程并发】 线程"><img src="https://cdn.seovx.com/?mom=302" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【Java 多线程并发】 线程"/></a><div class="content"><a class="title" href="/java/java-duo-xian-cheng-bing-fa/java-duo-xian-cheng-bing-fa-xian-cheng/java-duo-xian-cheng-bing-fa-xian-cheng/" title="【Java 多线程并发】 线程">【Java 多线程并发】 线程</a><time datetime="2023-07-10T06:15:00.000Z" title="发表于 2023-07-10 14:15:00">2023-07-10</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By Bill Cipher</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>function addGitalkSource () {
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a target="_blank" rel="noopener" href="https://github.com/yu627482453">Bill Cipher</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://yu627482453.github.io/database/mysql/mysql-innodb/">https://yu627482453.github.io/database/mysql/mysql-innodb/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://yu627482453.github.io" target="_blank">蝶梦庄生</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E8%A1%8C%E5%8A%A8%E9%98%B6%E6%AE%B5-%E5%AE%8C%E6%88%90/">行动阶段/完成</a><a class="post-meta__tags" href="/tags/%E7%AC%94%E8%AE%B0%E7%A9%BA%E9%97%B4-KnowladgeSpace-ProgramSpace-BasicsSpace/">笔记空间/KnowladgeSpace/ProgramSpace/BasicsSpace</a><a class="post-meta__tags" href="/tags/%E4%B8%BB%E9%A2%98%E5%9C%BA%E6%99%AF-%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/">主题场景/数据存储</a><a class="post-meta__tags" href="/tags/%E7%BB%86%E5%8C%96%E4%B8%BB%E9%A2%98-%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8-MySQL/">细化主题/数据存储/MySQL</a></div><div class="post_share"><div class="social-share" data-image="https://cdn.seovx.com/?mom=302" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/reward/wechat.jpg" target="_blank"><img class="post-qr-code-img" src="/img/reward/wechat.jpg" alt="wechat"/></a><div class="post-qr-code-desc">wechat</div></li><li class="reward-item"><a href="/img/reward/alipay.jpg" target="_blank"><img class="post-qr-code-img" src="/img/reward/alipay.jpg" alt="alipay"/></a><div class="post-qr-code-desc">alipay</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/database/mysql/mysql-b-shu-suo-yin/"><img class="prev-cover" src="https://cdn.seovx.com/?mom=302" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">【MySQL】 B+树索引</div></div></a></div><div class="next-post pull-right"><a href="/database/mysql/mysql-cun-chu-yin-qing/"><img class="next-cover" src="https://cdn.seovx.com/?mom=302" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">【MySQL】 存储引擎</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/database/mysql/mysql-b-shu-suo-yin/" title="【MySQL】 B+树索引"><img class="cover" src="https://cdn.seovx.com/?mom=302" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-12-20</div><div class="title">【MySQL】 B+树索引</div></div></a></div><div><a href="/database/mysql/mysql-innodb-de-mvcc-shi-xian-ji-zhi/" title="【MySQL】 InnoDB的MVCC实现机制"><img class="cover" src="https://cdn.seovx.com/?mom=302" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-12-20</div><div class="title">【MySQL】 InnoDB的MVCC实现机制</div></div></a></div><div><a href="/database/mysql/mysql-zhu-cong-fu-zhi-yu-du-xie-fen-chi/" title="【MySQL】 主从复制与读写分离"><img class="cover" src="https://cdn.seovx.com/?mom=302" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-12-20</div><div class="title">【MySQL】 主从复制与读写分离</div></div></a></div><div><a href="/database/mysql/mysql-fen-ku-fen-biao/" title="【MySQL】 分库分表"><img class="cover" src="https://cdn.seovx.com/?mom=302" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-12-20</div><div class="title">【MySQL】 分库分表</div></div></a></div><div><a href="/database/mysql/mysql-cun-chu-yin-qing/" title="【MySQL】 存储引擎"><img class="cover" src="https://cdn.seovx.com/?mom=302" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-12-20</div><div class="title">【MySQL】 存储引擎</div></div></a></div><div><a href="/database/mysql/mysql-zi-fu-ji/" title="【MySQL】 字符集"><img class="cover" src="https://cdn.seovx.com/?mom=302" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-12-20</div><div class="title">【MySQL】 字符集</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="gitalk-container"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Bill Cipher</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">240</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">69</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/yu627482453"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/yu627482453" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="/627482453@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E3%80%90MySQL%E3%80%91-InnoDB"><span class="toc-number">1.</span> <span class="toc-text">【MySQL】 InnoDB</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Metadata"><span class="toc-number">1.1.</span> <span class="toc-text">Metadata</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A6%82%E8%BF%B0"><span class="toc-number">1.2.</span> <span class="toc-text">概述</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A1%8C%E6%A0%BC%E5%BC%8F"><span class="toc-number">1.2.1.</span> <span class="toc-text">行格式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E9%A1%B5"><span class="toc-number">1.2.2.</span> <span class="toc-text">数据页</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#InnoDB"><span class="toc-number">1.3.</span> <span class="toc-text">InnoDB</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A1%8C%E6%A0%BC%E5%BC%8F-1"><span class="toc-number">1.4.</span> <span class="toc-text">行格式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#COMPACT%E8%A1%8C%E6%A0%BC%E5%BC%8F"><span class="toc-number">1.4.1.</span> <span class="toc-text">COMPACT行格式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AE%B0%E5%BD%95%E7%9A%84%E9%A2%9D%E5%A4%96%E4%BF%A1%E6%81%AF"><span class="toc-number">1.4.1.1.</span> <span class="toc-text">记录的额外信息</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%8F%98%E9%95%BF%E5%AD%97%E6%AE%B5%E9%95%BF%E5%BA%A6%E5%88%97%E8%A1%A8"><span class="toc-number">1.4.1.1.1.</span> <span class="toc-text">变长字段长度列表</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#NULL%E5%80%BC%E5%88%97%E8%A1%A8"><span class="toc-number">1.4.1.1.2.</span> <span class="toc-text">NULL值列表</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%AE%B0%E5%BD%95%E5%A4%B4%E4%BF%A1%E6%81%AF"><span class="toc-number">1.4.1.1.3.</span> <span class="toc-text">记录头信息</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AE%B0%E5%BD%95%E7%9A%84%E7%9C%9F%E5%AE%9E%E6%95%B0%E6%8D%AE"><span class="toc-number">1.4.1.2.</span> <span class="toc-text">记录的真实数据</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#CHAR-M-%E5%88%97%E7%9A%84%E5%AD%98%E5%82%A8%E6%A0%BC%E5%BC%8F"><span class="toc-number">1.4.1.3.</span> <span class="toc-text">CHAR(M)列的存储格式</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Redundant%E8%A1%8C%E6%A0%BC%E5%BC%8F"><span class="toc-number">1.4.2.</span> <span class="toc-text">Redundant行格式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AD%97%E6%AE%B5%E9%95%BF%E5%BA%A6%E5%81%8F%E7%A7%BB%E5%88%97%E8%A1%A8"><span class="toc-number">1.4.2.1.</span> <span class="toc-text">字段长度偏移列表</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AE%B0%E5%BD%95%E5%A4%B4%E4%BF%A1%E6%81%AF-1"><span class="toc-number">1.4.2.2.</span> <span class="toc-text">记录头信息</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#Redundant-%E8%A1%8C%E6%A0%BC%E5%BC%8F%E4%B8%ADNULL-%E5%80%BC%E7%9A%84%E5%A4%84%E7%90%86"><span class="toc-number">1.4.2.2.1.</span> <span class="toc-text">Redundant 行格式中NULL 值的处理</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#CHAR-M-%E5%88%97%E7%9A%84%E5%AD%98%E5%82%A8%E6%A0%BC%E5%BC%8F-1"><span class="toc-number">1.4.2.2.2.</span> <span class="toc-text">CHAR(M)列的存储格式</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A1%8C%E6%BA%A2%E5%87%BA%E6%95%B0%E6%8D%AE"><span class="toc-number">1.4.2.3.</span> <span class="toc-text">行溢出数据</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#VARCHAR-M-%E6%9C%80%E5%A4%9A%E8%83%BD%E5%AD%98%E5%82%A8%E7%9A%84%E6%95%B0%E6%8D%AE"><span class="toc-number">1.4.2.3.1.</span> <span class="toc-text">VARCHAR(M)最多能存储的数据</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%AE%B0%E5%BD%95%E4%B8%AD%E7%9A%84%E6%95%B0%E6%8D%AE%E5%A4%AA%E5%A4%9A%E4%BA%A7%E7%94%9F%E7%9A%84%E6%BA%A2%E5%87%BA"><span class="toc-number">1.4.2.3.2.</span> <span class="toc-text">记录中的数据太多产生的溢出</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%A1%8C%E6%BA%A2%E5%87%BA%E7%9A%84%E4%B8%B4%E7%95%8C%E7%82%B9"><span class="toc-number">1.4.2.3.3.</span> <span class="toc-text">行溢出的临界点</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Dynamic%E5%92%8CCompressed%E8%A1%8C%E6%A0%BC%E5%BC%8F"><span class="toc-number">1.4.3.</span> <span class="toc-text">Dynamic和Compressed行格式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#InnoDB%E6%95%B0%E6%8D%AE%E9%A1%B5%E7%BB%93%E6%9E%84"><span class="toc-number">1.5.</span> <span class="toc-text">InnoDB数据页结构</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8D%E5%90%8C%E7%B1%BB%E5%9E%8B%E7%9A%84%E9%A1%B5%E7%AE%80%E4%BB%8B"><span class="toc-number">1.5.1.</span> <span class="toc-text">不同类型的页简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E9%A1%B5%E7%BB%93%E6%9E%84%E7%9A%84%E5%BF%AB%E9%80%9F%E6%B5%8F%E8%A7%88"><span class="toc-number">1.5.2.</span> <span class="toc-text">数据页结构的快速浏览</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%B0%E5%BD%95%E5%9C%A8%E9%A1%B5%E4%B8%AD%E7%9A%84%E5%AD%98%E5%82%A8"><span class="toc-number">1.5.3.</span> <span class="toc-text">记录在页中的存储</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AE%B0%E5%BD%95%E5%A4%B4%E4%BF%A1%E6%81%AF%E7%9A%84%E7%A7%98%E5%AF%86"><span class="toc-number">1.5.3.1.</span> <span class="toc-text">记录头信息的秘密</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Page-Directory%EF%BC%88%E9%A1%B5%E7%9B%AE%E5%BD%95%EF%BC%89"><span class="toc-number">1.5.4.</span> <span class="toc-text">Page Directory（页目录）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Page-Header%EF%BC%88%E9%A1%B5%E9%9D%A2%E5%A4%B4%E9%83%A8%EF%BC%89"><span class="toc-number">1.5.5.</span> <span class="toc-text">Page Header（页面头部）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#File-Header%EF%BC%88%E6%96%87%E4%BB%B6%E5%A4%B4%E9%83%A8%EF%BC%89"><span class="toc-number">1.5.6.</span> <span class="toc-text">File Header（文件头部）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#File-Trailer"><span class="toc-number">1.5.7.</span> <span class="toc-text">File Trailer</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/design/she-ji-mo-shi/" title="无题"><img src="https://cdn.seovx.com/?mom=302" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/design/she-ji-mo-shi/" title="无题">无题</a><time datetime="2023-07-15T09:13:39.871Z" title="发表于 2023-07-15 17:13:39">2023-07-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/design/xing-wei-mo-shi/xing-wei-mo-shi/" title="无题"><img src="https://cdn.seovx.com/?mom=302" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/design/xing-wei-mo-shi/xing-wei-mo-shi/" title="无题">无题</a><time datetime="2023-07-15T09:13:37.615Z" title="发表于 2023-07-15 17:13:37">2023-07-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/design/jie-gou-mo-shi/jie-gou-mo-shi/" title="无题"><img src="https://cdn.seovx.com/?mom=302" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/design/jie-gou-mo-shi/jie-gou-mo-shi/" title="无题">无题</a><time datetime="2023-07-15T09:13:33.180Z" title="发表于 2023-07-15 17:13:33">2023-07-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/design/chuang-jian-mo-shi/chuang-jian-mo-shi/" title="无题"><img src="https://cdn.seovx.com/?mom=302" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/design/chuang-jian-mo-shi/chuang-jian-mo-shi/" title="无题">无题</a><time datetime="2023-07-15T09:13:23.913Z" title="发表于 2023-07-15 17:13:23">2023-07-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/java/java-duo-xian-cheng-bing-fa/java-duo-xian-cheng-bing-fa-xian-cheng/java-duo-xian-cheng-bing-fa-xian-cheng/" title="【Java 多线程并发】 线程"><img src="https://cdn.seovx.com/?mom=302" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【Java 多线程并发】 线程"/></a><div class="content"><a class="title" href="/java/java-duo-xian-cheng-bing-fa/java-duo-xian-cheng-bing-fa-xian-cheng/java-duo-xian-cheng-bing-fa-xian-cheng/" title="【Java 多线程并发】 线程">【Java 多线程并发】 线程</a><time datetime="2023-07-10T06:15:00.000Z" title="发表于 2023-07-10 14:15:00">2023-07-10</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By Bill Cipher</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>function addGitalkSource () {
   const ele = document.createElement('link')
   ele.rel = 'stylesheet'
   ele.href= 'https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.css'
