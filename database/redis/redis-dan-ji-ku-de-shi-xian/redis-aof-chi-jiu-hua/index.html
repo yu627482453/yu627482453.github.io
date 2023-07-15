@@ -1,0 +1,264 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>【Redis】 AOF 持久化 | 蝶梦庄生</title><meta name="keywords" content="数据存储/Redis"><meta name="author" content="Bill Cipher"><meta name="copyright" content="Bill Cipher"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="【Redis】 AOF 持久化">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【Redis】 AOF 持久化">
+<meta property="og:url" content="https://yu627482453.github.io/database/redis/redis-dan-ji-ku-de-shi-xian/redis-aof-chi-jiu-hua/index.html">
+<meta property="og:site_name" content="蝶梦庄生">
+<meta property="og:description" content="【Redis】 AOF 持久化">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://www.dmoe.cc/random.php">
+<meta property="article:published_time" content="2023-07-09T00:39:00.000Z">
+<meta property="article:modified_time" content="2023-07-09T00:39:00.000Z">
+<meta property="article:author" content="Bill Cipher">
+<meta property="article:tag" content="行动阶段&#x2F;完成">
+<meta property="article:tag" content="笔记空间&#x2F;KnowladgeSpace&#x2F;ProgramSpace&#x2F;BasicsSpace">
+<meta property="article:tag" content="主题场景&#x2F;数据存储">
+<meta property="article:tag" content="细化主题&#x2F;数据存储&#x2F;Redis">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.dmoe.cc/random.php"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://yu627482453.github.io/database/redis/redis-dan-ji-ku-de-shi-xian/redis-aof-chi-jiu-hua/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: undefined,
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: Bill Cipher","link":"链接: ","source":"来源: 蝶梦庄生","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '【Redis】 AOF 持久化',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-07-09 08:39:00'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.2.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">150</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">45</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://www.dmoe.cc/random.php')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">蝶梦庄生</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">【Redis】 AOF 持久化</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-07-09T00:39:00.000Z" title="发表于 2023-07-09 08:39:00">2023-07-09</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-07-09T00:39:00.000Z" title="更新于 2023-07-09 08:39:00">2023-07-09</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/">数据存储</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="【Redis】 AOF 持久化"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="【Redis】-AOF-持久化"><a href="#【Redis】-AOF-持久化" class="headerlink" title="【Redis】 AOF 持久化"></a>【Redis】 AOF 持久化</h1><h2 id="Metadata"><a href="#Metadata" class="headerlink" title="Metadata"></a>Metadata</h2><pre><code class="line-numbers language-yml">title: 【Redis】 AOF 持久化
+date: 2023-07-09 08:39
+tags:
+  - 行动阶段/完成
+  - 主题场景/数据存储
+  - 笔记空间/KnowladgeSpace/ProgramSpace/BasicsSpace
+  - 细化主题/数据存储/Redis
+categories:
+  - 数据存储
+keywords:
+  - 数据存储/Redis
+description: 【Redis】 AOF 持久化
+</code></pre>
+<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>AOF 持久化是通过保存 Redis 服务器所执行的写命令来记录数据库状态。服务器启动时，可通过载入和执行 AOF 文件中保存的命令来还原服务器关闭前的数据库状态。</p>
+<p><img src="/attachment/e07cc22d8e9bfa9cd0d5fce9b2a29b1c.png"></p>
+<ul>
+<li>AOF文件通过保存所有<strong>修改数据库的写命令</strong>请求来记录服务器的数据库状态。</li>
+<li>AOF文件中的所有命令都以<strong>Redis命令请求协议</strong>的格式保存。</li>
+<li>命令请求会先保存到<strong>AOF缓冲区</strong>里面，之后再定期写入并同步到AOF文件。</li>
+<li>appendfsy nc选项的不同值对AOF持久化功能的安全性以及Redis服务器的性能有很大的影响。</li>
+<li>服务器只要<strong>载入并重新执行保存在AOF文件中的命令</strong>，就可以还原数据库本来的状态。</li>
+<li>AOF重写可以产生一个新的AOF文件，这个新的AOF文件和原有的AOF文件所保存的数据库<strong>状态一样</strong>，但<strong>体积更小</strong>。</li>
+<li>AOF重写是一个有歧义的名字，该功能是通过读取数据库中的键值对来实现的，程序无须对现有AOF文件进行任何读入、分析或者写入操作。</li>
+<li>在执行BGREWRITEAOF命令时，Redis服务器会维护一个<strong>AOF重写缓冲区</strong>，该缓冲区会在子进程创建新AOF文件期间，记录服务器执行的所有写命令。当子进程完成创建新AOF</li>
+</ul>
+<p>文件的工作之后，服务器会将重写缓冲区中的所有内容追加到新AOF文件的末尾，使得新旧两个AOF文件所保存的数据库状态一致。最后，服务器用新的AOF文件替换旧的AOF文件，以此来完成AOF文件重写操作。</p>
+<h2 id="AOF-持久化的实现"><a href="#AOF-持久化的实现" class="headerlink" title="AOF 持久化的实现"></a>AOF 持久化的实现</h2><p>AOF 持久化可分为命令追加，文件写入，文件同步三个步骤。</p>
+<h3 id="命令追加"><a href="#命令追加" class="headerlink" title="命令追加"></a>命令追加</h3><p>开启 AOF 持久化后，服务器执行完一个写命令后，会以协议格式将被执行的写命令<strong>追加</strong>到服务器状态的 <strong>aof_buf 缓冲区末尾</strong>：</p>
+<pre><code class="line-numbers language-c">struct redisServer{
+    //AOF缓冲区
+    sds aof_buf;
+    ...
+};
+</code></pre>
+<h3 id="AOF-文件的写入与同步"><a href="#AOF-文件的写入与同步" class="headerlink" title="AOF 文件的写入与同步"></a>AOF 文件的写入与同步</h3><p>Redis 服务器进程就是一个<strong>事件循环</strong>，负责接收客户端命令请求及命令回复，时间事件负责执行向<code>serverCron</code>函数这样需要定时运行的函数。服务器每结束一个时间循环前，都会调用<code>flushAppendOnlyFile</code>函数，考虑是否有必要<strong>将 aof 缓冲区中的内容写入和保存至 AOF 文件</strong>里。这个判断的依据就是根据配置文件的 appendfsync 值决定：</p>
+<ul>
+<li>always：将 aof_buf 缓冲区的所有内容<strong>写入并同步</strong>到 AOF 文件。</li>
+<li>everysec：将 aof_buf 缓冲区中的所有内容写入到 AOF 文件，如果上次同步 AOF 文件的时间<strong>超过一秒</strong>，就再次对 AOF 文件进行同步，并由一个线程专门负责。</li>
+<li>no：将 aof_buf 缓冲区中的所有内容写入到 AOF 文件，但并<strong>不对 AOF 文件进行同步</strong>，何时同步<strong>由操作系统决定</strong>。</li>
+</ul>
+<p>为什么有写入和同步的区分？写入≠同步</p>
+<p>为提高写效率，操作系统一般将写入数据<strong>暂时保存在内存缓冲区</strong>，等缓冲区<strong>填满或超过</strong>指定时间后才会真正地将<strong>数据同步到磁盘里</strong>。操作系统提供了 fsync 和 fdatasync 两同步函数，可<strong>强制操作系统同步数据</strong>，保证数据安全性。</p>
+<p>也就是说，每一次的事件循环，aof_buf 中的指令<strong>都会被写入操作系统的缓冲区</strong>，根据 appendfsync 配置，当操作系统缓冲区满足一定条件后，就被<strong>真实地写入</strong>磁盘内。</p>
+<h2 id="AOF-文件的载入与数据还原"><a href="#AOF-文件的载入与数据还原" class="headerlink" title="AOF 文件的载入与数据还原"></a>AOF 文件的载入与数据还原</h2><p>步骤如下：</p>
+<ol>
+<li>创建一个没有网络连接的伪客户端。由于 Redis 命令只能在客户端上下文中执行，并且 AOF 文件在本地而不是网络。</li>
+<li>解析 AOF 文件并取出一条写命令。</li>
+<li>使用伪客户端执行被读出的写命令</li>
+<li>持续执行 2 和 3，直到所有写命令都已经执行完毕</li>
+</ol>
+<p><img src="/attachment/c50d73913c36b39f22d6dc108c5da992.png"></p>
+<h3 id="AOF-创建和重写时对过期键的处理套路"><a href="#AOF-创建和重写时对过期键的处理套路" class="headerlink" title="AOF 创建和重写时对过期键的处理套路"></a>AOF 创建和重写时对过期键的处理套路</h3><p>如果数据库中的某个键已经过期且没有被删除，AOF 文件不会因为这个对过期键产生影响。当过期间被惰性删除或定期删除后，AOF 文件<strong>追加一条 DEL 命令</strong>来显式删除。</p>
+<p>AOF 重写时，程序会对数据库的键检查，已过期的<strong>不会保存</strong>到 AOF 文件中。</p>
+<h2 id="AOF-重写"><a href="#AOF-重写" class="headerlink" title="AOF 重写"></a>AOF 重写</h2><p>因为 AOF 持久化会将所有的写命令都记录，所以会有冗余情况，比如频繁地创建删除键值对，或者对同一个键的值频繁更新，都会导致文件的内容越来越多。所以需要一种<strong>瘦身的机制</strong>确保 AOF 里存的都是必不可少的精华。</p>
+<p>Redis 提供 AOF 文件重写功能，让服务器创建一个新的 AOF 文件，替代现有的 AOF 文件，减少冗余命令。</p>
+<h3 id="AOF-文件重写的实现"><a href="#AOF-文件重写的实现" class="headerlink" title="AOF 文件重写的实现"></a>AOF 文件重写的实现</h3><p>在新的 AOF 文件的重写过程中，不会读取旧 AOF 文件，而是通过<strong>读取数据库状态</strong>来实现的。首先从数据库中读取键现在的值，然后用一条命令记录键值对，代替之前记录的多条命令。</p>
+<p>注：在重写时会先检查键所包含的元素数量，因为多元素的键在命令转换时可能会导致客户端输入缓冲区溢出。因此读取配置中对应的常量，默认超过 64 个就用多条指令记录。</p>
+<h3 id="AOF-后台重写过程"><a href="#AOF-后台重写过程" class="headerlink" title="AOF 后台重写过程"></a>AOF 后台重写过程</h3><p>AOF 重写的过程中会有大量的写入操作，为了避免 Redis 服务器长时间的阻塞，重写工作将被放到<strong>子进程中进行</strong>。这样的好处是：</p>
+<ul>
+<li>父进程仍然可继续处理请求。</li>
+<li>子进程有自己的数据副本，而非子线程，可以避免一些线程安全性问题的出现。</li>
+</ul>
+<p>子进程在执行 AOF 重写期间，服务器进程还需要继续处理命令请求，而新的命令可能会对现有的数据库状态进行修改，导致<strong>当前数据库状态与重写后的 AOF 文件保存状态不一致</strong>。为解决这个问题，设置了 <strong>AOF 重写缓冲区</strong>。</p>
+<p>当重写子进程创建后，Redis 服务器执行完写命令就会将其写入 AOF 缓冲区和 AOF 重写缓冲区，子进程执行重写期间，服务器进程要执行 3 个工作：</p>
+<ol>
+<li>执行客户端发来的命令。</li>
+<li>将执行后的写命令追加到 AOF 缓冲区。</li>
+<li>将执行后的写命令追加到 AOF 重写缓冲区。</li>
+</ol>
+<p><img src="/attachment/875dc96dab16f0743e27de35f672b65c.png"></p>
+<p>当子进程完成重写后，会向父进程<strong>发送一个信号</strong>，父进程接收并调用信号处理函数，将重写缓冲区的所有内容写到新 AOF 文件中，原子地覆盖现有的 AOF 文件。因此整个 AOF 文件重写的过程中，只有<strong>信号处理函数执行时，才会阻塞</strong>，将性能损耗降到最低。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a target="_blank" rel="noopener" href="https://github.com/yu627482453">Bill Cipher</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://yu627482453.github.io/database/redis/redis-dan-ji-ku-de-shi-xian/redis-aof-chi-jiu-hua/">https://yu627482453.github.io/database/redis/redis-dan-ji-ku-de-shi-xian/redis-aof-chi-jiu-hua/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://yu627482453.github.io" target="_blank">蝶梦庄生</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E8%A1%8C%E5%8A%A8%E9%98%B6%E6%AE%B5-%E5%AE%8C%E6%88%90/">行动阶段/完成</a><a class="post-meta__tags" href="/tags/%E7%AC%94%E8%AE%B0%E7%A9%BA%E9%97%B4-KnowladgeSpace-ProgramSpace-BasicsSpace/">笔记空间/KnowladgeSpace/ProgramSpace/BasicsSpace</a><a class="post-meta__tags" href="/tags/%E4%B8%BB%E9%A2%98%E5%9C%BA%E6%99%AF-%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/">主题场景/数据存储</a><a class="post-meta__tags" href="/tags/%E7%BB%86%E5%8C%96%E4%B8%BB%E9%A2%98-%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8-Redis/">细化主题/数据存储/Redis</a></div><div class="post_share"><div class="social-share" data-image="https://www.dmoe.cc/random.php" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/reward/wechat.jpg" target="_blank"><img class="post-qr-code-img" src="/img/reward/wechat.jpg" alt="wechat"/></a><div class="post-qr-code-desc">wechat</div></li><li class="reward-item"><a href="/img/reward/alipay.jpg" target="_blank"><img class="post-qr-code-img" src="/img/reward/alipay.jpg" alt="alipay"/></a><div class="post-qr-code-desc">alipay</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/database/redis/redis-dan-ji-ku-de-shi-xian/redis-shi-jian/"><img class="prev-cover" src="https://www.dmoe.cc/random.php" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">【Redis】 事件</div></div></a></div><div class="next-post pull-right"><a href="/database/redis/redis-dan-ji-ku-de-shi-xian/redis-rdb-chi-jiu-hua/"><img class="next-cover" src="https://www.dmoe.cc/random.php" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">【Redis】 RDB 持久化</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/database/redis/redis/" title="Redis"><img class="cover" src="https://www.dmoe.cc/random.php" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-12-20</div><div class="title">Redis</div></div></a></div><div><a href="/database/redis/redis-shu-ju-jie-gou-yu-dui-xiang/redis-ya-suo-lie-biao/" title="【Redis】 压缩列表"><img class="cover" src="https://www.dmoe.cc/random.php" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-07-09</div><div class="title">【Redis】 压缩列表</div></div></a></div><div><a href="/database/redis/redis-shu-ju-jie-gou-yu-dui-xiang/redis-shu-ju-jie-gou-yu-dui-xiang/" title="【Redis】 Redis 数据结构与对象"><img class="cover" src="https://www.dmoe.cc/random.php" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-07-08</div><div class="title">【Redis】 Redis 数据结构与对象</div></div></a></div><div><a href="/database/redis/redis-shu-ju-jie-gou-yu-dui-xiang/redis-zi-dian/" title="【Redis】 字典"><img class="cover" src="https://www.dmoe.cc/random.php" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-07-09</div><div class="title">【Redis】 字典</div></div></a></div><div><a href="/database/redis/redis-shu-ju-jie-gou-yu-dui-xiang/redis-zheng-shu-ji-he/" title="【Redis】 整数集合"><img class="cover" src="https://www.dmoe.cc/random.php" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-07-09</div><div class="title">【Redis】 整数集合</div></div></a></div><div><a href="/database/redis/redis-shu-ju-jie-gou-yu-dui-xiang/redis-dui-xiang/" title="【Redis】 对象"><img class="cover" src="https://www.dmoe.cc/random.php" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-07-09</div><div class="title">【Redis】 对象</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="gitalk-container"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Bill Cipher</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">150</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">45</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/yu627482453"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/yu627482453" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="/627482453@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E3%80%90Redis%E3%80%91-AOF-%E6%8C%81%E4%B9%85%E5%8C%96"><span class="toc-number">1.</span> <span class="toc-text">【Redis】 AOF 持久化</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Metadata"><span class="toc-number">1.1.</span> <span class="toc-text">Metadata</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A6%82%E8%BF%B0"><span class="toc-number">1.2.</span> <span class="toc-text">概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#AOF-%E6%8C%81%E4%B9%85%E5%8C%96%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="toc-number">1.3.</span> <span class="toc-text">AOF 持久化的实现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%91%BD%E4%BB%A4%E8%BF%BD%E5%8A%A0"><span class="toc-number">1.3.1.</span> <span class="toc-text">命令追加</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#AOF-%E6%96%87%E4%BB%B6%E7%9A%84%E5%86%99%E5%85%A5%E4%B8%8E%E5%90%8C%E6%AD%A5"><span class="toc-number">1.3.2.</span> <span class="toc-text">AOF 文件的写入与同步</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#AOF-%E6%96%87%E4%BB%B6%E7%9A%84%E8%BD%BD%E5%85%A5%E4%B8%8E%E6%95%B0%E6%8D%AE%E8%BF%98%E5%8E%9F"><span class="toc-number">1.4.</span> <span class="toc-text">AOF 文件的载入与数据还原</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#AOF-%E5%88%9B%E5%BB%BA%E5%92%8C%E9%87%8D%E5%86%99%E6%97%B6%E5%AF%B9%E8%BF%87%E6%9C%9F%E9%94%AE%E7%9A%84%E5%A4%84%E7%90%86%E5%A5%97%E8%B7%AF"><span class="toc-number">1.4.1.</span> <span class="toc-text">AOF 创建和重写时对过期键的处理套路</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#AOF-%E9%87%8D%E5%86%99"><span class="toc-number">1.5.</span> <span class="toc-text">AOF 重写</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#AOF-%E6%96%87%E4%BB%B6%E9%87%8D%E5%86%99%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="toc-number">1.5.1.</span> <span class="toc-text">AOF 文件重写的实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#AOF-%E5%90%8E%E5%8F%B0%E9%87%8D%E5%86%99%E8%BF%87%E7%A8%8B"><span class="toc-number">1.5.2.</span> <span class="toc-text">AOF 后台重写过程</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/database/redis/redis-chong-dian-gong-neng/redis-pai-xu/" title="【Redis】 排序"><img src="https://www.dmoe.cc/random.php" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【Redis】 排序"/></a><div class="content"><a class="title" href="/database/redis/redis-chong-dian-gong-neng/redis-pai-xu/" title="【Redis】 排序">【Redis】 排序</a><time datetime="2023-07-09T06:07:00.000Z" title="发表于 2023-07-09 14:07:00">2023-07-09</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/database/redis/redis-chong-dian-gong-neng/redis-lua-jiao-ben/" title="【Redis】 Lua脚本"><img src="https://www.dmoe.cc/random.php" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【Redis】 Lua脚本"/></a><div class="content"><a class="title" href="/database/redis/redis-chong-dian-gong-neng/redis-lua-jiao-ben/" title="【Redis】 Lua脚本">【Redis】 Lua脚本</a><time datetime="2023-07-09T05:56:00.000Z" title="发表于 2023-07-09 13:56:00">2023-07-09</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/database/redis/redis-chong-dian-gong-neng/redis-fa-bu-he-ding-yue/" title="【Redis】 发布和订阅"><img src="https://www.dmoe.cc/random.php" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【Redis】 发布和订阅"/></a><div class="content"><a class="title" href="/database/redis/redis-chong-dian-gong-neng/redis-fa-bu-he-ding-yue/" title="【Redis】 发布和订阅">【Redis】 发布和订阅</a><time datetime="2023-07-09T05:30:00.000Z" title="发表于 2023-07-09 13:30:00">2023-07-09</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/database/redis/redis-chong-dian-gong-neng/redis-jian-shi-qi/" title="【Redis】 监视器"><img src="https://www.dmoe.cc/random.php" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【Redis】 监视器"/></a><div class="content"><a class="title" href="/database/redis/redis-chong-dian-gong-neng/redis-jian-shi-qi/" title="【Redis】 监视器">【Redis】 监视器</a><time datetime="2023-07-09T05:24:00.000Z" title="发表于 2023-07-09 13:24:00">2023-07-09</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/database/redis/redis-chong-dian-gong-neng/redis-man-cha-xun-ri-zhi/" title="【Redis】 慢查询日志"><img src="https://www.dmoe.cc/random.php" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【Redis】 慢查询日志"/></a><div class="content"><a class="title" href="/database/redis/redis-chong-dian-gong-neng/redis-man-cha-xun-ri-zhi/" title="【Redis】 慢查询日志">【Redis】 慢查询日志</a><time datetime="2023-07-09T05:23:00.000Z" title="发表于 2023-07-09 13:23:00">2023-07-09</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By Bill Cipher</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>function addGitalkSource () {
+  const ele = document.createElement('link')
+  ele.rel = 'stylesheet'
+  ele.href= 'https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.css'
+  document.getElementsByTagName('head')[0].appendChild(ele)
+}
+
+function loadGitalk () {
+  function initGitalk () {
+    var gitalk = new Gitalk(Object.assign({
+      clientID: 'c61a274b6f5aa26a58f6',
+      clientSecret: '485a7761d321c8dcc5cae05d7256be9fb196d94a',
+      repo: 'yu627482453.github.io',
+      owner: 'yu627482453',
+      admin: ['yu627482453'],
+      id: 'a4bb814e79a3f510660f4962494f3e51',
+      updateCountCallback: commentCount
+    },null))
+
+    gitalk.render('gitalk-container')
+  }
+
+  if (typeof Gitalk === 'function') initGitalk()
+  else {
+    addGitalkSource()
+    getScript('https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.js').then(initGitalk)
+  }
+}
+
+function commentCount(n){
+  let isCommentCount = document.querySelector('#post-meta .gitalk-comment-count')
+  if (isCommentCount) {
+    isCommentCount.innerHTML= n
+  }
+}
+
+if ('Gitalk' === 'Gitalk' || !true) {
+  if (true) btf.loadComment(document.getElementById('gitalk-container'), loadGitalk)
+  else loadGitalk()
+} else {
+  function loadOtherComment () {
+    loadGitalk()
+  }
+}</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
