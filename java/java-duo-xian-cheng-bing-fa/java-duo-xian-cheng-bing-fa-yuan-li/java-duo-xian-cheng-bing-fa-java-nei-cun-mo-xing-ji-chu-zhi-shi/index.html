@@ -5,7 +5,7 @@
 <meta property="og:site_name" content="蝶梦庄生">
 <meta property="og:description" content="【Java 多线程并发】 Java内存模型基础知识">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://cdn.seovx.com/?mom=302">
+<meta property="og:image" content="https://api.yimian.xyz/img?type=moe">
 <meta property="article:published_time" content="2023-07-03T05:55:00.000Z">
 <meta property="article:modified_time" content="2023-07-03T05:55:00.000Z">
 <meta property="article:author" content="Bill Cipher">
@@ -14,7 +14,7 @@
 <meta property="article:tag" content="主题场景&#x2F;程序">
 <meta property="article:tag" content="细化主题&#x2F;Java&#x2F;多线程并发">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://cdn.seovx.com/?mom=302"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://yu627482453.github.io/java/java-duo-xian-cheng-bing-fa/java-duo-xian-cheng-bing-fa-yuan-li/java-duo-xian-cheng-bing-fa-java-nei-cun-mo-xing-ji-chu-zhi-shi/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+<meta name="twitter:image" content="https://api.yimian.xyz/img?type=moe"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://yu627482453.github.io/java/java-duo-xian-cheng-bing-fa/java-duo-xian-cheng-bing-fa-yuan-li/java-duo-xian-cheng-bing-fa-java-nei-cun-mo-xing-ji-chu-zhi-shi/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
   root: '/',
   algolia: undefined,
   localSearch: {"path":"/search.xml","preload":true,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
@@ -147,7 +147,9 @@
     detectApple()
     })(window)</script><meta name="generator" content="Hexo 6.2.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">240</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">69</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cdn.seovx.com/?mom=302')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">蝶梦庄生</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">【Java 多线程并发】 Java内存模型基础知识</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-07-03T05:55:00.000Z" title="发表于 2023-07-03 13:55:00">2023-07-03</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-07-03T05:55:00.000Z" title="更新于 2023-07-03 13:55:00">2023-07-03</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Java/">Java</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="【Java 多线程并发】 Java内存模型基础知识"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="【Java-多线程并发】-Java内存模型基础知识"><a href="#【Java-多线程并发】-Java内存模型基础知识" class="headerlink" title="【Java 多线程并发】 Java内存模型基础知识"></a>【Java 多线程并发】 Java内存模型基础知识</h1><h2 id="Metadata"><a href="#Metadata" class="headerlink" title="Metadata"></a>Metadata</h2><pre><code class="line-numbers language-yml">title: 【Java 多线程并发】 Java内存模型基础知识
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">215</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">45</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://api.yimian.xyz/img?type=moe')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">蝶梦庄生</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">【Java 多线程并发】 Java内存模型基础知识</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-07-03T05:55:00.000Z" title="发表于 2023-07-03 13:55:00">2023-07-03</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-07-03T05:55:00.000Z" title="更新于 2023-07-03 13:55:00">2023-07-03</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Java/">Java</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="【Java 多线程并发】 Java内存模型基础知识"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1>【Java 多线程并发】 Java内存模型基础知识</h1>
+<h2 id="Metadata-152">Metadata</h2>
+<pre><code class="language-yml">title: 【Java 多线程并发】 Java内存模型基础知识
 date: 2023-07-03 13:55
 tags:
   - 行动阶段/完成
@@ -160,25 +162,28 @@ keywords:
   - Java/多线程并发
 description: 【Java 多线程并发】 Java内存模型基础知识
 </code></pre>
-<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>有两种并发模型可以解决这两个问题：</p>
+<h2 id="概述-70">概述</h2>
+<p>有两种并发模型可以解决这两个问题：</p>
 <ul>
 <li>消息传递并发模型</li>
 <li>共享内存并发模型</li>
 </ul>
-<p><strong>JMM</strong><br>JMM（Java内存模型Java Memory Model）本身是一种抽象的概念</p>
-<p><img src="/attachment/523f614869c81dd1d6ee5e4cae416e22.png"></p>
+<p><strong>JMM</strong><br>
+JMM（Java内存模型Java Memory Model）本身是一种抽象的概念</p>
+<p><img src="/attachment/523f614869c81dd1d6ee5e4cae416e22.png" alt=""></p>
 <p><strong>JMM 的组成</strong></p>
 <ol>
 <li>主内存：共享的信息，也就是图中的内存区域，它也就对应着JVM内存区域中的堆</li>
 <li>工作内存：私有信息，也就是图中的工作空间，基本数据类型，直接分配到工作内存，引用的地址存放在工作内存，引用的对象存放在堆中。局部变量，主内存数据的副本都会被存到工作内存。它对应JVM中的Java栈，每一个线程都有一个私有的工作空间，工作空间的空间大小分配和Java栈是一起的，都是根据需要代码需要在编译期间就确定好的，</li>
-<li>工作方式：<ul>
+<li>工作方式：
+<ul>
 <li>A线程修改私有数据，直接在工作空间修改</li>
 <li>B线程修改共享数据，把数据复制到工作空间中去，在工作空间中修改，修改完成以后，刷新内存中的数据</li>
 </ul>
 </li>
 </ol>
 <p><strong>JMM 的 八种同步操作</strong></p>
-<p><img src="/attachment/0426300d65655309f09e8f9a73ff9029.png"></p>
+<p><img src="/attachment/0426300d65655309f09e8f9a73ff9029.png" alt=""></p>
 <p><strong>happens-before</strong></p>
 <p>判断数据是否存在竞争、线程是否安全的依据</p>
 <ul>
@@ -192,25 +197,29 @@ description: 【Java 多线程并发】 Java内存模型基础知识
 </ul>
 <p><strong>三大特性</strong></p>
 <ul>
-<li>可见性<ul>
+<li>可见性
+<ul>
 <li>volatile</li>
 <li>synchronized</li>
 <li>JUC中Lock的lock</li>
 </ul>
 </li>
-<li>原子性<ul>
+<li>原子性
+<ul>
 <li>Synchronized：同步代码块</li>
 <li>JUC中Lock的lock：加锁</li>
 </ul>
 </li>
-<li>有序性<ul>
+<li>有序性
+<ul>
 <li>volatile之前的代码不能调整到它的后面</li>
 <li>volatile之后的代码不能调整到它的前面</li>
 <li>霸道（位置不变化）volatile实现可见性的硬件基础就是cache line</li>
 </ul>
 </li>
 </ul>
-<h2 id="并发编程模型的两个关键问题"><a href="#并发编程模型的两个关键问题" class="headerlink" title="并发编程模型的两个关键问题"></a>并发编程模型的两个关键问题</h2><ul>
+<h2 id="并发编程模型的两个关键问题">并发编程模型的两个关键问题</h2>
+<ul>
 <li>线程间如何通信？即：线程之间以何种机制来交换信息</li>
 <li>线程间如何同步？即：线程以何种机制来控制不同线程间操作发生的相对顺序</li>
 </ul>
@@ -228,7 +237,8 @@ description: 【Java 多线程并发】 Java内存模型基础知识
 <th>如何同步</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>消息传递并发模型</td>
 <td>线程之间没有公共状态,线程间的通信必须通过发送消息来显示进行通信。</td>
 <td>发送消息天然同步,因为发送消息总是在接受消息之前,因此同步是隐式的。</td>
@@ -238,35 +248,44 @@ description: 【Java 多线程并发】 Java内存模型基础知识
 <td>线程之间共享程序的公共状态,通过写-读内存中的公共状态进行隐式通信。</td>
 <td>必须显式指定某段代码需要在线程之间互斥执行,同步是显式的。</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 <p>在Java中，使用的是共享内存并发模型。</p>
-<h2 id="Java内存模型的抽象结构"><a href="#Java内存模型的抽象结构" class="headerlink" title="Java内存模型的抽象结构"></a>Java内存模型的抽象结构</h2><p><img src="/attachment/523f614869c81dd1d6ee5e4cae416e22.png"></p>
-<h3 id="什么是JMM（JMM的作用）"><a href="#什么是JMM（JMM的作用）" class="headerlink" title="什么是JMM（JMM的作用）"></a>什么是JMM（JMM的作用）</h3><p>JMM（Java内存模型Java Memory Model）本身是一种抽象的概念并不真实存在，它仅仅描述的是一组约定或规范，通过这组规范定义了程序中（尤其是多线程）各个变量的读写访问方式并决定一个线程对共享变量的写入以及如何变成对另一个线程可见，关键技术点都是围绕多线程的原子性、可见性和有序性展开的。</p>
+<h2 id="Java内存模型的抽象结构">Java内存模型的抽象结构</h2>
+<p><img src="/attachment/523f614869c81dd1d6ee5e4cae416e22.png" alt=""></p>
+<h3 id="什么是JMM（JMM的作用）">什么是JMM（JMM的作用）</h3>
+<p>JMM（Java内存模型Java Memory Model）本身是一种抽象的概念并不真实存在，它仅仅描述的是一组约定或规范，通过这组规范定义了程序中（尤其是多线程）各个变量的读写访问方式并决定一个线程对共享变量的写入以及如何变成对另一个线程可见，关键技术点都是围绕多线程的原子性、可见性和有序性展开的。</p>
 <p>能干吗？</p>
 <ul>
 <li>通过JMM来实现线程和主内存之间的抽象关系</li>
 <li>屏蔽各个硬件平台和操作系统的内存访问差异以实现让Java程序再各种平台下都能达到一致性的内存访问效果。</li>
 </ul>
-<h3 id="JMM的组成"><a href="#JMM的组成" class="headerlink" title="JMM的组成"></a>JMM的组成</h3><ol>
+<h3 id="JMM的组成">JMM的组成</h3>
+<ol>
 <li>主内存：共享的信息，也就是图中的内存区域，它也就对应着JVM内存区域中的堆</li>
 <li>工作内存：私有信息，也就是图中的工作空间，基本数据类型，直接分配到工作内存，引用的地址存放在工作内存，引用的对象存放在堆中。局部变量，主内存数据的副本都会被存到工作内存。它对应JVM中的Java栈，每一个线程都有一个私有的工作空间，工作空间的空间大小分配和Java栈是一起的，都是根据需要代码需要在编译期间就确定好的，</li>
-<li>工作方式：<ul>
+<li>工作方式：
+<ul>
 <li>A线程修改私有数据，直接在工作空间修改</li>
 <li>B线程修改共享数据，把数据复制到工作空间中去，在工作空间中修改，修改完成以后，刷新内存中的数据</li>
 </ul>
 </li>
 </ol>
-<h3 id="运行时内存的划分"><a href="#运行时内存的划分" class="headerlink" title="运行时内存的划分"></a>运行时内存的划分</h3><p>先谈一下运行时数据区，下面这张图相信大家一点都不陌生：</p>
-<p><img src="/attachment/d38f379fe4e7647c6952a31b31936a78.png"></p>
-<p>对于每一个线程来说，栈都是私有的，而堆是共有的。<br>也就是说在栈中的变量（局部变量、方法定义参数、异常处理器参数）不会在线程之间共享，也就不会有内存可见性（下文会说到）的问题，也不受内存模型的影响。而在堆中的变量是共享的，本文称为共享变量。<br>所以，内存可见性是针对的共享变量。</p>
-<h3 id="既然堆是共享的，为什么在堆中会有内存不可见问题？"><a href="#既然堆是共享的，为什么在堆中会有内存不可见问题？" class="headerlink" title="既然堆是共享的，为什么在堆中会有内存不可见问题？"></a>既然堆是共享的，为什么在堆中会有内存不可见问题？</h3><p>这是因为现代计算机为了高效，往往会在高速缓存区中缓存共享变量，因为cpu访问缓存区比访问内存要快得多。</p>
+<h3 id="运行时内存的划分">运行时内存的划分</h3>
+<p>先谈一下运行时数据区，下面这张图相信大家一点都不陌生：</p>
+<p><img src="/attachment/d38f379fe4e7647c6952a31b31936a78.png" alt=""></p>
+<p>对于每一个线程来说，栈都是私有的，而堆是共有的。<br>
+也就是说在栈中的变量（局部变量、方法定义参数、异常处理器参数）不会在线程之间共享，也就不会有内存可见性（下文会说到）的问题，也不受内存模型的影响。而在堆中的变量是共享的，本文称为共享变量。<br>
+所以，内存可见性是针对的共享变量。</p>
+<h3 id="既然堆是共享的，为什么在堆中会有内存不可见问题？">既然堆是共享的，为什么在堆中会有内存不可见问题？</h3>
+<p>这是因为现代计算机为了高效，往往会在高速缓存区中缓存共享变量，因为cpu访问缓存区比访问内存要快得多。</p>
 <p>线程之间的共享变量存在主内存中，每个线程都有一个私有的本地内存，存储了该线程以读、写共享变量的副本。本地内存是Java内存模型的一个抽象概念，并不真实存在。它涵盖了缓存、写缓冲区、寄存器等。</p>
 <p>Java线程之间的通信由Java内存模型（简称JMM）控制，从抽象的角度来说，JMM定义了线程和主内存之间的抽象关系。JMM的抽象示意图如图所示：</p>
-<p><img src="/attachment/4232c4babc83339d326ebad6e16cde6e.png"></p>
-<p>从图中可以看出： </p>
+<p><img src="/attachment/4232c4babc83339d326ebad6e16cde6e.png" alt=""></p>
+<p>从图中可以看出：</p>
 <ol>
-<li>所有的共享变量都存在主内存中。 </li>
-<li>每个线程都保存了一份该线程使用到的共享变量的副本。 </li>
+<li>所有的共享变量都存在主内存中。</li>
+<li>每个线程都保存了一份该线程使用到的共享变量的副本。</li>
 <li>如果线程A与线程B之间要通信的话，</li>
 </ol>
 <p>必须经历下面2个步骤：</p>
@@ -274,11 +293,19 @@ description: 【Java 多线程并发】 Java内存模型基础知识
 <li>线程A将本地内存A中更新过的共享变量刷新到主内存中去。</li>
 <li>线程B到主内存中去读取线程A之前已经更新过的共享变量。</li>
 </ol>
-<p>所以，线程A无法直接访问线程B的工作内存，线程间通信必须经过主内存。<br>注意，根据JMM的规定，线程对共享变量的所有操作都必须在自己的本地内存中进行，不能直接从主内存中读取。</p>
+<p>所以，线程A无法直接访问线程B的工作内存，线程间通信必须经过主内存。<br>
+注意，根据JMM的规定，线程对共享变量的所有操作都必须在自己的本地内存中进行，不能直接从主内存中读取。</p>
 <p>所以线程B并不是直接去主内存中读取共享变量的值，而是先在本地内存B中找到这个共享变量，发现这个共享变量已经被更新了，然后本地内存B去主内存中读取这个共享变量的新值，并拷贝到本地内存B中，最后线程B再读取本地内存B中的新值。</p>
 <p>那么怎么知道这个共享变量的被其他线程更新了呢？这就是JMM的功劳了，也是JMM存在的必要性之一。JMM通过控制主内存与每个线程的本地内存之间的交互，来提供内存可见性保证。</p>
-<h3 id="JMM与Java内存区域划分的区别与联系"><a href="#JMM与Java内存区域划分的区别与联系" class="headerlink" title="JMM与Java内存区域划分的区别与联系"></a>JMM与Java内存区域划分的区别与联系</h3><p>上面两小节分别提到了JMM和Java运行时内存区域的划分，这两者既有差别又有联系：<br><strong>区别</strong><br>两者是不同的概念层次。JMM是抽象的，他是用来描述一组规则，通过这个规则来控制各个变量的访问方式，围绕原子性、有序性、可见性等展开的。而Java运行时内存的划分是具体的，是JVM运行Java程序时，必要的内存划分。<br><strong>联系</strong><br>都存在私有数据区域和共享数据区域。一般来说，JMM中的主内存属于共享数据区域，他是包含了堆和方法区；同样，JMM中的本地内存属于私有数据区域，包含了程序计数器、本地方法栈、虚拟机栈。</p>
-<h2 id="硬件内存架构与java内存模型"><a href="#硬件内存架构与java内存模型" class="headerlink" title="硬件内存架构与java内存模型"></a>硬件内存架构与java内存模型</h2><h3 id="硬件架构"><a href="#硬件架构" class="headerlink" title="硬件架构"></a>硬件架构</h3><p><img src="/attachment/112a4f07cf8a52beeeb4595092eaa727.png"></p>
+<h3 id="JMM与Java内存区域划分的区别与联系">JMM与Java内存区域划分的区别与联系</h3>
+<p>上面两小节分别提到了JMM和Java运行时内存区域的划分，这两者既有差别又有联系：<br>
+<strong>区别</strong><br>
+两者是不同的概念层次。JMM是抽象的，他是用来描述一组规则，通过这个规则来控制各个变量的访问方式，围绕原子性、有序性、可见性等展开的。而Java运行时内存的划分是具体的，是JVM运行Java程序时，必要的内存划分。<br>
+<strong>联系</strong><br>
+都存在私有数据区域和共享数据区域。一般来说，JMM中的主内存属于共享数据区域，他是包含了堆和方法区；同样，JMM中的本地内存属于私有数据区域，包含了程序计数器、本地方法栈、虚拟机栈。</p>
+<h2 id="硬件内存架构与java内存模型">硬件内存架构与java内存模型</h2>
+<h3 id="硬件架构">硬件架构</h3>
+<p><img src="/attachment/112a4f07cf8a52beeeb4595092eaa727.png" alt=""></p>
 <p>像上面这种图就是多核的机器，每一个CPU都对应着一个cache，cache中的数据是对应CPU私有的，内存中的数据是所有CPU共享的。</p>
 <p>在说明Java并发特性之前，先简单了解一下物理计算机中的并发问题，这二者有不少相似之处。物理机对并发的处理方案对于虚拟机也有很大的参考意义。</p>
 <p>“并发”在计算机领域内，一直是比较头疼。因为并发不仅仅是计算的事情，也是存储的事情。我们在处理并发时，不可能只靠CPU就能完成，也需要与内存交互，比如读取运算数据，存储运算结果等。</p>
@@ -286,7 +313,7 @@ description: 【Java 多线程并发】 Java内存模型基础知识
 <p>不过，在引入高速缓存的同时，也带来了另外一个问题——缓存一致性。每个处理器都有自己的高速缓存，而他们又共享同一主内存，当多个处理器任务都是涉及到同一块主内存区域时，就会出现缓存数据不一致的问题。</p>
 <p>同时，为了解决一致性的问题，高速缓存就需要遵守一些一致性协议（MSI等协议）来规范对数据的读写。</p>
 <p><strong>具体示意图，如下：</strong></p>
-<p><img src="/attachment/dd471e976dc3d44d327229c996aae596.png"></p>
+<p><img src="/attachment/dd471e976dc3d44d327229c996aae596.png" alt=""></p>
 <blockquote>
 <p>注：引入物理计算机并发的概念，主要是为了提供一种思路，实际上的实现远比描述的要复杂。</p>
 </blockquote>
@@ -297,20 +324,26 @@ description: 【Java 多线程并发】 Java内存模型基础知识
 <li>当CPU在cache中操作数据时，如果该数据是共享变量，数据从cache读到寄存器中，进行新修改，同时将该数据的cache line标志位置为无效，然后更新内存数据。因为修改完数据之后，该数据以前在其他CPU的cache中就失效了，不能再读取了，将标志置为无效是为了让其他CPU直接去内存中读取最新的该数据，然后再更新自己的cache数据，这样就解决了不同步问题。</li>
 </ol>
 <p>JMM和硬件内存结构的工作方式很相似，JMM中的工作空间对应的就是cache和寄存器，JMM中的主内存对应的就是硬件中的内存。</p>
-<h3 id="Java线程与硬件处理器"><a href="#Java线程与硬件处理器" class="headerlink" title="Java线程与硬件处理器"></a>Java线程与硬件处理器</h3><p><img src="/attachment/a29df0096012b749b6ec4877e926177b.png"></p>
+<h3 id="Java线程与硬件处理器">Java线程与硬件处理器</h3>
+<p><img src="/attachment/a29df0096012b749b6ec4877e926177b.png" alt=""></p>
 <p>整个流程就是用户指定任务交给线程池，由线程池去分配进程用来执行这些任务，一个任务也就对应着一个线程，每一个Java线程是需要映射到一个真实的操作系统线程，通过操作系统线程完成任务的，将Java线程映射到操作系统线程，对线程的挂起或唤醒，这些操作都需要操作系统线程来完成，这就需要请求OS内核的帮助，需要操作系统由用户态转变成内核态，给每一个线程分配一个内核线程，然后内核线程被交给CPU进行操作。</p>
 <p>模型分为主内存和工作内存，所有的变量（局部变量除外，局部变量都是线程私有的，不存在并发问题）都存储在主内存中。每条线程具有自己的工作内存，其中工作内存中保存了线程使用到的变量的主内存副本拷贝，线程对变量的所有操作（读取、赋值等）都必须在工作内存中进行，而不能直接操作主内存中的变量。不同线程之间是无法访问对方的工作内存，线程间变量值的传递均需要通过主内存来完成，示意图如下：</p>
-<p><img src="/attachment/ad94fbe3d9a07c2c0b489f6148f56d1b.png"></p>
-<h3 id="Java内存模型与硬件内存架构的关系"><a href="#Java内存模型与硬件内存架构的关系" class="headerlink" title="Java内存模型与硬件内存架构的关系"></a>Java内存模型与硬件内存架构的关系</h3><p><img src="/attachment/0a0e81cf686fbffe669a6ae55aa9a6fb.png"></p>
+<p><img src="/attachment/ad94fbe3d9a07c2c0b489f6148f56d1b.png" alt=""></p>
+<h3 id="Java内存模型与硬件内存架构的关系">Java内存模型与硬件内存架构的关系</h3>
+<p><img src="/attachment/0a0e81cf686fbffe669a6ae55aa9a6fb.png" alt=""></p>
 <p>由上面的讲解可知，工作空间和内存都对应着硬件系统的寄存器，cache和内存。这种交叉的关系也就造成了在多线程并发的环境下很容易出现数据不同步的问题。</p>
 <p>注：这里提到的主内存和工作内存，实际上和我们常说的Java内存分为堆、栈、方法区等并不是同一层次的划分，二者基本上没有直接联系。如果一定要勉强对应的话，那主内存主要对应于Java堆中的对象实例部分，而工作内存则对应于虚拟机栈中的部分区域。从更低层次上说，主内存直接对应于物理硬件的内存，而工作内存可能优先存储于高速缓存中。</p>
 <p>关于主内存与工作内存之间具体的交互协议，即一个变量如何从主内存拷贝到工作内存、如何从 工作内存同步回主内存这一类的实现细节，Java内存模型中定义了8种操作来完成。Java虚拟机实现时必须保证下面提及的每一种操作都是原子的、不可再分的（对于double和long类型的变量来说， load、store、read和write操作在某些平台上允许有例外。</p>
-<h3 id="Java内存模型的必要性"><a href="#Java内存模型的必要性" class="headerlink" title="Java内存模型的必要性"></a>Java内存模型的必要性</h3><p>Java内存模型（JMM）的作用：规范内存数据和工作空间数据的交互。来解决数据不同步的问题</p>
+<h3 id="Java内存模型的必要性">Java内存模型的必要性</h3>
+<p>Java内存模型（JMM）的作用：规范内存数据和工作空间数据的交互。来解决数据不同步的问题</p>
 <p>关于主内存与工作内存之间具体的交互协议，也就是说，一个变量如何从主内存拷贝到工作内存，又是如何从工作内存同步回到主内存的。Java定义了8种操作来实现的，并且虚拟机保证每一种操作都是原子的。</p>
 <p>8种操作分别是lock、unlock、read、load、use、assign、store、write.</p>
-<p><img src="/attachment/64976041e7c27bebebabb0661925dc44.png"></p>
-<p>上图所示，是两组操作，一组是读取，一组是写入。<br>值得注意的是，Java模型只要求这两个操作必须是顺序执行，但并没有保证是连续执行，这点区别是非常大的。<br>也就是说，read和load之间、store和write之间是可以插入其他指令的。</p>
-<h2 id="JMM-的-八种同步操作"><a href="#JMM-的-八种同步操作" class="headerlink" title="JMM 的 八种同步操作"></a>JMM 的 八种同步操作</h2><p><img src="/attachment/0426300d65655309f09e8f9a73ff9029.png"></p>
+<p><img src="/attachment/64976041e7c27bebebabb0661925dc44.png" alt=""></p>
+<p>上图所示，是两组操作，一组是读取，一组是写入。<br>
+值得注意的是，Java模型只要求这两个操作必须是顺序执行，但并没有保证是连续执行，这点区别是非常大的。<br>
+也就是说，read和load之间、store和write之间是可以插入其他指令的。</p>
+<h2 id="JMM-的-八种同步操作">JMM 的 八种同步操作</h2>
+<p><img src="/attachment/0426300d65655309f09e8f9a73ff9029.png" alt=""></p>
 <ul>
 <li>锁定（lock）: 作用于主内存中的变量，将他标记为一个线程独享变量。</li>
 <li>解锁（unlock）: 作用于主内存中的变量，解除变量的锁定状态，被解除锁定状态的变量才能被其他线程锁定。</li>
@@ -332,34 +365,47 @@ description: 【Java 多线程并发】 Java内存模型基础知识
 <li>如果一个变量实现没有被lock操作锁定，则不允许对它执行unlock操作，也不允许去unlock一个被其他线程锁定的变量。</li>
 <li>对一个变量执行unlock操作之前，必须先把此变量同步回主内存（执行store和write操作）。</li>
 </ul>
-<h2 id="JMM规范下多线程先行发生原则之happens-before"><a href="#JMM规范下多线程先行发生原则之happens-before" class="headerlink" title="JMM规范下多线程先行发生原则之happens-before"></a>JMM规范下多线程先行发生原则之happens-before</h2><p>在JVM中，如果一个操作执行的结果需要对另一个操作可见或者代码重排序，那么这两个操作之间必须存在happens-before（先行发生）原则，逻辑上的先后关系。</p>
-<h3 id="先行并发原则说明"><a href="#先行并发原则说明" class="headerlink" title="先行并发原则说明"></a>先行并发原则说明</h3><p>如果Java内存模型中所有的有序性都仅靠volatile和synchronized来完成，那么有很多操作都将变得非常罗嗦，但是我们在编写Java并发代码的时候并没有察觉到这一点。<br>我们没有时时、处处、次次，添加volatile和synchronized来完成程序，这是因为<strong>Java语言中JMM原则下，有一个“先行发生”（happens-before）的原则限制和规矩</strong>，给你理好了规矩！<br>这个原则非常重要：它是判断数据是否存在竞争，线程是否安全的非常有用的手段。依赖这个原则，我们可以通过几条简单规则一揽子解决并发环境下两个操作之间是否可能存在冲突的所有问题，而不需要陷入Java内存模型晦涩难懂的底层编译原理之中。</p>
-<h3 id="happens-before总原则"><a href="#happens-before总原则" class="headerlink" title="happens-before总原则"></a>happens-before总原则</h3><ul>
+<h2 id="JMM规范下多线程先行发生原则之happens-before">JMM规范下多线程先行发生原则之happens-before</h2>
+<p>在JVM中，如果一个操作执行的结果需要对另一个操作可见或者代码重排序，那么这两个操作之间必须存在happens-before（先行发生）原则，逻辑上的先后关系。</p>
+<h3 id="先行并发原则说明">先行并发原则说明</h3>
+<p>如果Java内存模型中所有的有序性都仅靠volatile和synchronized来完成，那么有很多操作都将变得非常罗嗦，但是我们在编写Java并发代码的时候并没有察觉到这一点。<br>
+我们没有时时、处处、次次，添加volatile和synchronized来完成程序，这是因为<strong>Java语言中JMM原则下，有一个“先行发生”（happens-before）的原则限制和规矩</strong>，给你理好了规矩！<br>
+这个原则非常重要：它是判断数据是否存在竞争，线程是否安全的非常有用的手段。依赖这个原则，我们可以通过几条简单规则一揽子解决并发环境下两个操作之间是否可能存在冲突的所有问题，而不需要陷入Java内存模型晦涩难懂的底层编译原理之中。</p>
+<h3 id="happens-before总原则">happens-before总原则</h3>
+<ul>
 <li>如果一个操作happens-before另一个操作，那么第一个操作的执行结果将对第二个操作可见，而且第一个操作的执行顺序排在第二个操作之前</li>
 <li>如果两个操作之间存在happens-before关系，并不意味着一定要按照happens-before原则制定的顺序来执行。如果重排之后的执行结果与按照happens-before关系来执行的结果一致，那么这种重排序并不非法。</li>
 </ul>
-<h3 id="happens-before之8条"><a href="#happens-before之8条" class="headerlink" title="happens-before之8条"></a>happens-before之8条</h3><p>从JDK 5开始，Java使用新的JSR-133内存模型，提供了 happens-before 原则来辅助保证程序执行的原子性、可见性以及有序性的问题，它是判断数据是否存在竞争、线程是否安全的依据，happens-before 原则内容如下：</p>
+<h3 id="happens-before之8条">happens-before之8条</h3>
+<p>从JDK 5开始，Java使用新的JSR-133内存模型，提供了 happens-before 原则来辅助保证程序执行的原子性、可见性以及有序性的问题，它是判断数据是否存在竞争、线程是否安全的依据，happens-before 原则内容如下：</p>
 <ol>
 <li><mark style="background: #FFB8EBA6;">次序规则</mark>：一个线程内，按照代码的顺序，写在前面的操作先行发生于写在后面的操作，也就是说前一个操作的结果可以被后续的操作获取（保证语义串行性，按照代码顺序执行）。比如前一个操作把变量x赋值为1，那后面一个操作肯定能知道x已经变成了1</li>
 <li><mark style="background: #FFB8EBA6;">锁定规则</mark>：一个unLock操作先行发生于后面对同一个锁的lock操作（后面指时间上的先后）。</li>
 <li><mark style="background: #FFB8EBA6;">volatile变量规则</mark>：对一个volatile变量的写操作先行发生于后面对这个变量的读操作，前面的写对后面的读是可见的，这里的后面同样指时间上的先后</li>
 <li><mark style="background: #FFB8EBA6;">传递规则</mark>：如果操作A先行发生于操作B，而操作B又先行发生于操作C，则可以得出操作A先行发生于操作C。</li>
 <li><mark style="background: #FFB8EBA6;">线程启动规则</mark>（Thread start Rule）：Thread对象的start()方法先行发生于此线程的每一个动作</li>
-<li><mark style="background: #FFB8EBA6;">线程中断规则</mark>（Thread Interruption Rule）：<br>  a. 对线程interrupt()方法的调用先行发生于被中断线程的代码检测到中断事件的发生<br>  b. 可以通过Thread.interrupted()检测到是否发生中断<br>  c. 也就是说你要先调用interrupt()方法设置过中断标志位，我才能检测到中断发生</li>
+<li><mark style="background: #FFB8EBA6;">线程中断规则</mark>（Thread Interruption Rule）：<br>
+a. 对线程interrupt()方法的调用先行发生于被中断线程的代码检测到中断事件的发生<br>
+b. 可以通过Thread.interrupted()检测到是否发生中断<br>
+c. 也就是说你要先调用interrupt()方法设置过中断标志位，我才能检测到中断发生</li>
 <li><mark style="background: #FFB8EBA6;">线程终止规则</mark>（Thread Termination Rule）：线程中的所有操作都优先发生于对此线程的终止检测，我们可以通过isAlive()等手段检测线程是否已经终止执行。</li>
-<li><mark style="background: #FFB8EBA6;">对象终结规则</mark>（Finalizer Rule）：一个对象的初始化完成（构造函数执行结束）先行发生于它的finalize(）方法的开始——-&gt;对象没有完成初始化之前，是不能调用finalized()方法的</li>
+<li><mark style="background: #FFB8EBA6;">对象终结规则</mark>（Finalizer Rule）：一个对象的初始化完成（构造函数执行结束）先行发生于它的finalize(）方法的开始-------&gt;对象没有完成初始化之前，是不能调用finalized()方法的</li>
 </ol>
-<h3 id="happens-before小总结"><a href="#happens-before小总结" class="headerlink" title="happens-before小总结"></a>happens-before小总结</h3><ul>
+<h3 id="happens-before小总结">happens-before小总结</h3>
+<ul>
 <li>在Java语言里面，Happens-before的语义本质上是一种可见性</li>
 <li>A happens-before B ,意味着A发生过的事情对B而言是可见的，无论A事件和B事件是否发生在同一线程里</li>
-<li>JVM的设计分为两部分：<ul>
+<li>JVM的设计分为两部分：
+<ul>
 <li>一部分是面向我们程序员提供的，也就是happens-before规则，它通俗易懂的向我们程序员阐述了一个强内存模型，我们只要理解happens-before规则，就可以编写并发安全的程序了</li>
 <li>另一部分是针对JVM实现的，为了尽可能少的对编译器和处理器做约束从而提升性能，JMM在不影响程序执行结果的前提下对其不做要求，即允许优化重排序，我们只要关注前者就好了，也就是理解happens-before规则即可，其他繁杂的内容由JMM规范结合操作系统给我们搞定，我们只写好代码即可。</li>
 </ul>
 </li>
 </ul>
-<h2 id="JMM规范下三大特性"><a href="#JMM规范下三大特性" class="headerlink" title="JMM规范下三大特性"></a>JMM规范下三大特性</h2><h3 id="可见性"><a href="#可见性" class="headerlink" title="可见性"></a>可见性</h3><p>是指当一个线程修改了某一个共享变量的值，其他线程是否能够立即知道该变更，JMM规定了所有的变量都存储在主内存中。</p>
-<p><img src="/attachment/cf370572af5bfa52acdff59826767757.png"></p>
+<h2 id="JMM规范下三大特性">JMM规范下三大特性</h2>
+<h3 id="可见性">可见性</h3>
+<p>是指当一个线程修改了某一个共享变量的值，其他线程是否能够立即知道该变更，JMM规定了所有的变量都存储在主内存中。</p>
+<p><img src="/attachment/cf370572af5bfa52acdff59826767757.png" alt=""></p>
 <p>系统中主内存<mark style="background: #FFB8EBA6;">共享变量</mark>数据修改被写入的时机是不确定的，<mark style="background: #ADCCFFA6;">多线程并发下很可能出现“脏读”</mark>，所以每个线程都有自己的工作内存，线程自己的工作内存中保存了该线程使用到的变量的<mark style="background: #FFB8EBA6;">主内存副本拷贝</mark>，线程对变量的所有操作（读取、赋值等）都必须在线程自己的工作内存中进行，而不能够直接写入主内存中的变量，不同线程之间也无法直接访问对方工作内存中的变量，线程间变量值的传递均需要通过主内存来完成。</p>
 <p>线程只能操作自己工作空间中的数据，对其他线程的工作空间不可见。但是并发编程中一个线程对共享变量进行了修改，另一个线程要能立刻看到被改后的最新值。</p>
 <p>线程1对共享变量的修改如果要被线程2及时看到，需要经过2个步骤：</p>
@@ -374,83 +420,109 @@ description: 【Java 多线程并发】 Java内存模型基础知识
 <li>线程A将更新后的X值回刷到主内存的时间是不固定的</li>
 <li>刚好在线程A没有回刷x到主内存时，线程B同样从主内存中读取X，此时为0，和线程A一样的操作，最后期盼的X=2就会变成X=1</li>
 </ol>
-<h3 id="原子性"><a href="#原子性" class="headerlink" title="原子性"></a>原子性</h3><p>所谓原子性，是指在一次操作或多次操作中，要么所有的操作全部执行，并不会受到人任何元素的干扰而中断，要么所有的操作都不执行，中间不会有任何上下文切换（context switch）。比如：A给B转账100，A账户扣除100，B账户账户收入100，这两个操作必须符合原子性，要么都成功，要么都失败。所以并发编程就需要将应该是原子操作的一系列操作封装成一个原子操作。</p>
-<h3 id="有序性"><a href="#有序性" class="headerlink" title="有序性"></a>有序性</h3><p>对于一个线程的执行代码而言，我们总是习惯性地认为代码的执行总是从上到下，有序执行。但为了提升性能，<mark style="background: #FFB8EBA6;">编译器和处理器通常会对指令序列进行重新排序</mark>。Java规范规定JVM线程内部维持顺序化语义，即只要程序的最终结果与它顺序话执行的结果相等，那么指令的执行顺序可以与代码顺序不一致，此过程叫<mark style="background: #FFB8EBA6;">指令的重排序</mark>。</p>
+<h3 id="原子性-2">原子性</h3>
+<p>所谓原子性，是指在一次操作或多次操作中，要么所有的操作全部执行，并不会受到人任何元素的干扰而中断，要么所有的操作都不执行，中间不会有任何上下文切换（context switch）。比如：A给B转账100，A账户扣除100，B账户账户收入100，这两个操作必须符合原子性，要么都成功，要么都失败。所以并发编程就需要将应该是原子操作的一系列操作封装成一个原子操作。</p>
+<h3 id="有序性">有序性</h3>
+<p>对于一个线程的执行代码而言，我们总是习惯性地认为代码的执行总是从上到下，有序执行。但为了提升性能，<mark style="background: #FFB8EBA6;">编译器和处理器通常会对指令序列进行重新排序</mark>。Java规范规定JVM线程内部维持顺序化语义，即只要程序的最终结果与它顺序话执行的结果相等，那么指令的执行顺序可以与代码顺序不一致，此过程叫<mark style="background: #FFB8EBA6;">指令的重排序</mark>。</p>
 <p>程序中的顺序不一定就是执行的顺序,因为系统会对代码进行一次重排序，重排序的作用就是提高效率。但是虽然指令重排不会影响单线程的执行结果，但是会影响多线程并发执行的结果正确性，所以并发编程就要保证重排序之后的有序性，执行结果不能因为重排序而出错。重排序有三种：</p>
 <ol>
 <li>编译器优化的重排序（编译期间）：编译器在不改变单线程程序语义的前提下，可以重新安排语句的执行顺序。</li>
 <li>指令级并行的重排序（运行期间）：现代处理器采用了指令级并行技术（Instruction-Level Parallelism， ILP）来将多条指令重叠执行。如果不存在数据依赖性，处理器可以改变语句对应机器指令的执行顺序。</li>
 <li>内存系统的重排序：由于处理器使用缓存和读 / 写缓冲区，这使得加载和存储操作看上去可能是在乱序执行。</li>
 </ol>
-<h4 id="JMM在保证有序性时所使用的两个原则："><a href="#JMM在保证有序性时所使用的两个原则：" class="headerlink" title="JMM在保证有序性时所使用的两个原则："></a>JMM在保证有序性时所使用的两个原则：</h4><ul>
+<h4 id="JMM在保证有序性时所使用的两个原则：">JMM在保证有序性时所使用的两个原则：</h4>
+<ul>
 <li>as-if-seria（单线程遵循）:在单线程中，无论如何重排序，程序执行的结果都应该与代码顺序执行的结果一致（java编译器和处理器运行时都会保证在单线程中遵循as-if-serial规则，多线程存在程序交错执行时，则不遵守）</li>
 <li>happens-before（多线程遵循）：在发生操作B之前，操作A产生的影响都能被操作B观察到，“影响”包括修改了内存中共享变量的值、发送了消息、调用了方法等，它与时间上的先后发生基本没有太大关系。这个是多线程中程序运行遵守的原则，保证在多线程环境下程序运行结果不会出错，后面有对其的详细讲解。重排序也就是遵守这个原则。</li>
 </ul>
-<h4 id="优缺点"><a href="#优缺点" class="headerlink" title="优缺点"></a>优缺点</h4><ul>
-<li><p>JVM能根据处理器特性（CPU多级缓存系统、多核处理器等）适当的对机器指令进行重排序，使机器指令更符合CPU的执行特性，最大限度的发挥机器性能。</p>
+<h4 id="优缺点">优缺点</h4>
+<ul>
+<li>
+<p>JVM能根据处理器特性（CPU多级缓存系统、多核处理器等）适当的对机器指令进行重排序，使机器指令更符合CPU的执行特性，最大限度的发挥机器性能。</p>
 </li>
-<li><p>但是指令重排可以保证串行语义一致，但没有义务保证多线程的语义也一致（即可能产生“脏读”），简单而言就是两行以上不相干的代码在执行的时候有可能先执行的不是第一条，不见得是从上到下顺序执行，执行顺序会被优化。</p>
+<li>
+<p>但是指令重排可以保证串行语义一致，但没有义务保证多线程的语义也一致（即可能产生“脏读”），简单而言就是两行以上不相干的代码在执行的时候有可能先执行的不是第一条，不见得是从上到下顺序执行，执行顺序会被优化。</p>
 <p>从源码到最终执行示例图：</p>
 </li>
 </ul>
-<p><img src="/attachment/1a0f00d848a90c2d0d3842dba9c61696.png"></p>
+<p><img src="/attachment/1a0f00d848a90c2d0d3842dba9c61696.png" alt=""></p>
 <ul>
 <li>单线程环境里确实能够保证程序最终执行结果和代码顺序执行的结果一致</li>
 <li>处理器在进行重排序时必须考虑到指令之间的数据依赖性</li>
 <li>多线程环境中线程交替执行，由于编译器优化重排的存在，可能出现乱序现象，两个线程使用的变量能否保证一致性是无法确定的，结果无法预测。</li>
 </ul>
-<h2 id="JMM对三个特征的保证"><a href="#JMM对三个特征的保证" class="headerlink" title="JMM对三个特征的保证"></a>JMM对三个特征的保证</h2><p>一个正确执行的并发程序，必须具备原子性、可见性、有序性。否则就有可能导致程序运行结果不正确，甚至引起死循环。</p>
-<h3 id="JMM与原子性"><a href="#JMM与原子性" class="headerlink" title="JMM与原子性"></a>JMM与原子性</h3><ul>
-<li>y=x  没有原子性<ul>
+<h2 id="JMM对三个特征的保证">JMM对三个特征的保证</h2>
+<p>一个正确执行的并发程序，必须具备原子性、可见性、有序性。否则就有可能导致程序运行结果不正确，甚至引起死循环。</p>
+<h3 id="JMM与原子性">JMM与原子性</h3>
+<ul>
+<li>y=x  没有原子性
+<ul>
 <li>把数据X读到工作空间（原子性）</li>
 <li>把X的值写到Y（原子性）</li>
 </ul>
 </li>
-<li>i++ 没有原子性<ul>
+<li>i++ 没有原子性
+<ul>
 <li>读i到工作空间</li>
 <li>+1；</li>
 <li>刷新结果到内存</li>
 </ul>
 </li>
-<li>z=z+1 没有原子性<ul>
+<li>z=z+1 没有原子性
+<ul>
 <li>读z到工作空间</li>
 <li>+1；</li>
-<li>刷新结果到内存<br>由上面的这些例子可知多个原子性的操作合并到一起没有原子性</li>
+<li>刷新结果到内存<br>
+由上面的这些例子可知多个原子性的操作合并到一起没有原子性</li>
 </ul>
 </li>
 </ul>
-<h4 id="JMM对原子性的保证方式："><a href="#JMM对原子性的保证方式：" class="headerlink" title="JMM对原子性的保证方式："></a>JMM对原子性的保证方式：</h4><ol>
+<h4 id="JMM对原子性的保证方式：">JMM对原子性的保证方式：</h4>
+<ol>
 <li>Synchronized：同步代码块</li>
 <li>JUC中Lock的lock：加锁</li>
 </ol>
-<h3 id="JMM与可见性"><a href="#JMM与可见性" class="headerlink" title="JMM与可见性"></a>JMM与可见性</h3><h4 id="JMM对可见性的保证方式："><a href="#JMM对可见性的保证方式：" class="headerlink" title="JMM对可见性的保证方式："></a>JMM对可见性的保证方式：</h4><h5 id="volatile"><a href="#volatile" class="headerlink" title="volatile"></a>volatile</h5><p>在JMM模型上实现MESI协议，也就是在变量使用volatile关键字，一个线程将内存中的有volatile关键字标识的变量拿到工作空间进行修改后，就会通知其他线程再访问这个变量的话直接到内存中去找，就不要在自己的工作空间找了，因为数据已经被修改了。</p>
+<h3 id="JMM与可见性">JMM与可见性</h3>
+<h4 id="JMM对可见性的保证方式：">JMM对可见性的保证方式：</h4>
+<h5 id="volatile">volatile</h5>
+<p>在JMM模型上实现MESI协议，也就是在变量使用volatile关键字，一个线程将内存中的有volatile关键字标识的变量拿到工作空间进行修改后，就会通知其他线程再访问这个变量的话直接到内存中去找，就不要在自己的工作空间找了，因为数据已经被修改了。</p>
 <p>深入来说，是通过加入内存屏障和禁止重排序优化来实现的：</p>
 <ul>
 <li>对volatile变量执行写操作时，会在写操作后加入一条store屏障指令，会将cpu数据强制刷新到主内存中去</li>
 <li>对volatile变量执行读操作时，会在读操作前加入一条load屏障指令，强制缓存器中的缓存失效，每次使用都要去主内存中重新获取数据</li>
 </ul>
 <p>通俗地讲，volatile变量在每次被访问的时候，都强迫从主内存中读取该变量的值，而当该变量在发生变化时，又会强迫变量讲最新的值刷新到主内存中，这样，任意时刻，不同的线程总能看到该变量的最新值。</p>
-<h5 id="synchronized"><a href="#synchronized" class="headerlink" title="synchronized"></a>synchronized</h5><p>使用synchronized加锁来保证可见性，它会保证两条原则：</p>
+<h5 id="synchronized">synchronized</h5>
+<p>使用synchronized加锁来保证可见性，它会保证两条原则：</p>
 <ul>
 <li>线程解锁前，必须把共享变量的最新值刷新到主内存中</li>
 <li>线程加锁时，将清空工作内存中共享变量的值，从而使用共享变量时需要从主内存中重新读取最新值（注意：加锁与解锁需要是同一把锁）</li>
 </ul>
-<h5 id="JUC中Lock的lock"><a href="#JUC中Lock的lock" class="headerlink" title="JUC中Lock的lock"></a>JUC中Lock的lock</h5><h3 id="JMM与有序性"><a href="#JMM与有序性" class="headerlink" title="JMM与有序性"></a>JMM与有序性</h3><h4 id="JMM对有序性的保证方式："><a href="#JMM对有序性的保证方式：" class="headerlink" title="JMM对有序性的保证方式："></a>JMM对有序性的保证方式：</h4><h5 id="volatile-1"><a href="#volatile-1" class="headerlink" title="volatile"></a>volatile</h5><p>被加了volatile关键字的变量不会被重排序。</p>
+<h5 id="JUC中Lock的lock">JUC中Lock的lock</h5>
+<h3 id="JMM与有序性">JMM与有序性</h3>
+<h4 id="JMM对有序性的保证方式：">JMM对有序性的保证方式：</h4>
+<h5 id="volatile-2">volatile</h5>
+<p>被加了volatile关键字的变量不会被重排序。</p>
 <p>对于volatile修饰的变量：</p>
 <ul>
 <li>volatile之前的代码不能调整到它的后面</li>
 <li>volatile之后的代码不能调整到它的前面</li>
 <li>霸道（位置不变化）volatile实现可见性的硬件基础就是cache line</li>
 </ul>
-<h5 id="synchronized-1"><a href="#synchronized-1" class="headerlink" title="synchronized"></a>synchronized</h5><p>被它括起来的代码块内部会进行重排序，但是同步代码块整体在所有代码中的顺序不会改变。</p>
+<h5 id="synchronized-2">synchronized</h5>
+<p>被它括起来的代码块内部会进行重排序，但是同步代码块整体在所有代码中的顺序不会改变。</p>
 <p>对synchronized同步代码块：</p>
 <ul>
 <li>同步代码块之前的代码不能调到它后面</li>
 <li>同步代码块之后的代码不能调到它前面</li>
 </ul>
-<h4 id="JMM对有序保证按照Happens-before原则"><a href="#JMM对有序保证按照Happens-before原则" class="headerlink" title="JMM对有序保证按照Happens-before原则"></a>JMM对有序保证按照Happens-before原则</h4><h4 id="时间上的先后与happens-before的关系"><a href="#时间上的先后与happens-before的关系" class="headerlink" title="时间上的先后与happens-before的关系"></a>时间上的先后与happens-before的关系</h4><p>一个操作时间上先发生于另一个操作“并不代表”一个操作happen—before另一个操作。<br>一个操作happen—before另一个操作“并不代表”一个操作时间上先发生于另一个操作。</p>
-<h2 id="JMM规范下多线程对变量的读写过程"><a href="#JMM规范下多线程对变量的读写过程" class="headerlink" title="JMM规范下多线程对变量的读写过程"></a>JMM规范下多线程对变量的读写过程</h2><p>由于JVM运行程序的实体是线程，而每个线程创建时JVM都会为其创建一个工作内存（有的地方成为栈空间），工作内存是每个线程的私有数据区域，而Java内存模型中规定所有变量都存储在主内存，主内存是共享内存区域，所有线程都可以访问，但线程对变量的操作（读写赋值等）必须在工作内存中进行，首先要将变量从主内存拷贝到线程自己的工作内存空间，然后对变量进行操作，操作完成后再将变量写回主内存，不能直接操作主内存中的变量，各个线程中的工作内存存储着主内存中的变量副本拷贝，因此不同的线程无法访问对方的工作内存，线程间的通信（传值）必须通过主内存来完成，其简要访问过程如下图：</p>
-<p><img src="/attachment/49ba82d7ded516013887259e45370677.png"></p>
+<h4 id="JMM对有序保证按照Happens-before原则">JMM对有序保证按照Happens-before原则</h4>
+<h4 id="时间上的先后与happens-before的关系">时间上的先后与happens-before的关系</h4>
+<p>一个操作时间上先发生于另一个操作“并不代表”一个操作happen—before另一个操作。<br>
+一个操作happen—before另一个操作“并不代表”一个操作时间上先发生于另一个操作。</p>
+<h2 id="JMM规范下多线程对变量的读写过程">JMM规范下多线程对变量的读写过程</h2>
+<p>由于JVM运行程序的实体是线程，而每个线程创建时JVM都会为其创建一个工作内存（有的地方成为栈空间），工作内存是每个线程的私有数据区域，而Java内存模型中规定所有变量都存储在主内存，主内存是共享内存区域，所有线程都可以访问，但线程对变量的操作（读写赋值等）必须在工作内存中进行，首先要将变量从主内存拷贝到线程自己的工作内存空间，然后对变量进行操作，操作完成后再将变量写回主内存，不能直接操作主内存中的变量，各个线程中的工作内存存储着主内存中的变量副本拷贝，因此不同的线程无法访问对方的工作内存，线程间的通信（传值）必须通过主内存来完成，其简要访问过程如下图：</p>
+<p><img src="/attachment/49ba82d7ded516013887259e45370677.png" alt=""></p>
 <p>JMM定义了线程和主内存之间的抽象关系：</p>
 <ul>
 <li>线程之间的共享变量存储在主内存中（从硬件角度讲就是内存条）</li>
@@ -463,12 +535,14 @@ description: 【Java 多线程并发】 Java内存模型基础知识
 <li>线程对共享变量所有的操作都必须先在线程自己的工作内存中进行后写回主内存，不能直接从主内存在读写（不能越级）</li>
 <li>不同线程之间也无法直接访问其他线程的工作内存中的变量，线程间变量值的传递需要通过主内存来进行（同级不能互相访问）。</li>
 </ul>
-<h2 id="JMM与多线程通信"><a href="#JMM与多线程通信" class="headerlink" title="JMM与多线程通信"></a>JMM与多线程通信</h2><p>Java线程之间的通信由Java内存模型（JMM）控制，JMM决定一个线程对共享变量的写入何时对另一个线程可见。</p>
+<h2 id="JMM与多线程通信">JMM与多线程通信</h2>
+<p>Java线程之间的通信由Java内存模型（JMM）控制，JMM决定一个线程对共享变量的写入何时对另一个线程可见。</p>
 <p>从抽象的角度来看，JMM定义了线程和主内存之间的抽象关系：线程之间的共享变量存储在主内存（main memory）中，每个线程都有一个私有的本地内存（local memory），本地内存中存储了该线程以读/写共享变量的副本。本地内存是JMM的一个抽象概念，并不真实存在，它涵盖了缓存，写缓冲区，寄存器以及其他的硬件和编译器优化。Java内存模型的抽象示意图如下：</p>
-<p><img src="/attachment/09ff9972fe7865f954779084f2596ef7.png"></p>
+<p><img src="/attachment/09ff9972fe7865f954779084f2596ef7.png" alt=""></p>
 <p>线程间通信的步骤：</p>
-<p>首先，线程A把本地内存A中更新过的共享变量刷新到主内存中去。<br>然后，线程B到主内存中去读取线程A之前已更新过的共享变量。</p>
-<p><img src="/attachment/8ecd0f1dfdf3afecfa20e5a4c6a10f62.png"></p>
+<p>首先，线程A把本地内存A中更新过的共享变量刷新到主内存中去。<br>
+然后，线程B到主内存中去读取线程A之前已更新过的共享变量。</p>
+<p><img src="/attachment/8ecd0f1dfdf3afecfa20e5a4c6a10f62.png" alt=""></p>
 <p>本地内存A和B有主内存中共享变量x的副本。</p>
 <ul>
 <li>假设初始时，这三个内存中的x值都为0。线程A在执行时，把更新后的x值（假设值为1）临时存放在自己的本地内存A中。</li>
@@ -476,7 +550,7 @@ description: 【Java 多线程并发】 Java内存模型基础知识
 <li>随后，线程B到主内存中去读取线程A更新后的x值，此时线程B的本地内存的x值也变为了1。</li>
 </ul>
 <p>从整体来看，这两个步骤实质上是线程A在向线程B发送消息，而且这个通信过程必须要经过主内存。JMM通过控制主内存与每个线程的本地内存之间的交互，来为java程序员提供内存可见性保证。</p>
-</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a target="_blank" rel="noopener" href="https://github.com/yu627482453">Bill Cipher</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://yu627482453.github.io/java/java-duo-xian-cheng-bing-fa/java-duo-xian-cheng-bing-fa-yuan-li/java-duo-xian-cheng-bing-fa-java-nei-cun-mo-xing-ji-chu-zhi-shi/">https://yu627482453.github.io/java/java-duo-xian-cheng-bing-fa/java-duo-xian-cheng-bing-fa-yuan-li/java-duo-xian-cheng-bing-fa-java-nei-cun-mo-xing-ji-chu-zhi-shi/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://yu627482453.github.io" target="_blank">蝶梦庄生</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E8%A1%8C%E5%8A%A8%E9%98%B6%E6%AE%B5-%E5%AE%8C%E6%88%90/">行动阶段/完成</a><a class="post-meta__tags" href="/tags/%E7%AC%94%E8%AE%B0%E7%A9%BA%E9%97%B4-KnowladgeSpace-ProgramSpace-BasicsSpace/">笔记空间/KnowladgeSpace/ProgramSpace/BasicsSpace</a><a class="post-meta__tags" href="/tags/%E4%B8%BB%E9%A2%98%E5%9C%BA%E6%99%AF-%E7%A8%8B%E5%BA%8F/">主题场景/程序</a><a class="post-meta__tags" href="/tags/%E7%BB%86%E5%8C%96%E4%B8%BB%E9%A2%98-Java-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%B9%B6%E5%8F%91/">细化主题/Java/多线程并发</a></div><div class="post_share"><div class="social-share" data-image="https://cdn.seovx.com/?mom=302" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/reward/wechat.jpg" target="_blank"><img class="post-qr-code-img" src="/img/reward/wechat.jpg" alt="wechat"/></a><div class="post-qr-code-desc">wechat</div></li><li class="reward-item"><a href="/img/reward/alipay.jpg" target="_blank"><img class="post-qr-code-img" src="/img/reward/alipay.jpg" alt="alipay"/></a><div class="post-qr-code-desc">alipay</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/java/java-duo-xian-cheng-bing-fa/java-duo-xian-cheng-bing-fa-yuan-li/java-duo-xian-cheng-bing-fa-volatile/"><img class="prev-cover" src="https://cdn.seovx.com/?mom=302" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">【Java 多线程并发】 volatile</div></div></a></div><div class="next-post pull-right"><a href="/java/java-duo-xian-cheng-bing-fa/java-duo-xian-cheng-bing-fa-ji-chu/java-duo-xian-cheng-bing-fa-java-xian-cheng-jian-de-tong-xin/"><img class="next-cover" src="https://cdn.seovx.com/?mom=302" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">【Java 多线程并发】 Java线程间的通信</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/java/java-duo-xian-cheng-bing-fa/java-duo-xian-cheng-bing-fa-yuan-li/java-duo-xian-cheng-bing-fa-aqs-abstract-queued-synchronizer/" title="【Java 多线程并发】 AQS（Abstract Queued Synchronizer）"><img class="cover" src="https://cdn.seovx.com/?mom=302" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-07-04</div><div class="title">【Java 多线程并发】 AQS（Abstract Queued Synchronizer）</div></div></a></div><div><a href="/java/java-duo-xian-cheng-bing-fa/java-duo-xian-cheng-bing-fa-yuan-li/java-duo-xian-cheng-bing-fa-cas-compare-and-swap/" title="【Java 多线程并发】 CAS（Compare And Swap）"><img class="cover" src="https://cdn.seovx.com/?mom=302" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-07-03</div><div class="title">【Java 多线程并发】 CAS（Compare And Swap）</div></div></a></div><div><a href="/java/java-duo-xian-cheng-bing-fa/java-duo-xian-cheng-bing-fa-yuan-li/java-duo-xian-cheng-bing-fa-fail-fast-kuai-su-shi-bai-ji-zhi/" title="【Java 多线程并发】 fail-fast(快速失败)机制"><img class="cover" src="https://cdn.seovx.com/?mom=302" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-07-04</div><div class="title">【Java 多线程并发】 fail-fast(快速失败)机制</div></div></a></div><div><a href="/java/java-duo-xian-cheng-bing-fa/java-duo-xian-cheng-bing-fa-yuan-li/java-duo-xian-cheng-bing-fa-yuan-li/" title="【Java 多线程并发】 原理"><img class="cover" src="https://cdn.seovx.com/?mom=302" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-07-04</div><div class="title">【Java 多线程并发】 原理</div></div></a></div><div><a href="/java/java-duo-xian-cheng-bing-fa/java-duo-xian-cheng-bing-fa-yuan-li/java-duo-xian-cheng-bing-fa-synchronized/" title="【Java 多线程并发】 synchronized"><img class="cover" src="https://cdn.seovx.com/?mom=302" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-07-03</div><div class="title">【Java 多线程并发】 synchronized</div></div></a></div><div><a href="/java/java-duo-xian-cheng-bing-fa/java-duo-xian-cheng-bing-fa-yuan-li/java-duo-xian-cheng-bing-fa-volatile/" title="【Java 多线程并发】 volatile"><img class="cover" src="https://cdn.seovx.com/?mom=302" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-07-03</div><div class="title">【Java 多线程并发】 volatile</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="gitalk-container"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Bill Cipher</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">240</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">69</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/yu627482453"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/yu627482453" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="/627482453@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E3%80%90Java-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%B9%B6%E5%8F%91%E3%80%91-Java%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="toc-number">1.</span> <span class="toc-text">【Java 多线程并发】 Java内存模型基础知识</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Metadata"><span class="toc-number">1.1.</span> <span class="toc-text">Metadata</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A6%82%E8%BF%B0"><span class="toc-number">1.2.</span> <span class="toc-text">概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E6%A8%A1%E5%9E%8B%E7%9A%84%E4%B8%A4%E4%B8%AA%E5%85%B3%E9%94%AE%E9%97%AE%E9%A2%98"><span class="toc-number">1.3.</span> <span class="toc-text">并发编程模型的两个关键问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Java%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B%E7%9A%84%E6%8A%BD%E8%B1%A1%E7%BB%93%E6%9E%84"><span class="toc-number">1.4.</span> <span class="toc-text">Java内存模型的抽象结构</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFJMM%EF%BC%88JMM%E7%9A%84%E4%BD%9C%E7%94%A8%EF%BC%89"><span class="toc-number">1.4.1.</span> <span class="toc-text">什么是JMM（JMM的作用）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JMM%E7%9A%84%E7%BB%84%E6%88%90"><span class="toc-number">1.4.2.</span> <span class="toc-text">JMM的组成</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%90%E8%A1%8C%E6%97%B6%E5%86%85%E5%AD%98%E7%9A%84%E5%88%92%E5%88%86"><span class="toc-number">1.4.3.</span> <span class="toc-text">运行时内存的划分</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%97%A2%E7%84%B6%E5%A0%86%E6%98%AF%E5%85%B1%E4%BA%AB%E7%9A%84%EF%BC%8C%E4%B8%BA%E4%BB%80%E4%B9%88%E5%9C%A8%E5%A0%86%E4%B8%AD%E4%BC%9A%E6%9C%89%E5%86%85%E5%AD%98%E4%B8%8D%E5%8F%AF%E8%A7%81%E9%97%AE%E9%A2%98%EF%BC%9F"><span class="toc-number">1.4.4.</span> <span class="toc-text">既然堆是共享的，为什么在堆中会有内存不可见问题？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JMM%E4%B8%8EJava%E5%86%85%E5%AD%98%E5%8C%BA%E5%9F%9F%E5%88%92%E5%88%86%E7%9A%84%E5%8C%BA%E5%88%AB%E4%B8%8E%E8%81%94%E7%B3%BB"><span class="toc-number">1.4.5.</span> <span class="toc-text">JMM与Java内存区域划分的区别与联系</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A1%AC%E4%BB%B6%E5%86%85%E5%AD%98%E6%9E%B6%E6%9E%84%E4%B8%8Ejava%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B"><span class="toc-number">1.5.</span> <span class="toc-text">硬件内存架构与java内存模型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A1%AC%E4%BB%B6%E6%9E%B6%E6%9E%84"><span class="toc-number">1.5.1.</span> <span class="toc-text">硬件架构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Java%E7%BA%BF%E7%A8%8B%E4%B8%8E%E7%A1%AC%E4%BB%B6%E5%A4%84%E7%90%86%E5%99%A8"><span class="toc-number">1.5.2.</span> <span class="toc-text">Java线程与硬件处理器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Java%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B%E4%B8%8E%E7%A1%AC%E4%BB%B6%E5%86%85%E5%AD%98%E6%9E%B6%E6%9E%84%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="toc-number">1.5.3.</span> <span class="toc-text">Java内存模型与硬件内存架构的关系</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Java%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B%E7%9A%84%E5%BF%85%E8%A6%81%E6%80%A7"><span class="toc-number">1.5.4.</span> <span class="toc-text">Java内存模型的必要性</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JMM-%E7%9A%84-%E5%85%AB%E7%A7%8D%E5%90%8C%E6%AD%A5%E6%93%8D%E4%BD%9C"><span class="toc-number">1.6.</span> <span class="toc-text">JMM 的 八种同步操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JMM%E8%A7%84%E8%8C%83%E4%B8%8B%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%85%88%E8%A1%8C%E5%8F%91%E7%94%9F%E5%8E%9F%E5%88%99%E4%B9%8Bhappens-before"><span class="toc-number">1.7.</span> <span class="toc-text">JMM规范下多线程先行发生原则之happens-before</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%88%E8%A1%8C%E5%B9%B6%E5%8F%91%E5%8E%9F%E5%88%99%E8%AF%B4%E6%98%8E"><span class="toc-number">1.7.1.</span> <span class="toc-text">先行并发原则说明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#happens-before%E6%80%BB%E5%8E%9F%E5%88%99"><span class="toc-number">1.7.2.</span> <span class="toc-text">happens-before总原则</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#happens-before%E4%B9%8B8%E6%9D%A1"><span class="toc-number">1.7.3.</span> <span class="toc-text">happens-before之8条</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#happens-before%E5%B0%8F%E6%80%BB%E7%BB%93"><span class="toc-number">1.7.4.</span> <span class="toc-text">happens-before小总结</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JMM%E8%A7%84%E8%8C%83%E4%B8%8B%E4%B8%89%E5%A4%A7%E7%89%B9%E6%80%A7"><span class="toc-number">1.8.</span> <span class="toc-text">JMM规范下三大特性</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%AF%E8%A7%81%E6%80%A7"><span class="toc-number">1.8.1.</span> <span class="toc-text">可见性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8E%9F%E5%AD%90%E6%80%A7"><span class="toc-number">1.8.2.</span> <span class="toc-text">原子性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%89%E5%BA%8F%E6%80%A7"><span class="toc-number">1.8.3.</span> <span class="toc-text">有序性</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#JMM%E5%9C%A8%E4%BF%9D%E8%AF%81%E6%9C%89%E5%BA%8F%E6%80%A7%E6%97%B6%E6%89%80%E4%BD%BF%E7%94%A8%E7%9A%84%E4%B8%A4%E4%B8%AA%E5%8E%9F%E5%88%99%EF%BC%9A"><span class="toc-number">1.8.3.1.</span> <span class="toc-text">JMM在保证有序性时所使用的两个原则：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BC%98%E7%BC%BA%E7%82%B9"><span class="toc-number">1.8.3.2.</span> <span class="toc-text">优缺点</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JMM%E5%AF%B9%E4%B8%89%E4%B8%AA%E7%89%B9%E5%BE%81%E7%9A%84%E4%BF%9D%E8%AF%81"><span class="toc-number">1.9.</span> <span class="toc-text">JMM对三个特征的保证</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#JMM%E4%B8%8E%E5%8E%9F%E5%AD%90%E6%80%A7"><span class="toc-number">1.9.1.</span> <span class="toc-text">JMM与原子性</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#JMM%E5%AF%B9%E5%8E%9F%E5%AD%90%E6%80%A7%E7%9A%84%E4%BF%9D%E8%AF%81%E6%96%B9%E5%BC%8F%EF%BC%9A"><span class="toc-number">1.9.1.1.</span> <span class="toc-text">JMM对原子性的保证方式：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JMM%E4%B8%8E%E5%8F%AF%E8%A7%81%E6%80%A7"><span class="toc-number">1.9.2.</span> <span class="toc-text">JMM与可见性</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#JMM%E5%AF%B9%E5%8F%AF%E8%A7%81%E6%80%A7%E7%9A%84%E4%BF%9D%E8%AF%81%E6%96%B9%E5%BC%8F%EF%BC%9A"><span class="toc-number">1.9.2.1.</span> <span class="toc-text">JMM对可见性的保证方式：</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#volatile"><span class="toc-number">1.9.2.1.1.</span> <span class="toc-text">volatile</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#synchronized"><span class="toc-number">1.9.2.1.2.</span> <span class="toc-text">synchronized</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#JUC%E4%B8%ADLock%E7%9A%84lock"><span class="toc-number">1.9.2.1.3.</span> <span class="toc-text">JUC中Lock的lock</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JMM%E4%B8%8E%E6%9C%89%E5%BA%8F%E6%80%A7"><span class="toc-number">1.9.3.</span> <span class="toc-text">JMM与有序性</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#JMM%E5%AF%B9%E6%9C%89%E5%BA%8F%E6%80%A7%E7%9A%84%E4%BF%9D%E8%AF%81%E6%96%B9%E5%BC%8F%EF%BC%9A"><span class="toc-number">1.9.3.1.</span> <span class="toc-text">JMM对有序性的保证方式：</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#volatile-1"><span class="toc-number">1.9.3.1.1.</span> <span class="toc-text">volatile</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#synchronized-1"><span class="toc-number">1.9.3.1.2.</span> <span class="toc-text">synchronized</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#JMM%E5%AF%B9%E6%9C%89%E5%BA%8F%E4%BF%9D%E8%AF%81%E6%8C%89%E7%85%A7Happens-before%E5%8E%9F%E5%88%99"><span class="toc-number">1.9.3.2.</span> <span class="toc-text">JMM对有序保证按照Happens-before原则</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%97%B6%E9%97%B4%E4%B8%8A%E7%9A%84%E5%85%88%E5%90%8E%E4%B8%8Ehappens-before%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="toc-number">1.9.3.3.</span> <span class="toc-text">时间上的先后与happens-before的关系</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JMM%E8%A7%84%E8%8C%83%E4%B8%8B%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%AF%B9%E5%8F%98%E9%87%8F%E7%9A%84%E8%AF%BB%E5%86%99%E8%BF%87%E7%A8%8B"><span class="toc-number">1.10.</span> <span class="toc-text">JMM规范下多线程对变量的读写过程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JMM%E4%B8%8E%E5%A4%9A%E7%BA%BF%E7%A8%8B%E9%80%9A%E4%BF%A1"><span class="toc-number">1.11.</span> <span class="toc-text">JMM与多线程通信</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/design/she-ji-mo-shi/" title="无题"><img src="https://cdn.seovx.com/?mom=302" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/design/she-ji-mo-shi/" title="无题">无题</a><time datetime="2023-07-15T09:13:39.871Z" title="发表于 2023-07-15 17:13:39">2023-07-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/design/xing-wei-mo-shi/xing-wei-mo-shi/" title="无题"><img src="https://cdn.seovx.com/?mom=302" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/design/xing-wei-mo-shi/xing-wei-mo-shi/" title="无题">无题</a><time datetime="2023-07-15T09:13:37.615Z" title="发表于 2023-07-15 17:13:37">2023-07-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/design/jie-gou-mo-shi/jie-gou-mo-shi/" title="无题"><img src="https://cdn.seovx.com/?mom=302" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/design/jie-gou-mo-shi/jie-gou-mo-shi/" title="无题">无题</a><time datetime="2023-07-15T09:13:33.180Z" title="发表于 2023-07-15 17:13:33">2023-07-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/design/chuang-jian-mo-shi/chuang-jian-mo-shi/" title="无题"><img src="https://cdn.seovx.com/?mom=302" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/design/chuang-jian-mo-shi/chuang-jian-mo-shi/" title="无题">无题</a><time datetime="2023-07-15T09:13:23.913Z" title="发表于 2023-07-15 17:13:23">2023-07-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/java/java-duo-xian-cheng-bing-fa/java-duo-xian-cheng-bing-fa-xian-cheng/java-duo-xian-cheng-bing-fa-xian-cheng/" title="【Java 多线程并发】 线程"><img src="https://cdn.seovx.com/?mom=302" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【Java 多线程并发】 线程"/></a><div class="content"><a class="title" href="/java/java-duo-xian-cheng-bing-fa/java-duo-xian-cheng-bing-fa-xian-cheng/java-duo-xian-cheng-bing-fa-xian-cheng/" title="【Java 多线程并发】 线程">【Java 多线程并发】 线程</a><time datetime="2023-07-10T06:15:00.000Z" title="发表于 2023-07-10 14:15:00">2023-07-10</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By Bill Cipher</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>function addGitalkSource () {
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a target="_blank" rel="noopener" href="https://github.com/yu627482453">Bill Cipher</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://yu627482453.github.io/java/java-duo-xian-cheng-bing-fa/java-duo-xian-cheng-bing-fa-yuan-li/java-duo-xian-cheng-bing-fa-java-nei-cun-mo-xing-ji-chu-zhi-shi/">https://yu627482453.github.io/java/java-duo-xian-cheng-bing-fa/java-duo-xian-cheng-bing-fa-yuan-li/java-duo-xian-cheng-bing-fa-java-nei-cun-mo-xing-ji-chu-zhi-shi/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://yu627482453.github.io" target="_blank">蝶梦庄生</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E8%A1%8C%E5%8A%A8%E9%98%B6%E6%AE%B5-%E5%AE%8C%E6%88%90/">行动阶段/完成</a><a class="post-meta__tags" href="/tags/%E7%AC%94%E8%AE%B0%E7%A9%BA%E9%97%B4-KnowladgeSpace-ProgramSpace-BasicsSpace/">笔记空间/KnowladgeSpace/ProgramSpace/BasicsSpace</a><a class="post-meta__tags" href="/tags/%E4%B8%BB%E9%A2%98%E5%9C%BA%E6%99%AF-%E7%A8%8B%E5%BA%8F/">主题场景/程序</a><a class="post-meta__tags" href="/tags/%E7%BB%86%E5%8C%96%E4%B8%BB%E9%A2%98-Java-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%B9%B6%E5%8F%91/">细化主题/Java/多线程并发</a></div><div class="post_share"><div class="social-share" data-image="https://api.yimian.xyz/img?type=moe" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/reward/wechat.jpg" target="_blank"><img class="post-qr-code-img" src="/img/reward/wechat.jpg" alt="wechat"/></a><div class="post-qr-code-desc">wechat</div></li><li class="reward-item"><a href="/img/reward/alipay.jpg" target="_blank"><img class="post-qr-code-img" src="/img/reward/alipay.jpg" alt="alipay"/></a><div class="post-qr-code-desc">alipay</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/java/java-duo-xian-cheng-bing-fa/java-duo-xian-cheng-bing-fa-yuan-li/java-duo-xian-cheng-bing-fa-volatile/"><img class="prev-cover" src="https://api.yimian.xyz/img?type=moe" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">【Java 多线程并发】 volatile</div></div></a></div><div class="next-post pull-right"><a href="/java/java-duo-xian-cheng-bing-fa/java-duo-xian-cheng-bing-fa-ji-chu/java-duo-xian-cheng-bing-fa-java-xian-cheng-jian-de-tong-xin/"><img class="next-cover" src="https://api.yimian.xyz/img?type=moe" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">【Java 多线程并发】 Java线程间的通信</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/java/java-duo-xian-cheng-bing-fa/java-duo-xian-cheng-bing-fa-ji-chu/java-duo-xian-cheng-bing-fa-java-xian-cheng-jian-de-tong-xin/" title="【Java 多线程并发】 Java线程间的通信"><img class="cover" src="https://api.yimian.xyz/img?type=moe" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-07-03</div><div class="title">【Java 多线程并发】 Java线程间的通信</div></div></a></div><div><a href="/java/java-duo-xian-cheng-bing-fa/java-duo-xian-cheng-bing-fa-ji-chu/java-duo-xian-cheng-bing-fa-java-duo-xian-cheng-ru-men-lei-he-jie-kou/" title="【Java 多线程并发】 Java多线程入门类和接口"><img class="cover" src="https://api.yimian.xyz/img?type=moe" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-07-03</div><div class="title">【Java 多线程并发】 Java多线程入门类和接口</div></div></a></div><div><a href="/java/java-duo-xian-cheng-bing-fa/java-duo-xian-cheng-bing-fa-ji-chu/java-duo-xian-cheng-bing-fa-java-xian-cheng-de-zhuang-tai-ji-zhu-yao-zhuan-hua-fang-fa/" title="【Java 多线程并发】 Java线程的状态及主要转化方法"><img class="cover" src="https://api.yimian.xyz/img?type=moe" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-07-03</div><div class="title">【Java 多线程并发】 Java线程的状态及主要转化方法</div></div></a></div><div><a href="/java/java-duo-xian-cheng-bing-fa/java-duo-xian-cheng-bing-fa-ji-chu/java-duo-xian-cheng-bing-fa-xian-cheng-zu-he-xian-cheng-you-xian-ji/" title="【Java 多线程并发】 线程组和线程优先级"><img class="cover" src="https://api.yimian.xyz/img?type=moe" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-07-03</div><div class="title">【Java 多线程并发】 线程组和线程优先级</div></div></a></div><div><a href="/java/java-duo-xian-cheng-bing-fa/java-duo-xian-cheng-bing-fa-ji-chu/java-duo-xian-cheng-bing-fa-ji-chu/" title="【Java 多线程并发】 基础"><img class="cover" src="https://api.yimian.xyz/img?type=moe" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-07-04</div><div class="title">【Java 多线程并发】 基础</div></div></a></div><div><a href="/java/java-duo-xian-cheng-bing-fa/java-duo-xian-cheng-bing-fa-ji-chu/java-duo-xian-cheng-bing-fa-jin-cheng-yu-xian-cheng-ji-ben-gai-nian/" title="【Java 多线程并发】 进程与线程基本概念"><img class="cover" src="https://api.yimian.xyz/img?type=moe" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-07-03</div><div class="title">【Java 多线程并发】 进程与线程基本概念</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="gitalk-container"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Bill Cipher</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">215</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">45</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/yu627482453"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/yu627482453" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="/627482453@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">1.</span> <span class="toc-text">【Java 多线程并发】 Java内存模型基础知识</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Metadata-152"><span class="toc-number">1.1.</span> <span class="toc-text">Metadata</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A6%82%E8%BF%B0-70"><span class="toc-number">1.2.</span> <span class="toc-text">概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E6%A8%A1%E5%9E%8B%E7%9A%84%E4%B8%A4%E4%B8%AA%E5%85%B3%E9%94%AE%E9%97%AE%E9%A2%98"><span class="toc-number">1.3.</span> <span class="toc-text">并发编程模型的两个关键问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Java%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B%E7%9A%84%E6%8A%BD%E8%B1%A1%E7%BB%93%E6%9E%84"><span class="toc-number">1.4.</span> <span class="toc-text">Java内存模型的抽象结构</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFJMM%EF%BC%88JMM%E7%9A%84%E4%BD%9C%E7%94%A8%EF%BC%89"><span class="toc-number">1.4.1.</span> <span class="toc-text">什么是JMM（JMM的作用）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JMM%E7%9A%84%E7%BB%84%E6%88%90"><span class="toc-number">1.4.2.</span> <span class="toc-text">JMM的组成</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%90%E8%A1%8C%E6%97%B6%E5%86%85%E5%AD%98%E7%9A%84%E5%88%92%E5%88%86"><span class="toc-number">1.4.3.</span> <span class="toc-text">运行时内存的划分</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%97%A2%E7%84%B6%E5%A0%86%E6%98%AF%E5%85%B1%E4%BA%AB%E7%9A%84%EF%BC%8C%E4%B8%BA%E4%BB%80%E4%B9%88%E5%9C%A8%E5%A0%86%E4%B8%AD%E4%BC%9A%E6%9C%89%E5%86%85%E5%AD%98%E4%B8%8D%E5%8F%AF%E8%A7%81%E9%97%AE%E9%A2%98%EF%BC%9F"><span class="toc-number">1.4.4.</span> <span class="toc-text">既然堆是共享的，为什么在堆中会有内存不可见问题？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JMM%E4%B8%8EJava%E5%86%85%E5%AD%98%E5%8C%BA%E5%9F%9F%E5%88%92%E5%88%86%E7%9A%84%E5%8C%BA%E5%88%AB%E4%B8%8E%E8%81%94%E7%B3%BB"><span class="toc-number">1.4.5.</span> <span class="toc-text">JMM与Java内存区域划分的区别与联系</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A1%AC%E4%BB%B6%E5%86%85%E5%AD%98%E6%9E%B6%E6%9E%84%E4%B8%8Ejava%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B"><span class="toc-number">1.5.</span> <span class="toc-text">硬件内存架构与java内存模型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A1%AC%E4%BB%B6%E6%9E%B6%E6%9E%84"><span class="toc-number">1.5.1.</span> <span class="toc-text">硬件架构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Java%E7%BA%BF%E7%A8%8B%E4%B8%8E%E7%A1%AC%E4%BB%B6%E5%A4%84%E7%90%86%E5%99%A8"><span class="toc-number">1.5.2.</span> <span class="toc-text">Java线程与硬件处理器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Java%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B%E4%B8%8E%E7%A1%AC%E4%BB%B6%E5%86%85%E5%AD%98%E6%9E%B6%E6%9E%84%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="toc-number">1.5.3.</span> <span class="toc-text">Java内存模型与硬件内存架构的关系</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Java%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B%E7%9A%84%E5%BF%85%E8%A6%81%E6%80%A7"><span class="toc-number">1.5.4.</span> <span class="toc-text">Java内存模型的必要性</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JMM-%E7%9A%84-%E5%85%AB%E7%A7%8D%E5%90%8C%E6%AD%A5%E6%93%8D%E4%BD%9C"><span class="toc-number">1.6.</span> <span class="toc-text">JMM 的 八种同步操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JMM%E8%A7%84%E8%8C%83%E4%B8%8B%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%85%88%E8%A1%8C%E5%8F%91%E7%94%9F%E5%8E%9F%E5%88%99%E4%B9%8Bhappens-before"><span class="toc-number">1.7.</span> <span class="toc-text">JMM规范下多线程先行发生原则之happens-before</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%88%E8%A1%8C%E5%B9%B6%E5%8F%91%E5%8E%9F%E5%88%99%E8%AF%B4%E6%98%8E"><span class="toc-number">1.7.1.</span> <span class="toc-text">先行并发原则说明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#happens-before%E6%80%BB%E5%8E%9F%E5%88%99"><span class="toc-number">1.7.2.</span> <span class="toc-text">happens-before总原则</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#happens-before%E4%B9%8B8%E6%9D%A1"><span class="toc-number">1.7.3.</span> <span class="toc-text">happens-before之8条</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#happens-before%E5%B0%8F%E6%80%BB%E7%BB%93"><span class="toc-number">1.7.4.</span> <span class="toc-text">happens-before小总结</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JMM%E8%A7%84%E8%8C%83%E4%B8%8B%E4%B8%89%E5%A4%A7%E7%89%B9%E6%80%A7"><span class="toc-number">1.8.</span> <span class="toc-text">JMM规范下三大特性</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%AF%E8%A7%81%E6%80%A7"><span class="toc-number">1.8.1.</span> <span class="toc-text">可见性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8E%9F%E5%AD%90%E6%80%A7-2"><span class="toc-number">1.8.2.</span> <span class="toc-text">原子性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%89%E5%BA%8F%E6%80%A7"><span class="toc-number">1.8.3.</span> <span class="toc-text">有序性</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#JMM%E5%9C%A8%E4%BF%9D%E8%AF%81%E6%9C%89%E5%BA%8F%E6%80%A7%E6%97%B6%E6%89%80%E4%BD%BF%E7%94%A8%E7%9A%84%E4%B8%A4%E4%B8%AA%E5%8E%9F%E5%88%99%EF%BC%9A"><span class="toc-number">1.8.3.1.</span> <span class="toc-text">JMM在保证有序性时所使用的两个原则：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BC%98%E7%BC%BA%E7%82%B9"><span class="toc-number">1.8.3.2.</span> <span class="toc-text">优缺点</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JMM%E5%AF%B9%E4%B8%89%E4%B8%AA%E7%89%B9%E5%BE%81%E7%9A%84%E4%BF%9D%E8%AF%81"><span class="toc-number">1.9.</span> <span class="toc-text">JMM对三个特征的保证</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#JMM%E4%B8%8E%E5%8E%9F%E5%AD%90%E6%80%A7"><span class="toc-number">1.9.1.</span> <span class="toc-text">JMM与原子性</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#JMM%E5%AF%B9%E5%8E%9F%E5%AD%90%E6%80%A7%E7%9A%84%E4%BF%9D%E8%AF%81%E6%96%B9%E5%BC%8F%EF%BC%9A"><span class="toc-number">1.9.1.1.</span> <span class="toc-text">JMM对原子性的保证方式：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JMM%E4%B8%8E%E5%8F%AF%E8%A7%81%E6%80%A7"><span class="toc-number">1.9.2.</span> <span class="toc-text">JMM与可见性</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#JMM%E5%AF%B9%E5%8F%AF%E8%A7%81%E6%80%A7%E7%9A%84%E4%BF%9D%E8%AF%81%E6%96%B9%E5%BC%8F%EF%BC%9A"><span class="toc-number">1.9.2.1.</span> <span class="toc-text">JMM对可见性的保证方式：</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#volatile"><span class="toc-number">1.9.2.1.1.</span> <span class="toc-text">volatile</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#synchronized"><span class="toc-number">1.9.2.1.2.</span> <span class="toc-text">synchronized</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#JUC%E4%B8%ADLock%E7%9A%84lock"><span class="toc-number">1.9.2.1.3.</span> <span class="toc-text">JUC中Lock的lock</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JMM%E4%B8%8E%E6%9C%89%E5%BA%8F%E6%80%A7"><span class="toc-number">1.9.3.</span> <span class="toc-text">JMM与有序性</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#JMM%E5%AF%B9%E6%9C%89%E5%BA%8F%E6%80%A7%E7%9A%84%E4%BF%9D%E8%AF%81%E6%96%B9%E5%BC%8F%EF%BC%9A"><span class="toc-number">1.9.3.1.</span> <span class="toc-text">JMM对有序性的保证方式：</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#volatile-2"><span class="toc-number">1.9.3.1.1.</span> <span class="toc-text">volatile</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#synchronized-2"><span class="toc-number">1.9.3.1.2.</span> <span class="toc-text">synchronized</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#JMM%E5%AF%B9%E6%9C%89%E5%BA%8F%E4%BF%9D%E8%AF%81%E6%8C%89%E7%85%A7Happens-before%E5%8E%9F%E5%88%99"><span class="toc-number">1.9.3.2.</span> <span class="toc-text">JMM对有序保证按照Happens-before原则</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%97%B6%E9%97%B4%E4%B8%8A%E7%9A%84%E5%85%88%E5%90%8E%E4%B8%8Ehappens-before%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="toc-number">1.9.3.3.</span> <span class="toc-text">时间上的先后与happens-before的关系</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JMM%E8%A7%84%E8%8C%83%E4%B8%8B%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%AF%B9%E5%8F%98%E9%87%8F%E7%9A%84%E8%AF%BB%E5%86%99%E8%BF%87%E7%A8%8B"><span class="toc-number">1.10.</span> <span class="toc-text">JMM规范下多线程对变量的读写过程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JMM%E4%B8%8E%E5%A4%9A%E7%BA%BF%E7%A8%8B%E9%80%9A%E4%BF%A1"><span class="toc-number">1.11.</span> <span class="toc-text">JMM与多线程通信</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/design/she-ji-mo-shi/" title="无题"><img src="https://api.yimian.xyz/img?type=moe" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/design/she-ji-mo-shi/" title="无题">无题</a><time datetime="2023-07-15T09:13:39.871Z" title="发表于 2023-07-15 17:13:39">2023-07-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/java/java-duo-xian-cheng-bing-fa/java-duo-xian-cheng-bing-fa-xian-cheng/java-duo-xian-cheng-bing-fa-xian-cheng/" title="【Java 多线程并发】 线程"><img src="https://api.yimian.xyz/img?type=moe" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【Java 多线程并发】 线程"/></a><div class="content"><a class="title" href="/java/java-duo-xian-cheng-bing-fa/java-duo-xian-cheng-bing-fa-xian-cheng/java-duo-xian-cheng-bing-fa-xian-cheng/" title="【Java 多线程并发】 线程">【Java 多线程并发】 线程</a><time datetime="2023-07-10T06:15:00.000Z" title="发表于 2023-07-10 14:15:00">2023-07-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/java/java-jvm/java-jvm-nei-cun-guan-li/java-jvm-zhi-jie-nei-cun/" title="【Java JVM】 直接内存"><img src="https://api.yimian.xyz/img?type=moe" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【Java JVM】 直接内存"/></a><div class="content"><a class="title" href="/java/java-jvm/java-jvm-nei-cun-guan-li/java-jvm-zhi-jie-nei-cun/" title="【Java JVM】 直接内存">【Java JVM】 直接内存</a><time datetime="2023-07-10T00:00:00.000Z" title="发表于 2023-07-10 08:00:00">2023-07-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/database/redis/redis-chong-dian-gong-neng/redis-pai-xu/" title="【Redis】 排序"><img src="https://api.yimian.xyz/img?type=moe" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【Redis】 排序"/></a><div class="content"><a class="title" href="/database/redis/redis-chong-dian-gong-neng/redis-pai-xu/" title="【Redis】 排序">【Redis】 排序</a><time datetime="2023-07-09T06:07:00.000Z" title="发表于 2023-07-09 14:07:00">2023-07-09</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/database/redis/redis-chong-dian-gong-neng/redis-lua-jiao-ben/" title="【Redis】 Lua脚本"><img src="https://api.yimian.xyz/img?type=moe" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【Redis】 Lua脚本"/></a><div class="content"><a class="title" href="/database/redis/redis-chong-dian-gong-neng/redis-lua-jiao-ben/" title="【Redis】 Lua脚本">【Redis】 Lua脚本</a><time datetime="2023-07-09T05:56:00.000Z" title="发表于 2023-07-09 13:56:00">2023-07-09</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By Bill Cipher</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>function addGitalkSource () {
   const ele = document.createElement('link')
   ele.rel = 'stylesheet'
   ele.href= 'https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.css'

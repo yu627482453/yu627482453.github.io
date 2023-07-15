@@ -5,7 +5,7 @@
 <meta property="og:site_name" content="蝶梦庄生">
 <meta property="og:description" content="【Java 多线程并发】 ThreadLocal">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://cdn.seovx.com/?mom=302">
+<meta property="og:image" content="https://api.yimian.xyz/img?type=moe">
 <meta property="article:published_time" content="2023-07-04T07:58:00.000Z">
 <meta property="article:modified_time" content="2023-07-04T07:58:00.000Z">
 <meta property="article:author" content="Bill Cipher">
@@ -14,7 +14,7 @@
 <meta property="article:tag" content="主题场景&#x2F;程序">
 <meta property="article:tag" content="细化主题&#x2F;Java&#x2F;多线程并发">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://cdn.seovx.com/?mom=302"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://yu627482453.github.io/java/java-duo-xian-cheng-bing-fa/java-duo-xian-cheng-bing-fa-xian-cheng/java-duo-xian-cheng-bing-fa-threadlocal/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+<meta name="twitter:image" content="https://api.yimian.xyz/img?type=moe"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://yu627482453.github.io/java/java-duo-xian-cheng-bing-fa/java-duo-xian-cheng-bing-fa-xian-cheng/java-duo-xian-cheng-bing-fa-threadlocal/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
   root: '/',
   algolia: undefined,
   localSearch: {"path":"/search.xml","preload":true,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
@@ -147,7 +147,9 @@
     detectApple()
     })(window)</script><meta name="generator" content="Hexo 6.2.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">240</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">69</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cdn.seovx.com/?mom=302')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">蝶梦庄生</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">【Java 多线程并发】 ThreadLocal</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-07-04T07:58:00.000Z" title="发表于 2023-07-04 15:58:00">2023-07-04</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-07-04T07:58:00.000Z" title="更新于 2023-07-04 15:58:00">2023-07-04</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Java/">Java</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="【Java 多线程并发】 ThreadLocal"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="【Java-多线程并发】-ThreadLocal"><a href="#【Java-多线程并发】-ThreadLocal" class="headerlink" title="【Java 多线程并发】 ThreadLocal"></a>【Java 多线程并发】 ThreadLocal</h1><h2 id="Metadata"><a href="#Metadata" class="headerlink" title="Metadata"></a>Metadata</h2><pre><code class="line-numbers language-yml">title: 【Java 多线程并发】 ThreadLocal
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">215</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">45</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://api.yimian.xyz/img?type=moe')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">蝶梦庄生</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">【Java 多线程并发】 ThreadLocal</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-07-04T07:58:00.000Z" title="发表于 2023-07-04 15:58:00">2023-07-04</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-07-04T07:58:00.000Z" title="更新于 2023-07-04 15:58:00">2023-07-04</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Java/">Java</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="【Java 多线程并发】 ThreadLocal"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1>【Java 多线程并发】 ThreadLocal</h1>
+<h2 id="Metadata-163">Metadata</h2>
+<pre><code class="language-yml">title: 【Java 多线程并发】 ThreadLocal
 date: 2023-07-04 15:58
 tags:
   - 行动阶段/完成
@@ -160,8 +162,10 @@ keywords:
   - Java/多线程并发
 description: 【Java 多线程并发】 ThreadLocal
 </code></pre>
-<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p><strong>ThreadLocal</strong></p>
-<p>Thread的局部变量<br>提供线程内的局部变量，在多线程环境下访问时能保证各个线程内的ThreadLocal变量各自独立</p>
+<h2 id="概述-79">概述</h2>
+<p><strong>ThreadLocal</strong></p>
+<p>Thread的局部变量<br>
+提供线程内的局部变量，在多线程环境下访问时能保证各个线程内的ThreadLocal变量各自独立</p>
 <p><strong>应用场景</strong></p>
 <ul>
 <li>每个线程需要一个独享的对象</li>
@@ -180,9 +184,9 @@ description: 【Java 多线程并发】 ThreadLocal
 <li>免去传参的繁琐</li>
 </ol>
 <p><strong>Thread、ThreadLocal、ThreadLocalMap关系</strong></p>
-<p><img src="/attachment/0c9e2634a761b32ce0d372661a572852.png"></p>
+<p><img src="/attachment/0c9e2634a761b32ce0d372661a572852.png" alt=""></p>
 <p><strong>数据结构</strong></p>
-<p><img src="/attachment/d6f737e1a75f0c73d1dd5ccdf8df3f71.png"></p>
+<p><img src="/attachment/d6f737e1a75f0c73d1dd5ccdf8df3f71.png" alt=""></p>
 <p><strong>主要方法</strong></p>
 <ol>
 <li>T initialValue( )：初始化</li>
@@ -198,28 +202,42 @@ description: 【Java 多线程并发】 ThreadLocal
 <p>线性探测法</p>
 <p><strong>ThreadLocal注意点</strong></p>
 <ul>
-<li><p>内存泄漏<br>每个Entry都是一个对key的弱引用，同时，每个Entry都包含了一个对value的强引用。<br>key对应的value就不能被回收，因为有以下的调用链:Thread一&gt; ThreadLocalMap一&gt; Entry ( key为null )一&gt;Value。</p>
+<li>
+<p>内存泄漏<br>
+每个Entry都是一个对key的弱引用，同时，每个Entry都包含了一个对value的强引用。<br>
+key对应的value就不能被回收，因为有以下的调用链:Thread一&gt; ThreadLocalMap一&gt; Entry ( key为null )一&gt;Value。</p>
 </li>
-<li><p>空指针<br>在进行get之前，必须先set，否则可能会返回NULL，并且返回类型如果不是对象类型，而是基本数据类型的话，还会报空指针异常</p>
+<li>
+<p>空指针<br>
+在进行get之前，必须先set，否则可能会返回NULL，并且返回类型如果不是对象类型，而是基本数据类型的话，还会报空指针异常</p>
 </li>
-<li><p>共享对象<br>如果在每个线程中ThreadLocal.set()进去的东西本来就是多线程共享的同一个对象，还是会有并发访问问题。</p>
+<li>
+<p>共享对象<br>
+如果在每个线程中ThreadLocal.set()进去的东西本来就是多线程共享的同一个对象，还是会有并发访问问题。</p>
 </li>
-<li><p>不需要强行使用ThreadLocal</p>
+<li>
+<p>不需要强行使用ThreadLocal</p>
 </li>
-<li><p>优先使用框架的支持</p>
+<li>
+<p>优先使用框架的支持</p>
 </li>
 </ul>
-<h2 id="ThreadLocal简介"><a href="#ThreadLocal简介" class="headerlink" title="ThreadLocal简介"></a>ThreadLocal简介</h2><p>在JDK1.2的版本中就提供java.lang.ThreadLocal，ThreadLocal为解决多线程程序的并发问题提供了一种新的思路。使用这个工具类可以很简洁地编写出优美的多线程程序。</p>
+<h2 id="ThreadLocal简介">ThreadLocal简介</h2>
+<p>在JDK1.2的版本中就提供java.lang.ThreadLocal，ThreadLocal为解决多线程程序的并发问题提供了一种新的思路。使用这个工具类可以很简洁地编写出优美的多线程程序。</p>
 <p>ThreadLocal并不是一个Thread，而是Thread的局部变量，也许把它命名为ThreadLocalVariable更容易让人理解一些。</p>
 <p>在JDK5.0中，ThreadLocal已经支持泛型，该类的类名已经变为ThreadLocal&lt;T&gt;。API方法也相应进行了调整，新版本的API方法分别是void set(T value)、T get()以及T initialValue()。</p>
 <p>ThreadLocal的作用是提供线程内的局部变量，在多线程环境下访问时能保证各个线程内的ThreadLocal变量各自独立。也就是说，每个线程的ThreadLocal变量是自己专用的，其他线程是访问不到的，对自己的ThreadLocal变量也不会影响其他线程的ThreadLocal变量。</p>
-<h2 id="ThreadLocal的用途"><a href="#ThreadLocal的用途" class="headerlink" title="ThreadLocal的用途"></a>ThreadLocal的用途</h2><p>两大使用场景：</p>
-<p><strong>典型场景1</strong>：每个线程需要一个独享的对象(通常是工具类,典型需要使用的类有SimpleDateFormat和Random )。换句话说就是，多线程环境下需要对非线程安全对象的并发访问，并且该对象并不需要在线程间共享，只给每个线程自己使用即可，但是我们不想加锁，因为加锁很影响性能，降低并发量，这时候可以使用ThreadLocal来使得每个线程都持有一个该对象的副本。<br><strong>典型场景2</strong>：每个线程内需要保存全局变量(例如在拦截器中获取用户信息) , 可以让不同方法直接使用，避免参数传递的麻烦。比如我们在登陆时从拦截器获取到了用户的姓名，而在后面的的很多操作中可能还会用到这个名字，如果我们每一个方法都传参传入姓名的话就非常麻烦，不如直接把姓名这个数据存在这个请求线程内部，这样想什么时候用直接取出来即可。</p>
-<h3 id="典型场景1-每个线程需要一个独享的对象"><a href="#典型场景1-每个线程需要一个独享的对象" class="headerlink" title="典型场景1 :每个线程需要一个独享的对象"></a>典型场景1 :每个线程需要一个独享的对象</h3><ul>
+<h2 id="ThreadLocal的用途">ThreadLocal的用途</h2>
+<p>两大使用场景：</p>
+<p><strong>典型场景1</strong>：每个线程需要一个独享的对象(通常是工具类,典型需要使用的类有SimpleDateFormat和Random )。换句话说就是，多线程环境下需要对非线程安全对象的并发访问，并且该对象并不需要在线程间共享，只给每个线程自己使用即可，但是我们不想加锁，因为加锁很影响性能，降低并发量，这时候可以使用ThreadLocal来使得每个线程都持有一个该对象的副本。<br>
+<strong>典型场景2</strong>：每个线程内需要保存全局变量(例如在拦截器中获取用户信息) , 可以让不同方法直接使用，避免参数传递的麻烦。比如我们在登陆时从拦截器获取到了用户的姓名，而在后面的的很多操作中可能还会用到这个名字，如果我们每一个方法都传参传入姓名的话就非常麻烦，不如直接把姓名这个数据存在这个请求线程内部，这样想什么时候用直接取出来即可。</p>
+<h3 id="典型场景1-每个线程需要一个独享的对象">典型场景1 :每个线程需要一个独享的对象</h3>
+<ul>
 <li>每个Thread内有自己的实例副本，不共享</li>
 <li>比喻：教材只有一本，全班人一起做笔记有线程安全问题。复印之后给每个人发一本，每人在自己的教材上记笔记就没问题了。</li>
 </ul>
-<h4 id="SimpleDateFormat的进化之路："><a href="#SimpleDateFormat的进化之路：" class="headerlink" title="SimpleDateFormat的进化之路："></a>SimpleDateFormat的进化之路：</h4><ol>
+<h4 id="SimpleDateFormat的进化之路：">SimpleDateFormat的进化之路：</h4>
+<ol>
 <li>2个线程分别用自己的SimpleDateFormat ,这没问题</li>
 <li>后来延伸出10个 ,那就有10个线程和10个SimpleDateFormat ,这虽然写法不优雅(应该复用对象)，但勉强可以接受</li>
 <li>但是当需求变成了1000个，频繁的创建销毁线程对象会带来巨大消耗，那么必然要用线程池(否则消耗内存太多)</li>
@@ -229,8 +247,8 @@ description: 【Java 多线程并发】 ThreadLocal
 <li>在这里更好的解决方案是使用ThreadLocal，因为ThreadLocal是每个线程独享的，不会在多个线程之间共享，也就不会产生线程安全问题，并且ThreadLocal也不会像加锁一样影响性能</li>
 </ol>
 <p><strong>v0.1</strong></p>
-<p><img src="/attachment/73c915be96cab8417b1015f25cbbedb8.png"></p>
-<pre><code class="line-numbers language-java">/**
+<p><img src="/attachment/73c915be96cab8417b1015f25cbbedb8.png" alt=""></p>
+<pre><code class="language-java">/**
  * 描述：     两个线程打印日期
  */
 public class ThreadLocalNormalUsage00 {
@@ -268,8 +286,8 @@ public class ThreadLocalNormalUsage00 {
 </code></pre>
 <p>两个线程使用同一个SimpleDateFormat结果还算是正常，都可以正常输出。我们再来看一下n个线程使用同一个SimpleDateFormat会出现什么情况。</p>
 <p><strong>v0.2</strong></p>
-<p><img src="/attachment/4a9c5d18c2e57ab174f8289ed336c2d4.png"></p>
-<pre><code class="line-numbers language-java">/**
+<p><img src="/attachment/4a9c5d18c2e57ab174f8289ed336c2d4.png" alt=""></p>
+<pre><code class="language-java">/**
  * 描述：     30个线程打印日期
  */
 public class ThreadLocalNormalUsage01 {
@@ -297,8 +315,8 @@ public class ThreadLocalNormalUsage01 {
 </code></pre>
 <p>这样写依旧是可以正常运行，但是这里还有一点性能上的问题，如果需要的线程很多，比如增加到1000个，向上面这个写法就需要循环创建销毁1000次线程对象，这个过程是非常消耗性能的，所以我们引入线程池来优化线程管理。</p>
 <p><strong>v0.3</strong></p>
-<p><img src="/attachment/49aad0068ba57961293ad71c51295fdd.png"></p>
-<pre><code class="line-numbers language-java">/**
+<p><img src="/attachment/49aad0068ba57961293ad71c51295fdd.png" alt=""></p>
+<pre><code class="language-java">/**
  * 描述：     1000个打印日期的任务，用线程池来执行
  */
 public class ThreadLocalNormalUsage02 {
@@ -331,8 +349,8 @@ public class ThreadLocalNormalUsage02 {
 </code></pre>
 <p>这个代码还是可以正常运行的，但是也有一个问题，就是虽然Thread对象不需要重复创建销毁1000次了，但是在date()方法中还是需要创建SimpleDateFormat对象，这个date()需要被调用1000次，那么就会创建1000次SimpleDateFormat对象，这样开销依旧很大，所以我们可以让所有的线程都共用同一个simpleDateFormat对象，这样就能避免频繁的创建对象了，并且共用一个对象看起来也不会有什么影响，我们只是用这个对象来格式化日期格式而已。</p>
 <p><strong>v0.4</strong></p>
-<p><img src="/attachment/0b6694a354da3d227e744870685142fd.png"></p>
-<pre><code class="line-numbers language-java">/**
+<p><img src="/attachment/0b6694a354da3d227e744870685142fd.png" alt=""></p>
+<pre><code class="language-java">/**
  * 描述：     1000个打印日期的任务，用线程池来执行
  */
 public class ThreadLocalNormalUsage03 {
@@ -363,7 +381,7 @@ public class ThreadLocalNormalUsage03 {
 <p>这个代码执行结果就出现了问题，出现了多次打印相同时间的情况，这种情况本不应该发生的。这是因为SimpleDateFormat本身是线程不安全的，所以当多个线程同时使用同一个SimpleDateFormat对象是，就会出现并发安全问题。</p>
 <p>我们可以通过加锁来解决线程安全问题。</p>
 <p><strong>v0.5</strong></p>
-<pre><code class="line-numbers language-java">/**
+<pre><code class="language-java">/**
  * 描述：     加锁来解决线程安全问题
  */
 public class ThreadLocalNormalUsage04 {
@@ -397,11 +415,11 @@ public class ThreadLocalNormalUsage04 {
 <p>加了锁之后程序就可以正常运行了，没有线程安全问题了</p>
 <p>但是最后通过加锁来解决线程安全问题后，就会导致1000个线程需要依次排队获取simpleDateFormat对象，会导致性能下降，吞吐量降低。所以我们就需要引入ThreadLocal来解决这个问题。</p>
 <p>锁和ThreadLocal使用场景是有区别的，具体区别如下：</p>
-<p><img src="/attachment/914eab2b8d1457a400c802810ddc9cbf.png"></p>
+<p><img src="/attachment/914eab2b8d1457a400c802810ddc9cbf.png" alt=""></p>
 <p><strong>使用ThreadLocal来进行优化</strong></p>
 <p><strong>v1.0</strong></p>
-<p><img src="/attachment/9f70cf3932d646e4cf3107d0b217a403.png"></p>
-<pre><code class="line-numbers language-java">/**
+<p><img src="/attachment/9f70cf3932d646e4cf3107d0b217a403.png" alt=""></p>
+<pre><code class="language-java">/**
  * 描述：     利用ThreadLocal，给每个线程分配自己的dateFormat对象，保证了线程安全，高效利用内存
  */
 public class ThreadLocalNormalUsage05 {
@@ -445,8 +463,9 @@ class ThreadSafeFormatter {
             .withInitial(() -&gt; new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"));
 }
 </code></pre>
-<h3 id="典型场景2-当前用户信息需要被线程内所有方法共享"><a href="#典型场景2-当前用户信息需要被线程内所有方法共享" class="headerlink" title="典型场景2 :当前用户信息需要被线程内所有方法共享"></a>典型场景2 :当前用户信息需要被线程内所有方法共享</h3><p>一个比较繁琐的解决方案是把user作为参数层层传递,从service-1()传到service-2()，再从service-20传到service-3()。以此类推,但是这样做会导致代码冗余且不易维护。</p>
-<p><img src="/attachment/27ffc194fbea138ea171a8a3af0a6836.png"></p>
+<h3 id="典型场景2-当前用户信息需要被线程内所有方法共享">典型场景2 :当前用户信息需要被线程内所有方法共享</h3>
+<p>一个比较繁琐的解决方案是把user作为参数层层传递,从service-1()传到service-2()，再从service-20传到service-3()。以此类推,但是这样做会导致代码冗余且不易维护。</p>
+<p><img src="/attachment/27ffc194fbea138ea171a8a3af0a6836.png" alt=""></p>
 <p>所以我们可以在每个线程内保存全局变量，可以让不同方法直接使用，避免参数传递的麻烦。并且也能保证每个线程是维护的自己的变量，和其他线程的变量区分开。这也就是通过ThreadLocal完成了一个上下文设计模式。</p>
 <p>实现方法：</p>
 <ul>
@@ -456,8 +475,8 @@ class ThreadSafeFormatter {
 <li>强调的是同一个请求内(同一个线程内)不同方法间的共享</li>
 <li>不需重写initialValue()方法,但是必须手动调用set()方法</li>
 </ul>
-<p><img src="/attachment/f92830224e26ead501e9daabb35ddc27.png"></p>
-<pre><code class="line-numbers language-java">/**
+<p><img src="/attachment/f92830224e26ead501e9daabb35ddc27.png" alt=""></p>
+<pre><code class="language-java">/**
  * 描述：     演示ThreadLocal用法2：避免传递参数的麻烦
  */
 public class ThreadLocalNormalUsage06 {
@@ -509,22 +528,29 @@ class User {
     }
 }
 </code></pre>
-<h2 id="ThreadLocal的作用"><a href="#ThreadLocal的作用" class="headerlink" title="ThreadLocal的作用"></a>ThreadLocal的作用</h2><ol>
+<h2 id="ThreadLocal的作用">ThreadLocal的作用</h2>
+<ol>
 <li>让某个需要用到的对象在线程间隔离(每个线程都有自己的独立的对象)</li>
 <li>在任何方法中都可以轻松获取到该对象</li>
 </ol>
 <p>根据共享对象的生成时机不同，选择 initialValue或set来保存对象</p>
-<h3 id="场景一-initialValue"><a href="#场景一-initialValue" class="headerlink" title="场景一: initialValue"></a>场景一: initialValue</h3><p>如果我们能够确定在每个线程中要存储使用哪些对象，就可以用使用这个方法在初始化ThreadLocal对象的时候就将数据存入ThreadLocal中。在ThreadLocal第一次get的时候把对象给初始化出来，对象的初始化时机可以由我们控制</p>
-<h3 id="场景二-set"><a href="#场景二-set" class="headerlink" title="场景二:set"></a>场景二:set</h3><p>如果需要保存到ThreadLocal里的对象的生成时机不由我们随意控制，例如拦截器生成的用户信息，就用ThreadLocal.set直接放到我们的ThreadLocal中去，以便后续使用。<br>只要让每个线程独有对象，而不再不同的线程之间共享对象，就不会有线程安全的问题了</p>
-<h2 id="使用ThreadLocal带来的好处"><a href="#使用ThreadLocal带来的好处" class="headerlink" title="使用ThreadLocal带来的好处"></a>使用ThreadLocal带来的好处</h2><ol>
+<h3 id="场景一-initialValue">场景一: initialValue</h3>
+<p>如果我们能够确定在每个线程中要存储使用哪些对象，就可以用使用这个方法在初始化ThreadLocal对象的时候就将数据存入ThreadLocal中。在ThreadLocal第一次get的时候把对象给初始化出来，对象的初始化时机可以由我们控制</p>
+<h3 id="场景二-set">场景二:set</h3>
+<p>如果需要保存到ThreadLocal里的对象的生成时机不由我们随意控制，例如拦截器生成的用户信息，就用ThreadLocal.set直接放到我们的ThreadLocal中去，以便后续使用。<br>
+只要让每个线程独有对象，而不再不同的线程之间共享对象，就不会有线程安全的问题了</p>
+<h2 id="使用ThreadLocal带来的好处">使用ThreadLocal带来的好处</h2>
+<ol>
 <li>达到线程安全</li>
 <li>不需要加锁，提高执行效率</li>
 <li>更高效地利用内存、节省开销:相比于每个任务都新建一个SimpleDateFormat ,显然用Threadlocal可以节省内存和开销</li>
 <li>免去传参的繁琐：无论是场景一的工具类，还是场景二的用户名，都可以在任何地方直接通过ThreadLocal拿到，再也不需要每次都传同样的参数。ThreadLocal使得代码耦合度更低，更优雅</li>
 </ol>
-<h2 id="ThreadLocal的原理"><a href="#ThreadLocal的原理" class="headerlink" title="ThreadLocal的原理"></a>ThreadLocal的原理</h2><h3 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h3><p>想学习原理，首先需要搞清楚Thread 、ThreadLocal以及ThreadLocalMap三者之间的关系：</p>
+<h2 id="ThreadLocal的原理">ThreadLocal的原理</h2>
+<h3 id="数据结构-2">数据结构</h3>
+<p>想学习原理，首先需要搞清楚Thread 、ThreadLocal以及ThreadLocalMap三者之间的关系：</p>
 <p>每个Thread对象中都持有一个ThreadLocalMap成员变量，<strong>Thread和ThreadLocalMap是一对一的关系</strong>，而ThreadLocalMap可以理解成一个Map（但实际并不是Map类），用来存储该线程所有持有所有ThreadLocal，因为一个线程可能有多个ThreadLocal对象，用来获取不同的对象。<strong>ThreadLocal对象和要存储进这个ThreadLocal中的对象数据也是一对一的关系</strong>，一个ThreadLocal只能存储进一个对象，如果想要存储多个不同的对象，就需要创建多个不同的ThreadLocal来存储在ThreadLocalMap中。</p>
-<pre><code class="line-numbers language-java">public class Thread implements Runnable {
+<pre><code class="language-java">public class Thread implements Runnable {
     ...
     // Thread中成员属性ThreadLocalMap，用来存储该线程所持有的所有ThreadLocal对象
     ThreadLocal.ThreadLocalMap threadLocals = null;
@@ -548,8 +574,9 @@ static class ThreadLocalMap {
 }
 </code></pre>
 <p>数据结构关系如下图所示</p>
-<p><img src="/attachment/ecf427c0c6cda2cbcbd3af89654d7160.png"></p>
-<h4 id="早期ThreadLocal设计对比"><a href="#早期ThreadLocal设计对比" class="headerlink" title="早期ThreadLocal设计对比"></a>早期ThreadLocal设计对比</h4><p>在JDK早期的设计中，每个ThreadLocal都有一个map对象，将线程作为map对象的key，要存储的变量作为map的value，如上一节所讲，和现在的ThreadLocal设计大不相同。</p>
+<p><img src="/attachment/ecf427c0c6cda2cbcbd3af89654d7160.png" alt=""></p>
+<h4 id="早期ThreadLocal设计对比">早期ThreadLocal设计对比</h4>
+<p>在JDK早期的设计中，每个ThreadLocal都有一个map对象，将线程作为map对象的key，要存储的变量作为map的value，如上一节所讲，和现在的ThreadLocal设计大不相同。</p>
 <p>JDK8之后，每个Thread维护一个ThreadLocalMap对象，这个Map的key是ThreadLocal实例本身，value是存储的值要隔离的变量，是泛型，其具体过程如下：</p>
 <ol>
 <li>每个Thread线程内部都有一个Map（ThreadLocalMap::threadlocals）;</li>
@@ -562,21 +589,25 @@ static class ThreadLocalMap {
 <li>每个Map存储的Entry的数量变少，在实际开发过程中，ThreadLocal的数量往往要少于Thread的数量，Entry的数量减少就可以减少哈希冲突。</li>
 <li>当Thread销毁的时候，ThreadLocalMap也会随之销毁，ThreadLocal也就会跟着销毁，减少内存使用，早期的ThreadLocal并不会自动销毁。</li>
 </ol>
-<h3 id="Thread、ThreadLocal、ThreadLocalMap关系"><a href="#Thread、ThreadLocal、ThreadLocalMap关系" class="headerlink" title="Thread、ThreadLocal、ThreadLocalMap关系"></a>Thread、ThreadLocal、ThreadLocalMap关系</h3><p>Thread和ThreadLocal，人手一份</p>
-<p><img src="/attachment/f0e07265b6b5e922b47f260605a28ee6.png"></p>
+<h3 id="Thread、ThreadLocal、ThreadLocalMap关系">Thread、ThreadLocal、ThreadLocalMap关系</h3>
+<p>Thread和ThreadLocal，人手一份</p>
+<p><img src="/attachment/f0e07265b6b5e922b47f260605a28ee6.png" alt=""></p>
 <p>ThreadLocal和ThreadLocalMap</p>
-<p><img src="/attachment/def410a167bdc282d4ca31fe950db370.png"></p>
+<p><img src="/attachment/def410a167bdc282d4ca31fe950db370.png" alt=""></p>
 <p>三者总概括</p>
-<p><img src="/attachment/d6f737e1a75f0c73d1dd5ccdf8df3f71.png"></p>
-<p><img src="/attachment/0c9e2634a761b32ce0d372661a572852.png"></p>
-<h3 id="ThreadLocal的主要方法及源码分析"><a href="#ThreadLocal的主要方法及源码分析" class="headerlink" title="ThreadLocal的主要方法及源码分析"></a>ThreadLocal的主要方法及源码分析</h3><h4 id="主要方法"><a href="#主要方法" class="headerlink" title="主要方法"></a>主要方法</h4><ol>
+<p><img src="/attachment/d6f737e1a75f0c73d1dd5ccdf8df3f71.png" alt=""></p>
+<p><img src="/attachment/0c9e2634a761b32ce0d372661a572852.png" alt=""></p>
+<h3 id="ThreadLocal的主要方法及源码分析">ThreadLocal的主要方法及源码分析</h3>
+<h4 id="主要方法">主要方法</h4>
+<ol>
 <li>T initialValue( )：初始化</li>
 <li>void set(T t)：为这个线程设置一个新值</li>
 <li>T get()：得到这个线程对应的value。如果是首次调用get() ,则会调用initialize来得到这个值</li>
 <li>void remove( )：删除对应这个线程的值</li>
 </ol>
-<h4 id="T-initialValue-方法"><a href="#T-initialValue-方法" class="headerlink" title="T initialValue()方法"></a>T initialValue()方法</h4><p>initialValue方法没有默认实现的，如果我们要用initialValue方法，需要自己实现，通常是匿名内部类的方式</p>
-<pre><code class="line-numbers language-java">// ThreadLocal.initialValue()
+<h4 id="T-initialValue-方法">T initialValue()方法</h4>
+<p>initialValue方法没有默认实现的，如果我们要用initialValue方法，需要自己实现，通常是匿名内部类的方式</p>
+<pre><code class="language-java">// ThreadLocal.initialValue()
 // 该方法需要重写，否则ThreadLocal只会返回null
 protected T initialValue() {
     return null;
@@ -588,8 +619,9 @@ protected T initialValue() {
 <li>通常每个线程最多调用一次此方法，但如果已经调用了remove()后，再调用get()，则可以再次调用此方法</li>
 <li>如果不重写本方法，这个方法会返回null。一般使用匿名内部类的方法来重写initialValue()方法，以便在后续使用中可以初始化副本对象。</li>
 </ol>
-<h4 id="get-方法"><a href="#get-方法" class="headerlink" title="get()方法"></a>get()方法</h4><p>get方法是先取出当前线程的ThreadLocalMap，然后调用map.getEntry方法，把本ThreadLocal的引用作为参数传入，取出map中属于本ThreadLocal的value。注意，这个map以及map中的key和value都是保存在Thread线程对象中的，而不是保存在ThreadLocal中。</p>
-<pre><code class="line-numbers language-java">// ThreadLocal.get()
+<h4 id="get-方法">get()方法</h4>
+<p>get方法是先取出当前线程的ThreadLocalMap，然后调用map.getEntry方法，把本ThreadLocal的引用作为参数传入，取出map中属于本ThreadLocal的value。注意，这个map以及map中的key和value都是保存在Thread线程对象中的，而不是保存在ThreadLocal中。</p>
+<pre><code class="language-java">// ThreadLocal.get()
 public T get() {
     // 获取当前线程
     Thread t = Thread.currentThread();
@@ -640,8 +672,9 @@ private T setInitialValue() {
     return value;
 }
 </code></pre>
-<h4 id="set-方法"><a href="#set-方法" class="headerlink" title="set()方法"></a>set()方法</h4><p>该方法和setInitialValue()方法很类似</p>
-<pre><code class="line-numbers language-java">// ThreadLocal.set()
+<h4 id="set-方法">set()方法</h4>
+<p>该方法和setInitialValue()方法很类似</p>
+<pre><code class="language-java">// ThreadLocal.set()
 public void set(T value) {
     // 获取当前线程
     Thread t = Thread.currentThread();
@@ -655,7 +688,8 @@ public void set(T value) {
         createMap(t, value);
 }
 </code></pre>
-<h4 id="T-remove-方法"><a href="#T-remove-方法" class="headerlink" title="T remove()方法"></a>T remove()方法</h4><pre><code class="line-numbers language-java">// ThreadLocal.remove()
+<h4 id="T-remove-方法">T remove()方法</h4>
+<pre><code class="language-java">// ThreadLocal.remove()
 public void remove() {
     // 获取当前线程的ThreadLocalMap
     ThreadLocalMap m = getMap(Thread.currentThread());
@@ -664,20 +698,25 @@ public void remove() {
         m.remove(this);
 }
 </code></pre>
-<h3 id="ThreadLocalMap类"><a href="#ThreadLocalMap类" class="headerlink" title="ThreadLocalMap类"></a>ThreadLocalMap类</h3><p>ThreadLocalMap类，它是ThreadLocal中的是个内部类。该类的对象是存储在Thread中的，即Thread.threadLocals</p>
+<h3 id="ThreadLocalMap类">ThreadLocalMap类</h3>
+<p>ThreadLocalMap类，它是ThreadLocal中的是个内部类。该类的对象是存储在Thread中的，即Thread.threadLocals</p>
 <p>ThreadLocalMap类是每个线程Thread类里面的变量，里面最重要的是一个键值对数组Entry[] table，可以认为是一个map键值对（但实际上ThreadLocalMap类并不是一个Map类型）:</p>
 <ul>
 <li>键：这个ThreadLocal</li>
 <li>值：实际需要的成员变量，比如user或者simpleDateFormat对象</li>
 </ul>
-<h4 id="解决冲突"><a href="#解决冲突" class="headerlink" title="解决冲突"></a>解决冲突</h4><p>在冲突解决上，ThreadLocalMap和之前我们讲过的HashMap还是有一些区别的</p>
+<h4 id="解决冲突">解决冲突</h4>
+<p>在冲突解决上，ThreadLocalMap和之前我们讲过的HashMap还是有一些区别的</p>
 <p>HashMap在JDK1.8之后如果出现冲突就是采用拉链法，在有冲突的位置创建一个链表，将冲突节点都追加到链表中，当链表达到一定长度后则会将链表转换为红黑树，这就是HashMap解决冲突的方法</p>
-<p><img src="/attachment/732c907f29cd13effb5298f924768d19.png"></p>
+<p><img src="/attachment/732c907f29cd13effb5298f924768d19.png" alt=""></p>
 <p>而ThreadLocalMap这里采用的是<mark style="background: #FFB8EBA6;">线性探测法</mark>，也就是如果发生冲突，就继续找下一个空位置,而不是用拉链法或者创建红黑树来解决冲突。</p>
-<h3 id="两种使用场景殊途同归"><a href="#两种使用场景殊途同归" class="headerlink" title="两种使用场景殊途同归"></a>两种使用场景殊途同归</h3><p>学完源码后，我们再返回去看最开始讲的两种应用场景，通过源码分析可以看出，使用setInitialValue和直接set最后都是利用map.set()方法来设置值。也就是说，最后都会对应到ThreadLocalMap的一个Entry，只不过是起点和入口不一样，场景一的起点是get()方法，场景二的起点是set()方法。</p>
-<h2 id="ThreadLocal注意点"><a href="#ThreadLocal注意点" class="headerlink" title="ThreadLocal注意点"></a>ThreadLocal注意点</h2><h3 id="内存泄漏"><a href="#内存泄漏" class="headerlink" title="内存泄漏"></a>内存泄漏</h3><p>什么是内存泄漏：某个对象不再使用，但是占用的内存却不能被回收</p>
+<h3 id="两种使用场景殊途同归">两种使用场景殊途同归</h3>
+<p>学完源码后，我们再返回去看最开始讲的两种应用场景，通过源码分析可以看出，使用setInitialValue和直接set最后都是利用map.set()方法来设置值。也就是说，最后都会对应到ThreadLocalMap的一个Entry，只不过是起点和入口不一样，场景一的起点是get()方法，场景二的起点是set()方法。</p>
+<h2 id="ThreadLocal注意点">ThreadLocal注意点</h2>
+<h3 id="内存泄漏">内存泄漏</h3>
+<p>什么是内存泄漏：某个对象不再使用，但是占用的内存却不能被回收</p>
 <p>ThreadLocalMap中的Entry（key）继承自WeakReference，是弱引用。</p>
-<pre><code class="line-numbers language-java">// ThreadLocal.ThreadLocalMap.Entry
+<pre><code class="language-java">// ThreadLocal.ThreadLocalMap.Entry
 // 这里Entry继承自弱引用的ThreadLocal
 static class Entry extends WeakReference&lt;ThreadLocal&lt;?&gt;&gt; {
     /** The value associated with this ThreadLocal. */
@@ -692,12 +731,13 @@ static class Entry extends WeakReference&lt;ThreadLocal&lt;?&gt;&gt; {
 }
 </code></pre>
 <p>弱引用的特点是，如果这个对象只被弱引用关联(没有任何强引用关联) ，那么这个对象就可以被回收，也就是说就算是有一个弱引用指向对象，GC也会无视掉这个引用，还是将这个对象看成不可达对象，会将其回收掉。所以弱引用不会阻止GC。</p>
-<h4 id="Value的泄漏"><a href="#Value的泄漏" class="headerlink" title="Value的泄漏"></a>Value的泄漏</h4><p>ThreadLocalMap 的每个Entry都是一个对key的弱引用，同时，每个Entry都包含了一个对value的强引用。正常情况下，当线程终止，保存在ThreadLocal里的value会被垃圾回收,因为没有任何强引用了，因为当线程中止之后，整个ThreadMap对象就会被回收，进而ThreadMap中存储的所有key-value对也都会被回收。</p>
+<h4 id="Value的泄漏">Value的泄漏</h4>
+<p>ThreadLocalMap 的每个Entry都是一个对key的弱引用，同时，每个Entry都包含了一个对value的强引用。正常情况下，当线程终止，保存在ThreadLocal里的value会被垃圾回收,因为没有任何强引用了，因为当线程中止之后，整个ThreadMap对象就会被回收，进而ThreadMap中存储的所有key-value对也都会被回收。</p>
 <p>但是，如果线程不终止(比如线程需要保持很久，或者我们在用线程池的时候)，那么key对应的value就不能被回收，因为有以下的调用链:Thread一&gt; ThreadLocalMap一&gt; Entry ( key为null )一&gt;Value。</p>
 <p>因为value和Thread之间还存在这个强引用链路，所以导致value无法回收，随着线程ThreadLocal的增多就可能会出现OOM错误。</p>
 <p>JDK已经考虑到了这个问题，所以在<mark style="background: #BBFABBA6;">ThreadLocalMap中的set、remove、rehash等方法中会扫描key为null的Entry</mark>，并把对应的value设置为null，这样value指向的对象就变成了不可达对象了，也就可以被回收了</p>
 <p>源码例子：</p>
-<pre><code class="line-numbers language-java">// ThreadLocal.ThreadLocalMap.resize()
+<pre><code class="language-java">// ThreadLocal.ThreadLocalMap.resize()
 private void resize() {
     Entry[] oldTab = table;
     int oldLen = oldTab.length;
@@ -726,16 +766,22 @@ private void resize() {
 }
 </code></pre>
 <p>但是如果一个ThreadLocal不被使用,那么实际上set、remove、rehash方法也不会被调用、如果同时线程又不停止、那么调用链就一直存在、那么就导致了value的内存泄漏，这种情况下就需要我们在开发过程中严格遵守开发规范。</p>
-<h4 id="如何避免内存泄露-阿里规约"><a href="#如何避免内存泄露-阿里规约" class="headerlink" title="如何避免内存泄露(阿里规约)"></a>如何避免内存泄露(阿里规约)</h4><p>调用remove方法，就会删除对应的Entry对象，可以避免内存泄漏，所以使用完ThreadLocal之后,应该调用remove方法。比如这个线程即将结束的时候，再使用拦截器将线程拦截，将它的ThreadLocal给remove掉即可。</p>
-<h3 id="空指针"><a href="#空指针" class="headerlink" title="空指针"></a>空指针</h3><p>在进行get之前，必须先set，否则可能会返回NULL，并且返回类型如果不是对象类型，而是基本数据类型的话，还会报空指针异常，最好是用包装类来替代基本数据类型。</p>
-<h3 id="共享对象"><a href="#共享对象" class="headerlink" title="共享对象"></a>共享对象</h3><p>如果在每个线程中ThreadLocal.set()进去的东西本来就是多线程共享的同一个对象，比如static对象，那么多个线程的ThreadLocal.get()取得的还是这个共享对象本身，还是会有并发访问问题。所以一定要避免向ThreadLocal中存储static全局变量，这样依旧会导致并发异常。</p>
-<h3 id="不需要强行使用ThreadLocal"><a href="#不需要强行使用ThreadLocal" class="headerlink" title="不需要强行使用ThreadLocal"></a>不需要强行使用ThreadLocal</h3><p>如果可以不使用ThreadLocal就解决问题，那么不要强行使用</p>
+<h4 id="如何避免内存泄露-阿里规约">如何避免内存泄露(阿里规约)</h4>
+<p>调用remove方法，就会删除对应的Entry对象，可以避免内存泄漏，所以使用完ThreadLocal之后,应该调用remove方法。比如这个线程即将结束的时候，再使用拦截器将线程拦截，将它的ThreadLocal给remove掉即可。</p>
+<h3 id="空指针">空指针</h3>
+<p>在进行get之前，必须先set，否则可能会返回NULL，并且返回类型如果不是对象类型，而是基本数据类型的话，还会报空指针异常，最好是用包装类来替代基本数据类型。</p>
+<h3 id="共享对象">共享对象</h3>
+<p>如果在每个线程中ThreadLocal.set()进去的东西本来就是多线程共享的同一个对象，比如static对象，那么多个线程的ThreadLocal.get()取得的还是这个共享对象本身，还是会有并发访问问题。所以一定要避免向ThreadLocal中存储static全局变量，这样依旧会导致并发异常。</p>
+<h3 id="不需要强行使用ThreadLocal">不需要强行使用ThreadLocal</h3>
+<p>如果可以不使用ThreadLocal就解决问题，那么不要强行使用</p>
 <ul>
 <li>例如在任务数很少的时候，在局部变量中可以新建对象就可以解决问题，那么就不需要使用到ThreadLocal，因为这种情况下使用ThreadLocal带来的收益并不大，反而还会增加任务量</li>
 </ul>
-<h3 id="优先使用框架的支持"><a href="#优先使用框架的支持" class="headerlink" title="优先使用框架的支持"></a>优先使用框架的支持</h3><p>例如在Spring中，如果可以使用RequestContextHolder，那么就不需要自己维护ThreadLocal，因为自己可能会忘记调用remove()方法等，造成内存泄漏。</p>
+<h3 id="优先使用框架的支持">优先使用框架的支持</h3>
+<p>例如在Spring中，如果可以使用RequestContextHolder，那么就不需要自己维护ThreadLocal，因为自己可能会忘记调用remove()方法等，造成内存泄漏。</p>
 <p>以Spring为例：</p>
-<h4 id="Date-TimeContextHolder类"><a href="#Date-TimeContextHolder类" class="headerlink" title="Date TimeContextHolder类"></a>Date TimeContextHolder类</h4><pre><code class="line-numbers language-java">package org.springframework.format.datetime.standard;
+<h4 id="Date-TimeContextHolder类">Date TimeContextHolder类</h4>
+<pre><code class="language-java">package org.springframework.format.datetime.standard;
 public final class DateTimeContextHolder {
     // 将时间的上下文存储到ThreadLocal中，这样每一个线程就会拥有自己独立的时间设置
     private static final ThreadLocal&lt;DateTimeContext&gt; dateTimeContextHolder = new NamedThreadLocal("DateTimeContext");
@@ -743,8 +789,9 @@ public final class DateTimeContextHolder {
 }
 </code></pre>
 <p>这里就是Spring提供的ThreadLocal支持</p>
-<h4 id="RequestContextHolder类"><a href="#RequestContextHolder类" class="headerlink" title="RequestContextHolder类"></a>RequestContextHolder类</h4><p>为每一个请求都设置一个ThreadLocal。每次HTTP请求都对应一个线程，线程之间相互隔离，这就是ThreadLocal的典型应用场景。</p>
-<pre><code class="line-numbers language-java">package org.springframework.web.context.request;
+<h4 id="RequestContextHolder类">RequestContextHolder类</h4>
+<p>为每一个请求都设置一个ThreadLocal。每次HTTP请求都对应一个线程，线程之间相互隔离，这就是ThreadLocal的典型应用场景。</p>
+<pre><code class="language-java">package org.springframework.web.context.request;
 public abstract class RequestContextHolder {
     private static final boolean jsfPresent = ClassUtils.isPresent("javax.faces.context.FacesContext", RequestContextHolder.class.getClassLoader());
     // 这里的NameThreadLocal就是ThreadLocal，知识spring在ThreadLocal的基础上又加了一个name属性，用来标识Thread名称
@@ -755,7 +802,7 @@ public abstract class RequestContextHolder {
     ...
 }
 </code></pre>
-</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a target="_blank" rel="noopener" href="https://github.com/yu627482453">Bill Cipher</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://yu627482453.github.io/java/java-duo-xian-cheng-bing-fa/java-duo-xian-cheng-bing-fa-xian-cheng/java-duo-xian-cheng-bing-fa-threadlocal/">https://yu627482453.github.io/java/java-duo-xian-cheng-bing-fa/java-duo-xian-cheng-bing-fa-xian-cheng/java-duo-xian-cheng-bing-fa-threadlocal/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://yu627482453.github.io" target="_blank">蝶梦庄生</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E8%A1%8C%E5%8A%A8%E9%98%B6%E6%AE%B5-%E5%AE%8C%E6%88%90/">行动阶段/完成</a><a class="post-meta__tags" href="/tags/%E7%AC%94%E8%AE%B0%E7%A9%BA%E9%97%B4-KnowladgeSpace-ProgramSpace-BasicsSpace/">笔记空间/KnowladgeSpace/ProgramSpace/BasicsSpace</a><a class="post-meta__tags" href="/tags/%E4%B8%BB%E9%A2%98%E5%9C%BA%E6%99%AF-%E7%A8%8B%E5%BA%8F/">主题场景/程序</a><a class="post-meta__tags" href="/tags/%E7%BB%86%E5%8C%96%E4%B8%BB%E9%A2%98-Java-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%B9%B6%E5%8F%91/">细化主题/Java/多线程并发</a></div><div class="post_share"><div class="social-share" data-image="https://cdn.seovx.com/?mom=302" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/reward/wechat.jpg" target="_blank"><img class="post-qr-code-img" src="/img/reward/wechat.jpg" alt="wechat"/></a><div class="post-qr-code-desc">wechat</div></li><li class="reward-item"><a href="/img/reward/alipay.jpg" target="_blank"><img class="post-qr-code-img" src="/img/reward/alipay.jpg" alt="alipay"/></a><div class="post-qr-code-desc">alipay</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/java/java-duo-xian-cheng-bing-fa/java-duo-xian-cheng-bing-fa-ji-chu/java-duo-xian-cheng-bing-fa-ji-chu/"><img class="prev-cover" src="https://cdn.seovx.com/?mom=302" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">【Java 多线程并发】 基础</div></div></a></div><div class="next-post pull-right"><a href="/java/java-duo-xian-cheng-bing-fa/java-duo-xian-cheng-bing-fa-yuan-li/java-duo-xian-cheng-bing-fa-fail-fast-kuai-su-shi-bai-ji-zhi/"><img class="next-cover" src="https://cdn.seovx.com/?mom=302" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">【Java 多线程并发】 fail-fast(快速失败)机制</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/java/java-duo-xian-cheng-bing-fa/java-duo-xian-cheng-bing-fa-yuan-li/java-duo-xian-cheng-bing-fa-aqs-abstract-queued-synchronizer/" title="【Java 多线程并发】 AQS（Abstract Queued Synchronizer）"><img class="cover" src="https://cdn.seovx.com/?mom=302" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-07-04</div><div class="title">【Java 多线程并发】 AQS（Abstract Queued Synchronizer）</div></div></a></div><div><a href="/java/java-duo-xian-cheng-bing-fa/java-duo-xian-cheng-bing-fa-yuan-li/java-duo-xian-cheng-bing-fa-cas-compare-and-swap/" title="【Java 多线程并发】 CAS（Compare And Swap）"><img class="cover" src="https://cdn.seovx.com/?mom=302" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-07-03</div><div class="title">【Java 多线程并发】 CAS（Compare And Swap）</div></div></a></div><div><a href="/java/java-duo-xian-cheng-bing-fa/java-duo-xian-cheng-bing-fa-yuan-li/java-duo-xian-cheng-bing-fa-java-nei-cun-mo-xing-ji-chu-zhi-shi/" title="【Java 多线程并发】 Java内存模型基础知识"><img class="cover" src="https://cdn.seovx.com/?mom=302" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-07-03</div><div class="title">【Java 多线程并发】 Java内存模型基础知识</div></div></a></div><div><a href="/java/java-duo-xian-cheng-bing-fa/java-duo-xian-cheng-bing-fa-yuan-li/java-duo-xian-cheng-bing-fa-fail-fast-kuai-su-shi-bai-ji-zhi/" title="【Java 多线程并发】 fail-fast(快速失败)机制"><img class="cover" src="https://cdn.seovx.com/?mom=302" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-07-04</div><div class="title">【Java 多线程并发】 fail-fast(快速失败)机制</div></div></a></div><div><a href="/java/java-duo-xian-cheng-bing-fa/java-duo-xian-cheng-bing-fa-yuan-li/java-duo-xian-cheng-bing-fa-yuan-li/" title="【Java 多线程并发】 原理"><img class="cover" src="https://cdn.seovx.com/?mom=302" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-07-04</div><div class="title">【Java 多线程并发】 原理</div></div></a></div><div><a href="/java/java-duo-xian-cheng-bing-fa/java-duo-xian-cheng-bing-fa-yuan-li/java-duo-xian-cheng-bing-fa-synchronized/" title="【Java 多线程并发】 synchronized"><img class="cover" src="https://cdn.seovx.com/?mom=302" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-07-03</div><div class="title">【Java 多线程并发】 synchronized</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="gitalk-container"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Bill Cipher</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">240</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">69</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/yu627482453"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/yu627482453" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="/627482453@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E3%80%90Java-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%B9%B6%E5%8F%91%E3%80%91-ThreadLocal"><span class="toc-number">1.</span> <span class="toc-text">【Java 多线程并发】 ThreadLocal</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Metadata"><span class="toc-number">1.1.</span> <span class="toc-text">Metadata</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A6%82%E8%BF%B0"><span class="toc-number">1.2.</span> <span class="toc-text">概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ThreadLocal%E7%AE%80%E4%BB%8B"><span class="toc-number">1.3.</span> <span class="toc-text">ThreadLocal简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ThreadLocal%E7%9A%84%E7%94%A8%E9%80%94"><span class="toc-number">1.4.</span> <span class="toc-text">ThreadLocal的用途</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B8%E5%9E%8B%E5%9C%BA%E6%99%AF1-%E6%AF%8F%E4%B8%AA%E7%BA%BF%E7%A8%8B%E9%9C%80%E8%A6%81%E4%B8%80%E4%B8%AA%E7%8B%AC%E4%BA%AB%E7%9A%84%E5%AF%B9%E8%B1%A1"><span class="toc-number">1.4.1.</span> <span class="toc-text">典型场景1 :每个线程需要一个独享的对象</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#SimpleDateFormat%E7%9A%84%E8%BF%9B%E5%8C%96%E4%B9%8B%E8%B7%AF%EF%BC%9A"><span class="toc-number">1.4.1.1.</span> <span class="toc-text">SimpleDateFormat的进化之路：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B8%E5%9E%8B%E5%9C%BA%E6%99%AF2-%E5%BD%93%E5%89%8D%E7%94%A8%E6%88%B7%E4%BF%A1%E6%81%AF%E9%9C%80%E8%A6%81%E8%A2%AB%E7%BA%BF%E7%A8%8B%E5%86%85%E6%89%80%E6%9C%89%E6%96%B9%E6%B3%95%E5%85%B1%E4%BA%AB"><span class="toc-number">1.4.2.</span> <span class="toc-text">典型场景2 :当前用户信息需要被线程内所有方法共享</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ThreadLocal%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="toc-number">1.5.</span> <span class="toc-text">ThreadLocal的作用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%BA%E6%99%AF%E4%B8%80-initialValue"><span class="toc-number">1.5.1.</span> <span class="toc-text">场景一: initialValue</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%BA%E6%99%AF%E4%BA%8C-set"><span class="toc-number">1.5.2.</span> <span class="toc-text">场景二:set</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8ThreadLocal%E5%B8%A6%E6%9D%A5%E7%9A%84%E5%A5%BD%E5%A4%84"><span class="toc-number">1.6.</span> <span class="toc-text">使用ThreadLocal带来的好处</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ThreadLocal%E7%9A%84%E5%8E%9F%E7%90%86"><span class="toc-number">1.7.</span> <span class="toc-text">ThreadLocal的原理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="toc-number">1.7.1.</span> <span class="toc-text">数据结构</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%97%A9%E6%9C%9FThreadLocal%E8%AE%BE%E8%AE%A1%E5%AF%B9%E6%AF%94"><span class="toc-number">1.7.1.1.</span> <span class="toc-text">早期ThreadLocal设计对比</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Thread%E3%80%81ThreadLocal%E3%80%81ThreadLocalMap%E5%85%B3%E7%B3%BB"><span class="toc-number">1.7.2.</span> <span class="toc-text">Thread、ThreadLocal、ThreadLocalMap关系</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ThreadLocal%E7%9A%84%E4%B8%BB%E8%A6%81%E6%96%B9%E6%B3%95%E5%8F%8A%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90"><span class="toc-number">1.7.3.</span> <span class="toc-text">ThreadLocal的主要方法及源码分析</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%BB%E8%A6%81%E6%96%B9%E6%B3%95"><span class="toc-number">1.7.3.1.</span> <span class="toc-text">主要方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#T-initialValue-%E6%96%B9%E6%B3%95"><span class="toc-number">1.7.3.2.</span> <span class="toc-text">T initialValue()方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#get-%E6%96%B9%E6%B3%95"><span class="toc-number">1.7.3.3.</span> <span class="toc-text">get()方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#set-%E6%96%B9%E6%B3%95"><span class="toc-number">1.7.3.4.</span> <span class="toc-text">set()方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#T-remove-%E6%96%B9%E6%B3%95"><span class="toc-number">1.7.3.5.</span> <span class="toc-text">T remove()方法</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ThreadLocalMap%E7%B1%BB"><span class="toc-number">1.7.4.</span> <span class="toc-text">ThreadLocalMap类</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A7%A3%E5%86%B3%E5%86%B2%E7%AA%81"><span class="toc-number">1.7.4.1.</span> <span class="toc-text">解决冲突</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%A4%E7%A7%8D%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF%E6%AE%8A%E9%80%94%E5%90%8C%E5%BD%92"><span class="toc-number">1.7.5.</span> <span class="toc-text">两种使用场景殊途同归</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ThreadLocal%E6%B3%A8%E6%84%8F%E7%82%B9"><span class="toc-number">1.8.</span> <span class="toc-text">ThreadLocal注意点</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F"><span class="toc-number">1.8.1.</span> <span class="toc-text">内存泄漏</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Value%E7%9A%84%E6%B3%84%E6%BC%8F"><span class="toc-number">1.8.1.1.</span> <span class="toc-text">Value的泄漏</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E9%81%BF%E5%85%8D%E5%86%85%E5%AD%98%E6%B3%84%E9%9C%B2-%E9%98%BF%E9%87%8C%E8%A7%84%E7%BA%A6"><span class="toc-number">1.8.1.2.</span> <span class="toc-text">如何避免内存泄露(阿里规约)</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A9%BA%E6%8C%87%E9%92%88"><span class="toc-number">1.8.2.</span> <span class="toc-text">空指针</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B1%E4%BA%AB%E5%AF%B9%E8%B1%A1"><span class="toc-number">1.8.3.</span> <span class="toc-text">共享对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8D%E9%9C%80%E8%A6%81%E5%BC%BA%E8%A1%8C%E4%BD%BF%E7%94%A8ThreadLocal"><span class="toc-number">1.8.4.</span> <span class="toc-text">不需要强行使用ThreadLocal</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BC%98%E5%85%88%E4%BD%BF%E7%94%A8%E6%A1%86%E6%9E%B6%E7%9A%84%E6%94%AF%E6%8C%81"><span class="toc-number">1.8.5.</span> <span class="toc-text">优先使用框架的支持</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Date-TimeContextHolder%E7%B1%BB"><span class="toc-number">1.8.5.1.</span> <span class="toc-text">Date TimeContextHolder类</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#RequestContextHolder%E7%B1%BB"><span class="toc-number">1.8.5.2.</span> <span class="toc-text">RequestContextHolder类</span></a></li></ol></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/design/she-ji-mo-shi/" title="无题"><img src="https://cdn.seovx.com/?mom=302" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/design/she-ji-mo-shi/" title="无题">无题</a><time datetime="2023-07-15T09:13:39.871Z" title="发表于 2023-07-15 17:13:39">2023-07-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/design/xing-wei-mo-shi/xing-wei-mo-shi/" title="无题"><img src="https://cdn.seovx.com/?mom=302" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/design/xing-wei-mo-shi/xing-wei-mo-shi/" title="无题">无题</a><time datetime="2023-07-15T09:13:37.615Z" title="发表于 2023-07-15 17:13:37">2023-07-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/design/jie-gou-mo-shi/jie-gou-mo-shi/" title="无题"><img src="https://cdn.seovx.com/?mom=302" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/design/jie-gou-mo-shi/jie-gou-mo-shi/" title="无题">无题</a><time datetime="2023-07-15T09:13:33.180Z" title="发表于 2023-07-15 17:13:33">2023-07-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/design/chuang-jian-mo-shi/chuang-jian-mo-shi/" title="无题"><img src="https://cdn.seovx.com/?mom=302" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/design/chuang-jian-mo-shi/chuang-jian-mo-shi/" title="无题">无题</a><time datetime="2023-07-15T09:13:23.913Z" title="发表于 2023-07-15 17:13:23">2023-07-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/java/java-duo-xian-cheng-bing-fa/java-duo-xian-cheng-bing-fa-xian-cheng/java-duo-xian-cheng-bing-fa-xian-cheng/" title="【Java 多线程并发】 线程"><img src="https://cdn.seovx.com/?mom=302" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【Java 多线程并发】 线程"/></a><div class="content"><a class="title" href="/java/java-duo-xian-cheng-bing-fa/java-duo-xian-cheng-bing-fa-xian-cheng/java-duo-xian-cheng-bing-fa-xian-cheng/" title="【Java 多线程并发】 线程">【Java 多线程并发】 线程</a><time datetime="2023-07-10T06:15:00.000Z" title="发表于 2023-07-10 14:15:00">2023-07-10</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By Bill Cipher</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>function addGitalkSource () {
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a target="_blank" rel="noopener" href="https://github.com/yu627482453">Bill Cipher</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://yu627482453.github.io/java/java-duo-xian-cheng-bing-fa/java-duo-xian-cheng-bing-fa-xian-cheng/java-duo-xian-cheng-bing-fa-threadlocal/">https://yu627482453.github.io/java/java-duo-xian-cheng-bing-fa/java-duo-xian-cheng-bing-fa-xian-cheng/java-duo-xian-cheng-bing-fa-threadlocal/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://yu627482453.github.io" target="_blank">蝶梦庄生</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E8%A1%8C%E5%8A%A8%E9%98%B6%E6%AE%B5-%E5%AE%8C%E6%88%90/">行动阶段/完成</a><a class="post-meta__tags" href="/tags/%E7%AC%94%E8%AE%B0%E7%A9%BA%E9%97%B4-KnowladgeSpace-ProgramSpace-BasicsSpace/">笔记空间/KnowladgeSpace/ProgramSpace/BasicsSpace</a><a class="post-meta__tags" href="/tags/%E4%B8%BB%E9%A2%98%E5%9C%BA%E6%99%AF-%E7%A8%8B%E5%BA%8F/">主题场景/程序</a><a class="post-meta__tags" href="/tags/%E7%BB%86%E5%8C%96%E4%B8%BB%E9%A2%98-Java-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%B9%B6%E5%8F%91/">细化主题/Java/多线程并发</a></div><div class="post_share"><div class="social-share" data-image="https://api.yimian.xyz/img?type=moe" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/reward/wechat.jpg" target="_blank"><img class="post-qr-code-img" src="/img/reward/wechat.jpg" alt="wechat"/></a><div class="post-qr-code-desc">wechat</div></li><li class="reward-item"><a href="/img/reward/alipay.jpg" target="_blank"><img class="post-qr-code-img" src="/img/reward/alipay.jpg" alt="alipay"/></a><div class="post-qr-code-desc">alipay</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/java/java-duo-xian-cheng-bing-fa/java-duo-xian-cheng-bing-fa-ji-chu/java-duo-xian-cheng-bing-fa-ji-chu/"><img class="prev-cover" src="https://api.yimian.xyz/img?type=moe" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">【Java 多线程并发】 基础</div></div></a></div><div class="next-post pull-right"><a href="/java/java-duo-xian-cheng-bing-fa/java-duo-xian-cheng-bing-fa-yuan-li/java-duo-xian-cheng-bing-fa-fail-fast-kuai-su-shi-bai-ji-zhi/"><img class="next-cover" src="https://api.yimian.xyz/img?type=moe" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">【Java 多线程并发】 fail-fast(快速失败)机制</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/java/java-duo-xian-cheng-bing-fa/java-duo-xian-cheng-bing-fa-ji-chu/java-duo-xian-cheng-bing-fa-java-xian-cheng-jian-de-tong-xin/" title="【Java 多线程并发】 Java线程间的通信"><img class="cover" src="https://api.yimian.xyz/img?type=moe" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-07-03</div><div class="title">【Java 多线程并发】 Java线程间的通信</div></div></a></div><div><a href="/java/java-duo-xian-cheng-bing-fa/java-duo-xian-cheng-bing-fa-ji-chu/java-duo-xian-cheng-bing-fa-java-duo-xian-cheng-ru-men-lei-he-jie-kou/" title="【Java 多线程并发】 Java多线程入门类和接口"><img class="cover" src="https://api.yimian.xyz/img?type=moe" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-07-03</div><div class="title">【Java 多线程并发】 Java多线程入门类和接口</div></div></a></div><div><a href="/java/java-duo-xian-cheng-bing-fa/java-duo-xian-cheng-bing-fa-ji-chu/java-duo-xian-cheng-bing-fa-java-xian-cheng-de-zhuang-tai-ji-zhu-yao-zhuan-hua-fang-fa/" title="【Java 多线程并发】 Java线程的状态及主要转化方法"><img class="cover" src="https://api.yimian.xyz/img?type=moe" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-07-03</div><div class="title">【Java 多线程并发】 Java线程的状态及主要转化方法</div></div></a></div><div><a href="/java/java-duo-xian-cheng-bing-fa/java-duo-xian-cheng-bing-fa-ji-chu/java-duo-xian-cheng-bing-fa-xian-cheng-zu-he-xian-cheng-you-xian-ji/" title="【Java 多线程并发】 线程组和线程优先级"><img class="cover" src="https://api.yimian.xyz/img?type=moe" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-07-03</div><div class="title">【Java 多线程并发】 线程组和线程优先级</div></div></a></div><div><a href="/java/java-duo-xian-cheng-bing-fa/java-duo-xian-cheng-bing-fa-ji-chu/java-duo-xian-cheng-bing-fa-ji-chu/" title="【Java 多线程并发】 基础"><img class="cover" src="https://api.yimian.xyz/img?type=moe" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-07-04</div><div class="title">【Java 多线程并发】 基础</div></div></a></div><div><a href="/java/java-duo-xian-cheng-bing-fa/java-duo-xian-cheng-bing-fa-ji-chu/java-duo-xian-cheng-bing-fa-jin-cheng-yu-xian-cheng-ji-ben-gai-nian/" title="【Java 多线程并发】 进程与线程基本概念"><img class="cover" src="https://api.yimian.xyz/img?type=moe" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-07-03</div><div class="title">【Java 多线程并发】 进程与线程基本概念</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="gitalk-container"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Bill Cipher</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">215</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">45</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/yu627482453"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/yu627482453" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="/627482453@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">1.</span> <span class="toc-text">【Java 多线程并发】 ThreadLocal</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Metadata-163"><span class="toc-number">1.1.</span> <span class="toc-text">Metadata</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A6%82%E8%BF%B0-79"><span class="toc-number">1.2.</span> <span class="toc-text">概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ThreadLocal%E7%AE%80%E4%BB%8B"><span class="toc-number">1.3.</span> <span class="toc-text">ThreadLocal简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ThreadLocal%E7%9A%84%E7%94%A8%E9%80%94"><span class="toc-number">1.4.</span> <span class="toc-text">ThreadLocal的用途</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B8%E5%9E%8B%E5%9C%BA%E6%99%AF1-%E6%AF%8F%E4%B8%AA%E7%BA%BF%E7%A8%8B%E9%9C%80%E8%A6%81%E4%B8%80%E4%B8%AA%E7%8B%AC%E4%BA%AB%E7%9A%84%E5%AF%B9%E8%B1%A1"><span class="toc-number">1.4.1.</span> <span class="toc-text">典型场景1 :每个线程需要一个独享的对象</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#SimpleDateFormat%E7%9A%84%E8%BF%9B%E5%8C%96%E4%B9%8B%E8%B7%AF%EF%BC%9A"><span class="toc-number">1.4.1.1.</span> <span class="toc-text">SimpleDateFormat的进化之路：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B8%E5%9E%8B%E5%9C%BA%E6%99%AF2-%E5%BD%93%E5%89%8D%E7%94%A8%E6%88%B7%E4%BF%A1%E6%81%AF%E9%9C%80%E8%A6%81%E8%A2%AB%E7%BA%BF%E7%A8%8B%E5%86%85%E6%89%80%E6%9C%89%E6%96%B9%E6%B3%95%E5%85%B1%E4%BA%AB"><span class="toc-number">1.4.2.</span> <span class="toc-text">典型场景2 :当前用户信息需要被线程内所有方法共享</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ThreadLocal%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="toc-number">1.5.</span> <span class="toc-text">ThreadLocal的作用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%BA%E6%99%AF%E4%B8%80-initialValue"><span class="toc-number">1.5.1.</span> <span class="toc-text">场景一: initialValue</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%BA%E6%99%AF%E4%BA%8C-set"><span class="toc-number">1.5.2.</span> <span class="toc-text">场景二:set</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8ThreadLocal%E5%B8%A6%E6%9D%A5%E7%9A%84%E5%A5%BD%E5%A4%84"><span class="toc-number">1.6.</span> <span class="toc-text">使用ThreadLocal带来的好处</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ThreadLocal%E7%9A%84%E5%8E%9F%E7%90%86"><span class="toc-number">1.7.</span> <span class="toc-text">ThreadLocal的原理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-2"><span class="toc-number">1.7.1.</span> <span class="toc-text">数据结构</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%97%A9%E6%9C%9FThreadLocal%E8%AE%BE%E8%AE%A1%E5%AF%B9%E6%AF%94"><span class="toc-number">1.7.1.1.</span> <span class="toc-text">早期ThreadLocal设计对比</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Thread%E3%80%81ThreadLocal%E3%80%81ThreadLocalMap%E5%85%B3%E7%B3%BB"><span class="toc-number">1.7.2.</span> <span class="toc-text">Thread、ThreadLocal、ThreadLocalMap关系</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ThreadLocal%E7%9A%84%E4%B8%BB%E8%A6%81%E6%96%B9%E6%B3%95%E5%8F%8A%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90"><span class="toc-number">1.7.3.</span> <span class="toc-text">ThreadLocal的主要方法及源码分析</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%BB%E8%A6%81%E6%96%B9%E6%B3%95"><span class="toc-number">1.7.3.1.</span> <span class="toc-text">主要方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#T-initialValue-%E6%96%B9%E6%B3%95"><span class="toc-number">1.7.3.2.</span> <span class="toc-text">T initialValue()方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#get-%E6%96%B9%E6%B3%95"><span class="toc-number">1.7.3.3.</span> <span class="toc-text">get()方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#set-%E6%96%B9%E6%B3%95"><span class="toc-number">1.7.3.4.</span> <span class="toc-text">set()方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#T-remove-%E6%96%B9%E6%B3%95"><span class="toc-number">1.7.3.5.</span> <span class="toc-text">T remove()方法</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ThreadLocalMap%E7%B1%BB"><span class="toc-number">1.7.4.</span> <span class="toc-text">ThreadLocalMap类</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A7%A3%E5%86%B3%E5%86%B2%E7%AA%81"><span class="toc-number">1.7.4.1.</span> <span class="toc-text">解决冲突</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%A4%E7%A7%8D%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF%E6%AE%8A%E9%80%94%E5%90%8C%E5%BD%92"><span class="toc-number">1.7.5.</span> <span class="toc-text">两种使用场景殊途同归</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ThreadLocal%E6%B3%A8%E6%84%8F%E7%82%B9"><span class="toc-number">1.8.</span> <span class="toc-text">ThreadLocal注意点</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F"><span class="toc-number">1.8.1.</span> <span class="toc-text">内存泄漏</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Value%E7%9A%84%E6%B3%84%E6%BC%8F"><span class="toc-number">1.8.1.1.</span> <span class="toc-text">Value的泄漏</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E9%81%BF%E5%85%8D%E5%86%85%E5%AD%98%E6%B3%84%E9%9C%B2-%E9%98%BF%E9%87%8C%E8%A7%84%E7%BA%A6"><span class="toc-number">1.8.1.2.</span> <span class="toc-text">如何避免内存泄露(阿里规约)</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A9%BA%E6%8C%87%E9%92%88"><span class="toc-number">1.8.2.</span> <span class="toc-text">空指针</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B1%E4%BA%AB%E5%AF%B9%E8%B1%A1"><span class="toc-number">1.8.3.</span> <span class="toc-text">共享对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8D%E9%9C%80%E8%A6%81%E5%BC%BA%E8%A1%8C%E4%BD%BF%E7%94%A8ThreadLocal"><span class="toc-number">1.8.4.</span> <span class="toc-text">不需要强行使用ThreadLocal</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BC%98%E5%85%88%E4%BD%BF%E7%94%A8%E6%A1%86%E6%9E%B6%E7%9A%84%E6%94%AF%E6%8C%81"><span class="toc-number">1.8.5.</span> <span class="toc-text">优先使用框架的支持</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Date-TimeContextHolder%E7%B1%BB"><span class="toc-number">1.8.5.1.</span> <span class="toc-text">Date TimeContextHolder类</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#RequestContextHolder%E7%B1%BB"><span class="toc-number">1.8.5.2.</span> <span class="toc-text">RequestContextHolder类</span></a></li></ol></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/design/she-ji-mo-shi/" title="无题"><img src="https://api.yimian.xyz/img?type=moe" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/design/she-ji-mo-shi/" title="无题">无题</a><time datetime="2023-07-15T09:13:39.871Z" title="发表于 2023-07-15 17:13:39">2023-07-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/java/java-duo-xian-cheng-bing-fa/java-duo-xian-cheng-bing-fa-xian-cheng/java-duo-xian-cheng-bing-fa-xian-cheng/" title="【Java 多线程并发】 线程"><img src="https://api.yimian.xyz/img?type=moe" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【Java 多线程并发】 线程"/></a><div class="content"><a class="title" href="/java/java-duo-xian-cheng-bing-fa/java-duo-xian-cheng-bing-fa-xian-cheng/java-duo-xian-cheng-bing-fa-xian-cheng/" title="【Java 多线程并发】 线程">【Java 多线程并发】 线程</a><time datetime="2023-07-10T06:15:00.000Z" title="发表于 2023-07-10 14:15:00">2023-07-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/java/java-jvm/java-jvm-nei-cun-guan-li/java-jvm-zhi-jie-nei-cun/" title="【Java JVM】 直接内存"><img src="https://api.yimian.xyz/img?type=moe" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【Java JVM】 直接内存"/></a><div class="content"><a class="title" href="/java/java-jvm/java-jvm-nei-cun-guan-li/java-jvm-zhi-jie-nei-cun/" title="【Java JVM】 直接内存">【Java JVM】 直接内存</a><time datetime="2023-07-10T00:00:00.000Z" title="发表于 2023-07-10 08:00:00">2023-07-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/database/redis/redis-chong-dian-gong-neng/redis-pai-xu/" title="【Redis】 排序"><img src="https://api.yimian.xyz/img?type=moe" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【Redis】 排序"/></a><div class="content"><a class="title" href="/database/redis/redis-chong-dian-gong-neng/redis-pai-xu/" title="【Redis】 排序">【Redis】 排序</a><time datetime="2023-07-09T06:07:00.000Z" title="发表于 2023-07-09 14:07:00">2023-07-09</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/database/redis/redis-chong-dian-gong-neng/redis-lua-jiao-ben/" title="【Redis】 Lua脚本"><img src="https://api.yimian.xyz/img?type=moe" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【Redis】 Lua脚本"/></a><div class="content"><a class="title" href="/database/redis/redis-chong-dian-gong-neng/redis-lua-jiao-ben/" title="【Redis】 Lua脚本">【Redis】 Lua脚本</a><time datetime="2023-07-09T05:56:00.000Z" title="发表于 2023-07-09 13:56:00">2023-07-09</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By Bill Cipher</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>function addGitalkSource () {
   const ele = document.createElement('link')
   ele.rel = 'stylesheet'
   ele.href= 'https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.css'

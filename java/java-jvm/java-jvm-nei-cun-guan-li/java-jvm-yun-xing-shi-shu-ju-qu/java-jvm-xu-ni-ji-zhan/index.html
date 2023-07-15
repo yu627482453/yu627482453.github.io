@@ -5,7 +5,7 @@
 <meta property="og:site_name" content="蝶梦庄生">
 <meta property="og:description" content="【Java JVM】 虚拟机栈">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://cdn.seovx.com/?mom=302">
+<meta property="og:image" content="https://api.yimian.xyz/img?type=moe">
 <meta property="article:published_time" content="2023-06-26T12:10:00.000Z">
 <meta property="article:modified_time" content="2023-06-26T12:10:00.000Z">
 <meta property="article:author" content="Bill Cipher">
@@ -14,7 +14,7 @@
 <meta property="article:tag" content="主题场景&#x2F;程序">
 <meta property="article:tag" content="细化主题&#x2F;Java&#x2F;JVM">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://cdn.seovx.com/?mom=302"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://yu627482453.github.io/java/java-jvm/java-jvm-nei-cun-guan-li/java-jvm-yun-xing-shi-shu-ju-qu/java-jvm-xu-ni-ji-zhan/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+<meta name="twitter:image" content="https://api.yimian.xyz/img?type=moe"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://yu627482453.github.io/java/java-jvm/java-jvm-nei-cun-guan-li/java-jvm-yun-xing-shi-shu-ju-qu/java-jvm-xu-ni-ji-zhan/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
   root: '/',
   algolia: undefined,
   localSearch: {"path":"/search.xml","preload":true,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
@@ -147,7 +147,9 @@
     detectApple()
     })(window)</script><meta name="generator" content="Hexo 6.2.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">240</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">69</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cdn.seovx.com/?mom=302')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">蝶梦庄生</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">【Java JVM】 虚拟机栈</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-06-26T12:10:00.000Z" title="发表于 2023-06-26 20:10:00">2023-06-26</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-06-26T12:10:00.000Z" title="更新于 2023-06-26 20:10:00">2023-06-26</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Java/">Java</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="【Java JVM】 虚拟机栈"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="【Java-JVM】-虚拟机栈"><a href="#【Java-JVM】-虚拟机栈" class="headerlink" title="【Java JVM】 虚拟机栈"></a>【Java JVM】 虚拟机栈</h1><h2 id="Metadata"><a href="#Metadata" class="headerlink" title="Metadata"></a>Metadata</h2><pre><code class="line-numbers language-yml">title: 【Java JVM】 虚拟机栈
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">215</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">45</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://api.yimian.xyz/img?type=moe')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">蝶梦庄生</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">【Java JVM】 虚拟机栈</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-06-26T12:10:00.000Z" title="发表于 2023-06-26 20:10:00">2023-06-26</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-06-26T12:10:00.000Z" title="更新于 2023-06-26 20:10:00">2023-06-26</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Java/">Java</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="【Java JVM】 虚拟机栈"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1>【Java JVM】 虚拟机栈</h1>
+<h2 id="Metadata-211">Metadata</h2>
+<pre><code class="language-yml">title: 【Java JVM】 虚拟机栈
 date: 2023-06-26 20:10
 tags:
   - 行动阶段/完成
@@ -160,7 +162,8 @@ keywords:
   - Java/JVM
 description: 【Java JVM】 虚拟机栈
 </code></pre>
-<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p><strong>内存中的栈与堆</strong></p>
+<h2 id="概述-96">概述</h2>
+<p><strong>内存中的栈与堆</strong></p>
 <p><mark>栈是运行时的单位，而堆是存储的单位</mark></p>
 <ul>
 <li>栈解决程序的运行问题，即程序如何执行，或者说如何处理数据。</li>
@@ -169,7 +172,8 @@ description: 【Java JVM】 虚拟机栈
 <p><strong>栈帧</strong></p>
 <p>在这个线程上正在执行的每个方法都各自对应一个栈帧（Stack Frame）。</p>
 <ul>
-<li><mark>局部变量表（Local Variables）</mark><ul>
+<li><mark>局部变量表（Local Variables）</mark>
+<ul>
 <li>定义为一个数字数组，主要用于存储方法参数和定义在方法体内的局部变量，这些数据类型包括各类<strong>基本数据类型</strong>、<strong>对象引用（reference）</strong>，以及 <strong>returnAddress 类型</strong>。</li>
 <li>线程的私有数据，不存在数据安全问题</li>
 <li>局部变量表所需的容量大小是在编译期确定下来的</li>
@@ -177,17 +181,20 @@ description: 【Java JVM】 虚拟机栈
 <li>局部变量表中的变量只在当前方法调用中有效</li>
 </ul>
 </li>
-<li><mark>操作数栈（operand Stack）（或表达式栈）</mark><ul>
+<li><mark>操作数栈（operand Stack）（或表达式栈）</mark>
+<ul>
 <li>操作数栈，在方法执行过程中，根据字节码指令，往栈中写入数据或提取数据，即入栈（push）和 出栈（pop）</li>
 <li>主要用于保存计算过程的中间结果，同时作为计算过程中变量临时的存储空间</li>
 </ul>
 </li>
-<li><mark>动态链接（DynamicLinking）</mark>（或指向运行时常量池的方法引用）<ul>
+<li><mark>动态链接（DynamicLinking）</mark>（或指向运行时常量池的方法引用）
+<ul>
 <li>每一个栈帧内部都包含一个指向运行时常量池中该栈帧所属方法的引用。</li>
 <li>动态链接的作用就是为了将这些符号引用转换为调用方法的直接引用</li>
 </ul>
 </li>
-<li><mark>方法返回地址（Return Address）</mark>（或方法正常退出或者异常退出的定义）<ul>
+<li><mark>方法返回地址（Return Address）</mark>（或方法正常退出或者异常退出的定义）
+<ul>
 <li>调用者的 pc 计数器的值作为返回地址，即调用该方法的指令的下一条指令的地址</li>
 </ul>
 </li>
@@ -195,22 +202,26 @@ description: 【Java JVM】 虚拟机栈
 </ul>
 <p><strong>方法的调用：解析与分配</strong></p>
 <ul>
-<li><p>静态链接</p>
+<li>
+<p>静态链接</p>
 <ul>
 <li>如果被调用的<mark>目标方法在编译期可知，且运行期保持不变时</mark>，这种情况下将调用方法的符号引用转换为直接引用的过程称之为静态链接</li>
 </ul>
 </li>
-<li><p>动态链接</p>
+<li>
+<p>动态链接</p>
 <ul>
 <li>如果<mark>被调用的方法在编译期无法被确定下来，只能够在程序运行期将调用的方法的符号转换为直接引用</mark>，由于这种引用转换过程具备动态性，因此也被称之为动态链接。</li>
 </ul>
 </li>
-<li><p>早期绑定</p>
+<li>
+<p>早期绑定</p>
 <ul>
 <li>指被调用的目标方法如果在编译期可知，且运行期保持不变时，即可将这个方法与所属的类型进行绑定</li>
 </ul>
 </li>
-<li><p>晚期绑定</p>
+<li>
+<p>晚期绑定</p>
 <ul>
 <li>如果被调用的方法在编译期无法被确定下来，只能够在程序运行期根据实际的类型绑定相关的方法</li>
 </ul>
@@ -223,33 +234,43 @@ description: 【Java JVM】 虚拟机栈
 <li>否则，按照继承关系从下往上依次对 C 的各个父类进行第 2 步的搜索和验证过程。</li>
 <li>如果始终没有找到合适的方法，则抛出 java.lang.AbstractMethodsrror 异常。</li>
 </ol>
-<h2 id="虚拟机栈概述"><a href="#虚拟机栈概述" class="headerlink" title="虚拟机栈概述"></a>虚拟机栈概述</h2><h3 id="虚拟机栈出现的背景"><a href="#虚拟机栈出现的背景" class="headerlink" title="虚拟机栈出现的背景"></a>虚拟机栈出现的背景</h3><p>由于跨平台性的设计，Java 的指令都是根据栈来设计的。不同平台 CPU 架构不同，所以不能设计为基于寄存器的。</p>
+<h2 id="虚拟机栈概述">虚拟机栈概述</h2>
+<h3 id="虚拟机栈出现的背景">虚拟机栈出现的背景</h3>
+<p>由于跨平台性的设计，Java 的指令都是根据栈来设计的。不同平台 CPU 架构不同，所以不能设计为基于寄存器的。</p>
 <p><mark>优点是跨平台，指令集小，编译器容易实现，缺点是性能下降，实现同样的功能需要更多的指令</mark>。</p>
-<h3 id="初步印象"><a href="#初步印象" class="headerlink" title="初步印象"></a>初步印象</h3><p>有不少 Java 开发人员一提到 Java 内存结构，就会非常粗粒度地将 JVM 中的内存区理解为仅有 Java 堆（heap）和 Java 栈（stack）？为什么？</p>
-<h3 id="内存中的栈与堆"><a href="#内存中的栈与堆" class="headerlink" title="内存中的栈与堆"></a>内存中的栈与堆</h3><p><mark>栈是运行时的单位，而堆是存储的单位</mark></p>
+<h3 id="初步印象">初步印象</h3>
+<p>有不少 Java 开发人员一提到 Java 内存结构，就会非常粗粒度地将 JVM 中的内存区理解为仅有 Java 堆（heap）和 Java 栈（stack）？为什么？</p>
+<h3 id="内存中的栈与堆">内存中的栈与堆</h3>
+<p><mark>栈是运行时的单位，而堆是存储的单位</mark></p>
 <ul>
 <li>栈解决程序的运行问题，即程序如何执行，或者说如何处理数据。</li>
 <li>堆解决的是数据存储的问题，即数据怎么放，放哪里</li>
 </ul>
-<p><img src="/attachment/65679828a0aa144040eec979b770b1ba.png"></p>
-<h3 id="虚拟机栈基本内容"><a href="#虚拟机栈基本内容" class="headerlink" title="虚拟机栈基本内容"></a>虚拟机栈基本内容</h3><h4 id="Java-虚拟机栈是什么？"><a href="#Java-虚拟机栈是什么？" class="headerlink" title="Java 虚拟机栈是什么？"></a>Java 虚拟机栈是什么？</h4><p>Java 虚拟机栈（Java Virtual Machine Stack），早期也叫 Java 栈。每个线程在创建时都会创建一个虚拟机栈，其内部保存一个个的栈帧（Stack Frame），对应着一次次的 Java 方法调用，是线程私有的。</p>
-<h4 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h4><p>生命周期和线程一致</p>
-<h4 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h4><p>主管 Java 程序的运行，它保存方法的局部变量、部分结果，并参与方法的调用和返回。</p>
-<h4 id="栈的特点"><a href="#栈的特点" class="headerlink" title="栈的特点"></a>栈的特点</h4><p>栈是一种快速有效的分配存储方式，访问速度仅次于罹序计数器。</p>
+<p><img src="/attachment/65679828a0aa144040eec979b770b1ba.png" alt=""></p>
+<h3 id="虚拟机栈基本内容">虚拟机栈基本内容</h3>
+<h4 id="Java-虚拟机栈是什么？">Java 虚拟机栈是什么？</h4>
+<p>Java 虚拟机栈（Java Virtual Machine Stack），早期也叫 Java 栈。每个线程在创建时都会创建一个虚拟机栈，其内部保存一个个的栈帧（Stack Frame），对应着一次次的 Java 方法调用，是线程私有的。</p>
+<h4 id="生命周期-3">生命周期</h4>
+<p>生命周期和线程一致</p>
+<h4 id="作用-8">作用</h4>
+<p>主管 Java 程序的运行，它保存方法的局部变量、部分结果，并参与方法的调用和返回。</p>
+<h4 id="栈的特点">栈的特点</h4>
+<p>栈是一种快速有效的分配存储方式，访问速度仅次于罹序计数器。</p>
 <p>JVM 直接对 Java 栈的操作只有两个：</p>
 <ul>
 <li>每个方法执行，伴随着进栈（入栈、压栈）</li>
 <li>执行结束后的出栈工作</li>
 </ul>
 <p>对于栈来说不存在垃圾回收问题（栈存在溢出的情况）</p>
-<p><img src="/attachment/020448e4897168f9db30c8aaa0951c02.png"></p>
-<h4 id="面试题：开发中遇到哪些异常？"><a href="#面试题：开发中遇到哪些异常？" class="headerlink" title="面试题：开发中遇到哪些异常？"></a>面试题：开发中遇到哪些异常？</h4><p><strong>栈中可能出现的异常</strong></p>
+<p><img src="/attachment/020448e4897168f9db30c8aaa0951c02.png" alt=""></p>
+<h4 id="面试题：开发中遇到哪些异常？">面试题：开发中遇到哪些异常？</h4>
+<p><strong>栈中可能出现的异常</strong></p>
 <p>Java 虚拟机规范允许<mark>Java 栈的大小是动态的或者是固定不变的</mark>。</p>
 <ul>
 <li>如果采用固定大小的 Java 虚拟机栈，那每一个线程的 Java 虚拟机栈容量可以在线程创建的时候独立选定。如果线程请求分配的栈容量超过 Java 虚拟机栈允许的最大容量，Java 虚拟机将会抛出一个<mark>StackOverflowError </mark>异常。</li>
 <li>如果 Java 虚拟机栈可以动态扩展，并且在尝试扩展的时候无法申请到足够的内存，或者在创建新的线程时没有足够的内存去创建对应的虚拟机栈，那 Java 虚拟机将会抛出一个<mark> OutOfMemoryError </mark>异常。</li>
 </ul>
-<pre><code class="line-numbers language-java">public static void main(String[] args) {
+<pre><code class="language-java">public static void main(String[] args) {
     test();
 }
 public static void test() {
@@ -260,7 +281,7 @@ public static void test() {
 </code></pre>
 <p><strong>设置栈内存大小</strong></p>
 <p>我们可以使用参数 -Xss 选项来设置线程的最大栈空间，栈的大小直接决定了函数调用的最大可达深度</p>
-<pre><code class="line-numbers language-java">public class StackDeepTest{
+<pre><code class="language-java">public class StackDeepTest{
     private static int count=0;
     public static void recursion(){
         count++;
@@ -276,18 +297,21 @@ public static void test() {
     }
 }
 </code></pre>
-<h2 id="栈的存储单位"><a href="#栈的存储单位" class="headerlink" title="栈的存储单位"></a>栈的存储单位</h2><h3 id="栈中存储什么？"><a href="#栈中存储什么？" class="headerlink" title="栈中存储什么？"></a>栈中存储什么？</h3><p>每个线程都有自己的栈，栈中的数据都是以<mark>栈帧（Stack Frame）的格式存在</mark>。</p>
+<h2 id="栈的存储单位">栈的存储单位</h2>
+<h3 id="栈中存储什么？">栈中存储什么？</h3>
+<p>每个线程都有自己的栈，栈中的数据都是以<mark>栈帧（Stack Frame）的格式存在</mark>。</p>
 <p>在这个线程上正在执行的每个方法都各自对应一个栈帧（Stack Frame）。</p>
 <p>栈帧是一个内存区块，是一个数据集，维系着方法执行过程中的各种数据信息。</p>
-<h3 id="栈运行原理"><a href="#栈运行原理" class="headerlink" title="栈运行原理"></a>栈运行原理</h3><p>JVM 直接对 Java 栈的操作只有两个，就是对<mark>栈帧的压栈和出栈，遵循“先进后出”/“后进先出”原则</mark>。</p>
+<h3 id="栈运行原理">栈运行原理</h3>
+<p>JVM 直接对 Java 栈的操作只有两个，就是对<mark>栈帧的压栈和出栈，遵循“先进后出”/“后进先出”原则</mark>。</p>
 <p>在一条活动线程中，一个时间点上，只会有一个活动的栈帧。即只有当前正在执行的方法的栈帧（栈顶栈帧）是有效的，这个栈帧被称为<mark>当前栈帧（Current Frame）</mark>，与当前栈帧相对应的方法就是<mark>当前方法（Current Method）</mark>，定义这个方法的类就是<mark>当前类（Current Class）</mark>。</p>
 <p>执行引擎运行的所有字节码指令只针对当前栈帧进行操作。</p>
 <p>如果在该方法中调用了其他方法，对应的新的栈帧会被创建出来，放在栈的顶端，成为新的当前帧。</p>
-<p><img src="/attachment/2a6d668718c304aba6313ef388239a8d.png"></p>
+<p><img src="/attachment/2a6d668718c304aba6313ef388239a8d.png" alt=""></p>
 <p>不同线程中所包含的栈帧是<strong>不允许</strong>存在相互引用的，即不可能在一个栈帧之中引用另外一个线程的栈帧。</p>
 <p>如果当前方法调用了其他方法，方法返回之际，当前栈帧会传回此方法的执行结果给前一个栈帧，接着，虚拟机会丢弃当前栈帧，使得前一个栈帧重新成为当前栈帧。</p>
 <p>Java 方法有两种返回函数的方式，<mark>一种是正常的函数返回，使用 return 指令；另外一种是抛出异常。不管使用哪种方式，都会导致栈帧被弹出</mark>。</p>
-<pre><code class="line-numbers language-java">public class CurrentFrameTest{
+<pre><code class="language-java">public class CurrentFrameTest{
     public void methodA(){
         system.out.println（"当前栈帧对应的方法-&gt;methodA");
         methodB();
@@ -297,7 +321,8 @@ public static void test() {
         System.out.println（"当前栈帧对应的方法-&gt;methodB");
     }
 </code></pre>
-<h3 id="栈帧的内部结构"><a href="#栈帧的内部结构" class="headerlink" title="栈帧的内部结构"></a>栈帧的内部结构</h3><p>每个栈帧中存储着：</p>
+<h3 id="栈帧的内部结构">栈帧的内部结构</h3>
+<p>每个栈帧中存储着：</p>
 <ul>
 <li><mark>局部变量表（Local Variables）</mark></li>
 <li><mark>操作数栈（operand Stack）（或表达式栈）</mark></li>
@@ -305,10 +330,11 @@ public static void test() {
 <li>方法返回地址（Return Address）（或方法正常退出或者异常退出的定义）</li>
 <li>一些附加信息</li>
 </ul>
-<p><img src="/attachment/3fe56e305a573fe9277ccbbfb97c591f.png"></p>
+<p><img src="/attachment/3fe56e305a573fe9277ccbbfb97c591f.png" alt=""></p>
 <p>并行每个线程下的栈都是私有的，因此每个线程都有自己各自的栈，并且每个栈里面都有很多栈帧，栈帧的大小主要由局部变量表 和 操作数栈决定的</p>
-<p><img src="/attachment/579ce824212ae244c82d6fc0402b71e9.png"></p>
-<h2 id="局部变量表-Local-Variables"><a href="#局部变量表-Local-Variables" class="headerlink" title="局部变量表(Local Variables)"></a>局部变量表(Local Variables)</h2><p>局部变量表也被称之为局部变量数组或本地变量表</p>
+<p><img src="/attachment/579ce824212ae244c82d6fc0402b71e9.png" alt=""></p>
+<h2 id="局部变量表-Local-Variables">局部变量表(Local Variables)</h2>
+<p>局部变量表也被称之为局部变量数组或本地变量表</p>
 <ul>
 <li><mark>定义为一个数字数组，主要用于存储方法参数和定义在方法体内的局部变量</mark>，这些数据类型包括各类基本数据类型、对象引用（reference），以及 returnAddress 类型。</li>
 <li>由于局部变量表是建立在线程的栈上，是线程的私有数据，因此<mark>不存在数据安全问题</mark></li>
@@ -316,7 +342,8 @@ public static void test() {
 <li><mark>方法嵌套调用的次数由栈的大小决定</mark>。一般来说，栈越大，方法嵌套调用次数越多。对一个函数而言，它的参数和局部变量越多，使得局部变量表膨胀，它的栈帧就越大，以满足方法调用所需传递的信息增大的需求。进而函数调用就会占用更多的栈空间，导致其嵌套调用次数就会减少。</li>
 <li><mark>局部变量表中的变量只在当前方法调用中有效</mark>。在方法执行时，虚拟机通过使用局部变量表完成参数值到参数变量列表的传递过程。当方法调用结束后，随着方法栈帧的销毁，局部变量表也会随之销毁。</li>
 </ul>
-<h3 id="关于-Slot-的理解"><a href="#关于-Slot-的理解" class="headerlink" title="关于 Slot 的理解"></a>关于 Slot 的理解</h3><ul>
+<h3 id="关于-Slot-的理解">关于 Slot 的理解</h3>
+<ul>
 <li>局部变量表，最基本的存储单元是 Slot（变量槽）</li>
 <li>参数值的存放总是在局部变量数组的 index0 开始，到数组长度-1 的索引结束。</li>
 <li>局部变量表中存放编译期可知的各种基本数据类型（8 种），引用类型（reference），returnAddress 类型的变量。</li>
@@ -327,9 +354,10 @@ public static void test() {
 <li><mark>如果需要访问局部变量表中一个 64bit 的局部变量值时，只需要使用前一个索引即可</mark>。（比如：访问 long 或 doub1e 类型变量）</li>
 <li>如果当前帧是由构造方法或者实例方法创建的，那么<mark>该对象引用 this 将会存放在 index 为 0 的 slot 处</mark>，其余的参数按照参数表顺序继续排列。</li>
 </ul>
-<p><img src="/attachment/92133e7cc7ccf4d20c715af4423eb839.png"></p>
-<h3 id="Slot-的重复利用"><a href="#Slot-的重复利用" class="headerlink" title="Slot 的重复利用"></a>Slot 的重复利用</h3><p>栈帧中的局部变量表中的槽位是可以重用的，如果一个局部变量过了其作用域，那么在其作用域之后申明的新的局部变就很有可能会复用过期局部变量的槽位，从而达到节省资源的目的。</p>
-<pre><code class="line-numbers language-java">public class SlotTest {
+<p><img src="/attachment/92133e7cc7ccf4d20c715af4423eb839.png" alt=""></p>
+<h3 id="Slot-的重复利用">Slot 的重复利用</h3>
+<p>栈帧中的局部变量表中的槽位是可以重用的，如果一个局部变量过了其作用域，那么在其作用域之后申明的新的局部变就很有可能会复用过期局部变量的槽位，从而达到节省资源的目的。</p>
+<pre><code class="language-java">public class SlotTest {
     public void localVarl() {
         int a = 0;
         System.out.println(a);
@@ -345,31 +373,36 @@ public static void test() {
     }
 }
 </code></pre>
-<h3 id="静态变量与局部变量的对比"><a href="#静态变量与局部变量的对比" class="headerlink" title="静态变量与局部变量的对比"></a>静态变量与局部变量的对比</h3><p>参数表分配完毕之后，再根据方法体内定义的变量的顺序和作用域分配。<br>我们知道类变量表有两次初始化的机会，第一次是在“<mark>准备阶段</mark>”，执行系统初始化，对类变量设置零值，另一次则是在“<mark>初始化</mark>”阶段，赋予程序员在代码中定义的初始值。<br>和类变量初始化不同的是，局部变量表不存在系统初始化的过程，这意味着一旦定义了局部变量则必须人为的初始化，否则无法使用。</p>
-<pre><code class="line-numbers language-java">public void test(){
+<h3 id="静态变量与局部变量的对比">静态变量与局部变量的对比</h3>
+<p>参数表分配完毕之后，再根据方法体内定义的变量的顺序和作用域分配。<br>
+我们知道类变量表有两次初始化的机会，第一次是在“<mark>准备阶段</mark>”，执行系统初始化，对类变量设置零值，另一次则是在“<mark>初始化</mark>”阶段，赋予程序员在代码中定义的初始值。<br>
+和类变量初始化不同的是，局部变量表不存在系统初始化的过程，这意味着一旦定义了局部变量则必须人为的初始化，否则无法使用。</p>
+<pre><code class="language-java">public void test(){
     int i;
     System.out.println(i);
 }
 </code></pre>
 <p>这样的代码是<strong>错误</strong>的，没有赋值不能够使用。</p>
-<h3 id="补充说明"><a href="#补充说明" class="headerlink" title="补充说明"></a>补充说明</h3><p>在栈帧中，与性能调优关系最为密切的部分就是前面提到的局部变量表。在方法执行时，虚拟机使用局部变量表完成方法的传递。</p>
+<h3 id="补充说明">补充说明</h3>
+<p>在栈帧中，与性能调优关系最为密切的部分就是前面提到的局部变量表。在方法执行时，虚拟机使用局部变量表完成方法的传递。</p>
 <p><mark>局部变量表中的变量也是重要的垃圾回收根节点，只要被局部变量表中直接或间接引用的对象都不会被回收</mark>。</p>
-<h2 id="操作数栈（Operand-Stack）"><a href="#操作数栈（Operand-Stack）" class="headerlink" title="操作数栈（Operand Stack）"></a>操作数栈（Operand Stack）</h2><p>每一个独立的栈帧除了包含局部变量表以外，还包含一个后进先出（Last-In-First-Out）的 <mark>操作数栈</mark>，也可以称之为<mark>表达式栈（Expression Stack）</mark></p>
+<h2 id="操作数栈（Operand-Stack）">操作数栈（Operand Stack）</h2>
+<p>每一个独立的栈帧除了包含局部变量表以外，还包含一个后进先出（Last-In-First-Out）的 <mark>操作数栈</mark>，也可以称之为<mark>表达式栈（Expression Stack）</mark></p>
 <p><mark>操作数栈，在方法执行过程中，根据字节码指令，往栈中写入数据或提取数据，即入栈（push）和 出栈（pop）</mark></p>
 <ul>
 <li>某些字节码指令将值压入操作数栈，其余的字节码指令将操作数取出栈。使用它们后再把结果压入栈</li>
 <li>比如：执行复制、交换、求和等操作</li>
 </ul>
-<p><img src="/attachment/12ace445a989be337e5f2662ebfb3af6.png"></p>
+<p><img src="/attachment/12ace445a989be337e5f2662ebfb3af6.png" alt=""></p>
 <p>代码举例</p>
-<pre><code class="line-numbers language-java">public void testAddOperation(){
+<pre><code class="language-java">public void testAddOperation(){
     byte i = 15;
     int j = 8;
     int k = i + j;
 }
 </code></pre>
 <p>字节码指令信息</p>
-<pre><code class="line-numbers language-java">public void testAddOperation();
+<pre><code class="language-java">public void testAddOperation();
     Code:
     0: bipush 15
     2: istore_1
@@ -393,14 +426,15 @@ public static void test() {
 <p><mark>如果被调用的方法带有返回值的话，其返回值将会被压入当前栈帧的操作数栈中</mark>，并更新 PC 寄存器中下一条需要执行的字节码指令。</p>
 <p>操作数栈中元素的数据类型必须与字节码指令的序列严格匹配，这由编译器在编译器期间进行验证，同时在类加载过程中的类检验阶段的数据流分析阶段要再次验证。</p>
 <p>另外，我们说 Java 虚拟机的<mark>解释引擎是基于栈的执行引擎</mark>，其中的栈指的就是操作数栈。</p>
-<h2 id="代码追踪"><a href="#代码追踪" class="headerlink" title="代码追踪"></a>代码追踪</h2><pre><code class="line-numbers language-java">public void testAddOperation() {
+<h2 id="代码追踪">代码追踪</h2>
+<pre><code class="language-java">public void testAddOperation() {
     byte i = 15;
     int j = 8;
     int k = i + j;
 }
 </code></pre>
 <p>使用 javap 命令反编译 class 文件：<code> javap -v 类名.class</code></p>
-<pre><code class="line-numbers language-java">public void testAddoperation(); 		
+<pre><code class="language-java">public void testAddoperation(); 		
 Code:	
 0: bipush 15 	
 2: istore_1 	
@@ -412,7 +446,7 @@ Code:
 9: istore_3    
 10: return
 </code></pre>
-<pre><code class="line-numbers language-ad-tip">title: 图示
+<pre><code class="language-ad-tip">title: 图示
 collapse: closed
 
 
@@ -437,31 +471,40 @@ collapse: closed
 
 ![](attachment/87decfa0c98b8efbdc2e42aeafc7c580.png)
 
+
 </code></pre>
-<h2 id="栈顶缓存技术（Top-Of-Stack-Cashing）技术"><a href="#栈顶缓存技术（Top-Of-Stack-Cashing）技术" class="headerlink" title="栈顶缓存技术（Top Of Stack Cashing）技术"></a>栈顶缓存技术（Top Of Stack Cashing）技术</h2><p>前面提过，基于栈式架构的虚拟机所使用的零地址指令更加紧凑，但完成一项操作的时候必然需要使用更多的入栈和出栈指令，这同时也就意味着将需要更多的指令分派（instruction dispatch）次数和内存读/写次数。</p>
+<h2 id="栈顶缓存技术（Top-Of-Stack-Cashing）技术">栈顶缓存技术（Top Of Stack Cashing）技术</h2>
+<p>前面提过，基于栈式架构的虚拟机所使用的零地址指令更加紧凑，但完成一项操作的时候必然需要使用更多的入栈和出栈指令，这同时也就意味着将需要更多的指令分派（instruction dispatch）次数和内存读/写次数。</p>
 <p>由于操作数是存储在内存中的，因此频繁地执行内存读/写操作必然会影响执行速度。为了解决这个问题，HotSpot JVM 的设计者们提出了栈顶缓存（Tos，Top-of-Stack Cashing）技术，<mark>将栈顶元素全部缓存在物理 CPU 的寄存器中，以此降低对内存的读/写次数，提升执行引擎的执行效率</mark>。</p>
-<h2 id="动态链接（Dynamic-Linking）"><a href="#动态链接（Dynamic-Linking）" class="headerlink" title="动态链接（Dynamic Linking）"></a>动态链接（Dynamic Linking）</h2><p>动态链接、方法返回地址、附加信息 ： 有些地方被称为帧数据区</p>
+<h2 id="动态链接（Dynamic-Linking）">动态链接（Dynamic Linking）</h2>
+<p>动态链接、方法返回地址、附加信息 ： 有些地方被称为帧数据区</p>
 <p>每一个栈帧内部都包含一个指向<mark>运行时常量池中该栈帧所属方法的引用</mark>。包含这个引用的目的就是为了支持当前方法的代码能够实现动态链接（Dynamic Linking）。比如：invokedynamic 指令</p>
 <p>在 Java 源文件被编译到字节码文件中时，所有的变量和方法引用都作为符号引用（Symbolic Reference）保存在 class 文件的常量池里。比如：描述一个方法调用了另外的其他方法时，就是通过常量池中指向方法的符号引用来表示的，那么<mark>动态链接的作用就是为了将这些符号引用转换为调用方法的直接引用</mark>。</p>
-<p><img src="/attachment/20620d1c366828c0879829e44b875f9a.png"></p>
+<p><img src="/attachment/20620d1c366828c0879829e44b875f9a.png" alt=""></p>
 <p>为什么需要运行时常量池呢？</p>
 <p>常量池的作用：就是为了提供一些符号和常量，便于指令的识别</p>
-<h2 id="方法的调用：解析与分配"><a href="#方法的调用：解析与分配" class="headerlink" title="方法的调用：解析与分配"></a>方法的调用：解析与分配</h2><p>在 JVM 中，将符号引用转换为调用方法的直接引用与方法的绑定机制相关</p>
-<h3 id="静态链接"><a href="#静态链接" class="headerlink" title="静态链接"></a>静态链接</h3><p>当一个字节码文件被装载进 JVM 内部时，如果被调用的<mark>目标方法在编译期可知，且运行期保持不变时</mark>，这种情况下将调用方法的符号引用转换为直接引用的过程称之为静态链接</p>
-<h3 id="动态链接"><a href="#动态链接" class="headerlink" title="动态链接"></a>动态链接</h3><p>如果<mark>被调用的方法在编译期无法被确定下来，只能够在程序运行期将调用的方法的符号转换为直接引用</mark>，由于这种引用转换过程具备动态性，因此也被称之为动态链接。</p>
+<h2 id="方法的调用：解析与分配">方法的调用：解析与分配</h2>
+<p>在 JVM 中，将符号引用转换为调用方法的直接引用与方法的绑定机制相关</p>
+<h3 id="静态链接">静态链接</h3>
+<p>当一个字节码文件被装载进 JVM 内部时，如果被调用的<mark>目标方法在编译期可知，且运行期保持不变时</mark>，这种情况下将调用方法的符号引用转换为直接引用的过程称之为静态链接</p>
+<h3 id="动态链接">动态链接</h3>
+<p>如果<mark>被调用的方法在编译期无法被确定下来，只能够在程序运行期将调用的方法的符号转换为直接引用</mark>，由于这种引用转换过程具备动态性，因此也被称之为动态链接。</p>
 <p><mark>静态链接和动态链接不是名词，而是动词，这是理解的关键。</mark></p>
 <hr>
 <p>对应的方法的绑定机制为：早期绑定（Early Binding）和晚期绑定（Late Binding）。<mark>绑定是一个字段、方法或者类在符号引用被替换为直接引用的过程，这仅仅发生一次。</mark></p>
-<h3 id="早期绑定"><a href="#早期绑定" class="headerlink" title="早期绑定"></a>早期绑定</h3><p>早期绑定就是指被调用的目标方法如果在编译期可知，且运行期保持不变时，即可将这个方法与所属的类型进行绑定，这样一来，由于明确了被调用的目标方法究竟是哪一个，因此也就可以使用静态链接的方式将符号引用转换为直接引用。</p>
-<h3 id="晚期绑定"><a href="#晚期绑定" class="headerlink" title="晚期绑定"></a>晚期绑定</h3><p>如果被调用的方法在编译期无法被确定下来，只能够在程序运行期根据实际的类型绑定相关的方法，这种绑定方式也就被称之为晚期绑定。</p>
+<h3 id="早期绑定">早期绑定</h3>
+<p>早期绑定就是指被调用的目标方法如果在编译期可知，且运行期保持不变时，即可将这个方法与所属的类型进行绑定，这样一来，由于明确了被调用的目标方法究竟是哪一个，因此也就可以使用静态链接的方式将符号引用转换为直接引用。</p>
+<h3 id="晚期绑定">晚期绑定</h3>
+<p>如果被调用的方法在编译期无法被确定下来，只能够在程序运行期根据实际的类型绑定相关的方法，这种绑定方式也就被称之为晚期绑定。</p>
 <hr>
 <p>随着高级语言的横空出世，类似于 Java 一样的基于面向对象的编程语言如今越来越多，尽管这类编程语言在语法风格上存在一定的差别，但是它们彼此之间始终保持着一个共性，那就是都支持封装、继承和多态等面向对象特性，既然<mark>这一类的编程语言具备多态特性，那么自然也就具备早期绑定和晚期绑定两种绑定方式。</mark></p>
 <p>Java 中任何一个普通的方法其实都具备虚函数的特征，它们相当于 C++语言中的虚函数（C++中则需要使用关键字 virtual 来显式定义）。如果在 Java 程序中不希望某个方法拥有虚函数的特征时，则可以使用关键字 final 来标记这个方法。</p>
 <hr>
-<h3 id="虚方法和非虚方法"><a href="#虚方法和非虚方法" class="headerlink" title="虚方法和非虚方法"></a>虚方法和非虚方法</h3><p>如果方法在编译期就确定了具体的调用版本，这个版本在运行时是不可变的。这样的方法称为非虚方法。</p>
+<h3 id="虚方法和非虚方法-2">虚方法和非虚方法</h3>
+<p>如果方法在编译期就确定了具体的调用版本，这个版本在运行时是不可变的。这样的方法称为非虚方法。</p>
 <p>静态方法、私有方法、final 方法、实例构造器、父类方法都是非虚方法。其他方法称为虚方法。</p>
 <p>在类加载的解析阶段就可以进行解析，如下是非虚方法举例：</p>
-<pre><code class="line-numbers language-java">xxxxxxxxxx&nbsp; class Father {&nbsp;&nbsp;
+<pre><code class="language-java">xxxxxxxxxx&nbsp; class Father {&nbsp;&nbsp;
     public static void print(String str) {&nbsp;&nbsp;&nbsp;&nbsp;
         System.out.println("father " + str);&nbsp;&nbsp;
     }&nbsp;&nbsp;
@@ -472,36 +515,43 @@ collapse: closed
 class Son extends Father {&nbsp;&nbsp;
     public class VirtualMethodTest {&nbsp;&nbsp;&nbsp;&nbsp;
         public static void main(String[] args) {&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            Son.print("coder");&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-            // Father fa=new Father(); &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  
-            // fa.show("atguigu.com"); &nbsp; &nbsp; &nbsp;  
-        } &nbsp;  
-    }
+			Son.print("coder");&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+			// Father fa=new Father(); &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  
+			// fa.show("atguigu.com"); &nbsp; &nbsp; &nbsp;  
+		} &nbsp;  
+	}
 }
 </code></pre>
 <p>虚拟机中提供了以下几条方法调用指令：</p>
-<h4 id="普通调用指令："><a href="#普通调用指令：" class="headerlink" title="普通调用指令："></a>普通调用指令：</h4><ul>
+<h4 id="普通调用指令：">普通调用指令：</h4>
+<ul>
 <li><mark>invokestatic：调用静态方法，解析阶段确定唯一方法版本</mark></li>
 <li><mark>invokespecial：调用方法、私有及父类方法，解析阶段确定唯一方法版本</mark></li>
 <li>invokevirtual：调用所有虚方法</li>
 <li>invokeinterface：调用接口方法</li>
 </ul>
-<h4 id="动态调用指令："><a href="#动态调用指令：" class="headerlink" title="动态调用指令："></a>动态调用指令：</h4><ul>
+<h4 id="动态调用指令：">动态调用指令：</h4>
+<ul>
 <li>invokedynamic：动态解析出需要调用的方法，然后执行</li>
 </ul>
 <p>前四条指令固化在虚拟机内部，方法的调用执行不可人为干预，而 invokedynamic 指令则支持由用户确定方法版本。<mark>其中 invokestatic 指令和 invokespecial 指令调用的方法称为非虚方法，其余的（fina1 修饰的除外）称为虚方法。</mark></p>
 <p><strong>关于 invokednamic 指令</strong></p>
 <ul>
-<li><p>JVM 字节码指令集一直比较稳定，一直到 Java7 中才增加了一个 invokedynamic 指令，这是<mark>Java 为了实现「动态类型语言」支持而做的一种改进。</mark></p>
+<li>
+<p>JVM 字节码指令集一直比较稳定，一直到 Java7 中才增加了一个 invokedynamic 指令，这是<mark>Java 为了实现「动态类型语言」支持而做的一种改进。</mark></p>
 </li>
-<li><p>但是在 Java7 中并没有提供直接生成 invokedynamic 指令的方法，需要借助 ASM 这种底层字节码工具来产生 invokedynamic 指令。<mark>直到 Java8 的 Lambda 表达式的出现，invokedynamic 指令的生成，在 Java 中才有了直接的生成方式。</mark></p>
+<li>
+<p>但是在 Java7 中并没有提供直接生成 invokedynamic 指令的方法，需要借助 ASM 这种底层字节码工具来产生 invokedynamic 指令。<mark>直到 Java8 的 Lambda 表达式的出现，invokedynamic 指令的生成，在 Java 中才有了直接的生成方式。</mark></p>
 </li>
-<li><p>Java7 中增加的动态语言类型支持的本质是对 Java 虚拟机规范的修改，而不是对 Java 语言规则的修改，这一块相对来讲比较复杂，增加了虚拟机中的方法调用，最直接的受益者就是运行在 Java 平台的动态语言的编译器。</p>
+<li>
+<p>Java7 中增加的动态语言类型支持的本质是对 Java 虚拟机规范的修改，而不是对 Java 语言规则的修改，这一块相对来讲比较复杂，增加了虚拟机中的方法调用，最直接的受益者就是运行在 Java 平台的动态语言的编译器。</p>
 </li>
 </ul>
-<h4 id="动态类型语言和静态类型语言"><a href="#动态类型语言和静态类型语言" class="headerlink" title="动态类型语言和静态类型语言"></a>动态类型语言和静态类型语言</h4><p>动态类型语言和静态类型语言两者的区别就在于对类型的检查是在编译期还是在运行期，满足前者就是静态类型语言，反之是动态类型语言。</p>
+<h4 id="动态类型语言和静态类型语言">动态类型语言和静态类型语言</h4>
+<p>动态类型语言和静态类型语言两者的区别就在于对类型的检查是在编译期还是在运行期，满足前者就是静态类型语言，反之是动态类型语言。</p>
 <p>说的再直白一点就是，<mark>静态类型语言是判断变量自身的类型信息；动态类型语言是判断变量值的类型信息，变量没有类型信息，变量值才有类型信息</mark>，这是动态语言的一个重要特征。</p>
-<h3 id="方法重写的本质"><a href="#方法重写的本质" class="headerlink" title="方法重写的本质"></a>方法重写的本质</h3><p><strong>Java 语言中方法重写的本质：</strong></p>
+<h3 id="方法重写的本质">方法重写的本质</h3>
+<p><strong>Java 语言中方法重写的本质：</strong></p>
 <ol>
 <li>找到操作数栈顶的第一个元素所执行的对象的实际类型，记作 C。</li>
 <li>如果在类型 C 中找到与常量中的描述符合简单名称都相符的方法，则进行访问权限校验，如果通过则返回这个方法的直接引用，查找过程结束；如果不通过，则返回 java.lang.IllegalAccessError 异常。</li>
@@ -510,13 +560,14 @@ class Son extends Father {&nbsp;&nbsp;
 </ol>
 <p><strong>IllegalAccessError 介绍</strong></p>
 <p>程序试图访问或修改一个属性或调用一个方法，这个属性或方法，你没有权限访问。一般的，这个会引起编译器异常。这个错误如果发生在运行时，就说明一个类发生了不兼容的改变。</p>
-<h3 id="方法的调用：虚方法表"><a href="#方法的调用：虚方法表" class="headerlink" title="方法的调用：虚方法表"></a>方法的调用：虚方法表</h3><p>在面向对象的编程中，会很频繁的使用到动态分派，如果在每次动态分派的过程中都要重新在类的方法元数据中搜索合适的目标的话就可能影响到执行效率。<mark>因此，为了提高性能，JVM 采用在类的方法区建立一个虚方法表 （virtual method table）（非虚方法不会出现在表中）来实现。使用索引表来代替查找。</mark></p>
+<h3 id="方法的调用：虚方法表">方法的调用：虚方法表</h3>
+<p>在面向对象的编程中，会很频繁的使用到动态分派，如果在每次动态分派的过程中都要重新在类的方法元数据中搜索合适的目标的话就可能影响到执行效率。<mark>因此，为了提高性能，JVM 采用在类的方法区建立一个虚方法表 （virtual method table）（非虚方法不会出现在表中）来实现。使用索引表来代替查找。</mark></p>
 <p>每个类中都有一个虚方法表，表中存放着各个方法的实际入口。</p>
 <p>虚方法表是什么时候被创建的呢？</p>
 <p>虚方法表会在类加载的链接阶段被创建并开始初始化，类的变量初始值准备完成之后，JVM 会把该类的方法表也初始化完毕。</p>
-<p><img src="/attachment/17f5dbe93d4620016c169fe6d51ee85d.png"></p>
+<p><img src="/attachment/17f5dbe93d4620016c169fe6d51ee85d.png" alt=""></p>
 <p>举例 2：</p>
-<pre><code class="line-numbers language-java">interface Friendly {
+<pre><code class="language-java">interface Friendly {
     void sayHello();
     void sayGoodbye();
 }
@@ -539,8 +590,9 @@ class CockerSpaniel extends Dog implements Friendly {
     public void sayGoodbye() {}
 }
 </code></pre>
-<p><img src="/attachment/1c49d88c264acaba1b6f07dac48ef671.png"></p>
-<h2 id="方法返回地址（return-address）"><a href="#方法返回地址（return-address）" class="headerlink" title="方法返回地址（return address）"></a>方法返回地址（return address）</h2><p>存放调用该方法的 pc 寄存器的值。一个方法的结束，有两种方式：</p>
+<p><img src="/attachment/1c49d88c264acaba1b6f07dac48ef671.png" alt=""></p>
+<h2 id="方法返回地址（return-address）">方法返回地址（return address）</h2>
+<p>存放调用该方法的 pc 寄存器的值。一个方法的结束，有两种方式：</p>
 <ul>
 <li>正常执行完成</li>
 <li>出现未处理的异常，非正常退出</li>
@@ -548,7 +600,8 @@ class CockerSpaniel extends Dog implements Friendly {
 <p>无论通过哪种方式退出，在方法退出后都返回到该方法被调用的位置。方法正常退出时，<mark>调用者的 pc 计数器的值作为返回地址，即调用该方法的指令的下一条指令的地址</mark>。而通过异常退出的，返回地址是要通过异常表来确定，栈帧中一般不会保存这部分信息。</p>
 <p>当一个方法开始执行后，只有两种方式可以退出这个方法：</p>
 <ol>
-<li>执行引擎遇到任意一个方法返回的字节码指令（return），会有返回值传递给上层的方法调用者，简称<mark>正常完成出口</mark>；<ul>
+<li>执行引擎遇到任意一个方法返回的字节码指令（return），会有返回值传递给上层的方法调用者，简称<mark>正常完成出口</mark>；
+<ul>
 <li>一个方法在正常调用完成之后，究竟需要使用哪一个返回指令，还需要根据方法返回值的实际数据类型而定。</li>
 <li>在字节码指令中，返回指令包含 ireturn（当返回值是 boolean，byte，char，short 和 int 类型时使用），lreturn（Long 类型），freturn（Float 类型），dreturn（Double 类型），areturn。另外还有一个 return 指令声明为 void 的方法，实例初始化方法，类和接口的初始化方法使用。</li>
 </ul>
@@ -556,29 +609,36 @@ class CockerSpaniel extends Dog implements Friendly {
 <li>在方法执行过程中遇到异常（Exception），并且这个异常没有在方法内进行处理，也就是只要在本方法的异常表中没有搜索到匹配的异常处理器，就会导致方法退出，简称<mark>异常完成出口</mark>。</li>
 </ol>
 <p>方法执行过程中，抛出异常时的异常处理，存储在一个异常处理表，方便在发生异常的时候找到处理异常的代码</p>
-<pre><code class="line-numbers language-shell">Exception table:from to target type4	 16	  19   any19	 21	  19   any
+<pre><code class="language-shell">Exception table:from to target type4	 16	  19   any19	 21	  19   any
 </code></pre>
 <p>本质上，方法的退出就是当前栈帧出栈的过程。此时，需要恢复上层方法的局部变量表、操作数栈、将返回值压入调用者栈帧的操作数栈、设置 PC 寄存器值等，让调用者方法继续执行下去。</p>
 <p><mark>正常完成出口和异常完成出口的区别在于：通过异常完成出口退出的不会给他的上层调用者产生任何的返回值。</mark></p>
-<h2 id="一些附加信息"><a href="#一些附加信息" class="headerlink" title="一些附加信息"></a>一些附加信息</h2><p>栈帧中还允许携带与 Java 虚拟机实现相关的一些附加信息。例如：对程序调试提供支持的信息。</p>
-<h2 id="栈的相关面试题"><a href="#栈的相关面试题" class="headerlink" title="栈的相关面试题"></a>栈的相关面试题</h2><ul>
-<li>举例栈溢出的情况？（StackOverflowError）<ul>
+<h2 id="一些附加信息">一些附加信息</h2>
+<p>栈帧中还允许携带与 Java 虚拟机实现相关的一些附加信息。例如：对程序调试提供支持的信息。</p>
+<h2 id="栈的相关面试题">栈的相关面试题</h2>
+<ul>
+<li>举例栈溢出的情况？（StackOverflowError）
+<ul>
 <li>通过 -Xss 设置栈的大小</li>
 </ul>
 </li>
-<li>调整栈大小，就能保证不出现溢出么？<ul>
+<li>调整栈大小，就能保证不出现溢出么？
+<ul>
 <li>不能保证不溢出</li>
 </ul>
 </li>
-<li>分配的栈内存越大越好么？<ul>
+<li>分配的栈内存越大越好么？
+<ul>
 <li>不是，一定时间内降低了 OOM 概率，但是会挤占其它的线程空间，因为整个空间是有限的。</li>
 </ul>
 </li>
-<li>垃圾回收是否涉及到虚拟机栈？<ul>
+<li>垃圾回收是否涉及到虚拟机栈？
+<ul>
 <li>不会</li>
 </ul>
 </li>
-<li>方法中定义的局部变量是否线程安全？<ul>
+<li>方法中定义的局部变量是否线程安全？
+<ul>
 <li>具体问题具体分析。如果对象是在内部产生，并在内部消亡，没有返回到外部，那么它就是线程安全的，反之则是线程不安全的。</li>
 </ul>
 </li>
@@ -586,38 +646,40 @@ class CockerSpaniel extends Dog implements Friendly {
 <table>
 <thead>
 <tr>
-<th align="left">运行时数据区</th>
-<th align="left">是否存在 Error</th>
-<th align="left">是否存在 GC</th>
+<th style="text-align:left">运行时数据区</th>
+<th style="text-align:left">是否存在 Error</th>
+<th style="text-align:left">是否存在 GC</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="left">程序计数器</td>
-<td align="left">否</td>
-<td align="left">否</td>
+<tbody>
+<tr>
+<td style="text-align:left">程序计数器</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">否</td>
 </tr>
 <tr>
-<td align="left">虚拟机栈</td>
-<td align="left">是（SOE）</td>
-<td align="left">否</td>
+<td style="text-align:left">虚拟机栈</td>
+<td style="text-align:left">是（SOE）</td>
+<td style="text-align:left">否</td>
 </tr>
 <tr>
-<td align="left">本地方法栈</td>
-<td align="left">是</td>
-<td align="left">否</td>
+<td style="text-align:left">本地方法栈</td>
+<td style="text-align:left">是</td>
+<td style="text-align:left">否</td>
 </tr>
 <tr>
-<td align="left">方法区</td>
-<td align="left">是（OOM）</td>
-<td align="left">是</td>
+<td style="text-align:left">方法区</td>
+<td style="text-align:left">是（OOM）</td>
+<td style="text-align:left">是</td>
 </tr>
 <tr>
-<td align="left">堆</td>
-<td align="left">是</td>
-<td align="left">是</td>
+<td style="text-align:left">堆</td>
+<td style="text-align:left">是</td>
+<td style="text-align:left">是</td>
 </tr>
-</tbody></table>
-</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a target="_blank" rel="noopener" href="https://github.com/yu627482453">Bill Cipher</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://yu627482453.github.io/java/java-jvm/java-jvm-nei-cun-guan-li/java-jvm-yun-xing-shi-shu-ju-qu/java-jvm-xu-ni-ji-zhan/">https://yu627482453.github.io/java/java-jvm/java-jvm-nei-cun-guan-li/java-jvm-yun-xing-shi-shu-ju-qu/java-jvm-xu-ni-ji-zhan/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://yu627482453.github.io" target="_blank">蝶梦庄生</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E8%A1%8C%E5%8A%A8%E9%98%B6%E6%AE%B5-%E5%AE%8C%E6%88%90/">行动阶段/完成</a><a class="post-meta__tags" href="/tags/%E7%AC%94%E8%AE%B0%E7%A9%BA%E9%97%B4-KnowladgeSpace-ProgramSpace-BasicsSpace/">笔记空间/KnowladgeSpace/ProgramSpace/BasicsSpace</a><a class="post-meta__tags" href="/tags/%E4%B8%BB%E9%A2%98%E5%9C%BA%E6%99%AF-%E7%A8%8B%E5%BA%8F/">主题场景/程序</a><a class="post-meta__tags" href="/tags/%E7%BB%86%E5%8C%96%E4%B8%BB%E9%A2%98-Java-JVM/">细化主题/Java/JVM</a></div><div class="post_share"><div class="social-share" data-image="https://cdn.seovx.com/?mom=302" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/reward/wechat.jpg" target="_blank"><img class="post-qr-code-img" src="/img/reward/wechat.jpg" alt="wechat"/></a><div class="post-qr-code-desc">wechat</div></li><li class="reward-item"><a href="/img/reward/alipay.jpg" target="_blank"><img class="post-qr-code-img" src="/img/reward/alipay.jpg" alt="alipay"/></a><div class="post-qr-code-desc">alipay</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/java/java-jvm/java-jvm-nei-cun-guan-li/java-jvm-yun-xing-shi-shu-ju-qu/java-jvm-ben-di-fang-fa-jie-kou-he-ben-di-fang-fa-zhan/"><img class="prev-cover" src="https://cdn.seovx.com/?mom=302" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">【Java JVM】 本地方法接口和本地方法栈</div></div></a></div><div class="next-post pull-right"><a href="/java/java-jvm/java-jvm-nei-cun-guan-li/java-jvm-yun-xing-shi-shu-ju-qu/java-jvm-cheng-xu-ji-shu-qi/"><img class="next-cover" src="https://cdn.seovx.com/?mom=302" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">【Java JVM】 程序计数器</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/java/java-jvm/java-jvm-nei-cun-guan-li/java-jvm-stringtable/" title="【Java JVM】 StringTable"><img class="cover" src="https://cdn.seovx.com/?mom=302" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-06-28</div><div class="title">【Java JVM】 StringTable</div></div></a></div><div><a href="/java/java-jvm/java-jvm-nei-cun-guan-li/java-jvm-nei-cun-guan-li/" title="【Java jVM】 内存管理"><img class="cover" src="https://cdn.seovx.com/?mom=302" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-07-01</div><div class="title">【Java jVM】 内存管理</div></div></a></div><div><a href="/java/java-jvm/java-jvm-nei-cun-guan-li/java-jvm-dui-xiang-shi-li-hua/" title="【Java JVM】 对象实例化"><img class="cover" src="https://cdn.seovx.com/?mom=302" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-06-27</div><div class="title">【Java JVM】 对象实例化</div></div></a></div><div><a href="/java/java-jvm/java-jvm-nei-cun-guan-li/java-jvm-zhi-xing-yin-qing/" title="【Java JVM】 执行引擎"><img class="cover" src="https://cdn.seovx.com/?mom=302" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-06-28</div><div class="title">【Java JVM】 执行引擎</div></div></a></div><div><a href="/java/java-jvm/java-jvm-nei-cun-guan-li/java-jvm-lei-jia-zai-zi-xi-tong/" title="【Java JVM】 类加载子系统"><img class="cover" src="https://cdn.seovx.com/?mom=302" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-06-26</div><div class="title">【Java JVM】 类加载子系统</div></div></a></div><div><a href="/java/java-jvm/java-jvm-zi-jie-ma-yu-lei-jia-zai/java-jvm-class-wen-jian-jie-gou/" title="【Java JVM】 Class 文件结构"><img class="cover" src="https://cdn.seovx.com/?mom=302" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-06-29</div><div class="title">【Java JVM】 Class 文件结构</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="gitalk-container"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Bill Cipher</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">240</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">69</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/yu627482453"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/yu627482453" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="/627482453@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E3%80%90Java-JVM%E3%80%91-%E8%99%9A%E6%8B%9F%E6%9C%BA%E6%A0%88"><span class="toc-number">1.</span> <span class="toc-text">【Java JVM】 虚拟机栈</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Metadata"><span class="toc-number">1.1.</span> <span class="toc-text">Metadata</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A6%82%E8%BF%B0"><span class="toc-number">1.2.</span> <span class="toc-text">概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%99%9A%E6%8B%9F%E6%9C%BA%E6%A0%88%E6%A6%82%E8%BF%B0"><span class="toc-number">1.3.</span> <span class="toc-text">虚拟机栈概述</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%99%9A%E6%8B%9F%E6%9C%BA%E6%A0%88%E5%87%BA%E7%8E%B0%E7%9A%84%E8%83%8C%E6%99%AF"><span class="toc-number">1.3.1.</span> <span class="toc-text">虚拟机栈出现的背景</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9D%E6%AD%A5%E5%8D%B0%E8%B1%A1"><span class="toc-number">1.3.2.</span> <span class="toc-text">初步印象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%85%E5%AD%98%E4%B8%AD%E7%9A%84%E6%A0%88%E4%B8%8E%E5%A0%86"><span class="toc-number">1.3.3.</span> <span class="toc-text">内存中的栈与堆</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%99%9A%E6%8B%9F%E6%9C%BA%E6%A0%88%E5%9F%BA%E6%9C%AC%E5%86%85%E5%AE%B9"><span class="toc-number">1.3.4.</span> <span class="toc-text">虚拟机栈基本内容</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Java-%E8%99%9A%E6%8B%9F%E6%9C%BA%E6%A0%88%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-number">1.3.4.1.</span> <span class="toc-text">Java 虚拟机栈是什么？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="toc-number">1.3.4.2.</span> <span class="toc-text">生命周期</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%9C%E7%94%A8"><span class="toc-number">1.3.4.3.</span> <span class="toc-text">作用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A0%88%E7%9A%84%E7%89%B9%E7%82%B9"><span class="toc-number">1.3.4.4.</span> <span class="toc-text">栈的特点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%9D%A2%E8%AF%95%E9%A2%98%EF%BC%9A%E5%BC%80%E5%8F%91%E4%B8%AD%E9%81%87%E5%88%B0%E5%93%AA%E4%BA%9B%E5%BC%82%E5%B8%B8%EF%BC%9F"><span class="toc-number">1.3.4.5.</span> <span class="toc-text">面试题：开发中遇到哪些异常？</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%88%E7%9A%84%E5%AD%98%E5%82%A8%E5%8D%95%E4%BD%8D"><span class="toc-number">1.4.</span> <span class="toc-text">栈的存储单位</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%88%E4%B8%AD%E5%AD%98%E5%82%A8%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-number">1.4.1.</span> <span class="toc-text">栈中存储什么？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%88%E8%BF%90%E8%A1%8C%E5%8E%9F%E7%90%86"><span class="toc-number">1.4.2.</span> <span class="toc-text">栈运行原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%88%E5%B8%A7%E7%9A%84%E5%86%85%E9%83%A8%E7%BB%93%E6%9E%84"><span class="toc-number">1.4.3.</span> <span class="toc-text">栈帧的内部结构</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B1%80%E9%83%A8%E5%8F%98%E9%87%8F%E8%A1%A8-Local-Variables"><span class="toc-number">1.5.</span> <span class="toc-text">局部变量表(Local Variables)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E4%BA%8E-Slot-%E7%9A%84%E7%90%86%E8%A7%A3"><span class="toc-number">1.5.1.</span> <span class="toc-text">关于 Slot 的理解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Slot-%E7%9A%84%E9%87%8D%E5%A4%8D%E5%88%A9%E7%94%A8"><span class="toc-number">1.5.2.</span> <span class="toc-text">Slot 的重复利用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9D%99%E6%80%81%E5%8F%98%E9%87%8F%E4%B8%8E%E5%B1%80%E9%83%A8%E5%8F%98%E9%87%8F%E7%9A%84%E5%AF%B9%E6%AF%94"><span class="toc-number">1.5.3.</span> <span class="toc-text">静态变量与局部变量的对比</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A1%A5%E5%85%85%E8%AF%B4%E6%98%8E"><span class="toc-number">1.5.4.</span> <span class="toc-text">补充说明</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%93%8D%E4%BD%9C%E6%95%B0%E6%A0%88%EF%BC%88Operand-Stack%EF%BC%89"><span class="toc-number">1.6.</span> <span class="toc-text">操作数栈（Operand Stack）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E8%BF%BD%E8%B8%AA"><span class="toc-number">1.7.</span> <span class="toc-text">代码追踪</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%88%E9%A1%B6%E7%BC%93%E5%AD%98%E6%8A%80%E6%9C%AF%EF%BC%88Top-Of-Stack-Cashing%EF%BC%89%E6%8A%80%E6%9C%AF"><span class="toc-number">1.8.</span> <span class="toc-text">栈顶缓存技术（Top Of Stack Cashing）技术</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8A%A8%E6%80%81%E9%93%BE%E6%8E%A5%EF%BC%88Dynamic-Linking%EF%BC%89"><span class="toc-number">1.9.</span> <span class="toc-text">动态链接（Dynamic Linking）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E7%9A%84%E8%B0%83%E7%94%A8%EF%BC%9A%E8%A7%A3%E6%9E%90%E4%B8%8E%E5%88%86%E9%85%8D"><span class="toc-number">1.10.</span> <span class="toc-text">方法的调用：解析与分配</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9D%99%E6%80%81%E9%93%BE%E6%8E%A5"><span class="toc-number">1.10.1.</span> <span class="toc-text">静态链接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8A%A8%E6%80%81%E9%93%BE%E6%8E%A5"><span class="toc-number">1.10.2.</span> <span class="toc-text">动态链接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%97%A9%E6%9C%9F%E7%BB%91%E5%AE%9A"><span class="toc-number">1.10.3.</span> <span class="toc-text">早期绑定</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%99%9A%E6%9C%9F%E7%BB%91%E5%AE%9A"><span class="toc-number">1.10.4.</span> <span class="toc-text">晚期绑定</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%99%9A%E6%96%B9%E6%B3%95%E5%92%8C%E9%9D%9E%E8%99%9A%E6%96%B9%E6%B3%95"><span class="toc-number">1.10.5.</span> <span class="toc-text">虚方法和非虚方法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%99%AE%E9%80%9A%E8%B0%83%E7%94%A8%E6%8C%87%E4%BB%A4%EF%BC%9A"><span class="toc-number">1.10.5.1.</span> <span class="toc-text">普通调用指令：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8A%A8%E6%80%81%E8%B0%83%E7%94%A8%E6%8C%87%E4%BB%A4%EF%BC%9A"><span class="toc-number">1.10.5.2.</span> <span class="toc-text">动态调用指令：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8A%A8%E6%80%81%E7%B1%BB%E5%9E%8B%E8%AF%AD%E8%A8%80%E5%92%8C%E9%9D%99%E6%80%81%E7%B1%BB%E5%9E%8B%E8%AF%AD%E8%A8%80"><span class="toc-number">1.10.5.3.</span> <span class="toc-text">动态类型语言和静态类型语言</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E9%87%8D%E5%86%99%E7%9A%84%E6%9C%AC%E8%B4%A8"><span class="toc-number">1.10.6.</span> <span class="toc-text">方法重写的本质</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E7%9A%84%E8%B0%83%E7%94%A8%EF%BC%9A%E8%99%9A%E6%96%B9%E6%B3%95%E8%A1%A8"><span class="toc-number">1.10.7.</span> <span class="toc-text">方法的调用：虚方法表</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E8%BF%94%E5%9B%9E%E5%9C%B0%E5%9D%80%EF%BC%88return-address%EF%BC%89"><span class="toc-number">1.11.</span> <span class="toc-text">方法返回地址（return address）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E4%BA%9B%E9%99%84%E5%8A%A0%E4%BF%A1%E6%81%AF"><span class="toc-number">1.12.</span> <span class="toc-text">一些附加信息</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%88%E7%9A%84%E7%9B%B8%E5%85%B3%E9%9D%A2%E8%AF%95%E9%A2%98"><span class="toc-number">1.13.</span> <span class="toc-text">栈的相关面试题</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/design/she-ji-mo-shi/" title="无题"><img src="https://cdn.seovx.com/?mom=302" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/design/she-ji-mo-shi/" title="无题">无题</a><time datetime="2023-07-15T09:13:39.871Z" title="发表于 2023-07-15 17:13:39">2023-07-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/design/xing-wei-mo-shi/xing-wei-mo-shi/" title="无题"><img src="https://cdn.seovx.com/?mom=302" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/design/xing-wei-mo-shi/xing-wei-mo-shi/" title="无题">无题</a><time datetime="2023-07-15T09:13:37.615Z" title="发表于 2023-07-15 17:13:37">2023-07-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/design/jie-gou-mo-shi/jie-gou-mo-shi/" title="无题"><img src="https://cdn.seovx.com/?mom=302" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/design/jie-gou-mo-shi/jie-gou-mo-shi/" title="无题">无题</a><time datetime="2023-07-15T09:13:33.180Z" title="发表于 2023-07-15 17:13:33">2023-07-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/design/chuang-jian-mo-shi/chuang-jian-mo-shi/" title="无题"><img src="https://cdn.seovx.com/?mom=302" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/design/chuang-jian-mo-shi/chuang-jian-mo-shi/" title="无题">无题</a><time datetime="2023-07-15T09:13:23.913Z" title="发表于 2023-07-15 17:13:23">2023-07-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/java/java-duo-xian-cheng-bing-fa/java-duo-xian-cheng-bing-fa-xian-cheng/java-duo-xian-cheng-bing-fa-xian-cheng/" title="【Java 多线程并发】 线程"><img src="https://cdn.seovx.com/?mom=302" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【Java 多线程并发】 线程"/></a><div class="content"><a class="title" href="/java/java-duo-xian-cheng-bing-fa/java-duo-xian-cheng-bing-fa-xian-cheng/java-duo-xian-cheng-bing-fa-xian-cheng/" title="【Java 多线程并发】 线程">【Java 多线程并发】 线程</a><time datetime="2023-07-10T06:15:00.000Z" title="发表于 2023-07-10 14:15:00">2023-07-10</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By Bill Cipher</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>function addGitalkSource () {
+</tbody>
+</table>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a target="_blank" rel="noopener" href="https://github.com/yu627482453">Bill Cipher</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://yu627482453.github.io/java/java-jvm/java-jvm-nei-cun-guan-li/java-jvm-yun-xing-shi-shu-ju-qu/java-jvm-xu-ni-ji-zhan/">https://yu627482453.github.io/java/java-jvm/java-jvm-nei-cun-guan-li/java-jvm-yun-xing-shi-shu-ju-qu/java-jvm-xu-ni-ji-zhan/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://yu627482453.github.io" target="_blank">蝶梦庄生</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E8%A1%8C%E5%8A%A8%E9%98%B6%E6%AE%B5-%E5%AE%8C%E6%88%90/">行动阶段/完成</a><a class="post-meta__tags" href="/tags/%E7%AC%94%E8%AE%B0%E7%A9%BA%E9%97%B4-KnowladgeSpace-ProgramSpace-BasicsSpace/">笔记空间/KnowladgeSpace/ProgramSpace/BasicsSpace</a><a class="post-meta__tags" href="/tags/%E4%B8%BB%E9%A2%98%E5%9C%BA%E6%99%AF-%E7%A8%8B%E5%BA%8F/">主题场景/程序</a><a class="post-meta__tags" href="/tags/%E7%BB%86%E5%8C%96%E4%B8%BB%E9%A2%98-Java-JVM/">细化主题/Java/JVM</a></div><div class="post_share"><div class="social-share" data-image="https://api.yimian.xyz/img?type=moe" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/reward/wechat.jpg" target="_blank"><img class="post-qr-code-img" src="/img/reward/wechat.jpg" alt="wechat"/></a><div class="post-qr-code-desc">wechat</div></li><li class="reward-item"><a href="/img/reward/alipay.jpg" target="_blank"><img class="post-qr-code-img" src="/img/reward/alipay.jpg" alt="alipay"/></a><div class="post-qr-code-desc">alipay</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/java/java-jvm/java-jvm-nei-cun-guan-li/java-jvm-yun-xing-shi-shu-ju-qu/java-jvm-ben-di-fang-fa-jie-kou-he-ben-di-fang-fa-zhan/"><img class="prev-cover" src="https://api.yimian.xyz/img?type=moe" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">【Java JVM】 本地方法接口和本地方法栈</div></div></a></div><div class="next-post pull-right"><a href="/java/java-jvm/java-jvm-nei-cun-guan-li/java-jvm-yun-xing-shi-shu-ju-qu/java-jvm-cheng-xu-ji-shu-qi/"><img class="next-cover" src="https://api.yimian.xyz/img?type=moe" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">【Java JVM】 程序计数器</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/java/java-jvm/java-jvm-nei-cun-guan-li/java-jvm-nei-cun-guan-li/" title="【Java jVM】 内存管理"><img class="cover" src="https://api.yimian.xyz/img?type=moe" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-07-01</div><div class="title">【Java jVM】 内存管理</div></div></a></div><div><a href="/java/java-jvm/java-jvm-nei-cun-guan-li/java-jvm-dui-xiang-shi-li-hua/" title="【Java JVM】 对象实例化"><img class="cover" src="https://api.yimian.xyz/img?type=moe" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-06-27</div><div class="title">【Java JVM】 对象实例化</div></div></a></div><div><a href="/java/java-jvm/java-jvm-nei-cun-guan-li/java-jvm-stringtable/" title="【Java JVM】 StringTable"><img class="cover" src="https://api.yimian.xyz/img?type=moe" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-06-28</div><div class="title">【Java JVM】 StringTable</div></div></a></div><div><a href="/java/java-jvm/java-jvm-nei-cun-guan-li/java-jvm-zhi-xing-yin-qing/" title="【Java JVM】 执行引擎"><img class="cover" src="https://api.yimian.xyz/img?type=moe" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-06-28</div><div class="title">【Java JVM】 执行引擎</div></div></a></div><div><a href="/java/java-jvm/java-jvm-nei-cun-guan-li/java-jvm-lei-jia-zai-zi-xi-tong/" title="【Java JVM】 类加载子系统"><img class="cover" src="https://api.yimian.xyz/img?type=moe" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-06-26</div><div class="title">【Java JVM】 类加载子系统</div></div></a></div><div><a href="/java/java-jvm/java-jvm-xing-neng-jian-kong-yu-diao-you/java-jvm-jvm-jian-kong-ji-zhen-duan-gong-ju-ming-ling-xing-pian/" title="【Java JVM】 JVM 监控及诊断工具-命令行篇"><img class="cover" src="https://api.yimian.xyz/img?type=moe" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-07-01</div><div class="title">【Java JVM】 JVM 监控及诊断工具-命令行篇</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="gitalk-container"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Bill Cipher</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">215</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">45</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/yu627482453"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/yu627482453" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="/627482453@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">1.</span> <span class="toc-text">【Java JVM】 虚拟机栈</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Metadata-211"><span class="toc-number">1.1.</span> <span class="toc-text">Metadata</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A6%82%E8%BF%B0-96"><span class="toc-number">1.2.</span> <span class="toc-text">概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%99%9A%E6%8B%9F%E6%9C%BA%E6%A0%88%E6%A6%82%E8%BF%B0"><span class="toc-number">1.3.</span> <span class="toc-text">虚拟机栈概述</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%99%9A%E6%8B%9F%E6%9C%BA%E6%A0%88%E5%87%BA%E7%8E%B0%E7%9A%84%E8%83%8C%E6%99%AF"><span class="toc-number">1.3.1.</span> <span class="toc-text">虚拟机栈出现的背景</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9D%E6%AD%A5%E5%8D%B0%E8%B1%A1"><span class="toc-number">1.3.2.</span> <span class="toc-text">初步印象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%85%E5%AD%98%E4%B8%AD%E7%9A%84%E6%A0%88%E4%B8%8E%E5%A0%86"><span class="toc-number">1.3.3.</span> <span class="toc-text">内存中的栈与堆</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%99%9A%E6%8B%9F%E6%9C%BA%E6%A0%88%E5%9F%BA%E6%9C%AC%E5%86%85%E5%AE%B9"><span class="toc-number">1.3.4.</span> <span class="toc-text">虚拟机栈基本内容</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Java-%E8%99%9A%E6%8B%9F%E6%9C%BA%E6%A0%88%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-number">1.3.4.1.</span> <span class="toc-text">Java 虚拟机栈是什么？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F-3"><span class="toc-number">1.3.4.2.</span> <span class="toc-text">生命周期</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%9C%E7%94%A8-8"><span class="toc-number">1.3.4.3.</span> <span class="toc-text">作用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A0%88%E7%9A%84%E7%89%B9%E7%82%B9"><span class="toc-number">1.3.4.4.</span> <span class="toc-text">栈的特点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%9D%A2%E8%AF%95%E9%A2%98%EF%BC%9A%E5%BC%80%E5%8F%91%E4%B8%AD%E9%81%87%E5%88%B0%E5%93%AA%E4%BA%9B%E5%BC%82%E5%B8%B8%EF%BC%9F"><span class="toc-number">1.3.4.5.</span> <span class="toc-text">面试题：开发中遇到哪些异常？</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%88%E7%9A%84%E5%AD%98%E5%82%A8%E5%8D%95%E4%BD%8D"><span class="toc-number">1.4.</span> <span class="toc-text">栈的存储单位</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%88%E4%B8%AD%E5%AD%98%E5%82%A8%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-number">1.4.1.</span> <span class="toc-text">栈中存储什么？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%88%E8%BF%90%E8%A1%8C%E5%8E%9F%E7%90%86"><span class="toc-number">1.4.2.</span> <span class="toc-text">栈运行原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%88%E5%B8%A7%E7%9A%84%E5%86%85%E9%83%A8%E7%BB%93%E6%9E%84"><span class="toc-number">1.4.3.</span> <span class="toc-text">栈帧的内部结构</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B1%80%E9%83%A8%E5%8F%98%E9%87%8F%E8%A1%A8-Local-Variables"><span class="toc-number">1.5.</span> <span class="toc-text">局部变量表(Local Variables)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E4%BA%8E-Slot-%E7%9A%84%E7%90%86%E8%A7%A3"><span class="toc-number">1.5.1.</span> <span class="toc-text">关于 Slot 的理解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Slot-%E7%9A%84%E9%87%8D%E5%A4%8D%E5%88%A9%E7%94%A8"><span class="toc-number">1.5.2.</span> <span class="toc-text">Slot 的重复利用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9D%99%E6%80%81%E5%8F%98%E9%87%8F%E4%B8%8E%E5%B1%80%E9%83%A8%E5%8F%98%E9%87%8F%E7%9A%84%E5%AF%B9%E6%AF%94"><span class="toc-number">1.5.3.</span> <span class="toc-text">静态变量与局部变量的对比</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A1%A5%E5%85%85%E8%AF%B4%E6%98%8E"><span class="toc-number">1.5.4.</span> <span class="toc-text">补充说明</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%93%8D%E4%BD%9C%E6%95%B0%E6%A0%88%EF%BC%88Operand-Stack%EF%BC%89"><span class="toc-number">1.6.</span> <span class="toc-text">操作数栈（Operand Stack）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E8%BF%BD%E8%B8%AA"><span class="toc-number">1.7.</span> <span class="toc-text">代码追踪</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%88%E9%A1%B6%E7%BC%93%E5%AD%98%E6%8A%80%E6%9C%AF%EF%BC%88Top-Of-Stack-Cashing%EF%BC%89%E6%8A%80%E6%9C%AF"><span class="toc-number">1.8.</span> <span class="toc-text">栈顶缓存技术（Top Of Stack Cashing）技术</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8A%A8%E6%80%81%E9%93%BE%E6%8E%A5%EF%BC%88Dynamic-Linking%EF%BC%89"><span class="toc-number">1.9.</span> <span class="toc-text">动态链接（Dynamic Linking）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E7%9A%84%E8%B0%83%E7%94%A8%EF%BC%9A%E8%A7%A3%E6%9E%90%E4%B8%8E%E5%88%86%E9%85%8D"><span class="toc-number">1.10.</span> <span class="toc-text">方法的调用：解析与分配</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9D%99%E6%80%81%E9%93%BE%E6%8E%A5"><span class="toc-number">1.10.1.</span> <span class="toc-text">静态链接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8A%A8%E6%80%81%E9%93%BE%E6%8E%A5"><span class="toc-number">1.10.2.</span> <span class="toc-text">动态链接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%97%A9%E6%9C%9F%E7%BB%91%E5%AE%9A"><span class="toc-number">1.10.3.</span> <span class="toc-text">早期绑定</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%99%9A%E6%9C%9F%E7%BB%91%E5%AE%9A"><span class="toc-number">1.10.4.</span> <span class="toc-text">晚期绑定</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%99%9A%E6%96%B9%E6%B3%95%E5%92%8C%E9%9D%9E%E8%99%9A%E6%96%B9%E6%B3%95-2"><span class="toc-number">1.10.5.</span> <span class="toc-text">虚方法和非虚方法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%99%AE%E9%80%9A%E8%B0%83%E7%94%A8%E6%8C%87%E4%BB%A4%EF%BC%9A"><span class="toc-number">1.10.5.1.</span> <span class="toc-text">普通调用指令：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8A%A8%E6%80%81%E8%B0%83%E7%94%A8%E6%8C%87%E4%BB%A4%EF%BC%9A"><span class="toc-number">1.10.5.2.</span> <span class="toc-text">动态调用指令：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8A%A8%E6%80%81%E7%B1%BB%E5%9E%8B%E8%AF%AD%E8%A8%80%E5%92%8C%E9%9D%99%E6%80%81%E7%B1%BB%E5%9E%8B%E8%AF%AD%E8%A8%80"><span class="toc-number">1.10.5.3.</span> <span class="toc-text">动态类型语言和静态类型语言</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E9%87%8D%E5%86%99%E7%9A%84%E6%9C%AC%E8%B4%A8"><span class="toc-number">1.10.6.</span> <span class="toc-text">方法重写的本质</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E7%9A%84%E8%B0%83%E7%94%A8%EF%BC%9A%E8%99%9A%E6%96%B9%E6%B3%95%E8%A1%A8"><span class="toc-number">1.10.7.</span> <span class="toc-text">方法的调用：虚方法表</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E8%BF%94%E5%9B%9E%E5%9C%B0%E5%9D%80%EF%BC%88return-address%EF%BC%89"><span class="toc-number">1.11.</span> <span class="toc-text">方法返回地址（return address）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E4%BA%9B%E9%99%84%E5%8A%A0%E4%BF%A1%E6%81%AF"><span class="toc-number">1.12.</span> <span class="toc-text">一些附加信息</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%88%E7%9A%84%E7%9B%B8%E5%85%B3%E9%9D%A2%E8%AF%95%E9%A2%98"><span class="toc-number">1.13.</span> <span class="toc-text">栈的相关面试题</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/design/she-ji-mo-shi/" title="无题"><img src="https://api.yimian.xyz/img?type=moe" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/design/she-ji-mo-shi/" title="无题">无题</a><time datetime="2023-07-15T09:13:39.871Z" title="发表于 2023-07-15 17:13:39">2023-07-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/java/java-duo-xian-cheng-bing-fa/java-duo-xian-cheng-bing-fa-xian-cheng/java-duo-xian-cheng-bing-fa-xian-cheng/" title="【Java 多线程并发】 线程"><img src="https://api.yimian.xyz/img?type=moe" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【Java 多线程并发】 线程"/></a><div class="content"><a class="title" href="/java/java-duo-xian-cheng-bing-fa/java-duo-xian-cheng-bing-fa-xian-cheng/java-duo-xian-cheng-bing-fa-xian-cheng/" title="【Java 多线程并发】 线程">【Java 多线程并发】 线程</a><time datetime="2023-07-10T06:15:00.000Z" title="发表于 2023-07-10 14:15:00">2023-07-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/java/java-jvm/java-jvm-nei-cun-guan-li/java-jvm-zhi-jie-nei-cun/" title="【Java JVM】 直接内存"><img src="https://api.yimian.xyz/img?type=moe" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【Java JVM】 直接内存"/></a><div class="content"><a class="title" href="/java/java-jvm/java-jvm-nei-cun-guan-li/java-jvm-zhi-jie-nei-cun/" title="【Java JVM】 直接内存">【Java JVM】 直接内存</a><time datetime="2023-07-10T00:00:00.000Z" title="发表于 2023-07-10 08:00:00">2023-07-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/database/redis/redis-chong-dian-gong-neng/redis-pai-xu/" title="【Redis】 排序"><img src="https://api.yimian.xyz/img?type=moe" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【Redis】 排序"/></a><div class="content"><a class="title" href="/database/redis/redis-chong-dian-gong-neng/redis-pai-xu/" title="【Redis】 排序">【Redis】 排序</a><time datetime="2023-07-09T06:07:00.000Z" title="发表于 2023-07-09 14:07:00">2023-07-09</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/database/redis/redis-chong-dian-gong-neng/redis-lua-jiao-ben/" title="【Redis】 Lua脚本"><img src="https://api.yimian.xyz/img?type=moe" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【Redis】 Lua脚本"/></a><div class="content"><a class="title" href="/database/redis/redis-chong-dian-gong-neng/redis-lua-jiao-ben/" title="【Redis】 Lua脚本">【Redis】 Lua脚本</a><time datetime="2023-07-09T05:56:00.000Z" title="发表于 2023-07-09 13:56:00">2023-07-09</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By Bill Cipher</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>function addGitalkSource () {
   const ele = document.createElement('link')
   ele.rel = 'stylesheet'
   ele.href= 'https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.css'
