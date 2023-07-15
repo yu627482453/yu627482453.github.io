@@ -147,9 +147,7 @@
     detectApple()
     })(window)</script><meta name="generator" content="Hexo 6.2.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">600</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">147</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">21</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://api.yimian.xyz/img?type=moe')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">蝶梦庄生</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">【Redis】 发布和订阅</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-07-09T05:30:00.000Z" title="发表于 2023-07-09 13:30:00">2023-07-09</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-07-09T05:30:00.000Z" title="更新于 2023-07-09 13:30:00">2023-07-09</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/">数据存储</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="【Redis】 发布和订阅"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1>【Redis】 发布和订阅</h1>
-<h2 id="Metadata-132">Metadata</h2>
-<pre><code class="language-yml">title: 【Redis】 发布和订阅
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">600</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">147</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">21</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://api.yimian.xyz/img?type=moe')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">蝶梦庄生</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">【Redis】 发布和订阅</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-07-09T05:30:00.000Z" title="发表于 2023-07-09 13:30:00">2023-07-09</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-07-09T05:30:00.000Z" title="更新于 2023-07-09 13:30:00">2023-07-09</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/">数据存储</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="【Redis】 发布和订阅"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="【Redis】-发布和订阅"><a href="#【Redis】-发布和订阅" class="headerlink" title="【Redis】 发布和订阅"></a>【Redis】 发布和订阅</h1><h2 id="Metadata"><a href="#Metadata" class="headerlink" title="Metadata"></a>Metadata</h2><pre><code class="line-numbers language-yml">title: 【Redis】 发布和订阅
 date: 2023-07-09 13:30
 tags:
   - 行动阶段/完成
@@ -162,61 +160,56 @@ keywords:
   - 数据存储/Redis
 description: 【Redis】 发布和订阅
 </code></pre>
-<h2 id="概述-44">概述</h2>
-<p>Redis的发布与订阅功能由PUBLISH、SUBSCRIBE、PSUBSCRIBE等命令组成。</p>
+<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>Redis的发布与订阅功能由PUBLISH、SUBSCRIBE、PSUBSCRIBE等命令组成。</p>
 <p>通过执行SUBSCRIBE命令，客户端可以订阅一个或多个频道，从而成为这些频道的订阅者（subscriber）：每当有其他客户端向被订阅的频道发送消息（message）时，频道的所有订阅者都会收到这条消息。</p>
-<p><img src="/attachment/e0bbc535676b4582378334c66bd6694d.png" alt></p>
+<p><img src="/attachment/e0bbc535676b4582378334c66bd6694d.png"></p>
 <ul>
 <li><strong>服务器状态</strong>在<strong>pubsub_channels字典</strong>保存了<strong>所有频道的订阅关系</strong>：SUBSCRIBE命令负责将客户端和被订阅的频道关联到这个字典里面，而UNSUBSCRIBE命令则负责解除客户端和被退订频道之间的关联。</li>
 <li><strong>服务器状态</strong>在<strong>pubsub_patterns链表</strong>保存了<strong>所有模式的订阅关系</strong>：PSUBSCRIBE命令负责将客户端和被订阅的模式记录到这个链表中，而PUNSUBSCRIBE命令则负责移除客户端和被退订模式在链表中的记录。</li>
 <li>PUBLISH命令通过访问pubsub_channels字典来向频道的所有订阅者发送消息，通过访问pubsub_patterns链表来向所有匹配频道的模式的订阅者发送消息。</li>
 <li>PUBSUB命令的三个子命令都是通过读取pubsub_channels字典和pubsub_patterns链表中的信息来实现的。</li>
 </ul>
-<h2 id="频道的订阅与退订">频道的订阅与退订</h2>
-<p>当一个客户端执行SUBSCRIBE命令订阅某个或某些频道的时候，这个客户端与被订阅频道之间就建立起了一种订阅关系。</p>
+<h2 id="频道的订阅与退订"><a href="#频道的订阅与退订" class="headerlink" title="频道的订阅与退订"></a>频道的订阅与退订</h2><p>当一个客户端执行SUBSCRIBE命令订阅某个或某些频道的时候，这个客户端与被订阅频道之间就建立起了一种订阅关系。</p>
 <p>Redis将所有频道的订阅关系都保存在服务器状态的pubsub_channels字典里面，这个字典的键是某个被订阅的频道，而键的值则是一个链表，链表里面记录了所有订阅这个频道的客户端：</p>
-<pre><code class="language-c">struct redisServer {
-	// ...
-	// 保存所有频道的订阅关系
-	dict *pubsub_channels;
-	// ...
+<pre><code class="line-numbers language-c">struct redisServer {
+    // ...
+    // 保存所有频道的订阅关系
+    dict *pubsub_channels;
+    // ...
 };
 </code></pre>
-<p><img src="/attachment/13416e5e120317f97edd7793a20758d4.png" alt></p>
-<h3 id="订阅">订阅</h3>
-<pre><code class="language-shell">SUBSCRIBE "news.sport" "news.movie"
+<p><img src="/attachment/13416e5e120317f97edd7793a20758d4.png"></p>
+<h3 id="订阅"><a href="#订阅" class="headerlink" title="订阅"></a>订阅</h3><pre><code class="line-numbers language-shell">SUBSCRIBE "news.sport" "news.movie"
 </code></pre>
-<p><img src="/attachment/799d9ace72090fd41c5b82dc16c0e00b.png" alt></p>
+<p><img src="/attachment/799d9ace72090fd41c5b82dc16c0e00b.png"></p>
 <p>SUBSCRIBE命令的实现可以用以下伪代码来描述：</p>
-<pre><code class="language-c">def subscribe(*all_input_channels):
-	# 遍历输入的所有频道
-	for channel in all_input_channels:
-		# 如果channel 不存在于pubsub_channels 字典（没有任何订阅者）
-		# 那么在字典中添加channel 键，并设置它的值为空链表
-		if channel not in server.pubsub_channels:
-			server.pubsub_channels[channel] = []
-		# 将订阅者添加到频道所对应的链表的末尾
-		server.pubsub_channels[channel].append(client)
+<pre><code class="line-numbers language-c">def subscribe(*all_input_channels):
+    # 遍历输入的所有频道
+    for channel in all_input_channels:
+        # 如果channel 不存在于pubsub_channels 字典（没有任何订阅者）
+        # 那么在字典中添加channel 键，并设置它的值为空链表
+        if channel not in server.pubsub_channels:
+            server.pubsub_channels[channel] = []
+        # 将订阅者添加到频道所对应的链表的末尾
+        server.pubsub_channels[channel].append(client)
 </code></pre>
-<h3 id="退订频道">退订频道</h3>
-<p>UNSUBSCRIBE命令的行为和SUBSCRIBE命令的行为正好相反</p>
-<pre><code class="language-shell">UNSUBSCRIBE "news.sport" "news.movie"
+<h3 id="退订频道"><a href="#退订频道" class="headerlink" title="退订频道"></a>退订频道</h3><p>UNSUBSCRIBE命令的行为和SUBSCRIBE命令的行为正好相反</p>
+<pre><code class="line-numbers language-shell">UNSUBSCRIBE "news.sport" "news.movie"
 </code></pre>
-<p><img src="/attachment/94b730d8e5a9c7f1016613609182464f.png" alt></p>
+<p><img src="/attachment/94b730d8e5a9c7f1016613609182464f.png"></p>
 <p>UNSUBSCRIBE命令的实现可以用以下伪代码来描述：</p>
-<pre><code class="language-c">def unsubscribe(*all_input_channels):
-	# 遍历要退订的所有频道
-	for channel in all_input_channels:
-		# 在订阅者链表中删除退订的客户端
-		server.pubsub_channels[channel].remove(client)
-		# 如果频道已经没有任何订阅者了（订阅者链表为空）
-		# 那么将频道从字典中删除
-		if len(server.pubsub_channels[channel]) == 0:
-			server.pubsub_channels.remove(channel)
+<pre><code class="line-numbers language-c">def unsubscribe(*all_input_channels):
+    # 遍历要退订的所有频道
+    for channel in all_input_channels:
+        # 在订阅者链表中删除退订的客户端
+        server.pubsub_channels[channel].remove(client)
+        # 如果频道已经没有任何订阅者了（订阅者链表为空）
+        # 那么将频道从字典中删除
+        if len(server.pubsub_channels[channel]) == 0:
+            server.pubsub_channels.remove(channel)
 </code></pre>
-<h2 id="模式的订阅与退订">模式的订阅与退订</h2>
-<p>服务器也将所有模式的订阅关系都保存在服务器状态的pubsub_patterns属性里面：</p>
-<pre><code class="language-c">struct redisServer {
+<h2 id="模式的订阅与退订"><a href="#模式的订阅与退订" class="headerlink" title="模式的订阅与退订"></a>模式的订阅与退订</h2><p>服务器也将所有模式的订阅关系都保存在服务器状态的pubsub_patterns属性里面：</p>
+<pre><code class="line-numbers language-c">struct redisServer {
 // ...
 // 保存所有模式订阅关系
 list *pubsub_patterns;
@@ -224,126 +217,115 @@ list *pubsub_patterns;
 };
 </code></pre>
 <p>pubsub_patterns属性是一个链表，链表中的每个节点都包含着一个pubsub Pattern结构，这个结构的pattern属性记录了被订阅的模式，而client属性则记录了订阅模式的客户端：</p>
-<pre><code class="language-c">typedef struct pubsubPattern {
-	// 订阅模式的客户端
-	redisClient *client;
-	// 被订阅的模式
-	robj *pattern;
+<pre><code class="line-numbers language-c">typedef struct pubsubPattern {
+    // 订阅模式的客户端
+    redisClient *client;
+    // 被订阅的模式
+    robj *pattern;
 } pubsubPattern;
 </code></pre>
-<p><img src="/attachment/b09d32632c35e8e4b35a472866bfbf56.png" alt></p>
-<p><img src="/attachment/bb09d4fac2b511566fa6abdd857a8249.png" alt></p>
-<h3 id="PSUBSCRIBE">PSUBSCRIBE</h3>
-<p>PSUBSCRIBE命令的实现原理可以用以下伪代码来描述：</p>
-<pre><code class="language-c">def psubscribe(*all_input_patterns):
-	# 遍历输入的所有模式
-	for pattern in all_input_patterns:
-		# 创建新的pubsubPattern 结构
-		# 记录被订阅的模式，以及订阅模式的客户端
-		pubsubPattern = create_new_pubsubPattern()
-		pubsubPattern.client = client
-		pubsubPattern.pattern = pattern
-		# 将新的pubsubPattern
-		追加到pubsub_patterns 链表末尾
-		server.pubsub_patterns.append(pubsubPattern)
+<p><img src="/attachment/b09d32632c35e8e4b35a472866bfbf56.png"></p>
+<p><img src="/attachment/bb09d4fac2b511566fa6abdd857a8249.png"></p>
+<h3 id="PSUBSCRIBE"><a href="#PSUBSCRIBE" class="headerlink" title="PSUBSCRIBE"></a>PSUBSCRIBE</h3><p>PSUBSCRIBE命令的实现原理可以用以下伪代码来描述：</p>
+<pre><code class="line-numbers language-c">def psubscribe(*all_input_patterns):
+    # 遍历输入的所有模式
+    for pattern in all_input_patterns:
+        # 创建新的pubsubPattern 结构
+        # 记录被订阅的模式，以及订阅模式的客户端
+        pubsubPattern = create_new_pubsubPattern()
+        pubsubPattern.client = client
+        pubsubPattern.pattern = pattern
+        # 将新的pubsubPattern
+        追加到pubsub_patterns 链表末尾
+        server.pubsub_patterns.append(pubsubPattern)
 </code></pre>
-<p><img src="/attachment/6c9d441d311613716d919559dcc57860.png" alt></p>
-<h3 id="PUNSUBSCRIBE">PUNSUBSCRIBE</h3>
-<p><img src="/attachment/95be4f088930c0594c05dc87acd37087.png" alt></p>
+<p><img src="/attachment/6c9d441d311613716d919559dcc57860.png"></p>
+<h3 id="PUNSUBSCRIBE"><a href="#PUNSUBSCRIBE" class="headerlink" title="PUNSUBSCRIBE"></a>PUNSUBSCRIBE</h3><p><img src="/attachment/95be4f088930c0594c05dc87acd37087.png"></p>
 <p>PUNSUBSCRIBE命令的实现原理可以用以下伪代码来描述：</p>
-<pre><code class="language-c">def punsubscribe(*all_input_patterns):
-	# 遍历所有要退订的模式
-	for pattern in all_input_patterns:
-		# 遍历pubsub_patterns 链表中的所有pubsubPattern 结构
-		for pubsubPattern in server.pubsub_patterns:
-			#
-			如果当前客户端和pubsubPattern 记录的客户端相同
-			# 并且要退订的模式也和pubsubPattern 记录的模式相同
-			if client == pubsubPattern.client and pattern == pubsubPattern.pattern:
-				# 那么将这个pubsubPattern 从链表中删除
-				server.pubsub_patterns.remove(pubsubPattern)
+<pre><code class="line-numbers language-c">def punsubscribe(*all_input_patterns):
+    # 遍历所有要退订的模式
+    for pattern in all_input_patterns:
+        # 遍历pubsub_patterns 链表中的所有pubsubPattern 结构
+        for pubsubPattern in server.pubsub_patterns:
+            #
+            如果当前客户端和pubsubPattern 记录的客户端相同
+            # 并且要退订的模式也和pubsubPattern 记录的模式相同
+            if client == pubsubPattern.client and pattern == pubsubPattern.pattern:
+                # 那么将这个pubsubPattern 从链表中删除
+                server.pubsub_patterns.remove(pubsubPattern)
 </code></pre>
-<h2 id="发送消息">发送消息</h2>
-<p>当一个Redis客户端执行<code>PUBLISH &lt;channel&gt; &lt;message&gt;</code>命令将消息message发送给频道channel的时候，服务器需要执行以下两个动作：<br>
-1）将消息message发送给channel频道的所有订阅者。<br>
-2）如果有一个或多个模式pattern与频道channel相匹配，那么将消息message发送给pattern模式的订阅者。</p>
-<h3 id="将消息发送给频道订阅者">将消息发送给频道订阅者</h3>
-<p><img src="/attachment/d644ac2c6acee20f01fe9c57174f0bc3.png" alt></p>
+<h2 id="发送消息"><a href="#发送消息" class="headerlink" title="发送消息"></a>发送消息</h2><p>当一个Redis客户端执行<code>PUBLISH &lt;channel&gt; &lt;message&gt;</code>命令将消息message发送给频道channel的时候，服务器需要执行以下两个动作：<br>1）将消息message发送给channel频道的所有订阅者。<br>2）如果有一个或多个模式pattern与频道channel相匹配，那么将消息message发送给pattern模式的订阅者。</p>
+<h3 id="将消息发送给频道订阅者"><a href="#将消息发送给频道订阅者" class="headerlink" title="将消息发送给频道订阅者"></a>将消息发送给频道订阅者</h3><p><img src="/attachment/d644ac2c6acee20f01fe9c57174f0bc3.png"></p>
 <p>PUBLISH命令将消息发送给频道订阅者的方法可以用以下伪代码来描述：</p>
-<pre><code class="language-c">def channel_publish(channel, message):
-	# 如果channel键不存在于pubsub_channels 字典中
-	# 那么说明channel 频道没有任何订阅者
-	# 程序不做发送动作，直接返回
-	if channel not in server.pubsub_channels:
-		return
-	# 运行到这里，说明channel 频道至少有一个订阅者
-	# 程序遍历channel 频道的订阅者链表
-	# 将消息发送给所有订阅者
-	for subscriber in server.pubsub_channels[channel]:
-		send_message(subscriber, message)
+<pre><code class="line-numbers language-c">def channel_publish(channel, message):
+    # 如果channel键不存在于pubsub_channels 字典中
+    # 那么说明channel 频道没有任何订阅者
+    # 程序不做发送动作，直接返回
+    if channel not in server.pubsub_channels:
+        return
+    # 运行到这里，说明channel 频道至少有一个订阅者
+    # 程序遍历channel 频道的订阅者链表
+    # 将消息发送给所有订阅者
+    for subscriber in server.pubsub_channels[channel]:
+        send_message(subscriber, message)
 </code></pre>
-<h3 id="将消息发送给模式订阅者">将消息发送给模式订阅者</h3>
-<p>因为服务器状态中的pubsub_patterns链表记录了所有模式的订阅关系，所以为了将消息发送给所有与channel频道相匹配的模式的订阅者，PUBLISH命令要做的就是遍历整个pubsub_patterns链表，查找那些与channel频道相匹配的模式，并将消息发送给订阅了这些模式的客户端。</p>
+<h3 id="将消息发送给模式订阅者"><a href="#将消息发送给模式订阅者" class="headerlink" title="将消息发送给模式订阅者"></a>将消息发送给模式订阅者</h3><p>因为服务器状态中的pubsub_patterns链表记录了所有模式的订阅关系，所以为了将消息发送给所有与channel频道相匹配的模式的订阅者，PUBLISH命令要做的就是遍历整个pubsub_patterns链表，查找那些与channel频道相匹配的模式，并将消息发送给订阅了这些模式的客户端。</p>
 <p>PUBLISH命令的实现可以用以下伪代码来描述：</p>
-<pre><code class="language-c">def publish(channel, message):
-	# 将消息发送给channel 频道的所有订阅者
-	channel_publish(channel, message)
-	# 将消息发送给所有和channel 频道相匹配的模式的订阅者
-	pattern_publish(channel, message)
+<pre><code class="line-numbers language-c">def publish(channel, message):
+    # 将消息发送给channel 频道的所有订阅者
+    channel_publish(channel, message)
+    # 将消息发送给所有和channel 频道相匹配的模式的订阅者
+    pattern_publish(channel, message)
 </code></pre>
-<h2 id="查看订阅信息">查看订阅信息</h2>
-<h3 id="PUBSUB-CHANNELS">PUBSUB CHANNELS</h3>
-<p><code>PUBSUB CHANNELS[pattern]</code>子命令用于返回服务器当前被订阅的频道，其中pattern参数是可选的：</p>
+<h2 id="查看订阅信息"><a href="#查看订阅信息" class="headerlink" title="查看订阅信息"></a>查看订阅信息</h2><h3 id="PUBSUB-CHANNELS"><a href="#PUBSUB-CHANNELS" class="headerlink" title="PUBSUB CHANNELS"></a>PUBSUB CHANNELS</h3><p><code>PUBSUB CHANNELS[pattern]</code>子命令用于返回服务器当前被订阅的频道，其中pattern参数是可选的：</p>
 <ul>
 <li>如果不给定pattern参数，那么命令返回服务器当前被订阅的所有频道。</li>
 <li>如果给定pattern参数，那么命令返回服务器当前被订阅的频道中那些与pattern模式相匹配的频道。</li>
 </ul>
 <p>这个子命令是通过遍历服务器pubsub_channels字典的所有键（每个键都是一个被订阅的频道），然后记录并返回所有符合条件的频道来实现的，这个过程可以用以下伪代码来描述：</p>
-<pre><code class="language-c">def pubsub_channels(pattern=None):
-	# 一个列表，用于记录所有符合条件的频道
-	channel_list = []
-	# 遍历服务器中的所有频道
-	# （也即是pubsub_channels 字典的所有键）
-	for channel in server.pubsub_channels:
-		# 当以下两个条件的任意一个满足时，将频道添加到链表里面：
-		#1 ）用户没有指定pattern 参数
-		#2 ）用户指定了pattern 参数，并且channel 和pattern 匹配
-		if (pattern is None) or match(channel, pattern):
-			channel_list.append(channel)
-	# 向客户端返回频道列表
-	return channel_list
+<pre><code class="line-numbers language-c">def pubsub_channels(pattern=None):
+    # 一个列表，用于记录所有符合条件的频道
+    channel_list = []
+    # 遍历服务器中的所有频道
+    # （也即是pubsub_channels 字典的所有键）
+    for channel in server.pubsub_channels:
+        # 当以下两个条件的任意一个满足时，将频道添加到链表里面：
+        #1 ）用户没有指定pattern 参数
+        #2 ）用户指定了pattern 参数，并且channel 和pattern 匹配
+        if (pattern is None) or match(channel, pattern):
+            channel_list.append(channel)
+    # 向客户端返回频道列表
+    return channel_list
 </code></pre>
-<p><img src="/attachment/5cb3e19068600d52f278dab2f76695bf.png" alt></p>
-<h3 id="PUBSUB-NUMSUB">PUBSUB NUMSUB</h3>
-<p><code>PUBSUB NUMSUB[channel-1 channel-2...channel-n]</code>子命令接受任意多个频道作为输入参数，并返回这些频道的订阅者数量。</p>
+<p><img src="/attachment/5cb3e19068600d52f278dab2f76695bf.png"></p>
+<h3 id="PUBSUB-NUMSUB"><a href="#PUBSUB-NUMSUB" class="headerlink" title="PUBSUB NUMSUB"></a>PUBSUB NUMSUB</h3><p><code>PUBSUB NUMSUB[channel-1 channel-2...channel-n]</code>子命令接受任意多个频道作为输入参数，并返回这些频道的订阅者数量。</p>
 <p>这个子命令是通过在pubsub_channels字典中找到频道对应的订阅者链表，然后返回订阅者链表的长度来实现的（订阅者链表的长度就是频道订阅者的数量），这个过程可以用以下伪代码来描述：</p>
-<pre><code class="language-c">def pubsub_numsub(*all_input_channels):
-	# 遍历输入的所有频道
-	for channel in all_input_channels:
-		# 如果pubsub_channels 字典中没有channel 这个键
-		# 那么说明channel 频道没有任何订阅者
-		if channel not in server.pubsub_channels:
-			# 返回频道名
-			reply_channel_name(channel)
-			# 订阅者数量为0
-			reply_subscribe_count(0)
-		# 如果pubsub_channels 字典中存在channel 键
-		# 那么说明channel 频道至少有一个订阅者
-		else:
-			# 返回频道名
-			reply_channel_name(channel)
-			# 订阅者链表的长度就是订阅者数量
-			reply_subscribe_count(len(server.pubsub_channels[channel]))
+<pre><code class="line-numbers language-c">def pubsub_numsub(*all_input_channels):
+    # 遍历输入的所有频道
+    for channel in all_input_channels:
+        # 如果pubsub_channels 字典中没有channel 这个键
+        # 那么说明channel 频道没有任何订阅者
+        if channel not in server.pubsub_channels:
+            # 返回频道名
+            reply_channel_name(channel)
+            # 订阅者数量为0
+            reply_subscribe_count(0)
+        # 如果pubsub_channels 字典中存在channel 键
+        # 那么说明channel 频道至少有一个订阅者
+        else:
+            # 返回频道名
+            reply_channel_name(channel)
+            # 订阅者链表的长度就是订阅者数量
+            reply_subscribe_count(len(server.pubsub_channels[channel]))
 </code></pre>
-<p><img src="/attachment/6be7a421f800f74c88c293bee6d604e6.png" alt></p>
-<h3 id="PUBSUB-NUMPAT">PUBSUB NUMPAT</h3>
-<p>PUBSUB NUMPAT子命令用于返回服务器当前被订阅模式的数量。这个子命令是通过返回pubsub_patterns链表的长度来实现的，因为这个链表的长度就是服务器被订阅模式的数量，这个过程可以用以下伪代码来描述：</p>
-<pre><code class="language-c">def pubsub_numpat():
-	# pubsub_patterns 链表的长度就是被订阅模式的数量
-	reply_pattern_count(len(server.pubsub_patterns))
+<p><img src="/attachment/6be7a421f800f74c88c293bee6d604e6.png"></p>
+<h3 id="PUBSUB-NUMPAT"><a href="#PUBSUB-NUMPAT" class="headerlink" title="PUBSUB NUMPAT"></a>PUBSUB NUMPAT</h3><p>PUBSUB NUMPAT子命令用于返回服务器当前被订阅模式的数量。这个子命令是通过返回pubsub_patterns链表的长度来实现的，因为这个链表的长度就是服务器被订阅模式的数量，这个过程可以用以下伪代码来描述：</p>
+<pre><code class="line-numbers language-c">def pubsub_numpat():
+    # pubsub_patterns 链表的长度就是被订阅模式的数量
+    reply_pattern_count(len(server.pubsub_patterns))
 </code></pre>
-<p><img src="/attachment/71436e54ca721c4b9faa043fbd4c2288.png" alt></p>
-</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a target="_blank" rel="noopener" href="https://github.com/yu627482453">Bill Cipher</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://yu627482453.github.io/database/redis/redis-chong-dian-gong-neng/redis-fa-bu-he-ding-yue/">https://yu627482453.github.io/database/redis/redis-chong-dian-gong-neng/redis-fa-bu-he-ding-yue/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://yu627482453.github.io" target="_blank">蝶梦庄生</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E8%A1%8C%E5%8A%A8%E9%98%B6%E6%AE%B5-%E5%AE%8C%E6%88%90/">行动阶段/完成</a><a class="post-meta__tags" href="/tags/%E7%AC%94%E8%AE%B0%E7%A9%BA%E9%97%B4-KnowladgeSpace-ProgramSpace-BasicsSpace/">笔记空间/KnowladgeSpace/ProgramSpace/BasicsSpace</a><a class="post-meta__tags" href="/tags/%E4%B8%BB%E9%A2%98%E5%9C%BA%E6%99%AF-%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/">主题场景/数据存储</a><a class="post-meta__tags" href="/tags/%E7%BB%86%E5%8C%96%E4%B8%BB%E9%A2%98-%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8-Redis/">细化主题/数据存储/Redis</a></div><div class="post_share"><div class="social-share" data-image="https://api.yimian.xyz/img?type=moe" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/reward/wechat.jpg" target="_blank"><img class="post-qr-code-img" src="/img/reward/wechat.jpg" alt="wechat"/></a><div class="post-qr-code-desc">wechat</div></li><li class="reward-item"><a href="/img/reward/alipay.jpg" target="_blank"><img class="post-qr-code-img" src="/img/reward/alipay.jpg" alt="alipay"/></a><div class="post-qr-code-desc">alipay</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/database/redis/redis-chong-dian-gong-neng/redis-lua-jiao-ben/"><img class="prev-cover" src="https://api.yimian.xyz/img?type=moe" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">【Redis】 Lua脚本</div></div></a></div><div class="next-post pull-right"><a href="/database/redis/redis-chong-dian-gong-neng/redis-jian-shi-qi/"><img class="next-cover" src="https://api.yimian.xyz/img?type=moe" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">【Redis】 监视器</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/database/redis/redis/" title="Redis"><img class="cover" src="https://api.yimian.xyz/img?type=moe" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-12-20</div><div class="title">Redis</div></div></a></div><div><a href="/database/redis/redis-duo-ji-ku-de-shi-xian/redis-sentinel-ji-zhi/" title="【Redis】 Sentinel 机制"><img class="cover" src="https://api.yimian.xyz/img?type=moe" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-07-09</div><div class="title">【Redis】 Sentinel 机制</div></div></a></div><div><a href="/database/redis/redis-duo-ji-ku-de-shi-xian/redis-fu-zhi/" title="【Redis】 复制"><img class="cover" src="https://api.yimian.xyz/img?type=moe" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-07-09</div><div class="title">【Redis】 复制</div></div></a></div><div><a href="/database/redis/redis-duo-ji-ku-de-shi-xian/redis-cluster-ji-qun/" title="【Redis】 cluster 集群"><img class="cover" src="https://api.yimian.xyz/img?type=moe" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-07-09</div><div class="title">【Redis】 cluster 集群</div></div></a></div><div><a href="/database/redis/redis-duo-ji-ku-de-shi-xian/redis-duo-ji-ku-de-shi-xian/" title="【Redis】 多机库的实现"><img class="cover" src="https://api.yimian.xyz/img?type=moe" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-07-09</div><div class="title">【Redis】 多机库的实现</div></div></a></div><div><a href="/database/redis/redis-dan-ji-ku-de-shi-xian/redis-aof-chi-jiu-hua/" title="【Redis】 AOF 持久化"><img class="cover" src="https://api.yimian.xyz/img?type=moe" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-07-09</div><div class="title">【Redis】 AOF 持久化</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="gitalk-container"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Bill Cipher</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">600</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">147</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">21</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/yu627482453"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/yu627482453" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="/627482453@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">1.</span> <span class="toc-text">【Redis】 发布和订阅</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Metadata-132"><span class="toc-number">1.1.</span> <span class="toc-text">Metadata</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A6%82%E8%BF%B0-44"><span class="toc-number">1.2.</span> <span class="toc-text">概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%91%E9%81%93%E7%9A%84%E8%AE%A2%E9%98%85%E4%B8%8E%E9%80%80%E8%AE%A2"><span class="toc-number">1.3.</span> <span class="toc-text">频道的订阅与退订</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%A2%E9%98%85"><span class="toc-number">1.3.1.</span> <span class="toc-text">订阅</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%80%E8%AE%A2%E9%A2%91%E9%81%93"><span class="toc-number">1.3.2.</span> <span class="toc-text">退订频道</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A8%A1%E5%BC%8F%E7%9A%84%E8%AE%A2%E9%98%85%E4%B8%8E%E9%80%80%E8%AE%A2"><span class="toc-number">1.4.</span> <span class="toc-text">模式的订阅与退订</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#PSUBSCRIBE"><span class="toc-number">1.4.1.</span> <span class="toc-text">PSUBSCRIBE</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#PUNSUBSCRIBE"><span class="toc-number">1.4.2.</span> <span class="toc-text">PUNSUBSCRIBE</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%91%E9%80%81%E6%B6%88%E6%81%AF"><span class="toc-number">1.5.</span> <span class="toc-text">发送消息</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B0%86%E6%B6%88%E6%81%AF%E5%8F%91%E9%80%81%E7%BB%99%E9%A2%91%E9%81%93%E8%AE%A2%E9%98%85%E8%80%85"><span class="toc-number">1.5.1.</span> <span class="toc-text">将消息发送给频道订阅者</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B0%86%E6%B6%88%E6%81%AF%E5%8F%91%E9%80%81%E7%BB%99%E6%A8%A1%E5%BC%8F%E8%AE%A2%E9%98%85%E8%80%85"><span class="toc-number">1.5.2.</span> <span class="toc-text">将消息发送给模式订阅者</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E8%AE%A2%E9%98%85%E4%BF%A1%E6%81%AF"><span class="toc-number">1.6.</span> <span class="toc-text">查看订阅信息</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#PUBSUB-CHANNELS"><span class="toc-number">1.6.1.</span> <span class="toc-text">PUBSUB CHANNELS</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#PUBSUB-NUMSUB"><span class="toc-number">1.6.2.</span> <span class="toc-text">PUBSUB NUMSUB</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#PUBSUB-NUMPAT"><span class="toc-number">1.6.3.</span> <span class="toc-text">PUBSUB NUMPAT</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/module/flowable/flowable-zhuan-lan/flowable-zhuan-lan/" title="无题"><img src="https://api.yimian.xyz/img?type=moe" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/module/flowable/flowable-zhuan-lan/flowable-zhuan-lan/" title="无题">无题</a><time datetime="2023-07-15T09:45:06.401Z" title="发表于 2023-07-15 17:45:06">2023-07-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/module/consul/part/consul-tong-yong-pei-zhi-shu-xing/" title="无题"><img src="https://api.yimian.xyz/img?type=moe" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/module/consul/part/consul-tong-yong-pei-zhi-shu-xing/" title="无题">无题</a><time datetime="2023-07-15T09:44:38.408Z" title="发表于 2023-07-15 17:44:38">2023-07-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/java/java-duo-xian-cheng-bing-fa/java-duo-xian-cheng-bing-fa-xian-cheng/java-duo-xian-cheng-bing-fa-xian-cheng/" title="【Java 多线程并发】 线程"><img src="https://api.yimian.xyz/img?type=moe" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【Java 多线程并发】 线程"/></a><div class="content"><a class="title" href="/java/java-duo-xian-cheng-bing-fa/java-duo-xian-cheng-bing-fa-xian-cheng/java-duo-xian-cheng-bing-fa-xian-cheng/" title="【Java 多线程并发】 线程">【Java 多线程并发】 线程</a><time datetime="2023-07-10T06:15:00.000Z" title="发表于 2023-07-10 14:15:00">2023-07-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/java/java-jvm/java-jvm-nei-cun-guan-li/java-jvm-zhi-jie-nei-cun/" title="【Java JVM】 直接内存"><img src="https://api.yimian.xyz/img?type=moe" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【Java JVM】 直接内存"/></a><div class="content"><a class="title" href="/java/java-jvm/java-jvm-nei-cun-guan-li/java-jvm-zhi-jie-nei-cun/" title="【Java JVM】 直接内存">【Java JVM】 直接内存</a><time datetime="2023-07-10T00:00:00.000Z" title="发表于 2023-07-10 08:00:00">2023-07-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/database/redis/redis-chong-dian-gong-neng/redis-pai-xu/" title="【Redis】 排序"><img src="https://api.yimian.xyz/img?type=moe" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【Redis】 排序"/></a><div class="content"><a class="title" href="/database/redis/redis-chong-dian-gong-neng/redis-pai-xu/" title="【Redis】 排序">【Redis】 排序</a><time datetime="2023-07-09T06:07:00.000Z" title="发表于 2023-07-09 14:07:00">2023-07-09</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By Bill Cipher</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>function addGitalkSource () {
+<p><img src="/attachment/71436e54ca721c4b9faa043fbd4c2288.png"></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a target="_blank" rel="noopener" href="https://github.com/yu627482453">Bill Cipher</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://yu627482453.github.io/database/redis/redis-chong-dian-gong-neng/redis-fa-bu-he-ding-yue/">https://yu627482453.github.io/database/redis/redis-chong-dian-gong-neng/redis-fa-bu-he-ding-yue/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://yu627482453.github.io" target="_blank">蝶梦庄生</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E8%A1%8C%E5%8A%A8%E9%98%B6%E6%AE%B5-%E5%AE%8C%E6%88%90/">行动阶段/完成</a><a class="post-meta__tags" href="/tags/%E7%AC%94%E8%AE%B0%E7%A9%BA%E9%97%B4-KnowladgeSpace-ProgramSpace-BasicsSpace/">笔记空间/KnowladgeSpace/ProgramSpace/BasicsSpace</a><a class="post-meta__tags" href="/tags/%E4%B8%BB%E9%A2%98%E5%9C%BA%E6%99%AF-%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/">主题场景/数据存储</a><a class="post-meta__tags" href="/tags/%E7%BB%86%E5%8C%96%E4%B8%BB%E9%A2%98-%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8-Redis/">细化主题/数据存储/Redis</a></div><div class="post_share"><div class="social-share" data-image="https://api.yimian.xyz/img?type=moe" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/reward/wechat.jpg" target="_blank"><img class="post-qr-code-img" src="/img/reward/wechat.jpg" alt="wechat"/></a><div class="post-qr-code-desc">wechat</div></li><li class="reward-item"><a href="/img/reward/alipay.jpg" target="_blank"><img class="post-qr-code-img" src="/img/reward/alipay.jpg" alt="alipay"/></a><div class="post-qr-code-desc">alipay</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/database/redis/redis-chong-dian-gong-neng/redis-lua-jiao-ben/"><img class="prev-cover" src="https://api.yimian.xyz/img?type=moe" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">【Redis】 Lua脚本</div></div></a></div><div class="next-post pull-right"><a href="/database/redis/redis-chong-dian-gong-neng/redis-jian-shi-qi/"><img class="next-cover" src="https://api.yimian.xyz/img?type=moe" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">【Redis】 监视器</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/database/redis/redis/" title="Redis"><img class="cover" src="https://api.yimian.xyz/img?type=moe" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-12-20</div><div class="title">Redis</div></div></a></div><div><a href="/database/redis/redis-dan-ji-ku-de-shi-xian/redis-aof-chi-jiu-hua/" title="【Redis】 AOF 持久化"><img class="cover" src="https://api.yimian.xyz/img?type=moe" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-07-09</div><div class="title">【Redis】 AOF 持久化</div></div></a></div><div><a href="/database/redis/redis-dan-ji-ku-de-shi-xian/redis-rdb-chi-jiu-hua/" title="【Redis】 RDB 持久化"><img class="cover" src="https://api.yimian.xyz/img?type=moe" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-07-09</div><div class="title">【Redis】 RDB 持久化</div></div></a></div><div><a href="/database/redis/redis-dan-ji-ku-de-shi-xian/redis-shi-jian/" title="【Redis】 事件"><img class="cover" src="https://api.yimian.xyz/img?type=moe" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-07-09</div><div class="title">【Redis】 事件</div></div></a></div><div><a href="/database/redis/redis-dan-ji-ku-de-shi-xian/redis-dan-ji-ku-de-shi-xian/" title="【Redis】 单机库的实现"><img class="cover" src="https://api.yimian.xyz/img?type=moe" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-07-08</div><div class="title">【Redis】 单机库的实现</div></div></a></div><div><a href="/database/redis/redis-dan-ji-ku-de-shi-xian/redis-ke-hu-duan/" title="【Redis】 客户端"><img class="cover" src="https://api.yimian.xyz/img?type=moe" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-07-09</div><div class="title">【Redis】 客户端</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="gitalk-container"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Bill Cipher</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">600</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">147</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">21</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/yu627482453"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/yu627482453" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="/627482453@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E3%80%90Redis%E3%80%91-%E5%8F%91%E5%B8%83%E5%92%8C%E8%AE%A2%E9%98%85"><span class="toc-number">1.</span> <span class="toc-text">【Redis】 发布和订阅</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Metadata"><span class="toc-number">1.1.</span> <span class="toc-text">Metadata</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A6%82%E8%BF%B0"><span class="toc-number">1.2.</span> <span class="toc-text">概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%91%E9%81%93%E7%9A%84%E8%AE%A2%E9%98%85%E4%B8%8E%E9%80%80%E8%AE%A2"><span class="toc-number">1.3.</span> <span class="toc-text">频道的订阅与退订</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%A2%E9%98%85"><span class="toc-number">1.3.1.</span> <span class="toc-text">订阅</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%80%E8%AE%A2%E9%A2%91%E9%81%93"><span class="toc-number">1.3.2.</span> <span class="toc-text">退订频道</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A8%A1%E5%BC%8F%E7%9A%84%E8%AE%A2%E9%98%85%E4%B8%8E%E9%80%80%E8%AE%A2"><span class="toc-number">1.4.</span> <span class="toc-text">模式的订阅与退订</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#PSUBSCRIBE"><span class="toc-number">1.4.1.</span> <span class="toc-text">PSUBSCRIBE</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#PUNSUBSCRIBE"><span class="toc-number">1.4.2.</span> <span class="toc-text">PUNSUBSCRIBE</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%91%E9%80%81%E6%B6%88%E6%81%AF"><span class="toc-number">1.5.</span> <span class="toc-text">发送消息</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B0%86%E6%B6%88%E6%81%AF%E5%8F%91%E9%80%81%E7%BB%99%E9%A2%91%E9%81%93%E8%AE%A2%E9%98%85%E8%80%85"><span class="toc-number">1.5.1.</span> <span class="toc-text">将消息发送给频道订阅者</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B0%86%E6%B6%88%E6%81%AF%E5%8F%91%E9%80%81%E7%BB%99%E6%A8%A1%E5%BC%8F%E8%AE%A2%E9%98%85%E8%80%85"><span class="toc-number">1.5.2.</span> <span class="toc-text">将消息发送给模式订阅者</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E8%AE%A2%E9%98%85%E4%BF%A1%E6%81%AF"><span class="toc-number">1.6.</span> <span class="toc-text">查看订阅信息</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#PUBSUB-CHANNELS"><span class="toc-number">1.6.1.</span> <span class="toc-text">PUBSUB CHANNELS</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#PUBSUB-NUMSUB"><span class="toc-number">1.6.2.</span> <span class="toc-text">PUBSUB NUMSUB</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#PUBSUB-NUMPAT"><span class="toc-number">1.6.3.</span> <span class="toc-text">PUBSUB NUMPAT</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/module/flowable/flowable-zhuan-lan/flowable-zhuan-lan/" title="无题"><img src="https://api.yimian.xyz/img?type=moe" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/module/flowable/flowable-zhuan-lan/flowable-zhuan-lan/" title="无题">无题</a><time datetime="2023-07-15T09:45:06.401Z" title="发表于 2023-07-15 17:45:06">2023-07-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/module/consul/part/consul-tong-yong-pei-zhi-shu-xing/" title="无题"><img src="https://api.yimian.xyz/img?type=moe" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/module/consul/part/consul-tong-yong-pei-zhi-shu-xing/" title="无题">无题</a><time datetime="2023-07-15T09:44:38.408Z" title="发表于 2023-07-15 17:44:38">2023-07-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/java/java-duo-xian-cheng-bing-fa/java-duo-xian-cheng-bing-fa-xian-cheng/java-duo-xian-cheng-bing-fa-xian-cheng/" title="【Java 多线程并发】 线程"><img src="https://api.yimian.xyz/img?type=moe" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【Java 多线程并发】 线程"/></a><div class="content"><a class="title" href="/java/java-duo-xian-cheng-bing-fa/java-duo-xian-cheng-bing-fa-xian-cheng/java-duo-xian-cheng-bing-fa-xian-cheng/" title="【Java 多线程并发】 线程">【Java 多线程并发】 线程</a><time datetime="2023-07-10T06:15:00.000Z" title="发表于 2023-07-10 14:15:00">2023-07-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/java/java-jvm/java-jvm-nei-cun-guan-li/java-jvm-zhi-jie-nei-cun/" title="【Java JVM】 直接内存"><img src="https://api.yimian.xyz/img?type=moe" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【Java JVM】 直接内存"/></a><div class="content"><a class="title" href="/java/java-jvm/java-jvm-nei-cun-guan-li/java-jvm-zhi-jie-nei-cun/" title="【Java JVM】 直接内存">【Java JVM】 直接内存</a><time datetime="2023-07-10T00:00:00.000Z" title="发表于 2023-07-10 08:00:00">2023-07-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/database/redis/redis-chong-dian-gong-neng/redis-pai-xu/" title="【Redis】 排序"><img src="https://api.yimian.xyz/img?type=moe" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【Redis】 排序"/></a><div class="content"><a class="title" href="/database/redis/redis-chong-dian-gong-neng/redis-pai-xu/" title="【Redis】 排序">【Redis】 排序</a><time datetime="2023-07-09T06:07:00.000Z" title="发表于 2023-07-09 14:07:00">2023-07-09</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By Bill Cipher</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>function addGitalkSource () {
   const ele = document.createElement('link')
   ele.rel = 'stylesheet'
   ele.href= 'https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.css'
