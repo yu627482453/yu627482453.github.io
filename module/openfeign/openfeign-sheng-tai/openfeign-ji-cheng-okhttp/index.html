@@ -1,0 +1,374 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>【OpenFeign】 集成 OkHttp | 蝶梦庄生</title><meta name="keywords" content="OpenFeign"><meta name="author" content="Bill Cipher"><meta name="copyright" content="Bill Cipher"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="【OpenFeign】 集成 OkHttp">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【OpenFeign】 集成 OkHttp">
+<meta property="og:url" content="https://yu627482453.github.io/module/openfeign/openfeign-sheng-tai/openfeign-ji-cheng-okhttp/index.html">
+<meta property="og:site_name" content="蝶梦庄生">
+<meta property="og:description" content="【OpenFeign】 集成 OkHttp">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://api.yimian.xyz/img?type=moe">
+<meta property="article:published_time" content="2023-01-02T11:02:00.000Z">
+<meta property="article:modified_time" content="2023-01-02T11:02:00.000Z">
+<meta property="article:author" content="Bill Cipher">
+<meta property="article:tag" content="行动阶段&#x2F;完成">
+<meta property="article:tag" content="主题场景&#x2F;组件">
+<meta property="article:tag" content="笔记空间&#x2F;KnowladgeSpace&#x2F;ProgramSpace&#x2F;ModuleSpace">
+<meta property="article:tag" content="细化主题&#x2F;Module&#x2F;OpenFeign&#x2F;生态">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://api.yimian.xyz/img?type=moe"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://yu627482453.github.io/module/openfeign/openfeign-sheng-tai/openfeign-ji-cheng-okhttp/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: undefined,
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: Bill Cipher","link":"链接: ","source":"来源: 蝶梦庄生","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '【OpenFeign】 集成 OkHttp',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-01-02 19:02:00'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.2.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">575</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">125</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">21</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://api.yimian.xyz/img?type=moe')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">蝶梦庄生</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">【OpenFeign】 集成 OkHttp</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-01-02T11:02:00.000Z" title="发表于 2023-01-02 19:02:00">2023-01-02</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-01-02T11:02:00.000Z" title="更新于 2023-01-02 19:02:00">2023-01-02</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/OpenFeign/">OpenFeign</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="【OpenFeign】 集成 OkHttp"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="【OpenFeign】-集成-OkHttp"><a href="#【OpenFeign】-集成-OkHttp" class="headerlink" title="【OpenFeign】 集成 OkHttp"></a>【OpenFeign】 集成 OkHttp</h1><h2 id="Metadata"><a href="#Metadata" class="headerlink" title="Metadata"></a>Metadata</h2><pre><code class="line-numbers language-yml">title: 【OpenFeign】 集成 OkHttp
+date: 2023-01-02 19:02
+tags:
+  - 行动阶段/完成
+  - 主题场景/组件
+  - 笔记空间/KnowladgeSpace/ProgramSpace/ModuleSpace
+  - 细化主题/Module/OpenFeign/生态
+categories:
+  - OpenFeign
+keywords:
+  - OpenFeign
+description: 【OpenFeign】 集成 OkHttp
+</code></pre>
+<h2 id="【OpenFeign】-集成-OkHttp-1"><a href="#【OpenFeign】-集成-OkHttp-1" class="headerlink" title="【OpenFeign】 集成 OkHttp"></a>【OpenFeign】 集成 OkHttp</h2><p>实际发送请求是由 Feign 中的<code>Client</code>接口实现类去处理的，默认使用的是 Defalut 类，该类使用的是<code>HttpURLConnection</code>。</p>
+<h2 id="Client-接口"><a href="#Client-接口" class="headerlink" title="Client 接口"></a>Client 接口</h2><p>Client 接口只有一个 execute 方法，该方法有两个参数：</p>
+<ul>
+<li>Request ：请求对象，封装了该请求的方式、参数、返回值类型等数据</li>
+<li>Options ：连接超时、读取超时配置项</li>
+</ul>
+<pre><code class="line-numbers language-java">public interface Client {
+    Response execute(Request var1, Options var2) throws IOException;
+}
+</code></pre>
+<p>该接口在 Feign 中有以下几个实现类：</p>
+<p><img src="https://img-blog.csdnimg.cn/f79ebf0c960a45e6aefc06b118d6f92d.png"></p>
+<h2 id="Default-类"><a href="#Default-类" class="headerlink" title="Default 类"></a>Default 类</h2><p><code>Default</code>是 Client 接口的默认实现类，重写了 execute 方法。</p>
+<pre><code class="line-numbers language-java">// 执行请求
+        public Response execute(Request request, Options options) throws IOException {
+            // 1. 处理请求
+            HttpURLConnection connection = this.convertAndSend(request, options);
+            // 2. 发送请求、处理响应
+            return this.convertResponse(connection, request);
+        }
+</code></pre>
+<p>可以看到 Default 在发送请求时，实际使用的是<code>HttpURLConnection</code>（JDK 提供的网络编程包）。</p>
+<pre><code class="line-numbers language-java">HttpURLConnection convertAndSend(Request request, Options options) throws IOException {
+            // 创建URL 
+            URL url = new URL(request.url());
+            // 获取连接
+            HttpURLConnection connection = this.getConnection(url);
+            // https 处理
+            if (connection instanceof HttpsURLConnection) {
+                HttpsURLConnection sslCon = (HttpsURLConnection)connection;
+                if (this.sslContextFactory != null) {
+                    sslCon.setSSLSocketFactory(this.sslContextFactory);
+                }
+
+                if (this.hostnameVerifier != null) {
+                    sslCon.setHostnameVerifier(this.hostnameVerifier);
+                }
+            }
+            // 连接配置 
+            connection.setConnectTimeout(options.connectTimeoutMillis());
+            connection.setReadTimeout(options.readTimeoutMillis());
+            connection.setAllowUserInteraction(false);
+            // 省略.....
+            return connection;
+        }
+    }
+</code></pre>
+<h2 id="Proxied-类"><a href="#Proxied-类" class="headerlink" title="Proxied 类"></a>Proxied 类</h2><p><code>Proxied</code> 类继承了 Default，有一个 <code>Proxy</code>属性，提供了代理服务器去访问的方式。</p>
+<h2 id="支持项"><a href="#支持项" class="headerlink" title="支持项"></a>支持项</h2><p>在<code>Feign</code>的功能图中，可以看到 Feign 对其他 HTTP 客户端框架的支持，比如常用的有 Ok Http、Apache Http Client。</p>
+<p><img src="https://img-blog.csdnimg.cn/729f0524665346e28d0ec1e51a2bba97.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAcXFfNDM0Mzc4NzQ=,size_15,color_FFFFFF,t_70,g_se,x_16"></p>
+<h2 id="HTTP-连接池"><a href="#HTTP-连接池" class="headerlink" title="HTTP 连接池"></a>HTTP 连接池</h2><p>在 HTTP 通信的过程中，建立连接是一个很复杂的过程，涉及到多个数据包的交换，很耗时间，而且 HTTP 连接需要 3 次握手和 4 次挥手开销都很大。</p>
+<p>这时可以采用<code>HTTP连接池</code>，节约大量的 3 次握手 4 次挥手时间，提升吞吐量。</p>
+<p>默认的<code>HttpURLConnection</code>是 JDK 自带的，并不支持连接池，如果要实现连接池的机制，还需要自己来管理连接对象。</p>
+<p><code>HttpClient</code> 相比传统 JDK 自带的 HttpURLConnection，它封装了访问 HTTP 的请求头，参数，内容体，响应等等。它不仅使客户端发送 HTTP 请求变得容易，而且也方便了开发人员测试接口 (基于 HTTP 协议的)，既提高了开发的效率，又提高了代码的健壮性。另外高并发大量的请求网络的时候，也是用<code>"连接池"</code>提升吞吐量。</p>
+<p><code>OkHttp</code>作为后期之秀，功能和性能上，可能稍优于<code>HttpClient</code> ，但是几乎没多大区别，实际使用时，都是可以的，不过<code>HttpClient</code>集成起来更方便。</p>
+<h2 id="1-添加-okhttp-依赖"><a href="#1-添加-okhttp-依赖" class="headerlink" title="1. 添加 okhttp 依赖"></a>1. 添加 <a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=okhttp&amp;spm=1001.2101.3001.7020">okhttp</a> 依赖</h2><p>直接添加<code>okhttp</code> ：</p>
+<pre><code class="line-numbers language-java">&lt;dependency&gt;
+            &lt;groupId&gt;io.github.openfeign&lt;/groupId&gt;
+            &lt;artifactId&gt;feign-okhttp&lt;/artifactId&gt;
+        &lt;/dependency&gt;
+</code></pre>
+<p>可以看到当前使用的是<code>3.14.9</code>版本：</p>
+<p><img src="https://img-blog.csdnimg.cn/c6b1de532221400d81e955f452b4d1d0.png"></p>
+<p>在<code>feign-okhttp-10.12.jar</code> 中，提供了 Client 的实现类，可以看到，执行请求时，使用的是 OkHttp 中的 API。</p>
+<p><img src="https://img-blog.csdnimg.cn/601ed9832d1a42f1a7a5944375c166d6.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAcXFfNDM0Mzc4NzQ=,size_20,color_FFFFFF,t_70,g_se,x_16"></p>
+<h2 id="2-添加配置"><a href="#2-添加配置" class="headerlink" title="2. 添加配置"></a>2. 添加配置</h2><p>要开启 OkHttp , 还需要在 YML 中添加开启配置项，默认是关闭的：</p>
+<pre><code class="line-numbers language-java">feign:
+ okhttp:
+ enabled: true
+</code></pre>
+<p>然后重新启动程序，进入 Debug 模式，可以看到最终请求是由 OkHttp 发送，集成成功。</p>
+<p><img src="https://img-blog.csdnimg.cn/8f56e43768964186a36b1da68c530cb3.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAcXFfNDM0Mzc4NzQ=,size_20,color_FFFFFF,t_70,g_se,x_16"></p>
+<h2 id="3-连接池配置"><a href="#3-连接池配置" class="headerlink" title="3. 连接池配置"></a>3. 连接池配置</h2><p>在配置 Feign 的时候，可以看到<code>httpclient</code>默认提供了配置项，但是 OkHttp 并没有默认配置项。</p>
+<p><img src="https://img-blog.csdnimg.cn/dd54ee0e034548ff92e5b4173678d1d4.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAcXFfNDM0Mzc4NzQ=,size_19,color_FFFFFF,t_70,g_se,x_16"></p>
+<p>在使用 Spring 时，可以通过<code>@Bean</code>声明这些配置，在实际项目中，应该把这些配置项写在配置类中。</p>
+<pre><code class="line-numbers language-java">@Configuration
+public class OkHttpConfig {
+
+    /**
+     * 忽略证书校验
+     *
+     * @return 证书信任管理器
+     */
+    @Bean
+    public X509TrustManager x509TrustManager() {
+        return new X509TrustManager() {
+            @Override
+            public void checkClientTrusted(X509Certificate[] x509Certificates, String s) throws CertificateException {
+            }
+
+            @Override
+            public void checkServerTrusted(X509Certificate[] x509Certificates, String s) throws CertificateException {
+            }
+
+            @Override
+            public X509Certificate[] getAcceptedIssuers() {
+                return new X509Certificate[0];
+            }
+        };
+    }
+
+    /**
+     * 信任所有 SSL 证书
+     *
+     * @return
+     */
+    @Bean
+    public SSLSocketFactory sslSocketFactory() {
+        try {
+            TrustManager[] trustManagers = new TrustManager[]{x509TrustManager()};
+            SSLContext sslContext = SSLContext.getInstance("SSL");
+            sslContext.init(null, trustManagers, new SecureRandom());
+            return sslContext.getSocketFactory();
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        } catch (KeyManagementException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    /**
+     * 连接池配置
+     *
+     * @return 连接池
+     */
+    @Bean
+    public ConnectionPool pool() {
+        // 最大连接数、连接存活时间、存活时间单位（分钟）
+        return new ConnectionPool(200, 5, TimeUnit.MINUTES);
+    }
+
+    /**
+     * OkHttp 客户端配置
+     *
+     * @return OkHttp 客户端配
+     */
+    @Bean
+    public OkHttpClient okHttpClient() {
+        return new OkHttpClient.Builder()
+                .sslSocketFactory(sslSocketFactory(), x509TrustManager())
+                .hostnameVerifier(hostnameVerifier())
+                .retryOnConnectionFailure(false)    //是否开启缓存
+                .connectionPool(pool())             //连接池
+                .connectTimeout(15L, TimeUnit.SECONDS) // 连接超时时间
+                .readTimeout(15L, TimeUnit.SECONDS) // 读取超时时间
+                .followRedirects(true) // 是否允许重定向
+                .build();
+    }
+
+    /**
+     * 信任所有主机名
+     *
+     * @return 主机名校验
+     */
+    @Bean
+    public HostnameVerifier hostnameVerifier() {
+        return (s, sslSession) -&gt; true;
+    }
+}
+</code></pre>
+<p>启动项目，Dubug 到 OkHttpClient，可以看到，配置生效，连接池配置成功。</p>
+<p><img src="https://img-blog.csdnimg.cn/5cd5f38986f34842b609b330eac4b326.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAcXFfNDM0Mzc4NzQ=,size_20,color_FFFFFF,t_70,g_se,x_16"></p>
+<h2 id="4-简单测试"><a href="#4-简单测试" class="headerlink" title="4. 简单测试"></a>4. 简单测试</h2><p>最后使用 Jemeter 简单测试下，可以看到使用连接池后，吞吐量明显提升。</p>
+<p>使用 HttpURLConnection：</p>
+<p><img src="https://img-blog.csdnimg.cn/a0ac9bfaa0324b5a9c774c622d96cfb9.png"></p>
+<p>使用 Okhttp + 连接池：</p>
+<p><img src="https://img-blog.csdnimg.cn/a642df3fc59f4fd9b027c8b081f3e9ec.png"></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a target="_blank" rel="noopener" href="https://github.com/yu627482453">Bill Cipher</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://yu627482453.github.io/module/openfeign/openfeign-sheng-tai/openfeign-ji-cheng-okhttp/">https://yu627482453.github.io/module/openfeign/openfeign-sheng-tai/openfeign-ji-cheng-okhttp/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://yu627482453.github.io" target="_blank">蝶梦庄生</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E8%A1%8C%E5%8A%A8%E9%98%B6%E6%AE%B5-%E5%AE%8C%E6%88%90/">行动阶段/完成</a><a class="post-meta__tags" href="/tags/%E4%B8%BB%E9%A2%98%E5%9C%BA%E6%99%AF-%E7%BB%84%E4%BB%B6/">主题场景/组件</a><a class="post-meta__tags" href="/tags/%E7%AC%94%E8%AE%B0%E7%A9%BA%E9%97%B4-KnowladgeSpace-ProgramSpace-ModuleSpace/">笔记空间/KnowladgeSpace/ProgramSpace/ModuleSpace</a><a class="post-meta__tags" href="/tags/%E7%BB%86%E5%8C%96%E4%B8%BB%E9%A2%98-Module-OpenFeign-%E7%94%9F%E6%80%81/">细化主题/Module/OpenFeign/生态</a></div><div class="post_share"><div class="social-share" data-image="https://api.yimian.xyz/img?type=moe" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/reward/wechat.jpg" target="_blank"><img class="post-qr-code-img" src="/img/reward/wechat.jpg" alt="wechat"/></a><div class="post-qr-code-desc">wechat</div></li><li class="reward-item"><a href="/img/reward/alipay.jpg" target="_blank"><img class="post-qr-code-img" src="/img/reward/alipay.jpg" alt="alipay"/></a><div class="post-qr-code-desc">alipay</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/module/openfeign/openfeign-sheng-tai/openfeign-ji-cheng-ribbon/openfeign-ji-cheng-ribbon/"><img class="prev-cover" src="https://api.yimian.xyz/img?type=moe" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">【OpenFeign】 集成 Ribbon</div></div></a></div><div class="next-post pull-right"><a href="/module/openfeign/openfeign-gong-neng/openfeign-dong-tai-dai-li/"><img class="next-cover" src="https://api.yimian.xyz/img?type=moe" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">【OpenFeign】 动态代理</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/module/openfeign/openfeign-sheng-tai/openfeign-ji-cheng-cloud/" title="【OpenFeign】 集成 Cloud"><img class="cover" src="https://api.yimian.xyz/img?type=moe" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-01-02</div><div class="title">【OpenFeign】 集成 Cloud</div></div></a></div><div><a href="/module/openfeign/openfeign-sheng-tai/openfeign-ji-cheng-ribbon/openfeign-ji-cheng-ribbon/" title="【OpenFeign】 集成 Ribbon"><img class="cover" src="https://api.yimian.xyz/img?type=moe" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-01-02</div><div class="title">【OpenFeign】 集成 Ribbon</div></div></a></div><div><a href="/module/openfeign/openfeign-sheng-tai/openfeign-ji-cheng-hystrix/openfeign-ji-cheng-hystrix/" title="【OpenFeign】 集成 Hystrix"><img class="cover" src="https://api.yimian.xyz/img?type=moe" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-01-02</div><div class="title">【OpenFeign】 集成 Hystrix</div></div></a></div><div><a href="/module/elasticsearch/elasticsearch-ji-ben-gai-nian/" title="【ElasticSearch】 基本概念"><img class="cover" src="https://api.yimian.xyz/img?type=moe" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-12-20</div><div class="title">【ElasticSearch】 基本概念</div></div></a></div><div><a href="/module/eureka/eureka/" title="Eureka"><img class="cover" src="https://api.yimian.xyz/img?type=moe" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-12-14</div><div class="title">Eureka</div></div></a></div><div><a href="/module/elasticsearch/elasticsearch-elasticsearch-he-kibana-an-zhuang/" title="【ElasticSearch】 ElasticSearch和Kibana安装"><img class="cover" src="https://api.yimian.xyz/img?type=moe" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-12-20</div><div class="title">【ElasticSearch】 ElasticSearch和Kibana安装</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="gitalk-container"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Bill Cipher</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">575</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">125</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">21</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/yu627482453"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/yu627482453" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="/627482453@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E3%80%90OpenFeign%E3%80%91-%E9%9B%86%E6%88%90-OkHttp"><span class="toc-number">1.</span> <span class="toc-text">【OpenFeign】 集成 OkHttp</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Metadata"><span class="toc-number">1.1.</span> <span class="toc-text">Metadata</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E3%80%90OpenFeign%E3%80%91-%E9%9B%86%E6%88%90-OkHttp-1"><span class="toc-number">1.2.</span> <span class="toc-text">【OpenFeign】 集成 OkHttp</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Client-%E6%8E%A5%E5%8F%A3"><span class="toc-number">1.3.</span> <span class="toc-text">Client 接口</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Default-%E7%B1%BB"><span class="toc-number">1.4.</span> <span class="toc-text">Default 类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Proxied-%E7%B1%BB"><span class="toc-number">1.5.</span> <span class="toc-text">Proxied 类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%94%AF%E6%8C%81%E9%A1%B9"><span class="toc-number">1.6.</span> <span class="toc-text">支持项</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HTTP-%E8%BF%9E%E6%8E%A5%E6%B1%A0"><span class="toc-number">1.7.</span> <span class="toc-text">HTTP 连接池</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E6%B7%BB%E5%8A%A0-okhttp-%E4%BE%9D%E8%B5%96"><span class="toc-number">1.8.</span> <span class="toc-text">1. 添加 okhttp 依赖</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E6%B7%BB%E5%8A%A0%E9%85%8D%E7%BD%AE"><span class="toc-number">1.9.</span> <span class="toc-text">2. 添加配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E8%BF%9E%E6%8E%A5%E6%B1%A0%E9%85%8D%E7%BD%AE"><span class="toc-number">1.10.</span> <span class="toc-text">3. 连接池配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E7%AE%80%E5%8D%95%E6%B5%8B%E8%AF%95"><span class="toc-number">1.11.</span> <span class="toc-text">4. 简单测试</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/module/flowable/flowable-zhuan-lan/flowable-zhuan-lan/" title="无题"><img src="https://api.yimian.xyz/img?type=moe" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/module/flowable/flowable-zhuan-lan/flowable-zhuan-lan/" title="无题">无题</a><time datetime="2023-07-15T09:45:06.401Z" title="发表于 2023-07-15 17:45:06">2023-07-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/module/consul/part/consul-tong-yong-pei-zhi-shu-xing/" title="无题"><img src="https://api.yimian.xyz/img?type=moe" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/module/consul/part/consul-tong-yong-pei-zhi-shu-xing/" title="无题">无题</a><time datetime="2023-07-15T09:44:38.408Z" title="发表于 2023-07-15 17:44:38">2023-07-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/java/java-duo-xian-cheng-bing-fa/java-duo-xian-cheng-bing-fa-xian-cheng/java-duo-xian-cheng-bing-fa-xian-cheng/" title="【Java 多线程并发】 线程"><img src="https://api.yimian.xyz/img?type=moe" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【Java 多线程并发】 线程"/></a><div class="content"><a class="title" href="/java/java-duo-xian-cheng-bing-fa/java-duo-xian-cheng-bing-fa-xian-cheng/java-duo-xian-cheng-bing-fa-xian-cheng/" title="【Java 多线程并发】 线程">【Java 多线程并发】 线程</a><time datetime="2023-07-10T06:15:00.000Z" title="发表于 2023-07-10 14:15:00">2023-07-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/java/java-jvm/java-jvm-nei-cun-guan-li/java-jvm-zhi-jie-nei-cun/" title="【Java JVM】 直接内存"><img src="https://api.yimian.xyz/img?type=moe" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【Java JVM】 直接内存"/></a><div class="content"><a class="title" href="/java/java-jvm/java-jvm-nei-cun-guan-li/java-jvm-zhi-jie-nei-cun/" title="【Java JVM】 直接内存">【Java JVM】 直接内存</a><time datetime="2023-07-10T00:00:00.000Z" title="发表于 2023-07-10 08:00:00">2023-07-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/database/redis/redis-chong-dian-gong-neng/redis-pai-xu/" title="【Redis】 排序"><img src="https://api.yimian.xyz/img?type=moe" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【Redis】 排序"/></a><div class="content"><a class="title" href="/database/redis/redis-chong-dian-gong-neng/redis-pai-xu/" title="【Redis】 排序">【Redis】 排序</a><time datetime="2023-07-09T06:07:00.000Z" title="发表于 2023-07-09 14:07:00">2023-07-09</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By Bill Cipher</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>function addGitalkSource () {
+  const ele = document.createElement('link')
+  ele.rel = 'stylesheet'
+  ele.href= 'https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.css'
+  document.getElementsByTagName('head')[0].appendChild(ele)
+}
+
+function loadGitalk () {
+  function initGitalk () {
+    var gitalk = new Gitalk(Object.assign({
+      clientID: 'c61a274b6f5aa26a58f6',
+      clientSecret: '485a7761d321c8dcc5cae05d7256be9fb196d94a',
+      repo: 'yu627482453.github.io',
+      owner: 'yu627482453',
+      admin: ['yu627482453'],
+      id: 'b4d2b7533324d6afd73c6fcc9e953494',
+      updateCountCallback: commentCount
+    },null))
+
+    gitalk.render('gitalk-container')
+  }
+
+  if (typeof Gitalk === 'function') initGitalk()
+  else {
+    addGitalkSource()
+    getScript('https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.js').then(initGitalk)
+  }
+}
+
+function commentCount(n){
+  let isCommentCount = document.querySelector('#post-meta .gitalk-comment-count')
+  if (isCommentCount) {
+    isCommentCount.innerHTML= n
+  }
+}
+
+if ('Gitalk' === 'Gitalk' || !true) {
+  if (true) btf.loadComment(document.getElementById('gitalk-container'), loadGitalk)
+  else loadGitalk()
+} else {
+  function loadOtherComment () {
+    loadGitalk()
+  }
+}</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

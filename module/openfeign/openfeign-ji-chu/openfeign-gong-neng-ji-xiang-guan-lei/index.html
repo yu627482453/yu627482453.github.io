@@ -1,0 +1,313 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>【OpenFeign】 功能及相关类 | 蝶梦庄生</title><meta name="keywords" content="OpenFeign"><meta name="author" content="Bill Cipher"><meta name="copyright" content="Bill Cipher"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="【OpenFeign】 功能及相关类">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【OpenFeign】 功能及相关类">
+<meta property="og:url" content="https://yu627482453.github.io/module/openfeign/openfeign-ji-chu/openfeign-gong-neng-ji-xiang-guan-lei/index.html">
+<meta property="og:site_name" content="蝶梦庄生">
+<meta property="og:description" content="【OpenFeign】 功能及相关类">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://api.yimian.xyz/img?type=moe">
+<meta property="article:published_time" content="2023-01-02T10:49:00.000Z">
+<meta property="article:modified_time" content="2023-01-02T10:49:00.000Z">
+<meta property="article:author" content="Bill Cipher">
+<meta property="article:tag" content="行动阶段&#x2F;完成">
+<meta property="article:tag" content="主题场景&#x2F;组件">
+<meta property="article:tag" content="笔记空间&#x2F;KnowladgeSpace&#x2F;ProgramSpace&#x2F;ModuleSpace">
+<meta property="article:tag" content="细化主题&#x2F;Module&#x2F;OpenFeign&#x2F;基础">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://api.yimian.xyz/img?type=moe"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://yu627482453.github.io/module/openfeign/openfeign-ji-chu/openfeign-gong-neng-ji-xiang-guan-lei/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: undefined,
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: Bill Cipher","link":"链接: ","source":"来源: 蝶梦庄生","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '【OpenFeign】 功能及相关类',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-01-02 18:49:00'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.2.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">575</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">125</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">21</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://api.yimian.xyz/img?type=moe')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">蝶梦庄生</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">【OpenFeign】 功能及相关类</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-01-02T10:49:00.000Z" title="发表于 2023-01-02 18:49:00">2023-01-02</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-01-02T10:49:00.000Z" title="更新于 2023-01-02 18:49:00">2023-01-02</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/OpenFeign/">OpenFeign</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="【OpenFeign】 功能及相关类"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="【OpenFeign】-功能及相关类"><a href="#【OpenFeign】-功能及相关类" class="headerlink" title="【OpenFeign】 功能及相关类"></a>【OpenFeign】 功能及相关类</h1><h2 id="Metadata"><a href="#Metadata" class="headerlink" title="Metadata"></a>Metadata</h2><pre><code class="line-numbers language-yml">title: 【OpenFeign】 功能及相关类
+date: 2023-01-02 18:49
+tags:
+  - 行动阶段/完成
+  - 主题场景/组件
+  - 笔记空间/KnowladgeSpace/ProgramSpace/ModuleSpace
+  - 细化主题/Module/OpenFeign/基础
+categories:
+  - OpenFeign
+keywords:
+  - OpenFeign
+description: 【OpenFeign】 功能及相关类
+</code></pre>
+<h2 id="核心功能"><a href="#核心功能" class="headerlink" title="核心功能"></a>核心功能</h2><p>这是一张包含 feign 提供的当前关键功能的图：</p>
+<p><img src="/attachment/2477b9ae2cbd392bc69aa718f095df12.png"></p>
+<h3 id="1-Clients"><a href="#1-Clients" class="headerlink" title="1. Clients"></a>1. Clients</h3><p>Clients 包含了 Feign 支持的 HTTP 客户端：</p>
+<ul>
+<li><strong>java.net.URL</strong>：JDK 提供的网络编程工具包</li>
+<li><strong>Apache HTTP</strong>：Apache 提供的 HTTP Client 包</li>
+<li><strong>Apache HC5</strong>：Apache 提供的 HTTP Client 5.0 版本包</li>
+<li><strong>Google HTTP</strong>：Google 提供的 Http 客户端工具包</li>
+<li><strong>Java 11 Http2</strong>：JDK 11 提供的对 HTTP2 的支持工具包</li>
+<li><strong>OK Http</strong> ： 开源的 <a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=OkHttp&amp;spm=1001.2101.3001.7020">OkHttp</a> 框架</li>
+<li><strong>Ribbon</strong>：基于 HTTP 和 TCP 的客户端负载均衡工具，基于 Netflix Ribbon 实现</li>
+</ul>
+<h3 id="2-async-clients"><a href="#2-async-clients" class="headerlink" title="2. async clients"></a>2. async clients</h3><p>Feign 还支持异步的 HTTP 客户端：  </p>
+<p><img src="/attachment/44499c8aaf75e39a58771674c151123f.png"></p>
+<h3 id="3-contracts"><a href="#3-contracts" class="headerlink" title="3. contracts"></a>3. contracts</h3><p>contracts 部分，包含了 Feign 遵守的一些协议规范。  </p>
+<p><img src="/attachment/de49ff1b9450bd6144a4ca3bdd6fb2a0.png"></p>
+<h3 id="4-encoders-x2F-decoders"><a href="#4-encoders-x2F-decoders" class="headerlink" title="4. encoders/decoders"></a>4. encoders/decoders</h3><p><code>encoders/decoders</code> 是编码解码相关支持，Feign 在请求之前会进行编码操作，获取响应的时候会进行解码，之所以要进行编解码，是因为发送请求可能是对象，需要编码成服务端能解析的数据格式，比如 Json。</p>
+<p>Feign 支持常用的 Jackson、Gson 及其他 JAVA Json 工具进行编解码。  </p>
+<p><img src="/attachment/6e042a65c29e2365f025ef4875492a2f.png"></p>
+<h3 id="5-metrics"><a href="#5-metrics" class="headerlink" title="5. metrics"></a>5. metrics</h3><p><code>metrics</code> 模块，是对 Dropwizard 、Micrometer 度量检测工具的支持。  </p>
+<p><img src="/attachment/fc5950cb9e5be5001367442eda5df4ab.png"></p>
+<h3 id="6-extras"><a href="#6-extras" class="headerlink" title="6. extras"></a>6. extras</h3><p><code>extras</code>额外的其他功能，是对熔断器（Hystrix）、日志（SLF4J）等工具的支持。  </p>
+<p><img src="/attachment/5c6c8133998667473b026e7506c8e0db.png"></p>
+<h2 id="默认类"><a href="#默认类" class="headerlink" title="默认类"></a>默认类</h2><h3 id="核心-Bean"><a href="#核心-Bean" class="headerlink" title="核心 Bean"></a>核心 Bean</h3><ul>
+<li>Decoder feignDecoder: <code>ResponseEntityDecoder</code> (which wraps a SpringDecoder)</li>
+<li>Encoder feignEncoder: <code>SpringEncoder</code></li>
+<li>Logger feignLogger: <code>Slf4jLogger</code></li>
+<li>MicrometerObservationCapability micrometerObservationCapability: 如果feign-micrometer在类路径上并且ObservationRegistry可用</li>
+<li>MicrometerCapability micrometerCapability: 如果feign-micrometer在类路径上，MeterRegistry是可用的，ObservationRegistry是不可用的</li>
+<li>CachingCapability cachingCapability: 如果使用了@EnableCaching注释。可以通过spring.cloud.openfeign.cache.enabled禁用。</li>
+<li>Contract feignContract: <code>SpringMvcContract</code></li>
+<li>Feign.Builder feignBuilder: <code>FeignCircuitBreaker.Builder</code></li>
+<li>Client feignClient: 如果Spring Cloud LoadBalancer在类路径上，则使用FeignBlockingLoadBalancerClient。如果它们都不在类路径上，则使用默认的模拟客户端。</li>
+</ul>
+<h2 id="HttpURLConnection"><a href="#HttpURLConnection" class="headerlink" title="HttpURLConnection"></a>HttpURLConnection</h2><p><code>HttpURLConnection</code>是在 JDK 的<code>java.net</code>包中提供的用于 HTTP 协议访问的基本功能的类，但是由于使用步骤比较复杂，灵活性不够，所以一般很少直接用。</p>
+<p>比如可以通过以下示例发送一个请求并获取响应信息。</p>
+<pre><code class="line-numbers language-java">// 创建URL
+        URL url = new URL("https://www.baidu.com");
+        // 创建连接
+        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+        // 设置请求方法
+        connection.setRequestMethod("GET");
+        // 设置连接超时时间
+        connection.setConnectTimeout(5 * 1000);
+        // 连接
+        connection.connect();
+        // 获取响应的流并专为字符串输出
+        InputStream inputStream = connection.getInputStream();
+        byte[] data = new byte[1024];
+        StringBuilder sb = new StringBuilder();
+        int length = 0;
+        while ((length = inputStream.read(data)) != -1) {
+            String s = new String(data, Charset.forName("utf-8"));
+            sb.append(s);
+        }
+        String message = sb.toString();
+        System.out.println(message);
+        // 关闭
+        inputStream.close();
+        connection.disconnect();
+</code></pre>
+<p><code>HttpURLConnection</code>是基于 HTTP 协议的，其底层通过 socket 通信实现。其<code>connect()</code>方法，实际上只是建立了一个与服务器的 tcp 连接，并没有实际发送 http 请求，实际上直到其<code>getInputStream()</code>方法执行时才正式发送出去。</p>
+<h2 id="HttpClient"><a href="#HttpClient" class="headerlink" title="HttpClient"></a>HttpClient</h2><p><a target="_blank" rel="noopener" href="https://hc.apache.org/httpcomponents-client-5.1.x/index.html">官方文档</a></p>
+<p>尽管<code>java.net</code>包提供了通过 HTTP 访问资源的基本功能，但它并没有提供许多应用程序所需的灵活性或全部功能。</p>
+<p><code>HttpClient</code>是<code>Apache Jakarta Common</code>下的子项目，用来提供高效的、最新的、功能丰富的支持 HTTP 协议的客户端编程工具包，并且它支持 HTTP 协议最新的版本和建议。像很多开源框架通信的底层都是用的 HttpClient。</p>
+<p>在示例中可以看到，只需要几行代码就可以实现请求了。</p>
+<pre><code class="line-numbers language-java">// 创建 Http Client
+        try (CloseableHttpClient httpclient = HttpClients.createDefault()) {
+            // 创建Get请求
+            HttpGet httpGet = new HttpGet("https://www.baidu.com");
+            // 执行请求
+            try (CloseableHttpResponse response = httpclient.execute(httpGet)) {
+                // 获取结果集
+                HttpEntity entity1 = response.getEntity();
+                InputStream content = entity1.getContent();
+                byte[] buff = new byte[1024];
+                StringBuilder sb1 = new StringBuilder();
+                int length1 = 0;
+                while ((length1 = content.read(buff)) != -1) {
+                    String s = new String(buff, StandardCharsets.UTF_8);
+                    sb1.append(s);
+                }
+                String message1 = sb1.toString();
+                System.out.println(message1);
+            }
+        }
+</code></pre>
+<p>注意，最新版为 5.X，不要引错依赖包了。</p>
+<pre><code class="line-numbers language-xml">&lt;dependency&gt;
+            &lt;groupId&gt;org.apache.httpcomponents.client5&lt;/groupId&gt;
+            &lt;artifactId&gt;httpclient5&lt;/artifactId&gt;
+            &lt;version&gt;5.1.1&lt;/version&gt;
+        &lt;/dependency&gt;
+</code></pre>
+<h2 id="OkHttp"><a href="#OkHttp" class="headerlink" title="OkHttp"></a>OkHttp</h2><p><a target="_blank" rel="noopener" href="https://github.com/square/okhttp">GitHub 地址</a>[官方文档地址](<a target="_blank" rel="noopener" href="https://square.github.io/okhttp/">https://square.github.io/okhttp/</a>)</p>
+<p><code>OkHttp</code>不仅支持 Java，还支持 Android ，虽然资历没有 HttpClient 老，但是性能更加卓越，设计更加优秀。</p>
+<p>示例如下：</p>
+<pre><code class="line-numbers language-java">OkHttpClient client = new OkHttpClient();
+        Request request = new Request.Builder()
+                .url("https://www.baidu.com")
+                .get()
+                .build();
+        try (Response response = client.newCall(request).execute()) {
+            String string = response.body().string();
+            System.out.println(string);
+        }
+</code></pre>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a target="_blank" rel="noopener" href="https://github.com/yu627482453">Bill Cipher</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://yu627482453.github.io/module/openfeign/openfeign-ji-chu/openfeign-gong-neng-ji-xiang-guan-lei/">https://yu627482453.github.io/module/openfeign/openfeign-ji-chu/openfeign-gong-neng-ji-xiang-guan-lei/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://yu627482453.github.io" target="_blank">蝶梦庄生</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E8%A1%8C%E5%8A%A8%E9%98%B6%E6%AE%B5-%E5%AE%8C%E6%88%90/">行动阶段/完成</a><a class="post-meta__tags" href="/tags/%E4%B8%BB%E9%A2%98%E5%9C%BA%E6%99%AF-%E7%BB%84%E4%BB%B6/">主题场景/组件</a><a class="post-meta__tags" href="/tags/%E7%AC%94%E8%AE%B0%E7%A9%BA%E9%97%B4-KnowladgeSpace-ProgramSpace-ModuleSpace/">笔记空间/KnowladgeSpace/ProgramSpace/ModuleSpace</a><a class="post-meta__tags" href="/tags/%E7%BB%86%E5%8C%96%E4%B8%BB%E9%A2%98-Module-OpenFeign-%E5%9F%BA%E7%A1%80/">细化主题/Module/OpenFeign/基础</a></div><div class="post_share"><div class="social-share" data-image="https://api.yimian.xyz/img?type=moe" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/reward/wechat.jpg" target="_blank"><img class="post-qr-code-img" src="/img/reward/wechat.jpg" alt="wechat"/></a><div class="post-qr-code-desc">wechat</div></li><li class="reward-item"><a href="/img/reward/alipay.jpg" target="_blank"><img class="post-qr-code-img" src="/img/reward/alipay.jpg" alt="alipay"/></a><div class="post-qr-code-desc">alipay</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/module/openfeign/openfeign-ji-chu/openfeign-zhu-jie/"><img class="prev-cover" src="https://api.yimian.xyz/img?type=moe" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">【OpenFeign】 注解</div></div></a></div><div class="next-post pull-right"><a href="/module/openfeign/openfeign-ji-chu/openfeign-ji-chu/"><img class="next-cover" src="https://api.yimian.xyz/img?type=moe" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">【OpenFeign】 基础</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/module/openfeign/openfeign-ji-chu/openfeign-jie-kou-ji-cheng-te-xing/" title="【OpenFeign】 接口继承特性"><img class="cover" src="https://api.yimian.xyz/img?type=moe" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-01-02</div><div class="title">【OpenFeign】 接口继承特性</div></div></a></div><div><a href="/module/openfeign/openfeign-ji-chu/openfeign-he-xin-gai-nian/" title="【OpenFeign】 核心概念"><img class="cover" src="https://api.yimian.xyz/img?type=moe" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-01-02</div><div class="title">【OpenFeign】 核心概念</div></div></a></div><div><a href="/module/openfeign/openfeign-ji-chu/openfeign-zhu-jie/" title="【OpenFeign】 注解"><img class="cover" src="https://api.yimian.xyz/img?type=moe" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-01-02</div><div class="title">【OpenFeign】 注解</div></div></a></div><div><a href="/module/openfeign/openfeign-ji-chu/openfeign-tong-yong-ying-yong-pei-zhi/" title="【OpenFeign】 通用 应用配置"><img class="cover" src="https://api.yimian.xyz/img?type=moe" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-01-02</div><div class="title">【OpenFeign】 通用 应用配置</div></div></a></div><div><a href="/module/elasticsearch/elasticsearch-ji-ben-gai-nian/" title="【ElasticSearch】 基本概念"><img class="cover" src="https://api.yimian.xyz/img?type=moe" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-12-20</div><div class="title">【ElasticSearch】 基本概念</div></div></a></div><div><a href="/module/eureka/eureka/" title="Eureka"><img class="cover" src="https://api.yimian.xyz/img?type=moe" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-12-14</div><div class="title">Eureka</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="gitalk-container"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Bill Cipher</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">575</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">125</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">21</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/yu627482453"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/yu627482453" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="/627482453@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E3%80%90OpenFeign%E3%80%91-%E5%8A%9F%E8%83%BD%E5%8F%8A%E7%9B%B8%E5%85%B3%E7%B1%BB"><span class="toc-number">1.</span> <span class="toc-text">【OpenFeign】 功能及相关类</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Metadata"><span class="toc-number">1.1.</span> <span class="toc-text">Metadata</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%B8%E5%BF%83%E5%8A%9F%E8%83%BD"><span class="toc-number">1.2.</span> <span class="toc-text">核心功能</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Clients"><span class="toc-number">1.2.1.</span> <span class="toc-text">1. Clients</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-async-clients"><span class="toc-number">1.2.2.</span> <span class="toc-text">2. async clients</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-contracts"><span class="toc-number">1.2.3.</span> <span class="toc-text">3. contracts</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-encoders-x2F-decoders"><span class="toc-number">1.2.4.</span> <span class="toc-text">4. encoders&#x2F;decoders</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-metrics"><span class="toc-number">1.2.5.</span> <span class="toc-text">5. metrics</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-extras"><span class="toc-number">1.2.6.</span> <span class="toc-text">6. extras</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%BB%98%E8%AE%A4%E7%B1%BB"><span class="toc-number">1.3.</span> <span class="toc-text">默认类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%B8%E5%BF%83-Bean"><span class="toc-number">1.3.1.</span> <span class="toc-text">核心 Bean</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HttpURLConnection"><span class="toc-number">1.4.</span> <span class="toc-text">HttpURLConnection</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HttpClient"><span class="toc-number">1.5.</span> <span class="toc-text">HttpClient</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#OkHttp"><span class="toc-number">1.6.</span> <span class="toc-text">OkHttp</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/module/flowable/flowable-zhuan-lan/flowable-zhuan-lan/" title="无题"><img src="https://api.yimian.xyz/img?type=moe" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/module/flowable/flowable-zhuan-lan/flowable-zhuan-lan/" title="无题">无题</a><time datetime="2023-07-15T09:45:06.401Z" title="发表于 2023-07-15 17:45:06">2023-07-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/module/consul/part/consul-tong-yong-pei-zhi-shu-xing/" title="无题"><img src="https://api.yimian.xyz/img?type=moe" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/module/consul/part/consul-tong-yong-pei-zhi-shu-xing/" title="无题">无题</a><time datetime="2023-07-15T09:44:38.408Z" title="发表于 2023-07-15 17:44:38">2023-07-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/java/java-duo-xian-cheng-bing-fa/java-duo-xian-cheng-bing-fa-xian-cheng/java-duo-xian-cheng-bing-fa-xian-cheng/" title="【Java 多线程并发】 线程"><img src="https://api.yimian.xyz/img?type=moe" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【Java 多线程并发】 线程"/></a><div class="content"><a class="title" href="/java/java-duo-xian-cheng-bing-fa/java-duo-xian-cheng-bing-fa-xian-cheng/java-duo-xian-cheng-bing-fa-xian-cheng/" title="【Java 多线程并发】 线程">【Java 多线程并发】 线程</a><time datetime="2023-07-10T06:15:00.000Z" title="发表于 2023-07-10 14:15:00">2023-07-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/java/java-jvm/java-jvm-nei-cun-guan-li/java-jvm-zhi-jie-nei-cun/" title="【Java JVM】 直接内存"><img src="https://api.yimian.xyz/img?type=moe" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【Java JVM】 直接内存"/></a><div class="content"><a class="title" href="/java/java-jvm/java-jvm-nei-cun-guan-li/java-jvm-zhi-jie-nei-cun/" title="【Java JVM】 直接内存">【Java JVM】 直接内存</a><time datetime="2023-07-10T00:00:00.000Z" title="发表于 2023-07-10 08:00:00">2023-07-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/database/redis/redis-chong-dian-gong-neng/redis-pai-xu/" title="【Redis】 排序"><img src="https://api.yimian.xyz/img?type=moe" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【Redis】 排序"/></a><div class="content"><a class="title" href="/database/redis/redis-chong-dian-gong-neng/redis-pai-xu/" title="【Redis】 排序">【Redis】 排序</a><time datetime="2023-07-09T06:07:00.000Z" title="发表于 2023-07-09 14:07:00">2023-07-09</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By Bill Cipher</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>function addGitalkSource () {
+  const ele = document.createElement('link')
+  ele.rel = 'stylesheet'
+  ele.href= 'https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.css'
+  document.getElementsByTagName('head')[0].appendChild(ele)
+}
+
+function loadGitalk () {
+  function initGitalk () {
+    var gitalk = new Gitalk(Object.assign({
+      clientID: 'c61a274b6f5aa26a58f6',
+      clientSecret: '485a7761d321c8dcc5cae05d7256be9fb196d94a',
+      repo: 'yu627482453.github.io',
+      owner: 'yu627482453',
+      admin: ['yu627482453'],
+      id: 'c2ab1bc25b94731854166a30264bd5b0',
+      updateCountCallback: commentCount
+    },null))
+
+    gitalk.render('gitalk-container')
+  }
+
+  if (typeof Gitalk === 'function') initGitalk()
+  else {
+    addGitalkSource()
+    getScript('https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.js').then(initGitalk)
+  }
+}
+
+function commentCount(n){
+  let isCommentCount = document.querySelector('#post-meta .gitalk-comment-count')
+  if (isCommentCount) {
+    isCommentCount.innerHTML= n
+  }
+}
+
+if ('Gitalk' === 'Gitalk' || !true) {
+  if (true) btf.loadComment(document.getElementById('gitalk-container'), loadGitalk)
+  else loadGitalk()
+} else {
+  function loadOtherComment () {
+    loadGitalk()
+  }
+}</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

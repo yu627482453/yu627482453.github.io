@@ -1,0 +1,354 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>【Sentinel】 集群流量控制 | 蝶梦庄生</title><meta name="keywords" content="Sentinel"><meta name="author" content="Bill Cipher"><meta name="copyright" content="Bill Cipher"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="【Sentinel】 集群流量控制">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【Sentinel】 集群流量控制">
+<meta property="og:url" content="https://yu627482453.github.io/module/sentinel/sentinel-shi-yong-wen-dang/sentinel-ji-qun-liu-liang-kong-zhi/index.html">
+<meta property="og:site_name" content="蝶梦庄生">
+<meta property="og:description" content="【Sentinel】 集群流量控制">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://api.yimian.xyz/img?type=moe">
+<meta property="article:published_time" content="2023-01-10T00:47:00.000Z">
+<meta property="article:modified_time" content="2023-01-10T00:47:00.000Z">
+<meta property="article:author" content="Bill Cipher">
+<meta property="article:tag" content="行动阶段&#x2F;完成">
+<meta property="article:tag" content="主题场景&#x2F;组件">
+<meta property="article:tag" content="笔记空间&#x2F;KnowladgeSpace&#x2F;ProgramSpace&#x2F;ModuleSpace">
+<meta property="article:tag" content="细化主题&#x2F;Module&#x2F;Sentinel&#x2F;使用手册">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://api.yimian.xyz/img?type=moe"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://yu627482453.github.io/module/sentinel/sentinel-shi-yong-wen-dang/sentinel-ji-qun-liu-liang-kong-zhi/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: undefined,
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: Bill Cipher","link":"链接: ","source":"来源: 蝶梦庄生","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '【Sentinel】 集群流量控制',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-01-10 08:47:00'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.2.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">575</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">125</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">21</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://api.yimian.xyz/img?type=moe')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">蝶梦庄生</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">【Sentinel】 集群流量控制</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-01-10T00:47:00.000Z" title="发表于 2023-01-10 08:47:00">2023-01-10</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-01-10T00:47:00.000Z" title="更新于 2023-01-10 08:47:00">2023-01-10</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Sentinel/">Sentinel</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="【Sentinel】 集群流量控制"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="【Sentinel】-集群流量控制"><a href="#【Sentinel】-集群流量控制" class="headerlink" title="【Sentinel】 集群流量控制"></a>【Sentinel】 集群流量控制</h1><h2 id="Metadata"><a href="#Metadata" class="headerlink" title="Metadata"></a>Metadata</h2><pre><code class="line-numbers language-yml">title: 【Sentinel】 集群流量控制
+date: 2023-01-10 08:47
+tags:
+  - 行动阶段/完成
+  - 主题场景/组件
+  - 笔记空间/KnowladgeSpace/ProgramSpace/ModuleSpace
+  - 细化主题/Module/Sentinel/使用手册
+categories:
+  - Sentinel
+keywords:
+  - Sentinel
+description: 【Sentinel】 集群流量控制
+</code></pre>
+<h2 id="【Sentinel】-集群流量控制-1"><a href="#【Sentinel】-集群流量控制-1" class="headerlink" title="【Sentinel】 集群流量控制"></a>【Sentinel】 集群流量控制</h2><p>为什么要使用集群流控呢？假设我们希望给某个用户限制调用某个 API 的总 QPS 为 50，但机器数可能很多（比如有 100 台）。这时候我们很自然地就想到，找一个 server 来专门来统计总的调用量，其它的实例都与这台 server 通信来判断是否可以调用。这就是最基础的集群流控的方式。</p>
+<p>另外集群流控还可以解决流量不均匀导致总体限流效果不佳的问题。假设集群中有 10 台机器，我们给每台机器设置单机限流阈值为 10 QPS，理想情况下整个集群的限流阈值就为 100 QPS。不过实际情况下流量到每台机器可能会不均匀，会导致总量没有到的情况下某些机器就开始限流。因此仅靠单机维度去限制的话会无法精确地限制总体流量。而集群流控可以精确地控制整个集群的调用总量，结合单机限流兜底，可以更好地发挥流量控制的效果。</p>
+<p>集群流控中共有两种身份：</p>
+<ul>
+<li>Token Client：集群流控客户端，用于向所属 Token Server 通信请求 token。集群限流服务端会返回给客户端结果，决定是否限流。</li>
+<li>Token Server：即集群流控服务端，处理来自 Token Client 的请求，根据配置的集群规则判断是否应该发放 token（是否允许通过）。</li>
+</ul>
+<p><img src="https://user-images.githubusercontent.com/9434884/65305357-8f39bc80-dbb5-11e9-96d6-d1111fc365a9.png"></p>
+<h2 id="模块结构"><a href="#模块结构" class="headerlink" title="模块结构"></a>模块结构</h2><p>Sentinel 1.4.0 开始引入了集群流控模块，主要包含以下几部分：</p>
+<ul>
+<li>sentinel-cluster-common-default: 公共模块，包含公共接口和实体</li>
+<li>sentinel-cluster-client-default: 默认集群流控 client 模块，使用 Netty 进行通信，提供接口方便序列化协议扩展</li>
+<li>sentinel-cluster-server-default: 默认集群流控 server 模块，使用 Netty 进行通信，提供接口方便序列化协议扩展；同时提供扩展接口对接规则判断的具体实现（TokenService），默认实现是复用 sentinel-core 的相关逻辑</li>
+</ul>
+<blockquote>
+<p>注意：集群流控模块要求 JDK 版本最低为 1.7。</p>
+</blockquote>
+<h2 id="集群流控规则"><a href="#集群流控规则" class="headerlink" title="集群流控规则"></a>集群流控规则</h2><h3 id="规则"><a href="#规则" class="headerlink" title="规则"></a>规则</h3><p><code>FlowRule</code> 添加了两个字段用于集群限流相关配置：</p>
+<pre><code class="line-numbers language-java">private boolean clusterMode; // 标识是否为集群限流配置
+private ClusterFlowConfig clusterConfig; // 集群限流相关配置项
+</code></pre>
+<p>其中 用一个专门的 ClusterFlowConfig 代表集群限流相关配置项，以与现有规则配置项分开：</p>
+<pre><code class="line-numbers language-java">// 全局唯一的规则 ID，由集群限流管控端分配.
+private Long flowId;
+
+// 阈值模式，默认（0）为单机均摊，1 为全局阈值.
+private int thresholdType = ClusterRuleConstant.FLOW_THRESHOLD_AVG_LOCAL;
+
+private int strategy = ClusterRuleConstant.FLOW_CLUSTER_STRATEGY_NORMAL;
+
+// 在 client 连接失败或通信失败时，是否退化到本地的限流模式
+private boolean fallbackToLocalWhenFail = true;
+</code></pre>
+<ul>
+<li>flowId 代表全局唯一的规则 ID，Sentinel 集群限流服务端通过此 ID 来区分各个规则，因此务必保持全局唯一。一般 flowId 由统一的管控端进行分配，或写入至 DB 时生成。</li>
+<li>thresholdType 代表集群限流阈值模式。其中单机均摊模式下配置的阈值等同于单机能够承受的限额，token server 会根据客户端对应的 namespace（默认为 project.name 定义的应用名）下的连接数来计算总的阈值（比如独立模式下有 3 个 client 连接到了 token server，然后配的单机均摊阈值为 10，则计算出的集群总量就为 30）；而全局模式下配置的阈值等同于整个集群的总阈值。</li>
+</ul>
+<p>ParamFlowRule 热点参数限流相关的集群配置与 FlowRule 相似。</p>
+<h3 id="配置方式"><a href="#配置方式" class="headerlink" title="配置方式"></a>配置方式</h3><p>在集群流控的场景下，我们推荐使用动态规则源来动态地管理规则。</p>
+<p>对于客户端，我们可以按照原有的方式来向 FlowRuleManager 和 ParamFlowRuleManager 注册动态规则源，例如：</p>
+<pre><code class="line-numbers language-java">ReadableDataSource&lt;String, List&lt;FlowRule&gt;&gt; flowRuleDataSource = new NacosDataSource&lt;&gt;(remoteAddress, groupId, dataId, parser);
+FlowRuleManager.register2Property(flowRuleDataSource.getProperty());
+</code></pre>
+<p>对于集群流控 token server，由于集群限流服务端有作用域（namespace）的概念，因此我们需要注册一个自动根据 namespace 生成动态规则源的 PropertySupplier:</p>
+<pre><code class="line-numbers language-java">// Supplier 类型：接受 namespace，返回生成的动态规则源，类型为 SentinelProperty&lt;List&lt;FlowRule&gt;&gt;
+// ClusterFlowRuleManager 针对集群限流规则，ClusterParamFlowRuleManager 针对集群热点规则，配置方式类似
+ClusterFlowRuleManager.setPropertySupplier(namespace -&gt; {
+    return new SomeDataSource(namespace).getProperty();
+});
+</code></pre>
+<p>然后每当集群限流服务端 namespace set 产生变更时，Sentinel 会自动针对新加入的 namespace 生成动态规则源并进行自动监听，并删除旧的不需要的规则源。</p>
+<h2 id="集群限流客户端"><a href="#集群限流客户端" class="headerlink" title="集群限流客户端"></a>集群限流客户端</h2><p>要想使用集群限流功能，必须引入集群限流 client 相关依赖：</p>
+<pre><code class="line-numbers language-xml">&lt;dependency&gt;
+    &lt;groupId&gt;com.alibaba.csp&lt;/groupId&gt;
+    &lt;artifactId&gt;sentinel-cluster-client-default&lt;/artifactId&gt;
+    &lt;version&gt;1.8.6&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+<p>用户可以通过 API 将当前模式置为客户端模式：</p>
+<pre><code class="line-numbers language-url">http://&lt;ip&gt;:&lt;port&gt;/setClusterMode?mode=&lt;xxx&gt;
+</code></pre>
+<p>其中 mode 为 0 代表 client，1 代表 server。设置成功后，若已有客户端的配置，集群限流客户端将会开启并连接远程的 token server。我们可以在 sentinel-record.log 日志中查看连接的相关日志。</p>
+<p>若集群限流客户端未进行配置，则用户需要对客户端进行基本的配置，比如指定集群限流 token server。我们提供了 API 进行配置：</p>
+<pre><code class="line-numbers language-url">http://&lt;ip&gt;:&lt;port&gt;/cluster/client/modifyConfig?data=&lt;config&gt;
+</code></pre>
+<p>其中 data 是 JSON 格式的 ClusterClientConfig，对应的配置项：</p>
+<ul>
+<li>serverHost: token server host</li>
+<li>serverPort: token server 端口</li>
+<li>requestTimeout: 请求的超时时间（默认为 20 ms）</li>
+</ul>
+<p>当然也可以通过动态配置源进行配置。我们可以通过 ClusterClientConfigManager 的 registerServerAssignProperty 方法注册动态配置源。配置源注册的相关逻辑可以置于 InitFunc 实现类中，并通过 SPI 注册，在 Sentinel 初始化时即可自动进行配置源加载监听。</p>
+<p>若用户未引入集群限流 client 相关依赖，或者 client 未开启/连接失败/通信失败，则对于开启了集群模式的规则：</p>
+<ul>
+<li>集群热点限流默认直接通过</li>
+<li>普通集群限流会退化到 local 模式的限流，即在本地按照单机阈值执行限流检查</li>
+</ul>
+<p>当 token client 与 server 之间的连接意外断开时，token client 会不断进行重试，每次重试的间隔时间以 n * 2000 ms 的形式递增。</p>
+<h2 id="集群限流服务端"><a href="#集群限流服务端" class="headerlink" title="集群限流服务端"></a>集群限流服务端</h2><p>要想使用集群限流服务端，必须引入集群限流 server 相关依赖：</p>
+<pre><code class="line-numbers language-xml">&lt;dependency&gt;
+    &lt;groupId&gt;com.alibaba.csp&lt;/groupId&gt;
+    &lt;artifactId&gt;sentinel-cluster-server-default&lt;/artifactId&gt;
+    &lt;version&gt;1.8.6&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+<h3 id="启动方式"><a href="#启动方式" class="headerlink" title="启动方式"></a>启动方式</h3><p>Sentinel 集群限流服务端有两种启动方式：</p>
+<ul>
+<li>独立模式（Alone），即作为独立的 token server 进程启动，独立部署，隔离性好，但是需要额外的部署操作。独立模式适合作为 Global Rate Limiter 给集群提供流控服务。</li>
+</ul>
+<p><img src="https://user-images.githubusercontent.com/9434884/50463606-c3d26c00-09c7-11e9-8373-1c27e2408f8b.png"></p>
+<ul>
+<li>嵌入模式（Embedded），即作为内置的 token server 与服务在同一进程中启动。在此模式下，集群中各个实例都是对等的，token server 和 client 可以随时进行转变，因此无需单独部署，灵活性比较好。但是隔离性不佳，需要限制 token server 的总 QPS，防止影响应用本身。嵌入模式适合某个应用集群内部的流控。</li>
+</ul>
+<p><img src="https://user-images.githubusercontent.com/9434884/50463600-b7e6aa00-09c7-11e9-9580-6919f0d0a8a4.png"></p>
+<p>我们提供了 API 用于在 embedded 模式下转换集群流控身份：</p>
+<pre><code class="line-numbers language-url">http://&lt;ip&gt;:&lt;port&gt;/setClusterMode?mode=&lt;xxx&gt;
+</code></pre>
+<p>其中 mode 为 0 代表 client，1 代表 server，-1 代表关闭。注意应用端需要引入集群限流客户端或服务端的相应依赖。</p>
+<p>在独立模式下，我们可以直接创建对应的 ClusterTokenServer 实例并在 main 函数中通过 start 方法启动 Token Server。</p>
+<h3 id="规则配置"><a href="#规则配置" class="headerlink" title="规则配置"></a>规则配置</h3><p>见前面“规则配置”相关内容。</p>
+<h3 id="属性配置"><a href="#属性配置" class="headerlink" title="属性配置"></a>属性配置</h3><p>我们推荐给集群限流服务端注册动态配置源来动态地进行配置。配置类型有以下几种：</p>
+<ul>
+<li>namespace set: 集群限流服务端服务的作用域（命名空间），可以设置为自己服务的应用名。集群限流 client 在连接到 token server 后会上报自己的命名空间（默认为 project.name 配置的应用名），token server 会根据上报的命名空间名称统计连接数。</li>
+<li>transport config: 集群限流服务端通信相关配置，如 server port</li>
+<li>flow config: 集群限流服务端限流相关配置，如滑动窗口统计时长、格子数目、最大允许总 QPS等</li>
+</ul>
+<p>我们可以通过 ClusterServerConfigManager 的各个 registerXxxProperty 方法来注册相关的配置源。</p>
+<p>从 1.4.1 版本开始，Sentinel 支持给 token server 配置最大允许的总 QPS（maxAllowedQps），来对 token server 的资源使用进行限制，防止在嵌入模式下影响应用本身。</p>
+<h2 id="Token-Server-分配配置"><a href="#Token-Server-分配配置" class="headerlink" title="Token Server 分配配置"></a>Token Server 分配配置</h2><p><img src="https://user-images.githubusercontent.com/9434884/58071181-60dbae80-7bce-11e9-9dc8-8e27e2161b0d.png"></p>
+<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><p>sentinel-demo-cluster 提供了嵌入模式和独立模式的示例：</p>
+<ul>
+<li>sentinel-demo-cluster-server-alone：<a target="_blank" rel="noopener" href="https://github.com/alibaba/Sentinel/blob/master/sentinel-demo/sentinel-demo-cluster/sentinel-demo-cluster-server-alone/src/main/java/com/alibaba/csp/sentinel/demo/cluster/ClusterServerDemo.java">独立模式 Demo</a></li>
+<li>sentinel-demo-cluster-embedded：<a target="_blank" rel="noopener" href="https://github.com/alibaba/Sentinel/tree/master/sentinel-demo/sentinel-demo-cluster/sentinel-demo-cluster-embedded">嵌入模式 Demo</a>，以 Web 应用为示例，可以启动多个实例分别作为 Token Server 和 Token Client。数据源的相关配置可以参考 DemoClusterInitFunc。</li>
+</ul>
+<blockquote>
+<p>注意：若在本地启动多个 Demo 示例，需要加上 -Dcsp.sentinel.log.use.pid=true 参数，否则控制台显示监控会不准确。</p>
+</blockquote>
+<h2 id="扩展接口设计"><a href="#扩展接口设计" class="headerlink" title="扩展接口设计"></a>扩展接口设计</h2><h3 id="整体扩展架构"><a href="#整体扩展架构" class="headerlink" title="整体扩展架构"></a>整体扩展架构</h3><p><img src="https://user-images.githubusercontent.com/9434884/49844934-b03bd880-fdff-11e8-838e-6299ee24ff08.png"></p>
+<h3 id="通用扩展接口"><a href="#通用扩展接口" class="headerlink" title="通用扩展接口"></a>通用扩展接口</h3><p>以下通用接口位于 sentinel-core 中：</p>
+<ul>
+<li><p>TokenService: 集群限流功能接口，server / client 均可复用</p>
+</li>
+<li><p>ClusterTokenClient: 集群限流功能客户端</p>
+</li>
+<li><p>ClusterTokenServer: 集群限流服务端接口</p>
+</li>
+<li><p>EmbeddedClusterTokenServer: 集群限流服务端接口（embedded 模式）<br>以下通用接口位于 sentinel-cluster-common-default:</p>
+</li>
+<li><p>EntityWriter</p>
+</li>
+<li><p>EntityDecoder</p>
+</li>
+</ul>
+<h3 id="Client-扩展接口"><a href="#Client-扩展接口" class="headerlink" title="Client 扩展接口"></a>Client 扩展接口</h3><p>集群流控 Client 端通信相关扩展接口：</p>
+<ul>
+<li>ClusterTransportClient：集群限流通信客户端</li>
+<li>RequestEntityWriter</li>
+<li>ResponseEntityDecoder</li>
+</ul>
+<h3 id="Server-扩展接口"><a href="#Server-扩展接口" class="headerlink" title="Server 扩展接口"></a>Server 扩展接口</h3><p>集群流控 Server 端通信相关扩展接口：</p>
+<ul>
+<li>ResponseEntityWriter</li>
+<li>RequestEntityDecoder</li>
+</ul>
+<p>集群流控 Server 端请求处理扩展接口：</p>
+<ul>
+<li>RequestProcessor: 请求处理接口 (request -&gt; response)</li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a target="_blank" rel="noopener" href="https://github.com/yu627482453">Bill Cipher</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://yu627482453.github.io/module/sentinel/sentinel-shi-yong-wen-dang/sentinel-ji-qun-liu-liang-kong-zhi/">https://yu627482453.github.io/module/sentinel/sentinel-shi-yong-wen-dang/sentinel-ji-qun-liu-liang-kong-zhi/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://yu627482453.github.io" target="_blank">蝶梦庄生</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E8%A1%8C%E5%8A%A8%E9%98%B6%E6%AE%B5-%E5%AE%8C%E6%88%90/">行动阶段/完成</a><a class="post-meta__tags" href="/tags/%E4%B8%BB%E9%A2%98%E5%9C%BA%E6%99%AF-%E7%BB%84%E4%BB%B6/">主题场景/组件</a><a class="post-meta__tags" href="/tags/%E7%AC%94%E8%AE%B0%E7%A9%BA%E9%97%B4-KnowladgeSpace-ProgramSpace-ModuleSpace/">笔记空间/KnowladgeSpace/ProgramSpace/ModuleSpace</a><a class="post-meta__tags" href="/tags/%E7%BB%86%E5%8C%96%E4%B8%BB%E9%A2%98-Module-Sentinel-%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8C/">细化主题/Module/Sentinel/使用手册</a></div><div class="post_share"><div class="social-share" data-image="https://api.yimian.xyz/img?type=moe" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/reward/wechat.jpg" target="_blank"><img class="post-qr-code-img" src="/img/reward/wechat.jpg" alt="wechat"/></a><div class="post-qr-code-desc">wechat</div></li><li class="reward-item"><a href="/img/reward/alipay.jpg" target="_blank"><img class="post-qr-code-img" src="/img/reward/alipay.jpg" alt="alipay"/></a><div class="post-qr-code-desc">alipay</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/module/sentinel/sentinel-shi-yong-wen-dang/sentinel-wang-guan-liu-liang-kong-zhi/"><img class="prev-cover" src="https://api.yimian.xyz/img?type=moe" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">【Sentinel】 网关流量控制</div></div></a></div><div class="next-post pull-right"><a href="/module/sentinel/sentinel-shi-yong-wen-dang/sentinel-xi-tong-zi-gua-ying-bao-hu/"><img class="next-cover" src="https://api.yimian.xyz/img?type=moe" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">【Sentinel】 系统自适应保护</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/module/elasticsearch/elasticsearch-ji-ben-gai-nian/" title="【ElasticSearch】 基本概念"><img class="cover" src="https://api.yimian.xyz/img?type=moe" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-12-20</div><div class="title">【ElasticSearch】 基本概念</div></div></a></div><div><a href="/module/eureka/eureka/" title="Eureka"><img class="cover" src="https://api.yimian.xyz/img?type=moe" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-12-14</div><div class="title">Eureka</div></div></a></div><div><a href="/module/elasticsearch/elasticsearch-elasticsearch-he-kibana-an-zhuang/" title="【ElasticSearch】 ElasticSearch和Kibana安装"><img class="cover" src="https://api.yimian.xyz/img?type=moe" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-12-20</div><div class="title">【ElasticSearch】 ElasticSearch和Kibana安装</div></div></a></div><div><a href="/module/elasticsearch/elasticsearch-cha-xun-he-ju-he-de-ji-chu-shi-yong/" title="【ElasticSearch】 查询和聚合的基础使用"><img class="cover" src="https://api.yimian.xyz/img?type=moe" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-12-20</div><div class="title">【ElasticSearch】 查询和聚合的基础使用</div></div></a></div><div><a href="/module/flowable/flowable/" title="Flowable"><img class="cover" src="https://api.yimian.xyz/img?type=moe" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-12-14</div><div class="title">Flowable</div></div></a></div><div><a href="/module/elasticsearch/elasticsearch-sheng-tai/" title="【ElasticSearch】 生态"><img class="cover" src="https://api.yimian.xyz/img?type=moe" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-12-20</div><div class="title">【ElasticSearch】 生态</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="gitalk-container"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Bill Cipher</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">575</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">125</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">21</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/yu627482453"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/yu627482453" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="/627482453@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E3%80%90Sentinel%E3%80%91-%E9%9B%86%E7%BE%A4%E6%B5%81%E9%87%8F%E6%8E%A7%E5%88%B6"><span class="toc-number">1.</span> <span class="toc-text">【Sentinel】 集群流量控制</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Metadata"><span class="toc-number">1.1.</span> <span class="toc-text">Metadata</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E3%80%90Sentinel%E3%80%91-%E9%9B%86%E7%BE%A4%E6%B5%81%E9%87%8F%E6%8E%A7%E5%88%B6-1"><span class="toc-number">1.2.</span> <span class="toc-text">【Sentinel】 集群流量控制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A8%A1%E5%9D%97%E7%BB%93%E6%9E%84"><span class="toc-number">1.3.</span> <span class="toc-text">模块结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9B%86%E7%BE%A4%E6%B5%81%E6%8E%A7%E8%A7%84%E5%88%99"><span class="toc-number">1.4.</span> <span class="toc-text">集群流控规则</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%84%E5%88%99"><span class="toc-number">1.4.1.</span> <span class="toc-text">规则</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E6%96%B9%E5%BC%8F"><span class="toc-number">1.4.2.</span> <span class="toc-text">配置方式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9B%86%E7%BE%A4%E9%99%90%E6%B5%81%E5%AE%A2%E6%88%B7%E7%AB%AF"><span class="toc-number">1.5.</span> <span class="toc-text">集群限流客户端</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9B%86%E7%BE%A4%E9%99%90%E6%B5%81%E6%9C%8D%E5%8A%A1%E7%AB%AF"><span class="toc-number">1.6.</span> <span class="toc-text">集群限流服务端</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%AF%E5%8A%A8%E6%96%B9%E5%BC%8F"><span class="toc-number">1.6.1.</span> <span class="toc-text">启动方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%84%E5%88%99%E9%85%8D%E7%BD%AE"><span class="toc-number">1.6.2.</span> <span class="toc-text">规则配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B1%9E%E6%80%A7%E9%85%8D%E7%BD%AE"><span class="toc-number">1.6.3.</span> <span class="toc-text">属性配置</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Token-Server-%E5%88%86%E9%85%8D%E9%85%8D%E7%BD%AE"><span class="toc-number">1.7.</span> <span class="toc-text">Token Server 分配配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B"><span class="toc-number">1.8.</span> <span class="toc-text">示例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%89%A9%E5%B1%95%E6%8E%A5%E5%8F%A3%E8%AE%BE%E8%AE%A1"><span class="toc-number">1.9.</span> <span class="toc-text">扩展接口设计</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B4%E4%BD%93%E6%89%A9%E5%B1%95%E6%9E%B6%E6%9E%84"><span class="toc-number">1.9.1.</span> <span class="toc-text">整体扩展架构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%9A%E7%94%A8%E6%89%A9%E5%B1%95%E6%8E%A5%E5%8F%A3"><span class="toc-number">1.9.2.</span> <span class="toc-text">通用扩展接口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Client-%E6%89%A9%E5%B1%95%E6%8E%A5%E5%8F%A3"><span class="toc-number">1.9.3.</span> <span class="toc-text">Client 扩展接口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Server-%E6%89%A9%E5%B1%95%E6%8E%A5%E5%8F%A3"><span class="toc-number">1.9.4.</span> <span class="toc-text">Server 扩展接口</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/module/flowable/flowable-zhuan-lan/flowable-zhuan-lan/" title="无题"><img src="https://api.yimian.xyz/img?type=moe" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/module/flowable/flowable-zhuan-lan/flowable-zhuan-lan/" title="无题">无题</a><time datetime="2023-07-15T09:45:06.401Z" title="发表于 2023-07-15 17:45:06">2023-07-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/module/consul/part/consul-tong-yong-pei-zhi-shu-xing/" title="无题"><img src="https://api.yimian.xyz/img?type=moe" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/module/consul/part/consul-tong-yong-pei-zhi-shu-xing/" title="无题">无题</a><time datetime="2023-07-15T09:44:38.408Z" title="发表于 2023-07-15 17:44:38">2023-07-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/java/java-duo-xian-cheng-bing-fa/java-duo-xian-cheng-bing-fa-xian-cheng/java-duo-xian-cheng-bing-fa-xian-cheng/" title="【Java 多线程并发】 线程"><img src="https://api.yimian.xyz/img?type=moe" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【Java 多线程并发】 线程"/></a><div class="content"><a class="title" href="/java/java-duo-xian-cheng-bing-fa/java-duo-xian-cheng-bing-fa-xian-cheng/java-duo-xian-cheng-bing-fa-xian-cheng/" title="【Java 多线程并发】 线程">【Java 多线程并发】 线程</a><time datetime="2023-07-10T06:15:00.000Z" title="发表于 2023-07-10 14:15:00">2023-07-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/java/java-jvm/java-jvm-nei-cun-guan-li/java-jvm-zhi-jie-nei-cun/" title="【Java JVM】 直接内存"><img src="https://api.yimian.xyz/img?type=moe" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【Java JVM】 直接内存"/></a><div class="content"><a class="title" href="/java/java-jvm/java-jvm-nei-cun-guan-li/java-jvm-zhi-jie-nei-cun/" title="【Java JVM】 直接内存">【Java JVM】 直接内存</a><time datetime="2023-07-10T00:00:00.000Z" title="发表于 2023-07-10 08:00:00">2023-07-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/database/redis/redis-chong-dian-gong-neng/redis-pai-xu/" title="【Redis】 排序"><img src="https://api.yimian.xyz/img?type=moe" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【Redis】 排序"/></a><div class="content"><a class="title" href="/database/redis/redis-chong-dian-gong-neng/redis-pai-xu/" title="【Redis】 排序">【Redis】 排序</a><time datetime="2023-07-09T06:07:00.000Z" title="发表于 2023-07-09 14:07:00">2023-07-09</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By Bill Cipher</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>function addGitalkSource () {
+  const ele = document.createElement('link')
+  ele.rel = 'stylesheet'
+  ele.href= 'https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.css'
+  document.getElementsByTagName('head')[0].appendChild(ele)
+}
+
+function loadGitalk () {
+  function initGitalk () {
+    var gitalk = new Gitalk(Object.assign({
+      clientID: 'c61a274b6f5aa26a58f6',
+      clientSecret: '485a7761d321c8dcc5cae05d7256be9fb196d94a',
+      repo: 'yu627482453.github.io',
+      owner: 'yu627482453',
+      admin: ['yu627482453'],
+      id: '8a9533f757eaffdd08b855ce12c1879c',
+      updateCountCallback: commentCount
+    },null))
+
+    gitalk.render('gitalk-container')
+  }
+
+  if (typeof Gitalk === 'function') initGitalk()
+  else {
+    addGitalkSource()
+    getScript('https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.js').then(initGitalk)
+  }
+}
+
+function commentCount(n){
+  let isCommentCount = document.querySelector('#post-meta .gitalk-comment-count')
+  if (isCommentCount) {
+    isCommentCount.innerHTML= n
+  }
+}
+
+if ('Gitalk' === 'Gitalk' || !true) {
+  if (true) btf.loadComment(document.getElementById('gitalk-container'), loadGitalk)
+  else loadGitalk()
+} else {
+  function loadOtherComment () {
+    loadGitalk()
+  }
+}</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

@@ -1,0 +1,634 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>【Redisson starter】 示例 | 蝶梦庄生</title><meta name="keywords" content="Redisson"><meta name="author" content="Bill Cipher"><meta name="copyright" content="Bill Cipher"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="【Redisson starter】 示例">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【Redisson starter】 示例">
+<meta property="og:url" content="https://yu627482453.github.io/module/redisson/redisson-spring-boot-starter/redisson-starter-shi-li/index.html">
+<meta property="og:site_name" content="蝶梦庄生">
+<meta property="og:description" content="【Redisson starter】 示例">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://api.yimian.xyz/img?type=moe">
+<meta property="article:published_time" content="2023-01-22T13:55:00.000Z">
+<meta property="article:modified_time" content="2023-01-22T13:55:00.000Z">
+<meta property="article:author" content="Bill Cipher">
+<meta property="article:tag" content="行动阶段&#x2F;完成">
+<meta property="article:tag" content="主题场景&#x2F;组件">
+<meta property="article:tag" content="笔记空间&#x2F;KnowladgeSpace&#x2F;ProgramSpace&#x2F;ModuleSpace">
+<meta property="article:tag" content="细化主题&#x2F;Module&#x2F;Redisson">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://api.yimian.xyz/img?type=moe"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://yu627482453.github.io/module/redisson/redisson-spring-boot-starter/redisson-starter-shi-li/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: undefined,
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: Bill Cipher","link":"链接: ","source":"来源: 蝶梦庄生","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '【Redisson starter】 示例',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-01-22 21:55:00'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.2.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">575</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">125</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">21</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://api.yimian.xyz/img?type=moe')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">蝶梦庄生</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">【Redisson starter】 示例</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-01-22T13:55:00.000Z" title="发表于 2023-01-22 21:55:00">2023-01-22</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-01-22T13:55:00.000Z" title="更新于 2023-01-22 21:55:00">2023-01-22</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Redisson/">Redisson</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="【Redisson starter】 示例"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="【Redisson-starter】-示例"><a href="#【Redisson-starter】-示例" class="headerlink" title="【Redisson starter】 示例"></a>【Redisson starter】 示例</h1><h2 id="Metadata"><a href="#Metadata" class="headerlink" title="Metadata"></a>Metadata</h2><pre><code class="line-numbers language-yml">title: 【Redisson starter】 示例
+date: 2023-01-22 21:55
+tags:
+  - 行动阶段/完成
+  - 主题场景/组件
+  - 笔记空间/KnowladgeSpace/ProgramSpace/ModuleSpace
+  - 细化主题/Module/Redisson
+categories:
+  - Redisson
+keywords:
+  - Redisson
+description: 【Redisson starter】 示例
+</code></pre>
+<h2 id="【Redisson-starter】-示例-1"><a href="#【Redisson-starter】-示例-1" class="headerlink" title="【Redisson starter】 示例"></a>【Redisson starter】 示例</h2><pre><code class="line-numbers language-java">@Component
+@Slf4j
+public class DistributedRedisLock {
+
+    @Autowired
+    private RedissonClient redissonClient;
+
+
+    private static final String DEFAULT_LOCK_NAME = "redisLock_";
+
+    //加锁
+    public boolean lock(String lockName) {
+        //声明key对象
+        String key = DEFAULT_LOCK_NAME + lockName;
+        //获取锁对象
+        RLock mylock = redissonClient.getLock(key);
+        //加锁，并且设置锁过期时间3秒，防止死锁的产生  uuid+threadId
+        mylock.lock();
+        //加锁成功
+        return true;
+    }
+
+    public boolean lock(String lockName, long timeout) {
+        checkRedissonClient();
+        RLock lock = getLock(lockName);
+        try {
+            if(timeout != -1){
+                // timeout:超时时间   TimeUnit.SECONDS：单位
+                lock.lock(timeout, TimeUnit.SECONDS);
+            }else{
+                lock.lock();
+            }
+            log.debug(" get lock success ,lockKey:{}", lockName);
+            return true;
+        } catch (Exception e) {
+            log.error(" get lock fail,lockKey:{}, cause:{} ",
+                    lockName, e.getMessage());
+            return false;
+        }
+    }
+
+
+    private void checkRedissonClient() {
+        if (null == redissonClient) {
+            log.error(" redissonClient is null ,please check redis instance ! ");
+            throw new RuntimeException("redissonClient is null ,please check redis instance !");
+        }
+        if (redissonClient.isShutdown()) {
+            log.error(" Redisson instance has been shut down !!!");
+            throw new RuntimeException("Redisson instance has been shut down !!!");
+        }
+    }
+
+
+
+    /**
+     * 解锁
+     * @param lockName
+     */
+    public void unlock(String lockName){
+        checkRedissonClient();
+        try {
+            RLock lock = getLock(lockName);
+            if(lock.isLocked() &amp;&amp; lock.isHeldByCurrentThread()){
+                lock.unlock();
+                log.debug("key：{}，unlock success",lockName);
+            }else{
+                log.debug("key：{}，没有加锁或者不是当前线程加的锁 ",lockName);
+            }
+        }catch (Exception e){
+            log.error("key：{}，unlock error,reason:{}",lockName,e.getMessage());
+        }
+    }
+
+
+    private RLock getLock(String lockName) {
+        String key = DEFAULT_LOCK_NAME + lockName;
+        return redissonClient.getLock(key);
+    }
+
+
+    /**
+     * 可中断锁
+     * @param lockName 锁名称
+     * @param waitTimeout  等待时长
+     * @param unit 时间单位
+     * @return
+     */
+    public boolean tryLock(String lockName, long waitTimeout, TimeUnit unit) {
+        checkRedissonClient();
+        RLock lock = getLock(lockName);
+        try {
+            boolean res = lock.tryLock(waitTimeout,unit);
+            if (!res) {
+                log.debug(" get lock fail ,lockKey:{}", lockName);
+                return false;
+            }
+            log.debug(" get lock success ,lockKey:{}", lockName);
+            return true;
+        } catch (Exception e) {
+            log.error(" get lock fail,lockKey:{}, cause:{} ",
+                    lockName, e.getMessage());
+            return false;
+        }
+    }
+
+
+
+    /**
+     * 公平锁
+     * @param lockName
+     * @param waitTimeout
+     * @param timeout
+     * @param unit
+     * @return
+     */
+    public boolean getFairLock(String lockName, long waitTimeout,long timeout, TimeUnit unit){
+        checkRedissonClient();
+        RLock lock = redissonClient.getFairLock(DEFAULT_LOCK_NAME + lockName);
+        try {
+            boolean res = lock.tryLock(waitTimeout,timeout,unit);
+            if (!res) {
+                log.debug(" get lock fail ,lockKey:{}", lockName);
+                return false;
+            }
+            log.debug(" get lock success ,lockKey:{}", lockName);
+            return true;
+        } catch (Exception e) {
+            log.error(" get lock fail,lockKey:{}, cause:{} ",
+                    lockName, e.getMessage());
+            return false;
+        }
+    }
+
+
+
+
+
+
+
+    /**
+     * 获取读写锁
+     * @param lockName
+     * @return
+     */
+    public RReadWriteLock getReadWriteLock(String lockName) {
+        return redissonClient.getReadWriteLock(lockName);
+
+    }
+
+    /**
+     * 信号量
+     * @param semaphoreName
+     * @return
+     */
+    public RSemaphore getSemaphore(String semaphoreName) {
+        return redissonClient.getSemaphore(semaphoreName);
+    }
+
+    /**
+     * 可过期性信号量
+     * @param permitExpirableSemaphoreName
+     * @return
+     */
+    public RPermitExpirableSemaphore getPermitExpirableSemaphore(String permitExpirableSemaphoreName) {
+
+        return redissonClient.getPermitExpirableSemaphore(permitExpirableSemaphoreName);
+    }
+
+    /**
+     * 闭锁
+     * @param countDownLatchName
+     * @return
+     */
+    public RCountDownLatch getCountDownLatch(String countDownLatchName) {
+        return redissonClient.getCountDownLatch(countDownLatchName);
+    }
+
+}
+</code></pre>
+<h3 id="测试用例"><a href="#测试用例" class="headerlink" title="测试用例"></a>测试用例</h3><pre><code class="line-numbers language-java">@RunWith(SpringRunner.class)
+@SpringBootTest
+public class RedissonDistributedLockerTest {
+ 
+    private static final Logger log = LoggerFactory.getLogger(RedissonDistributedLocker.class);
+ 
+    @Resource
+    private DistributedLocker distributedLocker;
+ 
+    private static final ExecutorService executorServiceB = Executors.newSingleThreadExecutor();
+ 
+    private static final ExecutorService executorServiceC = Executors.newSingleThreadExecutor();
+ 
+    @Test
+    public void tryLockUnlockCost() throws Exception {
+        StopWatch stopWatch = new StopWatch("加锁解锁耗时统计");
+        stopWatch.start();
+        for (int i = 0; i &lt; 10000; i++) {
+            String key = "mock-key:" + UUID.randomUUID().toString().replace("-", "");
+            Optional&lt;LockResource&gt; optLocked = distributedLocker.tryLock(key, 600000, 600000);
+            Assert.assertTrue(optLocked.isPresent());
+            optLocked.get().unlock();
+        }
+        stopWatch.stop();
+        log.info(stopWatch.prettyPrint());
+    }
+ 
+    @Test
+    public void tryLock() throws Exception {
+        String key = "mock-key:" + UUID.randomUUID().toString().replace("-", "");
+        Optional&lt;LockResource&gt; optLocked = distributedLocker.tryLock(key, 600000, 600000);
+        Assert.assertTrue(optLocked.isPresent());
+ 
+        Optional&lt;LockResource&gt; optLocked2 = distributedLocker.tryLock(key, 600000, 600000);
+        Assert.assertTrue(optLocked2.isPresent());
+ 
+        optLocked.get().unlock();
+    }
+ 
+    /**
+     * 模拟2个线程争抢锁：A先获取到锁，A释放锁后，B再获得锁
+     */
+    @Test
+    public void tryLock2() throws Exception {
+        String key = "mock-key:" + UUID.randomUUID().toString().replace("-", "");
+        CountDownLatch countDownLatch = new CountDownLatch(1);
+        Future&lt;Optional&lt;LockResource&gt;&gt; submit = executorServiceB.submit(() -&gt; {
+                    countDownLatch.await();
+                    log.info("B尝试获得锁：thread={}", currentThreadId());
+                    return distributedLocker.tryLock(key, 600000, 600000);
+                }
+        );
+ 
+        log.info("A尝试获得锁：thread={}", currentThreadId());
+        Optional&lt;LockResource&gt; optLocked = distributedLocker.tryLock(key, 300000, 600000);
+        Assert.assertTrue(optLocked.isPresent());
+ 
+        log.info("A已获得锁：thread={}", currentThreadId());
+        countDownLatch.countDown();
+ 
+        optLocked.get().unlock();
+        log.info("A已释放锁：thread={}", currentThreadId());
+ 
+        Optional&lt;LockResource&gt; lockResource2 = submit.get();
+        Assert.assertTrue(lockResource2.isPresent());
+ 
+        executorServiceB.submit(() -&gt; {
+            log.info("B已获得锁：thread={}", currentThreadId());
+            lockResource2.get().unlock();
+            log.info("B已释放锁：thread={}", currentThreadId());
+        });
+    }
+ 
+    /**
+     * 模拟3个线程争抢锁：A先获取到锁，A释放锁后，B和C同时争抢锁
+     */
+    @Test
+    public void tryLock3() throws Exception {
+        String key = "mock-key:" + UUID.randomUUID().toString().replace("-", "");
+ 
+        log.info("A尝试获得锁：thread={}", currentThreadId());
+        Optional&lt;LockResource&gt; optLocked = distributedLocker.tryLock(key, 600000, 600000);
+ 
+        if (optLocked.isPresent()) {
+            log.info("A已获得锁：thread={}", currentThreadId());
+        }
+        Assert.assertTrue(optLocked.isPresent());
+ 
+        CyclicBarrier cyclicBarrier = new CyclicBarrier(2);
+        Future&lt;Optional&lt;LockResource&gt;&gt; submitB = executorServiceB.submit(() -&gt; {
+                    cyclicBarrier.await();
+                    log.info("B尝试获得锁：thread={}", currentThreadId());
+                    return distributedLocker.tryLock(key, 600000, 600000);
+                }
+        );
+ 
+        Future&lt;Optional&lt;LockResource&gt;&gt; submitC = executorServiceC.submit(() -&gt; {
+                    cyclicBarrier.await();
+                    log.info("C尝试获得锁：thread={}", currentThreadId());
+                    return distributedLocker.tryLock(key, 600000, 600000);
+                }
+        );
+ 
+        optLocked.get().unlock();
+        log.info("A已释放锁：thread={}", currentThreadId());
+ 
+        CountDownLatch countDownLatch = new CountDownLatch(2);
+        executorServiceB.submit(() -&gt; {
+            log.info("B已获得锁：thread={}", currentThreadId());
+            try {
+                submitB.get().get().unlock();
+            } catch (InterruptedException | ExecutionException e) {
+                e.printStackTrace();
+            }
+            log.info("B已释放锁：thread={}", currentThreadId());
+            countDownLatch.countDown();
+        });
+ 
+        executorServiceC.submit(() -&gt; {
+            log.info("C已获得锁：thread={}", currentThreadId());
+            try {
+                submitC.get().get().unlock();
+            } catch (InterruptedException | ExecutionException e) {
+                e.printStackTrace();
+            }
+            log.info("C已释放锁：thread={}", currentThreadId());
+            countDownLatch.countDown();
+        });
+ 
+        countDownLatch.await();
+    }
+ 
+    private static Long currentThreadId() {
+        return Thread.currentThread().getId();
+    }
+ 
+    @Test
+    public void tryLockWaitTimeout() throws Exception {
+        String key = "mock-key:" + UUID.randomUUID().toString();
+ 
+        Optional&lt;LockResource&gt; optLocked = distributedLocker.tryLock(key, 10, 2000);
+        Assert.assertTrue(optLocked.isPresent());
+ 
+        Optional&lt;LockResource&gt; optLockResource = CompletableFuture.supplyAsync(() -&gt; {
+                long now = System.currentTimeMillis();
+                Optional&lt;LockResource&gt; optLockedAgain = distributedLocker.tryLock(key, 1000, 10);
+                long cost = System.currentTimeMillis() - now;
+                log.info("cost={}", cost);
+                return optLockedAgain;
+        }).exceptionally(th -&gt; {
+            log.error("Exception: ", th);
+            return Optional.empty();
+        }).join();
+ 
+        Assert.assertTrue(!optLockResource.isPresent());
+    }
+ 
+    @Test
+    public void tryLockWithLeaseTime() throws Exception {
+        String key = "mock-key-with-leaseTime:" + UUID.randomUUID().toString();
+        Optional&lt;LockResource&gt; optLocked = distributedLocker.tryLock(key, 3000, 1000);
+        Assert.assertTrue(optLocked.isPresent());
+ 
+        // 可重入
+        Optional&lt;LockResource&gt; optLockedAgain = distributedLocker.tryLock(key, 3000, 1000);
+        Assert.assertTrue(optLockedAgain.isPresent());
+    }
+ 
+    /**
+     * 模拟1000个并发请求枪一把锁
+     */
+    @Test
+    public void tryLockWithLeaseTimeOnMultiThread() throws Exception {
+        int totalThread = 1000;
+        String key = "mock-key-with-leaseTime:" + UUID.randomUUID().toString();
+        AtomicInteger tryAcquireLockTimes = new AtomicInteger(0);
+        AtomicInteger acquiredLockTimes = new AtomicInteger(0);
+ 
+        ExecutorService executor = Executors.newFixedThreadPool(totalThread);
+        for (int i = 0; i &lt; totalThread; i++) {
+            executor.submit(new Runnable() {
+ 
+                @Override
+                public void run() {
+                    tryAcquireLockTimes.getAndIncrement();
+                    Optional&lt;LockResource&gt; optLocked = distributedLocker.tryLock(key, 10, 10000);
+                    if (optLocked.isPresent()) {
+                        acquiredLockTimes.getAndIncrement();
+                    }
+                }
+            });
+        }
+        executor.awaitTermination(15, TimeUnit.SECONDS);
+ 
+        Assert.assertTrue(tryAcquireLockTimes.get() == totalThread);
+        Assert.assertTrue(acquiredLockTimes.get() == 1);
+    }
+ 
+    @Test
+    public void tryLockWithLeaseTimeOnMultiThread2() throws Exception {
+        int totalThread = 100;
+        String key = "mock-key-with-leaseTime:" + UUID.randomUUID().toString();
+        AtomicInteger tryAcquireLockTimes = new AtomicInteger(0);
+        AtomicInteger acquiredLockTimes = new AtomicInteger(0);
+ 
+        ExecutorService executor = Executors.newFixedThreadPool(totalThread);
+        for (int i = 0; i &lt; totalThread; i++) {
+            executor.submit(new Runnable() {
+ 
+                @Override
+                public void run() {
+                    long now = System.currentTimeMillis();
+                    Optional&lt;LockResource&gt; optLocked = distributedLocker.tryLock(key, 10000, 5);
+                    long cost = System.currentTimeMillis() - now;
+                    log.info("tryAcquireLockTimes={}||wait={}", tryAcquireLockTimes.incrementAndGet(), cost);
+                    if (optLocked.isPresent()) {
+                        acquiredLockTimes.getAndIncrement();
+                        // 主动释放锁
+                        optLocked.get().unlock();
+                    }
+                }
+            });
+        }
+        executor.awaitTermination(20, TimeUnit.SECONDS);
+ 
+        log.info("tryAcquireLockTimes={}, acquireLockTimes={}", tryAcquireLockTimes.get(), acquiredLockTimes.get());
+        Assert.assertTrue(tryAcquireLockTimes.get() == totalThread);
+        Assert.assertTrue(acquiredLockTimes.get() == totalThread);
+    }
+ 
+}
+ 
+ 
+public interface DistributedLocker {
+ 
+    Optional&lt;LockResource&gt; tryLock(String lockKey, int waitTime);
+ 
+    Optional&lt;LockResource&gt; tryLock(String lockKey, int waitTime, int leaseTime);
+ 
+}
+ 
+public interface LockResource {
+ 
+    void unlock();
+ 
+}
+ 
+</code></pre>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a target="_blank" rel="noopener" href="https://github.com/yu627482453">Bill Cipher</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://yu627482453.github.io/module/redisson/redisson-spring-boot-starter/redisson-starter-shi-li/">https://yu627482453.github.io/module/redisson/redisson-spring-boot-starter/redisson-starter-shi-li/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://yu627482453.github.io" target="_blank">蝶梦庄生</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E8%A1%8C%E5%8A%A8%E9%98%B6%E6%AE%B5-%E5%AE%8C%E6%88%90/">行动阶段/完成</a><a class="post-meta__tags" href="/tags/%E4%B8%BB%E9%A2%98%E5%9C%BA%E6%99%AF-%E7%BB%84%E4%BB%B6/">主题场景/组件</a><a class="post-meta__tags" href="/tags/%E7%AC%94%E8%AE%B0%E7%A9%BA%E9%97%B4-KnowladgeSpace-ProgramSpace-ModuleSpace/">笔记空间/KnowladgeSpace/ProgramSpace/ModuleSpace</a><a class="post-meta__tags" href="/tags/%E7%BB%86%E5%8C%96%E4%B8%BB%E9%A2%98-Module-Redisson/">细化主题/Module/Redisson</a></div><div class="post_share"><div class="social-share" data-image="https://api.yimian.xyz/img?type=moe" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/reward/wechat.jpg" target="_blank"><img class="post-qr-code-img" src="/img/reward/wechat.jpg" alt="wechat"/></a><div class="post-qr-code-desc">wechat</div></li><li class="reward-item"><a href="/img/reward/alipay.jpg" target="_blank"><img class="post-qr-code-img" src="/img/reward/alipay.jpg" alt="alipay"/></a><div class="post-qr-code-desc">alipay</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/module/redisson/redisson-spring-boot-starter/redisson-spring-boot-starter/"><img class="prev-cover" src="https://api.yimian.xyz/img?type=moe" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">【Redisson】 spring-boot-starter</div></div></a></div><div class="next-post pull-right"><a href="/module/redisson/redisson-spring-boot-starter/redisson-starter-suo/redisson-starter-suo/"><img class="next-cover" src="https://api.yimian.xyz/img?type=moe" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">【Redisson starter】 锁</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/module/redisson/redisson/" title="Redisson"><img class="cover" src="https://api.yimian.xyz/img?type=moe" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-01-22</div><div class="title">Redisson</div></div></a></div><div><a href="/module/redisson/redisson-spring-boot-starter/redisson-starter-redissonclient/" title="【Redisson starter】 RedissonClient"><img class="cover" src="https://api.yimian.xyz/img?type=moe" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-01-22</div><div class="title">【Redisson starter】 RedissonClient</div></div></a></div><div><a href="/module/redisson/redisson-spring-boot-starter/redisson-starter-jian-jie/" title="【Redisson starter】 简介"><img class="cover" src="https://api.yimian.xyz/img?type=moe" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-01-22</div><div class="title">【Redisson starter】 简介</div></div></a></div><div><a href="/module/redisson/redisson-spring-boot-starter/redisson-starter-yin-ru-yi-lai/" title="【Redisson starter】 引入依赖"><img class="cover" src="https://api.yimian.xyz/img?type=moe" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-01-22</div><div class="title">【Redisson starter】 引入依赖</div></div></a></div><div><a href="/module/redisson/redisson-spring-boot-starter/redisson-starter-pei-zhi-wen-jian/" title="【Redisson starter】 配置文件"><img class="cover" src="https://api.yimian.xyz/img?type=moe" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-01-22</div><div class="title">【Redisson starter】 配置文件</div></div></a></div><div><a href="/module/redisson/redisson-spring-boot-starter/redisson-spring-boot-starter/" title="【Redisson】 spring-boot-starter"><img class="cover" src="https://api.yimian.xyz/img?type=moe" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-01-23</div><div class="title">【Redisson】 spring-boot-starter</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="gitalk-container"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Bill Cipher</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">575</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">125</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">21</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/yu627482453"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/yu627482453" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="/627482453@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E3%80%90Redisson-starter%E3%80%91-%E7%A4%BA%E4%BE%8B"><span class="toc-number">1.</span> <span class="toc-text">【Redisson starter】 示例</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Metadata"><span class="toc-number">1.1.</span> <span class="toc-text">Metadata</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E3%80%90Redisson-starter%E3%80%91-%E7%A4%BA%E4%BE%8B-1"><span class="toc-number">1.2.</span> <span class="toc-text">【Redisson starter】 示例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B5%8B%E8%AF%95%E7%94%A8%E4%BE%8B"><span class="toc-number">1.2.1.</span> <span class="toc-text">测试用例</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/module/flowable/flowable-zhuan-lan/flowable-zhuan-lan/" title="无题"><img src="https://api.yimian.xyz/img?type=moe" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/module/flowable/flowable-zhuan-lan/flowable-zhuan-lan/" title="无题">无题</a><time datetime="2023-07-15T09:45:06.401Z" title="发表于 2023-07-15 17:45:06">2023-07-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/module/consul/part/consul-tong-yong-pei-zhi-shu-xing/" title="无题"><img src="https://api.yimian.xyz/img?type=moe" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/module/consul/part/consul-tong-yong-pei-zhi-shu-xing/" title="无题">无题</a><time datetime="2023-07-15T09:44:38.408Z" title="发表于 2023-07-15 17:44:38">2023-07-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/java/java-duo-xian-cheng-bing-fa/java-duo-xian-cheng-bing-fa-xian-cheng/java-duo-xian-cheng-bing-fa-xian-cheng/" title="【Java 多线程并发】 线程"><img src="https://api.yimian.xyz/img?type=moe" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【Java 多线程并发】 线程"/></a><div class="content"><a class="title" href="/java/java-duo-xian-cheng-bing-fa/java-duo-xian-cheng-bing-fa-xian-cheng/java-duo-xian-cheng-bing-fa-xian-cheng/" title="【Java 多线程并发】 线程">【Java 多线程并发】 线程</a><time datetime="2023-07-10T06:15:00.000Z" title="发表于 2023-07-10 14:15:00">2023-07-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/java/java-jvm/java-jvm-nei-cun-guan-li/java-jvm-zhi-jie-nei-cun/" title="【Java JVM】 直接内存"><img src="https://api.yimian.xyz/img?type=moe" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【Java JVM】 直接内存"/></a><div class="content"><a class="title" href="/java/java-jvm/java-jvm-nei-cun-guan-li/java-jvm-zhi-jie-nei-cun/" title="【Java JVM】 直接内存">【Java JVM】 直接内存</a><time datetime="2023-07-10T00:00:00.000Z" title="发表于 2023-07-10 08:00:00">2023-07-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/database/redis/redis-chong-dian-gong-neng/redis-pai-xu/" title="【Redis】 排序"><img src="https://api.yimian.xyz/img?type=moe" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【Redis】 排序"/></a><div class="content"><a class="title" href="/database/redis/redis-chong-dian-gong-neng/redis-pai-xu/" title="【Redis】 排序">【Redis】 排序</a><time datetime="2023-07-09T06:07:00.000Z" title="发表于 2023-07-09 14:07:00">2023-07-09</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By Bill Cipher</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>function addGitalkSource () {
+  const ele = document.createElement('link')
+  ele.rel = 'stylesheet'
+  ele.href= 'https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.css'
+  document.getElementsByTagName('head')[0].appendChild(ele)
+}
+
+function loadGitalk () {
+  function initGitalk () {
+    var gitalk = new Gitalk(Object.assign({
+      clientID: 'c61a274b6f5aa26a58f6',
+      clientSecret: '485a7761d321c8dcc5cae05d7256be9fb196d94a',
+      repo: 'yu627482453.github.io',
+      owner: 'yu627482453',
+      admin: ['yu627482453'],
+      id: 'b61a769ce732ccba7f2594904657bdaa',
+      updateCountCallback: commentCount
+    },null))
+
+    gitalk.render('gitalk-container')
+  }
+
+  if (typeof Gitalk === 'function') initGitalk()
+  else {
+    addGitalkSource()
+    getScript('https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.js').then(initGitalk)
+  }
+}
+
+function commentCount(n){
+  let isCommentCount = document.querySelector('#post-meta .gitalk-comment-count')
+  if (isCommentCount) {
+    isCommentCount.innerHTML= n
+  }
+}
+
+if ('Gitalk' === 'Gitalk' || !true) {
+  if (true) btf.loadComment(document.getElementById('gitalk-container'), loadGitalk)
+  else loadGitalk()
+} else {
+  function loadOtherComment () {
+    loadGitalk()
+  }
+}</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

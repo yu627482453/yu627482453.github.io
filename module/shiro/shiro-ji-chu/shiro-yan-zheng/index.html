@@ -1,0 +1,543 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>【Shiro】 验证 | 蝶梦庄生</title><meta name="keywords" content="Shiro"><meta name="author" content="Bill Cipher"><meta name="copyright" content="Bill Cipher"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="【Shiro】 验证">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【Shiro】 验证">
+<meta property="og:url" content="https://yu627482453.github.io/module/shiro/shiro-ji-chu/shiro-yan-zheng/index.html">
+<meta property="og:site_name" content="蝶梦庄生">
+<meta property="og:description" content="【Shiro】 验证">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://api.yimian.xyz/img?type=moe">
+<meta property="article:published_time" content="2023-01-19T05:42:00.000Z">
+<meta property="article:modified_time" content="2023-01-19T05:42:00.000Z">
+<meta property="article:author" content="Bill Cipher">
+<meta property="article:tag" content="行动阶段&#x2F;完成">
+<meta property="article:tag" content="主题场景&#x2F;组件">
+<meta property="article:tag" content="笔记空间&#x2F;KnowladgeSpace&#x2F;ProgramSpace&#x2F;ModuleSpace">
+<meta property="article:tag" content="细化主题&#x2F;Module&#x2F;Shiro&#x2F;基础">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://api.yimian.xyz/img?type=moe"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://yu627482453.github.io/module/shiro/shiro-ji-chu/shiro-yan-zheng/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: undefined,
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: Bill Cipher","link":"链接: ","source":"来源: 蝶梦庄生","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '【Shiro】 验证',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-01-19 13:42:00'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.2.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">575</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">125</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">21</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://api.yimian.xyz/img?type=moe')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">蝶梦庄生</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">【Shiro】 验证</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-01-19T05:42:00.000Z" title="发表于 2023-01-19 13:42:00">2023-01-19</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-01-19T05:42:00.000Z" title="更新于 2023-01-19 13:42:00">2023-01-19</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Shiro/">Shiro</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="【Shiro】 验证"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="【Shiro】-验证"><a href="#【Shiro】-验证" class="headerlink" title="【Shiro】 验证"></a>【Shiro】 验证</h1><h2 id="Metadata"><a href="#Metadata" class="headerlink" title="Metadata"></a>Metadata</h2><pre><code class="line-numbers language-yml">title: 【Shiro】 验证
+date: 2023-01-19 13:42
+tags:
+  - 行动阶段/完成
+  - 主题场景/组件
+  - 笔记空间/KnowladgeSpace/ProgramSpace/ModuleSpace
+  - 细化主题/Module/Shiro/基础
+categories:
+  - Shiro
+keywords:
+  - Shiro
+description: 【Shiro】 验证
+</code></pre>
+<h2 id="【Shiro】-验证-1"><a href="#【Shiro】-验证-1" class="headerlink" title="【Shiro】 验证"></a>【Shiro】 验证</h2><p>身份验证是验证用户身份的过程。也就是说，当用户通过应用程序进行身份验证时，他们就是在证明他们确实是他们所说的那个人。这有时也称为“登录”。这通常是一个三步过程。</p>
+<ol>
+<li>收集用户的身份信息，称为principals(身份)，并支持身份证明，称为credentials (凭证)。</li>
+<li>将身份和凭据提交到系统。</li>
+<li>如果提交的凭据与系统对该用户身份（主体）的预期匹配，则认为该用户已通过身份验证。如果它们不匹配，则认为用户未通过身份验证。<br>每个人都熟悉的此过程的一个常见示例是用户名/密码组合。当大多数用户登录软件应用程序时，他们通常会提供用户名（主体）和支持密码（凭证）。如果存储在系统中的密码（或其表示形式）与用户指定的相匹配，则认为他们已通过身份验证。</li>
+</ol>
+<p>每个人都熟悉的此过程的一个常见示例是用户名/密码组合。当大多数用户登录软件应用程序时，他们通常会提供用户名（主体）和支持密码（凭证）。如果存储在系统中的密码（或其表示形式）与用户指定的相匹配，则认为他们已通过身份验证。</p>
+<p>Shiro 以简单直观的方式支持相同的工作流程。正如我们所说，Shiro 有一个以 Subject 为中心的 API——几乎所有你在运行时使用 Shiro 做的事情都是通过与当前正在执行的 Subject 交互来实现的。因此，要登录一个 Subject，您只需调用它的登录方法，传递一个 AuthenticationToken 实例，该实例代表提交的主体和凭据（在本例中为用户名和密码）。下面的清单 5 中显示了这个示例。</p>
+<style>.admonition {
+  margin: 1.5625em 0;
+  padding: .6rem;
+  overflow: hidden;
+  font-size: 1.00rem;
+  page-break-inside: avoid;
+  border-left: .3rem solid #42b983;
+  border-radius: .3rem;
+  box-shadow: 0 0.1rem 0.4rem rgba(0,0,0,.05), 0 0 0.05rem rgba(0,0,0,.1);
+  background-color: #fafafa;
+}
+
+p.admonition-title {
+  position: relative;
+  margin: -.6rem -.6rem .8em -.6rem !important;
+  padding: .4rem .6rem .4rem 2.5rem;
+  font-weight: 700;
+  background-color:rgba(66, 185, 131, .1);
+}
+
+.admonition-title::before {
+  position: absolute;
+  top: .9rem;
+  left: 1rem;
+  width: 12px;
+  height: 12px;
+  background-color: #42b983;
+  border-radius: 50%;
+  content: ' ';
+}
+
+.info>.admonition-title, .todo>.admonition-title {
+  background-color: rgba(0,184,212,.1);
+}
+
+.warning>.admonition-title, .attention>.admonition-title, .caution>.admonition-title {
+  background-color: rgba(255,145,0,.1);
+}
+
+.failure>.admonition-title, .missing>.admonition-title, .fail>.admonition-title, .error>.admonition-title {
+  background-color: rgba(255,82,82,.1);
+}
+
+.admonition.info, .admonition.todo {
+  border-color: #00b8d4;
+}
+
+.admonition.warning, .admonition.attention, .admonition.caution {
+  border-color: #ff9100;
+}
+
+.admonition.failure, .admonition.missing, .admonition.fail, .admonition.error {
+  border-color: #ff5252;
+}
+
+.info>.admonition-title::before, .todo>.admonition-title::before {
+  background-color: #00b8d4;
+  border-radius: 50%;
+}
+
+.warning>.admonition-title::before, .attention>.admonition-title::before, .caution>.admonition-title::before {
+  background-color: #ff9100;
+  border-radius: 50%;
+}
+
+.failure>.admonition-title::before,.missing>.admonition-title::before,.fail>.admonition-title::before,.error>.admonition-title::before{
+  background-color: #ff5252;;
+  border-radius: 50%;
+}
+
+.admonition>:last-child {
+  margin-bottom: 0 !important;
+}
+</style>
+
+<div class="admonition note"><p class="admonition-title">清单5: 主题登录</p><pre><code class="language-java">//1. 获取提交的主体和凭证：
+AuthenticationToken token = 
+new UsernamePasswordToken(username, password);
+//2。获取当前Subject：
+Subject currentUser = SecurityUtils.getSubject();
+
+<p>//3。登录：<br>currentUser.login（token）；<br></p></code></pre><p></p>
+</div>
+
+<p>如您所见，Shiro 的 API 很容易反映常见的工作流程。您将继续将这种简单性视为 Subject 的所有操作的主题。当调用登录方法时，SecurityManager 将接收 AuthenticationToken 并将其分派到一个或多个已配置的 Realms，以允许每个 Realms 根据需要执行身份验证检查。每个领域都能够根据需要对提交的 AuthenticationTokens 做出反应。但是如果登录尝试失败会发生什么？如果用户指定了错误的密码怎么办？您可以通过响应 Shiro 的运行时 AuthenticationException 来处理失败，如清单 6 所示。</p>
+<style>.admonition {
+  margin: 1.5625em 0;
+  padding: .6rem;
+  overflow: hidden;
+  font-size: 1.00rem;
+  page-break-inside: avoid;
+  border-left: .3rem solid #42b983;
+  border-radius: .3rem;
+  box-shadow: 0 0.1rem 0.4rem rgba(0,0,0,.05), 0 0 0.05rem rgba(0,0,0,.1);
+  background-color: #fafafa;
+}
+
+p.admonition-title {
+  position: relative;
+  margin: -.6rem -.6rem .8em -.6rem !important;
+  padding: .4rem .6rem .4rem 2.5rem;
+  font-weight: 700;
+  background-color:rgba(66, 185, 131, .1);
+}
+
+.admonition-title::before {
+  position: absolute;
+  top: .9rem;
+  left: 1rem;
+  width: 12px;
+  height: 12px;
+  background-color: #42b983;
+  border-radius: 50%;
+  content: ' ';
+}
+
+.info>.admonition-title, .todo>.admonition-title {
+  background-color: rgba(0,184,212,.1);
+}
+
+.warning>.admonition-title, .attention>.admonition-title, .caution>.admonition-title {
+  background-color: rgba(255,145,0,.1);
+}
+
+.failure>.admonition-title, .missing>.admonition-title, .fail>.admonition-title, .error>.admonition-title {
+  background-color: rgba(255,82,82,.1);
+}
+
+.admonition.info, .admonition.todo {
+  border-color: #00b8d4;
+}
+
+.admonition.warning, .admonition.attention, .admonition.caution {
+  border-color: #ff9100;
+}
+
+.admonition.failure, .admonition.missing, .admonition.fail, .admonition.error {
+  border-color: #ff5252;
+}
+
+.info>.admonition-title::before, .todo>.admonition-title::before {
+  background-color: #00b8d4;
+  border-radius: 50%;
+}
+
+.warning>.admonition-title::before, .attention>.admonition-title::before, .caution>.admonition-title::before {
+  background-color: #ff9100;
+  border-radius: 50%;
+}
+
+.failure>.admonition-title::before,.missing>.admonition-title::before,.fail>.admonition-title::before,.error>.admonition-title::before{
+  background-color: #ff5252;;
+  border-radius: 50%;
+}
+
+.admonition>:last-child {
+  margin-bottom: 0 !important;
+}
+</style>
+
+<div class="admonition note"><p class="admonition-title">清单6: 处理登录失败</p><pre><code class="language-java">//3。登录：
+try { 
+    currentUser.login(token); 
+} catch (IncorrectCredentialsException ice) { ... 
+} catch (LockedAccountException lae) { ... 
+} 
+... 
+catch (AuthenticationException ae) { ... 
+}
+</code></pre>
+</div>
+
+<p>您可以选择捕获其中一个 AuthenticationException 子类并做出具体反应，或者一般地处理任何 AuthenticationException（例如，向用户显示一条通用的“用户名或密码不正确”消息）。您可以根据自己的应用要求进行选择。</p>
+<p>Subject 成功登录后，他们被认为已通过身份验证，通常您允许他们使用您的应用程序。但是仅仅因为用户证明了他们的身份并不意味着他们可以在您的应用程序中为所欲为。这就引出了下一个问题，“我如何控制用户可以做什么或不可以做什么？” 决定允许用户做什么称为授权。接下来我们将介绍 Shiro 如何启用授权。</p>
+<h2 id="Authenticating-Subjects"><a href="#Authenticating-Subjects" class="headerlink" title="Authenticating Subjects"></a>Authenticating Subjects</h2><p>验证Subject的过程可以有效地分解为三个不同的步骤:</p>
+<ol>
+<li>收集受试者提交的主体和证书</li>
+<li>提交主体和凭据进行身份验证。</li>
+<li>如果提交成功，则允许访问，否则重试认证或阻止访问。</li>
+</ol>
+<p>下面的代码演示了Shiro的API如何反映这些步骤:</p>
+<h3 id="步骤1-收集主体的主体和凭证"><a href="#步骤1-收集主体的主体和凭证" class="headerlink" title="步骤1:收集主体的主体和凭证"></a>步骤1:收集主体的主体和凭证</h3><pre><code class="line-numbers language-java">//Example using most common scenario of username/password pair:
+UsernamePasswordToken token = new UsernamePasswordToken(username, password);
+
+//"Remember Me" built-in:
+token.setRememberMe(true);
+</code></pre>
+<p>在本例中，我们使用UsernamePasswordToken，它支持最常见的用户名/密码身份验证方法。这是Shiro的org.apache.shiro.authc.AuthenticationToken接口的实现，该接口是Shiro的身份验证系统用来表示提交的主体和凭据的基本接口。</p>
+<p>这里需要注意的是，Shiro并不关心您是如何获取这些信息的:数据可能是由提交HTML表单的用户获取的，也可能是从HTTP报头中检索的，也可能是从Swing或Flex GUI密码表单中读取的，也可能是通过命令行参数获取的。从应用程序最终用户收集信息的过程与Shiro的AuthenticationToken概念完全分离。<br>您可以按照自己的喜好构造和表示AuthenticationToken实例——它与协议无关。</p>
+<p>这个示例还表明，我们已经表明希望Shiro为身份验证尝试执行“Remember Me”服务。这可以确保Shiro在用户稍后返回应用程序时记住用户身份。我们将在后面的章节介绍Remember Me服务。</p>
+<h3 id="步骤2-提交主体和凭证"><a href="#步骤2-提交主体和凭证" class="headerlink" title="步骤2:提交主体和凭证"></a>步骤2:提交主体和凭证</h3><p>在收集主体和凭证并将其表示为AuthenticationToken实例之后，我们需要将令牌提交给Shiro以执行实际的身份验证尝试:</p>
+<pre><code class="line-numbers language-java">Subject currentUser = SecurityUtils.getSubject();
+
+currentUser.login(token);
+</code></pre>
+<p>在获取当前正在执行的Subject之后，我们进行一次登录调用，传入前面创建的AuthenticationToken实例。</p>
+<p>对登录方法的调用有效地表示一次身份验证尝试。</p>
+<h3 id="步骤3-处理成功或失败"><a href="#步骤3-处理成功或失败" class="headerlink" title="步骤3:处理成功或失败"></a>步骤3:处理成功或失败</h3><p>如果login方法安静地返回，那么我们就完成了!主题已通过认证。应用程序线程可以不间断地继续，所有对SecurityUtils.getSubject()的进一步调用都将返回经过身份验证的Subject实例，而对Subject . isauthenticated()的任何调用都将返回true。</p>
+<p>但是如果登录尝试失败会发生什么?例如，如果最终用户提供了错误的密码，或者访问系统太多次，可能导致他们的帐户被锁定，该怎么办?</p>
+<p>Shiro有一个丰富的运行时<code>AuthenticationException</code>层次结构，可以准确地指出尝试失败的原因。您可以将登录包装在try/catch块中，并捕获您希望的任何异常，并相应地对它们做出反应。例如:</p>
+<pre><code class="line-numbers language-java">try {
+    currentUser.login(token);
+} catch ( UnknownAccountException uae ) { ...
+} catch ( IncorrectCredentialsException ice ) { ...
+} catch ( LockedAccountException lae ) { ...
+} catch ( ExcessiveAttemptsException eae ) { ...
+} ... catch your own ...
+} catch ( AuthenticationException ae ) {
+    //unexpected error?
+}
+
+//No problems, continue on as expected...
+</code></pre>
+<p>如果现有的某个异常类不能满足您的需求，可以创建自定义Authenticationexception来表示特定的失败场景。</p>
+<blockquote>
+<p>登录失败提示<br>虽然您的代码可以根据需要对特定的异常做出反应并执行逻辑，但安全最佳实践是在发生故障时仅向最终用户显示通用的失败消息，例如“用户名或密码不正确”。这确保了可能试图进行攻击的黑客无法获得特定信息。</p>
+</blockquote>
+<h2 id="Remembered-vs-Authenticated"><a href="#Remembered-vs-Authenticated" class="headerlink" title="Remembered vs. Authenticated"></a>Remembered vs. Authenticated</h2><p>如上面的例子所示，Shiro除了支持正常的登录过程外，还支持“记住我”的概念。值得指出的是，Shiro在记忆的Subject和实际验证的Subject之间做出了非常精确的区分:</p>
+<ul>
+<li>Remembered: 记住的Subject不是匿名的，它有一个已知的身份(即Subject . getprincipals()是非空的)。但是这个标识是在以前的会话中从以前的身份验证中记住的。如果subject. isremembered()返回true，则该Subject被认为是已记住的。</li>
+<li>Authenticated: 一个Authenticated Subject是一个在Subject当前会话期间成功通过身份验证的Subject(即登录方法被调用而没有抛出异常)。如果subject. isauthenticated()返回true，则认为主题已验证。</li>
+</ul>
+<blockquote>
+<p>互相排斥的<br>记住的状态和已验证的状态是互斥的——一个为真值表示另一个为假值，反之亦然。</p>
+</blockquote>
+<h2 id="Why-the-distinction"><a href="#Why-the-distinction" class="headerlink" title="Why the distinction?"></a>Why the distinction?</h2><p>“认证”这个词有很强的证明的内涵。也就是说，有一个预期的保证，即主体已经证明了他们是他们所说的那个人。</p>
+<p>当一个用户只在与应用程序的前一次交互中被记住时，证明状态就不再存在:被记住的身份给了系统一个用户可能是谁的想法，但在现实中，没有办法绝对保证被记住的Subject是否代表预期的用户。一旦主题经过身份验证，就不再认为它们只是被记住了，因为它们的身份将在当前会话期间被验证。</p>
+<p>因此，尽管应用程序的许多部分仍然可以基于记住的主体执行特定于用户的逻辑，例如自定义视图，但在用户通过执行成功的身份验证尝试合法地验证了自己的身份之前，它通常不应该执行高度敏感的操作。</p>
+<p>例如，检查Subject是否可以访问财务信息几乎总是依赖于isAuthenticated()，而不是isRemembered()，以保证预期的和已验证的身份。</p>
+<h3 id="举例说明"><a href="#举例说明" class="headerlink" title="举例说明"></a>举例说明</h3><p>下面是一个相当常见的场景，它有助于说明为什么记忆和验证之间的区别是重要的。</p>
+<p>假设你正在使用亚马逊网站。您已经成功登录，并向购物车中添加了几本书。但是你要赶去开会，却忘了登出。当会议结束的时候，是时候回家了，你离开了办公室。</p>
+<p>第二天当你来上班时，你意识到你没有完成购买，所以你回到亚马逊网站。这一次，亚马逊会“记住”你是谁，叫出你的名字问候你，还会给你一些个性化的图书推荐。对于Amazon, subject.isRemembered()将返回true。</p>
+<p>但是，如果你试图访问你的账户来更新你的信用卡信息来购买书籍，会发生什么呢?虽然亚马逊“记得”你(isRemembered() == true)，但它不能保证你就是你自己(例如，可能某个同事正在使用你的电脑)。</p>
+<p>因此，在你执行像更新信用卡信息这样的敏感操作之前，亚马逊会强迫你登录，以确保你的身份。登录后，您的身份已经验证，对于Amazon, isAuthenticated()现在将为真。</p>
+<p>对于许多类型的应用程序，这种情况经常发生，因此Shiro内置了该功能，以便您可以在自己的应用程序中利用它。现在，您是使用isRemembered()还是isAuthenticated()来定制视图和工作流取决于您，但是Shiro将维护这个基本状态以备您需要。</p>
+<h2 id="Logging-Out"><a href="#Logging-Out" class="headerlink" title="Logging Out"></a>Logging Out</h2><p>与身份验证相反的是释放所有已知的标识状态。当Subject完成与应用程序的交互时，你可以调用Subject .logout()来放弃所有标识信息:</p>
+<pre><code class="line-numbers language-java">currentUser.logout(); //removes all identifying information and invalidates their session too.
+</code></pre>
+<p>当你调用logout时，任何现有的Session都将失效，任何身份都将被解除关联(例如，在web应用程序中，RememberMe cookie也将被删除)。</p>
+<p>在Subject注销后，Subject实例再次被认为是匿名的，除了web应用程序，如果需要，可以重新用于登录。</p>
+<blockquote>
+<p>Web Application Notice<br>因为在web应用程序中记住的身份通常是通过cookie持久化的，并且cookie只能在提交响应体之前删除，所以强烈建议在调用subject.logout()后立即将最终用户重定向到新的视图或页面。这保证了任何与安全相关的cookie都可以按照预期删除。这是HTTP cookie功能的限制，而不是Shiro的限制。</p>
+</blockquote>
+<h2 id="身份验证序列"><a href="#身份验证序列" class="headerlink" title="身份验证序列"></a>身份验证序列</h2><p>到目前为止，我们只讨论了如何在应用程序代码中验证Subject。现在，我们将讨论当尝试进行身份验证时Shiro内部会发生什么。</p>
+<p>我们从架构一章中获取了之前的架构图，只突出显示了与身份验证相关的组件。每个数字代表身份验证尝试中的一个步骤:</p>
+<p><img src="/attachment/a0639dbd76ea4212f8f7da2d6227036e.png"></p>
+<ul>
+<li>步骤1:应用程序代码调用Subject。方法，传入表示最终用户的主体和凭证的构造的AuthenticationToken实例。</li>
+<li>步骤2:Subject实例，通常是一个DelegatingSubject(或子类)，通过调用SecurityManager .login(令牌)委托给应用程序的SecurityManager，从那里开始实际的身份验证工作。</li>
+<li>步骤3:作为一个基本的“保护伞”组件，SecurityManager接收令牌，并通过调用Authenticator .authenticate(token)简单地委托给它内部的Authenticator实例。这几乎总是一个ModularRealmAuthenticator实例，它支持在身份验证期间协调一个或多个Realm实例。ModularRealmAuthenticator本质上为Apache Shiro提供了PAM风格的范例(其中每个Realm在PAM术语中都是一个“模块”)。</li>
+<li>步骤4:如果为应用程序配置了多个域，ModularRealmAuthenticator实例将利用其配置的AuthenticationStrategy发起多域身份验证尝试。在调用域进行身份验证之前、期间和之后，将调用AuthenticationStrategy以允许它对每个域的结果做出反应。我们将很快讨论身份验证策略。</li>
+<li>步骤5:查看每个配置的Realm是否支持提交的AuthenticationToken。如果是，支持Realm的getAuthenticationInfo方法将使用提交的令牌调用。getAuthenticationInfo方法有效地表示针对特定Realm的一次身份验证尝试。我们将简要介绍Realm身份验证行为。</li>
+</ul>
+<h3 id="Authenticator-认证"><a href="#Authenticator-认证" class="headerlink" title="Authenticator | 认证"></a>Authenticator | 认证</h3><p>如前所述，Shiro SecurityManager实现默认使用ModularRealmAuthenticator实例。ModularRealmAuthenticator同样支持具有单个域的应用程序和具有多个域的应用程序。</p>
+<p>在单域应用程序中，ModularRealmAuthenticator将直接调用单域。如果配置了两个或多个realm，它将使用AuthenticationStrategy实例来协调尝试发生的方式。我们将在下面讨论AuthenticationStrategies。</p>
+<p>如果你想用一个自定义的Authenticator实现配置SecurityManager，你可以在shiro.ini中这样做，例如:</p>
+<pre><code class="line-numbers language-ini">[main]
+...
+authenticator = com.foo.bar.CustomAuthenticator
+
+securityManager.authenticator = $authenticator
+</code></pre>
+<h3 id="AuthenticationStrategy-认证策略"><a href="#AuthenticationStrategy-认证策略" class="headerlink" title="AuthenticationStrategy | 认证策略"></a>AuthenticationStrategy | 认证策略</h3><p>当为应用程序配置了两个或多个领域时，ModularRealmAuthenticator依赖于内部AuthenticationStrategy组件来确定身份验证尝试成功或失败的条件。</p>
+<p>例如，如果只有一个Realm对AuthenticationToken进行了成功的身份验证，但其他所有域都失败了，是否认为该身份验证尝试成功?或者所有的领域都必须成功验证，才能认为整个尝试是成功的?或者，如果一个领域验证成功，是否有必要进一步咨询其他领域?AuthenticationStrategy根据应用程序的需要做出适当的决策。</p>
+<p>AuthenticationStrategy是一个无状态组件，在一次身份验证尝试期间会被查询4次(这4次交互所需的任何必要状态都将作为方法参数给出):</p>
+<ul>
+<li>在任何领域被调用之前</li>
+<li>在每个Realm的getAuthenticationInfo方法调用之前</li>
+<li>在单个Realm的getAuthenticationInfo方法调用之后立即调用</li>
+<li>在所有的领域都被调用之后</li>
+</ul>
+<p> AuthenticationStrategy还负责聚合来自每个成功Realm的结果，并将它们“捆绑”到单个AuthenticationInfo表示中。这个最终的聚合AuthenticationInfo实例是Authenticator实例返回的，也是Shiro用来表示Subject的最终身份(又名主体)的实例。</p>
+<p>Shiro有3个具体的AuthenticationStrategy实现:</p>
+<table>
+<thead>
+<tr>
+<th>认证策略类</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>AtLeastOneSuccessfulStrategy</td>
+<td>如果一个(或多个)Realms认证成功，则认为整个尝试成功。如果没有认证成功，则尝试失败。</td>
+</tr>
+<tr>
+<td>FirstSuccessfulStrategy</td>
+<td>只有从第一个成功认证的Realm返回的信息将被使用。所有其他领域将被忽略。如果没有验证成功，则尝试失败。</td>
+</tr>
+<tr>
+<td>AllSuccessfulStrategy</td>
+<td>所有配置的域必须成功验证，才能认为整体尝试成功。如果任何一方没有验证成功，则尝试失败。</td>
+</tr>
+</tbody></table>
+<p>ModularRealmAuthenticator默认为atleastonessuccessfulstrategy实现，因为这是最常用的策略。然而，如果你想，你可以配置一个不同的策略:</p>
+<pre><code class="line-numbers language-ini">[main]
+...
+authcStrategy = org.apache.shiro.authc.pam.FirstSuccessfulStrategy
+
+securityManager.authenticator.authenticationStrategy = $authcStrategy
+
+...
+</code></pre>
+<blockquote>
+<p>自定义AuthenticationStrategy<br>如果您希望自己创建自己的AuthenticationStrategy实现，可以使用org.apache.shiro.authc.pam.AbstractAuthenticationStrategy作为起点。AbstractAuthenticationStrategy类自动实现将来自每个Realm的结果合并到单个AuthenticationInfo实例的“捆绑”/聚合行为。</p>
+</blockquote>
+<h3 id="Realm-Authentication-Order-验证顺序"><a href="#Realm-Authentication-Order-验证顺序" class="headerlink" title="Realm Authentication Order | 验证顺序"></a>Realm Authentication Order | 验证顺序</h3><p>很重要的一点是，ModularRealmAuthenticator将以迭代顺序与Realm实例交互。</p>
+<p>ModularRealmAuthenticator可以访问SecurityManager上配置的Realm实例。当执行身份验证尝试时，它将遍历该集合，对于支持提交的AuthenticationToken的每个Realm，调用Realm的getAuthenticationInfo方法。</p>
+<h4 id="Implicit-Ordering-隐式顺序"><a href="#Implicit-Ordering-隐式顺序" class="headerlink" title="Implicit Ordering | 隐式顺序"></a>Implicit Ordering | 隐式顺序</h4><p>当使用Shiro的INI配置格式时，你应该按照你希望它们处理AuthenticationToken的顺序来配置realm。例如，在’ shiro.ini中，Realms将按照它们在INI文件中定义的顺序进行查询。对于下面的shiro.ini示例:</p>
+<pre><code class="line-numbers language-ini">blahRealm = com.company.blah.Realm
+...
+fooRealm = com.company.foo.Realm
+...
+barRealm = com.company.another.Realm
+</code></pre>
+<p>SecurityManager将配置这三个域，在尝试身份验证时，blahRealm、fooRealm和barRealm将按此顺序调用。</p>
+<p>这基本上与定义以下行具有相同的效果:</p>
+<pre><code class="line-numbers language-ini">securityManager.realms = $blahRealm, $fooRealm, $barRealm
+</code></pre>
+<p>使用这种方法，您不需要设置securityManager的realms属性—定义的每个域都将自动添加到realms属性。</p>
+<h4 id="Explicit-Ordering-显示顺序"><a href="#Explicit-Ordering-显示顺序" class="headerlink" title="Explicit Ordering | 显示顺序"></a>Explicit Ordering | 显示顺序</h4><p>如果您想显式地定义与领域交互的顺序，而不管它们是如何定义的，您可以将securityManager的realms属性设置为一个显式的集合属性。例如，如果使用上面的定义，但你希望blahRealm是最后而不是第一个被查询:</p>
+<pre><code class="line-numbers language-ini">blahRealm = com.company.blah.Realm
+...
+fooRealm = com.company.foo.Realm
+...
+barRealm = com.company.another.Realm
+
+securityManager.realms = $fooRealm, $barRealm, $blahRealm
+...
+</code></pre>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a target="_blank" rel="noopener" href="https://github.com/yu627482453">Bill Cipher</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://yu627482453.github.io/module/shiro/shiro-ji-chu/shiro-yan-zheng/">https://yu627482453.github.io/module/shiro/shiro-ji-chu/shiro-yan-zheng/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://yu627482453.github.io" target="_blank">蝶梦庄生</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E8%A1%8C%E5%8A%A8%E9%98%B6%E6%AE%B5-%E5%AE%8C%E6%88%90/">行动阶段/完成</a><a class="post-meta__tags" href="/tags/%E4%B8%BB%E9%A2%98%E5%9C%BA%E6%99%AF-%E7%BB%84%E4%BB%B6/">主题场景/组件</a><a class="post-meta__tags" href="/tags/%E7%AC%94%E8%AE%B0%E7%A9%BA%E9%97%B4-KnowladgeSpace-ProgramSpace-ModuleSpace/">笔记空间/KnowladgeSpace/ProgramSpace/ModuleSpace</a><a class="post-meta__tags" href="/tags/%E7%BB%86%E5%8C%96%E4%B8%BB%E9%A2%98-Module-Shiro-%E5%9F%BA%E7%A1%80/">细化主题/Module/Shiro/基础</a></div><div class="post_share"><div class="social-share" data-image="https://api.yimian.xyz/img?type=moe" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/reward/wechat.jpg" target="_blank"><img class="post-qr-code-img" src="/img/reward/wechat.jpg" alt="wechat"/></a><div class="post-qr-code-desc">wechat</div></li><li class="reward-item"><a href="/img/reward/alipay.jpg" target="_blank"><img class="post-qr-code-img" src="/img/reward/alipay.jpg" alt="alipay"/></a><div class="post-qr-code-desc">alipay</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/module/shiro/shiro-ji-chu/shiro-ji-chu/"><img class="prev-cover" src="https://api.yimian.xyz/img?type=moe" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">【Shiro】 基础</div></div></a></div><div class="next-post pull-right"><a href="/module/shiro/shiro-ji-chu/shiro-he-xin-gai-nian/"><img class="next-cover" src="https://api.yimian.xyz/img?type=moe" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">【Shiro】 核心概念</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/module/shiro/shiro-ji-chu/shiro-hui-hua-guan-li/" title="【Shiro】 会话管理"><img class="cover" src="https://api.yimian.xyz/img?type=moe" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-01-19</div><div class="title">【Shiro】 会话管理</div></div></a></div><div><a href="/module/shiro/shiro-ji-chu/shiro-mi-ma-xue/" title="【Shiro】 密码学"><img class="cover" src="https://api.yimian.xyz/img?type=moe" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-01-19</div><div class="title">【Shiro】 密码学</div></div></a></div><div><a href="/module/shiro/shiro-ji-chu/shiro-quan-xian/" title="【Shiro】 权限"><img class="cover" src="https://api.yimian.xyz/img?type=moe" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-01-20</div><div class="title">【Shiro】 权限</div></div></a></div><div><a href="/module/shiro/shiro-ji-chu/shiro-shou-quan/" title="【Shiro】 授权"><img class="cover" src="https://api.yimian.xyz/img?type=moe" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-01-19</div><div class="title">【Shiro】 授权</div></div></a></div><div><a href="/module/shiro/shiro-ji-chu/shiro-jian-jie/" title="【Shiro】 简介"><img class="cover" src="https://api.yimian.xyz/img?type=moe" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-01-19</div><div class="title">【Shiro】 简介</div></div></a></div><div><a href="/module/shiro/shiro-ji-chu/shiro-he-xin-gai-nian/" title="【Shiro】 核心概念"><img class="cover" src="https://api.yimian.xyz/img?type=moe" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-01-19</div><div class="title">【Shiro】 核心概念</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="gitalk-container"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Bill Cipher</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">575</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">125</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">21</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/yu627482453"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/yu627482453" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="/627482453@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E3%80%90Shiro%E3%80%91-%E9%AA%8C%E8%AF%81"><span class="toc-number">1.</span> <span class="toc-text">【Shiro】 验证</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Metadata"><span class="toc-number">1.1.</span> <span class="toc-text">Metadata</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E3%80%90Shiro%E3%80%91-%E9%AA%8C%E8%AF%81-1"><span class="toc-number">1.2.</span> <span class="toc-text">【Shiro】 验证</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Authenticating-Subjects"><span class="toc-number">1.3.</span> <span class="toc-text">Authenticating Subjects</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AD%A5%E9%AA%A41-%E6%94%B6%E9%9B%86%E4%B8%BB%E4%BD%93%E7%9A%84%E4%B8%BB%E4%BD%93%E5%92%8C%E5%87%AD%E8%AF%81"><span class="toc-number">1.3.1.</span> <span class="toc-text">步骤1:收集主体的主体和凭证</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AD%A5%E9%AA%A42-%E6%8F%90%E4%BA%A4%E4%B8%BB%E4%BD%93%E5%92%8C%E5%87%AD%E8%AF%81"><span class="toc-number">1.3.2.</span> <span class="toc-text">步骤2:提交主体和凭证</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AD%A5%E9%AA%A43-%E5%A4%84%E7%90%86%E6%88%90%E5%8A%9F%E6%88%96%E5%A4%B1%E8%B4%A5"><span class="toc-number">1.3.3.</span> <span class="toc-text">步骤3:处理成功或失败</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Remembered-vs-Authenticated"><span class="toc-number">1.4.</span> <span class="toc-text">Remembered vs. Authenticated</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Why-the-distinction"><span class="toc-number">1.5.</span> <span class="toc-text">Why the distinction?</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BE%E4%BE%8B%E8%AF%B4%E6%98%8E"><span class="toc-number">1.5.1.</span> <span class="toc-text">举例说明</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Logging-Out"><span class="toc-number">1.6.</span> <span class="toc-text">Logging Out</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BA%AB%E4%BB%BD%E9%AA%8C%E8%AF%81%E5%BA%8F%E5%88%97"><span class="toc-number">1.7.</span> <span class="toc-text">身份验证序列</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Authenticator-%E8%AE%A4%E8%AF%81"><span class="toc-number">1.7.1.</span> <span class="toc-text">Authenticator | 认证</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#AuthenticationStrategy-%E8%AE%A4%E8%AF%81%E7%AD%96%E7%95%A5"><span class="toc-number">1.7.2.</span> <span class="toc-text">AuthenticationStrategy | 认证策略</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Realm-Authentication-Order-%E9%AA%8C%E8%AF%81%E9%A1%BA%E5%BA%8F"><span class="toc-number">1.7.3.</span> <span class="toc-text">Realm Authentication Order | 验证顺序</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Implicit-Ordering-%E9%9A%90%E5%BC%8F%E9%A1%BA%E5%BA%8F"><span class="toc-number">1.7.3.1.</span> <span class="toc-text">Implicit Ordering | 隐式顺序</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Explicit-Ordering-%E6%98%BE%E7%A4%BA%E9%A1%BA%E5%BA%8F"><span class="toc-number">1.7.3.2.</span> <span class="toc-text">Explicit Ordering | 显示顺序</span></a></li></ol></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/module/flowable/flowable-zhuan-lan/flowable-zhuan-lan/" title="无题"><img src="https://api.yimian.xyz/img?type=moe" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/module/flowable/flowable-zhuan-lan/flowable-zhuan-lan/" title="无题">无题</a><time datetime="2023-07-15T09:45:06.401Z" title="发表于 2023-07-15 17:45:06">2023-07-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/module/consul/part/consul-tong-yong-pei-zhi-shu-xing/" title="无题"><img src="https://api.yimian.xyz/img?type=moe" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/module/consul/part/consul-tong-yong-pei-zhi-shu-xing/" title="无题">无题</a><time datetime="2023-07-15T09:44:38.408Z" title="发表于 2023-07-15 17:44:38">2023-07-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/java/java-duo-xian-cheng-bing-fa/java-duo-xian-cheng-bing-fa-xian-cheng/java-duo-xian-cheng-bing-fa-xian-cheng/" title="【Java 多线程并发】 线程"><img src="https://api.yimian.xyz/img?type=moe" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【Java 多线程并发】 线程"/></a><div class="content"><a class="title" href="/java/java-duo-xian-cheng-bing-fa/java-duo-xian-cheng-bing-fa-xian-cheng/java-duo-xian-cheng-bing-fa-xian-cheng/" title="【Java 多线程并发】 线程">【Java 多线程并发】 线程</a><time datetime="2023-07-10T06:15:00.000Z" title="发表于 2023-07-10 14:15:00">2023-07-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/java/java-jvm/java-jvm-nei-cun-guan-li/java-jvm-zhi-jie-nei-cun/" title="【Java JVM】 直接内存"><img src="https://api.yimian.xyz/img?type=moe" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【Java JVM】 直接内存"/></a><div class="content"><a class="title" href="/java/java-jvm/java-jvm-nei-cun-guan-li/java-jvm-zhi-jie-nei-cun/" title="【Java JVM】 直接内存">【Java JVM】 直接内存</a><time datetime="2023-07-10T00:00:00.000Z" title="发表于 2023-07-10 08:00:00">2023-07-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/database/redis/redis-chong-dian-gong-neng/redis-pai-xu/" title="【Redis】 排序"><img src="https://api.yimian.xyz/img?type=moe" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【Redis】 排序"/></a><div class="content"><a class="title" href="/database/redis/redis-chong-dian-gong-neng/redis-pai-xu/" title="【Redis】 排序">【Redis】 排序</a><time datetime="2023-07-09T06:07:00.000Z" title="发表于 2023-07-09 14:07:00">2023-07-09</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By Bill Cipher</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>function addGitalkSource () {
+  const ele = document.createElement('link')
+  ele.rel = 'stylesheet'
+  ele.href= 'https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.css'
+  document.getElementsByTagName('head')[0].appendChild(ele)
+}
+
+function loadGitalk () {
+  function initGitalk () {
+    var gitalk = new Gitalk(Object.assign({
+      clientID: 'c61a274b6f5aa26a58f6',
+      clientSecret: '485a7761d321c8dcc5cae05d7256be9fb196d94a',
+      repo: 'yu627482453.github.io',
+      owner: 'yu627482453',
+      admin: ['yu627482453'],
+      id: 'b5a8c0b839de0011b7003611fb03d1a7',
+      updateCountCallback: commentCount
+    },null))
+
+    gitalk.render('gitalk-container')
+  }
+
+  if (typeof Gitalk === 'function') initGitalk()
+  else {
+    addGitalkSource()
+    getScript('https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.js').then(initGitalk)
+  }
+}
+
+function commentCount(n){
+  let isCommentCount = document.querySelector('#post-meta .gitalk-comment-count')
+  if (isCommentCount) {
+    isCommentCount.innerHTML= n
+  }
+}
+
+if ('Gitalk' === 'Gitalk' || !true) {
+  if (true) btf.loadComment(document.getElementById('gitalk-container'), loadGitalk)
+  else loadGitalk()
+} else {
+  function loadOtherComment () {
+    loadGitalk()
+  }
+}</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

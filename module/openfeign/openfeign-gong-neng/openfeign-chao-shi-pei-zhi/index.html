@@ -1,0 +1,417 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>【OpenFeign】 超时配置 | 蝶梦庄生</title><meta name="keywords" content="OpenFeign"><meta name="author" content="Bill Cipher"><meta name="copyright" content="Bill Cipher"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="【OpenFeign】 超时配置">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【OpenFeign】 超时配置">
+<meta property="og:url" content="https://yu627482453.github.io/module/openfeign/openfeign-gong-neng/openfeign-chao-shi-pei-zhi/index.html">
+<meta property="og:site_name" content="蝶梦庄生">
+<meta property="og:description" content="【OpenFeign】 超时配置">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://api.yimian.xyz/img?type=moe">
+<meta property="article:published_time" content="2023-01-02T11:25:00.000Z">
+<meta property="article:modified_time" content="2023-01-02T11:25:00.000Z">
+<meta property="article:author" content="Bill Cipher">
+<meta property="article:tag" content="行动阶段&#x2F;完成">
+<meta property="article:tag" content="主题场景&#x2F;组件">
+<meta property="article:tag" content="笔记空间&#x2F;KnowladgeSpace&#x2F;ProgramSpace&#x2F;ModuleSpace">
+<meta property="article:tag" content="细化主题&#x2F;Module&#x2F;OpenFeign&#x2F;功能">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://api.yimian.xyz/img?type=moe"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://yu627482453.github.io/module/openfeign/openfeign-gong-neng/openfeign-chao-shi-pei-zhi/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: undefined,
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: Bill Cipher","link":"链接: ","source":"来源: 蝶梦庄生","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '【OpenFeign】 超时配置',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-01-02 19:25:00'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.2.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">575</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">125</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">21</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://api.yimian.xyz/img?type=moe')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">蝶梦庄生</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">【OpenFeign】 超时配置</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-01-02T11:25:00.000Z" title="发表于 2023-01-02 19:25:00">2023-01-02</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-01-02T11:25:00.000Z" title="更新于 2023-01-02 19:25:00">2023-01-02</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/OpenFeign/">OpenFeign</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="【OpenFeign】 超时配置"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="【OpenFeign】-超时配置"><a href="#【OpenFeign】-超时配置" class="headerlink" title="【OpenFeign】 超时配置"></a>【OpenFeign】 超时配置</h1><h2 id="Metadata"><a href="#Metadata" class="headerlink" title="Metadata"></a>Metadata</h2><pre><code class="line-numbers language-yml">title: 【OpenFeign】 超时配置
+date: 2023-01-02 19:25
+tags:
+  - 行动阶段/完成
+  - 主题场景/组件
+  - 笔记空间/KnowladgeSpace/ProgramSpace/ModuleSpace
+  - 细化主题/Module/OpenFeign/功能
+categories:
+  - OpenFeign
+keywords:
+  - OpenFeign
+description: 【OpenFeign】 超时配置
+</code></pre>
+<h2 id="【OpenFeign】-超时配置-1"><a href="#【OpenFeign】-超时配置-1" class="headerlink" title="【OpenFeign】 超时配置"></a>【OpenFeign】 超时配置</h2><p>在<a target="_blank" rel="noopener" href="https://github.com/Netflix/ribbon/wiki/Getting-Started">官网入门案例</a>中，有一个客户端的配置文件，这里面就包含了 Ribbion 的常用配置项。</p>
+<pre><code class="line-numbers language-properties"># 同一服务上的最大重试次数（不包括第一次重试）)
+sample-client.ribbon.MaxAutoRetries=1
+
+# 要重试的下一台服务的最大数量（不包括第一台服务）
+sample-client.ribbon.MaxAutoRetriesNextServer=1
+
+# 是否可以重试此客户端的所有操作
+sample-client.ribbon.OkToRetryOnAllOperations=true
+
+# 刷新服务列表的时间间隔
+sample-client.ribbon.ServerListRefreshInterval=2000
+
+# Http 客户端连接超时时间
+sample-client.ribbon.ConnectTimeout=3000
+
+# Http 客户端读取超时时间
+sample-client.ribbon.ReadTimeout=3000
+
+# 服务初始列表
+sample-client.ribbon.listOfServers=www.microsoft.com:80,www.yahoo.com:80,www.google.com:80
+</code></pre>
+<p>客户端配置的格式为：</p>
+<pre><code class="line-numbers language-xml">&lt;clientName&gt;.&lt;nameSpace&gt;.&lt;propertyName&gt;=&lt;value&gt;
+</code></pre>
+<p>各项说明如下：</p>
+<ul>
+<li>clientName（客户端名称） ：也就是对应<code>@FeignClient</code>注解中的名称，Feign 会使用这个名称来标识每一个 Http 客户端。</li>
+<li>nameSpace （命名空间）是可配置的，默认情况下是 “ribbon”</li>
+<li>propertyName（属性名）： 所有的配置属性可以在<code>CommonClientConfigKey</code>类中查看</li>
+<li>value（值）：配置属性对应的值</li>
+</ul>
+<p>如果配置了<code>clientName</code>，则表示这是一个局部配置，只作用于当前客户端，如果没有配置<code>clientName</code>，则适用于所有客户端的属性（也就是全局配置）。</p>
+<p>例如以下配置表示，为所有客户端设置默认的 ReadTimeout 属性。</p>
+<pre><code class="line-numbers language-properties">ribbon.ReadTimeout=1000
+</code></pre>
+<p>在配置中，有一个<code>ConnectTimeout</code>、<code>ReadTimeout</code>，这是在发送请求时的基础配置，特别重要，所以接下来分析下这两个具体是干嘛的，源码是怎么处理的。</p>
+<h2 id="参数说明"><a href="#参数说明" class="headerlink" title="参数说明"></a>参数说明</h2><p><code>ConnectTimeout</code>连接超时时间，<code>Feign</code> 是基于 HTTP 的远程调用，众所周知，HTTP 请求会进行 TCP 的三次握手，这个连接超时时间，就是多少秒没连接上，就会抛出超时异常。</p>
+<p><code>ReadTimeout</code>读取超时时间，HTTP 成功连接后，客户端发会送请求报文，服务端收到后解析并返回响应报文，在写出响应报文时，如果超过了设置的时间还没写完，也会抛出超时异常。在某些接口请求数据量大的时候，很容易出现读取超时，所以要格外注意这个问题。</p>
+<p>可以在<code>RibbonClientConfiguration</code>配置类中看到，客户端超时配置默认都是 1 秒，所以不自己改配置的话，很容易造成超时问题。  </p>
+<p><img src="https://img-blog.csdnimg.cn/a049214dc8de4043a8c393431f8d156c.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAcXFfNDM0Mzc4NzQ=,size_20,color_FFFFFF,t_70,g_se,x_16"></p>
+<h2 id="配置案例"><a href="#配置案例" class="headerlink" title="配置案例"></a>配置案例</h2><p>在订单服务中，让线程睡眠十秒才返回响应。  </p>
+<p><img src="https://img-blog.csdnimg.cn/1d5651c45b174a1b9aaa0b0da77b1a4c.png"></p>
+<p>访问账户服务，发现 1 秒左右就马上抛出超时异常了。  </p>
+<p><img src="https://img-blog.csdnimg.cn/47c9171442944d1f8b878ebc22064ec0.png"></p>
+<p><a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=Feign&amp;spm=1001.2101.3001.7020">Feign</a> 支持在<code>ribbon</code> 或者<code>feign</code>配置项下配置，feign 下配置优先级最高，而且最新版已经移除了 <a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=ribbon&amp;spm=1001.2101.3001.7020">ribbon</a>，所以推荐配置在<code>feign</code>中。</p>
+<p><strong>1、在 ribbon 中配置</strong><br>在<code>ribbon</code>命名空间下添加配置，将会作用于所有客户端。</p>
+<pre><code class="line-numbers language-yml">ribbon:
+  ConnectTimeout: 5000
+  ReadTimeout: 12000
+</code></pre>
+<p>可以为某个单独的客户端配置不同的超时配置，配置前缀为客户端名称。</p>
+<pre><code class="line-numbers language-yml">order-service:
+  ribbon:
+    ConnectTimeout: 6000
+    ReadTimeout: 13000
+</code></pre>
+<p><strong>2、在 feign 中配置</strong><br>也可以在 feign 下配置，default 表示作用于所有客户端，也可替换 default 为客户端名称，表示作用于单个客户端。</p>
+<pre><code class="line-numbers language-yml">feign:
+  okhttp:
+    enabled: true
+  client:
+   config:
+      default:
+        ConnectTimeout: 6000
+        ReadTimeout: 13000
+</code></pre>
+<h2 id="源码分析"><a href="#源码分析" class="headerlink" title="源码分析"></a>源码分析</h2><h3 id="1-启动项目"><a href="#1-启动项目" class="headerlink" title="1. 启动项目"></a>1. 启动项目</h3><p>那么这些参数是怎么加载，最后作用到哪里了呢，接下来以 Feign 下配置超时时间，分析下源码。</p>
+<p><code>Feign</code>通过接口生成代理对象，扫描到 Feign 接口，构建代理对象，在<code>Feign.builder()</code>创建构建者时，会完成客户端的初始化配置。在这个时候会创建一个<code>Options</code>对象。</p>
+<pre><code class="line-numbers language-java">public Builder() {
+            // 日志级别
+            this.logLevel = Level.NONE;
+            this.contract = new Default();
+            this.client = new feign.Client.Default((SSLSocketFactory)null, (HostnameVerifier)null);
+            this.retryer = new feign.Retryer.Default();
+            this.logger = new NoOpLogger();
+            // 编码解码器
+            this.encoder = new feign.codec.Encoder.Default();
+            this.decoder = new feign.codec.Decoder.Default();
+            this.queryMapEncoder = new FieldQueryMapEncoder();
+            this.errorDecoder = new feign.codec.ErrorDecoder.Default();
+            // 
+            this.options = new Options();
+            this.invocationHandlerFactory = new feign.InvocationHandlerFactory.Default();
+            this.closeAfterDecode = true;
+            this.propagationPolicy = ExceptionPropagationPolicy.NONE;
+            this.forceDecoding = false;
+            this.capabilities = new ArrayList();
+        }
+</code></pre>
+<p><code>Options</code>对象封装了超时时间，构造方法初始化的超时时间分别为 10S、60S，这是 Feign 原生框架的配置，但是会被覆盖。</p>
+<pre><code class="line-numbers language-java">public Options() {
+            this(10L, TimeUnit.SECONDS, 60L, TimeUnit.SECONDS, true);
+        }
+</code></pre>
+<p>代理对象生成时，会初始化方法处理器，这里又会为每个方法设置<code>Options</code>对象，这里的<code>Options</code>就是加载我们配置的超时参数了。</p>
+<pre><code class="line-numbers language-java">private SynchronousMethodHandler(Target&lt;?&gt; target, Client client, Retryer retryer, List&lt;RequestInterceptor&gt; requestInterceptors, Logger logger, Level logLevel, MethodMetadata metadata, feign.RequestTemplate.Factory buildTemplateFromArgs, Options options, Decoder decoder, ErrorDecoder errorDecoder, boolean decode404, boolean closeAfterDecode, ExceptionPropagationPolicy propagationPolicy, boolean forceDecoding) {
+        this.target = (Target)Util.checkNotNull(target, "target", new Object[0]);
+        this.client = (Client)Util.checkNotNull(client, "client for %s", new Object[]{target});
+        // 省略.....
+        this.options = (Options)Util.checkNotNull(options, "options for %s", new Object[]{target});
+        // 省略.....
+        }
+    }
+</code></pre>
+<h3 id="2-执行流程"><a href="#2-执行流程" class="headerlink" title="2. 执行流程"></a>2. 执行流程</h3><p>之前我们分析过，客户端的上下文及配置，是在其第一次访问时才会进行加载。</p>
+<p>Feign 接口方法执行时，实际是<code>SynchronousMethodHandler</code>的 invoke 方法代理执行，在该方法中会完成请求模板创建、参数解析、重试机制加载。该处理器会查询方法参数中是否有 Options 对象，没有则会将初始化加载的超时配置，传递到下游。</p>
+<pre><code class="line-numbers language-java">public Object invoke(Object[] argv) throws Throwable {
+        // 1. 构建请求模板，封装参数、路径等信息。
+        RequestTemplate template = this.buildTemplateFromArgs.create(argv);
+        // 2. 查询超时配置，将方法的参数集合转为Stream 流，如果没有发现参数中有Options 对象，
+        // 则会使用方式执行器中的Options ，也就是从yml 中加载的配置
+        Options options = this.findOptions(argv);
+        Retryer retryer = this.retryer.clone();
+        while(true) {
+            try {
+                return this.executeAndDecode(template, options);
+            } catch (RetryableException var9) {
+               // 省略....
+        }
+    }
+</code></pre>
+<p>继续走到负载均衡客户端（Ribbon），可以看到这里又会去获取一次客户端配置。  </p>
+<p><img src="https://img-blog.csdnimg.cn/92c43110030443f18fbf2558e2d5844e.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAcXFfNDM0Mzc4NzQ=,size_20,color_FFFFFF,t_70,g_se,x_16"></p>
+<p>在<code>getClientConfig</code> 方法中，会处理超时配置<code>Options</code>对象。</p>
+<pre><code class="line-numbers language-java">IClientConfig getClientConfig(Options options, String clientName) {
+        Object requestConfig;
+        // 查看Options 是否默认的，也就是是否是1秒。
+        if (options == DEFAULT_OPTIONS) {
+            // 是默认的，则直接加载IClientConfig （容器中）对象中的配置
+            requestConfig = this.clientFactory.getClientConfig(clientName);
+        } else {
+            // 是自定义了超时配置，则设置自定义配置到IClientConfig（自己创建）对象中
+            requestConfig = new LoadBalancerFeignClient.FeignOptionsClientConfig(options);
+        }
+        return (IClientConfig)requestConfig;
+    }
+</code></pre>
+<p>可以看到，负载均衡器客户端获取到了自定义配置，然后继续往下走。  </p>
+<p><img src="https://img-blog.csdnimg.cn/dcc93c412a334d1496f069642a7580c2.png"></p>
+<p>走到执行方法：</p>
+<pre><code class="line-numbers language-java">return ((RibbonResponse)this.lbClient(clientName).executeWithLoadBalancer(ribbonRequest, requestConfig)).toResponse();
+</code></pre>
+<p>负载均衡器会调用本身的<code>this.lbClient(clientName)</code> 方法，调用工厂创建一个负载均衡器<code>FeignLoadBalancer</code>，会查询缓存，没有则会创建一个并放入缓存。</p>
+<pre><code class="line-numbers language-java">public FeignLoadBalancer create(String clientName) {
+        // 缓存查询
+        FeignLoadBalancer client = (FeignLoadBalancer)this.cache.get(clientName);
+        if (client != null) {
+            return client;
+        } else {
+            // 没有则又会查询一次客户端配置，直接查询`IClientConfig `Bean 对象
+            // 在自动配置类RibbonClientConfiguration中， 超时配置都是1秒。
+            IClientConfig config = this.factory.getClientConfig(clientName);
+            ILoadBalancer lb = this.factory.getLoadBalancer(clientName);
+            ServerIntrospector serverIntrospector = (ServerIntrospector)this.factory.getInstance(clientName, ServerIntrospector.class);
+            FeignLoadBalancer client = this.loadBalancedRetryFactory != null ? new RetryableFeignLoadBalancer(lb, config, serverIntrospector, this.loadBalancedRetryFactory) : new FeignLoadBalancer(lb, config, serverIntrospector);
+            this.cache.put(clientName, client);
+            return (FeignLoadBalancer)client;
+        }
+    }
+</code></pre>
+<p>可以看到，创建的<code>FeignLoadBalancer</code>对象中，超时配置，又到了默认的一秒。  </p>
+<p><img src="https://img-blog.csdnimg.cn/a919e056ea724f68a69867c72f95b894.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAcXFfNDM0Mzc4NzQ=,size_20,color_FFFFFF,t_70,g_se,x_16"></p>
+<p>接着调用<code>FeignLoadBalancer</code>对象的<code>executeWithLoadBalancer</code>方法，均衡器开始执行，参数是一个 Ribbon 请求对象和请求配置<code>IClientConfig</code>对象（因为有自定义，所以这里是重新创建的，并不是容器中的）。  </p>
+<p><img src="https://img-blog.csdnimg.cn/98fcb26bc087417c86c6f8a767ed6658.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAcXFfNDM0Mzc4NzQ=,size_20,color_FFFFFF,t_70,g_se,x_16"></p>
+<p>在通过均衡算法，获取到真实的服务地址后，进入到 execute 方法，该方法传入了可用服务和 请求配置<code>IClientConfig</code>对象（重新创建的）。  </p>
+<p><img src="https://img-blog.csdnimg.cn/52fb728cbb3c4ec697a10daa65ad96fa.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAcXFfNDM0Mzc4NzQ=,size_20,color_FFFFFF,t_70,g_se,x_16"></p>
+<p>在 execute 方法可以看到，又有对<code>Options</code>进行一次判断。该请求存在自定义超时配置，则会解析并封装为<code>Options</code>，没有配置，则使用默认配置（1 秒）。</p>
+<pre><code class="line-numbers language-java">public FeignLoadBalancer.RibbonResponse execute(FeignLoadBalancer.RibbonRequest request, IClientConfig configOverride) throws IOException {
+        // 这次请求的配置参数
+        Options options;
+        // 发现当前请求存在客户端配置
+        if (configOverride != null) {
+            // 将配置中的自定义超时 解析，并封装为Options 对象
+            RibbonProperties override = RibbonProperties.from(configOverride);
+            options = new Options(override.connectTimeout(this.connectTimeout), override.readTimeout(this.readTimeout));
+        } else {
+            // 没有配置，则默认使用Ribbon 客户端配置，而Ribbon 又是从`IClientConfig `Bean 对象获取的，默认都是一秒。
+            options = new Options(this.connectTimeout, this.readTimeout);
+        }
+
+        Response response = request.client().execute(request.toRequest(), options);
+        return new FeignLoadBalancer.RibbonResponse(request.getUri(), response);
+    }
+</code></pre>
+<p>最终均衡器，会调用 HTTP 客户端进行请求发送，这里使用的是 OkHttpClient 。这里会覆盖掉 OkHttpClient 超时配置，使用自定义或者默认的超时配置（所以在 OkHttp 中的配置超时没有啥用…）。</p>
+<pre><code class="line-numbers language-java">public Response execute(feign.Request input, Options options) throws IOException {
+        okhttp3.OkHttpClient requestScoped;
+        // 查看OkHttp 的超时配置是否和 Feign 配置的超时一样
+        // 一样则不处理。
+        if (this.delegate.connectTimeoutMillis() == options.connectTimeoutMillis() &amp;&amp; this.delegate.readTimeoutMillis() == options.readTimeoutMillis() &amp;&amp; this.delegate.followRedirects() == options.isFollowRedirects()) {
+            requestScoped = this.delegate;
+        } else {
+            // 不一样，则重新构建一个 OkHttpClient ...(这里是否有优化空间，Ribbon 会覆盖OkHttpClient 配置)
+            requestScoped = this.delegate.newBuilder().connectTimeout((long)options.connectTimeoutMillis(), TimeUnit.MILLISECONDS).readTimeout((long)options.readTimeoutMillis(), TimeUnit.MILLISECONDS).followRedirects(options.isFollowRedirects()).build();
+        }
+
+        Request request = toOkHttpRequest(input);
+        // 执行请求
+        okhttp3.Response response = requestScoped.newCall(request).execute();
+        return toFeignResponse(response, input).toBuilder().request(input).build();
+    }
+</code></pre>
+<p>请求发送以后，如果触发了超时时间，就会抛出超时异常，所有 Feign 超时配置，最后是作用到了底层的 HTTP 框架。</p>
+<h3 id="3-总结"><a href="#3-总结" class="headerlink" title="3. 总结"></a>3. 总结</h3><ol>
+<li>Feign 原生构建客户端，超时时间是 10S、60S，但是没有用到。</li>
+<li>方法处理器在加载时，会获取到自定义配置。</li>
+<li>第一次加载时，客户端配置类<code>IClientConfig</code>注入到了 IOC 中，默认超时都是 1S。</li>
+<li>请求执行时，会构建超时配置类<code>Options</code>，如果存在自定义配置，就会使用自定义配置创建<code>Options</code>对象，并将该对象传递给 HTTP 客户端框架。</li>
+<li>HTTP 客户端 会判断自身设置的超时时间和 Feign 设置的是否相同，不同则会重新创建一个客户端请求，一样则会使用 Feign 代理的客户端（所以需要注意 HTTP 框架和 Feign 的超时要设置一样，不然重新创建会消耗资源）。</li>
+</ol>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a target="_blank" rel="noopener" href="https://github.com/yu627482453">Bill Cipher</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://yu627482453.github.io/module/openfeign/openfeign-gong-neng/openfeign-chao-shi-pei-zhi/">https://yu627482453.github.io/module/openfeign/openfeign-gong-neng/openfeign-chao-shi-pei-zhi/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://yu627482453.github.io" target="_blank">蝶梦庄生</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E8%A1%8C%E5%8A%A8%E9%98%B6%E6%AE%B5-%E5%AE%8C%E6%88%90/">行动阶段/完成</a><a class="post-meta__tags" href="/tags/%E4%B8%BB%E9%A2%98%E5%9C%BA%E6%99%AF-%E7%BB%84%E4%BB%B6/">主题场景/组件</a><a class="post-meta__tags" href="/tags/%E7%AC%94%E8%AE%B0%E7%A9%BA%E9%97%B4-KnowladgeSpace-ProgramSpace-ModuleSpace/">笔记空间/KnowladgeSpace/ProgramSpace/ModuleSpace</a><a class="post-meta__tags" href="/tags/%E7%BB%86%E5%8C%96%E4%B8%BB%E9%A2%98-Module-OpenFeign-%E5%8A%9F%E8%83%BD/">细化主题/Module/OpenFeign/功能</a></div><div class="post_share"><div class="social-share" data-image="https://api.yimian.xyz/img?type=moe" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/reward/wechat.jpg" target="_blank"><img class="post-qr-code-img" src="/img/reward/wechat.jpg" alt="wechat"/></a><div class="post-qr-code-desc">wechat</div></li><li class="reward-item"><a href="/img/reward/alipay.jpg" target="_blank"><img class="post-qr-code-img" src="/img/reward/alipay.jpg" alt="alipay"/></a><div class="post-qr-code-desc">alipay</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/module/openfeign/openfeign-gong-neng/openfeign-gzip-ya-suo/"><img class="prev-cover" src="https://api.yimian.xyz/img?type=moe" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">【OpenFeign】 Gzip 压缩</div></div></a></div><div class="next-post pull-right"><a href="/module/openfeign/openfeign-gong-neng/openfeign-ri-zhi-da-yin/"><img class="next-cover" src="https://api.yimian.xyz/img?type=moe" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">【OpenFeign】 日志打印</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/module/openfeign/openfeign-gong-neng/openfeign-gzip-ya-suo/" title="【OpenFeign】 Gzip 压缩"><img class="cover" src="https://api.yimian.xyz/img?type=moe" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-01-02</div><div class="title">【OpenFeign】 Gzip 压缩</div></div></a></div><div><a href="/module/openfeign/openfeign-gong-neng/openfeign-dong-tai-dai-li/" title="【OpenFeign】 动态代理"><img class="cover" src="https://api.yimian.xyz/img?type=moe" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-01-02</div><div class="title">【OpenFeign】 动态代理</div></div></a></div><div><a href="/module/openfeign/openfeign-gong-neng/openfeign-ri-zhi-da-yin/" title="【OpenFeign】 日志打印"><img class="cover" src="https://api.yimian.xyz/img?type=moe" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-01-02</div><div class="title">【OpenFeign】 日志打印</div></div></a></div><div><a href="/module/openfeign/openfeign-gong-neng/openfeign-chong-shi-ji-zhi/" title="【OpenFeign】 重试机制"><img class="cover" src="https://api.yimian.xyz/img?type=moe" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-01-02</div><div class="title">【OpenFeign】 重试机制</div></div></a></div><div><a href="/module/elasticsearch/elasticsearch-ji-ben-gai-nian/" title="【ElasticSearch】 基本概念"><img class="cover" src="https://api.yimian.xyz/img?type=moe" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-12-20</div><div class="title">【ElasticSearch】 基本概念</div></div></a></div><div><a href="/module/eureka/eureka/" title="Eureka"><img class="cover" src="https://api.yimian.xyz/img?type=moe" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-12-14</div><div class="title">Eureka</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="gitalk-container"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Bill Cipher</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">575</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">125</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">21</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/yu627482453"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/yu627482453" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="/627482453@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E3%80%90OpenFeign%E3%80%91-%E8%B6%85%E6%97%B6%E9%85%8D%E7%BD%AE"><span class="toc-number">1.</span> <span class="toc-text">【OpenFeign】 超时配置</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Metadata"><span class="toc-number">1.1.</span> <span class="toc-text">Metadata</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E3%80%90OpenFeign%E3%80%91-%E8%B6%85%E6%97%B6%E9%85%8D%E7%BD%AE-1"><span class="toc-number">1.2.</span> <span class="toc-text">【OpenFeign】 超时配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E6%95%B0%E8%AF%B4%E6%98%8E"><span class="toc-number">1.3.</span> <span class="toc-text">参数说明</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E6%A1%88%E4%BE%8B"><span class="toc-number">1.4.</span> <span class="toc-text">配置案例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90"><span class="toc-number">1.5.</span> <span class="toc-text">源码分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%90%AF%E5%8A%A8%E9%A1%B9%E7%9B%AE"><span class="toc-number">1.5.1.</span> <span class="toc-text">1. 启动项目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E6%89%A7%E8%A1%8C%E6%B5%81%E7%A8%8B"><span class="toc-number">1.5.2.</span> <span class="toc-text">2. 执行流程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E6%80%BB%E7%BB%93"><span class="toc-number">1.5.3.</span> <span class="toc-text">3. 总结</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/module/flowable/flowable-zhuan-lan/flowable-zhuan-lan/" title="无题"><img src="https://api.yimian.xyz/img?type=moe" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/module/flowable/flowable-zhuan-lan/flowable-zhuan-lan/" title="无题">无题</a><time datetime="2023-07-15T09:45:06.401Z" title="发表于 2023-07-15 17:45:06">2023-07-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/module/consul/part/consul-tong-yong-pei-zhi-shu-xing/" title="无题"><img src="https://api.yimian.xyz/img?type=moe" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/module/consul/part/consul-tong-yong-pei-zhi-shu-xing/" title="无题">无题</a><time datetime="2023-07-15T09:44:38.408Z" title="发表于 2023-07-15 17:44:38">2023-07-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/java/java-duo-xian-cheng-bing-fa/java-duo-xian-cheng-bing-fa-xian-cheng/java-duo-xian-cheng-bing-fa-xian-cheng/" title="【Java 多线程并发】 线程"><img src="https://api.yimian.xyz/img?type=moe" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【Java 多线程并发】 线程"/></a><div class="content"><a class="title" href="/java/java-duo-xian-cheng-bing-fa/java-duo-xian-cheng-bing-fa-xian-cheng/java-duo-xian-cheng-bing-fa-xian-cheng/" title="【Java 多线程并发】 线程">【Java 多线程并发】 线程</a><time datetime="2023-07-10T06:15:00.000Z" title="发表于 2023-07-10 14:15:00">2023-07-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/java/java-jvm/java-jvm-nei-cun-guan-li/java-jvm-zhi-jie-nei-cun/" title="【Java JVM】 直接内存"><img src="https://api.yimian.xyz/img?type=moe" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【Java JVM】 直接内存"/></a><div class="content"><a class="title" href="/java/java-jvm/java-jvm-nei-cun-guan-li/java-jvm-zhi-jie-nei-cun/" title="【Java JVM】 直接内存">【Java JVM】 直接内存</a><time datetime="2023-07-10T00:00:00.000Z" title="发表于 2023-07-10 08:00:00">2023-07-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/database/redis/redis-chong-dian-gong-neng/redis-pai-xu/" title="【Redis】 排序"><img src="https://api.yimian.xyz/img?type=moe" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【Redis】 排序"/></a><div class="content"><a class="title" href="/database/redis/redis-chong-dian-gong-neng/redis-pai-xu/" title="【Redis】 排序">【Redis】 排序</a><time datetime="2023-07-09T06:07:00.000Z" title="发表于 2023-07-09 14:07:00">2023-07-09</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By Bill Cipher</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>function addGitalkSource () {
+  const ele = document.createElement('link')
+  ele.rel = 'stylesheet'
+  ele.href= 'https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.css'
+  document.getElementsByTagName('head')[0].appendChild(ele)
+}
+
+function loadGitalk () {
+  function initGitalk () {
+    var gitalk = new Gitalk(Object.assign({
+      clientID: 'c61a274b6f5aa26a58f6',
+      clientSecret: '485a7761d321c8dcc5cae05d7256be9fb196d94a',
+      repo: 'yu627482453.github.io',
+      owner: 'yu627482453',
+      admin: ['yu627482453'],
+      id: '4444a248c1c3d0d7a1db93b92585f1aa',
+      updateCountCallback: commentCount
+    },null))
+
+    gitalk.render('gitalk-container')
+  }
+
+  if (typeof Gitalk === 'function') initGitalk()
+  else {
+    addGitalkSource()
+    getScript('https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.js').then(initGitalk)
+  }
+}
+
+function commentCount(n){
+  let isCommentCount = document.querySelector('#post-meta .gitalk-comment-count')
+  if (isCommentCount) {
+    isCommentCount.innerHTML= n
+  }
+}
+
+if ('Gitalk' === 'Gitalk' || !true) {
+  if (true) btf.loadComment(document.getElementById('gitalk-container'), loadGitalk)
+  else loadGitalk()
+} else {
+  function loadOtherComment () {
+    loadGitalk()
+  }
+}</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
