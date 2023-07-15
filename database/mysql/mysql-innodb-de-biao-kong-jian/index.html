@@ -147,9 +147,7 @@
     detectApple()
     })(window)</script><meta name="generator" content="Hexo 6.2.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">215</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">45</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://api.yimian.xyz/img?type=moe')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">蝶梦庄生</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">【MySQL】 InnoDB的表空间</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-06-21T21:36:00.000Z" title="发表于 2023-06-22 05:36:00">2023-06-22</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-06-21T21:36:00.000Z" title="更新于 2023-06-22 05:36:00">2023-06-22</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/">数据存储</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="【MySQL】 InnoDB的表空间"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1>【MySQL】 InnoDB的表空间</h1>
-<h2 id="Metadata-34">Metadata</h2>
-<pre><code class="language-yml">title: 【MySQL】 InnoDB的表空间
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">215</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">48</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://api.yimian.xyz/img?type=moe')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">蝶梦庄生</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">【MySQL】 InnoDB的表空间</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-06-21T21:36:00.000Z" title="发表于 2023-06-22 05:36:00">2023-06-22</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-06-21T21:36:00.000Z" title="更新于 2023-06-22 05:36:00">2023-06-22</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/">数据存储</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="【MySQL】 InnoDB的表空间"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="【MySQL】-InnoDB的表空间"><a href="#【MySQL】-InnoDB的表空间" class="headerlink" title="【MySQL】 InnoDB的表空间"></a>【MySQL】 InnoDB的表空间</h1><h2 id="Metadata"><a href="#Metadata" class="headerlink" title="Metadata"></a>Metadata</h2><pre><code class="line-numbers language-yml">title: 【MySQL】 InnoDB的表空间
 date: 2023-06-22 05:36
 tags:
   - 行动阶段/完成
@@ -162,29 +160,23 @@ keywords:
   - 数据存储
 description: 【MySQL】 InnoDB的表空间
 </code></pre>
-<h2 id="概述-6">概述</h2>
-<p><img src="/attachment/58b87e5bda10eaf0599a9f58b8bf8ba3.png" alt=""></p>
-<h3 id="独立表空间">独立表空间</h3>
-<ol>
-<li><strong>区</strong>: 连续的<strong>64</strong>个页就是一个区，也就是说一个区默认占用1MB空间大小。每<strong>256</strong>个区被划分成一组。
-<ul>
-<li>第一个组最开始的3个页面的类型是固定的，也就是说extent 0 这个区最开始的3个页面的类型是固定的，分别是：
-<ul>
+<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p><img src="/attachment/58b87e5bda10eaf0599a9f58b8bf8ba3.png"></p>
+<h3 id="独立表空间"><a href="#独立表空间" class="headerlink" title="独立表空间"></a>独立表空间</h3><ol>
+<li><strong>区</strong>: 连续的<strong>64</strong>个页就是一个区，也就是说一个区默认占用1MB空间大小。每<strong>256</strong>个区被划分成一组。<ul>
+<li>第一个组最开始的3个页面的类型是固定的，也就是说extent 0 这个区最开始的3个页面的类型是固定的，分别是：<ul>
 <li><strong>FSP_HDR</strong> 类型: 这个类型的页面是用来登记<strong>整个表空间的一些整体属性以及本组所有的区</strong>，也就是extent 0 ~ extent 255 这256个区的属性</li>
 <li><strong>IBUF_BITMAP</strong> 类型: 这个类型的页面是存储本组所有的区的所有页面关于<strong>INSERT BUFFER 的信息</strong>。</li>
 <li><strong>INODE</strong> 类型: 这个类型的页面存储了许多称为INODE 的数据结构</li>
 </ul>
 </li>
-<li>其余各组最开始的2个页面的类型是固定的，也就是说extent 256 、extent 512 这些区最开始的2个页面的类型是固定的，分别是：
-<ul>
+<li>其余各组最开始的2个页面的类型是固定的，也就是说extent 256 、extent 512 这些区最开始的2个页面的类型是固定的，分别是：<ul>
 <li><strong>XDES 类型</strong>: 全称是extent descriptor ，用来登记<strong>本组256个区的属性</strong>，对于在extent 256区中的该类型页面存储的就是extent 256 ~ extent 511 这些区的属性</li>
 <li><strong>IBUF_BITMAP</strong> 类型： 这个类型的页面是存储本组所有的区的所有页面关于<strong>INSERT BUFFER 的信息</strong>。</li>
 </ul>
 </li>
 </ul>
 </li>
-<li><strong>段</strong>: 一个索引会生成<strong>2</strong>个段，一个叶子节点段，一个非叶子节点段。 定义了一个INODE Entry 结构来记录一下段中的属性
-<ul>
+<li><strong>段</strong>: 一个索引会生成<strong>2</strong>个段，一个叶子节点段，一个非叶子节点段。 定义了一个INODE Entry 结构来记录一下段中的属性<ul>
 <li><strong>Segment ID</strong>  这个INODE Entry 结构对应的<strong>段的编号</strong>（ID）</li>
 <li><strong>NOT_FULL_N_USED</strong> 是在<strong>NOT_FULL 链表中已经使用了多少个页面</strong>。下次从NOT_FULL 链表分配空闲页面时可以直接根据这个字段的值定位到。</li>
 <li><strong>3个List Base Node</strong> 分别为段的<strong>FREE 链表</strong>、<strong>NOT_FULL 链表</strong>、<strong>FULL 链表定义了List Base Node</strong></li>
@@ -193,34 +185,29 @@ description: 【MySQL】 InnoDB的表空间
 </ul>
 </li>
 <li><strong>碎片（fragment）区</strong> 有些页用于段A，有些页用于段B，有些页甚至哪个段都不属于</li>
-<li>区的分类
-<ul>
+<li>区的分类<ul>
 <li><strong>FREE</strong> <strong>空闲的区</strong></li>
 <li><strong>FREE_FRAG</strong> **有剩余空间的碎片区</li>
 <li><strong>FULL_FRAG</strong> <strong>没有剩余空间的碎片区</strong></li>
 <li><strong>FSEG</strong> <strong>附属于某个段的区</strong></li>
 </ul>
 </li>
-<li>XDES Entry  是一个40个字节的结构，大致分为4个部分，各个部分的释义如下：
-<ul>
+<li>XDES Entry  是一个40个字节的结构，大致分为4个部分，各个部分的释义如下：<ul>
 <li>Segment ID （8字节） 每一个段都有一个唯一的编号，用ID表示，此处的Segment ID 字段表示就是该区所在的段。</li>
 <li>List Node （12字节） 这个部分可以将若干个XDES Entry 结构串联成一个链表</li>
 <li>State （4字节）这个字段表明区的状态。</li>
 <li>Page State Bitmap （16字节） 一个区默认有64个页，这128个比特位被划分为64个部分，每个部分2个比特位，对应区中的一个页。</li>
 </ul>
 </li>
-<li>链表基节点  每个链表都对应这么一个List Base Node 结构
-<ul>
+<li>链表基节点  每个链表都对应这么一个List Base Node 结构<ul>
 <li>List Length 表明该链表一共有多少节点，</li>
 <li>First Node Page Number 和First Node Offset 表明该链表的头节点在表空间中的位置。</li>
 <li>Last Node Page Number 和Last Node Offset 表明该链表的尾节点在表空间中的位置。</li>
 </ul>
 </li>
 </ol>
-<h3 id="系统表空间">系统表空间</h3>
-<ol>
-<li>系统表空间与独立表空间的一个非常明显的不同之处就是在表空间开头有许多记录整个系统属性的页面
-<ul>
+<h3 id="系统表空间"><a href="#系统表空间" class="headerlink" title="系统表空间"></a>系统表空间</h3><ol>
+<li>系统表空间与独立表空间的一个非常明显的不同之处就是在表空间开头有许多记录整个系统属性的页面<ul>
 <li>某个表属于哪个表空间，表里边有多少列</li>
 <li>表对应的每一个列的类型是什么</li>
 <li>该表有多少索引，每个索引对应哪几个字段，该索引对应的根页面在哪个表空间的哪个页面</li>
@@ -232,8 +219,7 @@ description: 【MySQL】 InnoDB的表空间
 <li>SYS_TABLES表</li>
 <li>SYS_COLUMNS表</li>
 <li>SYS_FIELDS表</li>
-<li>Data Dictionary Header页面
-<ol>
+<li>Data Dictionary Header页面<ol>
 <li>Max Row ID: 我们生成一个名为row_id 的列作为主键，这个Max Row ID 是全局共享的</li>
 <li>Max Table ID: InnoDB存储引擎中的所有的索引都对应一个唯一的ID</li>
 <li>Max Space ID: InnoDB存储引擎中的所有的表空间都对应一个唯一的ID</li>
@@ -245,11 +231,9 @@ description: 【MySQL】 InnoDB的表空间
 </ol>
 </li>
 </ol>
-<h2 id="独立表空间结构">独立表空间结构</h2>
-<h3 id="区（extent）的概念">区（extent）的概念</h3>
-<p>对于16KB的页来说，连续的64个页就是一个区，也就是说一个区默认占用1MB空间大小。</p>
+<h2 id="独立表空间结构"><a href="#独立表空间结构" class="headerlink" title="独立表空间结构"></a>独立表空间结构</h2><h3 id="区（extent）的概念"><a href="#区（extent）的概念" class="headerlink" title="区（extent）的概念"></a>区（extent）的概念</h3><p>对于16KB的页来说，连续的64个页就是一个区，也就是说一个区默认占用1MB空间大小。</p>
 <p>每256个区被划分成一组。</p>
-<p><img src="/attachment/7826e02e37b4826849c68183be4516f3.png" alt=""></p>
+<p><img src="/attachment/7826e02e37b4826849c68183be4516f3.png"></p>
 <p>第一个组最开始的3个页面的类型是固定的，也就是说extent 0 这个区最开始的3个页面的类型是固定的，分别是：</p>
 <ul>
 <li>FSP_HDR 类型: 这个类型的页面是用来登记整个表空间的一些整体属性以及本组所有的区，也就是extent 0 ~ extent 255 这256个区的属性</li>
@@ -261,8 +245,7 @@ description: 【MySQL】 InnoDB的表空间
 <li>XDES 类型: 全称是extent descriptor ，用来登记本组256个区的属性，对于在extent 256区中的该类型页面存储的就是extent 256 ~ extent 511 这些区的属性</li>
 <li>IBUF_BITMAP 类型： 这个类型的页面是存储本组所有的区的所有页面关于INSERT BUFFER 的信息。</li>
 </ul>
-<h3 id="段（segment）的概念">段（segment）的概念</h3>
-<p>在表中数据量大的时候，为某个索引分配空间的时候就不再按照页为单位分配了，而是按照区为单位分配，甚至在表中的数据十分非常特别多的时候，可以一次性分配多个连续的区。</p>
+<h3 id="段（segment）的概念"><a href="#段（segment）的概念" class="headerlink" title="段（segment）的概念"></a>段（segment）的概念</h3><p>在表中数据量大的时候，为某个索引分配空间的时候就不再按照页为单位分配了，而是按照区为单位分配，甚至在表中的数据十分非常特别多的时候，可以一次性分配多个连续的区。</p>
 <p>叶子节点有自己独有的区，非叶子节点也有自己独有的区。</p>
 <p>存放叶子节点的区的集合就算是一个段（ segment ），存放非叶子节点的区的集合也算是一个段。</p>
 <p>说一个索引会生成2个段，一个叶子节点段，一个非叶子节点段。</p>
@@ -275,8 +258,7 @@ description: 【MySQL】 InnoDB的表空间
 <li>在刚开始向表中插入数据的时候，段是从某个碎片区以单个页面为单位来分配存储空间的。</li>
 <li>当某个段已经占用了32个碎片区页面之后，就会以完整的区为单位来分配存储空间。</li>
 </ul>
-<h3 id="区的分类">区的分类</h3>
-<ul>
+<h3 id="区的分类"><a href="#区的分类" class="headerlink" title="区的分类"></a>区的分类</h3><ul>
 <li>FREE 空闲的区: 现在还没有用到这个区中的任何页面。</li>
 <li>FREE_FRAG 有剩余空间的碎片区: 表示碎片区中还有可用的页面。</li>
 <li>FULL_FRAG 没有剩余空间的碎片区: 表示碎片区中的所有页面都被使用，没有空闲页面。</li>
@@ -285,22 +267,16 @@ description: 【MySQL】 InnoDB的表空间
 <p>这4种类型的区也可以被称为区的4种状态（ State ）</p>
 <p>处于FREE 、FREE_FRAG 以及FULL_FRAG 这三种状态的区都是独立的，算是直属于表空间；而处于FSEG 状态的区是附属于某个段的。</p>
 <p>为了方便管理这些区，设计InnoDB 的大叔设计了一个称为XDES Entry 的结构（全称就是Extent Descriptor Entry），每一个区都对应着一个XDES Entry 结构</p>
-<p><img src="/attachment/7adf50f3da76f6069a9c7045ea3d4f70.png" alt=""></p>
+<p><img src="/attachment/7adf50f3da76f6069a9c7045ea3d4f70.png"></p>
 <p>XDES Entry 是一个40个字节的结构，大致分为4个部分，各个部分的释义如下：</p>
 <ul>
-<li>Segment ID （8字节）<br>
-每一个段都有一个唯一的编号，用ID表示，此处的Segment ID 字段表示就是该区所在的段。</li>
-<li>List Node （12字节）<br>
-这个部分可以将若干个XDES Entry 结构串联成一个链表</li>
-<li>State （4字节）<br>
-这个字段表明区的状态。</li>
-<li>Page State Bitmap （16字节）<br>
-一个区默认有64个页，这128个比特位被划分为64个部分，每个部分2个比特位，对应区中的一个页。</li>
+<li>Segment ID （8字节）<br>每一个段都有一个唯一的编号，用ID表示，此处的Segment ID 字段表示就是该区所在的段。</li>
+<li>List Node （12字节）<br>这个部分可以将若干个XDES Entry 结构串联成一个链表</li>
+<li>State （4字节）<br>这个字段表明区的状态。</li>
+<li>Page State Bitmap （16字节）<br>一个区默认有64个页，这128个比特位被划分为64个部分，每个部分2个比特位，对应区中的一个页。</li>
 </ul>
-<h4 id="XDES-Entry链表">XDES Entry链表</h4>
-<ul>
-<li>当段中数据较少的时候，会进行以下操作：
-<ul>
+<h4 id="XDES-Entry链表"><a href="#XDES-Entry链表" class="headerlink" title="XDES Entry链表"></a>XDES Entry链表</h4><ul>
+<li>当段中数据较少的时候，会进行以下操作：<ul>
 <li>首先查看表空间中是否有状态为FREE_FRAG的区；</li>
 <li>如果找到了FREE_FRAG的区，从该区中取一些零碎的页，将数据插入其中；</li>
 <li>如果没有找到FREE_FRAG的区，则在表空间下申请一个状态为FREE的区；</li>
@@ -325,35 +301,26 @@ description: 【MySQL】 InnoDB的表空间
 <p><strong>每一个索引都对应两个段，每个段都会维护上述的3个链表</strong></p>
 <p><strong>链表基节点</strong></p>
 <p>这个结构中包含了链表的头节点和尾节点的指针以及这个链表中包含了多少节点的信息</p>
-<p><img src="/attachment/c31d0bbe7b1eccc674b804560f2bca85.png" alt=""></p>
+<p><img src="/attachment/c31d0bbe7b1eccc674b804560f2bca85.png"></p>
 <p>每个链表都对应这么一个List Base Node 结构</p>
 <ul>
 <li>List Length 表明该链表一共有多少节点，</li>
 <li>First Node Page Number 和First Node Offset 表明该链表的头节点在表空间中的位置。</li>
 <li>Last Node Page Number 和Last Node Offset 表明该链表的尾节点在表空间中的位置。</li>
 </ul>
-<h3 id="段的结构">段的结构</h3>
-<p>段其实不对应表空间中某一个连续的物理区域，而是一个逻辑上的概念</p>
+<h3 id="段的结构"><a href="#段的结构" class="headerlink" title="段的结构"></a>段的结构</h3><p>段其实不对应表空间中某一个连续的物理区域，而是一个逻辑上的概念</p>
 <p>定义了一个INODE Entry 结构来记录一下段中的属性</p>
-<p><img src="/attachment/6c02f38231695f30338aa4ba235bce89.png" alt=""></p>
+<p><img src="/attachment/6c02f38231695f30338aa4ba235bce89.png"></p>
 <ul>
-<li>Segment ID<br>
-这个INODE Entry 结构对应的段的编号（ID）</li>
-<li>NOT_FULL_N_USED<br>
-是在NOT_FULL 链表中已经使用了多少个页面。<br>
-下次从NOT_FULL 链表分配空闲页面时可以直接根据这个字段的值定位到。</li>
-<li>3个List Base Node<br>
-分别为段的FREE 链表、NOT_FULL 链表、FULL 链表定义了List Base Node</li>
-<li>Magic Number<br>
-用来标记这个INODE Entry 是否已经被初始化了</li>
-<li>Fragment Array Entry<br>
-每个Fragment Array Entry 结构都对应着一个零散的页面，这个结构一共4个字节，表示一个零散页面的页号。</li>
+<li>Segment ID<br>这个INODE Entry 结构对应的段的编号（ID）</li>
+<li>NOT_FULL_N_USED<br>是在NOT_FULL 链表中已经使用了多少个页面。<br>下次从NOT_FULL 链表分配空闲页面时可以直接根据这个字段的值定位到。</li>
+<li>3个List Base Node<br>分别为段的FREE 链表、NOT_FULL 链表、FULL 链表定义了List Base Node</li>
+<li>Magic Number<br>用来标记这个INODE Entry 是否已经被初始化了</li>
+<li>Fragment Array Entry<br>每个Fragment Array Entry 结构都对应着一个零散的页面，这个结构一共4个字节，表示一个零散页面的页号。</li>
 </ul>
-<h3 id="各类型页面详细情况">各类型页面详细情况</h3>
-<h4 id="FSP-HDR-类型">FSP_HDR 类型</h4>
-<p>表空间的第一个页面，页号为0 。这个页面的类型是FSP_HDR</p>
+<h3 id="各类型页面详细情况"><a href="#各类型页面详细情况" class="headerlink" title="各类型页面详细情况"></a>各类型页面详细情况</h3><h4 id="FSP-HDR-类型"><a href="#FSP-HDR-类型" class="headerlink" title="FSP_HDR 类型"></a>FSP_HDR 类型</h4><p>表空间的第一个页面，页号为0 。这个页面的类型是FSP_HDR</p>
 <p>存储了表空间的一些整体属性以及第一个组内256个区的对应的XDES Entry 结构</p>
-<p><img src="/attachment/ec35f4f158da1a180071733a659d37cd.png" alt=""></p>
+<p><img src="/attachment/ec35f4f158da1a180071733a659d37cd.png"></p>
 <table>
 <thead>
 <tr>
@@ -363,8 +330,7 @@ description: 【MySQL】 InnoDB的表空间
 <th>简单描述</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>File Header</td>
 <td>文件头部</td>
 <td>38 字节</td>
@@ -394,11 +360,9 @@ description: 【MySQL】 InnoDB的表空间
 <td>8字节</td>
 <td>校验页是否完整</td>
 </tr>
-</tbody>
-</table>
-<h5 id="File-Space-Header部分">File Space Header部分</h5>
-<p>用来存储表空间的一些整体属性的</p>
-<p><img src="/attachment/88af70ee1666e4a9704abb4445e38d34.png" alt=""></p>
+</tbody></table>
+<h5 id="File-Space-Header部分"><a href="#File-Space-Header部分" class="headerlink" title="File Space Header部分"></a>File Space Header部分</h5><p>用来存储表空间的一些整体属性的</p>
+<p><img src="/attachment/88af70ee1666e4a9704abb4445e38d34.png"></p>
 <table>
 <thead>
 <tr>
@@ -407,8 +371,7 @@ description: 【MySQL】 InnoDB的表空间
 <th>描述</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>Space ID</td>
 <td>4 字节</td>
 <td>表空间的ID</td>
@@ -468,19 +431,15 @@ description: 【MySQL】 InnoDB的表空间
 <td>16 字节</td>
 <td>SEG_INODES_FREE链表的基节点</td>
 </tr>
-</tbody>
-</table>
-<h4 id="XDES-Entry部分">XDES Entry部分</h4>
-<p>每一个XDES Entry 结构对应表空间的一个区</p>
+</tbody></table>
+<h4 id="XDES-Entry部分"><a href="#XDES-Entry部分" class="headerlink" title="XDES Entry部分"></a>XDES Entry部分</h4><p>每一个XDES Entry 结构对应表空间的一个区</p>
 <p>每组开头的一个页面记录着本组内所有的区对应的XDES Entry 结构。</p>
 <p>整个表空间的第一个页面，记录本组中的所有区对应的XDES Entry 结构以外，还记录着表空间的一些整体属性，这个页面的类型就是我们刚刚说完的FSP_HDR 类型，整个表空间里只有一个这个类型的页面</p>
 <p>除去第一个分组以外，之后的每个分组的第一个页面只需要记录本组内所有的区对应的XDES Entry 结构即可</p>
-<p><img src="/attachment/4d0015af51df048b598e73f8a207ef35.png" alt=""></p>
-<h4 id="IBUF-BITMAP-类型">IBUF_BITMAP 类型</h4>
-<p>每个分组的第二个页面的类型都是IBUF_BITMAP</p>
+<p><img src="/attachment/4d0015af51df048b598e73f8a207ef35.png"></p>
+<h4 id="IBUF-BITMAP-类型"><a href="#IBUF-BITMAP-类型" class="headerlink" title="IBUF_BITMAP 类型"></a>IBUF_BITMAP 类型</h4><p>每个分组的第二个页面的类型都是IBUF_BITMAP</p>
 <p>这种类型的页里边记录了一些有关Change Buffer 的东东</p>
-<h4 id="INODE-类型">INODE 类型</h4>
-<p>第一个分组的第三个页面的类型是INODE</p>
+<h4 id="INODE-类型"><a href="#INODE-类型" class="headerlink" title="INODE 类型"></a>INODE 类型</h4><p>第一个分组的第三个页面的类型是INODE</p>
 <p>为了方便管理，他们又为每个段设计了一个INODE Entry 结构，这个结构中记录了关于这个段的相关属性。</p>
 <p>undefined</p>
 <p>从图中可以看出，一个INODE 类型的页面是由这几部分构成的：</p>
@@ -493,8 +452,7 @@ description: 【MySQL】 InnoDB的表空间
 <th>简单描述</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>File Header</td>
 <td>文件头部</td>
 <td>38 字节</td>
@@ -524,31 +482,24 @@ description: 【MySQL】 InnoDB的表空间
 <td>8字节</td>
 <td>校验页是否完整</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <ul>
-<li>SEG_INODES_FULL 链表<br>
-该链表中的INODE 类型的页面中已经没有空闲空间来存储额外的INODE Entry 结构了。</li>
-<li>SEG_INODES_FREE 链表<br>
-该链表中的INODE 类型的页面中还有空闲空间来存储额外的INODE Entry 结构了。</li>
+<li>SEG_INODES_FULL 链表<br>该链表中的INODE 类型的页面中已经没有空闲空间来存储额外的INODE Entry 结构了。</li>
+<li>SEG_INODES_FREE 链表<br>该链表中的INODE 类型的页面中还有空闲空间来存储额外的INODE Entry 结构了。</li>
 </ul>
 <p>每当我们新创建一个段（创建索引时就会创建段）时，都会创建一个INODE Entry 结构与之对应，存储INODE Entry 的大致过程就是这样的：</p>
 <ul>
 <li>先看看SEG_INODES_FREE 链表是否为空，如果不为空，直接从该链表中获取一个节点，也就相当于获取到一个仍有空闲空间的INODE 类型的页面，然后把该INODE Entry 结构防到该页面中。当该页面中无剩余空间时，就把该页放到SEG_INODES_FULL 链表中。</li>
 <li>如果SEG_INODES_FREE 链表为空，则需要从表空间的FREE_FRAG 链表中申请一个页面，修改该页面的类型为INODE ，把该页面放到SEG_INODES_FREE 链表中，与此同时把该INODE Entry 结构放入该页面。</li>
 </ul>
-<h3 id="Segment-Header-结构的运用">Segment Header 结构的运用</h3>
-<p><img src="/attachment/cf2886d6e955e46601662f5555432d0a.png" alt=""></p>
+<h3 id="Segment-Header-结构的运用"><a href="#Segment-Header-结构的运用" class="headerlink" title="Segment Header 结构的运用"></a>Segment Header 结构的运用</h3><p><img src="/attachment/cf2886d6e955e46601662f5555432d0a.png"></p>
 <p>其中的PAGE_BTR_SEG_LEAF 和PAGE_BTR_SEG_TOP 都占用10个字节，它们其实对应一个叫Segment Header 的结构，该结构图示如下：</p>
-<p><img src="/attachment/cad75f83be354bc4960254cc7d86585e.png" alt=""></p>
-<p><img src="/attachment/f0b5af1dd75ed98ca0a9dd7b267c8de5.png" alt=""></p>
-<h2 id="系统表空间-2">系统表空间</h2>
-<h3 id="系统表空间的整体结构">系统表空间的整体结构</h3>
-<p>系统表空间与独立表空间的一个非常明显的不同之处就是在表空间开头有许多记录整个系统属性的页面</p>
-<p><img src="/attachment/2306403ee0ed146539c0dbe329a92ada.png" alt=""></p>
-<p><img src="/attachment/d175479644e7e8e81d3803c9154c1f74.png" alt=""></p>
-<h4 id="InnoDB数据字典">InnoDB数据字典</h4>
-<p>MySQL除了保存着我们插入的用户数据之外，还需要保存许多额外的信息</p>
+<p><img src="/attachment/cad75f83be354bc4960254cc7d86585e.png"></p>
+<p><img src="/attachment/f0b5af1dd75ed98ca0a9dd7b267c8de5.png"></p>
+<h2 id="系统表空间-1"><a href="#系统表空间-1" class="headerlink" title="系统表空间"></a>系统表空间</h2><h3 id="系统表空间的整体结构"><a href="#系统表空间的整体结构" class="headerlink" title="系统表空间的整体结构"></a>系统表空间的整体结构</h3><p>系统表空间与独立表空间的一个非常明显的不同之处就是在表空间开头有许多记录整个系统属性的页面</p>
+<p><img src="/attachment/2306403ee0ed146539c0dbe329a92ada.png"></p>
+<p><img src="/attachment/d175479644e7e8e81d3803c9154c1f74.png"></p>
+<h4 id="InnoDB数据字典"><a href="#InnoDB数据字典" class="headerlink" title="InnoDB数据字典"></a>InnoDB数据字典</h4><p>MySQL除了保存着我们插入的用户数据之外，还需要保存许多额外的信息</p>
 <ul>
 <li>某个表属于哪个表空间，表里边有多少列</li>
 <li>表对应的每一个列的类型是什么</li>
@@ -559,43 +510,34 @@ description: 【MySQL】 InnoDB的表空间
 </ul>
 <p>为了更好的管理我们这些用户数据而不得已引入的一些额外数据，这些数据也称为元数据</p>
 <p>InnoDB存储引擎特意定义了一些列的内部系统表（internal system table）来记录这些这些元数据：</p>
-<p><img src="/attachment/445f3431f591b892d0cf687c5bd94bcd.png" alt=""></p>
+<p><img src="/attachment/445f3431f591b892d0cf687c5bd94bcd.png"></p>
 <p>这些系统表也被称为数据字典，它们都是以B+ 树的形式保存在系统表空间的某些页面</p>
-<h5 id="SYS-TABLES表">SYS_TABLES表</h5>
-<p><img src="/attachment/bf7a562b1d38b08e9fbca21758846d39.png" alt=""></p>
+<h5 id="SYS-TABLES表"><a href="#SYS-TABLES表" class="headerlink" title="SYS_TABLES表"></a>SYS_TABLES表</h5><p><img src="/attachment/bf7a562b1d38b08e9fbca21758846d39.png"></p>
 <p>这个SYS_TABLES 表有两个索引</p>
 <ul>
 <li>以NAME 列为主键的聚簇索引</li>
 <li>以ID 列建立的二级索引</li>
 </ul>
-<h5 id="SYS-COLUMNS表">SYS_COLUMNS表</h5>
-<p><img src="/attachment/bd4d295084678e8102e2d823577771fa.png" alt=""><br>
-<img src="/attachment/c253da09781dc1ef2563f29cdd421265.png" alt=""></p>
-<h5 id="SYS-FIELDS表">SYS_FIELDS表</h5>
-<p><img src="/attachment/145baea6638cb72ba441953fe55f639c.png" alt=""></p>
-<h5 id="Data-Dictionary-Header页面">Data Dictionary Header页面</h5>
-<p><img src="/attachment/6c85e8f3959cfbf84213dfa84a6e5323.png" alt=""></p>
+<h5 id="SYS-COLUMNS表"><a href="#SYS-COLUMNS表" class="headerlink" title="SYS_COLUMNS表"></a>SYS_COLUMNS表</h5><p><img src="/attachment/bd4d295084678e8102e2d823577771fa.png"><br><img src="/attachment/c253da09781dc1ef2563f29cdd421265.png"></p>
+<h5 id="SYS-FIELDS表"><a href="#SYS-FIELDS表" class="headerlink" title="SYS_FIELDS表"></a>SYS_FIELDS表</h5><p><img src="/attachment/145baea6638cb72ba441953fe55f639c.png"></p>
+<h5 id="Data-Dictionary-Header页面"><a href="#Data-Dictionary-Header页面" class="headerlink" title="Data Dictionary Header页面"></a>Data Dictionary Header页面</h5><p><img src="/attachment/6c85e8f3959cfbf84213dfa84a6e5323.png"></p>
 <ul>
 <li>Max Row ID:</li>
 </ul>
-<p>如果我们不显式的为表定义主键，而且表中也没有UNIQUE 索引<br>
-InnoDB 存储引擎会默认为我们生成一个名为row_id 的列作为主键。</p>
+<p>如果我们不显式的为表定义主键，而且表中也没有UNIQUE 索引<br>InnoDB 存储引擎会默认为我们生成一个名为row_id 的列作为主键。</p>
 <p>不论哪个拥有row_id 列的表插入一条记录时，该记录的row_id 列的值就是Max Row ID 对应的值，然后再把Max Row ID 对应的值加1，也就是说这个Max Row ID 是全局共享的。</p>
 <ul>
 <li>Max Table ID</li>
 </ul>
-<p>InnoDB存储引擎中的所有的表都对应一个唯一的ID<br>
-每次新建一个表时，就会把本字段的值作为该表的ID，然后自增本字段的值。</p>
+<p>InnoDB存储引擎中的所有的表都对应一个唯一的ID<br>每次新建一个表时，就会把本字段的值作为该表的ID，然后自增本字段的值。</p>
 <ul>
 <li>Max Index ID</li>
 </ul>
-<p>InnoDB存储引擎中的所有的索引都对应一个唯一的ID<br>
-每次新建一个索引时，就会把本字段的值作为该索引的ID，然后自增本字段的值。</p>
+<p>InnoDB存储引擎中的所有的索引都对应一个唯一的ID<br>每次新建一个索引时，就会把本字段的值作为该索引的ID，然后自增本字段的值。</p>
 <ul>
 <li>Max Space ID</li>
 </ul>
-<p>InnoDB存储引擎中的所有的表空间都对应一个唯一的ID<br>
-每次新建一个表空间时，就会把本字段的值作为该表空间的ID，然后自增本字段的值。</p>
+<p>InnoDB存储引擎中的所有的表空间都对应一个唯一的ID<br>每次新建一个表空间时，就会把本字段的值作为该表空间的ID，然后自增本字段的值。</p>
 <ul>
 <li>Root of SYS_TABLES clust index ：</li>
 </ul>
@@ -616,7 +558,7 @@ InnoDB 存储引擎会默认为我们生成一个名为row_id 的列作为主键
 <li>Root of SYS_FIELDS clust index</li>
 </ul>
 <p>本字段代表SYS_FIELDS 表聚簇索引的根页面的页号。</p>
-</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a target="_blank" rel="noopener" href="https://github.com/yu627482453">Bill Cipher</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://yu627482453.github.io/database/mysql/mysql-innodb-de-biao-kong-jian/">https://yu627482453.github.io/database/mysql/mysql-innodb-de-biao-kong-jian/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://yu627482453.github.io" target="_blank">蝶梦庄生</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E8%A1%8C%E5%8A%A8%E9%98%B6%E6%AE%B5-%E5%AE%8C%E6%88%90/">行动阶段/完成</a><a class="post-meta__tags" href="/tags/%E7%AC%94%E8%AE%B0%E7%A9%BA%E9%97%B4-KnowladgeSpace-ProgramSpace-BasicsSpace/">笔记空间/KnowladgeSpace/ProgramSpace/BasicsSpace</a><a class="post-meta__tags" href="/tags/%E4%B8%BB%E9%A2%98%E5%9C%BA%E6%99%AF-%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/">主题场景/数据存储</a><a class="post-meta__tags" href="/tags/%E7%BB%86%E5%8C%96%E4%B8%BB%E9%A2%98-%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/">细化主题/数据存储</a></div><div class="post_share"><div class="social-share" data-image="https://api.yimian.xyz/img?type=moe" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/reward/wechat.jpg" target="_blank"><img class="post-qr-code-img" src="/img/reward/wechat.jpg" alt="wechat"/></a><div class="post-qr-code-desc">wechat</div></li><li class="reward-item"><a href="/img/reward/alipay.jpg" target="_blank"><img class="post-qr-code-img" src="/img/reward/alipay.jpg" alt="alipay"/></a><div class="post-qr-code-desc">alipay</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/database/mysql/mysql-dan-biao-fang-wen-fang-fa/"><img class="prev-cover" src="https://api.yimian.xyz/img?type=moe" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">【MySQL】 单表访问方法</div></div></a></div><div class="next-post pull-right"><a href="/database/db-sql/db-sql/"><img class="next-cover" src="https://api.yimian.xyz/img?type=moe" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info"></div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/database/mysql/mysql/" title="MySQL"><img class="cover" src="https://api.yimian.xyz/img?type=moe" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-12-20</div><div class="title">MySQL</div></div></a></div><div><a href="/database/mysql/mysql-explain-xiang-jie/" title="【MySQL】 Explain详解"><img class="cover" src="https://api.yimian.xyz/img?type=moe" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-06-24</div><div class="title">【MySQL】 Explain详解</div></div></a></div><div><a href="/database/mysql/mysql-innodb-de-tong-ji-shu-ju-shou-ji/" title="【MySQL】 InnoDB 的统计数据收集"><img class="cover" src="https://api.yimian.xyz/img?type=moe" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-06-23</div><div class="title">【MySQL】 InnoDB 的统计数据收集</div></div></a></div><div><a href="/database/mysql/mysql-innodb-de-buffer-pool/" title="【MySQL】 InnoDB的Buffer Pool"><img class="cover" src="https://api.yimian.xyz/img?type=moe" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-06-24</div><div class="title">【MySQL】 InnoDB的Buffer Pool</div></div></a></div><div><a href="/database/mysql/mysql-mysql-ji-yu-gui-ze-de-you-hua/" title="【MySQL】 MySQL基于规则的优化"><img class="cover" src="https://api.yimian.xyz/img?type=moe" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-06-23</div><div class="title">【MySQL】 MySQL基于规则的优化</div></div></a></div><div><a href="/database/mysql/mysql-mysql-ji-yu-cheng-ben-de-you-hua/" title="【MySQL】 MySQL基于成本的优化"><img class="cover" src="https://api.yimian.xyz/img?type=moe" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-06-23</div><div class="title">【MySQL】 MySQL基于成本的优化</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="gitalk-container"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Bill Cipher</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">215</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">45</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/yu627482453"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/yu627482453" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="/627482453@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">1.</span> <span class="toc-text">【MySQL】 InnoDB的表空间</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Metadata-34"><span class="toc-number">1.1.</span> <span class="toc-text">Metadata</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A6%82%E8%BF%B0-6"><span class="toc-number">1.2.</span> <span class="toc-text">概述</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%8B%AC%E7%AB%8B%E8%A1%A8%E7%A9%BA%E9%97%B4"><span class="toc-number">1.2.1.</span> <span class="toc-text">独立表空间</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E8%A1%A8%E7%A9%BA%E9%97%B4"><span class="toc-number">1.2.2.</span> <span class="toc-text">系统表空间</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%8B%AC%E7%AB%8B%E8%A1%A8%E7%A9%BA%E9%97%B4%E7%BB%93%E6%9E%84"><span class="toc-number">1.3.</span> <span class="toc-text">独立表空间结构</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8C%BA%EF%BC%88extent%EF%BC%89%E7%9A%84%E6%A6%82%E5%BF%B5"><span class="toc-number">1.3.1.</span> <span class="toc-text">区（extent）的概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AE%B5%EF%BC%88segment%EF%BC%89%E7%9A%84%E6%A6%82%E5%BF%B5"><span class="toc-number">1.3.2.</span> <span class="toc-text">段（segment）的概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8C%BA%E7%9A%84%E5%88%86%E7%B1%BB"><span class="toc-number">1.3.3.</span> <span class="toc-text">区的分类</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#XDES-Entry%E9%93%BE%E8%A1%A8"><span class="toc-number">1.3.3.1.</span> <span class="toc-text">XDES Entry链表</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AE%B5%E7%9A%84%E7%BB%93%E6%9E%84"><span class="toc-number">1.3.4.</span> <span class="toc-text">段的结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%84%E7%B1%BB%E5%9E%8B%E9%A1%B5%E9%9D%A2%E8%AF%A6%E7%BB%86%E6%83%85%E5%86%B5"><span class="toc-number">1.3.5.</span> <span class="toc-text">各类型页面详细情况</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#FSP-HDR-%E7%B1%BB%E5%9E%8B"><span class="toc-number">1.3.5.1.</span> <span class="toc-text">FSP_HDR 类型</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#File-Space-Header%E9%83%A8%E5%88%86"><span class="toc-number">1.3.5.1.1.</span> <span class="toc-text">File Space Header部分</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#XDES-Entry%E9%83%A8%E5%88%86"><span class="toc-number">1.3.5.2.</span> <span class="toc-text">XDES Entry部分</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#IBUF-BITMAP-%E7%B1%BB%E5%9E%8B"><span class="toc-number">1.3.5.3.</span> <span class="toc-text">IBUF_BITMAP 类型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#INODE-%E7%B1%BB%E5%9E%8B"><span class="toc-number">1.3.5.4.</span> <span class="toc-text">INODE 类型</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Segment-Header-%E7%BB%93%E6%9E%84%E7%9A%84%E8%BF%90%E7%94%A8"><span class="toc-number">1.3.6.</span> <span class="toc-text">Segment Header 结构的运用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E8%A1%A8%E7%A9%BA%E9%97%B4-2"><span class="toc-number">1.4.</span> <span class="toc-text">系统表空间</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E8%A1%A8%E7%A9%BA%E9%97%B4%E7%9A%84%E6%95%B4%E4%BD%93%E7%BB%93%E6%9E%84"><span class="toc-number">1.4.1.</span> <span class="toc-text">系统表空间的整体结构</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#InnoDB%E6%95%B0%E6%8D%AE%E5%AD%97%E5%85%B8"><span class="toc-number">1.4.1.1.</span> <span class="toc-text">InnoDB数据字典</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#SYS-TABLES%E8%A1%A8"><span class="toc-number">1.4.1.1.1.</span> <span class="toc-text">SYS_TABLES表</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#SYS-COLUMNS%E8%A1%A8"><span class="toc-number">1.4.1.1.2.</span> <span class="toc-text">SYS_COLUMNS表</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#SYS-FIELDS%E8%A1%A8"><span class="toc-number">1.4.1.1.3.</span> <span class="toc-text">SYS_FIELDS表</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Data-Dictionary-Header%E9%A1%B5%E9%9D%A2"><span class="toc-number">1.4.1.1.4.</span> <span class="toc-text">Data Dictionary Header页面</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/design/she-ji-mo-shi/" title="无题"><img src="https://api.yimian.xyz/img?type=moe" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/design/she-ji-mo-shi/" title="无题">无题</a><time datetime="2023-07-15T09:13:39.871Z" title="发表于 2023-07-15 17:13:39">2023-07-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/java/java-duo-xian-cheng-bing-fa/java-duo-xian-cheng-bing-fa-xian-cheng/java-duo-xian-cheng-bing-fa-xian-cheng/" title="【Java 多线程并发】 线程"><img src="https://api.yimian.xyz/img?type=moe" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【Java 多线程并发】 线程"/></a><div class="content"><a class="title" href="/java/java-duo-xian-cheng-bing-fa/java-duo-xian-cheng-bing-fa-xian-cheng/java-duo-xian-cheng-bing-fa-xian-cheng/" title="【Java 多线程并发】 线程">【Java 多线程并发】 线程</a><time datetime="2023-07-10T06:15:00.000Z" title="发表于 2023-07-10 14:15:00">2023-07-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/java/java-jvm/java-jvm-nei-cun-guan-li/java-jvm-zhi-jie-nei-cun/" title="【Java JVM】 直接内存"><img src="https://api.yimian.xyz/img?type=moe" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【Java JVM】 直接内存"/></a><div class="content"><a class="title" href="/java/java-jvm/java-jvm-nei-cun-guan-li/java-jvm-zhi-jie-nei-cun/" title="【Java JVM】 直接内存">【Java JVM】 直接内存</a><time datetime="2023-07-10T00:00:00.000Z" title="发表于 2023-07-10 08:00:00">2023-07-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/database/redis/redis-chong-dian-gong-neng/redis-pai-xu/" title="【Redis】 排序"><img src="https://api.yimian.xyz/img?type=moe" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【Redis】 排序"/></a><div class="content"><a class="title" href="/database/redis/redis-chong-dian-gong-neng/redis-pai-xu/" title="【Redis】 排序">【Redis】 排序</a><time datetime="2023-07-09T06:07:00.000Z" title="发表于 2023-07-09 14:07:00">2023-07-09</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/database/redis/redis-chong-dian-gong-neng/redis-lua-jiao-ben/" title="【Redis】 Lua脚本"><img src="https://api.yimian.xyz/img?type=moe" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【Redis】 Lua脚本"/></a><div class="content"><a class="title" href="/database/redis/redis-chong-dian-gong-neng/redis-lua-jiao-ben/" title="【Redis】 Lua脚本">【Redis】 Lua脚本</a><time datetime="2023-07-09T05:56:00.000Z" title="发表于 2023-07-09 13:56:00">2023-07-09</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By Bill Cipher</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>function addGitalkSource () {
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a target="_blank" rel="noopener" href="https://github.com/yu627482453">Bill Cipher</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://yu627482453.github.io/database/mysql/mysql-innodb-de-biao-kong-jian/">https://yu627482453.github.io/database/mysql/mysql-innodb-de-biao-kong-jian/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://yu627482453.github.io" target="_blank">蝶梦庄生</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E8%A1%8C%E5%8A%A8%E9%98%B6%E6%AE%B5-%E5%AE%8C%E6%88%90/">行动阶段/完成</a><a class="post-meta__tags" href="/tags/%E7%AC%94%E8%AE%B0%E7%A9%BA%E9%97%B4-KnowladgeSpace-ProgramSpace-BasicsSpace/">笔记空间/KnowladgeSpace/ProgramSpace/BasicsSpace</a><a class="post-meta__tags" href="/tags/%E4%B8%BB%E9%A2%98%E5%9C%BA%E6%99%AF-%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/">主题场景/数据存储</a><a class="post-meta__tags" href="/tags/%E7%BB%86%E5%8C%96%E4%B8%BB%E9%A2%98-%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/">细化主题/数据存储</a></div><div class="post_share"><div class="social-share" data-image="https://api.yimian.xyz/img?type=moe" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/reward/wechat.jpg" target="_blank"><img class="post-qr-code-img" src="/img/reward/wechat.jpg" alt="wechat"/></a><div class="post-qr-code-desc">wechat</div></li><li class="reward-item"><a href="/img/reward/alipay.jpg" target="_blank"><img class="post-qr-code-img" src="/img/reward/alipay.jpg" alt="alipay"/></a><div class="post-qr-code-desc">alipay</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/database/mysql/mysql-dan-biao-fang-wen-fang-fa/"><img class="prev-cover" src="https://api.yimian.xyz/img?type=moe" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">【MySQL】 单表访问方法</div></div></a></div><div class="next-post pull-right"><a href="/database/db-sql/db-sql/"><img class="next-cover" src="https://api.yimian.xyz/img?type=moe" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info"></div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/database/mysql/mysql/" title="MySQL"><img class="cover" src="https://api.yimian.xyz/img?type=moe" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-12-20</div><div class="title">MySQL</div></div></a></div><div><a href="/database/mysql/mysql-innodb-de-buffer-pool/" title="【MySQL】 InnoDB的Buffer Pool"><img class="cover" src="https://api.yimian.xyz/img?type=moe" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-06-24</div><div class="title">【MySQL】 InnoDB的Buffer Pool</div></div></a></div><div><a href="/database/mysql/mysql-mysql-ji-yu-cheng-ben-de-you-hua/" title="【MySQL】 MySQL基于成本的优化"><img class="cover" src="https://api.yimian.xyz/img?type=moe" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-06-23</div><div class="title">【MySQL】 MySQL基于成本的优化</div></div></a></div><div><a href="/database/mysql/mysql-explain-xiang-jie/" title="【MySQL】 Explain详解"><img class="cover" src="https://api.yimian.xyz/img?type=moe" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-06-24</div><div class="title">【MySQL】 Explain详解</div></div></a></div><div><a href="/database/mysql/mysql-optimizer-trace-biao/" title="【MySQL】 optimizer trace表"><img class="cover" src="https://api.yimian.xyz/img?type=moe" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-06-24</div><div class="title">【MySQL】 optimizer trace表</div></div></a></div><div><a href="/database/mysql/mysql-mysql-ji-yu-gui-ze-de-you-hua/" title="【MySQL】 MySQL基于规则的优化"><img class="cover" src="https://api.yimian.xyz/img?type=moe" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-06-23</div><div class="title">【MySQL】 MySQL基于规则的优化</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="gitalk-container"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Bill Cipher</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">215</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">48</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/yu627482453"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/yu627482453" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="/627482453@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E3%80%90MySQL%E3%80%91-InnoDB%E7%9A%84%E8%A1%A8%E7%A9%BA%E9%97%B4"><span class="toc-number">1.</span> <span class="toc-text">【MySQL】 InnoDB的表空间</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Metadata"><span class="toc-number">1.1.</span> <span class="toc-text">Metadata</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A6%82%E8%BF%B0"><span class="toc-number">1.2.</span> <span class="toc-text">概述</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%8B%AC%E7%AB%8B%E8%A1%A8%E7%A9%BA%E9%97%B4"><span class="toc-number">1.2.1.</span> <span class="toc-text">独立表空间</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E8%A1%A8%E7%A9%BA%E9%97%B4"><span class="toc-number">1.2.2.</span> <span class="toc-text">系统表空间</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%8B%AC%E7%AB%8B%E8%A1%A8%E7%A9%BA%E9%97%B4%E7%BB%93%E6%9E%84"><span class="toc-number">1.3.</span> <span class="toc-text">独立表空间结构</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8C%BA%EF%BC%88extent%EF%BC%89%E7%9A%84%E6%A6%82%E5%BF%B5"><span class="toc-number">1.3.1.</span> <span class="toc-text">区（extent）的概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AE%B5%EF%BC%88segment%EF%BC%89%E7%9A%84%E6%A6%82%E5%BF%B5"><span class="toc-number">1.3.2.</span> <span class="toc-text">段（segment）的概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8C%BA%E7%9A%84%E5%88%86%E7%B1%BB"><span class="toc-number">1.3.3.</span> <span class="toc-text">区的分类</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#XDES-Entry%E9%93%BE%E8%A1%A8"><span class="toc-number">1.3.3.1.</span> <span class="toc-text">XDES Entry链表</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AE%B5%E7%9A%84%E7%BB%93%E6%9E%84"><span class="toc-number">1.3.4.</span> <span class="toc-text">段的结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%84%E7%B1%BB%E5%9E%8B%E9%A1%B5%E9%9D%A2%E8%AF%A6%E7%BB%86%E6%83%85%E5%86%B5"><span class="toc-number">1.3.5.</span> <span class="toc-text">各类型页面详细情况</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#FSP-HDR-%E7%B1%BB%E5%9E%8B"><span class="toc-number">1.3.5.1.</span> <span class="toc-text">FSP_HDR 类型</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#File-Space-Header%E9%83%A8%E5%88%86"><span class="toc-number">1.3.5.1.1.</span> <span class="toc-text">File Space Header部分</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#XDES-Entry%E9%83%A8%E5%88%86"><span class="toc-number">1.3.5.2.</span> <span class="toc-text">XDES Entry部分</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#IBUF-BITMAP-%E7%B1%BB%E5%9E%8B"><span class="toc-number">1.3.5.3.</span> <span class="toc-text">IBUF_BITMAP 类型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#INODE-%E7%B1%BB%E5%9E%8B"><span class="toc-number">1.3.5.4.</span> <span class="toc-text">INODE 类型</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Segment-Header-%E7%BB%93%E6%9E%84%E7%9A%84%E8%BF%90%E7%94%A8"><span class="toc-number">1.3.6.</span> <span class="toc-text">Segment Header 结构的运用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E8%A1%A8%E7%A9%BA%E9%97%B4-1"><span class="toc-number">1.4.</span> <span class="toc-text">系统表空间</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E8%A1%A8%E7%A9%BA%E9%97%B4%E7%9A%84%E6%95%B4%E4%BD%93%E7%BB%93%E6%9E%84"><span class="toc-number">1.4.1.</span> <span class="toc-text">系统表空间的整体结构</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#InnoDB%E6%95%B0%E6%8D%AE%E5%AD%97%E5%85%B8"><span class="toc-number">1.4.1.1.</span> <span class="toc-text">InnoDB数据字典</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#SYS-TABLES%E8%A1%A8"><span class="toc-number">1.4.1.1.1.</span> <span class="toc-text">SYS_TABLES表</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#SYS-COLUMNS%E8%A1%A8"><span class="toc-number">1.4.1.1.2.</span> <span class="toc-text">SYS_COLUMNS表</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#SYS-FIELDS%E8%A1%A8"><span class="toc-number">1.4.1.1.3.</span> <span class="toc-text">SYS_FIELDS表</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Data-Dictionary-Header%E9%A1%B5%E9%9D%A2"><span class="toc-number">1.4.1.1.4.</span> <span class="toc-text">Data Dictionary Header页面</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/java/java-duo-xian-cheng-bing-fa/java-duo-xian-cheng-bing-fa-xian-cheng/java-duo-xian-cheng-bing-fa-xian-cheng/" title="【Java 多线程并发】 线程"><img src="https://api.yimian.xyz/img?type=moe" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【Java 多线程并发】 线程"/></a><div class="content"><a class="title" href="/java/java-duo-xian-cheng-bing-fa/java-duo-xian-cheng-bing-fa-xian-cheng/java-duo-xian-cheng-bing-fa-xian-cheng/" title="【Java 多线程并发】 线程">【Java 多线程并发】 线程</a><time datetime="2023-07-10T06:15:00.000Z" title="发表于 2023-07-10 14:15:00">2023-07-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/java/java-jvm/java-jvm-nei-cun-guan-li/java-jvm-zhi-jie-nei-cun/" title="【Java JVM】 直接内存"><img src="https://api.yimian.xyz/img?type=moe" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【Java JVM】 直接内存"/></a><div class="content"><a class="title" href="/java/java-jvm/java-jvm-nei-cun-guan-li/java-jvm-zhi-jie-nei-cun/" title="【Java JVM】 直接内存">【Java JVM】 直接内存</a><time datetime="2023-07-10T00:00:00.000Z" title="发表于 2023-07-10 08:00:00">2023-07-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/database/redis/redis-chong-dian-gong-neng/redis-pai-xu/" title="【Redis】 排序"><img src="https://api.yimian.xyz/img?type=moe" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【Redis】 排序"/></a><div class="content"><a class="title" href="/database/redis/redis-chong-dian-gong-neng/redis-pai-xu/" title="【Redis】 排序">【Redis】 排序</a><time datetime="2023-07-09T06:07:00.000Z" title="发表于 2023-07-09 14:07:00">2023-07-09</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/database/redis/redis-chong-dian-gong-neng/redis-lua-jiao-ben/" title="【Redis】 Lua脚本"><img src="https://api.yimian.xyz/img?type=moe" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【Redis】 Lua脚本"/></a><div class="content"><a class="title" href="/database/redis/redis-chong-dian-gong-neng/redis-lua-jiao-ben/" title="【Redis】 Lua脚本">【Redis】 Lua脚本</a><time datetime="2023-07-09T05:56:00.000Z" title="发表于 2023-07-09 13:56:00">2023-07-09</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/database/redis/redis-chong-dian-gong-neng/redis-fa-bu-he-ding-yue/" title="【Redis】 发布和订阅"><img src="https://api.yimian.xyz/img?type=moe" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【Redis】 发布和订阅"/></a><div class="content"><a class="title" href="/database/redis/redis-chong-dian-gong-neng/redis-fa-bu-he-ding-yue/" title="【Redis】 发布和订阅">【Redis】 发布和订阅</a><time datetime="2023-07-09T05:30:00.000Z" title="发表于 2023-07-09 13:30:00">2023-07-09</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By Bill Cipher</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>function addGitalkSource () {
   const ele = document.createElement('link')
   ele.rel = 'stylesheet'
   ele.href= 'https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.css'
