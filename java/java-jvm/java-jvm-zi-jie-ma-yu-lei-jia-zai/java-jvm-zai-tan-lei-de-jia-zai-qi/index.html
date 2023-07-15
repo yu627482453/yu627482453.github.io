@@ -147,7 +147,9 @@
     detectApple()
     })(window)</script><meta name="generator" content="Hexo 6.2.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">575</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">125</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">21</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://api.yimian.xyz/img?type=moe')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">蝶梦庄生</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">【Java JVM】 再谈类的加载器</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-06-30T11:12:00.000Z" title="发表于 2023-06-30 19:12:00">2023-06-30</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-06-30T11:12:00.000Z" title="更新于 2023-06-30 19:12:00">2023-06-30</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Java/">Java</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="【Java JVM】 再谈类的加载器"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="【Java-JVM】-再谈类的加载器"><a href="#【Java-JVM】-再谈类的加载器" class="headerlink" title="【Java JVM】 再谈类的加载器"></a>【Java JVM】 再谈类的加载器</h1><h2 id="Metadata"><a href="#Metadata" class="headerlink" title="Metadata"></a>Metadata</h2><pre><code class="line-numbers language-yml">title: 【Java JVM】 再谈类的加载器
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">575</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">125</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">21</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://api.yimian.xyz/img?type=moe')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">蝶梦庄生</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">【Java JVM】 再谈类的加载器</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-06-30T11:12:00.000Z" title="发表于 2023-06-30 19:12:00">2023-06-30</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-06-30T11:12:00.000Z" title="更新于 2023-06-30 19:12:00">2023-06-30</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Java/">Java</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="【Java JVM】 再谈类的加载器"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1>【Java JVM】 再谈类的加载器</h1>
+<h2 id="Metadata-144">Metadata</h2>
+<pre><code class="language-yml">title: 【Java JVM】 再谈类的加载器
 date: 2023-06-30 19:12
 tags:
   - 行动阶段/完成
@@ -160,60 +162,76 @@ keywords:
   - Java
 description: 【Java JVM】 再谈类的加载器
 </code></pre>
-<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>类加载器是JVM执行类加载机制的前提。</p>
+<h2 id="概述-55">概述</h2>
+<p>类加载器是JVM执行类加载机制的前提。</p>
 <p><strong>ClassLoader的作用：</strong></p>
 <p>ClassLoader是Java的核心组件，所有的Class都是由ClassLoader进行加载的，ClassLoader负责通过各种方式将Class信息的二进制数据流读入JVM内部，转换为一个与目标类对应的java.lang.Class对象实例。然后交给Java虚拟机进行链接、初始化等操作。因此，ClassLoader在整个装载阶段，只能影响到类的加载，而无法通过ClassLoader去改变类的链接和初始化行为。至于它是否可以运行，则由Execution Engine决定。</p>
-<p><img src="/attachment/39af665fcf577e7f53f22216e915893a.png"></p>
-<h3 id="大厂面试题"><a href="#大厂面试题" class="headerlink" title="大厂面试题"></a>大厂面试题</h3><blockquote>
+<p><img src="/attachment/39af665fcf577e7f53f22216e915893a.png" alt></p>
+<h3 id="大厂面试题">大厂面试题</h3>
+<blockquote>
 <p><mark>蚂蚁金服：</mark></p>
-<p>深入分析ClassLoader，双亲委派机制<br>类加载器的双亲委派模型是什么？一面：双亲委派机制及使用原因</p>
+<p>深入分析ClassLoader，双亲委派机制<br>
+类加载器的双亲委派模型是什么？一面：双亲委派机制及使用原因</p>
 <p><mark>百度：</mark></p>
-<p>都有哪些类加载器，这些类加载器都加载哪些文件？<br>手写一个类加载器Demo<br>Class的forName（“java.lang.String”）和Class的getClassLoader（）的Loadclass（“java.lang.String”）有什么区别？</p>
+<p>都有哪些类加载器，这些类加载器都加载哪些文件？<br>
+手写一个类加载器Demo<br>
+Class的forName（“java.lang.String”）和Class的getClassLoader（）的Loadclass（“java.lang.String”）有什么区别？</p>
 <p><mark>腾讯：</mark></p>
-<p>什么是双亲委派模型？<br>类加载器有哪些？</p>
-<p><mark>小米：</mark><br>双亲委派模型介绍一下</p>
+<p>什么是双亲委派模型？<br>
+类加载器有哪些？</p>
+<p><mark>小米：</mark><br>
+双亲委派模型介绍一下</p>
 <p><mark>滴滴：</mark></p>
 <p>简单说说你了解的类加载器一面：讲一下双亲委派模型，以及其优点</p>
 <p><mark>字节跳动：</mark></p>
 <p>什么是类加载器，类加载器有哪些？</p>
 <p><mark>京东：</mark></p>
-<p>类加载器的双亲委派模型是什么？<br>双亲委派机制可以打破吗？为什么</p>
+<p>类加载器的双亲委派模型是什么？<br>
+双亲委派机制可以打破吗？为什么</p>
 </blockquote>
-<h3 id="类加载器的分类"><a href="#类加载器的分类" class="headerlink" title="类加载器的分类"></a>类加载器的分类</h3><p>类的加载分类：显式加载 vs 隐式加载</p>
+<h3 id="类加载器的分类">类加载器的分类</h3>
+<p>类的加载分类：显式加载 vs 隐式加载</p>
 <p>class文件的显式加载与隐式加载的方式是指JVM加载class文件到内存的方式。</p>
 <ul>
 <li>显式加载指的是在代码中通过调用ClassLoader加载class对象，如直接使用Class.forName(name)或this.getClass().getClassLoader().loadClass()加载class对象。</li>
 <li>隐式加载则是不直接在代码中调用ClassLoader的方法加载class对象，而是通过虚拟机自动加载到内存中，如在加载某个类的class文件时，该类的class文件中引用了另外一个类的对象，此时额外引用的类将通过JVM自动加载到内存中。</li>
 </ul>
 <p>在日常开发以上两种方式一般会混合使用。</p>
-<pre><code class="line-numbers language-java">//隐式加载
+<pre><code class="language-java">//隐式加载
 User user=new User();
 //显式加载，并初始化
 Class clazz=Class.forName("com.test.java.User");
 //显式加载，但不初始化
 ClassLoader.getSystemClassLoader().loadClass("com.test.java.Parent"); 
 </code></pre>
-<h3 id="类加载器的必要性"><a href="#类加载器的必要性" class="headerlink" title="类加载器的必要性"></a>类加载器的必要性</h3><p>一般情况下，Java开发人员并不需要在程序中显式地使用类加载器，但是了解类加载器的加载机制却显得至关重要。从以下几个方面说：</p>
+<h3 id="类加载器的必要性">类加载器的必要性</h3>
+<p>一般情况下，Java开发人员并不需要在程序中显式地使用类加载器，但是了解类加载器的加载机制却显得至关重要。从以下几个方面说：</p>
 <ul>
 <li>避免在开发中遇到java.lang.ClassNotFoundException异常或java.lang.NoClassDefFoundError异常时，手足无措。只有了解类加载器的 加载机制才能够在出现异常的时候快速地根据错误异常日志定位问题和解决问题</li>
 <li>需要支持类的动态加载或需要对编译后的字节码文件进行加解密操作时，就需要与类加载器打交道了。</li>
 <li>开发人员可以在程序中编写自定义类加载器来重新定义类的加载规则，以便实现一些自定义的处理逻辑。</li>
 </ul>
-<h3 id="命名空间"><a href="#命名空间" class="headerlink" title="命名空间"></a>命名空间</h3><p><strong>何为类的唯一性？</strong></p>
+<h3 id="命名空间">命名空间</h3>
+<p><strong>何为类的唯一性？</strong></p>
 <p><mark style="background: #FFB8EBA6;">对于任意一个类，都需要由加载它的类加载器和这个类本身一同确认其在Java虚拟机中的唯一性。</mark>每一个类加载器，都拥有一个独立的类名称空间：<mark style="background: #FFB8EBA6;">比较两个类是否相等，只有在这两个类是由同一个类加载器加载的前提下才有意义</mark>。否则，即使这两个类源自同一个Class文件，被同一个虚拟机加载，只要加载他们的类加载器不同，那这两个类就必定不相等。</p>
 <p><strong>命名空间</strong></p>
 <ul>
-<li><p>每个类加载器都有自己的命名空间，命名空间由该加载器及所有的父加载器所加载的类组成</p>
+<li>
+<p>每个类加载器都有自己的命名空间，命名空间由该加载器及所有的父加载器所加载的类组成</p>
 </li>
-<li><p>在同一命名空间中，不会出现类的完整名字（包括类的包名）相同的两个类</p>
+<li>
+<p>在同一命名空间中，不会出现类的完整名字（包括类的包名）相同的两个类</p>
 </li>
-<li><p>在不同的命名空间中，有可能会出现类的完整名字（包括类的包名）相同的两个类</p>
+<li>
+<p>在不同的命名空间中，有可能会出现类的完整名字（包括类的包名）相同的两个类</p>
 </li>
 </ul>
 <p>在大型应用中，我们往往借助这一特性，来运行同一个类的不同版本。</p>
-<h3 id="类加载机制的基本特征"><a href="#类加载机制的基本特征" class="headerlink" title="类加载机制的基本特征"></a>类加载机制的基本特征</h3><p>双亲委派模型。但不是所有类加载都遵守这个模型，有的时候，启动类加载器所加载的类型，是可能要加载用户代码的，比如JDK内部的ServiceProvider/ServiceLoader机制，用户可以在标准API框架上，提供自己的实现，JDK也需要提供些默认的参考实现。例如，Java中JNDI、JDBC、文件系统、Cipher等很多方面，都是利用的这种机制，这种情况就不会用双亲委派模型去加载，而是利用所谓的上下文加载器。</p>
-<h3 id="类加载器之间的关系"><a href="#类加载器之间的关系" class="headerlink" title="类加载器之间的关系"></a>类加载器之间的关系</h3><p>Launcher类核心代码</p>
-<pre><code class="line-numbers language-java">Launcher.ExtClassLoader var1;
+<h3 id="类加载机制的基本特征">类加载机制的基本特征</h3>
+<p>双亲委派模型。但不是所有类加载都遵守这个模型，有的时候，启动类加载器所加载的类型，是可能要加载用户代码的，比如JDK内部的ServiceProvider/ServiceLoader机制，用户可以在标准API框架上，提供自己的实现，JDK也需要提供些默认的参考实现。例如，Java中JNDI、JDBC、文件系统、Cipher等很多方面，都是利用的这种机制，这种情况就不会用双亲委派模型去加载，而是利用所谓的上下文加载器。</p>
+<h3 id="类加载器之间的关系">类加载器之间的关系</h3>
+<p>Launcher类核心代码</p>
+<pre><code class="language-java">Launcher.ExtClassLoader var1;
 try {
     var1 = Launcher.ExtClassLoader.getExtClassLoader();
 } catch (IOException var10) {
@@ -229,23 +247,27 @@ try {
 Thread.currentThread().setContextClassLoader(this.loader);
 </code></pre>
 <ul>
-<li><p><strong>ExtClassLoader的Parent类是null</strong></p>
+<li>
+<p><strong>ExtClassLoader的Parent类是null</strong></p>
 </li>
-<li><p><strong>AppClassLoader的Parent类是ExtClassLoader</strong></p>
+<li>
+<p><strong>AppClassLoader的Parent类是ExtClassLoader</strong></p>
 </li>
-<li><p><strong>当前线程的ClassLoader是AppClassLoader</strong></p>
+<li>
+<p><strong>当前线程的ClassLoader是AppClassLoader</strong></p>
 </li>
 </ul>
 <p><mark style="background: #FFB8EBA6;">注意，这里的Parent类并不是Java语言意义上的继承关系，而是一种包含关系</mark></p>
-<h2 id="类的加载器分类"><a href="#类的加载器分类" class="headerlink" title="类的加载器分类"></a>类的加载器分类</h2><p>JVM支持两种类型的类加载器，分别为引导类加载器（Bootstrap ClassLoader）和自定义类加载器（User-Defined ClassLoader）。</p>
+<h2 id="类的加载器分类">类的加载器分类</h2>
+<p>JVM支持两种类型的类加载器，分别为引导类加载器（Bootstrap ClassLoader）和自定义类加载器（User-Defined ClassLoader）。</p>
 <p>从概念上来讲，自定义类加载器一般指的是程序中由开发人员自定义的一类类加载器，但是Java虚拟机规范却没有这么定义，而是将所有派生于抽象类ClassLoader的类加载器都划分为自定义类加载器。无论类加载器的类型如何划分，在程序中我们最常见的类加载器结构主要是如下情况：</p>
-<p><img src="/attachment/81c5b7c0fcea72d247dfeb93db08ed39.png"></p>
+<p><img src="/attachment/81c5b7c0fcea72d247dfeb93db08ed39.png" alt></p>
 <ul>
 <li>除了顶层的启动类加载器外，其余的类加载器都应当有自己的“父类”加戟器。</li>
 <li>不同类加载器看似是继承（Inheritance）关系，实际上是包含关系。在下层加载器中，包含着上层加载器的引用。</li>
 </ul>
 <p>父类加载器和子类加载器的关系：</p>
-<pre><code class="line-numbers language-java">class ClassLoader{
+<pre><code class="language-java">class ClassLoader{
     ClassLoader parent;//父类加载器
         public ClassLoader(ClassLoader parent){
         this.parent = parent;
@@ -265,7 +287,8 @@ class ChildClassLoader extends ClassLoader{
 <p>正是由于子类加载器中包含着父类加载器的引用，所以可以通过子类加载器的方法获取对应的父类加载器</p>
 <p><strong>注意：</strong></p>
 <p>启动类加载器通过C/C++语言编写，而自定义类加载器都是由Java语言编写的，虽然扩展类加载器和应用程序类加载器是被jdk开发人员使用java语言来编写的，但是也是由java语言编写的，所以也被称为自定义类加载器</p>
-<h3 id="引导类加载器"><a href="#引导类加载器" class="headerlink" title="引导类加载器"></a>引导类加载器</h3><p><mark>启动类加载器（引导类加载器，Bootstrap ClassLoader）</mark></p>
+<h3 id="引导类加载器">引导类加载器</h3>
+<p><mark>启动类加载器（引导类加载器，Bootstrap ClassLoader）</mark></p>
 <ul>
 <li>这个类加载使用C/C++语言实现的，嵌套在JVM内部。</li>
 <li>它用来加载Java的核心库（JAVAHOME/jre/lib/rt.jar或sun.boot.class.path路径下的内容）。用于提供JVM自身需要的类。</li>
@@ -273,8 +296,8 @@ class ChildClassLoader extends ClassLoader{
 <li>出于安全考虑，Bootstrap启动类加载器只加载包名为java、javax、sun等开头的类</li>
 <li>加载扩展类和应用程序类加载器，并指定为他们的父类加载器。</li>
 </ul>
-<p><img src="/attachment/ae402d91dcfa3eaec6a402be539a93d5.png"></p>
-<p><img src="/attachment/e41dbd9d7eda002b3fb87cca331a81aa.png"></p>
+<p><img src="/attachment/ae402d91dcfa3eaec6a402be539a93d5.png" alt></p>
+<p><img src="/attachment/e41dbd9d7eda002b3fb87cca331a81aa.png" alt></p>
 <ul>
 <li>使用-XX:+TraceClassLoading参数得到。</li>
 </ul>
@@ -283,7 +306,7 @@ class ChildClassLoader extends ClassLoader{
 <li>C/C++：指针函数&amp;函数指针、C++支持多继承、更加高效</li>
 <li>Java：由C++演变而来，（C++）–版，单继承</li>
 </ul>
-<pre><code class="line-numbers language-java">System.out.println("＊＊＊＊＊＊＊＊＊＊启动类加载器＊＊＊＊＊＊＊＊＊＊");
+<pre><code class="language-java">System.out.println("＊＊＊＊＊＊＊＊＊＊启动类加载器＊＊＊＊＊＊＊＊＊＊");
 // 获取BootstrapclassLoader能够加载的api的路径
 URL[] urLs = sun.misc.Launcher.getBootstrapcLassPath().getURLs();
 for (URL element : urLs) {
@@ -294,20 +317,25 @@ ClassLoader classLoader = java.security.Provider.class.getClassLoader();
 System.out.println(classLoader);
 </code></pre>
 <p><strong>执行结果：</strong></p>
-<p><img src="/attachment/2a131a2880d3a05c6941cb7bfa922232.png"></p>
-<h3 id="扩展类加载器"><a href="#扩展类加载器" class="headerlink" title="扩展类加载器"></a>扩展类加载器</h3><p><mark>扩展类加载器（Extension ClassLoader）</mark></p>
+<p><img src="/attachment/2a131a2880d3a05c6941cb7bfa922232.png" alt></p>
+<h3 id="扩展类加载器">扩展类加载器</h3>
+<p><mark>扩展类加载器（Extension ClassLoader）</mark></p>
 <ul>
-<li><p>Java语言编写，由sun.misc.Launcher$ExtClassLoader实现。</p>
+<li>
+<p>Java语言编写，由sun.misc.Launcher$ExtClassLoader实现。</p>
 </li>
-<li><p>继承于ClassLoader类</p>
+<li>
+<p>继承于ClassLoader类</p>
 </li>
-<li><p>父类加载器为启动类加载器</p>
+<li>
+<p>父类加载器为启动类加载器</p>
 </li>
-<li><p>从java.ext.dirs系统属性所指定的目录中加载类库，或从JDK的安装目录的jre/lib/ext子目录下加载类库。如果用户创建的JAR放在此目录下，也会自动由扩展类加载器加载。</p>
+<li>
+<p>从java.ext.dirs系统属性所指定的目录中加载类库，或从JDK的安装目录的jre/lib/ext子目录下加载类库。如果用户创建的JAR放在此目录下，也会自动由扩展类加载器加载。</p>
 </li>
 </ul>
-<p><img src="/attachment/b0775638f64b7ed947507533d9e11acf.png"></p>
-<pre><code class="line-numbers language-java">System.out.println("＊＊＊＊＊＊＊＊＊＊＊扩展类加载器＊＊＊＊＊＊＊＊＊＊＊");
+<p><img src="/attachment/b0775638f64b7ed947507533d9e11acf.png" alt></p>
+<pre><code class="language-java">System.out.println("＊＊＊＊＊＊＊＊＊＊＊扩展类加载器＊＊＊＊＊＊＊＊＊＊＊");
 String extDirs =System.getProperty("java.ext.dirs");
 for (String path :extDirs.split( regex:";")){
     System.out.println(path);
@@ -318,8 +346,9 @@ lassLoader classLoader1 = sun.security.ec.CurveDB.class.getClassLoader();
 System.out.print1n(classLoader1); //sun.misc. Launcher$ExtCLassLoader@1540e19d
 </code></pre>
 <p><strong>执行结果：</strong></p>
-<p><img src="/attachment/008e85a61d850bab736815aa48f87192.png"></p>
-<h3 id="系统类加载器"><a href="#系统类加载器" class="headerlink" title="系统类加载器"></a>系统类加载器</h3><p><mark>应用程序类加载器（系统类加载器，AppClassLoader）</mark></p>
+<p><img src="/attachment/008e85a61d850bab736815aa48f87192.png" alt></p>
+<h3 id="系统类加载器">系统类加载器</h3>
+<p><mark>应用程序类加载器（系统类加载器，AppClassLoader）</mark></p>
 <ul>
 <li>java语言编写，由sun.misc.Launcher$AppClassLoader实现</li>
 <li>继承于ClassLoader类</li>
@@ -329,8 +358,9 @@ System.out.print1n(classLoader1); //sun.misc. Launcher$ExtCLassLoader@1540e19d
 <li>它是用户自定义类加载器的默认父加载器</li>
 <li>通过ClassLoader的getSystemClassLoader()方法可以获取到该类加载器</li>
 </ul>
-<p><img src="/attachment/4198b9b6c7e0fae33b7fe42a4603ecef.png"></p>
-<h3 id="用户自定义类加载器"><a href="#用户自定义类加载器" class="headerlink" title="用户自定义类加载器"></a>用户自定义类加载器</h3><p><mark>用户自定义类加载器</mark></p>
+<p><img src="/attachment/4198b9b6c7e0fae33b7fe42a4603ecef.png" alt></p>
+<h3 id="用户自定义类加载器-2">用户自定义类加载器</h3>
+<p><mark>用户自定义类加载器</mark></p>
 <ul>
 <li>在Java的日常应用程序开发中，类的加载几乎是由上述3种类加载器相互配合执行的。在必要时，我们还可以自定义类加载器，来定制类的加载方式。</li>
 <li>体现Java语言强大生命力和巨大魅力的关键因素之一便是，Java开发者可以自定义类加载器来实现类库的动态加载，加载源可以是本地的JAR包，也可以是网络上的远程资源。</li>
@@ -338,8 +368,10 @@ System.out.print1n(classLoader1); //sun.misc. Launcher$ExtCLassLoader@1540e19d
 <li>同时，<mark style="background: #FFB8EBA6;">自定义加载器能够实现应用隔离</mark>，例如Tomcat，Spring等中间件和组件框架都在内部实现了自定义的加载器，并通过自定义加载器隔离不同的组件模块。这种机制比C/C++程序要好太多，想不修改C/C++程序就能为其新增功能，几乎是不可能的，仅仅一个兼容性便能阻挡住所有美好的设想。</li>
 <li>自定义类加载器通常需要继承于ClassLoader。</li>
 </ul>
-<h2 id="测试不同的类的加载器"><a href="#测试不同的类的加载器" class="headerlink" title="测试不同的类的加载器"></a>测试不同的类的加载器</h2><p>每个Class对象都会包含一个定义它的ClassLoader的一个引用。<br><strong>获取ClassLoader的途径</strong></p>
-<pre><code class="line-numbers language-java">// 获得当前类的ClassLoader
+<h2 id="测试不同的类的加载器">测试不同的类的加载器</h2>
+<p>每个Class对象都会包含一个定义它的ClassLoader的一个引用。<br>
+<strong>获取ClassLoader的途径</strong></p>
+<pre><code class="language-java">// 获得当前类的ClassLoader
 clazz.getClassLoader()
 // 获得当前线程上下文的ClassLoader
 Thread.currentThread().getContextClassLoader()
@@ -351,7 +383,7 @@ ClassLoader.getSystemClassLoader()
 <li>站在程序的角度看，引导类加载器与另外两种类加载器（系统类加载器和扩展类加载器）并不是同一个层次意义上的加载器，引导类加载器是使用C++语言编写而成的，而另外两种类加载器则是使用Java语言编写而成的。由于引导类加载器压根儿就不是一个Java类，因此在Java程序中只能打印出空值。</li>
 <li>数组类的Class对象，不是由类加载器去创建的，而是在Java运行期JVM根据需要自动创建的。对于数组类的类加载器来说，是通过Class.getClassLoader()返回的，与数组当中元素类型的类加载器是一样的；如果数组当中的元素类型是基本数据类型，数组类是没有类加载器的。</li>
 </ul>
-<pre><code class="line-numbers language-java">// 运行结果：null
+<pre><code class="language-java">// 运行结果：null
 String[] strArr = new String[6];
 System.out.println(strArr.getClass().getClassLoader());
 
@@ -364,7 +396,7 @@ int[]ints =new int[2];
 System.out.println(ints.getClass().getClassLoader());
 </code></pre>
 <p><strong>代码：</strong></p>
-<pre><code class="line-numbers language-java">public class ClassLoaderTest1{
+<pre><code class="language-java">public class ClassLoaderTest1{
     public static void main(String[] args) {
         //获取系统该类加载器
         ClassLoader systemClassLoader=ClassLoader.getSystemCLassLoader();
@@ -399,37 +431,43 @@ System.out.println(ints.getClass().getClassLoader());
     }
 }
 </code></pre>
-<h2 id="4-ClassLoader源码解析"><a href="#4-ClassLoader源码解析" class="headerlink" title="4. ClassLoader源码解析"></a>4. ClassLoader源码解析</h2><p><strong>ClassLoader与现有类的关系：</strong></p>
-<p><img src="/attachment/00ae74f19d748e008d2c4a824ee9d23b.png"></p>
+<h2 id="4-ClassLoader源码解析">4. ClassLoader源码解析</h2>
+<p><strong>ClassLoader与现有类的关系：</strong></p>
+<p><img src="/attachment/00ae74f19d748e008d2c4a824ee9d23b.png" alt></p>
 <p>除了以上虚拟机自带的加载器外，用户还可以定制自己的类加载器。Java提供了抽象类java.lang.ClassLoader，所有用户自定义的类加载器都应该继承ClassLoader类。</p>
-<h3 id="ClassLoader的主要方法"><a href="#ClassLoader的主要方法" class="headerlink" title="ClassLoader的主要方法"></a>ClassLoader的主要方法</h3><p>抽象类ClassLoader的主要方法：（内部没有抽象方法）</p>
-<pre><code class="line-numbers language-java">public final ClassLoader getParent()
+<h3 id="ClassLoader的主要方法">ClassLoader的主要方法</h3>
+<p>抽象类ClassLoader的主要方法：（内部没有抽象方法）</p>
+<pre><code class="language-java">public final ClassLoader getParent()
 </code></pre>
 <p>返回该类加载器的超类加载器</p>
-<pre><code class="line-numbers language-java">public Class&lt;?&gt; loadClass(String name) throws ClassNotFoundException
+<pre><code class="language-java">public Class&lt;?&gt; loadClass(String name) throws ClassNotFoundException
 </code></pre>
 <p>加载名称为name的类，返回结果为java.lang.Class类的实例。如果找不到类，则返回 ClassNotFoundException异常。该方法中的逻辑就是双亲委派模式的实现。</p>
-<pre><code class="line-numbers language-java">protected Class&lt;?&gt; findClass(String name) throws ClassNotFoundException
+<pre><code class="language-java">protected Class&lt;?&gt; findClass(String name) throws ClassNotFoundException
 </code></pre>
 <p>查找二进制名称为name的类，返回结果为java.lang.Class类的实例。这是一个受保护的方法，JVM鼓励我们重写此方法，需要自定义加载器遵循双亲委托机制，该方法会在检查完父类加载器之后被loadClass()方法调用。</p>
 <ul>
-<li><p>在JDK1.2之前，在自定义类加载时，总会去继承ClassLoader类并重写loadClass方法，从而实现自定义的类加载类。但是在JDK1.2之后已不再建议用户去覆盖loadClass()方法，而是建议把自定义的类加载逻辑写在findClass()方法中，从前面的分析可知，findClass()方法是在loadClass()方法中被调用的，当loadClass()方法中父加载器加载失败后，则会调用自己的findClass()方法来完成类加载，这样就可以保证自定义的类加载器也符合双亲委托模式。</p>
+<li>
+<p>在JDK1.2之前，在自定义类加载时，总会去继承ClassLoader类并重写loadClass方法，从而实现自定义的类加载类。但是在JDK1.2之后已不再建议用户去覆盖loadClass()方法，而是建议把自定义的类加载逻辑写在findClass()方法中，从前面的分析可知，findClass()方法是在loadClass()方法中被调用的，当loadClass()方法中父加载器加载失败后，则会调用自己的findClass()方法来完成类加载，这样就可以保证自定义的类加载器也符合双亲委托模式。</p>
 </li>
-<li><p>需要注意的是ClassLoader类中并没有实现findClass()方法的具体代码逻辑，取而代之的是抛出ClassNotFoundException异常，同时应该知道的是findClass方法通常是和defineClass方法一起使用的。</p>
+<li>
+<p>需要注意的是ClassLoader类中并没有实现findClass()方法的具体代码逻辑，取而代之的是抛出ClassNotFoundException异常，同时应该知道的是findClass方法通常是和defineClass方法一起使用的。</p>
 </li>
 </ul>
 <p><mark style="background: #FFB8EBA6;">一般情况下，在自定义类加载器时，会直接覆盖ClassLoader的findClass()方法并编写加载规则，取得要加载类的字节码后转换成流，然后调用defineClass()方法生成类的Class对象。</mark></p>
-<pre><code class="line-numbers language-java">protected final Class&lt;?&gt; defineClass(String name, byte[] b,int off,int len)
+<pre><code class="language-java">protected final Class&lt;?&gt; defineClass(String name, byte[] b,int off,int len)
 </code></pre>
 <p>根据给定的字节数组b转换为Class的实例，off和len参数表示实际Class信息在byte数组中的位置和长度，其中byte数组b是ClassLoader从外部获取的。这是受保护的方法，只有在自定义ClassLoader子类中可以使用。</p>
 <ul>
-<li><p>defineClass()方法是用来将byte字节流解析成JVM能够识别的Class对象（ClassLoader中已实现该方法逻辑），通过这个方法不仅能够通过class文件实例化class对象，也可以通过其他方式实例化class对象，如通过网络接收一个类的字节码，然后转换为byte字节流创建对应的Class对象。</p>
+<li>
+<p>defineClass()方法是用来将byte字节流解析成JVM能够识别的Class对象（ClassLoader中已实现该方法逻辑），通过这个方法不仅能够通过class文件实例化class对象，也可以通过其他方式实例化class对象，如通过网络接收一个类的字节码，然后转换为byte字节流创建对应的Class对象。</p>
 </li>
-<li><p><mark style="background: #FFB8EBA6;">defineClass()方法通常与findClass()方法一起使用，一般情况下，在自定义类加载器时，会直接覆盖ClassLoader的findClass()方法并编写加载规则，取得要加载类的字节码后转换成流，然后调用defineClass()方法生成类的Class对象</mark></p>
+<li>
+<p><mark style="background: #FFB8EBA6;">defineClass()方法通常与findClass()方法一起使用，一般情况下，在自定义类加载器时，会直接覆盖ClassLoader的findClass()方法并编写加载规则，取得要加载类的字节码后转换成流，然后调用defineClass()方法生成类的Class对象</mark></p>
 </li>
 </ul>
 <p><strong>简单举例：</strong></p>
-<pre><code class="line-numbers language-java">protected Class&lt;?&gt; findClass(String name) throws ClassNotFoundException {
+<pre><code class="language-java">protected Class&lt;?&gt; findClass(String name) throws ClassNotFoundException {
     // 获取类的字节数组
     byte[] classData =getClassData(name);
     if (classData == null) {
@@ -440,46 +478,54 @@ System.out.println(ints.getClass().getClassLoader());
     }
 }
 </code></pre>
-<pre><code class="line-numbers language-java">protected final void resolveClass(Class&lt;?&gt; c)
+<pre><code class="language-java">protected final void resolveClass(Class&lt;?&gt; c)
 </code></pre>
 <p>链接指定的一个Java类。使用该方法可以使用类的Class对象创建完成的同时也被解析。前面我们说链接阶段主要是对字节码进行验证，为类变量分配内存并设置初始值同时将字节码文件中的符号引用转换为直接引用。</p>
-<pre><code class="line-numbers language-java">protected final Class&lt;?&gt; findLoadedClass(String name)
+<pre><code class="language-java">protected final Class&lt;?&gt; findLoadedClass(String name)
 </code></pre>
 <p>查找名称为name的已经被加载过的类，返回结果为java.lang.Class类的实例。这个方法是final方法，无法被修改。</p>
-<pre><code class="line-numbers language-java">private final ClassLoader parent;
+<pre><code class="language-java">private final ClassLoader parent;
 </code></pre>
 <p>它也是一个ClassLoader的实例，这个字段所表示的ClassLoader也称为这个ClassLoader的双亲。在类加载的过程中，ClassLoader可能会将某些请求交予自己的双亲处理。</p>
-<h3 id="SecureClassLoader与URLClassLoader"><a href="#SecureClassLoader与URLClassLoader" class="headerlink" title="SecureClassLoader与URLClassLoader"></a>SecureClassLoader与URLClassLoader</h3><p>接着SecureClassLoader扩展了ClassLoader，新增了几个与使用相关的代码源（对代码源的位置及其证书的验证）和权限定义类验证（主要指对class源码的访问权限）的方法，一般我们不会直接跟这个类打交道，更多是与它的子类URLClassLoader有所关联。</p>
+<h3 id="SecureClassLoader与URLClassLoader">SecureClassLoader与URLClassLoader</h3>
+<p>接着SecureClassLoader扩展了ClassLoader，新增了几个与使用相关的代码源（对代码源的位置及其证书的验证）和权限定义类验证（主要指对class源码的访问权限）的方法，一般我们不会直接跟这个类打交道，更多是与它的子类URLClassLoader有所关联。</p>
 <p>前面说过，ClassLoader是一个抽象类，很多方法是空的没有实现，比如findClass()、findResource()等。而URLClassLoader这个实现类为这些方法提供了具体的实现。并新增了URLClassPath类协助取得Class字节码流等功能。<mark style="background: #FFB8EBA6;">在编写自定义类加载器时，如果没有太过于复杂的需求，可以直接继承URLClassLoader类</mark>，这样就可以避免自己去编写findClass()方法及其获取字节码流的方式，使自定义类加载器编写更加简洁。</p>
-<p><img src="/attachment/3696e2a00d0148d5a0367381d6b53a71.png"></p>
-<h3 id="ExtClassLoader与AppClassLoader"><a href="#ExtClassLoader与AppClassLoader" class="headerlink" title="ExtClassLoader与AppClassLoader"></a>ExtClassLoader与AppClassLoader</h3><p>了解完URLClassLoader后接着看看剩余的两个类加载器，即拓展类加载器ExtClassLoader和系统类加载器AppClassLoader，这两个类都继承自URLClassLoader，是sun.misc.Launcher的静态内部类。</p>
+<p><img src="/attachment/3696e2a00d0148d5a0367381d6b53a71.png" alt></p>
+<h3 id="ExtClassLoader与AppClassLoader">ExtClassLoader与AppClassLoader</h3>
+<p>了解完URLClassLoader后接着看看剩余的两个类加载器，即拓展类加载器ExtClassLoader和系统类加载器AppClassLoader，这两个类都继承自URLClassLoader，是sun.misc.Launcher的静态内部类。</p>
 <p>sun.misc.Launcher主要被系统用于启动主应用程序，ExtClassLoader和AppClassLoader都是由sun.misc.Launcher创建的，其类主要类结构如下：</p>
-<p><img src="/attachment/d786533f1b1a8f8223de00d230e800ef.png"></p>
+<p><img src="/attachment/d786533f1b1a8f8223de00d230e800ef.png" alt></p>
 <p>我们发现ExtClassLoader并没有重写loadClass()方法，这足矣说明其遵循双亲委派模式，而AppClassLoader重载了loadClass()方法，但最终调用的还是父类loadClass()方法，因此依然遵守双亲委派模式。</p>
-<h3 id="Class-forName-与ClassLoader-loadClass"><a href="#Class-forName-与ClassLoader-loadClass" class="headerlink" title="Class.forName()与ClassLoader.loadClass()"></a>Class.forName()与ClassLoader.loadClass()</h3><p><strong>Class.forName()</strong></p>
+<h3 id="Class-forName-与ClassLoader-loadClass">Class.forName()与ClassLoader.loadClass()</h3>
+<p><strong>Class.forName()</strong></p>
 <ul>
-<li><p>Class.forName()：是一个静态方法，最常用的是Class.forName(String className);</p>
+<li>
+<p>Class.forName()：是一个静态方法，最常用的是Class.forName(String className);</p>
 </li>
-<li><p>根据传入的类的全限定名返回一个Class对象。该方法在将Class文件加载到内存的同时，会执行类的初始化。</p>
+<li>
+<p>根据传入的类的全限定名返回一个Class对象。该方法在将Class文件加载到内存的同时，会执行类的初始化。</p>
 </li>
 </ul>
-<pre><code class="line-numbers language-java">Class.forName("com.atguigu.java.Helloworld");
+<pre><code class="language-java">Class.forName("com.atguigu.java.Helloworld");
 </code></pre>
 <p><strong>ClassLoader.loadClass()</strong></p>
 <ul>
 <li>ClassLoader.loadClass()：这是一个实例方法，需要一个ClassLoader对象来调用该方法。</li>
 <li>该方法将Class文件加载到内存时，并不会执行类的初始化，直到这个类第一次使用时才进行初始化。该方法因为需要得到一个ClassLoader对象，所以可以根据需要指定使用哪个类加载器。</li>
 </ul>
-<pre><code class="line-numbers language-java">Classloader cl = ......; cl.loadClass("com.atguigu.java.Helloworld");
+<pre><code class="language-java">Classloader cl = ......; cl.loadClass("com.atguigu.java.Helloworld");
 </code></pre>
-<h2 id="双亲委派模型"><a href="#双亲委派模型" class="headerlink" title="双亲委派模型"></a>双亲委派模型</h2><h3 id="定义与本质"><a href="#定义与本质" class="headerlink" title="定义与本质"></a>定义与本质</h3><p>类加载器用来把类加载到Java虚拟机中。从JDK1.2版本开始，类的加载过程采用双亲委派机制，这种机制能更好地保证Java平台的安全。</p>
+<h2 id="双亲委派模型">双亲委派模型</h2>
+<h3 id="定义与本质">定义与本质</h3>
+<p>类加载器用来把类加载到Java虚拟机中。从JDK1.2版本开始，类的加载过程采用双亲委派机制，这种机制能更好地保证Java平台的安全。</p>
 <p><strong>定义</strong></p>
 <p>如果一个类加载器在接到加载类的请求时，它首先不会自己尝试去加载这个类，而是把这个请求任务委托给父类加载器去完成，依次递归，如果父类加载器可以完成类加载任务，就成功返回。只有父类加载器无法完成此加载任务时，才自己去加载。</p>
 <p><strong>本质</strong></p>
 <p>规定了类加载的顺序是：引导类加载器先加载，若加载不到，由扩展类加载器加载，若还加载不到，才会由系统类加载器或自定义的类加载器进行加载。</p>
-<p><img src="/attachment/1ac72535947514cf6a76b9a45d0313ef.png"></p>
-<p><img src="/attachment/02eafbc1763ad8aaab446f48b192c1d6.png"></p>
-<h3 id="优势与劣势"><a href="#优势与劣势" class="headerlink" title="优势与劣势"></a>优势与劣势</h3><p><strong>双亲委派机制优势</strong></p>
+<p><img src="/attachment/1ac72535947514cf6a76b9a45d0313ef.png" alt></p>
+<p><img src="/attachment/02eafbc1763ad8aaab446f48b192c1d6.png" alt></p>
+<h3 id="优势与劣势">优势与劣势</h3>
+<p><strong>双亲委派机制优势</strong></p>
 <ul>
 <li>避免类的重复加载，确保一个类的全局唯一性</li>
 </ul>
@@ -504,32 +550,41 @@ System.out.println(ints.getClass().getClassLoader());
 <p>通常情况下，启动类加载器中的类为系统核心类，包括一些重要的系统接口，而在应用类加载器中，为应用类。按照这种模式，应用类访问系统类自然是没有问题，但是系统类访问应用类就会出现问题。比如在系统类中提供了一个接口，该接口需要在应用类中得以实现，该接口还绑定一个工厂方法，用于创建该接口的实例，而接口和工厂方法都在启动类加载器中。这时，就会出现该工厂方法无法创建由应用类加载器加载的应用实例的问题。</p>
 <p><strong>结论</strong></p>
 <p><mark style="background: #FFB8EBA6;">由于Java虚拟机规范并没有明确要求类加载器的加载机制一定要使用双亲委派模型，只是建议采用这种方式而已。</mark>比如在Tomcat中，类加载器所采用的加载机制就和传统的双亲委派模型有一定区别，当缺省的类加载器接收到一个类的加载任务时，首先会由它自行加载，当它加载失败时，才会将类的加载任务委派给它的超类加载器去执行，这同时也是Serylet规范推荐的一种做法。</p>
-<h3 id="破坏双亲委派机制"><a href="#破坏双亲委派机制" class="headerlink" title="破坏双亲委派机制"></a>破坏双亲委派机制</h3><p>双亲委派模型并不是一个具有强制性约束的模型，而是Java设计者推荐给开发者们的类加载器实现方式。</p>
+<h3 id="破坏双亲委派机制">破坏双亲委派机制</h3>
+<p>双亲委派模型并不是一个具有强制性约束的模型，而是Java设计者推荐给开发者们的类加载器实现方式。</p>
 <p>在Java的世界中大部分的类加载器都遵循这个模型，但也有例外的情况，直到Java模块化出现为止，双亲委派模型主要出现过3次较大规模“被破坏”的情况。</p>
 <p><strong>第一次破坏双亲委派机制</strong></p>
 <p>双亲委派模型的第一次“被破坏”其实发生在双亲委派模型出现之前一—即JDK1.2面世以前的“远古”时代。</p>
 <p>由于双亲委派模型在JDK 1.2之后才被引入，但是类加载器的概念和抽象类java.lang.ClassLoader则在Java的第一个版本中就已经存在，面对经存在的用户自定义类加载器的代码，Java设计者们引入双亲委派模型时不得不做出一些妥协，<mark style="background: #FFB8EBA6;">为了兼容这些已有代码，无法再以技术手段避免loadClass()被子类覆盖的可能性</mark>，只能在JDK1.2之后的java.lang.ClassLoader中添加一个新的protected方法findClass()，并引导用户编写的类加载逻辑时尽可能去重写这个方法，而不是在loadClass()中编写代码。上节我们已经分析过loadClass()方法，双亲委派的具体逻辑就实现在这里面，按照loadClass()方法的逻辑，如果父类加载失败，会自动调用自己的findClass()方法来完成加载，这样既不影响用户按照自己的意愿去加载类，又可以保证新写出来的类加载器是符合双亲委派规则的。</p>
 <p><strong>第二次破坏双亲委派机制：线程上下文类加载器</strong></p>
-<p>双亲委派模型的第二次“被破坏”是由这个模型自身的缺陷导致的，双亲委派很好地解决了各个类加载器协作时基础类型的一致性问题（<mark style="background: #FFB8EBA6;">越基础的类由越上层的加载器进行加载</mark>），基础类型之所以被称为“基础”，是因为它们总是作为被用户代码继承、调用的API存在，但程序设计往往没有绝对不变的完美规则，如果有$\color{red}{基础类型又要调用回用户的代码，那该怎么办呢？}$</p>
+<p>双亲委派模型的第二次“被破坏”是由这个模型自身的缺陷导致的，双亲委派很好地解决了各个类加载器协作时基础类型的一致性问题（<mark style="background: #FFB8EBA6;">越基础的类由越上层的加载器进行加载</mark>），基础类型之所以被称为“基础”，是因为它们总是作为被用户代码继承、调用的API存在，但程序设计往往没有绝对不变的完美规则，如果有<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle mathcolor="red"><mtext>基础类型又要调用回用户的代码，那该怎么办呢？</mtext></mstyle></mrow><annotation encoding="application/x-tex">\color{red}{基础类型又要调用回用户的代码，那该怎么办呢？}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord" style="color:red;"><span class="mord cjk_fallback" style="color:red;">基础类型又要调用回用户的代码，那该怎么办呢？</span></span></span></span></span></p>
 <p>这并非是不可能出现的事情，一个典型的例子便是JNDI服务，JNDI现在已经是Java的标准服务，它的代码由启动类加载器来完成加载（在JDK 1.3时加入到rt.jar的），肯定属于Java中很基础的类型了。但JNDI存在的目的就是对资源进行查找和集中管理，它需要调用由其他厂商实现并部署在应用程序的ClassPath下的JNDI服务提供者接口（Service Provider Interface，SPI）的代码，现在问题来了，<mark style="background: #FFB8EBA6;">启动类加载器是绝不可能认识、加载这些代码的，那该怎么办？</mark><u>（SPI：在Java平台中，通常把核心类rt.jar中提供外部服务、可由应用层自行实现的接口称为SPI）</u></p>
 <p>为了解决这个困境，Java的设计团队只好引入了一个不太优雅的设计：<mark style="background: #FFB8EBA6;">线程上下文类加载器（Thread Context ClassLoader）</mark>。这个类加载器可以通过java.lang.Thread类的setContextClassLoader()方法进行设置，如果创建线程时还未设置，它将会从父线程中继承一个，如果在应用程序的全局范围内都没有设置过的话，那这个类加载器默认就是应用程序类加载器。</p>
 <p>有了线程上下文类加载器，程序就可以做一些“舞弊”的事情了。JNDI服务使用这个线程上下文类加载器去加载所需的SPI服务代码，<mark style="background: #FFB8EBA6;">这是一种父类加载器去请求子类加载器完成类加载的行为，这种行为实际上是打通了双亲委派模型的层次结构来逆向使用类加载器，已经违背了双亲委派模型的一般性原则</mark>，但也是无可奈何的事情。 例如JNDI、JDBC、JCE、JAXB和JBI等。不过，当SPI的服务提供者多于一个的时候，代码就只能根据具体提供者的类型来硬编码判断，为了消除这种极不优雅的实现方式，在JDK6时，JDK提供了java.util.ServiceLoader类，以META-INF/services中的配置信息，辅以责任链模式，这才算是给SPI的加载提供了一种相对合理的解决方案。</p>
-<p><img src="/attachment/9597d9aa4fcd86be668174e0a6d92900.png"></p>
+<p><img src="/attachment/9597d9aa4fcd86be668174e0a6d92900.png" alt></p>
 <p>默认上下文加载器就是应用类加载器，这样以上下文加载器为中介，使得启动类加载器中的代码也可以访问应用类加载器中的类。</p>
 <p><strong>第三次破坏双亲委派机制</strong></p>
 <p>双亲委派模型的第三次“被破坏”是由于用户对程序动态性的追求而导致的。如：**代码热替换(Hot Swap)、模块热部署(Hot Deployment)**等</p>
 <p>IBM公司主导的JSR-291(即OSGiR4.2)实现模块化热部署的关键是它自定义的类加载器机制的实现，每一个程序模块(osGi中称为Bundle)都有一个自己的类加载器，当需要更换一个Bundle时，就把Bund1e连同类加载器一起换掉以实现代码的热替换。在oSGi环境下，类加载器不再双亲委派模型推荐的树状结构，而是进一步发展为更加复杂的网状结构。</p>
 <p>当收到类加载请求时，OSGi将按照下面的顺序进行类搜索：</p>
-<p>1）<mark style="background: #FFB8EBA6;">将以java.*开头的类，委派给父类加载器加载。</mark><br>2）<mark style="background: #FFB8EBA6;">否则，将委派列表名单内的类，委派给父类加载器加载。</mark><br>3）否则，将Import列表中的类，委派给Export这个类的Bundle的类加载器加载。<br>4）否则，查找当前Bundle的ClassPath，使用自己的类加载器加载。<br>5）否则，查找类是否在自己的Fragment Bundle中，如果在，则委派给Fragment Bundle的类加载器加载。<br>6）否则，查找Dynamic Import列表的Bundle，委派给对应Bund1e的类加载器加载。<br>7）否则，类查找失败。</p>
+<p>1）<mark style="background: #FFB8EBA6;">将以java.*开头的类，委派给父类加载器加载。</mark><br>
+2）<mark style="background: #FFB8EBA6;">否则，将委派列表名单内的类，委派给父类加载器加载。</mark><br>
+3）否则，将Import列表中的类，委派给Export这个类的Bundle的类加载器加载。<br>
+4）否则，查找当前Bundle的ClassPath，使用自己的类加载器加载。<br>
+5）否则，查找类是否在自己的Fragment Bundle中，如果在，则委派给Fragment Bundle的类加载器加载。<br>
+6）否则，查找Dynamic Import列表的Bundle，委派给对应Bund1e的类加载器加载。<br>
+7）否则，类查找失败。</p>
 <p>说明：只有开头两点仍然符合双亲委派模型的原则，其余的类查找都是在平级的类加载器中进行的</p>
 <p>小结：这里，我们使用了“被破坏”这个词来形容上述不符合双亲委派模型原则的行为，但这里“被破坏”并不一定是带有贬义的。只要有明确的目的和充分的理由，突破旧有原则无疑是一种创新。</p>
 <p>正如：OSGi中的类加载器的设计不符合传统的双亲委派的类加载器架构，且业界对其为了实现热部署而带来的额外的高复杂度还存在不少争议，但对这方面有了解的技术人员基本还是能达成一个共识，认为<strong>OSGi中对类加载器的运用是值得学习的，完全弄懂了OSGi的实现，就算是掌握了类加载器的精粹。</strong></p>
-<h3 id="热替换的实现"><a href="#热替换的实现" class="headerlink" title="热替换的实现"></a>热替换的实现</h3><p>热替换是指在程序的运行过程中，不停止服务，只通过替换程序文件来修改程序的行为。<mark style="background: #FFB8EBA6;">热替换的关键需求在于服务不能中断，修改必须立即表现正在运行的系统之中。</mark>基本上大部分脚本语言都是天生支持热替换的，比如：PHP，只要替换了PHP源文件，这种改动就会立即生效，而无需重启Web服务器。</p>
+<h3 id="热替换的实现">热替换的实现</h3>
+<p>热替换是指在程序的运行过程中，不停止服务，只通过替换程序文件来修改程序的行为。<mark style="background: #FFB8EBA6;">热替换的关键需求在于服务不能中断，修改必须立即表现正在运行的系统之中。</mark>基本上大部分脚本语言都是天生支持热替换的，比如：PHP，只要替换了PHP源文件，这种改动就会立即生效，而无需重启Web服务器。</p>
 <p>但对Java来说，热替换并非天生就支持，如果一个类已经加载到系统中，通过修改类文件，并无法让系统再来加载并重定义这个类。因此，在Java中实现这一功能的一个可行的方法就是灵活运用ClassLoader。</p>
 <p>注意：由不同ClassLoader加载的同名类属于不同的类型，不能相互转换和兼容。即两个不同的ClassLoader加载同一个类，在虚拟机内部，会认为这2个类是完全不同的。</p>
 <p>根据这个特点，可以用来模拟热替换的实现，基本思路如下图所示：</p>
-<p><img src="/attachment/02e634d5b0bf04e1a2f769c725a1486d.png"></p>
-<h2 id="沙箱安全机制"><a href="#沙箱安全机制" class="headerlink" title="沙箱安全机制"></a>沙箱安全机制</h2><p>沙箱安全机制</p>
+<p><img src="/attachment/02e634d5b0bf04e1a2f769c725a1486d.png" alt></p>
+<h2 id="沙箱安全机制">沙箱安全机制</h2>
+<p>沙箱安全机制</p>
 <ul>
 <li>保证程序安全</li>
 <li>保护Java原生的JDK代码</li>
@@ -538,28 +593,38 @@ System.out.println(ints.getClass().getClassLoader());
 <p>沙箱机制就是<mark style="background: #FFB8EBA6;">将Java代码限定在虚拟机（JVM）特定的运行范围中，并且严格限制代码对本地系统资源访问</mark>。通过这样的措施来保证对代码的有限隔离，防止对本地系统造成破坏。</p>
 <p>沙箱主要限制系统资源访问，那系统资源包括什么？CPU、内存、文件系统、网络。不同级别的沙箱对这些资源访问的限制也可以不一样。</p>
 <p>所有的Java程序运行都可以指定沙箱，可以定制安全策略。</p>
-<h3 id="JDK1-0时期"><a href="#JDK1-0时期" class="headerlink" title="JDK1.0时期"></a>JDK1.0时期</h3><p>在Java中将执行程序分成本地代码和远程代码两种，本地代码默认视为可信任的，而远程代码则被看作是不受信的。对于授信的本地代码，可以访问一切本地资源。而对于非授信的远程代码在早期的Java实现中，安全依赖于<strong>沙箱（Sandbox）机制</strong>。如下图所示JDK1.0安全模型</p>
-<p><img src="/attachment/c90932a250db5c9998240b2501b64411.png"></p>
-<h3 id="JDK1-1时期"><a href="#JDK1-1时期" class="headerlink" title="JDK1.1时期"></a>JDK1.1时期</h3><p>JDK1.0中如此严格的安全机制也给程序的功能扩展带来障碍，比如当用户希望远程代码访问本地系统的文件时候，就无法实现。</p>
+<h3 id="JDK1-0时期">JDK1.0时期</h3>
+<p>在Java中将执行程序分成本地代码和远程代码两种，本地代码默认视为可信任的，而远程代码则被看作是不受信的。对于授信的本地代码，可以访问一切本地资源。而对于非授信的远程代码在早期的Java实现中，安全依赖于<strong>沙箱（Sandbox）机制</strong>。如下图所示JDK1.0安全模型</p>
+<p><img src="/attachment/c90932a250db5c9998240b2501b64411.png" alt></p>
+<h3 id="JDK1-1时期">JDK1.1时期</h3>
+<p>JDK1.0中如此严格的安全机制也给程序的功能扩展带来障碍，比如当用户希望远程代码访问本地系统的文件时候，就无法实现。</p>
 <p>因此在后续的Java1.1版本中，针对安全机制做了改进，增加了<strong>安全策略</strong>。允许用户指定代码对本地资源的访问权限。</p>
 <p>如下图所示JDK1.1安全模型</p>
-<p><img src="/attachment/9d2c71db2e0197a5e4274d4106286f1a.png"></p>
-<h3 id="JDK1-2时期"><a href="#JDK1-2时期" class="headerlink" title="JDK1.2时期"></a>JDK1.2时期</h3><p>在Java1.2版本中，再次改进了安全机制，增加了<strong>代码签名</strong>。不论本地代码或是远程代码，都会按照用户的安全策略设定，由类加载器加载到虚拟机中权限不同的运行空间，来实现差异化的代码执行权限控制。如下图所示JDK1.2安全模型：</p>
-<p><img src="/attachment/2778a26bd08e30dd0be7870eb704edcb.png"></p>
-<h2 id="JDK1-6时期"><a href="#JDK1-6时期" class="headerlink" title="JDK1.6时期"></a>JDK1.6时期</h2><p>当前最新的安全机制实现，则引入了<strong>域（Domain）</strong>的概念。</p>
+<p><img src="/attachment/9d2c71db2e0197a5e4274d4106286f1a.png" alt></p>
+<h3 id="JDK1-2时期">JDK1.2时期</h3>
+<p>在Java1.2版本中，再次改进了安全机制，增加了<strong>代码签名</strong>。不论本地代码或是远程代码，都会按照用户的安全策略设定，由类加载器加载到虚拟机中权限不同的运行空间，来实现差异化的代码执行权限控制。如下图所示JDK1.2安全模型：</p>
+<p><img src="/attachment/2778a26bd08e30dd0be7870eb704edcb.png" alt></p>
+<h2 id="JDK1-6时期">JDK1.6时期</h2>
+<p>当前最新的安全机制实现，则引入了**域（Domain）**的概念。</p>
 <p>虚拟机会把所有代码加载到不同的系统域和应用域。<mark style="background: #FFB8EBA6;">系统域部分专门负责与关键资源进行交互</mark>，而各个应用域部分则通过系统域的部分代理来对各种需要的资源进行访问。虚拟机中不同的受保护域（Protected Domain），对应不一样的权限（Permission）。存在于不同域中的类文件就具有了当前域的全部权限，如下图所示，最新的安全模型（jdk1.6）</p>
-<p><img src="/attachment/3b875df537df55af4ec8e48cce3f56d9.png"></p>
-<h2 id="自定义类的加载器"><a href="#自定义类的加载器" class="headerlink" title="自定义类的加载器"></a>自定义类的加载器</h2><h3 id="为什么要自定义类加载器？"><a href="#为什么要自定义类加载器？" class="headerlink" title="为什么要自定义类加载器？"></a>为什么要自定义类加载器？</h3><ul>
-<li><p><strong>隔离加载类</strong></p>
+<p><img src="/attachment/3b875df537df55af4ec8e48cce3f56d9.png" alt></p>
+<h2 id="自定义类的加载器">自定义类的加载器</h2>
+<h3 id="为什么要自定义类加载器？">为什么要自定义类加载器？</h3>
+<ul>
+<li>
+<p><strong>隔离加载类</strong></p>
 <p>在某些框架内进行中间件与应用的模块隔离，把类加载到不同的环境。比如:阿里内某容器框架通过自定义类加载器确保应用中依赖的jar包不会影响到中间件运行时使用的jar包。再比如:Tomcat这类Web应用服务器，内部自定义了好几种类加载器，用于隔离同一个Web应用服务器上的不同应用程序。</p>
 </li>
-<li><p><strong>修改类加载的方式</strong></p>
+<li>
+<p><strong>修改类加载的方式</strong></p>
 <p>类的加载模型并非强制，除Bootstrap外，其他的加载并非一定要引入，或者根据实际情况在某个时间点进行按需进行动态加载</p>
 </li>
-<li><p><strong>扩展加载源</strong></p>
+<li>
+<p><strong>扩展加载源</strong></p>
 <p>比如从数据库、网络、甚至是电视机机顶盒进行加载</p>
 </li>
-<li><p><strong>防止源码泄漏</strong></p>
+<li>
+<p><strong>防止源码泄漏</strong></p>
 <p>Java代码容易被编译和篡改，可以进行编译加密。那么类加载也需要自定义，还原加密的字节码。</p>
 </li>
 </ul>
@@ -570,7 +635,8 @@ System.out.println(ints.getClass().getClassLoader());
 </ul>
 <p><strong>注意</strong></p>
 <p>在一般情况下，使用不同的类加载器去加载不同的功能模块，会提高应用程序的安全性。但是，如果涉及Java类型转换，则加载器反而容易产生不美好的事情。在做Java类型转换时，只有两个类型都是由同一个加载器所加载，才能进行类型转换，否则转换时会发生异常。</p>
-<h3 id="实现方式"><a href="#实现方式" class="headerlink" title="实现方式"></a>实现方式</h3><p>Java提供了抽象类java.lang.ClassLoader，所有用户自定义的类加载器都应该继承ClassLoader类。</p>
+<h3 id="实现方式">实现方式</h3>
+<p>Java提供了抽象类java.lang.ClassLoader，所有用户自定义的类加载器都应该继承ClassLoader类。</p>
 <p>在自定义ClassLoader的子类时候，我们常见的会有两种做法:</p>
 <ul>
 <li>方式一:重写loadClass()方法</li>
@@ -587,7 +653,7 @@ System.out.println(ints.getClass().getClassLoader());
 <li>其父类加载器是系统类加载器</li>
 <li>JVM中的所有类加载都会使用java.lang.ClassLoader.loadClass(String)接口(自定义类加载器并重写java.lang.ClassLoader.loadClass(String)接口的除外)，连JDK的核心类库也不能例外。</li>
 </ul>
-</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a target="_blank" rel="noopener" href="https://github.com/yu627482453">Bill Cipher</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://yu627482453.github.io/java/java-jvm/java-jvm-zi-jie-ma-yu-lei-jia-zai/java-jvm-zai-tan-lei-de-jia-zai-qi/">https://yu627482453.github.io/java/java-jvm/java-jvm-zi-jie-ma-yu-lei-jia-zai/java-jvm-zai-tan-lei-de-jia-zai-qi/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://yu627482453.github.io" target="_blank">蝶梦庄生</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E8%A1%8C%E5%8A%A8%E9%98%B6%E6%AE%B5-%E5%AE%8C%E6%88%90/">行动阶段/完成</a><a class="post-meta__tags" href="/tags/%E7%AC%94%E8%AE%B0%E7%A9%BA%E9%97%B4-KnowladgeSpace-ProgramSpace-BasicsSpace/">笔记空间/KnowladgeSpace/ProgramSpace/BasicsSpace</a><a class="post-meta__tags" href="/tags/%E7%BB%86%E5%8C%96%E4%B8%BB%E9%A2%98-Java/">细化主题/Java</a><a class="post-meta__tags" href="/tags/%E4%B8%BB%E9%A2%98%E5%9C%BA%E6%99%AF-%E7%A8%8B%E5%BA%8F/">主题场景/程序</a></div><div class="post_share"><div class="social-share" data-image="https://api.yimian.xyz/img?type=moe" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/reward/wechat.jpg" target="_blank"><img class="post-qr-code-img" src="/img/reward/wechat.jpg" alt="wechat"/></a><div class="post-qr-code-desc">wechat</div></li><li class="reward-item"><a href="/img/reward/alipay.jpg" target="_blank"><img class="post-qr-code-img" src="/img/reward/alipay.jpg" alt="alipay"/></a><div class="post-qr-code-desc">alipay</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/java/java-jvm/java-jvm-zi-jie-ma-yu-lei-jia-zai/java-jvm-zi-jie-ma-yu-lei-jia-zai/"><img class="prev-cover" src="https://api.yimian.xyz/img?type=moe" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">【Java JVM】 字节码与类加载</div></div></a></div><div class="next-post pull-right"><a href="/java/java-jvm/java-jvm-zi-jie-ma-yu-lei-jia-zai/java-jvm-lei-de-jia-zai-guo-cheng-lei-de-sheng-ming-zhou-qi-xiang-jie/"><img class="next-cover" src="https://api.yimian.xyz/img?type=moe" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">【Java JVM】 类的加载过程（类的生命周期）详解</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/java/java-web/java-web/" title="Java Web"><img class="cover" src="https://api.yimian.xyz/img?type=moe" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-02-01</div><div class="title">Java Web</div></div></a></div><div><a href="/java/java-web/java-filter/" title="【Java】 Filter"><img class="cover" src="https://api.yimian.xyz/img?type=moe" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-02-01</div><div class="title">【Java】 Filter</div></div></a></div><div><a href="/java/java-web/java-listener/" title="【Java】 Listener"><img class="cover" src="https://api.yimian.xyz/img?type=moe" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-02-01</div><div class="title">【Java】 Listener</div></div></a></div><div><a href="/java/java-web/java-servlet/" title="【Java】 Servlet"><img class="cover" src="https://api.yimian.xyz/img?type=moe" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-02-01</div><div class="title">【Java】 Servlet</div></div></a></div><div><a href="/java/java-jvm/java-jvm-nei-cun-guan-li/java-jvm-jvm-yu-java-ti-xi-jie-gou/" title="【Java JVM】 JVM与Java体系结构"><img class="cover" src="https://api.yimian.xyz/img?type=moe" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-06-26</div><div class="title">【Java JVM】 JVM与Java体系结构</div></div></a></div><div><a href="/java/java-jvm/java-jvm-nei-cun-guan-li/java-jvm-zhi-jie-nei-cun/" title="【Java JVM】 直接内存"><img class="cover" src="https://api.yimian.xyz/img?type=moe" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-07-10</div><div class="title">【Java JVM】 直接内存</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="gitalk-container"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Bill Cipher</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">575</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">125</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">21</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/yu627482453"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/yu627482453" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="/627482453@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E3%80%90Java-JVM%E3%80%91-%E5%86%8D%E8%B0%88%E7%B1%BB%E7%9A%84%E5%8A%A0%E8%BD%BD%E5%99%A8"><span class="toc-number">1.</span> <span class="toc-text">【Java JVM】 再谈类的加载器</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Metadata"><span class="toc-number">1.1.</span> <span class="toc-text">Metadata</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A6%82%E8%BF%B0"><span class="toc-number">1.2.</span> <span class="toc-text">概述</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%A7%E5%8E%82%E9%9D%A2%E8%AF%95%E9%A2%98"><span class="toc-number">1.2.1.</span> <span class="toc-text">大厂面试题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B1%BB%E5%8A%A0%E8%BD%BD%E5%99%A8%E7%9A%84%E5%88%86%E7%B1%BB"><span class="toc-number">1.2.2.</span> <span class="toc-text">类加载器的分类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B1%BB%E5%8A%A0%E8%BD%BD%E5%99%A8%E7%9A%84%E5%BF%85%E8%A6%81%E6%80%A7"><span class="toc-number">1.2.3.</span> <span class="toc-text">类加载器的必要性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4"><span class="toc-number">1.2.4.</span> <span class="toc-text">命名空间</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B1%BB%E5%8A%A0%E8%BD%BD%E6%9C%BA%E5%88%B6%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%89%B9%E5%BE%81"><span class="toc-number">1.2.5.</span> <span class="toc-text">类加载机制的基本特征</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B1%BB%E5%8A%A0%E8%BD%BD%E5%99%A8%E4%B9%8B%E9%97%B4%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="toc-number">1.2.6.</span> <span class="toc-text">类加载器之间的关系</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B1%BB%E7%9A%84%E5%8A%A0%E8%BD%BD%E5%99%A8%E5%88%86%E7%B1%BB"><span class="toc-number">1.3.</span> <span class="toc-text">类的加载器分类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%95%E5%AF%BC%E7%B1%BB%E5%8A%A0%E8%BD%BD%E5%99%A8"><span class="toc-number">1.3.1.</span> <span class="toc-text">引导类加载器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%89%A9%E5%B1%95%E7%B1%BB%E5%8A%A0%E8%BD%BD%E5%99%A8"><span class="toc-number">1.3.2.</span> <span class="toc-text">扩展类加载器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E7%B1%BB%E5%8A%A0%E8%BD%BD%E5%99%A8"><span class="toc-number">1.3.3.</span> <span class="toc-text">系统类加载器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%A8%E6%88%B7%E8%87%AA%E5%AE%9A%E4%B9%89%E7%B1%BB%E5%8A%A0%E8%BD%BD%E5%99%A8"><span class="toc-number">1.3.4.</span> <span class="toc-text">用户自定义类加载器</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%8B%E8%AF%95%E4%B8%8D%E5%90%8C%E7%9A%84%E7%B1%BB%E7%9A%84%E5%8A%A0%E8%BD%BD%E5%99%A8"><span class="toc-number">1.4.</span> <span class="toc-text">测试不同的类的加载器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-ClassLoader%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90"><span class="toc-number">1.5.</span> <span class="toc-text">4. ClassLoader源码解析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#ClassLoader%E7%9A%84%E4%B8%BB%E8%A6%81%E6%96%B9%E6%B3%95"><span class="toc-number">1.5.1.</span> <span class="toc-text">ClassLoader的主要方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SecureClassLoader%E4%B8%8EURLClassLoader"><span class="toc-number">1.5.2.</span> <span class="toc-text">SecureClassLoader与URLClassLoader</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ExtClassLoader%E4%B8%8EAppClassLoader"><span class="toc-number">1.5.3.</span> <span class="toc-text">ExtClassLoader与AppClassLoader</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Class-forName-%E4%B8%8EClassLoader-loadClass"><span class="toc-number">1.5.4.</span> <span class="toc-text">Class.forName()与ClassLoader.loadClass()</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%8C%E4%BA%B2%E5%A7%94%E6%B4%BE%E6%A8%A1%E5%9E%8B"><span class="toc-number">1.6.</span> <span class="toc-text">双亲委派模型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89%E4%B8%8E%E6%9C%AC%E8%B4%A8"><span class="toc-number">1.6.1.</span> <span class="toc-text">定义与本质</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BC%98%E5%8A%BF%E4%B8%8E%E5%8A%A3%E5%8A%BF"><span class="toc-number">1.6.2.</span> <span class="toc-text">优势与劣势</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A0%B4%E5%9D%8F%E5%8F%8C%E4%BA%B2%E5%A7%94%E6%B4%BE%E6%9C%BA%E5%88%B6"><span class="toc-number">1.6.3.</span> <span class="toc-text">破坏双亲委派机制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%83%AD%E6%9B%BF%E6%8D%A2%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="toc-number">1.6.4.</span> <span class="toc-text">热替换的实现</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B2%99%E7%AE%B1%E5%AE%89%E5%85%A8%E6%9C%BA%E5%88%B6"><span class="toc-number">1.7.</span> <span class="toc-text">沙箱安全机制</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#JDK1-0%E6%97%B6%E6%9C%9F"><span class="toc-number">1.7.1.</span> <span class="toc-text">JDK1.0时期</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JDK1-1%E6%97%B6%E6%9C%9F"><span class="toc-number">1.7.2.</span> <span class="toc-text">JDK1.1时期</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JDK1-2%E6%97%B6%E6%9C%9F"><span class="toc-number">1.7.3.</span> <span class="toc-text">JDK1.2时期</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JDK1-6%E6%97%B6%E6%9C%9F"><span class="toc-number">1.8.</span> <span class="toc-text">JDK1.6时期</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E7%B1%BB%E7%9A%84%E5%8A%A0%E8%BD%BD%E5%99%A8"><span class="toc-number">1.9.</span> <span class="toc-text">自定义类的加载器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E8%87%AA%E5%AE%9A%E4%B9%89%E7%B1%BB%E5%8A%A0%E8%BD%BD%E5%99%A8%EF%BC%9F"><span class="toc-number">1.9.1.</span> <span class="toc-text">为什么要自定义类加载器？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F"><span class="toc-number">1.9.2.</span> <span class="toc-text">实现方式</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/module/flowable/flowable-zhuan-lan/flowable-zhuan-lan/" title="无题"><img src="https://api.yimian.xyz/img?type=moe" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/module/flowable/flowable-zhuan-lan/flowable-zhuan-lan/" title="无题">无题</a><time datetime="2023-07-15T09:45:06.401Z" title="发表于 2023-07-15 17:45:06">2023-07-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/module/consul/part/consul-tong-yong-pei-zhi-shu-xing/" title="无题"><img src="https://api.yimian.xyz/img?type=moe" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/module/consul/part/consul-tong-yong-pei-zhi-shu-xing/" title="无题">无题</a><time datetime="2023-07-15T09:44:38.408Z" title="发表于 2023-07-15 17:44:38">2023-07-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/java/java-duo-xian-cheng-bing-fa/java-duo-xian-cheng-bing-fa-xian-cheng/java-duo-xian-cheng-bing-fa-xian-cheng/" title="【Java 多线程并发】 线程"><img src="https://api.yimian.xyz/img?type=moe" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【Java 多线程并发】 线程"/></a><div class="content"><a class="title" href="/java/java-duo-xian-cheng-bing-fa/java-duo-xian-cheng-bing-fa-xian-cheng/java-duo-xian-cheng-bing-fa-xian-cheng/" title="【Java 多线程并发】 线程">【Java 多线程并发】 线程</a><time datetime="2023-07-10T06:15:00.000Z" title="发表于 2023-07-10 14:15:00">2023-07-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/java/java-jvm/java-jvm-nei-cun-guan-li/java-jvm-zhi-jie-nei-cun/" title="【Java JVM】 直接内存"><img src="https://api.yimian.xyz/img?type=moe" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【Java JVM】 直接内存"/></a><div class="content"><a class="title" href="/java/java-jvm/java-jvm-nei-cun-guan-li/java-jvm-zhi-jie-nei-cun/" title="【Java JVM】 直接内存">【Java JVM】 直接内存</a><time datetime="2023-07-10T00:00:00.000Z" title="发表于 2023-07-10 08:00:00">2023-07-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/database/redis/redis-chong-dian-gong-neng/redis-pai-xu/" title="【Redis】 排序"><img src="https://api.yimian.xyz/img?type=moe" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【Redis】 排序"/></a><div class="content"><a class="title" href="/database/redis/redis-chong-dian-gong-neng/redis-pai-xu/" title="【Redis】 排序">【Redis】 排序</a><time datetime="2023-07-09T06:07:00.000Z" title="发表于 2023-07-09 14:07:00">2023-07-09</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By Bill Cipher</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>function addGitalkSource () {
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a target="_blank" rel="noopener" href="https://github.com/yu627482453">Bill Cipher</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://yu627482453.github.io/java/java-jvm/java-jvm-zi-jie-ma-yu-lei-jia-zai/java-jvm-zai-tan-lei-de-jia-zai-qi/">https://yu627482453.github.io/java/java-jvm/java-jvm-zi-jie-ma-yu-lei-jia-zai/java-jvm-zai-tan-lei-de-jia-zai-qi/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://yu627482453.github.io" target="_blank">蝶梦庄生</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E8%A1%8C%E5%8A%A8%E9%98%B6%E6%AE%B5-%E5%AE%8C%E6%88%90/">行动阶段/完成</a><a class="post-meta__tags" href="/tags/%E7%AC%94%E8%AE%B0%E7%A9%BA%E9%97%B4-KnowladgeSpace-ProgramSpace-BasicsSpace/">笔记空间/KnowladgeSpace/ProgramSpace/BasicsSpace</a><a class="post-meta__tags" href="/tags/%E7%BB%86%E5%8C%96%E4%B8%BB%E9%A2%98-Java/">细化主题/Java</a><a class="post-meta__tags" href="/tags/%E4%B8%BB%E9%A2%98%E5%9C%BA%E6%99%AF-%E7%A8%8B%E5%BA%8F/">主题场景/程序</a></div><div class="post_share"><div class="social-share" data-image="https://api.yimian.xyz/img?type=moe" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/reward/wechat.jpg" target="_blank"><img class="post-qr-code-img" src="/img/reward/wechat.jpg" alt="wechat"/></a><div class="post-qr-code-desc">wechat</div></li><li class="reward-item"><a href="/img/reward/alipay.jpg" target="_blank"><img class="post-qr-code-img" src="/img/reward/alipay.jpg" alt="alipay"/></a><div class="post-qr-code-desc">alipay</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/java/java-jvm/java-jvm-xing-neng-jian-kong-yu-diao-you/java-jvm-xing-neng-jian-kong-yu-diao-you/"><img class="prev-cover" src="https://api.yimian.xyz/img?type=moe" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">【Java JVM】 性能监控与调优</div></div></a></div><div class="next-post pull-right"><a href="/java/java-jvm/java-jvm-zi-jie-ma-yu-lei-jia-zai/java-jvm-lei-de-jia-zai-guo-cheng-lei-de-sheng-ming-zhou-qi-xiang-jie/"><img class="next-cover" src="https://api.yimian.xyz/img?type=moe" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">【Java JVM】 类的加载过程（类的生命周期）详解</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/java/java-web/java-web/" title="Java Web"><img class="cover" src="https://api.yimian.xyz/img?type=moe" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-02-01</div><div class="title">Java Web</div></div></a></div><div><a href="/java/java-web/java-filter/" title="【Java】 Filter"><img class="cover" src="https://api.yimian.xyz/img?type=moe" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-02-01</div><div class="title">【Java】 Filter</div></div></a></div><div><a href="/java/java-web/java-listener/" title="【Java】 Listener"><img class="cover" src="https://api.yimian.xyz/img?type=moe" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-02-01</div><div class="title">【Java】 Listener</div></div></a></div><div><a href="/java/java-web/java-servlet/" title="【Java】 Servlet"><img class="cover" src="https://api.yimian.xyz/img?type=moe" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-02-01</div><div class="title">【Java】 Servlet</div></div></a></div><div><a href="/java/java-jvm/java-jvm-nei-cun-guan-li/java-jvm-jvm-yu-java-ti-xi-jie-gou/" title="【Java JVM】 JVM与Java体系结构"><img class="cover" src="https://api.yimian.xyz/img?type=moe" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-06-26</div><div class="title">【Java JVM】 JVM与Java体系结构</div></div></a></div><div><a href="/java/java-jvm/java-jvm-nei-cun-guan-li/java-jvm-zhi-jie-nei-cun/" title="【Java JVM】 直接内存"><img class="cover" src="https://api.yimian.xyz/img?type=moe" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-07-10</div><div class="title">【Java JVM】 直接内存</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="gitalk-container"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Bill Cipher</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">575</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">125</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">21</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/yu627482453"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/yu627482453" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="/627482453@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">1.</span> <span class="toc-text">【Java JVM】 再谈类的加载器</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Metadata-144"><span class="toc-number">1.1.</span> <span class="toc-text">Metadata</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A6%82%E8%BF%B0-55"><span class="toc-number">1.2.</span> <span class="toc-text">概述</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%A7%E5%8E%82%E9%9D%A2%E8%AF%95%E9%A2%98"><span class="toc-number">1.2.1.</span> <span class="toc-text">大厂面试题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B1%BB%E5%8A%A0%E8%BD%BD%E5%99%A8%E7%9A%84%E5%88%86%E7%B1%BB"><span class="toc-number">1.2.2.</span> <span class="toc-text">类加载器的分类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B1%BB%E5%8A%A0%E8%BD%BD%E5%99%A8%E7%9A%84%E5%BF%85%E8%A6%81%E6%80%A7"><span class="toc-number">1.2.3.</span> <span class="toc-text">类加载器的必要性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4"><span class="toc-number">1.2.4.</span> <span class="toc-text">命名空间</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B1%BB%E5%8A%A0%E8%BD%BD%E6%9C%BA%E5%88%B6%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%89%B9%E5%BE%81"><span class="toc-number">1.2.5.</span> <span class="toc-text">类加载机制的基本特征</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B1%BB%E5%8A%A0%E8%BD%BD%E5%99%A8%E4%B9%8B%E9%97%B4%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="toc-number">1.2.6.</span> <span class="toc-text">类加载器之间的关系</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B1%BB%E7%9A%84%E5%8A%A0%E8%BD%BD%E5%99%A8%E5%88%86%E7%B1%BB"><span class="toc-number">1.3.</span> <span class="toc-text">类的加载器分类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%95%E5%AF%BC%E7%B1%BB%E5%8A%A0%E8%BD%BD%E5%99%A8"><span class="toc-number">1.3.1.</span> <span class="toc-text">引导类加载器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%89%A9%E5%B1%95%E7%B1%BB%E5%8A%A0%E8%BD%BD%E5%99%A8"><span class="toc-number">1.3.2.</span> <span class="toc-text">扩展类加载器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E7%B1%BB%E5%8A%A0%E8%BD%BD%E5%99%A8"><span class="toc-number">1.3.3.</span> <span class="toc-text">系统类加载器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%A8%E6%88%B7%E8%87%AA%E5%AE%9A%E4%B9%89%E7%B1%BB%E5%8A%A0%E8%BD%BD%E5%99%A8-2"><span class="toc-number">1.3.4.</span> <span class="toc-text">用户自定义类加载器</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%8B%E8%AF%95%E4%B8%8D%E5%90%8C%E7%9A%84%E7%B1%BB%E7%9A%84%E5%8A%A0%E8%BD%BD%E5%99%A8"><span class="toc-number">1.4.</span> <span class="toc-text">测试不同的类的加载器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-ClassLoader%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90"><span class="toc-number">1.5.</span> <span class="toc-text">4. ClassLoader源码解析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#ClassLoader%E7%9A%84%E4%B8%BB%E8%A6%81%E6%96%B9%E6%B3%95"><span class="toc-number">1.5.1.</span> <span class="toc-text">ClassLoader的主要方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SecureClassLoader%E4%B8%8EURLClassLoader"><span class="toc-number">1.5.2.</span> <span class="toc-text">SecureClassLoader与URLClassLoader</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ExtClassLoader%E4%B8%8EAppClassLoader"><span class="toc-number">1.5.3.</span> <span class="toc-text">ExtClassLoader与AppClassLoader</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Class-forName-%E4%B8%8EClassLoader-loadClass"><span class="toc-number">1.5.4.</span> <span class="toc-text">Class.forName()与ClassLoader.loadClass()</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%8C%E4%BA%B2%E5%A7%94%E6%B4%BE%E6%A8%A1%E5%9E%8B"><span class="toc-number">1.6.</span> <span class="toc-text">双亲委派模型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89%E4%B8%8E%E6%9C%AC%E8%B4%A8"><span class="toc-number">1.6.1.</span> <span class="toc-text">定义与本质</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BC%98%E5%8A%BF%E4%B8%8E%E5%8A%A3%E5%8A%BF"><span class="toc-number">1.6.2.</span> <span class="toc-text">优势与劣势</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A0%B4%E5%9D%8F%E5%8F%8C%E4%BA%B2%E5%A7%94%E6%B4%BE%E6%9C%BA%E5%88%B6"><span class="toc-number">1.6.3.</span> <span class="toc-text">破坏双亲委派机制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%83%AD%E6%9B%BF%E6%8D%A2%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="toc-number">1.6.4.</span> <span class="toc-text">热替换的实现</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B2%99%E7%AE%B1%E5%AE%89%E5%85%A8%E6%9C%BA%E5%88%B6"><span class="toc-number">1.7.</span> <span class="toc-text">沙箱安全机制</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#JDK1-0%E6%97%B6%E6%9C%9F"><span class="toc-number">1.7.1.</span> <span class="toc-text">JDK1.0时期</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JDK1-1%E6%97%B6%E6%9C%9F"><span class="toc-number">1.7.2.</span> <span class="toc-text">JDK1.1时期</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JDK1-2%E6%97%B6%E6%9C%9F"><span class="toc-number">1.7.3.</span> <span class="toc-text">JDK1.2时期</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JDK1-6%E6%97%B6%E6%9C%9F"><span class="toc-number">1.8.</span> <span class="toc-text">JDK1.6时期</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E7%B1%BB%E7%9A%84%E5%8A%A0%E8%BD%BD%E5%99%A8"><span class="toc-number">1.9.</span> <span class="toc-text">自定义类的加载器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E8%87%AA%E5%AE%9A%E4%B9%89%E7%B1%BB%E5%8A%A0%E8%BD%BD%E5%99%A8%EF%BC%9F"><span class="toc-number">1.9.1.</span> <span class="toc-text">为什么要自定义类加载器？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F"><span class="toc-number">1.9.2.</span> <span class="toc-text">实现方式</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/module/flowable/flowable-zhuan-lan/flowable-zhuan-lan/" title="无题"><img src="https://api.yimian.xyz/img?type=moe" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/module/flowable/flowable-zhuan-lan/flowable-zhuan-lan/" title="无题">无题</a><time datetime="2023-07-15T09:45:06.401Z" title="发表于 2023-07-15 17:45:06">2023-07-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/module/consul/part/consul-tong-yong-pei-zhi-shu-xing/" title="无题"><img src="https://api.yimian.xyz/img?type=moe" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/module/consul/part/consul-tong-yong-pei-zhi-shu-xing/" title="无题">无题</a><time datetime="2023-07-15T09:44:38.408Z" title="发表于 2023-07-15 17:44:38">2023-07-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/java/java-duo-xian-cheng-bing-fa/java-duo-xian-cheng-bing-fa-xian-cheng/java-duo-xian-cheng-bing-fa-xian-cheng/" title="【Java 多线程并发】 线程"><img src="https://api.yimian.xyz/img?type=moe" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【Java 多线程并发】 线程"/></a><div class="content"><a class="title" href="/java/java-duo-xian-cheng-bing-fa/java-duo-xian-cheng-bing-fa-xian-cheng/java-duo-xian-cheng-bing-fa-xian-cheng/" title="【Java 多线程并发】 线程">【Java 多线程并发】 线程</a><time datetime="2023-07-10T06:15:00.000Z" title="发表于 2023-07-10 14:15:00">2023-07-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/java/java-jvm/java-jvm-nei-cun-guan-li/java-jvm-zhi-jie-nei-cun/" title="【Java JVM】 直接内存"><img src="https://api.yimian.xyz/img?type=moe" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【Java JVM】 直接内存"/></a><div class="content"><a class="title" href="/java/java-jvm/java-jvm-nei-cun-guan-li/java-jvm-zhi-jie-nei-cun/" title="【Java JVM】 直接内存">【Java JVM】 直接内存</a><time datetime="2023-07-10T00:00:00.000Z" title="发表于 2023-07-10 08:00:00">2023-07-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/database/redis/redis-chong-dian-gong-neng/redis-pai-xu/" title="【Redis】 排序"><img src="https://api.yimian.xyz/img?type=moe" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【Redis】 排序"/></a><div class="content"><a class="title" href="/database/redis/redis-chong-dian-gong-neng/redis-pai-xu/" title="【Redis】 排序">【Redis】 排序</a><time datetime="2023-07-09T06:07:00.000Z" title="发表于 2023-07-09 14:07:00">2023-07-09</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By Bill Cipher</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>function addGitalkSource () {
   const ele = document.createElement('link')
   ele.rel = 'stylesheet'
   ele.href= 'https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.css'

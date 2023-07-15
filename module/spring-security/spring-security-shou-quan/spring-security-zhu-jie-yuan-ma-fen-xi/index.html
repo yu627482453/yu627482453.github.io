@@ -147,7 +147,9 @@
     detectApple()
     })(window)</script><meta name="generator" content="Hexo 6.2.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">575</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">125</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">21</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://api.yimian.xyz/img?type=moe')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">蝶梦庄生</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">【Spring Security】 注解源码分析</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-02-02T06:28:00.000Z" title="发表于 2023-02-02 14:28:00">2023-02-02</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-02-02T06:28:00.000Z" title="更新于 2023-02-02 14:28:00">2023-02-02</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/SpringSecurity/">SpringSecurity</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="【Spring Security】 注解源码分析"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="【Spring-Security】-注解源码分析"><a href="#【Spring-Security】-注解源码分析" class="headerlink" title="【Spring Security】 注解源码分析"></a>【Spring Security】 注解源码分析</h1><h2 id="Metadata"><a href="#Metadata" class="headerlink" title="Metadata"></a>Metadata</h2><pre><code class="line-numbers language-yml">title: 【Spring Security】 注解源码分析
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">575</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">125</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">21</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://api.yimian.xyz/img?type=moe')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">蝶梦庄生</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">【Spring Security】 注解源码分析</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-02-02T06:28:00.000Z" title="发表于 2023-02-02 14:28:00">2023-02-02</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-02-02T06:28:00.000Z" title="更新于 2023-02-02 14:28:00">2023-02-02</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/SpringSecurity/">SpringSecurity</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="【Spring Security】 注解源码分析"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1>【Spring Security】 注解源码分析</h1>
+<h2 id="Metadata-493">Metadata</h2>
+<pre><code class="language-yml">title: 【Spring Security】 注解源码分析
 date: 2023-02-02 14:28
 tags:
   - 行动阶段/完成
@@ -160,9 +162,10 @@ keywords:
   - SpringSecurity
 description: 【Spring Security】 注解源码分析
 </code></pre>
-<h2 id="【Spring-Security】-注解源码分析-1"><a href="#【Spring-Security】-注解源码分析-1" class="headerlink" title="【Spring Security】 注解源码分析"></a>【Spring Security】 注解源码分析</h2><p>我们通过添加注解的方式，就实现了权限控制。接下来分析下源码，了解他的执行流程。</p>
+<h2 id="【Spring-Security】-注解源码分析">【Spring Security】 注解源码分析</h2>
+<p>我们通过添加注解的方式，就实现了权限控制。接下来分析下源码，了解他的执行流程。</p>
 <p>首先以下面代码问控制入口。</p>
-<pre><code class="line-numbers language-java">@PreAuthorize("hasRole('ROLE_ROOT')")
+<pre><code class="language-java">@PreAuthorize("hasRole('ROLE_ROOT')")
     public Object test() {
         SecurityContext context = SecurityContextHolder.getContext();
         Authentication authentication = context.getAuthentication();
@@ -170,17 +173,21 @@ description: 【Spring Security】 注解源码分析
         return principal;
     }
 </code></pre>
-<p>授权流程图：  </p>
-<p><img src="/attachment/20964da5cff4a91f3bbda048359b7bb4.png"></p>
-<h2 id="源码分析"><a href="#源码分析" class="headerlink" title="源码分析"></a>源码分析</h2><h3 id="核心类"><a href="#核心类" class="headerlink" title="核心类"></a>核心类</h3><h4 id="FilterSecurityInterceptor"><a href="#FilterSecurityInterceptor" class="headerlink" title="FilterSecurityInterceptor"></a>FilterSecurityInterceptor</h4><p>FilterSecurityInterceptor 作为 Spring Security Filter Chain 的最后一个 Filter，承担着非常重要的作用。如获取当前 request 对应的权限配置，调用访问控制器进行鉴权操作等，都是核心功能。进行访问控制的处理就在这个过滤器中。</p>
-<h4 id="ConfigAttribute"><a href="#ConfigAttribute" class="headerlink" title="ConfigAttribute"></a>ConfigAttribute</h4><p>ConfigAttribute 是一个接口，其作用为存储相关访问控制的规则。</p>
-<pre><code class="line-numbers language-java">public interface ConfigAttribute extends Serializable {
-    String getAttribute();
+<p>授权流程图：</p>
+<p><img src="/attachment/20964da5cff4a91f3bbda048359b7bb4.png" alt></p>
+<h2 id="源码分析-14">源码分析</h2>
+<h3 id="核心类-3">核心类</h3>
+<h4 id="FilterSecurityInterceptor">FilterSecurityInterceptor</h4>
+<p>FilterSecurityInterceptor 作为 Spring Security Filter Chain 的最后一个 Filter，承担着非常重要的作用。如获取当前 request 对应的权限配置，调用访问控制器进行鉴权操作等，都是核心功能。进行访问控制的处理就在这个过滤器中。</p>
+<h4 id="ConfigAttribute">ConfigAttribute</h4>
+<p>ConfigAttribute 是一个接口，其作用为存储相关访问控制的规则。</p>
+<pre><code class="language-java">public interface ConfigAttribute extends Serializable {
+	String getAttribute();
 }
 </code></pre>
 <p>而这些访问规则可以通过配置类或者注解方式来配置。</p>
 <p>比如 HttpSecurity 的默认配置为所有的请求都需要被认证，也可以添加自定义的访问控制规则</p>
-<pre><code class="line-numbers language-java">protected void configure(HttpSecurity http) throws Exception {
+<pre><code class="language-java">protected void configure(HttpSecurity http) throws Exception {
         this.logger.debug("Using default configure(HttpSecurity). If subclassed this will potentially override subclass configure(HttpSecurity).");
         http.authorizeRequests((requests) -&gt; {
             ((AuthorizedUrl)requests.anyRequest()).authenticated();
@@ -190,10 +197,10 @@ description: 【Spring Security】 注解源码分析
     }
 </code></pre>
 <p>比如可以通过注解方式进行访问控制：</p>
-<pre><code class="line-numbers language-java">@Secured("IS_AUTHENTICATED_ANONYMOUSLY")
+<pre><code class="language-java">@Secured("IS_AUTHENTICATED_ANONYMOUSLY")
 </code></pre>
 <p>WebExpressionConfigAttribute 是 ConfigAttribute 的常用实现类，并实现了 EvaluationContextPostProcessor 接口，他的主要作用是存储我们配置的表达式及其处理器。</p>
-<pre><code class="line-numbers language-java">/**
+<pre><code class="language-java">/**
  * Simple expression configuration attribute for use in web request authorizations.
  *
  * @author Luke Taylor
@@ -202,177 +209,184 @@ description: 【Spring Security】 注解源码分析
  */
 class WebExpressionConfigAttribute implements ConfigAttribute, EvaluationContextPostProcessor&lt;FilterInvocation&gt; {
 
-    // 表达式 比如
-    private final Expression authorizeExpression;
-    // el表达式内容处理处理器
-    private final EvaluationContextPostProcessor&lt;FilterInvocation&gt; postProcessor;
+	// 表达式 比如
+	private final Expression authorizeExpression;
+	// el表达式内容处理处理器
+	private final EvaluationContextPostProcessor&lt;FilterInvocation&gt; postProcessor;
 
-    WebExpressionConfigAttribute(Expression authorizeExpression,
-            EvaluationContextPostProcessor&lt;FilterInvocation&gt; postProcessor) {
-        this.authorizeExpression = authorizeExpression;
-        this.postProcessor = postProcessor;
-    }
+	WebExpressionConfigAttribute(Expression authorizeExpression,
+			EvaluationContextPostProcessor&lt;FilterInvocation&gt; postProcessor) {
+		this.authorizeExpression = authorizeExpression;
+		this.postProcessor = postProcessor;
+	}
 </code></pre>
-<h4 id="FilterInvocation"><a href="#FilterInvocation" class="headerlink" title="FilterInvocation"></a>FilterInvocation</h4><p>FilterInvocation 类，主要是保存与 HTTP 过滤器关联的对象，包括请求、响应、连接器链。</p>
-<pre><code class="line-numbers language-java">public class FilterInvocation {
+<h4 id="FilterInvocation">FilterInvocation</h4>
+<p>FilterInvocation 类，主要是保存与 HTTP 过滤器关联的对象，包括请求、响应、连接器链。</p>
+<pre><code class="language-java">public class FilterInvocation {
 
-    static final FilterChain DUMMY_CHAIN = (req, res) -&gt; {
-        throw new UnsupportedOperationException("Dummy filter chain");
-    };
+	static final FilterChain DUMMY_CHAIN = (req, res) -&gt; {
+		throw new UnsupportedOperationException("Dummy filter chain");
+	};
 
-    private FilterChain chain;
+	private FilterChain chain;
 
-    private HttpServletRequest request;
+	private HttpServletRequest request;
 
-    private HttpServletResponse response;
+	private HttpServletResponse response;
 
-    public FilterInvocation(ServletRequest request, ServletResponse response, FilterChain chain) {
-        Assert.isTrue(request != null &amp;&amp; response != null &amp;&amp; chain != null, "Cannot pass null values to constructor");
-        this.request = (HttpServletRequest) request;
-        this.response = (HttpServletResponse) response;
-        this.chain = chain;
-    }
+	public FilterInvocation(ServletRequest request, ServletResponse response, FilterChain chain) {
+		Assert.isTrue(request != null &amp;&amp; response != null &amp;&amp; chain != null, "Cannot pass null values to constructor");
+		this.request = (HttpServletRequest) request;
+		this.response = (HttpServletResponse) response;
+		this.chain = chain;
+	}
 }
 </code></pre>
-<h4 id="InterceptorStatusToken"><a href="#InterceptorStatusToken" class="headerlink" title="InterceptorStatusToken"></a>InterceptorStatusToken</h4><p>InterceptorStatusToken 是 FilterSecurityInterceptor 拦截器 beforeInvocation 处理返回的对象，主要包含了反映了安全拦截的状态，最终 afterInvocation 方法会对他进行最终的处理。</p>
-<pre><code class="line-numbers language-java">public class InterceptorStatusToken {
+<h4 id="InterceptorStatusToken">InterceptorStatusToken</h4>
+<p>InterceptorStatusToken 是 FilterSecurityInterceptor 拦截器 beforeInvocation 处理返回的对象，主要包含了反映了安全拦截的状态，最终 afterInvocation 方法会对他进行最终的处理。</p>
+<pre><code class="language-java">public class InterceptorStatusToken {
 
-    private SecurityContext securityContext;
+	private SecurityContext securityContext;
 
-    private Collection&lt;ConfigAttribute&gt; attr;
+	private Collection&lt;ConfigAttribute&gt; attr;
 
-    private Object secureObject;
+	private Object secureObject;
 
-    private boolean contextHolderRefreshRequired;
+	private boolean contextHolderRefreshRequired;
 
-    public InterceptorStatusToken(SecurityContext securityContext, boolean contextHolderRefreshRequired,
-            Collection&lt;ConfigAttribute&gt; attributes, Object secureObject) {
-        this.securityContext = securityContext;
-        this.contextHolderRefreshRequired = contextHolderRefreshRequired;
-        this.attr = attributes;
-        this.secureObject = secureObject;
-    }
+	public InterceptorStatusToken(SecurityContext securityContext, boolean contextHolderRefreshRequired,
+			Collection&lt;ConfigAttribute&gt; attributes, Object secureObject) {
+		this.securityContext = securityContext;
+		this.contextHolderRefreshRequired = contextHolderRefreshRequired;
+		this.attr = attributes;
+		this.secureObject = secureObject;
+	}
 }
 </code></pre>
-<h4 id="RunAsManager"><a href="#RunAsManager" class="headerlink" title="RunAsManager"></a>RunAsManager</h4><p>RunAsManager 是一个接口，主要定义了对 Authentication 进行替换的方法。在极少数情况下，用户可以使用不同的 Authentication 替换 SecurityContext 中的 Authentication。</p>
-<pre><code class="line-numbers language-java">public interface RunAsManager {
-    Authentication buildRunAs(Authentication authentication, Object object, Collection&lt;ConfigAttribute&gt; attributes);
-    boolean supports(ConfigAttribute attribute);
-    boolean supports(Class&lt;?&gt; clazz);
+<h4 id="RunAsManager">RunAsManager</h4>
+<p>RunAsManager 是一个接口，主要定义了对 Authentication 进行替换的方法。在极少数情况下，用户可以使用不同的 Authentication 替换 SecurityContext 中的 Authentication。</p>
+<pre><code class="language-java">public interface RunAsManager {
+	Authentication buildRunAs(Authentication authentication, Object object, Collection&lt;ConfigAttribute&gt; attributes);
+	boolean supports(ConfigAttribute attribute);
+	boolean supports(Class&lt;?&gt; clazz);
 }
 </code></pre>
-<h4 id="AccessDecisionManager"><a href="#AccessDecisionManager" class="headerlink" title="AccessDecisionManager"></a>AccessDecisionManager</h4><p>AccessDecisionManager 是访问决策管理器，做出最终的访问控制（授权）决定，他是一个接口，有众多的实现类。每一个具体的实现类可以表示为一种决策。  </p>
-<p><img src="/attachment/a56c95d4982a2eb63b85e1ebfecde1af.png"></p>
-<pre><code class="line-numbers language-java">public interface AccessDecisionManager {
+<h4 id="AccessDecisionManager">AccessDecisionManager</h4>
+<p>AccessDecisionManager 是访问决策管理器，做出最终的访问控制（授权）决定，他是一个接口，有众多的实现类。每一个具体的实现类可以表示为一种决策。</p>
+<p><img src="/attachment/a56c95d4982a2eb63b85e1ebfecde1af.png" alt></p>
+<pre><code class="language-java">public interface AccessDecisionManager {
 
-    /**
-     * Resolves an access control decision for the passed parameters.
-     * @param authentication the caller invoking the method (not null)
-     * @param object the secured object being called
-     * @param configAttributes the configuration attributes associated with the secured
-     * object being invoked
-     * @throws AccessDeniedException if access is denied as the authentication does not
-     * hold a required authority or ACL privilege
-     * @throws InsufficientAuthenticationException if access is denied as the
-     * authentication does not provide a sufficient level of trust
-     * 为传递的参数解析访问控制决策 
-     */
-    void decide(Authentication authentication, Object object, Collection&lt;ConfigAttribute&gt; configAttributes)
-            throws AccessDeniedException, InsufficientAuthenticationException;
+	/**
+	 * Resolves an access control decision for the passed parameters.
+	 * @param authentication the caller invoking the method (not null)
+	 * @param object the secured object being called
+	 * @param configAttributes the configuration attributes associated with the secured
+	 * object being invoked
+	 * @throws AccessDeniedException if access is denied as the authentication does not
+	 * hold a required authority or ACL privilege
+	 * @throws InsufficientAuthenticationException if access is denied as the
+	 * authentication does not provide a sufficient level of trust
+	 * 为传递的参数解析访问控制决策 
+	 */
+	void decide(Authentication authentication, Object object, Collection&lt;ConfigAttribute&gt; configAttributes)
+			throws AccessDeniedException, InsufficientAuthenticationException;
 
-    /**
-     * Indicates whether this &lt;code&gt;AccessDecisionManager&lt;/code&gt; is able to process
-     * authorization requests presented with the passed &lt;code&gt;ConfigAttribute&lt;/code&gt;.
-     * &lt;p&gt;
-     * This allows the &lt;code&gt;AbstractSecurityInterceptor&lt;/code&gt; to check every
-     * configuration attribute can be consumed by the configured
-     * &lt;code&gt;AccessDecisionManager&lt;/code&gt; and/or &lt;code&gt;RunAsManager&lt;/code&gt; and/or
-     * &lt;code&gt;AfterInvocationManager&lt;/code&gt;.
-     * &lt;/p&gt;
-     * @param attribute a configuration attribute that has been configured against the
-     * &lt;code&gt;AbstractSecurityInterceptor&lt;/code&gt;
-     * @return true if this &lt;code&gt;AccessDecisionManager&lt;/code&gt; can support the passed
-     * configuration attribute
-     * 指示此 &lt;code&gt;AccessDecisionManager&lt;/code&gt; 是否能够处理通过传递的 &lt;code&gt;ConfigAttribute&lt;/code&gt; 呈现的授权请求
-     */
-    boolean supports(ConfigAttribute attribute);
+	/**
+	 * Indicates whether this &lt;code&gt;AccessDecisionManager&lt;/code&gt; is able to process
+	 * authorization requests presented with the passed &lt;code&gt;ConfigAttribute&lt;/code&gt;.
+	 * &lt;p&gt;
+	 * This allows the &lt;code&gt;AbstractSecurityInterceptor&lt;/code&gt; to check every
+	 * configuration attribute can be consumed by the configured
+	 * &lt;code&gt;AccessDecisionManager&lt;/code&gt; and/or &lt;code&gt;RunAsManager&lt;/code&gt; and/or
+	 * &lt;code&gt;AfterInvocationManager&lt;/code&gt;.
+	 * &lt;/p&gt;
+	 * @param attribute a configuration attribute that has been configured against the
+	 * &lt;code&gt;AbstractSecurityInterceptor&lt;/code&gt;
+	 * @return true if this &lt;code&gt;AccessDecisionManager&lt;/code&gt; can support the passed
+	 * configuration attribute
+	 * 指示此 &lt;code&gt;AccessDecisionManager&lt;/code&gt; 是否能够处理通过传递的 &lt;code&gt;ConfigAttribute&lt;/code&gt; 呈现的授权请求
+	 */
+	boolean supports(ConfigAttribute attribute);
 
-    /**
-     * Indicates whether the &lt;code&gt;AccessDecisionManager&lt;/code&gt; implementation is able to
-     * provide access control decisions for the indicated secured object type.
-     * @param clazz the class that is being queried
-     * @return &lt;code&gt;true&lt;/code&gt; if the implementation can process the indicated class
-     * 指示 &lt;code&gt;AccessDecisionManager&lt;/code&gt; 实现是否能够为指示的安全对象类型提供访问控制决策。
-     */
-    boolean supports(Class&lt;?&gt; clazz);
+	/**
+	 * Indicates whether the &lt;code&gt;AccessDecisionManager&lt;/code&gt; implementation is able to
+	 * provide access control decisions for the indicated secured object type.
+	 * @param clazz the class that is being queried
+	 * @return &lt;code&gt;true&lt;/code&gt; if the implementation can process the indicated class
+	 * 指示 &lt;code&gt;AccessDecisionManager&lt;/code&gt; 实现是否能够为指示的安全对象类型提供访问控制决策。
+	 */
+	boolean supports(Class&lt;?&gt; clazz);
 
 }
 </code></pre>
-<h4 id="AffirmativeBased"><a href="#AffirmativeBased" class="headerlink" title="AffirmativeBased"></a>AffirmativeBased</h4><p>AffirmativeBased 是 AccessDecisionManager 默认的实现类，AffirmativeBased 的逻辑是这样的：</p>
-<pre><code class="line-numbers language-text">（1）只要有AccessDecisionVoter的投票为ACCESS_GRANTED则同意用户进行访问；
+<h4 id="AffirmativeBased">AffirmativeBased</h4>
+<p>AffirmativeBased 是 AccessDecisionManager 默认的实现类，AffirmativeBased 的逻辑是这样的：</p>
+<pre><code class="language-text">（1）只要有AccessDecisionVoter的投票为ACCESS_GRANTED则同意用户进行访问；
 
 （2）如果全部弃权也表示通过；
 
 （3）如果没有一个人投赞成票，但是有人投反对票，则将抛出AccessDeniedException。
 </code></pre>
-<pre><code class="line-numbers language-java">public class AffirmativeBased extends AbstractAccessDecisionManager {
+<pre><code class="language-java">public class AffirmativeBased extends AbstractAccessDecisionManager {
 
-    public AffirmativeBased(List&lt;AccessDecisionVoter&lt;?&gt;&gt; decisionVoters) {
-        super(decisionVoters);
-    }
-    @Override
-    @SuppressWarnings({"rawtypes", "unchecked"})
-    public void decide(Authentication authentication, Object object, Collection&lt;ConfigAttribute&gt; configAttributes)
-            throws AccessDeniedException {
-        int deny = 0; // 否决票
-        // 1. 循环WEB 投票器
-        for (AccessDecisionVoter voter : getDecisionVoters()) {
-            // 2. 投票，返回结果
-            int result = voter.vote(authentication, object, configAttributes);
-            //
-            switch (result) {
-                // 为1 ，表示通过，有一个通过，则直接通过，return退出函数，不抛出异常
-                case AccessDecisionVoter.ACCESS_GRANTED:
-                    return;
-                // -1 ,拒绝访问，否决票+1
-                case AccessDecisionVoter.ACCESS_DENIED:
-                    deny++;
-                    break;
-                default:
-                    break;
-            }
-        }
-        // 如果否决票》0 抛出AccessDeniedException
-        if (deny &gt; 0) {
-            throw new AccessDeniedException(
-                    this.messages.getMessage("AbstractAccessDecisionManager.accessDenied", "Access is denied"));
-        }
-        // To get this far, every AccessDecisionVoter abstained
-        // 3. 没有否决票，也没有赞成票，都弃权了，则检查是否允许如果所有弃权决定。
-        checkAllowIfAllAbstainDecisions();
-    }
+	public AffirmativeBased(List&lt;AccessDecisionVoter&lt;?&gt;&gt; decisionVoters) {
+		super(decisionVoters);
+	}
+	@Override
+	@SuppressWarnings({"rawtypes", "unchecked"})
+	public void decide(Authentication authentication, Object object, Collection&lt;ConfigAttribute&gt; configAttributes)
+			throws AccessDeniedException {
+		int deny = 0; // 否决票
+		// 1. 循环WEB 投票器
+		for (AccessDecisionVoter voter : getDecisionVoters()) {
+			// 2. 投票，返回结果
+			int result = voter.vote(authentication, object, configAttributes);
+			//
+			switch (result) {
+				// 为1 ，表示通过，有一个通过，则直接通过，return退出函数，不抛出异常
+				case AccessDecisionVoter.ACCESS_GRANTED:
+					return;
+				// -1 ,拒绝访问，否决票+1
+				case AccessDecisionVoter.ACCESS_DENIED:
+					deny++;
+					break;
+				default:
+					break;
+			}
+		}
+		// 如果否决票》0 抛出AccessDeniedException
+		if (deny &gt; 0) {
+			throw new AccessDeniedException(
+					this.messages.getMessage("AbstractAccessDecisionManager.accessDenied", "Access is denied"));
+		}
+		// To get this far, every AccessDecisionVoter abstained
+		// 3. 没有否决票，也没有赞成票，都弃权了，则检查是否允许如果所有弃权决定。
+		checkAllowIfAllAbstainDecisions();
+	}
 }
 </code></pre>
-<h4 id="AccessDecisionVoter"><a href="#AccessDecisionVoter" class="headerlink" title="AccessDecisionVoter"></a>AccessDecisionVoter</h4><p>AccessDecisionVoter 就表示为投票决策者，也就是一个投票器了。AccessDecisionVoter 是一个接口，定义了三个常量，表示投票结果。</p>
-<pre><code class="line-numbers language-java">/** 
+<h4 id="AccessDecisionVoter">AccessDecisionVoter</h4>
+<p>AccessDecisionVoter 就表示为投票决策者，也就是一个投票器了。AccessDecisionVoter 是一个接口，定义了三个常量，表示投票结果。</p>
+<pre><code class="language-java">/** 
  *  访问决策选民， 表示一个类负责对授权决定进行投票
  */
 public interface AccessDecisionVoter&lt;S&gt; {
 
-    int ACCESS_GRANTED = 1; // 授予访问权限
+	int ACCESS_GRANTED = 1; // 授予访问权限
 
-    int ACCESS_ABSTAIN = 0; // 访问弃权
+	int ACCESS_ABSTAIN = 0; // 访问弃权
 
-    int ACCESS_DENIED = -1; // 拒绝访问
-    boolean supports(ConfigAttribute attribute);
-    boolean supports(Class&lt;?&gt; clazz);
-    // 投票
-    int vote(Authentication authentication, S object, Collection&lt;ConfigAttribute&gt; attributes);
+	int ACCESS_DENIED = -1; // 拒绝访问
+	boolean supports(ConfigAttribute attribute);
+	boolean supports(Class&lt;?&gt; clazz);
+	// 投票
+	int vote(Authentication authentication, S object, Collection&lt;ConfigAttribute&gt; attributes);
 
 }
 </code></pre>
-<h4 id="WebExpressionVoter"><a href="#WebExpressionVoter" class="headerlink" title="WebExpressionVoter"></a>WebExpressionVoter</h4><p>AccessDecisionManager 默认的投票器 WebExpressionVoter。其实，就是对使用 http.authorizeRequests() 基于 Spring-EL 进行控制权限的的授权决策类。</p>
-<pre><code class="line-numbers language-java">/**
+<h4 id="WebExpressionVoter">WebExpressionVoter</h4>
+<p>AccessDecisionManager 默认的投票器 WebExpressionVoter。其实，就是对使用 http.authorizeRequests() 基于 Spring-EL 进行控制权限的的授权决策类。</p>
+<pre><code class="language-java">/**
  * Voter which handles web authorisation decisions.
  *
  * @author Luke Taylor
@@ -381,90 +395,92 @@ public interface AccessDecisionVoter&lt;S&gt; {
  */
 public class WebExpressionVoter implements AccessDecisionVoter&lt;FilterInvocation&gt; {
 
-    private final Log logger = LogFactory.getLog(getClass());
+	private final Log logger = LogFactory.getLog(getClass());
 
-    // 默认的WebSecurity授权表达式处理器
-    private SecurityExpressionHandler&lt;FilterInvocation&gt; expressionHandler = new DefaultWebSecurityExpressionHandler();
+	// 默认的WebSecurity授权表达式处理器
+	private SecurityExpressionHandler&lt;FilterInvocation&gt; expressionHandler = new DefaultWebSecurityExpressionHandler();
 
-    // 投票
-    @Override
-    public int vote(Authentication authentication, FilterInvocation filterInvocation,
-            Collection&lt;ConfigAttribute&gt; attributes) {
-        // 1. 校验参数
-        Assert.notNull(authentication, "authentication must not be null");
-        Assert.notNull(filterInvocation, "filterInvocation must not be null");
-        Assert.notNull(attributes, "attributes must not be null");
-        // 2. 获取http配置项
-        WebExpressionConfigAttribute webExpressionConfigAttribute = findConfigAttribute(attributes);
-        // 3. 没有配置规则，弃权
-        if (webExpressionConfigAttribute == null) {
-            this.logger
-                    .trace("Abstained since did not find a config attribute of instance WebExpressionConfigAttribute");
-            return ACCESS_ABSTAIN;
-        }
-        // 4. 对EL表达式进行处理
-        EvaluationContext ctx = webExpressionConfigAttribute.postProcess(
-                this.expressionHandler.createEvaluationContext(authentication, filterInvocation), filterInvocation);
-        boolean granted = ExpressionUtils.evaluateAsBoolean(webExpressionConfigAttribute.getAuthorizeExpression(), ctx);
-        if (granted) {
-            // 5. 符合条件，赞成票
-            return ACCESS_GRANTED;
-        }
-        this.logger.trace("Voted to deny authorization");
-        // 6. 最后都没有则反对票
-        return ACCESS_DENIED;
-    }
+	// 投票
+	@Override
+	public int vote(Authentication authentication, FilterInvocation filterInvocation,
+			Collection&lt;ConfigAttribute&gt; attributes) {
+		// 1. 校验参数
+		Assert.notNull(authentication, "authentication must not be null");
+		Assert.notNull(filterInvocation, "filterInvocation must not be null");
+		Assert.notNull(attributes, "attributes must not be null");
+		// 2. 获取http配置项
+		WebExpressionConfigAttribute webExpressionConfigAttribute = findConfigAttribute(attributes);
+		// 3. 没有配置规则，弃权
+		if (webExpressionConfigAttribute == null) {
+			this.logger
+					.trace("Abstained since did not find a config attribute of instance WebExpressionConfigAttribute");
+			return ACCESS_ABSTAIN;
+		}
+		// 4. 对EL表达式进行处理
+		EvaluationContext ctx = webExpressionConfigAttribute.postProcess(
+				this.expressionHandler.createEvaluationContext(authentication, filterInvocation), filterInvocation);
+		boolean granted = ExpressionUtils.evaluateAsBoolean(webExpressionConfigAttribute.getAuthorizeExpression(), ctx);
+		if (granted) {
+			// 5. 符合条件，赞成票
+			return ACCESS_GRANTED;
+		}
+		this.logger.trace("Voted to deny authorization");
+		// 6. 最后都没有则反对票
+		return ACCESS_DENIED;
+	}
 
-    private WebExpressionConfigAttribute findConfigAttribute(Collection&lt;ConfigAttribute&gt; attributes) {
-        for (ConfigAttribute attribute : attributes) {
-            if (attribute instanceof WebExpressionConfigAttribute) {
-                return (WebExpressionConfigAttribute) attribute;
-            }
-        }
-        return null;
-    }
+	private WebExpressionConfigAttribute findConfigAttribute(Collection&lt;ConfigAttribute&gt; attributes) {
+		for (ConfigAttribute attribute : attributes) {
+			if (attribute instanceof WebExpressionConfigAttribute) {
+				return (WebExpressionConfigAttribute) attribute;
+			}
+		}
+		return null;
+	}
 
-    @Override
-    public boolean supports(ConfigAttribute attribute) {
-        return attribute instanceof WebExpressionConfigAttribute;
-    }
+	@Override
+	public boolean supports(ConfigAttribute attribute) {
+		return attribute instanceof WebExpressionConfigAttribute;
+	}
 
-    @Override
-    public boolean supports(Class&lt;?&gt; clazz) {
-        return FilterInvocation.class.isAssignableFrom(clazz);
-    }
+	@Override
+	public boolean supports(Class&lt;?&gt; clazz) {
+		return FilterInvocation.class.isAssignableFrom(clazz);
+	}
 
-    public void setExpressionHandler(SecurityExpressionHandler&lt;FilterInvocation&gt; expressionHandler) {
-        this.expressionHandler = expressionHandler;
-    }
+	public void setExpressionHandler(SecurityExpressionHandler&lt;FilterInvocation&gt; expressionHandler) {
+		this.expressionHandler = expressionHandler;
+	}
 
 }
 </code></pre>
-<h4 id="SecurityExpressionHandler"><a href="#SecurityExpressionHandler" class="headerlink" title="SecurityExpressionHandler"></a>SecurityExpressionHandler</h4><p>Web 安全表达式处理器 (handler)。最后对 EL 访问控制表达式的处理，都是在此接口中的实现类进行。它的默认实现类为 DefaultWebSecurityExpressionHandler。这个类的主要作用是创建 SecurityExpressionRoot 对象。</p>
-<pre><code class="line-numbers language-java">public class DefaultWebSecurityExpressionHandler extends AbstractSecurityExpressionHandler&lt;FilterInvocation&gt;
-        implements SecurityExpressionHandler&lt;FilterInvocation&gt; {
+<h4 id="SecurityExpressionHandler">SecurityExpressionHandler</h4>
+<p>Web 安全表达式处理器 (handler)。最后对 EL 访问控制表达式的处理，都是在此接口中的实现类进行。它的默认实现类为 DefaultWebSecurityExpressionHandler。这个类的主要作用是创建 SecurityExpressionRoot 对象。</p>
+<pre><code class="language-java">public class DefaultWebSecurityExpressionHandler extends AbstractSecurityExpressionHandler&lt;FilterInvocation&gt;
+		implements SecurityExpressionHandler&lt;FilterInvocation&gt; {
 
-    private AuthenticationTrustResolver trustResolver = new AuthenticationTrustResolverImpl();
+	private AuthenticationTrustResolver trustResolver = new AuthenticationTrustResolverImpl();
 
-    // 角色前缀
-    private String defaultRolePrefix = "ROLE_";
+	// 角色前缀
+	private String defaultRolePrefix = "ROLE_";
 
-    @Override
-    protected SecurityExpressionOperations createSecurityExpressionRoot(Authentication authentication,
-            FilterInvocation fi) {
-        WebSecurityExpressionRoot root = new WebSecurityExpressionRoot(authentication, fi);
-        root.setPermissionEvaluator(getPermissionEvaluator());
-        root.setTrustResolver(this.trustResolver);
-        root.setRoleHierarchy(getRoleHierarchy());
-        root.setDefaultRolePrefix(this.defaultRolePrefix);
-        return root;
-    }
+	@Override
+	protected SecurityExpressionOperations createSecurityExpressionRoot(Authentication authentication,
+			FilterInvocation fi) {
+		WebSecurityExpressionRoot root = new WebSecurityExpressionRoot(authentication, fi);
+		root.setPermissionEvaluator(getPermissionEvaluator());
+		root.setTrustResolver(this.trustResolver);
+		root.setRoleHierarchy(getRoleHierarchy());
+		root.setDefaultRolePrefix(this.defaultRolePrefix);
+		return root;
+	}
 }
 </code></pre>
-<h4 id="WebSecurityExpressionRoot"><a href="#WebSecurityExpressionRoot" class="headerlink" title="WebSecurityExpressionRoot"></a>WebSecurityExpressionRoot</h4><p>WebSecurityExpressionRoot 实现了 SecurityExpressionRoot 接口，其顶级接口为 SecurityExpressionOperations。  </p>
-<p><img src="https://img-blog.csdnimg.cn/20210712091640297.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNDM3ODc0,size_16,color_FFFFFF,t_70"></p>
+<h4 id="WebSecurityExpressionRoot">WebSecurityExpressionRoot</h4>
+<p>WebSecurityExpressionRoot 实现了 SecurityExpressionRoot 接口，其顶级接口为 SecurityExpressionOperations。</p>
+<p><img src="https://img-blog.csdnimg.cn/20210712091640297.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNDM3ODc0,size_16,color_FFFFFF,t_70" alt></p>
 <p>SecurityExpressionOperations 接口中定义个很多方法，每个方法都关联着一个访问控制表达式。</p>
-<pre><code class="line-numbers language-java">/**
+<pre><code class="language-java">/**
  * Standard interface for expression root objects used with expression-based security.
  *
  * @author Andrei Stefan
@@ -474,152 +490,152 @@ public class WebExpressionVoter implements AccessDecisionVoter&lt;FilterInvocati
  */
 public interface SecurityExpressionOperations {
 
-    /**
-     * Gets the {@link Authentication} used for evaluating the expressions
-     * @return the {@link Authentication} for evaluating the expressions
-     */
-    Authentication getAuthentication();
+	/**
+	 * Gets the {@link Authentication} used for evaluating the expressions
+	 * @return the {@link Authentication} for evaluating the expressions
+	 */
+	Authentication getAuthentication();
 
-    /**
-     * Determines if the {@link #getAuthentication()} has a particular authority within
-     * {@link Authentication#getAuthorities()}.
-     * @param authority the authority to test (i.e. "ROLE_USER")
-     * @return true if the authority is found, else false
-     */
-    boolean hasAuthority(String authority);
+	/**
+	 * Determines if the {@link #getAuthentication()} has a particular authority within
+	 * {@link Authentication#getAuthorities()}.
+	 * @param authority the authority to test (i.e. "ROLE_USER")
+	 * @return true if the authority is found, else false
+	 */
+	boolean hasAuthority(String authority);
 
-    /**
-     * Determines if the {@link #getAuthentication()} has any of the specified authorities
-     * within {@link Authentication#getAuthorities()}.
-     * @param authorities the authorities to test (i.e. "ROLE_USER", "ROLE_ADMIN")
-     * @return true if any of the authorities is found, else false
-     */
-    boolean hasAnyAuthority(String... authorities);
+	/**
+	 * Determines if the {@link #getAuthentication()} has any of the specified authorities
+	 * within {@link Authentication#getAuthorities()}.
+	 * @param authorities the authorities to test (i.e. "ROLE_USER", "ROLE_ADMIN")
+	 * @return true if any of the authorities is found, else false
+	 */
+	boolean hasAnyAuthority(String... authorities);
 
-    /**
-     * &lt;p&gt;
-     * Determines if the {@link #getAuthentication()} has a particular authority within
-     * {@link Authentication#getAuthorities()}.
-     * &lt;/p&gt;
-     * &lt;p&gt;
-     * This is similar to {@link #hasAuthority(String)} except that this method implies
-     * that the String passed in is a role. For example, if "USER" is passed in the
-     * implementation may convert it to use "ROLE_USER" instead. The way in which the role
-     * is converted may depend on the implementation settings.
-     * &lt;/p&gt;
-     * @param role the authority to test (i.e. "USER")
-     * @return true if the authority is found, else false
-     */
-    boolean hasRole(String role);
+	/**
+	 * &lt;p&gt;
+	 * Determines if the {@link #getAuthentication()} has a particular authority within
+	 * {@link Authentication#getAuthorities()}.
+	 * &lt;/p&gt;
+	 * &lt;p&gt;
+	 * This is similar to {@link #hasAuthority(String)} except that this method implies
+	 * that the String passed in is a role. For example, if "USER" is passed in the
+	 * implementation may convert it to use "ROLE_USER" instead. The way in which the role
+	 * is converted may depend on the implementation settings.
+	 * &lt;/p&gt;
+	 * @param role the authority to test (i.e. "USER")
+	 * @return true if the authority is found, else false
+	 */
+	boolean hasRole(String role);
 
-    /**
-     * &lt;p&gt;
-     * Determines if the {@link #getAuthentication()} has any of the specified authorities
-     * within {@link Authentication#getAuthorities()}.
-     * &lt;/p&gt;
-     * &lt;p&gt;
-     * This is a similar to hasAnyAuthority except that this method implies that the
-     * String passed in is a role. For example, if "USER" is passed in the implementation
-     * may convert it to use "ROLE_USER" instead. The way in which the role is converted
-     * may depend on the implementation settings.
-     * &lt;/p&gt;
-     * @param roles the authorities to test (i.e. "USER", "ADMIN")
-     * @return true if any of the authorities is found, else false
-     */
-    boolean hasAnyRole(String... roles);
+	/**
+	 * &lt;p&gt;
+	 * Determines if the {@link #getAuthentication()} has any of the specified authorities
+	 * within {@link Authentication#getAuthorities()}.
+	 * &lt;/p&gt;
+	 * &lt;p&gt;
+	 * This is a similar to hasAnyAuthority except that this method implies that the
+	 * String passed in is a role. For example, if "USER" is passed in the implementation
+	 * may convert it to use "ROLE_USER" instead. The way in which the role is converted
+	 * may depend on the implementation settings.
+	 * &lt;/p&gt;
+	 * @param roles the authorities to test (i.e. "USER", "ADMIN")
+	 * @return true if any of the authorities is found, else false
+	 */
+	boolean hasAnyRole(String... roles);
 
-    /**
-     * Always grants access.
-     * @return true
-     */
-    boolean permitAll();
+	/**
+	 * Always grants access.
+	 * @return true
+	 */
+	boolean permitAll();
 
-    /**
-     * Always denies access
-     * @return false
-     */
-    boolean denyAll();
+	/**
+	 * Always denies access
+	 * @return false
+	 */
+	boolean denyAll();
 
-    /**
-     * Determines if the {@link #getAuthentication()} is anonymous
-     * @return true if the user is anonymous, else false
-     */
-    boolean isAnonymous();
+	/**
+	 * Determines if the {@link #getAuthentication()} is anonymous
+	 * @return true if the user is anonymous, else false
+	 */
+	boolean isAnonymous();
 
-    /**
-     * Determines ifthe {@link #getAuthentication()} is authenticated
-     * @return true if the {@link #getAuthentication()} is authenticated, else false
-     */
-    boolean isAuthenticated();
+	/**
+	 * Determines ifthe {@link #getAuthentication()} is authenticated
+	 * @return true if the {@link #getAuthentication()} is authenticated, else false
+	 */
+	boolean isAuthenticated();
 
-    /**
-     * Determines if the {@link #getAuthentication()} was authenticated using remember me
-     * @return true if the {@link #getAuthentication()} authenticated using remember me,
-     * else false
-     */
-    boolean isRememberMe();
+	/**
+	 * Determines if the {@link #getAuthentication()} was authenticated using remember me
+	 * @return true if the {@link #getAuthentication()} authenticated using remember me,
+	 * else false
+	 */
+	boolean isRememberMe();
 
-    /**
-     * Determines if the {@link #getAuthentication()} authenticated without the use of
-     * remember me
-     * @return true if the {@link #getAuthentication()} authenticated without the use of
-     * remember me, else false
-     */
-    boolean isFullyAuthenticated();
+	/**
+	 * Determines if the {@link #getAuthentication()} authenticated without the use of
+	 * remember me
+	 * @return true if the {@link #getAuthentication()} authenticated without the use of
+	 * remember me, else false
+	 */
+	boolean isFullyAuthenticated();
 
-    /**
-     * Determines if the {@link #getAuthentication()} has permission to access the target
-     * given the permission
-     * @param target the target domain object to check permission on
-     * @param permission the permission to check on the domain object (i.e. "read",
-     * "write", etc).
-     * @return true if permission is granted to the {@link #getAuthentication()}, else
-     * false
-     */
-    boolean hasPermission(Object target, Object permission);
+	/**
+	 * Determines if the {@link #getAuthentication()} has permission to access the target
+	 * given the permission
+	 * @param target the target domain object to check permission on
+	 * @param permission the permission to check on the domain object (i.e. "read",
+	 * "write", etc).
+	 * @return true if permission is granted to the {@link #getAuthentication()}, else
+	 * false
+	 */
+	boolean hasPermission(Object target, Object permission);
 
-    /**
-     * Determines if the {@link #getAuthentication()} has permission to access the domain
-     * object with a given id, type, and permission.
-     * @param targetId the identifier of the domain object to determine access
-     * @param targetType the type (i.e. com.example.domain.Message)
-     * @param permission the perission to check on the domain object (i.e. "read",
-     * "write", etc)
-     * @return true if permission is granted to the {@link #getAuthentication()}, else
-     * false
-     */
-    boolean hasPermission(Object targetId, String targetType, Object permission);
+	/**
+	 * Determines if the {@link #getAuthentication()} has permission to access the domain
+	 * object with a given id, type, and permission.
+	 * @param targetId the identifier of the domain object to determine access
+	 * @param targetType the type (i.e. com.example.domain.Message)
+	 * @param permission the perission to check on the domain object (i.e. "read",
+	 * "write", etc)
+	 * @return true if permission is granted to the {@link #getAuthentication()}, else
+	 * false
+	 */
+	boolean hasPermission(Object targetId, String targetType, Object permission);
 
 }
 </code></pre>
 <p>WebSecurityExpressionRoot 可以理解为权限表达式对应的 JAVA 类，他除了接口中的表达式支持，还添加了一个 hasIpAddress 方法，可以对 IP 进行控制。</p>
-<pre><code class="line-numbers language-java">public class WebSecurityExpressionRoot extends SecurityExpressionRoot {
+<pre><code class="language-java">public class WebSecurityExpressionRoot extends SecurityExpressionRoot {
 
-    /**
-     * Allows direct access to the request object
-     */
-    public final HttpServletRequest request;
+	/**
+	 * Allows direct access to the request object
+	 */
+	public final HttpServletRequest request;
 
-    public WebSecurityExpressionRoot(Authentication a, FilterInvocation fi) {
-        super(a);
-        this.request = fi.getRequest();
-    }
+	public WebSecurityExpressionRoot(Authentication a, FilterInvocation fi) {
+		super(a);
+		this.request = fi.getRequest();
+	}
 
-    /**
-     * Takes a specific IP address or a range using the IP/Netmask (e.g. 192.168.1.0/24 or
-     * 202.24.0.0/14).
-     * @param ipAddress the address or range of addresses from which the request must
-     * come.
-     * @return true if the IP address of the current request is in the required range.
-     */
-    public boolean hasIpAddress(String ipAddress) {
-        IpAddressMatcher matcher = new IpAddressMatcher(ipAddress);
-        return matcher.matches(this.request);
-    }
+	/**
+	 * Takes a specific IP address or a range using the IP/Netmask (e.g. 192.168.1.0/24 or
+	 * 202.24.0.0/14).
+	 * @param ipAddress the address or range of addresses from which the request must
+	 * come.
+	 * @return true if the IP address of the current request is in the required range.
+	 */
+	public boolean hasIpAddress(String ipAddress) {
+		IpAddressMatcher matcher = new IpAddressMatcher(ipAddress);
+		return matcher.matches(this.request);
+	}
 
 }
 </code></pre>
-</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a target="_blank" rel="noopener" href="https://github.com/yu627482453">Bill Cipher</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://yu627482453.github.io/module/spring-security/spring-security-shou-quan/spring-security-zhu-jie-yuan-ma-fen-xi/">https://yu627482453.github.io/module/spring-security/spring-security-shou-quan/spring-security-zhu-jie-yuan-ma-fen-xi/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://yu627482453.github.io" target="_blank">蝶梦庄生</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E8%A1%8C%E5%8A%A8%E9%98%B6%E6%AE%B5-%E5%AE%8C%E6%88%90/">行动阶段/完成</a><a class="post-meta__tags" href="/tags/%E4%B8%BB%E9%A2%98%E5%9C%BA%E6%99%AF-%E7%BB%84%E4%BB%B6/">主题场景/组件</a><a class="post-meta__tags" href="/tags/%E7%AC%94%E8%AE%B0%E7%A9%BA%E9%97%B4-KnowladgeSpace-ProgramSpace-ModuleSpace/">笔记空间/KnowladgeSpace/ProgramSpace/ModuleSpace</a><a class="post-meta__tags" href="/tags/%E7%BB%86%E5%8C%96%E4%B8%BB%E9%A2%98-Module-SpringSecurity/">细化主题/Module/SpringSecurity</a></div><div class="post_share"><div class="social-share" data-image="https://api.yimian.xyz/img?type=moe" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/reward/wechat.jpg" target="_blank"><img class="post-qr-code-img" src="/img/reward/wechat.jpg" alt="wechat"/></a><div class="post-qr-code-desc">wechat</div></li><li class="reward-item"><a href="/img/reward/alipay.jpg" target="_blank"><img class="post-qr-code-img" src="/img/reward/alipay.jpg" alt="alipay"/></a><div class="post-qr-code-desc">alipay</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/module/spring-security/spring-security-shou-quan/spring-security-shou-quan-liu-cheng-fen-xi/"><img class="prev-cover" src="https://api.yimian.xyz/img?type=moe" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">【Spring Security】 授权 流程分析</div></div></a></div><div class="next-post pull-right"><a href="/module/spring-security/spring-security-shi-li/spring-security-biao-da-shi-shou-quan-an-li/"><img class="next-cover" src="https://api.yimian.xyz/img?type=moe" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">【Spring Security】 表达式授权案例</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/module/spring-security/spring-security-hui-hua-guan-li/spring-security-session-guan-li/" title="【Spring Security】 Session 管理"><img class="cover" src="https://api.yimian.xyz/img?type=moe" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-02-02</div><div class="title">【Spring Security】 Session 管理</div></div></a></div><div><a href="/module/spring-security/spring-security-hui-hua-guan-li/spring-security-token-guan-li/" title="【Spring Security】 Token 管理"><img class="cover" src="https://api.yimian.xyz/img?type=moe" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-02-02</div><div class="title">【Spring Security】 Token 管理</div></div></a></div><div><a href="/module/spring-security/spring-security-hui-hua-guan-li/spring-security-hui-hua-guan-li/" title="【Spring Security】 会话管理"><img class="cover" src="https://api.yimian.xyz/img?type=moe" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-02-02</div><div class="title">【Spring Security】 会话管理</div></div></a></div><div><a href="/module/spring-security/spring-security-hui-hua-guan-li/spring-security-deng-chu/" title="【Spring Security】 登出"><img class="cover" src="https://api.yimian.xyz/img?type=moe" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-02-02</div><div class="title">【Spring Security】 登出</div></div></a></div><div><a href="/module/spring-security/spring-security-oauth2/spring-security-defaulttokenservices/" title="【Spring Security】 DefaultTokenServices"><img class="cover" src="https://api.yimian.xyz/img?type=moe" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-02-05</div><div class="title">【Spring Security】 DefaultTokenServices</div></div></a></div><div><a href="/module/spring-security/spring-security-oauth2/spring-security-oath2-shou-quan-fu-wu-qi-yi-chang-chu-li-yuan-ma-fen-xi/" title="【Spring Security】 Oath2 授权服务器异常处理源码分析"><img class="cover" src="https://api.yimian.xyz/img?type=moe" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-02-05</div><div class="title">【Spring Security】 Oath2 授权服务器异常处理源码分析</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="gitalk-container"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Bill Cipher</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">575</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">125</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">21</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/yu627482453"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/yu627482453" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="/627482453@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E3%80%90Spring-Security%E3%80%91-%E6%B3%A8%E8%A7%A3%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90"><span class="toc-number">1.</span> <span class="toc-text">【Spring Security】 注解源码分析</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Metadata"><span class="toc-number">1.1.</span> <span class="toc-text">Metadata</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E3%80%90Spring-Security%E3%80%91-%E6%B3%A8%E8%A7%A3%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90-1"><span class="toc-number">1.2.</span> <span class="toc-text">【Spring Security】 注解源码分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90"><span class="toc-number">1.3.</span> <span class="toc-text">源码分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%B8%E5%BF%83%E7%B1%BB"><span class="toc-number">1.3.1.</span> <span class="toc-text">核心类</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#FilterSecurityInterceptor"><span class="toc-number">1.3.1.1.</span> <span class="toc-text">FilterSecurityInterceptor</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ConfigAttribute"><span class="toc-number">1.3.1.2.</span> <span class="toc-text">ConfigAttribute</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#FilterInvocation"><span class="toc-number">1.3.1.3.</span> <span class="toc-text">FilterInvocation</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#InterceptorStatusToken"><span class="toc-number">1.3.1.4.</span> <span class="toc-text">InterceptorStatusToken</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#RunAsManager"><span class="toc-number">1.3.1.5.</span> <span class="toc-text">RunAsManager</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#AccessDecisionManager"><span class="toc-number">1.3.1.6.</span> <span class="toc-text">AccessDecisionManager</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#AffirmativeBased"><span class="toc-number">1.3.1.7.</span> <span class="toc-text">AffirmativeBased</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#AccessDecisionVoter"><span class="toc-number">1.3.1.8.</span> <span class="toc-text">AccessDecisionVoter</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#WebExpressionVoter"><span class="toc-number">1.3.1.9.</span> <span class="toc-text">WebExpressionVoter</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#SecurityExpressionHandler"><span class="toc-number">1.3.1.10.</span> <span class="toc-text">SecurityExpressionHandler</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#WebSecurityExpressionRoot"><span class="toc-number">1.3.1.11.</span> <span class="toc-text">WebSecurityExpressionRoot</span></a></li></ol></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/module/flowable/flowable-zhuan-lan/flowable-zhuan-lan/" title="无题"><img src="https://api.yimian.xyz/img?type=moe" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/module/flowable/flowable-zhuan-lan/flowable-zhuan-lan/" title="无题">无题</a><time datetime="2023-07-15T09:45:06.401Z" title="发表于 2023-07-15 17:45:06">2023-07-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/module/consul/part/consul-tong-yong-pei-zhi-shu-xing/" title="无题"><img src="https://api.yimian.xyz/img?type=moe" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/module/consul/part/consul-tong-yong-pei-zhi-shu-xing/" title="无题">无题</a><time datetime="2023-07-15T09:44:38.408Z" title="发表于 2023-07-15 17:44:38">2023-07-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/java/java-duo-xian-cheng-bing-fa/java-duo-xian-cheng-bing-fa-xian-cheng/java-duo-xian-cheng-bing-fa-xian-cheng/" title="【Java 多线程并发】 线程"><img src="https://api.yimian.xyz/img?type=moe" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【Java 多线程并发】 线程"/></a><div class="content"><a class="title" href="/java/java-duo-xian-cheng-bing-fa/java-duo-xian-cheng-bing-fa-xian-cheng/java-duo-xian-cheng-bing-fa-xian-cheng/" title="【Java 多线程并发】 线程">【Java 多线程并发】 线程</a><time datetime="2023-07-10T06:15:00.000Z" title="发表于 2023-07-10 14:15:00">2023-07-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/java/java-jvm/java-jvm-nei-cun-guan-li/java-jvm-zhi-jie-nei-cun/" title="【Java JVM】 直接内存"><img src="https://api.yimian.xyz/img?type=moe" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【Java JVM】 直接内存"/></a><div class="content"><a class="title" href="/java/java-jvm/java-jvm-nei-cun-guan-li/java-jvm-zhi-jie-nei-cun/" title="【Java JVM】 直接内存">【Java JVM】 直接内存</a><time datetime="2023-07-10T00:00:00.000Z" title="发表于 2023-07-10 08:00:00">2023-07-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/database/redis/redis-chong-dian-gong-neng/redis-pai-xu/" title="【Redis】 排序"><img src="https://api.yimian.xyz/img?type=moe" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【Redis】 排序"/></a><div class="content"><a class="title" href="/database/redis/redis-chong-dian-gong-neng/redis-pai-xu/" title="【Redis】 排序">【Redis】 排序</a><time datetime="2023-07-09T06:07:00.000Z" title="发表于 2023-07-09 14:07:00">2023-07-09</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By Bill Cipher</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>function addGitalkSource () {
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a target="_blank" rel="noopener" href="https://github.com/yu627482453">Bill Cipher</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://yu627482453.github.io/module/spring-security/spring-security-shou-quan/spring-security-zhu-jie-yuan-ma-fen-xi/">https://yu627482453.github.io/module/spring-security/spring-security-shou-quan/spring-security-zhu-jie-yuan-ma-fen-xi/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://yu627482453.github.io" target="_blank">蝶梦庄生</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E8%A1%8C%E5%8A%A8%E9%98%B6%E6%AE%B5-%E5%AE%8C%E6%88%90/">行动阶段/完成</a><a class="post-meta__tags" href="/tags/%E4%B8%BB%E9%A2%98%E5%9C%BA%E6%99%AF-%E7%BB%84%E4%BB%B6/">主题场景/组件</a><a class="post-meta__tags" href="/tags/%E7%AC%94%E8%AE%B0%E7%A9%BA%E9%97%B4-KnowladgeSpace-ProgramSpace-ModuleSpace/">笔记空间/KnowladgeSpace/ProgramSpace/ModuleSpace</a><a class="post-meta__tags" href="/tags/%E7%BB%86%E5%8C%96%E4%B8%BB%E9%A2%98-Module-SpringSecurity/">细化主题/Module/SpringSecurity</a></div><div class="post_share"><div class="social-share" data-image="https://api.yimian.xyz/img?type=moe" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/reward/wechat.jpg" target="_blank"><img class="post-qr-code-img" src="/img/reward/wechat.jpg" alt="wechat"/></a><div class="post-qr-code-desc">wechat</div></li><li class="reward-item"><a href="/img/reward/alipay.jpg" target="_blank"><img class="post-qr-code-img" src="/img/reward/alipay.jpg" alt="alipay"/></a><div class="post-qr-code-desc">alipay</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/module/spring-security/spring-security-shou-quan/spring-security-shou-quan-liu-cheng-fen-xi/"><img class="prev-cover" src="https://api.yimian.xyz/img?type=moe" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">【Spring Security】 授权 流程分析</div></div></a></div><div class="next-post pull-right"><a href="/module/spring-security/spring-security-shi-li/spring-security-biao-da-shi-shou-quan-an-li/"><img class="next-cover" src="https://api.yimian.xyz/img?type=moe" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">【Spring Security】 表达式授权案例</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/module/spring-security/spring-security-hui-hua-guan-li/spring-security-session-guan-li/" title="【Spring Security】 Session 管理"><img class="cover" src="https://api.yimian.xyz/img?type=moe" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-02-02</div><div class="title">【Spring Security】 Session 管理</div></div></a></div><div><a href="/module/spring-security/spring-security-hui-hua-guan-li/spring-security-token-guan-li/" title="【Spring Security】 Token 管理"><img class="cover" src="https://api.yimian.xyz/img?type=moe" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-02-02</div><div class="title">【Spring Security】 Token 管理</div></div></a></div><div><a href="/module/spring-security/spring-security-hui-hua-guan-li/spring-security-deng-chu/" title="【Spring Security】 登出"><img class="cover" src="https://api.yimian.xyz/img?type=moe" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-02-02</div><div class="title">【Spring Security】 登出</div></div></a></div><div><a href="/module/spring-security/spring-security-hui-hua-guan-li/spring-security-hui-hua-guan-li/" title="【Spring Security】 会话管理"><img class="cover" src="https://api.yimian.xyz/img?type=moe" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-02-02</div><div class="title">【Spring Security】 会话管理</div></div></a></div><div><a href="/module/spring-security/spring-security-oauth2/spring-security-defaulttokenservices/" title="【Spring Security】 DefaultTokenServices"><img class="cover" src="https://api.yimian.xyz/img?type=moe" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-02-05</div><div class="title">【Spring Security】 DefaultTokenServices</div></div></a></div><div><a href="/module/spring-security/spring-security-oauth2/spring-security-oath2-shou-quan-fu-wu-qi-yi-chang-chu-li-yuan-ma-fen-xi/" title="【Spring Security】 Oath2 授权服务器异常处理源码分析"><img class="cover" src="https://api.yimian.xyz/img?type=moe" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-02-05</div><div class="title">【Spring Security】 Oath2 授权服务器异常处理源码分析</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="gitalk-container"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Bill Cipher</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">575</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">125</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">21</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/yu627482453"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/yu627482453" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="/627482453@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">1.</span> <span class="toc-text">【Spring Security】 注解源码分析</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Metadata-493"><span class="toc-number">1.1.</span> <span class="toc-text">Metadata</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E3%80%90Spring-Security%E3%80%91-%E6%B3%A8%E8%A7%A3%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90"><span class="toc-number">1.2.</span> <span class="toc-text">【Spring Security】 注解源码分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90-14"><span class="toc-number">1.3.</span> <span class="toc-text">源码分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%B8%E5%BF%83%E7%B1%BB-3"><span class="toc-number">1.3.1.</span> <span class="toc-text">核心类</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#FilterSecurityInterceptor"><span class="toc-number">1.3.1.1.</span> <span class="toc-text">FilterSecurityInterceptor</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ConfigAttribute"><span class="toc-number">1.3.1.2.</span> <span class="toc-text">ConfigAttribute</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#FilterInvocation"><span class="toc-number">1.3.1.3.</span> <span class="toc-text">FilterInvocation</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#InterceptorStatusToken"><span class="toc-number">1.3.1.4.</span> <span class="toc-text">InterceptorStatusToken</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#RunAsManager"><span class="toc-number">1.3.1.5.</span> <span class="toc-text">RunAsManager</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#AccessDecisionManager"><span class="toc-number">1.3.1.6.</span> <span class="toc-text">AccessDecisionManager</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#AffirmativeBased"><span class="toc-number">1.3.1.7.</span> <span class="toc-text">AffirmativeBased</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#AccessDecisionVoter"><span class="toc-number">1.3.1.8.</span> <span class="toc-text">AccessDecisionVoter</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#WebExpressionVoter"><span class="toc-number">1.3.1.9.</span> <span class="toc-text">WebExpressionVoter</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#SecurityExpressionHandler"><span class="toc-number">1.3.1.10.</span> <span class="toc-text">SecurityExpressionHandler</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#WebSecurityExpressionRoot"><span class="toc-number">1.3.1.11.</span> <span class="toc-text">WebSecurityExpressionRoot</span></a></li></ol></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/module/flowable/flowable-zhuan-lan/flowable-zhuan-lan/" title="无题"><img src="https://api.yimian.xyz/img?type=moe" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/module/flowable/flowable-zhuan-lan/flowable-zhuan-lan/" title="无题">无题</a><time datetime="2023-07-15T09:45:06.401Z" title="发表于 2023-07-15 17:45:06">2023-07-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/module/consul/part/consul-tong-yong-pei-zhi-shu-xing/" title="无题"><img src="https://api.yimian.xyz/img?type=moe" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/module/consul/part/consul-tong-yong-pei-zhi-shu-xing/" title="无题">无题</a><time datetime="2023-07-15T09:44:38.408Z" title="发表于 2023-07-15 17:44:38">2023-07-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/java/java-duo-xian-cheng-bing-fa/java-duo-xian-cheng-bing-fa-xian-cheng/java-duo-xian-cheng-bing-fa-xian-cheng/" title="【Java 多线程并发】 线程"><img src="https://api.yimian.xyz/img?type=moe" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【Java 多线程并发】 线程"/></a><div class="content"><a class="title" href="/java/java-duo-xian-cheng-bing-fa/java-duo-xian-cheng-bing-fa-xian-cheng/java-duo-xian-cheng-bing-fa-xian-cheng/" title="【Java 多线程并发】 线程">【Java 多线程并发】 线程</a><time datetime="2023-07-10T06:15:00.000Z" title="发表于 2023-07-10 14:15:00">2023-07-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/java/java-jvm/java-jvm-nei-cun-guan-li/java-jvm-zhi-jie-nei-cun/" title="【Java JVM】 直接内存"><img src="https://api.yimian.xyz/img?type=moe" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【Java JVM】 直接内存"/></a><div class="content"><a class="title" href="/java/java-jvm/java-jvm-nei-cun-guan-li/java-jvm-zhi-jie-nei-cun/" title="【Java JVM】 直接内存">【Java JVM】 直接内存</a><time datetime="2023-07-10T00:00:00.000Z" title="发表于 2023-07-10 08:00:00">2023-07-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/database/redis/redis-chong-dian-gong-neng/redis-pai-xu/" title="【Redis】 排序"><img src="https://api.yimian.xyz/img?type=moe" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【Redis】 排序"/></a><div class="content"><a class="title" href="/database/redis/redis-chong-dian-gong-neng/redis-pai-xu/" title="【Redis】 排序">【Redis】 排序</a><time datetime="2023-07-09T06:07:00.000Z" title="发表于 2023-07-09 14:07:00">2023-07-09</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By Bill Cipher</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>function addGitalkSource () {
   const ele = document.createElement('link')
   ele.rel = 'stylesheet'
   ele.href= 'https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.css'

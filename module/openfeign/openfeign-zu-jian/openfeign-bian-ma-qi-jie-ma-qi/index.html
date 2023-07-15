@@ -147,7 +147,9 @@
     detectApple()
     })(window)</script><meta name="generator" content="Hexo 6.2.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">575</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">125</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">21</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://api.yimian.xyz/img?type=moe')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">蝶梦庄生</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">【OpenFeign】 编码器 解码器</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-01-02T11:31:00.000Z" title="发表于 2023-01-02 19:31:00">2023-01-02</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-01-02T11:31:00.000Z" title="更新于 2023-01-02 19:31:00">2023-01-02</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/OpenFeign/">OpenFeign</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="【OpenFeign】 编码器 解码器"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="【OpenFeign】-编码器-解码器"><a href="#【OpenFeign】-编码器-解码器" class="headerlink" title="【OpenFeign】 编码器 解码器"></a>【OpenFeign】 编码器 解码器</h1><h2 id="Metadata"><a href="#Metadata" class="headerlink" title="Metadata"></a>Metadata</h2><pre><code class="line-numbers language-yml">title: 【OpenFeign】 编码器 解码器
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">575</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">125</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">21</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://api.yimian.xyz/img?type=moe')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">蝶梦庄生</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">【OpenFeign】 编码器 解码器</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-01-02T11:31:00.000Z" title="发表于 2023-01-02 19:31:00">2023-01-02</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-01-02T11:31:00.000Z" title="更新于 2023-01-02 19:31:00">2023-01-02</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/OpenFeign/">OpenFeign</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="【OpenFeign】 编码器 解码器"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1>【OpenFeign】 编码器 解码器</h1>
+<h2 id="Metadata-376">Metadata</h2>
+<pre><code class="language-yml">title: 【OpenFeign】 编码器 解码器
 date: 2023-01-02 19:31
 tags:
   - 行动阶段/完成
@@ -160,37 +162,39 @@ keywords:
   - OpenFeign
 description: 【OpenFeign】 编码器 解码器
 </code></pre>
-<h2 id="【OpenFeign】-编码器-解码器-1"><a href="#【OpenFeign】-编码器-解码器-1" class="headerlink" title="【OpenFeign】 编码器 解码器"></a>【OpenFeign】 编码器 解码器</h2><p>在现实世界，编解码的概念就存在了。编码是信息从一种形式或格式转换为另一种形式的过程，解码，是编码的逆过程。在电子计算机、电视、遥控和通讯等方面广泛使用。</p>
+<h2 id="【OpenFeign】-编码器-解码器">【OpenFeign】 编码器 解码器</h2>
+<p>在现实世界，编解码的概念就存在了。编码是信息从一种形式或格式转换为另一种形式的过程，解码，是编码的逆过程。在电子计算机、电视、遥控和通讯等方面广泛使用。</p>
 <p>在程序中，也是广泛使用了这个概念，比如 <a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=Base64&amp;spm=1001.2101.3001.7020">Base64</a> 编码解码。</p>
 <p>在<code>Feign</code>中，也存在编解码的概念：</p>
 <ul>
 <li>Encoder ：编码器，作用于请求阶段，将对象编码到请求体中。</li>
 <li>Decoder：解码器，作用域响应阶段，解析 HTTP 响应消息。</li>
 </ul>
-<h2 id="Encoder-接口"><a href="#Encoder-接口" class="headerlink" title="Encoder 接口"></a>Encoder 接口</h2><p><code>Encoder</code>接口声明了一个编码方法，并提供了一个默认的实现类<code>Default</code>。</p>
+<h2 id="Encoder-接口">Encoder 接口</h2>
+<p><code>Encoder</code>接口声明了一个编码方法，并提供了一个默认的实现类<code>Default</code>。</p>
 <p><code>Default</code>编码器，它仅能处理 String 类型、[byte] 类型，显然是很难使用的，因为我们经常会在请求参数中放入对象。</p>
-<pre><code class="line-numbers language-java">public interface Encoder {
+<pre><code class="language-java">public interface Encoder {
 
     Type MAP_STRING_WILDCARD = Util.MAP_STRING_WILDCARD;
-    
-    // 编码
-    // var1=》 要编码的对象
-    // var2 =》 对象类型
-    // var3 =》 请求模板对象
+	
+	// 编码
+	// var1=》 要编码的对象
+	// var2 =》 对象类型
+	// var3 =》 请求模板对象
     void encode(Object var1, Type var2, RequestTemplate var3) throws EncodeException;
 
     public static class Default implements Encoder {
         public Default() {
         }
         public void encode(Object object, Type bodyType, RequestTemplate template) {
-            // String类型，直接调用toString()，并设置到请求模板的body 中
+        	// String类型，直接调用toString()，并设置到请求模板的body 中
             if (bodyType == String.class) {
                 template.body(object.toString());
              // 二进制，塞入二进制
             } else if (bodyType == byte[].class) {
                 template.body((byte[])((byte[])object), (Charset)null);
             } else if (object != null) {
-                // 不是NULL ，爆出编码异常
+            	// 不是NULL ，爆出编码异常
                 throw new EncodeException(String.format("%s is not a type supported by this encoder.", object.getClass()));
             }
 
@@ -199,31 +203,32 @@ description: 【OpenFeign】 编码器 解码器
 }
 </code></pre>
 <p><code>Default</code>编码器肯定是用不了的，所以<code>Feign</code>也提供了很多其他编码器实现类。</p>
-<p><img src="https://img-blog.csdnimg.cn/75fd63627d8f4a919f1852c9845a01b5.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAcXFfNDM0Mzc4NzQ=,size_20,color_FFFFFF,t_70,g_se,x_16"></p>
+<p><img src="https://img-blog.csdnimg.cn/75fd63627d8f4a919f1852c9845a01b5.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAcXFfNDM0Mzc4NzQ=,size_20,color_FFFFFF,t_70,g_se,x_16" alt></p>
 <p><code>SpringFormEncoder</code>支持对<code>application/x-www-form-urlencoded`` multipart/form-data</code>格式的表单数据编码，也就是直接表单及文件上传请求。</p>
 <p><code>SpringEncoder</code> 是 Spring Cloud 默认使用的编码器，会调用 Spring MVC 中的消息转换器（<code>HttpMessageConverter</code>）进行编码，而消息转换器适配了很多种数据格式，String、Byte、Json、XML 都是支持的。</p>
-<h2 id="Decoder-接口"><a href="#Decoder-接口" class="headerlink" title="Decoder 接口"></a>Decoder 接口</h2><p><code>Encoder</code>接口声明了一个解码方法，并提供了一个默认的实现类<code>Default</code>。</p>
+<h2 id="Decoder-接口">Decoder 接口</h2>
+<p><code>Encoder</code>接口声明了一个解码方法，并提供了一个默认的实现类<code>Default</code>。</p>
 <p><code>Default</code>解码器，继承了<code>StringDecoder</code>，也只能解码二进制和字符串，所有肯定可是用不上的。。。</p>
-<pre><code class="line-numbers language-java">public interface Decoder {
-    // 解码，参数为响应对象，及其类型
+<pre><code class="language-java">public interface Decoder {
+	// 解码，参数为响应对象，及其类型
     Object decode(Response var1, Type var2) throws IOException, DecodeException, FeignException;
 
     public static class Default extends StringDecoder {
         public Default() {
         }
-        // 解码
+		// 解码
         public Object decode(Response response, Type type) throws IOException {
-            // 不是404 和204 
+        	// 不是404 和204 
             if (response.status() != 404 &amp;&amp; response.status() != 204) {
                 if (response.body() == null) {
-                    // 响应体为null  直接返回null
+                	// 响应体为null  直接返回null
                     return null;
                 } else {
-                    // 判断返回类型是不是二进制，是的话直接返回流，不是解析为String 
+                	// 判断返回类型是不是二进制，是的话直接返回流，不是解析为String 
                     return byte[].class.equals(type) ? Util.toByteArray(response.body().asInputStream()) : super.decode(response, type);
                 }
             } else {
-                // 404 和204 返回空
+            	// 404 和204 返回空
                 return Util.emptyValueOf(type);
             }
         }
@@ -231,22 +236,23 @@ description: 【OpenFeign】 编码器 解码器
 }
 </code></pre>
 <p><code>Feign</code>也提供了很多解码器实现类：</p>
-<p><img src="https://img-blog.csdnimg.cn/55c7d074c7e14e4781372b739b234f2e.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAcXFfNDM0Mzc4NzQ=,size_20,color_FFFFFF,t_70,g_se,x_16"></p>
+<p><img src="https://img-blog.csdnimg.cn/55c7d074c7e14e4781372b739b234f2e.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAcXFfNDM0Mzc4NzQ=,size_20,color_FFFFFF,t_70,g_se,x_16" alt></p>
 <p><code>StringDecoder</code> 会判断是否字符串类型，然后解析为 String，如果不是则会抛出解析异常。</p>
 <p><code>DefaultGzipDecoder</code> 会判断响应消息头是否有<code>"Content-Encoding：gzip</code>，有的话则会进行 gzip 解压缩，然后再调用其他解码器。</p>
 <p><code>ResponseEntityDecoder</code> 会判断是否是 Spring MVC 中的<code>HttpEntity</code>类型，然后返回<code>ResponseEntity</code>对象。</p>
 <p><code>SpringDecoder</code> 和<code>SpringEncoder</code> ，是默认的解码器，使用<code>HttpMessageConverter</code>进行解码。</p>
 <p>接下里我们分析下默认的<code>SpringDecoder</code> 和<code>SpringEncoder</code>是如何工作的。</p>
-<h2 id="1-项目结构改造"><a href="#1-项目结构改造" class="headerlink" title="1. 项目结构改造"></a>1. 项目结构改造</h2><p>创建一个新的<code>order-api</code>模块，用来存放订单服务的实体类，然后别的服务需要调用订单服务的话，直接引入这个 API 模块，就能公用 POJO 类了。然后订单和账户服务都引入这个 API 包。</p>
-<p><img src="https://img-blog.csdnimg.cn/4b755928980a48a98db4847c0b9f0b8d.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAcXFfNDM0Mzc4NzQ=,size_20,color_FFFFFF,t_70,g_se,x_16"></p>
+<h2 id="1-项目结构改造">1. 项目结构改造</h2>
+<p>创建一个新的<code>order-api</code>模块，用来存放订单服务的实体类，然后别的服务需要调用订单服务的话，直接引入这个 API 模块，就能公用 POJO 类了。然后订单和账户服务都引入这个 API 包。</p>
+<p><img src="https://img-blog.csdnimg.cn/4b755928980a48a98db4847c0b9f0b8d.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAcXFfNDM0Mzc4NzQ=,size_20,color_FFFFFF,t_70,g_se,x_16" alt></p>
 <p>在<code>order-service</code>中，添加一个 Post 请求接口，接受一个订单对象，使用<code>@RequestBody</code>注解接受，因为 <a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=Feign&amp;spm=1001.2101.3001.7020">Feign</a> Post 请求时，请求参数是放在请求体中的。</p>
-<pre><code class="line-numbers language-java">@PostMapping("/post")
+<pre><code class="language-java">@PostMapping("/post")
     public Order insertOrder(@RequestBody Order order) throws InterruptedException {
         return order;
     }
 </code></pre>
 <p>在账户服务中，添加一个 Feign 远程调用订单服务接口。</p>
-<pre><code class="line-numbers language-java">@FeignClient(name = "order-service")
+<pre><code class="language-java">@FeignClient(name = "order-service")
 public interface OrderFeign {
 
     @GetMapping("order/insert")
@@ -257,7 +263,7 @@ public interface OrderFeign {
 }
 </code></pre>
 <p>最后再添加账户访问接口，并启动项目测试下，是否能通。</p>
-<pre><code class="line-numbers language-java">@GetMapping("/insertOrder")
+<pre><code class="language-java">@GetMapping("/insertOrder")
     public Object insertOrder() {
         Order order = new Order();
         order.setAccountId(11L);
@@ -267,17 +273,18 @@ public interface OrderFeign {
         return post;
     }
 </code></pre>
-<h2 id="2-编码器流程"><a href="#2-编码器流程" class="headerlink" title="2. 编码器流程"></a>2. 编码器流程</h2><p>之前分析过，方法执行器<code>SynchronousMethodHandler</code>在代理执行时，会创建一个请求模板对象<code>RequestTemplate</code>，具体创建的流程后续会分析。</p>
-<p><img src="https://img-blog.csdnimg.cn/9006287f771041cbaf3d033e53d0a9e4.png"></p>
+<h2 id="2-编码器流程">2. 编码器流程</h2>
+<p>之前分析过，方法执行器<code>SynchronousMethodHandler</code>在代理执行时，会创建一个请求模板对象<code>RequestTemplate</code>，具体创建的流程后续会分析。</p>
+<p><img src="https://img-blog.csdnimg.cn/9006287f771041cbaf3d033e53d0a9e4.png" alt></p>
 <p>然后进入到<code>ReflectiveFeign</code>的<code>resolve</code>方法解析请求模板，在该解析过程中，会调用编码器，对请求体进行编码。</p>
-<pre><code class="line-numbers language-java">// argv=》 请求参数
+<pre><code class="language-java">// argv=》 请求参数
         protected RequestTemplate resolve(Object[] argv, RequestTemplate mutable, Map&lt;String, Object&gt; variables) {
-            // 请求参数=》 order 对象
+        	// 请求参数=》 order 对象
             Object body = argv[this.metadata.bodyIndex()];
             Util.checkArgument(body != null, "Body parameter %s was null", new Object[]{this.metadata.bodyIndex()});
 
             try {
-                // 编码器编码
+            	// 编码器编码
                 this.encoder.encode(body, this.metadata.bodyType(), mutable);
             } catch (EncodeException var6) {
                 throw var6;
@@ -289,12 +296,12 @@ public interface OrderFeign {
         }
 </code></pre>
 <p>接着进入到默认编码器<code>SpringEncoder</code>，可以看到编码参数传入了请求体对象、类型、请求模板。</p>
-<p><img src="https://img-blog.csdnimg.cn/8ac2d78a00cb4287976b50d5df6f8785.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAcXFfNDM0Mzc4NzQ=,size_20,color_FFFFFF,t_70,g_se,x_16"></p>
+<p><img src="https://img-blog.csdnimg.cn/8ac2d78a00cb4287976b50d5df6f8785.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAcXFfNDM0Mzc4NzQ=,size_20,color_FFFFFF,t_70,g_se,x_16" alt></p>
 <p>在编码器的<code>encode</code>方法中，会循环 Spring MVC 中的消息转换器，对于普通 JAVA 对象，会调用 JSON 相关的转换器，将对象转为 byte 数组，并最终设置到<code>RequestTemplate</code>中。</p>
-<pre><code class="line-numbers language-java">public void encode(Object requestBody, Type bodyType, RequestTemplate request) throws EncodeException {
-        // requestBody 请求体不为null 时，才进行编码
+<pre><code class="language-java">public void encode(Object requestBody, Type bodyType, RequestTemplate request) throws EncodeException {
+    	// requestBody 请求体不为null 时，才进行编码
         if (requestBody != null) {
-            // 获取请求模板中的 "Content-Type",一般不会设置消息头，所以这里为null
+        	// 获取请求模板中的 "Content-Type",一般不会设置消息头，所以这里为null
             Collection&lt;String&gt; contentTypes = (Collection)request.headers().get("Content-Type");
             MediaType requestContentType = null;
             String message;
@@ -303,37 +310,37 @@ public interface OrderFeign {
                 message = (String)contentTypes.iterator().next();
                 requestContentType = MediaType.valueOf(message);
             }
-            // 如果是 multipart/form-data 类型，则使用SpringFormEncoder 转为MultipartFile 
+			// 如果是 multipart/form-data 类型，则使用SpringFormEncoder 转为MultipartFile 
             if (Objects.equals(requestContentType, MediaType.MULTIPART_FORM_DATA)) {
                 this.springFormEncoder.encode(requestBody, bodyType, request);
             } else {
-                // 如果参数为 MultipartFile类型，则会告诉我们参数为MultipartFile，应将@RequestMapping的“consumes”参数指定为MediaType.MULTIPART_FORM_DATA_VALUE
+            	// 如果参数为 MultipartFile类型，则会告诉我们参数为MultipartFile，应将@RequestMapping的“consumes”参数指定为MediaType.MULTIPART_FORM_DATA_VALUE
                 if (bodyType == MultipartFile.class) {
                     log.warn("For MultipartFile to be handled correctly, the 'consumes' parameter of @RequestMapping should be specified as MediaType.MULTIPART_FORM_DATA_VALUE");
                 }
-                // 获取Spring MVC 中的消息转换器 HttpMessageConverters集合
+				// 获取Spring MVC 中的消息转换器 HttpMessageConverters集合
                 Iterator var11 = ((HttpMessageConverters)this.messageConverters.getObject()).getConverters().iterator();
-                // 循环消息转换器 
+				// 循环消息转换器 
                 while(var11.hasNext()) {
-                    // 当前消息转换器=》HttpMessageConverter eg:ByteArrayHttpMessageConverter
+                	// 当前消息转换器=》HttpMessageConverter eg:ByteArrayHttpMessageConverter
                     HttpMessageConverter messageConverter = (HttpMessageConverter)var11.next();
-                    // 声明 HttpOutputMessage对象，封装了请求输出流和消息头
+					// 声明 HttpOutputMessage对象，封装了请求输出流和消息头
                     SpringEncoder.FeignOutputMessage outputMessage;
                     try {
-                        // 如果是GenericHttpMessageConverter接口的实例（JSON 转换器），直接检查并写入数据到FeignOutputMessage 对象中，调用 converter.write写入。
-                        // 这里使用的是MappingJackson2HttpMessageConverter
+                    	// 如果是GenericHttpMessageConverter接口的实例（JSON 转换器），直接检查并写入数据到FeignOutputMessage 对象中，调用 converter.write写入。
+                    	// 这里使用的是MappingJackson2HttpMessageConverter
                         if (messageConverter instanceof GenericHttpMessageConverter) {
                             outputMessage = this.checkAndWrite(requestBody, bodyType, requestContentType, (GenericHttpMessageConverter)messageConverter, request);
                         } else {
-                            // 不是，则会检查能否写入，能写入则直接写入
+                        	// 不是，则会检查能否写入，能写入则直接写入
                             outputMessage = this.checkAndWrite(requestBody, requestContentType, messageConverter, request);
                         }
                     } catch (HttpMessageConversionException | IOException var10) {
                         throw new EncodeException("Error converting request body", var10);
                     }
-                    // 使用转转器，获取到了请求体数据，循环没获取到，则会爆出编码异常
+					// 使用转转器，获取到了请求体数据，循环没获取到，则会爆出编码异常
                     if (outputMessage != null) {
-                        // 将数据设置到请求模板的body 中。
+                    	// 将数据设置到请求模板的body 中。
                         request.headers((Map)null);
                         request.headers(FeignUtils.getHeaders(outputMessage.getHeaders()));
                         Charset charset;
@@ -361,53 +368,55 @@ public interface OrderFeign {
     }
 </code></pre>
 <p>最后，请求参数对象，经过编码，在调用 HTTP 客户端框架发送实际请求时，会被设置到请求对象中，整个请求编码处理的流程就分析结束了。</p>
-<p><img src="https://img-blog.csdnimg.cn/60522492a8a4475b80d894039a98ed7b.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAcXFfNDM0Mzc4NzQ=,size_20,color_FFFFFF,t_70,g_se,x_16"></p>
-<h2 id="3-解码器流程"><a href="#3-解码器流程" class="headerlink" title="3. 解码器流程"></a>3. 解码器流程</h2><p>对象经过编码为二进制数据放入到请求体中发送后，获取到远程服务返回的响应体后，需要解码为对象。</p>
+<p><img src="https://img-blog.csdnimg.cn/60522492a8a4475b80d894039a98ed7b.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAcXFfNDM0Mzc4NzQ=,size_20,color_FFFFFF,t_70,g_se,x_16" alt></p>
+<h2 id="3-解码器流程">3. 解码器流程</h2>
+<p>对象经过编码为二进制数据放入到请求体中发送后，获取到远程服务返回的响应体后，需要解码为对象。</p>
 <p>可以看到，OkHttp 请求获取到响应后，会将<code>okhttp3.Response</code>转为 Feign 中的<code>Response</code>响应对象，又转为负载均衡的<code>RibbonResponse</code>，</p>
-<p><img src="https://img-blog.csdnimg.cn/c2ea0839081c426d81cdb6e6bed1b62b.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAcXFfNDM0Mzc4NzQ=,size_20,color_FFFFFF,t_70,g_se,x_16"></p>
+<p><img src="https://img-blog.csdnimg.cn/c2ea0839081c426d81cdb6e6bed1b62b.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAcXFfNDM0Mzc4NzQ=,size_20,color_FFFFFF,t_70,g_se,x_16" alt></p>
 <p>然后回到方法执行器<code>SynchronousMethodHandler</code>的<code>executeAndDecode</code>方法进行解码操作，首先会判断当前执行器是否有解码器，没有则会调用<code>AsyncResponseHandler</code>异步响应处理器进行处理。</p>
-<p><img src="https://img-blog.csdnimg.cn/70dd9d2bd2f240819fb1b6d69f7b316f.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAcXFfNDM0Mzc4NzQ=,size_20,color_FFFFFF,t_70,g_se,x_16"></p>
+<p><img src="https://img-blog.csdnimg.cn/70dd9d2bd2f240819fb1b6d69f7b316f.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAcXFfNDM0Mzc4NzQ=,size_20,color_FFFFFF,t_70,g_se,x_16" alt></p>
 <p>在处理过程中，会根据状态码进行解码，状态码 200 并且有返回值进行解码，状态码 404，判断是否调用解码器解码，其他错误状态码，会调用<code>ErrorDecoder</code>进行解码。</p>
-<pre><code class="line-numbers language-java">Object result;
+<pre><code class="language-java">Object result;
                 // 200 &lt;=状态码 &lt; 300 
                 if (response.status() &gt;= 200 &amp;&amp; response.status() &lt; 300) {
-                    // feign 执行的方法是否是void 
+                	// feign 执行的方法是否是void 
                     if (this.isVoidType(returnType)) {  
                         resultFuture.complete((Object)null);
                     } else {
-                            // 方法是有返回值的，调用解码器
+                    		// 方法是有返回值的，调用解码器
                         result = this.decode(response, returnType);
                         shouldClose = this.closeAfterDecode;
                         resultFuture.complete(result);
                     }
                 // 如果是404 并且配置了解码404 并且返回值不是void
                 } else if (this.decode404 &amp;&amp; response.status() == 404 &amp;&amp; !this.isVoidType(returnType)) {
-                    // 解码响应体
+                	// 解码响应体
                     result = this.decode(response, returnType);
                     shouldClose = this.closeAfterDecode;
                     resultFuture.complete(result);
                 } else {
-                    // 其他状态码 调用 错误解码器进行解码。
+                	// 其他状态码 调用 错误解码器进行解码。
                     resultFuture.completeExceptionally(this.errorDecoder.decode(configKey, response));
                 }
             }
 </code></pre>
 <p>最终进入到<code>SpringDecoder</code>，可以看到解码方法很简单，就是使用消息转换器，将响应体中的数据解码为对象并返回。</p>
-<p><img src="https://img-blog.csdnimg.cn/f9889954658c4847a1630b36612cb117.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAcXFfNDM0Mzc4NzQ=,size_20,color_FFFFFF,t_70,g_se,x_16"></p>
-<p><img src="https://img-blog.csdnimg.cn/a2b426700ed449718f8d6e3733288d94.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAcXFfNDM0Mzc4NzQ=,size_20,color_FFFFFF,t_70,g_se,x_16"></p>
+<p><img src="https://img-blog.csdnimg.cn/f9889954658c4847a1630b36612cb117.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAcXFfNDM0Mzc4NzQ=,size_20,color_FFFFFF,t_70,g_se,x_16" alt></p>
+<p><img src="https://img-blog.csdnimg.cn/a2b426700ed449718f8d6e3733288d94.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAcXFfNDM0Mzc4NzQ=,size_20,color_FFFFFF,t_70,g_se,x_16" alt></p>
 <p>如果发生了异常，还会调用<code>ErrorDecoder</code>, 可以使用该接口，自定义异常处理逻辑。</p>
-<p><img src="https://img-blog.csdnimg.cn/f1426c38b7d64864ac9d91b7795127a7.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAcXFfNDM0Mzc4NzQ=,size_20,color_FFFFFF,t_70,g_se,x_16"></p>
-<h2 id="4-异常解码处理流程"><a href="#4-异常解码处理流程" class="headerlink" title="4. 异常解码处理流程"></a>4. 异常解码处理流程</h2><p><code>Feign</code> 让我们远程调用时像调用本地方法一样方便，响应 200 时，会对远程返回的<code>Response</code>进行解码，转为我们方法执行返回的对象。</p>
+<p><img src="https://img-blog.csdnimg.cn/f1426c38b7d64864ac9d91b7795127a7.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAcXFfNDM0Mzc4NzQ=,size_20,color_FFFFFF,t_70,g_se,x_16" alt></p>
+<h2 id="4-异常解码处理流程">4. 异常解码处理流程</h2>
+<p><code>Feign</code> 让我们远程调用时像调用本地方法一样方便，响应 200 时，会对远程返回的<code>Response</code>进行解码，转为我们方法执行返回的对象。</p>
 <p>在发生异常时，也会对异常信息进行处理，首先我们模拟一个 404 异常。</p>
 <p>在<code>Response</code>中，状态码为 404，错误信息都在响应体中。</p>
-<p><img src="https://img-blog.csdnimg.cn/ff73c796d4894cdf92b129ec4d33c61d.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/ff73c796d4894cdf92b129ec4d33c61d.png" alt></p>
 <p>在调用发可以看到程序会抛出<code>FeignException$NotFound 404</code>。</p>
-<p><img src="https://img-blog.csdnimg.cn/cb8e7632265448a484ccf0a4de6b2e8b.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAcXFfNDM0Mzc4NzQ=,size_20,color_FFFFFF,t_70,g_se,x_16"></p>
+<p><img src="https://img-blog.csdnimg.cn/cb8e7632265448a484ccf0a4de6b2e8b.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAcXFfNDM0Mzc4NzQ=,size_20,color_FFFFFF,t_70,g_se,x_16" alt></p>
 <p>在结果处理器<code>AsyncResponseHandler</code>中，会使用错误解码器<code>ErrorDecoder</code>对异常进行解码，然后调用 JDK（juc 包）中的<code>CompletableFuture</code>类（异步任务）进行最终的异常处理。</p>
-<p><img src="https://img-blog.csdnimg.cn/e00f099be91449ff879517c5273da3a3.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAcXFfNDM0Mzc4NzQ=,size_20,color_FFFFFF,t_70,g_se,x_16"></p>
+<p><img src="https://img-blog.csdnimg.cn/e00f099be91449ff879517c5273da3a3.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAcXFfNDM0Mzc4NzQ=,size_20,color_FFFFFF,t_70,g_se,x_16" alt></p>
 <p><code>ErrorDecoder</code>使用的是默认的实现类<code>Default</code>，服务端没有告诉客户端需要重试，会将异常解析为<code>FeignException</code>直接返回。</p>
-<pre><code class="line-numbers language-java">public Exception decode(String methodKey, Response response) {
-            // 将异常转为 FeignException 
+<pre><code class="language-java">public Exception decode(String methodKey, Response response) {
+        	// 将异常转为 FeignException 
             FeignException exception = FeignException.errorStatus(methodKey, response);
             // 查询是否有`Retry-After` 响应消息头
             Date retryAfter = this.retryAfterDecoder.apply((String)this.firstOrNull(response.headers(), "Retry-After"));
@@ -418,16 +427,17 @@ public interface OrderFeign {
         }
 </code></pre>
 <p>最后经过异步处理，throw 出了该异常，又由 Spring MVC 进行异常处理，最终远程的异常信息就被解码成了本地异常，返回给了浏览器。</p>
-<p><img src="https://img-blog.csdnimg.cn/66b2564f622b4853b473def5f8e9dd80.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAcXFfNDM0Mzc4NzQ=,size_20,color_FFFFFF,t_70,g_se,x_16"></p>
-<h2 id="5-404-异常特殊处理"><a href="#5-404-异常特殊处理" class="headerlink" title="5. 404 异常特殊处理"></a>5. 404 异常特殊处理</h2><p>在处理响应的时候，可以看到一个 404 会特殊处理的代码，如果设置了解码 404、并且不是 Void 返回类型，则会进行特殊处理。</p>
-<p><img src="https://img-blog.csdnimg.cn/3fb0991099bc4fc2a3e748903c9830ba.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAcXFfNDM0Mzc4NzQ=,size_20,color_FFFFFF,t_70,g_se,x_16"></p>
+<p><img src="https://img-blog.csdnimg.cn/66b2564f622b4853b473def5f8e9dd80.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAcXFfNDM0Mzc4NzQ=,size_20,color_FFFFFF,t_70,g_se,x_16" alt></p>
+<h2 id="5-404-异常特殊处理">5. 404 异常特殊处理</h2>
+<p>在处理响应的时候，可以看到一个 404 会特殊处理的代码，如果设置了解码 404、并且不是 Void 返回类型，则会进行特殊处理。</p>
+<p><img src="https://img-blog.csdnimg.cn/3fb0991099bc4fc2a3e748903c9830ba.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAcXFfNDM0Mzc4NzQ=,size_20,color_FFFFFF,t_70,g_se,x_16" alt></p>
 <p>首先在<code>@FeignClient</code>上配置<code>decode404 = true</code></p>
-<pre><code class="line-numbers language-java">@FeignClient(name = "order-service",decode404 = true)
+<pre><code class="language-java">@FeignClient(name = "order-service",decode404 = true)
 </code></pre>
 <p>然后发现成功返回，只是对象属性都是 null，原来配置了以后，会使用解码器<code>SpringEncoder</code>，解析为返回值对象，而不是抛出异常，看来这个配置实际是不应该的，我们应该抛出异常。</p>
-<p><img src="https://img-blog.csdnimg.cn/3846cc6ecd3d4881a957ad56936387b0.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/3846cc6ecd3d4881a957ad56936387b0.png" alt></p>
 <p>在了解了以上知识后，自定义就比较都容易了，我们只需要实现<code>Decoder、Encoder</code>，重写其方法就可以了，然后注入到 IOC 中，或者在<code>@FeignClient</code>上引入配置类就可以了…</p>
-</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a target="_blank" rel="noopener" href="https://github.com/yu627482453">Bill Cipher</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://yu627482453.github.io/module/openfeign/openfeign-zu-jian/openfeign-bian-ma-qi-jie-ma-qi/">https://yu627482453.github.io/module/openfeign/openfeign-zu-jian/openfeign-bian-ma-qi-jie-ma-qi/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://yu627482453.github.io" target="_blank">蝶梦庄生</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E8%A1%8C%E5%8A%A8%E9%98%B6%E6%AE%B5-%E5%AE%8C%E6%88%90/">行动阶段/完成</a><a class="post-meta__tags" href="/tags/%E4%B8%BB%E9%A2%98%E5%9C%BA%E6%99%AF-%E7%BB%84%E4%BB%B6/">主题场景/组件</a><a class="post-meta__tags" href="/tags/%E7%AC%94%E8%AE%B0%E7%A9%BA%E9%97%B4-KnowladgeSpace-ProgramSpace-ModuleSpace/">笔记空间/KnowladgeSpace/ProgramSpace/ModuleSpace</a><a class="post-meta__tags" href="/tags/%E7%BB%86%E5%8C%96%E4%B8%BB%E9%A2%98-Module-OpenFeign-%E7%BB%84%E4%BB%B6/">细化主题/Module/OpenFeign/组件</a></div><div class="post_share"><div class="social-share" data-image="https://api.yimian.xyz/img?type=moe" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/reward/wechat.jpg" target="_blank"><img class="post-qr-code-img" src="/img/reward/wechat.jpg" alt="wechat"/></a><div class="post-qr-code-desc">wechat</div></li><li class="reward-item"><a href="/img/reward/alipay.jpg" target="_blank"><img class="post-qr-code-img" src="/img/reward/alipay.jpg" alt="alipay"/></a><div class="post-qr-code-desc">alipay</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/module/openfeign/openfeign-ji-chu/openfeign-jie-kou-ji-cheng-te-xing/"><img class="prev-cover" src="https://api.yimian.xyz/img?type=moe" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">【OpenFeign】 接口继承特性</div></div></a></div><div class="next-post pull-right"><a href="/module/openfeign/openfeign-gong-neng/openfeign-gzip-ya-suo/"><img class="next-cover" src="https://api.yimian.xyz/img?type=moe" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">【OpenFeign】 Gzip 压缩</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/module/openfeign/openfeign-zu-jian/openfeign-contract-chuang-jian-fang-fa-yuan-shu-ju/" title="【OpenFeign】 Contract 创建方法元数据"><img class="cover" src="https://api.yimian.xyz/img?type=moe" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-01-02</div><div class="title">【OpenFeign】 Contract 创建方法元数据</div></div></a></div><div><a href="/module/openfeign/openfeign-zu-jian/openfeign-methodhandler-fang-fa-chu-li-qi/" title="【OpenFeign】 MethodHandler 方法处理器"><img class="cover" src="https://api.yimian.xyz/img?type=moe" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-01-02</div><div class="title">【OpenFeign】 MethodHandler 方法处理器</div></div></a></div><div><a href="/module/openfeign/openfeign-zu-jian/openfeign-requesttemplate-qing-qiu-mo-ban/" title="【OpenFeign】 RequestTemplate 请求模板"><img class="cover" src="https://api.yimian.xyz/img?type=moe" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-01-02</div><div class="title">【OpenFeign】 RequestTemplate 请求模板</div></div></a></div><div><a href="/module/openfeign/openfeign-zu-jian/openfeign-lan-jie-qi/" title="【OpenFeign】 拦截器"><img class="cover" src="https://api.yimian.xyz/img?type=moe" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-01-02</div><div class="title">【OpenFeign】 拦截器</div></div></a></div><div><a href="/module/openfeign/openfeign-zu-jian/openfeign-qing-qiu-lan-jie-qi/" title="【OpenFeign】 请求拦截器"><img class="cover" src="https://api.yimian.xyz/img?type=moe" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-01-02</div><div class="title">【OpenFeign】 请求拦截器</div></div></a></div><div><a href="/module/elasticsearch/elasticsearch-ji-ben-gai-nian/" title="【ElasticSearch】 基本概念"><img class="cover" src="https://api.yimian.xyz/img?type=moe" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-12-20</div><div class="title">【ElasticSearch】 基本概念</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="gitalk-container"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Bill Cipher</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">575</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">125</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">21</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/yu627482453"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/yu627482453" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="/627482453@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E3%80%90OpenFeign%E3%80%91-%E7%BC%96%E7%A0%81%E5%99%A8-%E8%A7%A3%E7%A0%81%E5%99%A8"><span class="toc-number">1.</span> <span class="toc-text">【OpenFeign】 编码器 解码器</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Metadata"><span class="toc-number">1.1.</span> <span class="toc-text">Metadata</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E3%80%90OpenFeign%E3%80%91-%E7%BC%96%E7%A0%81%E5%99%A8-%E8%A7%A3%E7%A0%81%E5%99%A8-1"><span class="toc-number">1.2.</span> <span class="toc-text">【OpenFeign】 编码器 解码器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Encoder-%E6%8E%A5%E5%8F%A3"><span class="toc-number">1.3.</span> <span class="toc-text">Encoder 接口</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Decoder-%E6%8E%A5%E5%8F%A3"><span class="toc-number">1.4.</span> <span class="toc-text">Decoder 接口</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E9%A1%B9%E7%9B%AE%E7%BB%93%E6%9E%84%E6%94%B9%E9%80%A0"><span class="toc-number">1.5.</span> <span class="toc-text">1. 项目结构改造</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E7%BC%96%E7%A0%81%E5%99%A8%E6%B5%81%E7%A8%8B"><span class="toc-number">1.6.</span> <span class="toc-text">2. 编码器流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E8%A7%A3%E7%A0%81%E5%99%A8%E6%B5%81%E7%A8%8B"><span class="toc-number">1.7.</span> <span class="toc-text">3. 解码器流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E5%BC%82%E5%B8%B8%E8%A7%A3%E7%A0%81%E5%A4%84%E7%90%86%E6%B5%81%E7%A8%8B"><span class="toc-number">1.8.</span> <span class="toc-text">4. 异常解码处理流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-404-%E5%BC%82%E5%B8%B8%E7%89%B9%E6%AE%8A%E5%A4%84%E7%90%86"><span class="toc-number">1.9.</span> <span class="toc-text">5. 404 异常特殊处理</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/module/flowable/flowable-zhuan-lan/flowable-zhuan-lan/" title="无题"><img src="https://api.yimian.xyz/img?type=moe" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/module/flowable/flowable-zhuan-lan/flowable-zhuan-lan/" title="无题">无题</a><time datetime="2023-07-15T09:45:06.401Z" title="发表于 2023-07-15 17:45:06">2023-07-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/module/consul/part/consul-tong-yong-pei-zhi-shu-xing/" title="无题"><img src="https://api.yimian.xyz/img?type=moe" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/module/consul/part/consul-tong-yong-pei-zhi-shu-xing/" title="无题">无题</a><time datetime="2023-07-15T09:44:38.408Z" title="发表于 2023-07-15 17:44:38">2023-07-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/java/java-duo-xian-cheng-bing-fa/java-duo-xian-cheng-bing-fa-xian-cheng/java-duo-xian-cheng-bing-fa-xian-cheng/" title="【Java 多线程并发】 线程"><img src="https://api.yimian.xyz/img?type=moe" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【Java 多线程并发】 线程"/></a><div class="content"><a class="title" href="/java/java-duo-xian-cheng-bing-fa/java-duo-xian-cheng-bing-fa-xian-cheng/java-duo-xian-cheng-bing-fa-xian-cheng/" title="【Java 多线程并发】 线程">【Java 多线程并发】 线程</a><time datetime="2023-07-10T06:15:00.000Z" title="发表于 2023-07-10 14:15:00">2023-07-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/java/java-jvm/java-jvm-nei-cun-guan-li/java-jvm-zhi-jie-nei-cun/" title="【Java JVM】 直接内存"><img src="https://api.yimian.xyz/img?type=moe" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【Java JVM】 直接内存"/></a><div class="content"><a class="title" href="/java/java-jvm/java-jvm-nei-cun-guan-li/java-jvm-zhi-jie-nei-cun/" title="【Java JVM】 直接内存">【Java JVM】 直接内存</a><time datetime="2023-07-10T00:00:00.000Z" title="发表于 2023-07-10 08:00:00">2023-07-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/database/redis/redis-chong-dian-gong-neng/redis-pai-xu/" title="【Redis】 排序"><img src="https://api.yimian.xyz/img?type=moe" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【Redis】 排序"/></a><div class="content"><a class="title" href="/database/redis/redis-chong-dian-gong-neng/redis-pai-xu/" title="【Redis】 排序">【Redis】 排序</a><time datetime="2023-07-09T06:07:00.000Z" title="发表于 2023-07-09 14:07:00">2023-07-09</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By Bill Cipher</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>function addGitalkSource () {
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a target="_blank" rel="noopener" href="https://github.com/yu627482453">Bill Cipher</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://yu627482453.github.io/module/openfeign/openfeign-zu-jian/openfeign-bian-ma-qi-jie-ma-qi/">https://yu627482453.github.io/module/openfeign/openfeign-zu-jian/openfeign-bian-ma-qi-jie-ma-qi/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://yu627482453.github.io" target="_blank">蝶梦庄生</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E8%A1%8C%E5%8A%A8%E9%98%B6%E6%AE%B5-%E5%AE%8C%E6%88%90/">行动阶段/完成</a><a class="post-meta__tags" href="/tags/%E4%B8%BB%E9%A2%98%E5%9C%BA%E6%99%AF-%E7%BB%84%E4%BB%B6/">主题场景/组件</a><a class="post-meta__tags" href="/tags/%E7%AC%94%E8%AE%B0%E7%A9%BA%E9%97%B4-KnowladgeSpace-ProgramSpace-ModuleSpace/">笔记空间/KnowladgeSpace/ProgramSpace/ModuleSpace</a><a class="post-meta__tags" href="/tags/%E7%BB%86%E5%8C%96%E4%B8%BB%E9%A2%98-Module-OpenFeign-%E7%BB%84%E4%BB%B6/">细化主题/Module/OpenFeign/组件</a></div><div class="post_share"><div class="social-share" data-image="https://api.yimian.xyz/img?type=moe" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/reward/wechat.jpg" target="_blank"><img class="post-qr-code-img" src="/img/reward/wechat.jpg" alt="wechat"/></a><div class="post-qr-code-desc">wechat</div></li><li class="reward-item"><a href="/img/reward/alipay.jpg" target="_blank"><img class="post-qr-code-img" src="/img/reward/alipay.jpg" alt="alipay"/></a><div class="post-qr-code-desc">alipay</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/module/openfeign/openfeign-ji-chu/openfeign-jie-kou-ji-cheng-te-xing/"><img class="prev-cover" src="https://api.yimian.xyz/img?type=moe" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">【OpenFeign】 接口继承特性</div></div></a></div><div class="next-post pull-right"><a href="/module/openfeign/openfeign-gong-neng/openfeign-gzip-ya-suo/"><img class="next-cover" src="https://api.yimian.xyz/img?type=moe" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">【OpenFeign】 Gzip 压缩</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/module/openfeign/openfeign-zu-jian/openfeign-contract-chuang-jian-fang-fa-yuan-shu-ju/" title="【OpenFeign】 Contract 创建方法元数据"><img class="cover" src="https://api.yimian.xyz/img?type=moe" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-01-02</div><div class="title">【OpenFeign】 Contract 创建方法元数据</div></div></a></div><div><a href="/module/openfeign/openfeign-zu-jian/openfeign-methodhandler-fang-fa-chu-li-qi/" title="【OpenFeign】 MethodHandler 方法处理器"><img class="cover" src="https://api.yimian.xyz/img?type=moe" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-01-02</div><div class="title">【OpenFeign】 MethodHandler 方法处理器</div></div></a></div><div><a href="/module/openfeign/openfeign-zu-jian/openfeign-lan-jie-qi/" title="【OpenFeign】 拦截器"><img class="cover" src="https://api.yimian.xyz/img?type=moe" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-01-02</div><div class="title">【OpenFeign】 拦截器</div></div></a></div><div><a href="/module/openfeign/openfeign-zu-jian/openfeign-requesttemplate-qing-qiu-mo-ban/" title="【OpenFeign】 RequestTemplate 请求模板"><img class="cover" src="https://api.yimian.xyz/img?type=moe" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-01-02</div><div class="title">【OpenFeign】 RequestTemplate 请求模板</div></div></a></div><div><a href="/module/openfeign/openfeign-zu-jian/openfeign-qing-qiu-lan-jie-qi/" title="【OpenFeign】 请求拦截器"><img class="cover" src="https://api.yimian.xyz/img?type=moe" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-01-02</div><div class="title">【OpenFeign】 请求拦截器</div></div></a></div><div><a href="/module/eureka/eureka/" title="Eureka"><img class="cover" src="https://api.yimian.xyz/img?type=moe" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-12-14</div><div class="title">Eureka</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="gitalk-container"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Bill Cipher</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">575</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">125</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">21</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/yu627482453"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/yu627482453" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="/627482453@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">1.</span> <span class="toc-text">【OpenFeign】 编码器 解码器</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Metadata-376"><span class="toc-number">1.1.</span> <span class="toc-text">Metadata</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E3%80%90OpenFeign%E3%80%91-%E7%BC%96%E7%A0%81%E5%99%A8-%E8%A7%A3%E7%A0%81%E5%99%A8"><span class="toc-number">1.2.</span> <span class="toc-text">【OpenFeign】 编码器 解码器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Encoder-%E6%8E%A5%E5%8F%A3"><span class="toc-number">1.3.</span> <span class="toc-text">Encoder 接口</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Decoder-%E6%8E%A5%E5%8F%A3"><span class="toc-number">1.4.</span> <span class="toc-text">Decoder 接口</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E9%A1%B9%E7%9B%AE%E7%BB%93%E6%9E%84%E6%94%B9%E9%80%A0"><span class="toc-number">1.5.</span> <span class="toc-text">1. 项目结构改造</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E7%BC%96%E7%A0%81%E5%99%A8%E6%B5%81%E7%A8%8B"><span class="toc-number">1.6.</span> <span class="toc-text">2. 编码器流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E8%A7%A3%E7%A0%81%E5%99%A8%E6%B5%81%E7%A8%8B"><span class="toc-number">1.7.</span> <span class="toc-text">3. 解码器流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E5%BC%82%E5%B8%B8%E8%A7%A3%E7%A0%81%E5%A4%84%E7%90%86%E6%B5%81%E7%A8%8B"><span class="toc-number">1.8.</span> <span class="toc-text">4. 异常解码处理流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-404-%E5%BC%82%E5%B8%B8%E7%89%B9%E6%AE%8A%E5%A4%84%E7%90%86"><span class="toc-number">1.9.</span> <span class="toc-text">5. 404 异常特殊处理</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/module/flowable/flowable-zhuan-lan/flowable-zhuan-lan/" title="无题"><img src="https://api.yimian.xyz/img?type=moe" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/module/flowable/flowable-zhuan-lan/flowable-zhuan-lan/" title="无题">无题</a><time datetime="2023-07-15T09:45:06.401Z" title="发表于 2023-07-15 17:45:06">2023-07-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/module/consul/part/consul-tong-yong-pei-zhi-shu-xing/" title="无题"><img src="https://api.yimian.xyz/img?type=moe" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/module/consul/part/consul-tong-yong-pei-zhi-shu-xing/" title="无题">无题</a><time datetime="2023-07-15T09:44:38.408Z" title="发表于 2023-07-15 17:44:38">2023-07-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/java/java-duo-xian-cheng-bing-fa/java-duo-xian-cheng-bing-fa-xian-cheng/java-duo-xian-cheng-bing-fa-xian-cheng/" title="【Java 多线程并发】 线程"><img src="https://api.yimian.xyz/img?type=moe" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【Java 多线程并发】 线程"/></a><div class="content"><a class="title" href="/java/java-duo-xian-cheng-bing-fa/java-duo-xian-cheng-bing-fa-xian-cheng/java-duo-xian-cheng-bing-fa-xian-cheng/" title="【Java 多线程并发】 线程">【Java 多线程并发】 线程</a><time datetime="2023-07-10T06:15:00.000Z" title="发表于 2023-07-10 14:15:00">2023-07-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/java/java-jvm/java-jvm-nei-cun-guan-li/java-jvm-zhi-jie-nei-cun/" title="【Java JVM】 直接内存"><img src="https://api.yimian.xyz/img?type=moe" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【Java JVM】 直接内存"/></a><div class="content"><a class="title" href="/java/java-jvm/java-jvm-nei-cun-guan-li/java-jvm-zhi-jie-nei-cun/" title="【Java JVM】 直接内存">【Java JVM】 直接内存</a><time datetime="2023-07-10T00:00:00.000Z" title="发表于 2023-07-10 08:00:00">2023-07-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/database/redis/redis-chong-dian-gong-neng/redis-pai-xu/" title="【Redis】 排序"><img src="https://api.yimian.xyz/img?type=moe" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【Redis】 排序"/></a><div class="content"><a class="title" href="/database/redis/redis-chong-dian-gong-neng/redis-pai-xu/" title="【Redis】 排序">【Redis】 排序</a><time datetime="2023-07-09T06:07:00.000Z" title="发表于 2023-07-09 14:07:00">2023-07-09</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By Bill Cipher</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>function addGitalkSource () {
   const ele = document.createElement('link')
   ele.rel = 'stylesheet'
   ele.href= 'https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.css'

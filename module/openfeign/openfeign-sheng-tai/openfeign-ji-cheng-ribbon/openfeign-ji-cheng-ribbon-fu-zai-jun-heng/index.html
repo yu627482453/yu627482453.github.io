@@ -147,7 +147,9 @@
     detectApple()
     })(window)</script><meta name="generator" content="Hexo 6.2.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">575</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">125</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">21</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://api.yimian.xyz/img?type=moe')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">蝶梦庄生</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">【OpenFeign】 集成 Ribbon 负载均衡</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-01-02T11:07:00.000Z" title="发表于 2023-01-02 19:07:00">2023-01-02</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-01-02T11:07:00.000Z" title="更新于 2023-01-02 19:07:00">2023-01-02</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/OpenFeign/">OpenFeign</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="【OpenFeign】 集成 Ribbon 负载均衡"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="【OpenFeign】-集成-Ribbon-负载均衡"><a href="#【OpenFeign】-集成-Ribbon-负载均衡" class="headerlink" title="【OpenFeign】 集成 Ribbon 负载均衡"></a>【OpenFeign】 集成 Ribbon 负载均衡</h1><h2 id="Metadata"><a href="#Metadata" class="headerlink" title="Metadata"></a>Metadata</h2><pre><code class="line-numbers language-yml">title: 【OpenFeign】 集成 Ribbon 负载均衡
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">575</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">125</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">21</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://api.yimian.xyz/img?type=moe')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">蝶梦庄生</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">【OpenFeign】 集成 Ribbon 负载均衡</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-01-02T11:07:00.000Z" title="发表于 2023-01-02 19:07:00">2023-01-02</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-01-02T11:07:00.000Z" title="更新于 2023-01-02 19:07:00">2023-01-02</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/OpenFeign/">OpenFeign</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="【OpenFeign】 集成 Ribbon 负载均衡"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1>【OpenFeign】 集成 Ribbon 负载均衡</h1>
+<h2 id="Metadata-541">Metadata</h2>
+<pre><code class="language-yml">title: 【OpenFeign】 集成 Ribbon 负载均衡
 date: 2023-01-02 19:07
 tags:
   - 行动阶段/完成
@@ -160,14 +162,15 @@ keywords:
   - OpenFeign
 description: 【OpenFeign】 集成 Ribbon 负载均衡
 </code></pre>
-<h2 id="【OpenFeign】-集成-Ribbon-负载均衡-1"><a href="#【OpenFeign】-集成-Ribbon-负载均衡-1" class="headerlink" title="【OpenFeign】 集成 Ribbon 负载均衡"></a>【OpenFeign】 集成 Ribbon 负载均衡</h2><p>在之前 [[【OpenFeign】 集成 Ribbon 基础]]的文档中，我们分析到在获取服务时，Ribbion 会使用负载均衡规则类去计算出当前应该调用哪个服务。 </p>
-<p><img src="https://img-blog.csdnimg.cn/78c8df4b3e38482ea566d917e152e37c.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAcXFfNDM0Mzc4NzQ=,size_20,color_FFFFFF,t_70,g_se,x_16"></p>
-<p>在 [[【Feign】 集成 Ribbon 配置]]中，我们可以看到当前注入的规则是<code>ZoneAvoidanceRule</code>，使用的是轮询算法。 </p>
-<p><img src="https://img-blog.csdnimg.cn/b895fcada03a46e69788d76a78a545de.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAcXFfNDM0Mzc4NzQ=,size_20,color_FFFFFF,t_70,g_se,x_16"></p>
+<h2 id="【OpenFeign】-集成-Ribbon-负载均衡">【OpenFeign】 集成 Ribbon 负载均衡</h2>
+<p>在之前 [[【OpenFeign】 集成 Ribbon 基础]]的文档中，我们分析到在获取服务时，Ribbion 会使用负载均衡规则类去计算出当前应该调用哪个服务。</p>
+<p><img src="https://img-blog.csdnimg.cn/78c8df4b3e38482ea566d917e152e37c.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAcXFfNDM0Mzc4NzQ=,size_20,color_FFFFFF,t_70,g_se,x_16" alt></p>
+<p>在 [[【Feign】 集成 Ribbon 配置]]中，我们可以看到当前注入的规则是<code>ZoneAvoidanceRule</code>，使用的是轮询算法。</p>
+<p><img src="https://img-blog.csdnimg.cn/b895fcada03a46e69788d76a78a545de.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAcXFfNDM0Mzc4NzQ=,size_20,color_FFFFFF,t_70,g_se,x_16" alt></p>
 <p>IRule 接口代表负载均衡算法策略，该类源码如下：</p>
-<pre><code class="line-numbers language-java">public interface IRule{
-    // 根据特定的算法中从服务列表中选取一个要访问的在线服务
-    // 为null时，代表当前服务不可用
+<pre><code class="language-java">public interface IRule{
+	// 根据特定的算法中从服务列表中选取一个要访问的在线服务
+	// 为null时，代表当前服务不可用
     public Server choose(Object key);
     // 设置负载均衡器
     public void setLoadBalancer(ILoadBalancer lb);
@@ -175,18 +178,19 @@ description: 【OpenFeign】 集成 Ribbon 负载均衡
     public ILoadBalancer getLoadBalancer();    
 }
 </code></pre>
-<p>IRule 接口有以下几个实现类：  </p>
-<p><img src="https://img-blog.csdnimg.cn/0064717f8bf148d5bc33df48a70fcd8d.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAcXFfNDM0Mzc4NzQ=,size_20,color_FFFFFF,t_70,g_se,x_16"></p>
-<h2 id="RandomRule（随机）"><a href="#RandomRule（随机）" class="headerlink" title="RandomRule（随机）"></a>RandomRule（随机）</h2><p>随机算法调用了<code>ThreadLocalRandom</code>，统计服务副本个数，然后在这个范围中，返回一个随机数下标，再通过下标，返回一个可用的服务。</p>
-<pre><code class="line-numbers language-java">@edu.umd.cs.findbugs.annotations.SuppressWarnings(value = "RCN_REDUNDANT_NULLCHECK_OF_NULL_VALUE")
+<p>IRule 接口有以下几个实现类：</p>
+<p><img src="https://img-blog.csdnimg.cn/0064717f8bf148d5bc33df48a70fcd8d.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAcXFfNDM0Mzc4NzQ=,size_20,color_FFFFFF,t_70,g_se,x_16" alt></p>
+<h2 id="RandomRule（随机）">RandomRule（随机）</h2>
+<p>随机算法调用了<code>ThreadLocalRandom</code>，统计服务副本个数，然后在这个范围中，返回一个随机数下标，再通过下标，返回一个可用的服务。</p>
+<pre><code class="language-java">@edu.umd.cs.findbugs.annotations.SuppressWarnings(value = "RCN_REDUNDANT_NULLCHECK_OF_NULL_VALUE")
     public Server choose(ILoadBalancer lb, Object key) {
         if (lb == null) {
             return null;
         }
         Server server = null;
-        // 循环
+		// 循环
         while (server == null) {
-            // 当前线程被中断，直接返回null
+        	// 当前线程被中断，直接返回null
             if (Thread.interrupted()) {
                 return null;
             }
@@ -194,18 +198,18 @@ description: 【OpenFeign】 集成 Ribbon 负载均衡
             List&lt;Server&gt; upList = lb.getReachableServers();
             // 获取所有服务的实例列表
             List&lt;Server&gt; allList = lb.getAllServers();
-            // 服务列表个数
+			// 服务列表个数
             int serverCount = allList.size();
             if (serverCount == 0) {
                 // 没有获取到服务列表则返回 null，结束循环
                 return null;
             }
-            // ThreadLocalRandom.current().nextInt(serverCount)
-            // 使用线程安全ThreadLocalRandom，获取一个服务个数范围内的随机数
+			// ThreadLocalRandom.current().nextInt(serverCount)
+			// 使用线程安全ThreadLocalRandom，获取一个服务个数范围内的随机数
             int index = chooseRandomInt(serverCount);
             // 在可用服务列表中，获取随机数下标的服务
             server = upList.get(index);
-            
+			
             if (server == null) {
                 /*
                  * 如果有服务列表，又没获取到，可能存在于服务瞬态改变，则让出当前线程资源，然后再继续循环获取
@@ -213,7 +217,7 @@ description: 【OpenFeign】 集成 Ribbon 负载均衡
                 Thread.yield();
                 continue;
             }
-            // 获取到服务，并且在线，则直接返回
+			// 获取到服务，并且在线，则直接返回
             if (server.isAlive()) {
                 return (server);
             }
@@ -230,13 +234,14 @@ description: 【OpenFeign】 集成 Ribbon 负载均衡
         return ThreadLocalRandom.current().nextInt(serverCount);
     }
 </code></pre>
-<h2 id="RoundRobinRule（轮询）"><a href="#RoundRobinRule（轮询）" class="headerlink" title="RoundRobinRule（轮询）"></a>RoundRobinRule（轮询）</h2><p>轮询会依次执行，每个执行一次 (默认)。</p>
+<h2 id="RoundRobinRule（轮询）">RoundRobinRule（轮询）</h2>
+<p>轮询会依次执行，每个执行一次 (默认)。</p>
 <p>算法公式：</p>
-<pre><code class="line-numbers language-java">// 当前请求总数 + 1, 在用服务总数取模，得到下标
+<pre><code class="language-java">// 当前请求总数 + 1, 在用服务总数取模，得到下标
  int next = (current + 1) % modulo;
 </code></pre>
 <p>比如，当前有两个副本，第一次请求时，（0+1）%2 得到下标为 1，存储上次请求的坐标为 1，并获取下标为 1 的服务。第二次时，则得到下标为 0，第三次时，又得到下标 1，依次类推，每个都会循环执行。</p>
-<pre><code class="line-numbers language-java">public Server choose(ILoadBalancer lb, Object key) {
+<pre><code class="language-java">public Server choose(ILoadBalancer lb, Object key) {
         if (lb == null) {
             log.warn("no load balancer");
             return null;
@@ -247,35 +252,35 @@ description: 【OpenFeign】 集成 Ribbon 负载均衡
         int count = 0;
         // 当 server 为null, 循环次数小于10次，则会进入循环
         while (server == null &amp;&amp; count++ &lt; 10) {
-            // 所以及可用服务集合
+        	// 所以及可用服务集合
             List&lt;Server&gt; reachableServers = lb.getReachableServers();
             List&lt;Server&gt; allServers = lb.getAllServers();
             // 在线服务数
             int upCount = reachableServers.size();
             // 所有服务数
             int serverCount = allServers.size();
-            // 没有可用服务，直接返回null  结束循环
+			// 没有可用服务，直接返回null  结束循环
             if ((upCount == 0) || (serverCount == 0)) {
                 log.warn("No up servers available from load balancer: " + lb);
                 return null;
             }
-            // 计算下标
+			// 计算下标
             int nextServerIndex = incrementAndGetModulo(serverCount);
             // 根据下标获取服务
             server = allServers.get(nextServerIndex);
-            // 没有获取到，继续循环
+			// 没有获取到，继续循环
             if (server == null) {
                 /* Transient. */
                 Thread.yield();
                 continue;
             }
-            // 省略....
+			// 省略....
         return server;
     }
-        // 轮询算法
-        private int incrementAndGetModulo(int modulo) {
+		// 轮询算法
+	    private int incrementAndGetModulo(int modulo) {
         for (;;) {
-            // 获取当前客户端已经请求的总数， AtomicInteger 类型，
+        	// 获取当前客户端已经请求的总数， AtomicInteger 类型，
             int current = nextServerCyclicCounter.get();
             // 当前请求总数 + 1, 在用服务总数取模，得到下标
             int next = (current + 1) % modulo;
@@ -285,10 +290,11 @@ description: 【OpenFeign】 集成 Ribbon 负载均衡
         }
     }
 </code></pre>
-<h2 id="WeightedResponseTimeRule（响应时间权重轮询）"><a href="#WeightedResponseTimeRule（响应时间权重轮询）" class="headerlink" title="WeightedResponseTimeRule（响应时间权重轮询）"></a>WeightedResponseTimeRule（响应时间权重轮询）</h2><p><code>WeightedResponseTimeRule</code>继承自 RoundRobinRule，是对轮询算法进行的扩展，加入了权重计算。</p>
+<h2 id="WeightedResponseTimeRule（响应时间权重轮询）">WeightedResponseTimeRule（响应时间权重轮询）</h2>
+<p><code>WeightedResponseTimeRule</code>继承自 RoundRobinRule，是对轮询算法进行的扩展，加入了权重计算。</p>
 <p>可以为每个服务器分配动态权重，然后然后加权循环，权重高的则会优先执行。</p>
 <p>该类在初始化（注入）的时候，会调用一个初始化方法，进行定时任务创建。</p>
-<pre><code class="line-numbers language-java">void initialize(ILoadBalancer lb) {        
+<pre><code class="language-java">void initialize(ILoadBalancer lb) {        
         if (serverWeightTimer != null) {
             serverWeightTimer.cancel();
         }
@@ -302,7 +308,7 @@ description: 【OpenFeign】 集成 Ribbon 负载均衡
         ServerWeight sw = new ServerWeight();
         // 计算权重
         sw.maintainWeights();
-        // 钩子 jvm关闭时，通知定时任务
+		// 钩子 jvm关闭时，通知定时任务
         Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
             public void run() {
                 logger
@@ -314,7 +320,7 @@ description: 【OpenFeign】 集成 Ribbon 负载均衡
     }
 </code></pre>
 <p>定时任务，默认 30S 执行一次，调用的是 ServerWeight.maintainWeights（）方法。</p>
-<pre><code class="line-numbers language-java">class DynamicServerWeightTask extends TimerTask {
+<pre><code class="language-java">class DynamicServerWeightTask extends TimerTask {
         public void run() {
             ServerWeight serverWeight = new ServerWeight();
             try {
@@ -326,7 +332,7 @@ description: 【OpenFeign】 集成 Ribbon 负载均衡
     }
 </code></pre>
 <p><code>maintainWeights</code>方法核心代码如下</p>
-<pre><code class="line-numbers language-java">// 负载均衡策略服务器状态总控
+<pre><code class="language-java">// 负载均衡策略服务器状态总控
                 AbstractLoadBalancer nlb = (AbstractLoadBalancer) lb;
                 LoadBalancerStats stats = nlb.getLoadBalancerStats();
                 if (stats == null) {
@@ -354,9 +360,9 @@ description: 【OpenFeign】 集成 Ribbon 负载均衡
                 setWeights(finalWeights);
 </code></pre>
 <p>在 choose 方法中，会根据权重去计算。</p>
-<pre><code class="line-numbers language-java">@Override
+<pre><code class="language-java">@Override
     public Server choose(ILoadBalancer lb, Object key) {
-        // 
+		// 
         while (server == null) {
             // 获取服务的权重集合
             List&lt;Double&gt; currentWeights = accumulatedWeights;
@@ -394,47 +400,49 @@ description: 【OpenFeign】 集成 Ribbon 负载均衡
 </code></pre>
 <p><strong>总结</strong>：</p>
 <p>定时任务，去计算权重，平均响应时间越大，权重越小。在选择时，生成一个随机数，然后循环服务列表，权重大于这个随机数，则会被选择。</p>
-<h2 id="RetryRule（重试）"><a href="#RetryRule（重试）" class="headerlink" title="RetryRule（重试）"></a>RetryRule（重试）</h2><p><code>RetryRule</code> 实际调用的也是轮询算法，只是在没有获取到服务时，会进行循环重试操作，超过设置的时间限制，则会退出，默认为 500MS。</p>
-<pre><code class="line-numbers language-java">public Server choose(ILoadBalancer lb, Object key) {
-        // 当前请求时间
-        long requestTime = System.currentTimeMillis();
-        // 限制时间，默认当前请求时间+ 500MS
-        long deadline = requestTime + maxRetryMillis;
-        Server answer = null;
-        // 调用轮询算法获取一个可用服务
-        answer = subRule.choose(key);
-        // 如果服务不信在、不是健康的，并且没有超过限制时间则进去以下方法
-        if (((answer == null) || (!answer.isAlive()))
-                &amp;&amp; (System.currentTimeMillis() &lt; deadline)) {
-            // 开启定时任务，多少秒后打断线程
-            InterruptTask task = new InterruptTask(deadline
-                    - System.currentTimeMillis());
-            // 重新选择
-            while (!Thread.interrupted()) {
-                answer = subRule.choose(key);
+<h2 id="RetryRule（重试）">RetryRule（重试）</h2>
+<p><code>RetryRule</code> 实际调用的也是轮询算法，只是在没有获取到服务时，会进行循环重试操作，超过设置的时间限制，则会退出，默认为 500MS。</p>
+<pre><code class="language-java">public Server choose(ILoadBalancer lb, Object key) {
+		// 当前请求时间
+		long requestTime = System.currentTimeMillis();
+		// 限制时间，默认当前请求时间+ 500MS
+		long deadline = requestTime + maxRetryMillis;
+		Server answer = null;
+		// 调用轮询算法获取一个可用服务
+		answer = subRule.choose(key);
+		// 如果服务不信在、不是健康的，并且没有超过限制时间则进去以下方法
+		if (((answer == null) || (!answer.isAlive()))
+				&amp;&amp; (System.currentTimeMillis() &lt; deadline)) {
+			// 开启定时任务，多少秒后打断线程
+			InterruptTask task = new InterruptTask(deadline
+					- System.currentTimeMillis());
+			// 重新选择
+			while (!Thread.interrupted()) {
+				answer = subRule.choose(key);
 
-                if (((answer == null) || (!answer.isAlive()))
-                        &amp;&amp; (System.currentTimeMillis() &lt; deadline)) {
-                    /* pause and retry hoping it's transient */
-                    Thread.yield();
-                } else {
-                    break;
-                }
-            }
+				if (((answer == null) || (!answer.isAlive()))
+						&amp;&amp; (System.currentTimeMillis() &lt; deadline)) {
+					/* pause and retry hoping it's transient */
+					Thread.yield();
+				} else {
+					break;
+				}
+			}
 
-            task.cancel();
-        }
+			task.cancel();
+		}
 
-        if ((answer == null) || (!answer.isAlive())) {
-            return null;
-        } else {
-            return answer;
-        }
-    }
+		if ((answer == null) || (!answer.isAlive())) {
+			return null;
+		} else {
+			return answer;
+		}
+	}
 </code></pre>
-<h2 id="BestAvailableRule（最小并发）"><a href="#BestAvailableRule（最小并发）" class="headerlink" title="BestAvailableRule（最小并发）"></a>BestAvailableRule（最小并发）</h2><p><code>BestAvailableRule</code>继承了<code>ClientConfigEnabledRoundRobinRule</code>，会遍历所有的服务提供者，选择并发量最小的那个服务。</p>
+<h2 id="BestAvailableRule（最小并发）">BestAvailableRule（最小并发）</h2>
+<p><code>BestAvailableRule</code>继承了<code>ClientConfigEnabledRoundRobinRule</code>，会遍历所有的服务提供者，选择并发量最小的那个服务。</p>
 <p>这个算法，可以将请求转发到压力最小的服务器，但是如果副本数太多，每次都要循环计算出最小并发，还是比较好资源的。</p>
-<pre><code class="line-numbers language-java">@Override
+<pre><code class="language-java">@Override
     public Server choose(Object key) {
         if (loadBalancerStats == null) {
             return super.choose(key);
@@ -466,9 +474,10 @@ description: 【OpenFeign】 集成 Ribbon 负载均衡
         }
     }
 </code></pre>
-<h2 id="AvailabilityFilteringRule-可用断言过滤器"><a href="#AvailabilityFilteringRule-可用断言过滤器" class="headerlink" title="AvailabilityFilteringRule(可用断言过滤器)"></a>AvailabilityFilteringRule(可用断言过滤器)</h2><p><code>AvailabilityFilteringRule</code> 继承自<code>PredicateBasedRule</code>，<code>PredicateBasedRule</code>和以上的规则有点区别，它将服务器筛选逻辑委托给 {@link AbstractServerPredicate（断言器）} 实例，过滤后，将以循环方式从过滤列表返回服务器。</p>
+<h2 id="AvailabilityFilteringRule-可用断言过滤器">AvailabilityFilteringRule(可用断言过滤器)</h2>
+<p><code>AvailabilityFilteringRule</code> 继承自<code>PredicateBasedRule</code>，<code>PredicateBasedRule</code>和以上的规则有点区别，它将服务器筛选逻辑委托给 {@link AbstractServerPredicate（断言器）} 实例，过滤后，将以循环方式从过滤列表返回服务器。</p>
 <p><code>AvailabilityFilteringRule</code> 采用过滤器来进行服务选择，过滤掉那些一直连接失败的且被标记为<code>circuit tripped</code>的后端 Server，并过滤掉那些高并发的后端 Server 或者使用一个 AvailabilityPredicate 来包含过滤 Server 的逻辑。其实就是检查 Status 里记录的各个 Server 的运行状态。</p>
-<pre><code class="line-numbers language-java">// 线性轮询先选一个，然后看是否符合条件，符合条件直接选择
+<pre><code class="language-java">// 线性轮询先选一个，然后看是否符合条件，符合条件直接选择
     @Override
     public Server choose(Object key) {
     // 计数器
@@ -476,7 +485,7 @@ description: 【OpenFeign】 集成 Ribbon 负载均衡
         // 轮询选择一个 
         Server server = roundRobinRule.choose(key);
         while (count++ &lt;= 10) {
-            // 断言判断，符合则返回，不符合则重新选择
+        	// 断言判断，符合则返回，不符合则重新选择
             if (predicate.apply(new PredicateKey(server))) {
                 return server;
             }
@@ -486,21 +495,24 @@ description: 【OpenFeign】 集成 Ribbon 负载均衡
         return super.choose(key);
     }
 </code></pre>
-<h2 id="ZoneAvoidanceRule-可用性其性能断言"><a href="#ZoneAvoidanceRule-可用性其性能断言" class="headerlink" title="ZoneAvoidanceRule (可用性其性能断言)"></a>ZoneAvoidanceRule (可用性其性能断言)</h2><p>使用 <code>ZoneAvoidancePredicate</code>和 <code>AvailabilityPredicate</code>来判断是否选择某个 Server，前一个判断判定一个 Zone 的运行性能是否可用，剔除不可用的 Zone Server，AvailabilityPredicate 用于过滤掉连接数过多的 Server。</p>
+<h2 id="ZoneAvoidanceRule-可用性其性能断言">ZoneAvoidanceRule (可用性其性能断言)</h2>
+<p>使用 <code>ZoneAvoidancePredicate</code>和 <code>AvailabilityPredicate</code>来判断是否选择某个 Server，前一个判断判定一个 Zone 的运行性能是否可用，剔除不可用的 Zone Server，AvailabilityPredicate 用于过滤掉连接数过多的 Server。</p>
 <p>该规则会先过滤，然后使用轮询算法，选出可用的服务，默认使用的就是这个，也推荐使用这个。</p>
-<h2 id="使用自带的策略"><a href="#使用自带的策略" class="headerlink" title="使用自带的策略"></a>使用自带的策略</h2><p>添加策略配置的方法十分简单，只需要配置 Bean 就可以了，这个策略是全局的，作用于所有客户端。</p>
-<pre><code class="line-numbers language-java">@Bean
+<h2 id="使用自带的策略">使用自带的策略</h2>
+<p>添加策略配置的方法十分简单，只需要配置 Bean 就可以了，这个策略是全局的，作用于所有客户端。</p>
+<pre><code class="language-java">@Bean
     public RandomRule getRule() {
         return new RandomRule();
     }
 </code></pre>
 <p>可以在配置文件中，为某个单独的客户端配置策略，如果配置了全局，单独配置的则不会生效，需要注意。</p>
-<pre><code class="line-numbers language-java">order-service:
+<pre><code class="language-java">order-service:
   ribbon:
     NFLoadBalancerRuleClassName: com.netflix.loadbalancer.WeightedResponseTimeRule
 </code></pre>
-<h2 id="自定义策略"><a href="#自定义策略" class="headerlink" title="自定义策略"></a>自定义策略</h2><p>实现 IRule 或者继承 AbstractLoadBalancerRule 实现其中的 chose 方法即可。</p>
-</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a target="_blank" rel="noopener" href="https://github.com/yu627482453">Bill Cipher</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://yu627482453.github.io/module/openfeign/openfeign-sheng-tai/openfeign-ji-cheng-ribbon/openfeign-ji-cheng-ribbon-fu-zai-jun-heng/">https://yu627482453.github.io/module/openfeign/openfeign-sheng-tai/openfeign-ji-cheng-ribbon/openfeign-ji-cheng-ribbon-fu-zai-jun-heng/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://yu627482453.github.io" target="_blank">蝶梦庄生</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E8%A1%8C%E5%8A%A8%E9%98%B6%E6%AE%B5-%E5%AE%8C%E6%88%90/">行动阶段/完成</a><a class="post-meta__tags" href="/tags/%E4%B8%BB%E9%A2%98%E5%9C%BA%E6%99%AF-%E7%BB%84%E4%BB%B6/">主题场景/组件</a><a class="post-meta__tags" href="/tags/%E7%AC%94%E8%AE%B0%E7%A9%BA%E9%97%B4-KnowladgeSpace-ProgramSpace-ModuleSpace/">笔记空间/KnowladgeSpace/ProgramSpace/ModuleSpace</a><a class="post-meta__tags" href="/tags/%E7%BB%86%E5%8C%96%E4%B8%BB%E9%A2%98-Module-OpenFeign-%E7%94%9F%E6%80%81-Ribbon/">细化主题/Module/OpenFeign/生态/Ribbon</a></div><div class="post_share"><div class="social-share" data-image="https://api.yimian.xyz/img?type=moe" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/reward/wechat.jpg" target="_blank"><img class="post-qr-code-img" src="/img/reward/wechat.jpg" alt="wechat"/></a><div class="post-qr-code-desc">wechat</div></li><li class="reward-item"><a href="/img/reward/alipay.jpg" target="_blank"><img class="post-qr-code-img" src="/img/reward/alipay.jpg" alt="alipay"/></a><div class="post-qr-code-desc">alipay</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/module/openfeign/openfeign-sheng-tai/openfeign-ji-cheng-ribbon/openfeign-ji-cheng-ribbon-pei-zhi/"><img class="prev-cover" src="https://api.yimian.xyz/img?type=moe" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">【OpenFeign】 集成 Ribbon 配置</div></div></a></div><div class="next-post pull-right"><a href="/module/openfeign/openfeign-sheng-tai/openfeign-ji-cheng-ribbon/openfeign-ji-cheng-ribbon-ji-chu/"><img class="next-cover" src="https://api.yimian.xyz/img?type=moe" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">【OpenFeign】 集成 Ribbon 基础</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/module/openfeign/openfeign-sheng-tai/openfeign-ji-cheng-ribbon/openfeign-ji-cheng-ribbon-ji-chu/" title="【OpenFeign】 集成 Ribbon 基础"><img class="cover" src="https://api.yimian.xyz/img?type=moe" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-01-02</div><div class="title">【OpenFeign】 集成 Ribbon 基础</div></div></a></div><div><a href="/module/openfeign/openfeign-sheng-tai/openfeign-ji-cheng-ribbon/openfeign-ji-cheng-ribbon-pei-zhi/" title="【OpenFeign】 集成 Ribbon 配置"><img class="cover" src="https://api.yimian.xyz/img?type=moe" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-01-02</div><div class="title">【OpenFeign】 集成 Ribbon 配置</div></div></a></div><div><a href="/module/elasticsearch/elasticsearch-ji-ben-gai-nian/" title="【ElasticSearch】 基本概念"><img class="cover" src="https://api.yimian.xyz/img?type=moe" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-12-20</div><div class="title">【ElasticSearch】 基本概念</div></div></a></div><div><a href="/module/eureka/eureka/" title="Eureka"><img class="cover" src="https://api.yimian.xyz/img?type=moe" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-12-14</div><div class="title">Eureka</div></div></a></div><div><a href="/module/elasticsearch/elasticsearch-elasticsearch-he-kibana-an-zhuang/" title="【ElasticSearch】 ElasticSearch和Kibana安装"><img class="cover" src="https://api.yimian.xyz/img?type=moe" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-12-20</div><div class="title">【ElasticSearch】 ElasticSearch和Kibana安装</div></div></a></div><div><a href="/module/elasticsearch/elasticsearch-cha-xun-he-ju-he-de-ji-chu-shi-yong/" title="【ElasticSearch】 查询和聚合的基础使用"><img class="cover" src="https://api.yimian.xyz/img?type=moe" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-12-20</div><div class="title">【ElasticSearch】 查询和聚合的基础使用</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="gitalk-container"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Bill Cipher</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">575</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">125</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">21</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/yu627482453"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/yu627482453" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="/627482453@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E3%80%90OpenFeign%E3%80%91-%E9%9B%86%E6%88%90-Ribbon-%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1"><span class="toc-number">1.</span> <span class="toc-text">【OpenFeign】 集成 Ribbon 负载均衡</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Metadata"><span class="toc-number">1.1.</span> <span class="toc-text">Metadata</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E3%80%90OpenFeign%E3%80%91-%E9%9B%86%E6%88%90-Ribbon-%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1-1"><span class="toc-number">1.2.</span> <span class="toc-text">【OpenFeign】 集成 Ribbon 负载均衡</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#RandomRule%EF%BC%88%E9%9A%8F%E6%9C%BA%EF%BC%89"><span class="toc-number">1.3.</span> <span class="toc-text">RandomRule（随机）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#RoundRobinRule%EF%BC%88%E8%BD%AE%E8%AF%A2%EF%BC%89"><span class="toc-number">1.4.</span> <span class="toc-text">RoundRobinRule（轮询）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#WeightedResponseTimeRule%EF%BC%88%E5%93%8D%E5%BA%94%E6%97%B6%E9%97%B4%E6%9D%83%E9%87%8D%E8%BD%AE%E8%AF%A2%EF%BC%89"><span class="toc-number">1.5.</span> <span class="toc-text">WeightedResponseTimeRule（响应时间权重轮询）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#RetryRule%EF%BC%88%E9%87%8D%E8%AF%95%EF%BC%89"><span class="toc-number">1.6.</span> <span class="toc-text">RetryRule（重试）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#BestAvailableRule%EF%BC%88%E6%9C%80%E5%B0%8F%E5%B9%B6%E5%8F%91%EF%BC%89"><span class="toc-number">1.7.</span> <span class="toc-text">BestAvailableRule（最小并发）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#AvailabilityFilteringRule-%E5%8F%AF%E7%94%A8%E6%96%AD%E8%A8%80%E8%BF%87%E6%BB%A4%E5%99%A8"><span class="toc-number">1.8.</span> <span class="toc-text">AvailabilityFilteringRule(可用断言过滤器)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ZoneAvoidanceRule-%E5%8F%AF%E7%94%A8%E6%80%A7%E5%85%B6%E6%80%A7%E8%83%BD%E6%96%AD%E8%A8%80"><span class="toc-number">1.9.</span> <span class="toc-text">ZoneAvoidanceRule (可用性其性能断言)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E8%87%AA%E5%B8%A6%E7%9A%84%E7%AD%96%E7%95%A5"><span class="toc-number">1.10.</span> <span class="toc-text">使用自带的策略</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E7%AD%96%E7%95%A5"><span class="toc-number">1.11.</span> <span class="toc-text">自定义策略</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/module/flowable/flowable-zhuan-lan/flowable-zhuan-lan/" title="无题"><img src="https://api.yimian.xyz/img?type=moe" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/module/flowable/flowable-zhuan-lan/flowable-zhuan-lan/" title="无题">无题</a><time datetime="2023-07-15T09:45:06.401Z" title="发表于 2023-07-15 17:45:06">2023-07-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/module/consul/part/consul-tong-yong-pei-zhi-shu-xing/" title="无题"><img src="https://api.yimian.xyz/img?type=moe" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/module/consul/part/consul-tong-yong-pei-zhi-shu-xing/" title="无题">无题</a><time datetime="2023-07-15T09:44:38.408Z" title="发表于 2023-07-15 17:44:38">2023-07-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/java/java-duo-xian-cheng-bing-fa/java-duo-xian-cheng-bing-fa-xian-cheng/java-duo-xian-cheng-bing-fa-xian-cheng/" title="【Java 多线程并发】 线程"><img src="https://api.yimian.xyz/img?type=moe" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【Java 多线程并发】 线程"/></a><div class="content"><a class="title" href="/java/java-duo-xian-cheng-bing-fa/java-duo-xian-cheng-bing-fa-xian-cheng/java-duo-xian-cheng-bing-fa-xian-cheng/" title="【Java 多线程并发】 线程">【Java 多线程并发】 线程</a><time datetime="2023-07-10T06:15:00.000Z" title="发表于 2023-07-10 14:15:00">2023-07-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/java/java-jvm/java-jvm-nei-cun-guan-li/java-jvm-zhi-jie-nei-cun/" title="【Java JVM】 直接内存"><img src="https://api.yimian.xyz/img?type=moe" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【Java JVM】 直接内存"/></a><div class="content"><a class="title" href="/java/java-jvm/java-jvm-nei-cun-guan-li/java-jvm-zhi-jie-nei-cun/" title="【Java JVM】 直接内存">【Java JVM】 直接内存</a><time datetime="2023-07-10T00:00:00.000Z" title="发表于 2023-07-10 08:00:00">2023-07-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/database/redis/redis-chong-dian-gong-neng/redis-pai-xu/" title="【Redis】 排序"><img src="https://api.yimian.xyz/img?type=moe" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【Redis】 排序"/></a><div class="content"><a class="title" href="/database/redis/redis-chong-dian-gong-neng/redis-pai-xu/" title="【Redis】 排序">【Redis】 排序</a><time datetime="2023-07-09T06:07:00.000Z" title="发表于 2023-07-09 14:07:00">2023-07-09</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By Bill Cipher</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>function addGitalkSource () {
+<h2 id="自定义策略">自定义策略</h2>
+<p>实现 IRule 或者继承 AbstractLoadBalancerRule 实现其中的 chose 方法即可。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a target="_blank" rel="noopener" href="https://github.com/yu627482453">Bill Cipher</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://yu627482453.github.io/module/openfeign/openfeign-sheng-tai/openfeign-ji-cheng-ribbon/openfeign-ji-cheng-ribbon-fu-zai-jun-heng/">https://yu627482453.github.io/module/openfeign/openfeign-sheng-tai/openfeign-ji-cheng-ribbon/openfeign-ji-cheng-ribbon-fu-zai-jun-heng/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://yu627482453.github.io" target="_blank">蝶梦庄生</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E8%A1%8C%E5%8A%A8%E9%98%B6%E6%AE%B5-%E5%AE%8C%E6%88%90/">行动阶段/完成</a><a class="post-meta__tags" href="/tags/%E4%B8%BB%E9%A2%98%E5%9C%BA%E6%99%AF-%E7%BB%84%E4%BB%B6/">主题场景/组件</a><a class="post-meta__tags" href="/tags/%E7%AC%94%E8%AE%B0%E7%A9%BA%E9%97%B4-KnowladgeSpace-ProgramSpace-ModuleSpace/">笔记空间/KnowladgeSpace/ProgramSpace/ModuleSpace</a><a class="post-meta__tags" href="/tags/%E7%BB%86%E5%8C%96%E4%B8%BB%E9%A2%98-Module-OpenFeign-%E7%94%9F%E6%80%81-Ribbon/">细化主题/Module/OpenFeign/生态/Ribbon</a></div><div class="post_share"><div class="social-share" data-image="https://api.yimian.xyz/img?type=moe" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/reward/wechat.jpg" target="_blank"><img class="post-qr-code-img" src="/img/reward/wechat.jpg" alt="wechat"/></a><div class="post-qr-code-desc">wechat</div></li><li class="reward-item"><a href="/img/reward/alipay.jpg" target="_blank"><img class="post-qr-code-img" src="/img/reward/alipay.jpg" alt="alipay"/></a><div class="post-qr-code-desc">alipay</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/module/openfeign/openfeign-sheng-tai/openfeign-ji-cheng-ribbon/openfeign-ji-cheng-ribbon-pei-zhi/"><img class="prev-cover" src="https://api.yimian.xyz/img?type=moe" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">【OpenFeign】 集成 Ribbon 配置</div></div></a></div><div class="next-post pull-right"><a href="/module/openfeign/openfeign-sheng-tai/openfeign-ji-cheng-ribbon/openfeign-ji-cheng-ribbon-ji-chu/"><img class="next-cover" src="https://api.yimian.xyz/img?type=moe" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">【OpenFeign】 集成 Ribbon 基础</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/module/openfeign/openfeign-sheng-tai/openfeign-ji-cheng-ribbon/openfeign-ji-cheng-ribbon-ji-chu/" title="【OpenFeign】 集成 Ribbon 基础"><img class="cover" src="https://api.yimian.xyz/img?type=moe" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-01-02</div><div class="title">【OpenFeign】 集成 Ribbon 基础</div></div></a></div><div><a href="/module/openfeign/openfeign-sheng-tai/openfeign-ji-cheng-ribbon/openfeign-ji-cheng-ribbon-pei-zhi/" title="【OpenFeign】 集成 Ribbon 配置"><img class="cover" src="https://api.yimian.xyz/img?type=moe" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-01-02</div><div class="title">【OpenFeign】 集成 Ribbon 配置</div></div></a></div><div><a href="/module/eureka/eureka/" title="Eureka"><img class="cover" src="https://api.yimian.xyz/img?type=moe" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-12-14</div><div class="title">Eureka</div></div></a></div><div><a href="/module/flowable/flowable/" title="Flowable"><img class="cover" src="https://api.yimian.xyz/img?type=moe" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-12-14</div><div class="title">Flowable</div></div></a></div><div><a href="/module/kafka/kafka/" title="Kafka"><img class="cover" src="https://api.yimian.xyz/img?type=moe" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-02-14</div><div class="title">Kafka</div></div></a></div><div><a href="/module/elasticsearch/elasticsearch-ji-ben-gai-nian/" title="【ElasticSearch】 基本概念"><img class="cover" src="https://api.yimian.xyz/img?type=moe" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-12-20</div><div class="title">【ElasticSearch】 基本概念</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="gitalk-container"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Bill Cipher</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">575</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">125</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">21</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/yu627482453"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/yu627482453" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="/627482453@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">1.</span> <span class="toc-text">【OpenFeign】 集成 Ribbon 负载均衡</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Metadata-541"><span class="toc-number">1.1.</span> <span class="toc-text">Metadata</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E3%80%90OpenFeign%E3%80%91-%E9%9B%86%E6%88%90-Ribbon-%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1"><span class="toc-number">1.2.</span> <span class="toc-text">【OpenFeign】 集成 Ribbon 负载均衡</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#RandomRule%EF%BC%88%E9%9A%8F%E6%9C%BA%EF%BC%89"><span class="toc-number">1.3.</span> <span class="toc-text">RandomRule（随机）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#RoundRobinRule%EF%BC%88%E8%BD%AE%E8%AF%A2%EF%BC%89"><span class="toc-number">1.4.</span> <span class="toc-text">RoundRobinRule（轮询）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#WeightedResponseTimeRule%EF%BC%88%E5%93%8D%E5%BA%94%E6%97%B6%E9%97%B4%E6%9D%83%E9%87%8D%E8%BD%AE%E8%AF%A2%EF%BC%89"><span class="toc-number">1.5.</span> <span class="toc-text">WeightedResponseTimeRule（响应时间权重轮询）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#RetryRule%EF%BC%88%E9%87%8D%E8%AF%95%EF%BC%89"><span class="toc-number">1.6.</span> <span class="toc-text">RetryRule（重试）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#BestAvailableRule%EF%BC%88%E6%9C%80%E5%B0%8F%E5%B9%B6%E5%8F%91%EF%BC%89"><span class="toc-number">1.7.</span> <span class="toc-text">BestAvailableRule（最小并发）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#AvailabilityFilteringRule-%E5%8F%AF%E7%94%A8%E6%96%AD%E8%A8%80%E8%BF%87%E6%BB%A4%E5%99%A8"><span class="toc-number">1.8.</span> <span class="toc-text">AvailabilityFilteringRule(可用断言过滤器)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ZoneAvoidanceRule-%E5%8F%AF%E7%94%A8%E6%80%A7%E5%85%B6%E6%80%A7%E8%83%BD%E6%96%AD%E8%A8%80"><span class="toc-number">1.9.</span> <span class="toc-text">ZoneAvoidanceRule (可用性其性能断言)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E8%87%AA%E5%B8%A6%E7%9A%84%E7%AD%96%E7%95%A5"><span class="toc-number">1.10.</span> <span class="toc-text">使用自带的策略</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E7%AD%96%E7%95%A5"><span class="toc-number">1.11.</span> <span class="toc-text">自定义策略</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/module/flowable/flowable-zhuan-lan/flowable-zhuan-lan/" title="无题"><img src="https://api.yimian.xyz/img?type=moe" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/module/flowable/flowable-zhuan-lan/flowable-zhuan-lan/" title="无题">无题</a><time datetime="2023-07-15T09:45:06.401Z" title="发表于 2023-07-15 17:45:06">2023-07-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/module/consul/part/consul-tong-yong-pei-zhi-shu-xing/" title="无题"><img src="https://api.yimian.xyz/img?type=moe" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/module/consul/part/consul-tong-yong-pei-zhi-shu-xing/" title="无题">无题</a><time datetime="2023-07-15T09:44:38.408Z" title="发表于 2023-07-15 17:44:38">2023-07-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/java/java-duo-xian-cheng-bing-fa/java-duo-xian-cheng-bing-fa-xian-cheng/java-duo-xian-cheng-bing-fa-xian-cheng/" title="【Java 多线程并发】 线程"><img src="https://api.yimian.xyz/img?type=moe" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【Java 多线程并发】 线程"/></a><div class="content"><a class="title" href="/java/java-duo-xian-cheng-bing-fa/java-duo-xian-cheng-bing-fa-xian-cheng/java-duo-xian-cheng-bing-fa-xian-cheng/" title="【Java 多线程并发】 线程">【Java 多线程并发】 线程</a><time datetime="2023-07-10T06:15:00.000Z" title="发表于 2023-07-10 14:15:00">2023-07-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/java/java-jvm/java-jvm-nei-cun-guan-li/java-jvm-zhi-jie-nei-cun/" title="【Java JVM】 直接内存"><img src="https://api.yimian.xyz/img?type=moe" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【Java JVM】 直接内存"/></a><div class="content"><a class="title" href="/java/java-jvm/java-jvm-nei-cun-guan-li/java-jvm-zhi-jie-nei-cun/" title="【Java JVM】 直接内存">【Java JVM】 直接内存</a><time datetime="2023-07-10T00:00:00.000Z" title="发表于 2023-07-10 08:00:00">2023-07-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/database/redis/redis-chong-dian-gong-neng/redis-pai-xu/" title="【Redis】 排序"><img src="https://api.yimian.xyz/img?type=moe" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【Redis】 排序"/></a><div class="content"><a class="title" href="/database/redis/redis-chong-dian-gong-neng/redis-pai-xu/" title="【Redis】 排序">【Redis】 排序</a><time datetime="2023-07-09T06:07:00.000Z" title="发表于 2023-07-09 14:07:00">2023-07-09</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By Bill Cipher</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>function addGitalkSource () {
   const ele = document.createElement('link')
   ele.rel = 'stylesheet'
   ele.href= 'https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.css'

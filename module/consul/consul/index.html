@@ -9,15 +9,15 @@
 <meta property="article:published_time" content="2022-12-14T02:59:00.000Z">
 <meta property="article:modified_time" content="2022-12-14T02:59:00.000Z">
 <meta property="article:author" content="Bill Cipher">
-<meta property="article:tag" content="行动阶段&#x2F;未完成">
 <meta property="article:tag" content="主题场景&#x2F;组件">
 <meta property="article:tag" content="笔记空间&#x2F;KnowladgeSpace&#x2F;ProgramSpace&#x2F;ModuleSpace">
-<meta property="article:tag" content="细化主题&#x2F;微服务">
-<meta property="article:tag" content="细化主题&#x2F;配置中心">
 <meta property="article:tag" content="细化主题&#x2F;注册中心">
 <meta property="article:tag" content="细化主题&#x2F;服务发现">
 <meta property="article:tag" content="细化主题&#x2F;服务注册">
 <meta property="article:tag" content="细化主题&#x2F;负载均衡">
+<meta property="article:tag" content="细化主题&#x2F;微服务">
+<meta property="article:tag" content="行动阶段&#x2F;未完成">
+<meta property="article:tag" content="细化主题&#x2F;配置中心">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://api.yimian.xyz/img?type=moe"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://yu627482453.github.io/module/consul/consul/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
   root: '/',
@@ -152,7 +152,9 @@
     detectApple()
     })(window)</script><meta name="generator" content="Hexo 6.2.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">575</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">125</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">21</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://api.yimian.xyz/img?type=moe')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">蝶梦庄生</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Consul</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-12-14T02:59:00.000Z" title="发表于 2022-12-14 10:59:00">2022-12-14</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-12-14T02:59:00.000Z" title="更新于 2022-12-14 10:59:00">2022-12-14</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%BB%84%E4%BB%B6/">组件</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Consul"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="Consul"><a href="#Consul" class="headerlink" title="Consul"></a>Consul</h1><h2 id="Metadata"><a href="#Metadata" class="headerlink" title="Metadata"></a>Metadata</h2><pre><code class="line-numbers language-yml">title: Consul
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">575</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">125</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">21</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://api.yimian.xyz/img?type=moe')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">蝶梦庄生</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Consul</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-12-14T02:59:00.000Z" title="发表于 2022-12-14 10:59:00">2022-12-14</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-12-14T02:59:00.000Z" title="更新于 2022-12-14 10:59:00">2022-12-14</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%BB%84%E4%BB%B6/">组件</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Consul"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1>Consul</h1>
+<h2 id="Metadata-86">Metadata</h2>
+<pre><code class="language-yml">title: Consul
 date: 2022-12-14 10:59
 tags:
   - 行动阶段/未完成
@@ -175,15 +177,20 @@ keywords:
   - 微服务
 description: 该项目通过自动配置和绑定到Spring Environment和其他Spring编程模型习惯用法，为Spring Boot应用程序提供Consul集成。通过一些简单的注释，您可以快速启用和配置应用程序中的通用模式，并使用基于Consul的组件构建大型分布式系统。提供的模式包括服务发现、控制总线和配置。智能路由和客户端负载均衡，断路器是与其他Spring Cloud项目集成提供的。
 </code></pre>
-<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>该项目通过自动配置和绑定到Spring Environment和其他Spring编程模型习惯用法，为Spring Boot应用程序提供Consul集成。通过一些简单的注释，您可以快速启用和配置应用程序中的通用模式，并使用基于Consul的组件构建大型分布式系统。提供的模式包括服务发现、控制总线和配置。智能路由和客户端负载均衡，断路器是与其他Spring Cloud项目集成提供的。</p>
-<h2 id="服务发现"><a href="#服务发现" class="headerlink" title="服务发现"></a>服务发现</h2><pre><code class="line-numbers language-ad-hint">
+<h2 id="简介-5">简介</h2>
+<p>该项目通过自动配置和绑定到Spring Environment和其他Spring编程模型习惯用法，为Spring Boot应用程序提供Consul集成。通过一些简单的注释，您可以快速启用和配置应用程序中的通用模式，并使用基于Consul的组件构建大型分布式系统。提供的模式包括服务发现、控制总线和配置。智能路由和客户端负载均衡，断路器是与其他Spring Cloud项目集成提供的。</p>
+<h2 id="服务发现">服务发现</h2>
+<pre><code class="language-ad-hint">
 如果您使用Spring Cloud Consul Config，并且您已经设置了 `spring.cloud.bootstrap.enabled=true` 或 `spring.config.use-legacy-processing=true`。或者使用`spring-cloud-starter-bootstrap`，那么上面的值将需要放在`bootstrap.yml`中而不是`application.yml`。
+
 </code></pre>
-<h3 id="引入依赖"><a href="#引入依赖" class="headerlink" title="引入依赖"></a>引入依赖</h3><p>undefined</p>
-<h3 id="注册"><a href="#注册" class="headerlink" title="注册"></a>注册</h3><p>当客户机向Consul注册时，它会提供关于自身的元数据，如主机和端口、id、名称和标记。默认情况下创建一个HTTP Check，领事每10秒访问一次/执行器/运行状况端点。如果健康检查失败，服务实例将被标记为critical。</p>
+<h3 id="引入依赖">引入依赖</h3>
+<p>undefined</p>
+<h3 id="注册">注册</h3>
+<p>当客户机向Consul注册时，它会提供关于自身的元数据，如主机和端口、id、名称和标记。默认情况下创建一个HTTP Check，领事每10秒访问一次/执行器/运行状况端点。如果健康检查失败，服务实例将被标记为critical。</p>
 <p>如果Consul客户端位于localhost:8500之外的其他地方，则需要配置来定位客户端。</p>
 <p><strong>application.yml</strong></p>
-<pre><code class="line-numbers language-yml">spring:
+<pre><code class="language-yml">spring:
   cloud:
     consul:
       host: localhost
@@ -263,7 +270,6 @@ p.admonition-title {
   margin-bottom: 0 !important;
 }
 </style>
-
 <div class="admonition note"><p class="admonition-title"></p><ul>
 <li><code>${Spring .application.name}</code> 服务名</li>
 <li><code>Spring Context ID</code> 实例 ID</li>
@@ -272,9 +278,9 @@ p.admonition-title {
 <li><code>spring.cloud.consul.discovery.register</code> 禁用服务注册</li>
 </ul>
 </div>
-
-<h3 id="将管理注册为单独的服务"><a href="#将管理注册为单独的服务" class="headerlink" title="将管理注册为单独的服务"></a>将管理注册为单独的服务</h3><p>管理服务将从应用服务继承其<code>instanceId</code>和<code>serviceName</code></p>
-<pre><code class="line-numbers language-yml">spring:
+<h3 id="将管理注册为单独的服务">将管理注册为单独的服务</h3>
+<p>管理服务将从应用服务继承其<code>instanceId</code>和<code>serviceName</code></p>
+<pre><code class="language-yml">spring:
   application:
     name: myApp
 management:
@@ -374,16 +380,15 @@ p.admonition-title {
   margin-bottom: 0 !important;
 }
 </style>
-
 <div class="admonition note"><p class="admonition-title"></p><ul>
 <li><code>spring.cloud.consul.discovery.management-port</code> 注册管理服务的端口(默认为 management 端口)</li>
 <li><code>spring.cloud.consul.discovery.management-suffix</code> 注册管理服务时使用的后缀(默认为“management”)</li>
 <li><code>spring.cloud.consul.discovery.management-tags</code> 在注册管理服务时使用的标签(默认为“management”)</li>
 </ul>
 </div>
-
-<h3 id="HTTP健康检查"><a href="#HTTP健康检查" class="headerlink" title="HTTP健康检查"></a>HTTP健康检查</h3><p>Consul实例的健康状况检查默认为“<code>/actuator/health</code>”</p>
-<pre><code class="line-numbers language-yml">spring:
+<h3 id="HTTP健康检查">HTTP健康检查</h3>
+<p>Consul实例的健康状况检查默认为“<code>/actuator/health</code>”</p>
+<pre><code class="language-yml">spring:
   cloud:
     consul:
       discovery:
@@ -466,7 +471,6 @@ p.admonition-title {
   margin-bottom: 0 !important;
 }
 </style>
-
 <div class="admonition note"><p class="admonition-title"></p><ul>
 <li><code>spring.cloud.consul.discovery.healthCheckPath</code> HTTP 健康检查状况路径</li>
 <li><code>spring.cloud.consul.discovery.healthCheckInterval</code> HTTP 健康检查时间间隔</li>
@@ -475,10 +479,12 @@ p.admonition-title {
 <li><code>spring.cloud.consul.discovery.register-health-check</code> 禁用HTTP健康检查</li>
 </ul>
 </div>
-
-<h3 id="致动器健康指示器"><a href="#致动器健康指示器" class="headerlink" title="致动器健康指示器"></a>致动器健康指示器</h3><p>如果服务实例是Spring Boot致动器应用程序，则可能会向其提供以下致动器运行状况指示器。</p>
-<h4 id="DiscoveryClientHealthIndicator"><a href="#DiscoveryClientHealthIndicator" class="headerlink" title="DiscoveryClientHealthIndicator"></a>DiscoveryClientHealthIndicator</h4><p>当领事服务发现处于活动状态时，将配置<code>DiscoverClientHealthIndicator</code>，并使其可用于执行器运行状况端点。请参阅这里的配置选项。</p>
-<h4 id="ConsulHealthIndicator"><a href="#ConsulHealthIndicator" class="headerlink" title="ConsulHealthIndicator"></a>ConsulHealthIndicator</h4><p>配置了一个指示器，用于验证ConsulClient的运行状况。</p>
+<h3 id="致动器健康指示器">致动器健康指示器</h3>
+<p>如果服务实例是Spring Boot致动器应用程序，则可能会向其提供以下致动器运行状况指示器。</p>
+<h4 id="DiscoveryClientHealthIndicator">DiscoveryClientHealthIndicator</h4>
+<p>当领事服务发现处于活动状态时，将配置<code>DiscoverClientHealthIndicator</code>，并使其可用于执行器运行状况端点。请参阅这里的配置选项。</p>
+<h4 id="ConsulHealthIndicator">ConsulHealthIndicator</h4>
+<p>配置了一个指示器，用于验证ConsulClient的运行状况。</p>
 <style>.admonition {
   margin: 1.5625em 0;
   padding: .6rem;
@@ -553,15 +559,14 @@ p.admonition-title {
   margin-bottom: 0 !important;
 }
 </style>
-
 <div class="admonition note"><p class="admonition-title"></p><ul>
 <li><code>spring.cloud.consul.health.indicator.include-services-query</code> 跳过服务检索，只检查领导节点状态(默认情况下，它检索Consul领导节点状态和所有注册服务。在拥有许多注册服务的部署中，在每次运行状况检查中检索所有服务的成本可能很高。)</li>
 <li><code>management.health.consul.enabled=false</code> 禁用指标</li>
 </ul>
 </div>
-
-<h3 id="Metadata-1"><a href="#Metadata-1" class="headerlink" title="Metadata"></a>Metadata</h3><p>Spring Cloud的<code>ServiceInstance</code>有一个<code>Map&lt;String, String&gt;</code>由服务元字段填充的元数据字段。</p>
-<pre><code class="line-numbers language-yml">spring:
+<h3 id="Metadata-87">Metadata</h3>
+<p>Spring Cloud的<code>ServiceInstance</code>有一个<code>Map&lt;String, String&gt;</code>由服务元字段填充的元数据字段。</p>
+<pre><code class="language-yml">spring:
   cloud:
     consul:
       discovery:
@@ -569,7 +574,8 @@ p.admonition-title {
           key: value
 </code></pre>
 <p>key -&gt; value</p>
-<h3 id="实例ID-唯一"><a href="#实例ID-唯一" class="headerlink" title="实例ID 唯一"></a>实例ID 唯一</h3><style>.admonition {
+<h3 id="实例ID-唯一">实例ID 唯一</h3>
+<style>.admonition {
   margin: 1.5625em 0;
   padding: .6rem;
   overflow: hidden;
@@ -643,14 +649,13 @@ p.admonition-title {
   margin-bottom: 0 !important;
 }
 </style>
-
 <div class="admonition note"><p class="admonition-title"></p><ul>
 <li><code>spring.cloud.consul.discovery.instanceid</code> 设置实例ID唯一标识符(默认情况下，Spring Application Context ID是<code>${spring.application.name}:comma，separated,profiles:${server.port}</code>)</li>
 </ul>
 </div>
-
-<h3 id="服务发现客户端-DiscoveryClient"><a href="#服务发现客户端-DiscoveryClient" class="headerlink" title="服务发现客户端 DiscoveryClient"></a>服务发现客户端 DiscoveryClient</h3><p><code>org.springframework.cloud.client.discovery.DiscoveryClient</code>，它为发现客户端提供了一个简单的API</p>
-<pre><code class="line-numbers language-java">@Autowired
+<h3 id="服务发现客户端-DiscoveryClient">服务发现客户端 DiscoveryClient</h3>
+<p><code>org.springframework.cloud.client.discovery.DiscoveryClient</code>，它为发现客户端提供了一个简单的API</p>
+<pre><code class="language-java">@Autowired
 private DiscoveryClient discoveryClient;
 
 public String serviceUrl() {
@@ -661,7 +666,8 @@ public String serviceUrl() {
     return null;
 }
 </code></pre>
-<h3 id="服务监视"><a href="#服务监视" class="headerlink" title="服务监视"></a>服务监视</h3><p>Consul Catalog Watch利用了Consul监视服务的能力。Catalog Watch执行一个阻塞的Consul HTTP API调用，以确定是否有任何服务发生了更改。如果有新的业务数据，则发布Heartbeat Event。</p>
+<h3 id="服务监视">服务监视</h3>
+<p>Consul Catalog Watch利用了Consul监视服务的能力。Catalog Watch执行一个阻塞的Consul HTTP API调用，以确定是否有任何服务发生了更改。如果有新的业务数据，则发布Heartbeat Event。</p>
 <style>.admonition {
   margin: 1.5625em 0;
   padding: .6rem;
@@ -736,15 +742,14 @@ p.admonition-title {
   margin-bottom: 0 !important;
 }
 </style>
-
 <div class="admonition note"><p class="admonition-title"></p><ul>
 <li><code>change spring.cloud.consul.config.discovery.catalog-services-watch-delay</code> 监视频率频率。缺省值是1000，单位是毫秒。延迟是前一个调用结束和下一个调用开始之后的时间量</li>
 <li><code>spring.cloud.consul.discovery.catalogServicesWatch.enabled=false</code> 禁用目录监视</li>
 <li>Watch 使用一个<code>Spring TaskScheduler</code>来安排对<code>consul</code>的调用。默认情况下，它是一个poolSize为1的<code>ThreadPoolTaskScheduler</code>。要更改<code>TaskScheduler</code>，创建一个名为<code>ConsulDiscoveryClientConfiguration.CATALOG_WATCH_TASK_SCHEDULER_NAME</code>的<code>TaskScheduler</code>类型的bean。常数。</li>
 </ul>
 </div>
-
-<h2 id="配置中心"><a href="#配置中心" class="headerlink" title="配置中心"></a>配置中心</h2><p>Consul为存储配置和其他元数据提供了一个键/值存储。<code>Spring Cloud Consul Config</code>是<code>配置服务器和客户端</code>的替代方案。</p>
+<h2 id="配置中心">配置中心</h2>
+<p>Consul为存储配置和其他元数据提供了一个键/值存储。<code>Spring Cloud Consul Config</code>是<code>配置服务器和客户端</code>的替代方案。</p>
 <p>配置在特殊的“引导”阶段加载到Spring环境中。默认情况下，配置文件保存在<code>/config</code>文件夹中。根据应用程序的名称和模仿Spring Cloud Config解析属性顺序的活动概要文件创建多个<code>PropertySource</code>实例。</p>
 <p>例如，一个名为“<code>testApp</code>”，配置文件名为“<code>dev</code>”的应用程序将创建以下属性源:</p>
 <pre><code>config/testApp,dev/
@@ -753,17 +758,20 @@ config/application,dev/
 config/application/
 </code></pre>
 <p><mark style="background: #FF5582A6;">最特定的属性源位于顶部，最不特定的属性源位于底部</mark> 。<code>config/application</code>文件夹中的属性适用于使用consul进行配置的<mark style="background: #FF5582A6;">所有应用程序</mark> 。<code>config/testApp</code>文件夹中的属性只对名为<mark style="background: #FF5582A6;">“testApp”的服务实例可用</mark> 。</p>
-<h3 id="引入依赖-1"><a href="#引入依赖-1" class="headerlink" title="引入依赖"></a>引入依赖</h3><p>undefined</p>
-<h3 id="配置数据导入"><a href="#配置数据导入" class="headerlink" title="配置数据导入"></a>配置数据导入</h3><p><code>spring.config.import</code>属性导入配置数据的新方法。</p>
+<h3 id="引入依赖-2">引入依赖</h3>
+<p>undefined</p>
+<h3 id="配置数据导入">配置数据导入</h3>
+<p><code>spring.config.import</code>属性导入配置数据的新方法。</p>
 <p><strong>application.properties</strong></p>
-<pre><code class="line-numbers language-properties">spring.config.import=optional:consul:
+<pre><code class="language-properties">spring.config.import=optional:consul:
 </code></pre>
 <p>默认导入本地即 <code>http://localhost:8500</code>, 可修改</p>
 <pre><code>spring.config.import=optional:consul:myhost:8500/context/one;/context/two
 </code></pre>
 <p>这将选择只从<code>/context/one</code>和<code>/context/two</code>加载配置。</p>
-<h3 id="个性化"><a href="#个性化" class="headerlink" title="个性化"></a>个性化</h3><p>Consul配置可以使用以下属性自定义:</p>
-<pre><code class="line-numbers language-yml">spring:
+<h3 id="个性化">个性化</h3>
+<p>Consul配置可以使用以下属性自定义:</p>
+<pre><code class="language-yml">spring:
   cloud:
     consul:
       config:
@@ -846,7 +854,6 @@ p.admonition-title {
   margin-bottom: 0 !important;
 }
 </style>
-
 <div class="admonition note"><p class="admonition-title"></p><ul>
 <li><code>enabled</code>将此值设置为“false”将禁用Consul配置</li>
 <li><code>prefix</code>为配置值设置基本文件夹</li>
@@ -854,8 +861,8 @@ p.admonition-title {
 <li><code>profilesseparator</code>设置分隔符的值，该分隔符用于将属性源中的配置文件名称与配置文件分开</li>
 </ul>
 </div>
-
-<h3 id="配置监视"><a href="#配置监视" class="headerlink" title="配置监视"></a>配置监视</h3><p><code>Consul Config Watch</code>利用Consul监视<mark style="background: #FF5582A6;">键前缀</mark> 的能力。</p>
+<h3 id="配置监视">配置监视</h3>
+<p><code>Consul Config Watch</code>利用Consul监视<mark style="background: #FF5582A6;">键前缀</mark> 的能力。</p>
 <style>.admonition {
   margin: 1.5625em 0;
   padding: .6rem;
@@ -930,17 +937,16 @@ p.admonition-title {
   margin-bottom: 0 !important;
 }
 </style>
-
 <div class="admonition note"><p class="admonition-title"></p><ul>
 <li><code>spring.cloud.consul.config.watch.delay</code> 监视频率 缺省值是1000，单位是毫秒。延迟是前一个调用结束和下一个调用开始之后的时间量。</li>
 <li><code>spring.cloud.consul.config.watch.enabled=false</code> 禁用配置监视设置</li>
 <li>Watch 使用一个<code>Spring TaskScheduler</code>来安排对领事的调用。默认情况下，它是一个<code>poolSize</code>为1的<code>ThreadPoolTaskScheduler</code>。要更改<code>TaskScheduler</code>，创建一个名为常数 <code>ConsulConfigAutoConfiguration.CONFIG_WATCH_TASK_SCHEDULER_NAME</code>类型为<code>TaskScheduler</code>的bean。</li>
 </ul>
 </div>
-
-<h3 id="YAML-或-Properties-配置"><a href="#YAML-或-Properties-配置" class="headerlink" title="YAML 或 Properties 配置"></a>YAML 或 Properties 配置</h3><p>相对于单独的键/值对，用YAML或properties格式存储一组属性可能更方便。</p>
+<h3 id="YAML-或-Properties-配置">YAML 或 Properties 配置</h3>
+<p>相对于单独的键/值对，用YAML或properties格式存储一组属性可能更方便。</p>
 <p>将<code>spring.cloud.conf.config.format</code>属性设置为<code>YAML</code>或<code>PROPERTIES</code>。</p>
-<pre><code class="line-numbers language-yml">spring:
+<pre><code class="language-yml">spring:
   cloud:
     consul:
       config:
@@ -953,8 +959,9 @@ config/application,dev/data
 config/application/data
 </code></pre>
 <p>您可以使用<code>spring.cloud.consul.config.data-key</code>更改数据键。</p>
-<h3 id="git2consul-配置"><a href="#git2consul-配置" class="headerlink" title="git2consul 配置"></a>git2consul 配置</h3><p><code>git2consul</code>是一个Consul社区项目，它将文件从一个git存储库加载到Consul的各个密钥中。缺省情况下，密钥的名称是文件的名称。支持YAML和Properties文件，文件扩展名分别为<code>.yml</code>和<code>. properties</code>。将<code>spring.cloud.conf.config.format</code>属性设置为FILES。</p>
-<pre><code class="line-numbers language-yml">spring:
+<h3 id="git2consul-配置">git2consul 配置</h3>
+<p><code>git2consul</code>是一个Consul社区项目，它将文件从一个git存储库加载到Consul的各个密钥中。缺省情况下，密钥的名称是文件的名称。支持YAML和Properties文件，文件扩展名分别为<code>.yml</code>和<code>. properties</code>。将<code>spring.cloud.conf.config.format</code>属性设置为FILES。</p>
+<pre><code class="language-yml">spring:
   cloud:
     consul:
       config:
@@ -975,7 +982,8 @@ config/foo.properties
 config/application.yml
 </code></pre>
 <p>每个键的值需要是一个正确格式化的YAML或Properties文件。</p>
-<h2 id="重试"><a href="#重试" class="headerlink" title="重试"></a>重试</h2><style>.admonition {
+<h2 id="重试">重试</h2>
+<style>.admonition {
   margin: 1.5625em 0;
   padding: .6rem;
   overflow: hidden;
@@ -1049,16 +1057,16 @@ p.admonition-title {
   margin-bottom: 0 !important;
 }
 </style>
-
 <div class="admonition note"><p class="admonition-title"></p><p>如果您期望 Consul Agent 在您的应用程序启动时偶尔不可用，您可以要求它在失败后继续尝试。您需要将<code>spring-retry</code>和<code>spring-boot-starter-aop</code>添加到类路径中。默认行为是重试6次，初始回退间隔为1000ms，后续回退的指数乘数为1.1。您可以使用<code>spring.cloud.consul.retry.*</code></p>
 </div>
-
-<h2 id="通用配置属性"><a href="#通用配置属性" class="headerlink" title="通用配置属性"></a>通用配置属性</h2><p>undefined</p>
-<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><ul>
+<h2 id="通用配置属性">通用配置属性</h2>
+<p>undefined</p>
+<h2 id="参考文献-4">参考文献</h2>
+<ul>
 <li><a target="_blank" rel="noopener" href="https://docs.spring.io/spring-cloud-consul/docs/current/reference/html/">docs.spring.io</a></li>
 <li><a href="obsidian://open?vault=InboxSpace&amp;file=KnowladgeSpace%2FProgramSpace%2FModuleSpace%2FConsul%20%E6%95%99%E7%A8%8B%2FConsul%20%E6%95%99%E7%A8%8B">InboxSpace/KnowladgeSpace/ProgramSpace/ModuleSpace/Consul 教程</a></li>
 </ul>
-</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a target="_blank" rel="noopener" href="https://github.com/yu627482453">Bill Cipher</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://yu627482453.github.io/module/consul/consul/">https://yu627482453.github.io/module/consul/consul/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://yu627482453.github.io" target="_blank">蝶梦庄生</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E8%A1%8C%E5%8A%A8%E9%98%B6%E6%AE%B5-%E6%9C%AA%E5%AE%8C%E6%88%90/">行动阶段/未完成</a><a class="post-meta__tags" href="/tags/%E4%B8%BB%E9%A2%98%E5%9C%BA%E6%99%AF-%E7%BB%84%E4%BB%B6/">主题场景/组件</a><a class="post-meta__tags" href="/tags/%E7%AC%94%E8%AE%B0%E7%A9%BA%E9%97%B4-KnowladgeSpace-ProgramSpace-ModuleSpace/">笔记空间/KnowladgeSpace/ProgramSpace/ModuleSpace</a><a class="post-meta__tags" href="/tags/%E7%BB%86%E5%8C%96%E4%B8%BB%E9%A2%98-%E5%BE%AE%E6%9C%8D%E5%8A%A1/">细化主题/微服务</a><a class="post-meta__tags" href="/tags/%E7%BB%86%E5%8C%96%E4%B8%BB%E9%A2%98-%E9%85%8D%E7%BD%AE%E4%B8%AD%E5%BF%83/">细化主题/配置中心</a><a class="post-meta__tags" href="/tags/%E7%BB%86%E5%8C%96%E4%B8%BB%E9%A2%98-%E6%B3%A8%E5%86%8C%E4%B8%AD%E5%BF%83/">细化主题/注册中心</a><a class="post-meta__tags" href="/tags/%E7%BB%86%E5%8C%96%E4%B8%BB%E9%A2%98-%E6%9C%8D%E5%8A%A1%E5%8F%91%E7%8E%B0/">细化主题/服务发现</a><a class="post-meta__tags" href="/tags/%E7%BB%86%E5%8C%96%E4%B8%BB%E9%A2%98-%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C/">细化主题/服务注册</a><a class="post-meta__tags" href="/tags/%E7%BB%86%E5%8C%96%E4%B8%BB%E9%A2%98-%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/">细化主题/负载均衡</a></div><div class="post_share"><div class="social-share" data-image="https://api.yimian.xyz/img?type=moe" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/reward/wechat.jpg" target="_blank"><img class="post-qr-code-img" src="/img/reward/wechat.jpg" alt="wechat"/></a><div class="post-qr-code-desc">wechat</div></li><li class="reward-item"><a href="/img/reward/alipay.jpg" target="_blank"><img class="post-qr-code-img" src="/img/reward/alipay.jpg" alt="alipay"/></a><div class="post-qr-code-desc">alipay</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/module/dubbo/dubbo/"><img class="prev-cover" src="https://api.yimian.xyz/img?type=moe" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Dubbo</div></div></a></div><div class="next-post pull-right"><a href="/jmeter/jmeter-zu-jian-xiang-jie-assertions-duan-yan/"><img class="next-cover" src="/cover/JMeter-cover.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">JMeter 组件详解 -Assertions 断言</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/module/eureka/eureka/" title="Eureka"><img class="cover" src="https://api.yimian.xyz/img?type=moe" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-12-14</div><div class="title">Eureka</div></div></a></div><div><a href="/module/nacos/nacos/" title="Nacos"><img class="cover" src="https://api.yimian.xyz/img?type=moe" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-01-04</div><div class="title">Nacos</div></div></a></div><div><a href="/module/ribbon/ribbon/" title="Ribbon"><img class="cover" src="https://api.yimian.xyz/img?type=moe" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-12-14</div><div class="title">Ribbon</div></div></a></div><div><a href="/module/rabbitmq/rabbitmq/" title="RabbitMQ"><img class="cover" src="https://api.yimian.xyz/img?type=moe" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-12-14</div><div class="title">RabbitMQ</div></div></a></div><div><a href="/module/sentinel/sentinel/" title="Sentinel"><img class="cover" src="https://api.yimian.xyz/img?type=moe" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-01-09</div><div class="title">Sentinel</div></div></a></div><div><a href="/module/sentinel/sentinel-shi-yong-wen-dang/sentinel-shi-yong-wen-dang/" title="【Sentinel】 使用文档"><img class="cover" src="https://api.yimian.xyz/img?type=moe" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-01-11</div><div class="title">【Sentinel】 使用文档</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="gitalk-container"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Bill Cipher</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">575</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">125</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">21</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/yu627482453"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/yu627482453" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="/627482453@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Consul"><span class="toc-number">1.</span> <span class="toc-text">Consul</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Metadata"><span class="toc-number">1.1.</span> <span class="toc-text">Metadata</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%80%E4%BB%8B"><span class="toc-number">1.2.</span> <span class="toc-text">简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%8D%E5%8A%A1%E5%8F%91%E7%8E%B0"><span class="toc-number">1.3.</span> <span class="toc-text">服务发现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%95%E5%85%A5%E4%BE%9D%E8%B5%96"><span class="toc-number">1.3.1.</span> <span class="toc-text">引入依赖</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B3%A8%E5%86%8C"><span class="toc-number">1.3.2.</span> <span class="toc-text">注册</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B0%86%E7%AE%A1%E7%90%86%E6%B3%A8%E5%86%8C%E4%B8%BA%E5%8D%95%E7%8B%AC%E7%9A%84%E6%9C%8D%E5%8A%A1"><span class="toc-number">1.3.3.</span> <span class="toc-text">将管理注册为单独的服务</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HTTP%E5%81%A5%E5%BA%B7%E6%A3%80%E6%9F%A5"><span class="toc-number">1.3.4.</span> <span class="toc-text">HTTP健康检查</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%87%B4%E5%8A%A8%E5%99%A8%E5%81%A5%E5%BA%B7%E6%8C%87%E7%A4%BA%E5%99%A8"><span class="toc-number">1.3.5.</span> <span class="toc-text">致动器健康指示器</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#DiscoveryClientHealthIndicator"><span class="toc-number">1.3.5.1.</span> <span class="toc-text">DiscoveryClientHealthIndicator</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ConsulHealthIndicator"><span class="toc-number">1.3.5.2.</span> <span class="toc-text">ConsulHealthIndicator</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Metadata-1"><span class="toc-number">1.3.6.</span> <span class="toc-text">Metadata</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E4%BE%8BID-%E5%94%AF%E4%B8%80"><span class="toc-number">1.3.7.</span> <span class="toc-text">实例ID 唯一</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%8D%E5%8A%A1%E5%8F%91%E7%8E%B0%E5%AE%A2%E6%88%B7%E7%AB%AF-DiscoveryClient"><span class="toc-number">1.3.8.</span> <span class="toc-text">服务发现客户端 DiscoveryClient</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%8D%E5%8A%A1%E7%9B%91%E8%A7%86"><span class="toc-number">1.3.9.</span> <span class="toc-text">服务监视</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E4%B8%AD%E5%BF%83"><span class="toc-number">1.4.</span> <span class="toc-text">配置中心</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%95%E5%85%A5%E4%BE%9D%E8%B5%96-1"><span class="toc-number">1.4.1.</span> <span class="toc-text">引入依赖</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E6%95%B0%E6%8D%AE%E5%AF%BC%E5%85%A5"><span class="toc-number">1.4.2.</span> <span class="toc-text">配置数据导入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%AA%E6%80%A7%E5%8C%96"><span class="toc-number">1.4.3.</span> <span class="toc-text">个性化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E7%9B%91%E8%A7%86"><span class="toc-number">1.4.4.</span> <span class="toc-text">配置监视</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#YAML-%E6%88%96-Properties-%E9%85%8D%E7%BD%AE"><span class="toc-number">1.4.5.</span> <span class="toc-text">YAML 或 Properties 配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#git2consul-%E9%85%8D%E7%BD%AE"><span class="toc-number">1.4.6.</span> <span class="toc-text">git2consul 配置</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%87%8D%E8%AF%95"><span class="toc-number">1.5.</span> <span class="toc-text">重试</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%9A%E7%94%A8%E9%85%8D%E7%BD%AE%E5%B1%9E%E6%80%A7"><span class="toc-number">1.6.</span> <span class="toc-text">通用配置属性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="toc-number">1.7.</span> <span class="toc-text">参考文献</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/module/flowable/flowable-zhuan-lan/flowable-zhuan-lan/" title="无题"><img src="https://api.yimian.xyz/img?type=moe" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/module/flowable/flowable-zhuan-lan/flowable-zhuan-lan/" title="无题">无题</a><time datetime="2023-07-15T09:45:06.401Z" title="发表于 2023-07-15 17:45:06">2023-07-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/module/consul/part/consul-tong-yong-pei-zhi-shu-xing/" title="无题"><img src="https://api.yimian.xyz/img?type=moe" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/module/consul/part/consul-tong-yong-pei-zhi-shu-xing/" title="无题">无题</a><time datetime="2023-07-15T09:44:38.408Z" title="发表于 2023-07-15 17:44:38">2023-07-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/java/java-duo-xian-cheng-bing-fa/java-duo-xian-cheng-bing-fa-xian-cheng/java-duo-xian-cheng-bing-fa-xian-cheng/" title="【Java 多线程并发】 线程"><img src="https://api.yimian.xyz/img?type=moe" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【Java 多线程并发】 线程"/></a><div class="content"><a class="title" href="/java/java-duo-xian-cheng-bing-fa/java-duo-xian-cheng-bing-fa-xian-cheng/java-duo-xian-cheng-bing-fa-xian-cheng/" title="【Java 多线程并发】 线程">【Java 多线程并发】 线程</a><time datetime="2023-07-10T06:15:00.000Z" title="发表于 2023-07-10 14:15:00">2023-07-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/java/java-jvm/java-jvm-nei-cun-guan-li/java-jvm-zhi-jie-nei-cun/" title="【Java JVM】 直接内存"><img src="https://api.yimian.xyz/img?type=moe" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【Java JVM】 直接内存"/></a><div class="content"><a class="title" href="/java/java-jvm/java-jvm-nei-cun-guan-li/java-jvm-zhi-jie-nei-cun/" title="【Java JVM】 直接内存">【Java JVM】 直接内存</a><time datetime="2023-07-10T00:00:00.000Z" title="发表于 2023-07-10 08:00:00">2023-07-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/database/redis/redis-chong-dian-gong-neng/redis-pai-xu/" title="【Redis】 排序"><img src="https://api.yimian.xyz/img?type=moe" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【Redis】 排序"/></a><div class="content"><a class="title" href="/database/redis/redis-chong-dian-gong-neng/redis-pai-xu/" title="【Redis】 排序">【Redis】 排序</a><time datetime="2023-07-09T06:07:00.000Z" title="发表于 2023-07-09 14:07:00">2023-07-09</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By Bill Cipher</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>function addGitalkSource () {
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a target="_blank" rel="noopener" href="https://github.com/yu627482453">Bill Cipher</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://yu627482453.github.io/module/consul/consul/">https://yu627482453.github.io/module/consul/consul/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://yu627482453.github.io" target="_blank">蝶梦庄生</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E4%B8%BB%E9%A2%98%E5%9C%BA%E6%99%AF-%E7%BB%84%E4%BB%B6/">主题场景/组件</a><a class="post-meta__tags" href="/tags/%E7%AC%94%E8%AE%B0%E7%A9%BA%E9%97%B4-KnowladgeSpace-ProgramSpace-ModuleSpace/">笔记空间/KnowladgeSpace/ProgramSpace/ModuleSpace</a><a class="post-meta__tags" href="/tags/%E7%BB%86%E5%8C%96%E4%B8%BB%E9%A2%98-%E6%B3%A8%E5%86%8C%E4%B8%AD%E5%BF%83/">细化主题/注册中心</a><a class="post-meta__tags" href="/tags/%E7%BB%86%E5%8C%96%E4%B8%BB%E9%A2%98-%E6%9C%8D%E5%8A%A1%E5%8F%91%E7%8E%B0/">细化主题/服务发现</a><a class="post-meta__tags" href="/tags/%E7%BB%86%E5%8C%96%E4%B8%BB%E9%A2%98-%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C/">细化主题/服务注册</a><a class="post-meta__tags" href="/tags/%E7%BB%86%E5%8C%96%E4%B8%BB%E9%A2%98-%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/">细化主题/负载均衡</a><a class="post-meta__tags" href="/tags/%E7%BB%86%E5%8C%96%E4%B8%BB%E9%A2%98-%E5%BE%AE%E6%9C%8D%E5%8A%A1/">细化主题/微服务</a><a class="post-meta__tags" href="/tags/%E8%A1%8C%E5%8A%A8%E9%98%B6%E6%AE%B5-%E6%9C%AA%E5%AE%8C%E6%88%90/">行动阶段/未完成</a><a class="post-meta__tags" href="/tags/%E7%BB%86%E5%8C%96%E4%B8%BB%E9%A2%98-%E9%85%8D%E7%BD%AE%E4%B8%AD%E5%BF%83/">细化主题/配置中心</a></div><div class="post_share"><div class="social-share" data-image="https://api.yimian.xyz/img?type=moe" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/reward/wechat.jpg" target="_blank"><img class="post-qr-code-img" src="/img/reward/wechat.jpg" alt="wechat"/></a><div class="post-qr-code-desc">wechat</div></li><li class="reward-item"><a href="/img/reward/alipay.jpg" target="_blank"><img class="post-qr-code-img" src="/img/reward/alipay.jpg" alt="alipay"/></a><div class="post-qr-code-desc">alipay</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/module/dubbo/dubbo/"><img class="prev-cover" src="https://api.yimian.xyz/img?type=moe" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Dubbo</div></div></a></div><div class="next-post pull-right"><a href="/jmeter/jmeter-zu-jian-xiang-jie-assertions-duan-yan/"><img class="next-cover" src="/cover/JMeter-cover.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">JMeter 组件详解 -Assertions 断言</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/module/eureka/eureka/" title="Eureka"><img class="cover" src="https://api.yimian.xyz/img?type=moe" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-12-14</div><div class="title">Eureka</div></div></a></div><div><a href="/module/nacos/nacos/" title="Nacos"><img class="cover" src="https://api.yimian.xyz/img?type=moe" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-01-04</div><div class="title">Nacos</div></div></a></div><div><a href="/module/ribbon/ribbon/" title="Ribbon"><img class="cover" src="https://api.yimian.xyz/img?type=moe" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-12-14</div><div class="title">Ribbon</div></div></a></div><div><a href="/module/dubbo/dubbo/" title="Dubbo"><img class="cover" src="https://api.yimian.xyz/img?type=moe" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-12-14</div><div class="title">Dubbo</div></div></a></div><div><a href="/module/openfeign/openfeign/" title="OpenFeign"><img class="cover" src="https://api.yimian.xyz/img?type=moe" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-01-02</div><div class="title">OpenFeign</div></div></a></div><div><a href="/module/rabbitmq/rabbitmq/" title="RabbitMQ"><img class="cover" src="https://api.yimian.xyz/img?type=moe" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-12-14</div><div class="title">RabbitMQ</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="gitalk-container"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Bill Cipher</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">575</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">125</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">21</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/yu627482453"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/yu627482453" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="/627482453@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">1.</span> <span class="toc-text">Consul</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Metadata-86"><span class="toc-number">1.1.</span> <span class="toc-text">Metadata</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%80%E4%BB%8B-5"><span class="toc-number">1.2.</span> <span class="toc-text">简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%8D%E5%8A%A1%E5%8F%91%E7%8E%B0"><span class="toc-number">1.3.</span> <span class="toc-text">服务发现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%95%E5%85%A5%E4%BE%9D%E8%B5%96"><span class="toc-number">1.3.1.</span> <span class="toc-text">引入依赖</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B3%A8%E5%86%8C"><span class="toc-number">1.3.2.</span> <span class="toc-text">注册</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B0%86%E7%AE%A1%E7%90%86%E6%B3%A8%E5%86%8C%E4%B8%BA%E5%8D%95%E7%8B%AC%E7%9A%84%E6%9C%8D%E5%8A%A1"><span class="toc-number">1.3.3.</span> <span class="toc-text">将管理注册为单独的服务</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HTTP%E5%81%A5%E5%BA%B7%E6%A3%80%E6%9F%A5"><span class="toc-number">1.3.4.</span> <span class="toc-text">HTTP健康检查</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%87%B4%E5%8A%A8%E5%99%A8%E5%81%A5%E5%BA%B7%E6%8C%87%E7%A4%BA%E5%99%A8"><span class="toc-number">1.3.5.</span> <span class="toc-text">致动器健康指示器</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#DiscoveryClientHealthIndicator"><span class="toc-number">1.3.5.1.</span> <span class="toc-text">DiscoveryClientHealthIndicator</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ConsulHealthIndicator"><span class="toc-number">1.3.5.2.</span> <span class="toc-text">ConsulHealthIndicator</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Metadata-87"><span class="toc-number">1.3.6.</span> <span class="toc-text">Metadata</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E4%BE%8BID-%E5%94%AF%E4%B8%80"><span class="toc-number">1.3.7.</span> <span class="toc-text">实例ID 唯一</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%8D%E5%8A%A1%E5%8F%91%E7%8E%B0%E5%AE%A2%E6%88%B7%E7%AB%AF-DiscoveryClient"><span class="toc-number">1.3.8.</span> <span class="toc-text">服务发现客户端 DiscoveryClient</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%8D%E5%8A%A1%E7%9B%91%E8%A7%86"><span class="toc-number">1.3.9.</span> <span class="toc-text">服务监视</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E4%B8%AD%E5%BF%83"><span class="toc-number">1.4.</span> <span class="toc-text">配置中心</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%95%E5%85%A5%E4%BE%9D%E8%B5%96-2"><span class="toc-number">1.4.1.</span> <span class="toc-text">引入依赖</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E6%95%B0%E6%8D%AE%E5%AF%BC%E5%85%A5"><span class="toc-number">1.4.2.</span> <span class="toc-text">配置数据导入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%AA%E6%80%A7%E5%8C%96"><span class="toc-number">1.4.3.</span> <span class="toc-text">个性化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E7%9B%91%E8%A7%86"><span class="toc-number">1.4.4.</span> <span class="toc-text">配置监视</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#YAML-%E6%88%96-Properties-%E9%85%8D%E7%BD%AE"><span class="toc-number">1.4.5.</span> <span class="toc-text">YAML 或 Properties 配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#git2consul-%E9%85%8D%E7%BD%AE"><span class="toc-number">1.4.6.</span> <span class="toc-text">git2consul 配置</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%87%8D%E8%AF%95"><span class="toc-number">1.5.</span> <span class="toc-text">重试</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%9A%E7%94%A8%E9%85%8D%E7%BD%AE%E5%B1%9E%E6%80%A7"><span class="toc-number">1.6.</span> <span class="toc-text">通用配置属性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE-4"><span class="toc-number">1.7.</span> <span class="toc-text">参考文献</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/module/flowable/flowable-zhuan-lan/flowable-zhuan-lan/" title="无题"><img src="https://api.yimian.xyz/img?type=moe" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/module/flowable/flowable-zhuan-lan/flowable-zhuan-lan/" title="无题">无题</a><time datetime="2023-07-15T09:45:06.401Z" title="发表于 2023-07-15 17:45:06">2023-07-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/module/consul/part/consul-tong-yong-pei-zhi-shu-xing/" title="无题"><img src="https://api.yimian.xyz/img?type=moe" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/module/consul/part/consul-tong-yong-pei-zhi-shu-xing/" title="无题">无题</a><time datetime="2023-07-15T09:44:38.408Z" title="发表于 2023-07-15 17:44:38">2023-07-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/java/java-duo-xian-cheng-bing-fa/java-duo-xian-cheng-bing-fa-xian-cheng/java-duo-xian-cheng-bing-fa-xian-cheng/" title="【Java 多线程并发】 线程"><img src="https://api.yimian.xyz/img?type=moe" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【Java 多线程并发】 线程"/></a><div class="content"><a class="title" href="/java/java-duo-xian-cheng-bing-fa/java-duo-xian-cheng-bing-fa-xian-cheng/java-duo-xian-cheng-bing-fa-xian-cheng/" title="【Java 多线程并发】 线程">【Java 多线程并发】 线程</a><time datetime="2023-07-10T06:15:00.000Z" title="发表于 2023-07-10 14:15:00">2023-07-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/java/java-jvm/java-jvm-nei-cun-guan-li/java-jvm-zhi-jie-nei-cun/" title="【Java JVM】 直接内存"><img src="https://api.yimian.xyz/img?type=moe" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【Java JVM】 直接内存"/></a><div class="content"><a class="title" href="/java/java-jvm/java-jvm-nei-cun-guan-li/java-jvm-zhi-jie-nei-cun/" title="【Java JVM】 直接内存">【Java JVM】 直接内存</a><time datetime="2023-07-10T00:00:00.000Z" title="发表于 2023-07-10 08:00:00">2023-07-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/database/redis/redis-chong-dian-gong-neng/redis-pai-xu/" title="【Redis】 排序"><img src="https://api.yimian.xyz/img?type=moe" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【Redis】 排序"/></a><div class="content"><a class="title" href="/database/redis/redis-chong-dian-gong-neng/redis-pai-xu/" title="【Redis】 排序">【Redis】 排序</a><time datetime="2023-07-09T06:07:00.000Z" title="发表于 2023-07-09 14:07:00">2023-07-09</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By Bill Cipher</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>function addGitalkSource () {
   const ele = document.createElement('link')
   ele.rel = 'stylesheet'
   ele.href= 'https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.css'
