@@ -1,0 +1,965 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>【Java 多线程并发】 Thread | 蝶梦庄生</title><meta name="keywords" content="Java"><meta name="author" content="Bill Cipher"><meta name="copyright" content="Bill Cipher"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Thread类是Java多线程编程的核心类，通过它可以创建和管理线程，实现多任务并发执行。合理使用Thread类可以提高程序的性能和效率，但也需要注意线程安全问题。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【Java 多线程并发】 Thread">
+<meta property="og:url" content="https://yu627482453.github.io/java/java-duo-xian-cheng-bing-fa/java-duo-xian-cheng-bing-fa-xian-cheng/java-duo-xian-cheng-bing-fa-thread/index.html">
+<meta property="og:site_name" content="蝶梦庄生">
+<meta property="og:description" content="Thread类是Java多线程编程的核心类，通过它可以创建和管理线程，实现多任务并发执行。合理使用Thread类可以提高程序的性能和效率，但也需要注意线程安全问题。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.seovx.com/?mom=302">
+<meta property="article:published_time" content="2023-07-03T01:54:00.000Z">
+<meta property="article:modified_time" content="2023-07-03T01:54:00.000Z">
+<meta property="article:author" content="Bill Cipher">
+<meta property="article:tag" content="行动阶段&#x2F;完成">
+<meta property="article:tag" content="笔记空间&#x2F;KnowladgeSpace&#x2F;ProgramSpace&#x2F;BasicsSpace">
+<meta property="article:tag" content="细化主题&#x2F;Java">
+<meta property="article:tag" content="主题场景&#x2F;程序">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.seovx.com/?mom=302"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://yu627482453.github.io/java/java-duo-xian-cheng-bing-fa/java-duo-xian-cheng-bing-fa-xian-cheng/java-duo-xian-cheng-bing-fa-thread/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: undefined,
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: Bill Cipher","link":"链接: ","source":"来源: 蝶梦庄生","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '【Java 多线程并发】 Thread',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-07-03 09:54:00'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.2.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">240</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">69</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cdn.seovx.com/?mom=302')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">蝶梦庄生</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">【Java 多线程并发】 Thread</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-07-03T01:54:00.000Z" title="发表于 2023-07-03 09:54:00">2023-07-03</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-07-03T01:54:00.000Z" title="更新于 2023-07-03 09:54:00">2023-07-03</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Java/">Java</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="【Java 多线程并发】 Thread"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1>【Java 多线程并发】 Thread</h1>
+<h2 id="Metadata-65">Metadata</h2>
+<pre><code class="language-yml">title: 【Java 多线程并发】 Thread
+date: 2023-07-03 09:54
+tags:
+  - 行动阶段/完成
+  - 主题场景/程序
+  - 笔记空间/KnowladgeSpace/ProgramSpace/BasicsSpace
+  - 细化主题/Java
+categories:
+  - Java
+keywords:
+  - Java
+description: Thread类是Java多线程编程的核心类，通过它可以创建和管理线程，实现多任务并发执行。合理使用Thread类可以提高程序的性能和效率，但也需要注意线程安全问题。
+</code></pre>
+<h2 id="概述-32">概述</h2>
+<p>Thread类是Java中用于创建和管理线程的类。</p>
+<p><strong>Thread类的继承关系</strong></p>
+<p><img src="/attachment/8f7f9535d47c5d3cdd338e4ae25ab51d.png" alt=""></p>
+<p><strong>Thread 数据结构</strong></p>
+<pre><code class="language-java">//当前线程的名称
+private volatile String name;
+//线程的优先级
+private int            priority;
+private Thread threadQ;
+private long eetop;
+//当前线程是否是单步线程
+private boolean single_step;
+//当前线程是否在后台运行
+private boolean     daemon = false;
+//Java虚拟机的状态
+private boolean     stillborn = false;
+//真正在线程中执行的任务
+private Runnable target;
+//当前线程所在的线程组
+private ThreadGroup group;
+//当前线程的类加载器
+private ClassLoader contextClassLoader;
+//访问控制上下文
+private AccessControlContext inheritedAccessControlContext;
+//为匿名线程生成名称的编号
+private static int threadInitNumber;
+//与此线程相关的ThreadLocal,这个Map维护的是ThreadLocal类
+ThreadLocal.ThreadLocalMap threadLocals = null;
+//与此线程相关的ThreadLocal
+ThreadLocal.ThreadLocalMap inheritableThreadLocals = null;
+//当前线程请求的堆栈大小，如果未指定堆栈大小，则会交给JVM来处理
+private long stackSize;
+//线程终止后存在的JVM私有状态
+private long nativeParkEventPointer;
+//线程的id
+private long tid;
+//用于生成线程id
+private static long threadSeqNumber;
+//当前线程的状态，初始化为0，代表当前线程还未启动
+private volatile int threadStatus = 0;
+//由（私有）java.util.concurrent.locks.LockSupport.setBlocker设置
+//使用java.util.concurrent.locks.LockSupport.getBlocker访问
+volatile Object parkBlocker;
+//Interruptible接口中定义了interrupt方法，用来中断指定的线程
+private volatile Interruptible blocker;
+//当前线程的内部锁
+private final Object blockerLock = new Object();
+//线程拥有的最小优先级
+public final static int MIN_PRIORITY = 1;
+//线程拥有的默认优先级
+public final static int NORM_PRIORITY = 5;
+//线程拥有的最大优先级
+public final static int MAX_PRIORITY = 10;
+</code></pre>
+<p><strong>线程的状态定义</strong></p>
+<pre><code class="language-java">public enum State {
+ //初始化状态
+    NEW,
+ //可运行状态，此时的可运行包括运行中的状态和就绪状态
+    RUNNABLE,
+ //线程阻塞状态
+    BLOCKED,
+ //等待状态
+    WAITING,
+ //超时等待状态
+    TIMED_WAITING,
+ //线程终止状态
+    TERMINATED;
+}
+</code></pre>
+<p><img src="/attachment/94009ea1cc8988a6eaf4b421c2f1fb8f.png" alt=""></p>
+<p><strong>init()方法</strong></p>
+<ol>
+<li>设置线程名</li>
+<li>父线程设置</li>
+<li>安全校验</li>
+<li>设置操作</li>
+</ol>
+<p><strong>run()方法</strong></p>
+<p>调用了Runnable对象的run()方法</p>
+<p><strong>start()方法</strong></p>
+<p><strong>start()方法使用synchronized关键字修饰</strong>，说明start()方法是同步的，它会<strong>在启动线程前检查线程的状态</strong>，如果不是初始化状态，则直接抛出异常。<br>
+<strong>一个线程只能启动一次，多次启动是会抛出异常的。</strong></p>
+<p><strong>sleep()方法</strong></p>
+<p>使当前线程休眠</p>
+<p><strong>join()方法</strong></p>
+<p>一直等待线程超时或者终止</p>
+<ol>
+<li>首先，代码检查传入的等待时间<strong>是否为负数</strong>，如果是负数则抛出IllegalArgumentException异常。</li>
+<li>然后，代码<strong>根据传入的等待时间进行不同的处理</strong>。</li>
+<li>如果等待时间不为0，代码进入另一个循环，该循环会在给定的时间内等待当前线程终止。</li>
+<li>最后，当当前线程终止时，代码退出循环，方法执行结束。</li>
+</ol>
+<p><strong>interrupt()方法</strong></p>
+<p>中断当前线程的方法</p>
+<p>这段代码实现了中断线程的功能。当线程被中断时，如果线程正在阻塞状态，则会通过 blocker 对象来中断线程；如果线程没有被阻塞，则直接设置中断标志。</p>
+<ol>
+<li><strong>代码检查当前线程是否是自身</strong>。</li>
+<li>代码使用 synchronized 关键字来同步访问 blockerLock 对象</li>
+<li>接下来，代码获取 blocker 对象的引用。</li>
+<li>如果 blocker 对象不为空，说明线程正在被阻塞。此时，代码调用 interrupt0() 方法来设置中断标志，并调用 blocker.interrupt(this) 方法来通知 blocker 对象中断当前线程。然后，方法返回。</li>
+<li>如果 blocker 对象为空，说明线程没有被阻塞。此时，代码直接调用 interrupt0() 方法来设置中断标志。</li>
+</ol>
+<h2 id="【Java-多线程并发】-Thread">【Java 多线程并发】 Thread</h2>
+<p>Thread类是Java中用于创建和管理线程的类。它提供了一系列方法来操作线程，包括线程的启动、暂停、恢复、中断等。通过使用Thread类，可以实现多线程的并发执行，提高程序的性能和效率。</p>
+<p>Thread类可以通过两种方式来创建线程：继承Thread类并重写run()方法，或者实现Runnable接口。通过重写run()方法，可以定义线程的执行逻辑。线程的启动通过调用start()方法来实现，该方法会启动一个新的线程，并自动调用run()方法。</p>
+<p>Thread类还提供了其他一些方法来管理和控制线程的行为。例如，可以使用sleep()方法让线程暂停执行一段时间，使用join()方法等待线程执行完成，使用interrupt()方法中断线程的执行，使用isAlive()方法判断线程是否处于活动状态等。</p>
+<p>总结来说，Thread类是Java多线程编程的核心类，通过它可以创建和管理线程，实现多任务并发执行。合理使用Thread类可以提高程序的性能和效率，但也需要注意线程安全问题。</p>
+<h2 id="Thread类的继承关系">Thread类的继承关系</h2>
+<p><img src="/attachment/8f7f9535d47c5d3cdd338e4ae25ab51d.png" alt=""></p>
+<p>由上图我们可以看出，Thread类实现了Runnable接口，而Runnable在JDK 1.8中被@FunctionalInterface注解标记为函数式接口，Runnable接口在JDK 1.8中的源代码如下所示。</p>
+<p>undefined</p>
+<h2 id="Thread类的源码剖析">Thread类的源码剖析</h2>
+<h3 id="Thread类定义">Thread类定义</h3>
+<p>Thread在java.lang包下，Thread类的定义如下所示。</p>
+<pre><code class="language-java">public class Thread implements Runnable {
+	...
+}
+</code></pre>
+<h3 id="加载本地资源">加载本地资源</h3>
+<p>打开Thread类后，首先，我们会看到在Thread类的最开始部分，定义了一个静态本地方法registerNatives()，这个方法主要用来注册一些本地系统的资源。并在静态代码块中调用这个本地方法，如下所示。</p>
+<pre><code class="language-java">//定义registerNatives()本地方法注册系统资源
+private static native void registerNatives();
+static {
+ //在静态代码块中调用注册本地系统资源的方法
+ registerNatives();
+}
+</code></pre>
+<h3 id="Thread中的成员变量">Thread中的成员变量</h3>
+<p>Thread类中的成员变量如下所示。</p>
+<pre><code class="language-java">//当前线程的名称
+private volatile String name;
+//线程的优先级
+private int            priority;
+private Thread threadQ;
+private long eetop;
+//当前线程是否是单步线程
+private boolean single_step;
+//当前线程是否在后台运行
+private boolean     daemon = false;
+//Java虚拟机的状态
+private boolean     stillborn = false;
+//真正在线程中执行的任务
+private Runnable target;
+//当前线程所在的线程组
+private ThreadGroup group;
+//当前线程的类加载器
+private ClassLoader contextClassLoader;
+//访问控制上下文
+private AccessControlContext inheritedAccessControlContext;
+//为匿名线程生成名称的编号
+private static int threadInitNumber;
+//与此线程相关的ThreadLocal,这个Map维护的是ThreadLocal类
+ThreadLocal.ThreadLocalMap threadLocals = null;
+//与此线程相关的ThreadLocal
+ThreadLocal.ThreadLocalMap inheritableThreadLocals = null;
+//当前线程请求的堆栈大小，如果未指定堆栈大小，则会交给JVM来处理
+private long stackSize;
+//线程终止后存在的JVM私有状态
+private long nativeParkEventPointer;
+//线程的id
+private long tid;
+//用于生成线程id
+private static long threadSeqNumber;
+//当前线程的状态，初始化为0，代表当前线程还未启动
+private volatile int threadStatus = 0;
+//由（私有）java.util.concurrent.locks.LockSupport.setBlocker设置
+//使用java.util.concurrent.locks.LockSupport.getBlocker访问
+volatile Object parkBlocker;
+//Interruptible接口中定义了interrupt方法，用来中断指定的线程
+private volatile Interruptible blocker;
+//当前线程的内部锁
+private final Object blockerLock = new Object();
+//线程拥有的最小优先级
+public final static int MIN_PRIORITY = 1;
+//线程拥有的默认优先级
+public final static int NORM_PRIORITY = 5;
+//线程拥有的最大优先级
+public final static int MAX_PRIORITY = 10;
+</code></pre>
+<p>从Thread类的成员变量，我们可以看出，Thread类本质上不是一个任务，它是一个实实在在的线程对象，在Thread类中拥有一个Runnable类型的成员变量target，而这个target成员变量就是需要在Thread线程对象中执行的任务。</p>
+<h3 id="线程的状态定义">线程的状态定义</h3>
+<p>在Thread类的内部，定义了一个枚举State，如下所示。</p>
+<pre><code class="language-java">public enum State {
+ //初始化状态
+    NEW,
+ //可运行状态，此时的可运行包括运行中的状态和就绪状态
+    RUNNABLE,
+ //线程阻塞状态
+    BLOCKED,
+ //等待状态
+    WAITING,
+ //超时等待状态
+    TIMED_WAITING,
+ //线程终止状态
+    TERMINATED;
+}
+</code></pre>
+<p>这个枚举类中的状态就代表了线程生命周期的各状态。我们可以使用下图来表示线程各个状态之间的转化关系。</p>
+<p><img src="/attachment/94009ea1cc8988a6eaf4b421c2f1fb8f.png" alt=""></p>
+<ul>
+<li>NEW：初始状态，线程被构建，但是还没有调用start()方法。</li>
+<li>RUNNABLE：可运行状态，可运行状态可以包括：运行中状态和就绪状态。</li>
+<li>BLOCKED：阻塞状态，处于这个状态的线程需要等待其他线程释放锁或者等待进入synchronized。</li>
+<li>WAITING：表示等待状态，处于该状态的线程需要等待其他线程对其进行通知或中断等操作，进而进入下一个状态。</li>
+<li>TIME_WAITING：超时等待状态。可以在一定的时间自行返回。</li>
+<li>TERMINATED：终止状态，当前线程执行完毕。</li>
+</ul>
+<h3 id="Thread类的构造方法">Thread类的构造方法</h3>
+<h4 id="精简版">精简版</h4>
+<pre><code class="language-java">public Thread() {
+ init(null, null, "Thread-" + nextThreadNum(), 0);
+}
+public Thread(Runnable target) {
+ init(null, target, "Thread-" + nextThreadNum(), 0);
+}
+Thread(Runnable target, AccessControlContext acc) {
+ init(null, target, "Thread-" + nextThreadNum(), 0, acc, false);
+}
+public Thread(ThreadGroup group, Runnable target) {
+ init(group, target, "Thread-" + nextThreadNum(), 0);
+}
+public Thread(String name) {
+ init(null, null, name, 0);
+}
+public Thread(ThreadGroup group, String name) {
+ init(group, null, name, 0);
+}
+public Thread(Runnable target, String name) {
+ init(null, target, name, 0);
+}
+public Thread(ThreadGroup group, Runnable target, String name) {
+ init(group, target, name, 0);
+}
+public Thread(ThreadGroup group, Runnable target, String name,
+ long stackSize) {
+ init(group, target, name, stackSize);
+}
+</code></pre>
+<h4 id="中文注释版">中文注释版</h4>
+<pre><code class="language-java">/**
+ * 分配一个新的{@code Thread}对象。这个构造函数与{@linkplain #Thread(ThreadGroup,Runnable,String) Thread} {@code (null, null, gname)}具有相同的效果，其中{@code gname}是一个新生成的名称。自动生成的名称的格式为{@code "Thread-"+}&lt;i&gt;n&lt;/i&gt;，其中&lt;i&gt;n&lt;/i&gt;是一个整数。
+ */
+public Thread() {
+    init(null, null, "Thread-" + nextThreadNum(), 0);
+}
+
+/**
+ * 分配一个新的{@code Thread}对象。这个构造函数与{@linkplain #Thread(ThreadGroup,Runnable,String) Thread} {@code (null, target, gname)}具有相同的效果，其中{@code gname}是一个新生成的名称。自动生成的名称的格式为{@code "Thread-"+}&lt;i&gt;n&lt;/i&gt;，其中&lt;i&gt;n&lt;/i&gt;是一个整数。
+ *
+ * @param  target
+ *         当线程启动时，调用此线程的对象的{@code run}方法。如果为{@code null}，则此类的{@code run}方法不执行任何操作。
+ */
+public Thread(Runnable target) {
+    init(null, target, "Thread-" + nextThreadNum(), 0);
+}
+
+/**
+ * 创建一个继承给定AccessControlContext的新线程。这不是一个公共构造函数。
+ */
+Thread(Runnable target, AccessControlContext acc) {
+    init(null, target, "Thread-" + nextThreadNum(), 0, acc, false);
+}
+
+/**
+ * 分配一个新的{@code Thread}对象。这个构造函数与{@linkplain #Thread(ThreadGroup,Runnable,String) Thread} {@code (group, target, gname)}具有相同的效果，其中{@code gname}是一个新生成的名称。自动生成的名称的格式为{@code "Thread-"+}&lt;i&gt;n&lt;/i&gt;，其中&lt;i&gt;n&lt;/i&gt;是一个整数。
+ *
+ * @param  group
+ *         线程组。如果为{@code null}并且存在安全管理器，则线程组由{@linkplain SecurityManager#getThreadGroup SecurityManager.getThreadGroup()}确定。如果没有安全管理器或{@code SecurityManager.getThreadGroup()}返回{@code null}，则线程组设置为当前线程的线程组。
+ *
+ * @param  target
+ *         当线程启动时，调用此线程的对象的{@code run}方法。如果为{@code null}，则调用此线程的run方法。
+ *
+ * @throws  SecurityException
+ *          如果当前线程无法在指定的线程组中创建线程
+ */
+public Thread(ThreadGroup group, Runnable target) {
+    init(group, target, "Thread-" + nextThreadNum(), 0);
+}
+
+/**
+ * 分配一个新的{@code Thread}对象。这个构造函数与{@linkplain #Thread(ThreadGroup,Runnable,String) Thread} {@code (null, null, name)}具有相同的效果。
+ *
+ * @param   name
+ *          新线程的名称
+ */
+public Thread(String name) {
+    init(null, null, name, 0);
+}
+
+/**
+ * 分配一个新的{@code Thread}对象。这个构造函数与{@linkplain #Thread(ThreadGroup,Runnable,String) Thread} {@code (group, null, name)}具有相同的效果。
+ *
+ * @param  group
+ *         线程组。如果为{@code null}并且存在安全管理器，则线程组由{@linkplain SecurityManager#getThreadGroup SecurityManager.getThreadGroup()}确定。如果没有安全管理器或{@code SecurityManager.getThreadGroup()}返回{@code null}，则线程组设置为当前线程的线程组。
+ *
+ * @param  name
+ *         新线程的名称
+ *
+ * @throws  SecurityException
+ *          如果当前线程无法在指定的线程组中创建线程
+ */
+public Thread(ThreadGroup group, String name) {
+    init(group, null, name, 0);
+}
+
+/**
+ * 分配一个新的{@code Thread}对象。这个构造函数与{@linkplain #Thread(ThreadGroup,Runnable,String) Thread} {@code (null, target, name)}具有相同的效果。
+ *
+ * @param  target
+ *         当线程启动时，调用此线程的对象的{@code run}方法。如果为{@code null}，则调用此线程的run方法。
+ *
+ * @param  name
+ *         新线程的名称
+ */
+public Thread(Runnable target, String name) {
+    init(null, target, name, 0);
+}
+
+/**
+ * 分配一个新的{@code Thread}对象，使其具有{@code target}作为其运行对象，具有指定的{@code name}作为其名称，并属于由{@code group}引用的线程组。
+ *
+ * &lt;p&gt;如果有安全管理器，则使用线程组作为参数调用其{@link SecurityManager#checkAccess(ThreadGroup) checkAccess}方法。
+ *
+ * &lt;p&gt;此外，当直接或间接由覆盖{@code getContextClassLoader}或{@code setContextClassLoader}方法的子类的构造函数调用时，将使用{@code RuntimePermission("enableContextClassLoaderOverride")}权限调用其{@code checkPermission}方法。
+ *
+ * &lt;p&gt;新创建的线程的优先级设置为创建它的线程的优先级，即当前运行的线程。可以使用{@linkplain #setPriority setPriority}方法将优先级更改为新值。
+ *
+ * &lt;p&gt;新创建的线程最初被标记为守护线程，当且仅当创建它的线程当前被标记为守护线程。可以使用{@linkplain #setDaemon setDaemon}方法更改线程是否为守护线程。
+ *
+ * @param  group
+ *         线程组。如果为{@code null}并且存在安全管理器，则线程组由{@linkplain SecurityManager#getThreadGroup SecurityManager.getThreadGroup()}确定。如果没有安全管理器或{@code SecurityManager.getThreadGroup()}返回{@code null}，则线程组设置为当前线程的线程组。
+ *
+ * @param  target
+ *         当线程启动时，调用此线程的对象的{@code run}方法。如果为{@code null}，则调用此线程的run方法。
+ *
+ * @param  name
+ *         新线程的名称
+ *
+ * @throws  SecurityException
+ *          如果当前线程无法在指定的线程组中创建线程或无法覆盖上下文类加载器方法。
+ */
+public Thread(ThreadGroup group, Runnable target, String name) {
+    init(group, target, name, 0);
+}
+</code></pre>
+<p>其中，我们最经常使用的就是如下几个构造方法了。</p>
+<pre><code class="language-java">public Thread() {
+ init(null, null, "Thread-" + nextThreadNum(), 0);
+}
+public Thread(Runnable target) {
+ init(null, target, "Thread-" + nextThreadNum(), 0);
+}
+public Thread(String name) {
+ init(null, null, name, 0);
+}
+public Thread(ThreadGroup group, String name) {
+ init(group, null, name, 0);
+}
+public Thread(Runnable target, String name) {
+ init(null, target, name, 0);
+}
+public Thread(ThreadGroup group, Runnable target, String name) {
+ init(group, target, name, 0);
+}
+</code></pre>
+<p>通过Thread类的源码，我们可以看出，Thread类在进行初始化的时候，都是调用的init()方法，接下来，我们看看init()方法是个啥。</p>
+<h3 id="init-方法">init()方法</h3>
+<p>Thread类中的构造方法是被创建Thread线程的线程调用的，此时，调用Thread的构造方法创建线程的线程就是父线程，在init()方法中，新创建的Thread线程会继承父线程的部分属性。</p>
+<pre><code class="language-java">
+    /**
+     * 初始化一个线程。
+     *
+     * @param g 线程组
+     * @param target 被调用run()方法的对象
+     * @param name 新线程的名称
+     * @param stackSize 新线程的期望堆栈大小，或者为零表示忽略此参数。
+     * @param acc 继承的AccessControlContext，如果为null，则使用AccessController.getContext()
+     * @param inheritThreadLocals 如果为{@code true}，则从构造线程继承可继承线程本地变量的初始值
+     */
+    private void init(ThreadGroup g, Runnable target, String name,
+                      long stackSize, AccessControlContext acc,
+                      boolean inheritThreadLocals) {
+        if (name == null) {
+            throw new NullPointerException("name cannot be null");
+        }
+
+        this.name = name;
+
+        Thread parent = currentThread();
+        SecurityManager security = System.getSecurityManager();
+        if (g == null) {
+            // 判断是否为applet
+
+            // 如果有安全管理器，询问安全管理器该怎么办
+            if (security != null) {
+                g = security.getThreadGroup();
+            }
+
+            // 如果安全管理器对此没有明确意见，则使用父线程组
+            if (g == null) {
+                g = parent.getThreadGroup();
+            }
+        }
+
+        // 无论是否显式传递了threadgroup，都要检查访问权限
+        g.checkAccess();
+
+        /*
+         * 是否具有所需的权限？
+         */
+        if (security != null) {
+            if (isCCLOverridden(getClass())) {
+                security.checkPermission(SUBCLASS_IMPLEMENTATION_PERMISSION);
+            }
+        }
+
+        g.addUnstarted();
+
+        this.group = g;
+        this.daemon = parent.isDaemon();
+        this.priority = parent.getPriority();
+        if (security == null || isCCLOverridden(parent.getClass()))
+            this.contextClassLoader = parent.getContextClassLoader();
+        else
+            this.contextClassLoader = parent.contextClassLoader;
+        this.inheritedAccessControlContext =
+                acc != null ? acc : AccessController.getContext();
+        this.target = target;
+        setPriority(priority);
+        if (inheritThreadLocals &amp;&amp; parent.inheritableThreadLocals != null)
+            this.inheritableThreadLocals =
+                ThreadLocal.createInheritedMap(parent.inheritableThreadLocals);
+        // 将指定的堆栈大小存储起来以备VM使用
+        this.stackSize = stackSize;
+
+        // 设置线程ID
+        tid = nextThreadID();
+    }
+</code></pre>
+<p>这个方法主要用于初始化Thread对象。下面是对代码的详细解释：</p>
+<style>.admonition {
+  margin: 1.5625em 0;
+  padding: .6rem;
+  overflow: hidden;
+  font-size: 1.00rem;
+  page-break-inside: avoid;
+  border-left: .3rem solid #42b983;
+  border-radius: .3rem;
+  box-shadow: 0 0.1rem 0.4rem rgba(0,0,0,.05), 0 0 0.05rem rgba(0,0,0,.1);
+  background-color: #fafafa;
+}
+
+p.admonition-title {
+  position: relative;
+  margin: -.6rem -.6rem .8em -.6rem !important;
+  padding: .4rem .6rem .4rem 2.5rem;
+  font-weight: 700;
+  background-color:rgba(66, 185, 131, .1);
+}
+
+.admonition-title::before {
+  position: absolute;
+  top: .9rem;
+  left: 1rem;
+  width: 12px;
+  height: 12px;
+  background-color: #42b983;
+  border-radius: 50%;
+  content: ' ';
+}
+
+.info>.admonition-title, .todo>.admonition-title {
+  background-color: rgba(0,184,212,.1);
+}
+
+.warning>.admonition-title, .attention>.admonition-title, .caution>.admonition-title {
+  background-color: rgba(255,145,0,.1);
+}
+
+.failure>.admonition-title, .missing>.admonition-title, .fail>.admonition-title, .error>.admonition-title {
+  background-color: rgba(255,82,82,.1);
+}
+
+.admonition.info, .admonition.todo {
+  border-color: #00b8d4;
+}
+
+.admonition.warning, .admonition.attention, .admonition.caution {
+  border-color: #ff9100;
+}
+
+.admonition.failure, .admonition.missing, .admonition.fail, .admonition.error {
+  border-color: #ff5252;
+}
+
+.info>.admonition-title::before, .todo>.admonition-title::before {
+  background-color: #00b8d4;
+  border-radius: 50%;
+}
+
+.warning>.admonition-title::before, .attention>.admonition-title::before, .caution>.admonition-title::before {
+  background-color: #ff9100;
+  border-radius: 50%;
+}
+
+.failure>.admonition-title::before,.missing>.admonition-title::before,.fail>.admonition-title::before,.error>.admonition-title::before{
+  background-color: #ff5252;;
+  border-radius: 50%;
+}
+
+.admonition>:last-child {
+  margin-bottom: 0 !important;
+}
+</style>
+<div class="admonition note"><p class="admonition-title">代码详细解释</p><ol>
+<li>设置线程名称
+<ol>
+<li>检查传入的name是否为null，如果是null，则抛出NullPointerException异常。</li>
+<li>设置Thread对象的name为传入的name。</li>
+</ol>
+</li>
+<li>父线程设置
+<ol>
+<li>获取当前线程对象作为父线程。</li>
+</ol>
+</li>
+<li>安全校验
+<ol>
+<li>获取系统的安全管理器。</li>
+<li>如果传入的线程组为null，则判断是否为applet。如果有安全管理器，则使用安全管理器的线程组。如果安全管理器对此没有明确意见，则使用父线程的线程组。</li>
+<li>检查是否具有访问线程组的权限。</li>
+<li>检查是否具有创建Thread子类对象的权限。</li>
+</ol>
+</li>
+<li>设置操作
+<ol>
+<li>将线程组设置为未启动状态。</li>
+<li>设置线程的group为传入的线程组。</li>
+<li>设置线程的daemon属性为父线程的daemon属性。</li>
+<li>设置线程的priority为父线程的priority。</li>
+<li>如果没有安全管理器或者父线程的contextClassLoader被子类覆盖，则将线程的contextClassLoader设置为父线程的contextClassLoader。否则，将线程的contextClassLoader设置为父线程的contextClassLoader。</li>
+<li>设置线程的inheritedAccessControlContext为传入的AccessControlContext，如果为null，则设置为当前线程的AccessControlContext。</li>
+<li>设置线程的target为传入的Runnable对象。</li>
+<li>设置线程的priority为父线程的priority。</li>
+<li>如果需要继承父线程的ThreadLocal变量，并且父线程的inheritableThreadLocals不为null，则创建一个继承父线程inheritableThreadLocals的map，并将其赋值给线程的inheritableThreadLocals。</li>
+<li>将指定的堆栈大小存储起来以备VM使用。</li>
+<li>设置线程的ID为下一个可用的线程ID。</li>
+</ol>
+</li>
+</ol>
+</div>
+<h3 id="run-方法">run()方法</h3>
+<p>既然Thread类实现了Runnable接口，则Thread类就需要实现Runnable接口的run()方法，如下所示。</p>
+<pre><code class="language-java">/**
+     * 如果此线程是使用单独的Runnable运行对象构造的，则调用该Runnable对象的run方法；
+     * 否则，此方法不执行任何操作并返回。
+     * &lt;p&gt;
+     * Thread的子类应该重写此方法。
+     *
+     * @see     #start()
+     * @see     #stop()
+     * @see     #Thread(ThreadGroup, Runnable, String)
+     */
+    @Override
+    public void run() {
+        if (target != null) {
+            target.run();
+        }
+    }
+</code></pre>
+<p>可以看到，Thread类中的run()方法实现非常简单，只是调用了Runnable对象的run()方法。所以，真正的任务是运行在run()方法中的。另外，需要注意的是：<strong>直接调用Runnable接口的run()方法不会创建新线程来执行任务，如果需要创建新线程执行任务，则需要调用Thread类的start()方法。</strong></p>
+<h3 id="start-方法">start()方法</h3>
+<pre><code class="language-java">/**
+     * 使此线程开始执行；Java虚拟机调用此线程的run方法。
+     * &lt;p&gt;
+     * 结果是两个线程同时运行：当前线程（从调用start方法返回）和另一个线程（执行其run方法）。
+     * &lt;p&gt;
+     * 不允许多次启动一个线程。
+     * 特别是，一旦线程完成执行，就不能重新启动它。
+     *
+     * @exception  IllegalThreadStateException  如果线程已经启动。
+     * @see        #run()
+     * @see        #stop()
+     */
+    public synchronized void start() {
+        /**
+         * 对于由VM创建/设置的主线程或“系统”组线程，不会调用此方法。
+         * 将来对此方法添加的任何新功能可能也必须添加到VM中。
+         *
+         * 零状态值对应于状态“NEW”。
+         */
+        if (threadStatus != 0)
+            throw new IllegalThreadStateException();
+
+        /* 通知组，此线程即将启动，
+         * 以便将其添加到组的线程列表中，
+         * 并将组的未启动计数减一。 */
+        group.add(this);
+
+        boolean started = false;
+        try {
+            start0();
+            started = true;
+        } finally {
+            try {
+                if (!started) {
+                    group.threadStartFailed(this);
+                }
+            } catch (Throwable ignore) {
+                /* 什么都不做。如果start0抛出了Throwable，
+                  它将被传递到调用堆栈上 */
+            }
+        }
+    }
+</code></pre>
+<p>从start()方法的源代码，我们可以看出：<strong>start()方法使用synchronized关键字修饰</strong>，说明start()方法是同步的，它会<strong>在启动线程前检查线程的状态</strong>，如果不是初始化状态，则直接抛出异常。所以，<strong>一个线程只能启动一次，多次启动是会抛出异常的。</strong></p>
+<p>这里，也是面试的一个坑：面试官：【问题一】能不能多次调用Thread类的start()方法来启动线程吗？【问题二】多次调用Thread线程的start()方法会发生什么？【问题三】为什么会抛出异常？</p>
+<p>调用start()方法后，新创建的线程就会处于就绪状态（如果没有分配到CPU执行），当有空闲的CPU时，这个线程就会被分配CPU来执行，此时线程的状态为运行状态，JVM会调用线程的run()方法执行任务。</p>
+<h3 id="sleep-方法">sleep()方法</h3>
+<p>sleep()方法可以使当前线程休眠，其代码如下所示。</p>
+<pre><code class="language-java">    /**
+     * 使当前正在执行的线程休眠（临时停止执行）指定的毫秒数加上指定的纳秒数，取决于系统计时器和调度程序的精度和准确性。线程不会失去任何监视器的所有权。
+     *
+     * @param  millis
+     *         以毫秒为单位的休眠时间长度
+     *
+     * @param  nanos
+     *         {@code 0-999999} 补充的纳秒数
+     *
+     * @throws  IllegalArgumentException
+     *          如果{@code millis}的值为负数，或者{@code nanos}的值不在范围{@code 0-999999}内
+     *
+     * @throws  InterruptedException
+     *          如果任何线程中断了当前线程。抛出此异常时，当前线程的&lt;i&gt;中断状态&lt;/i&gt;将被清除。
+     */
+    public static void sleep(long millis, int nanos)
+    throws InterruptedException {
+        if (millis &lt; 0) {
+            throw new IllegalArgumentException("timeout value is negative");
+        }
+
+        if (nanos &lt; 0 || nanos &gt; 999999) {
+            throw new IllegalArgumentException(
+                                "nanosecond timeout value out of range");
+        }
+
+        if (nanos &gt;= 500000 || (nanos != 0 &amp;&amp; millis == 0)) {
+            millis++;
+        }
+
+        sleep(millis);
+    }
+</code></pre>
+<p>sleep()方法会让当前线程休眠一定的时间，这个时间通常是毫秒值，这里需要注意的是：调用sleep()方法使线程休眠后，线程不会释放相应的锁。</p>
+<h3 id="join-方法">join()方法</h3>
+<p>join()方法会一直等待线程超时或者终止，代码如下所示。</p>
+<pre><code class="language-java">/**
+ * 等待最多{@code millis}毫秒，直到该线程终止。超时时间为{@code 0}表示永久等待。
+ *
+ * &lt;p&gt; 这个实现使用了一个基于{@code this.wait}调用和{@code this.isAlive}条件的循环。当一个线程终止时，会调用{@code this.notifyAll}方法。建议应用程序不要在{@code Thread}实例上使用{@code wait}、{@code notify}或{@code notifyAll}。
+ *
+ * @param  millis
+ *         等待的时间（以毫秒为单位）
+ *
+ * @throws  IllegalArgumentException
+ *          如果{@code millis}的值为负数
+ *
+ * @throws  InterruptedException
+ *          如果任何线程中断了当前线程。抛出此异常时，当前线程的“中断状态”将被清除。
+ */
+public final synchronized void join(long millis)
+throws InterruptedException {
+    long base = System.currentTimeMillis();
+    long now = 0;
+
+    if (millis &lt; 0) {
+        throw new IllegalArgumentException("超时值为负数");
+    }
+
+    if (millis == 0) {
+        while (isAlive()) {
+            wait(0);
+        }
+    } else {
+        while (isAlive()) {
+            long delay = millis - now;
+            if (delay &lt;= 0) {
+                break;
+            }
+            wait(delay);
+            now = System.currentTimeMillis() - base;
+        }
+    }
+}
+</code></pre>
+<ol>
+<li>首先，代码检查传入的等待时间是否为负数，如果是负数则抛出IllegalArgumentException异常。</li>
+<li>然后，代码根据传入的等待时间进行不同的处理。如果等待时间为0，表示永久等待，代码会进入一个循环，只有当当前线程终止时才会退出循环。在循环中，使用wait(0)方法使线程等待，直到被唤醒。</li>
+<li>如果等待时间不为0，代码进入另一个循环，该循环会在给定的时间内等待当前线程终止。在循环中，代码计算剩余的等待时间，并使用wait(delay)方法使线程等待指定的时间。然后，代码更新当前时间，直到等待时间超过给定的时间或当前线程终止。</li>
+<li>最后，当当前线程终止时，代码退出循环，方法执行结束。</li>
+</ol>
+<p>join()方法的使用场景往往是启动线程执行任务的线程，调用执行线程的join()方法，等待执行线程执行任务，直到超时或者执行线程终止。</p>
+<h2 id="interrupt-方法">interrupt()方法</h2>
+<p>interrupt()方法是中断当前线程的方法，它通过设置线程的中断标志位来中断当前线程。此时，如果为线程设置了中断标志位，可能会抛出InteruptedExeption异常，同时，会清除当前线程的中断状态。这种方式中断线程比较安全，它能使正在执行的任务执行能够继续执行完毕，而不像stop()方法那样强制线程关闭。代码如下所示。</p>
+<pre><code class="language-java">/**
+ * 中断这个线程。
+ *
+ * &lt;p&gt; 除非当前线程中断自己，这是始终允许的，否则将调用此线程的 {@link #checkAccess() checkAccess} 方法，
+ * 这可能会导致抛出 {@link SecurityException}。
+ *
+ * &lt;p&gt; 如果此线程在 {@link Object} 类的 {@link Object#wait() wait()}、{@link Object#wait(long) wait(long)} 或
+ * {@link Object#wait(long, int) wait(long, int)} 方法的调用中被阻塞，或者在此类的 {@link #join()}、{@link #join(long)}、
+ * {@link #join(long, int)}、{@link #sleep(long)} 或 {@link #sleep(long, int)} 方法的调用中被阻塞，
+ * 则它的中断状态将被清除，并且它将接收到一个 {@link InterruptedException}。
+ *
+ * &lt;p&gt; 如果此线程在对 {@link java.nio.channels.InterruptibleChannel InterruptibleChannel} 的 I/O 操作中被阻塞，
+ * 则通道将被关闭，线程的中断状态将被设置，并且线程将接收到一个 {@link java.nio.channels.ClosedByInterruptException}。
+ *
+ * &lt;p&gt; 如果此线程在 {@link java.nio.channels.Selector} 中被阻塞，则线程的中断状态将被设置，并且它将立即从选择操作中返回，
+ * 可能带有非零值，就像调用选择器的 {@link java.nio.channels.Selector#wakeup wakeup} 方法一样。
+ *
+ * &lt;p&gt; 如果不满足前面的任何条件，则将设置此线程的中断状态。
+ *
+ * &lt;p&gt; 中断一个不是活动状态的线程可能不会产生任何效果。
+ *
+ * @throws  SecurityException
+ *          如果当前线程无法修改此线程
+ *
+ * @revised 6.0
+ * @spec JSR-51
+ */
+public void interrupt() {
+    if (this != Thread.currentThread())
+        checkAccess();
+
+    synchronized (blockerLock) {
+        Interruptible b = blocker;
+        if (b != null) {
+            interrupt0();           // 仅设置中断标志
+            b.interrupt(this);
+            return;
+        }
+    }
+    interrupt0();
+}
+</code></pre>
+<p>这段代码实现了Java线程的中断功能。下面是其具体的实现流程：</p>
+<ol>
+<li>首先，代码检查当前线程是否是自身。如果不是，就调用 checkAccess() 方法来检查当前线程是否有权限修改该线程。如果没有权限，则会抛出 SecurityException 异常。</li>
+<li>然后，代码使用 synchronized 关键字来同步访问 blockerLock 对象。这是为了确保在中断线程时不会与其他线程发生冲突。</li>
+<li>接下来，代码获取 blocker 对象的引用。blocker 对象是一个实现了 Interruptible 接口的对象，用于在线程被阻塞时执行特定的操作。</li>
+<li>如果 blocker 对象不为空，说明线程正在被阻塞。此时，代码调用 interrupt0() 方法来设置中断标志，并调用 blocker.interrupt(this) 方法来通知 blocker 对象中断当前线程。然后，方法返回。</li>
+<li>如果 blocker 对象为空，说明线程没有被阻塞。此时，代码直接调用 interrupt0() 方法来设置中断标志。</li>
+</ol>
+<p>总之，这段代码实现了中断线程的功能。当线程被中断时，如果线程正在阻塞状态，则会通过 blocker 对象来中断线程；如果线程没有被阻塞，则直接设置中断标志。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a target="_blank" rel="noopener" href="https://github.com/yu627482453">Bill Cipher</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://yu627482453.github.io/java/java-duo-xian-cheng-bing-fa/java-duo-xian-cheng-bing-fa-xian-cheng/java-duo-xian-cheng-bing-fa-thread/">https://yu627482453.github.io/java/java-duo-xian-cheng-bing-fa/java-duo-xian-cheng-bing-fa-xian-cheng/java-duo-xian-cheng-bing-fa-thread/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://yu627482453.github.io" target="_blank">蝶梦庄生</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E8%A1%8C%E5%8A%A8%E9%98%B6%E6%AE%B5-%E5%AE%8C%E6%88%90/">行动阶段/完成</a><a class="post-meta__tags" href="/tags/%E7%AC%94%E8%AE%B0%E7%A9%BA%E9%97%B4-KnowladgeSpace-ProgramSpace-BasicsSpace/">笔记空间/KnowladgeSpace/ProgramSpace/BasicsSpace</a><a class="post-meta__tags" href="/tags/%E7%BB%86%E5%8C%96%E4%B8%BB%E9%A2%98-Java/">细化主题/Java</a><a class="post-meta__tags" href="/tags/%E4%B8%BB%E9%A2%98%E5%9C%BA%E6%99%AF-%E7%A8%8B%E5%BA%8F/">主题场景/程序</a></div><div class="post_share"><div class="social-share" data-image="https://cdn.seovx.com/?mom=302" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/reward/wechat.jpg" target="_blank"><img class="post-qr-code-img" src="/img/reward/wechat.jpg" alt="wechat"/></a><div class="post-qr-code-desc">wechat</div></li><li class="reward-item"><a href="/img/reward/alipay.jpg" target="_blank"><img class="post-qr-code-img" src="/img/reward/alipay.jpg" alt="alipay"/></a><div class="post-qr-code-desc">alipay</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/java/java-duo-xian-cheng-bing-fa/java-duo-xian-cheng-bing-fa-xian-cheng/java-duo-xian-cheng-bing-fa-runnable/"><img class="prev-cover" src="https://cdn.seovx.com/?mom=302" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">【Java 多线程并发】 Runnable</div></div></a></div><div class="next-post pull-right"><a href="/java/java-duo-xian-cheng-bing-fa/java-duo-xian-cheng-bing-fa-ji-chu/java-duo-xian-cheng-bing-fa-java-xian-cheng-de-zhuang-tai-ji-zhu-yao-zhuan-hua-fang-fa/"><img class="next-cover" src="https://cdn.seovx.com/?mom=302" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">【Java 多线程并发】 Java线程的状态及主要转化方法</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/language/java/java-web/java-web/" title="Java Web"><img class="cover" src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-02-01</div><div class="title">Java Web</div></div></a></div><div><a href="/language/java/java-web/java-filter/" title="【Java】 Filter"><img class="cover" src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-02-01</div><div class="title">【Java】 Filter</div></div></a></div><div><a href="/language/java/java-web/java-listener/" title="【Java】 Listener"><img class="cover" src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-02-01</div><div class="title">【Java】 Listener</div></div></a></div><div><a href="/language/java/java-web/java-servlet/" title="【Java】 Servlet"><img class="cover" src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-02-01</div><div class="title">【Java】 Servlet</div></div></a></div><div><a href="/java/java-web/java-web/" title="Java Web"><img class="cover" src="https://cdn.seovx.com/?mom=302" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-02-01</div><div class="title">Java Web</div></div></a></div><div><a href="/java/java-web/java-filter/" title="【Java】 Filter"><img class="cover" src="https://cdn.seovx.com/?mom=302" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-02-01</div><div class="title">【Java】 Filter</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="gitalk-container"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Bill Cipher</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">240</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">69</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/yu627482453"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/yu627482453" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="/627482453@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">1.</span> <span class="toc-text">【Java 多线程并发】 Thread</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Metadata-65"><span class="toc-number">1.1.</span> <span class="toc-text">Metadata</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A6%82%E8%BF%B0-32"><span class="toc-number">1.2.</span> <span class="toc-text">概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E3%80%90Java-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%B9%B6%E5%8F%91%E3%80%91-Thread"><span class="toc-number">1.3.</span> <span class="toc-text">【Java 多线程并发】 Thread</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Thread%E7%B1%BB%E7%9A%84%E7%BB%A7%E6%89%BF%E5%85%B3%E7%B3%BB"><span class="toc-number">1.4.</span> <span class="toc-text">Thread类的继承关系</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Thread%E7%B1%BB%E7%9A%84%E6%BA%90%E7%A0%81%E5%89%96%E6%9E%90"><span class="toc-number">1.5.</span> <span class="toc-text">Thread类的源码剖析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Thread%E7%B1%BB%E5%AE%9A%E4%B9%89"><span class="toc-number">1.5.1.</span> <span class="toc-text">Thread类定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8A%A0%E8%BD%BD%E6%9C%AC%E5%9C%B0%E8%B5%84%E6%BA%90"><span class="toc-number">1.5.2.</span> <span class="toc-text">加载本地资源</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Thread%E4%B8%AD%E7%9A%84%E6%88%90%E5%91%98%E5%8F%98%E9%87%8F"><span class="toc-number">1.5.3.</span> <span class="toc-text">Thread中的成员变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BA%BF%E7%A8%8B%E7%9A%84%E7%8A%B6%E6%80%81%E5%AE%9A%E4%B9%89"><span class="toc-number">1.5.4.</span> <span class="toc-text">线程的状态定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Thread%E7%B1%BB%E7%9A%84%E6%9E%84%E9%80%A0%E6%96%B9%E6%B3%95"><span class="toc-number">1.5.5.</span> <span class="toc-text">Thread类的构造方法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%B2%BE%E7%AE%80%E7%89%88"><span class="toc-number">1.5.5.1.</span> <span class="toc-text">精简版</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%AD%E6%96%87%E6%B3%A8%E9%87%8A%E7%89%88"><span class="toc-number">1.5.5.2.</span> <span class="toc-text">中文注释版</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#init-%E6%96%B9%E6%B3%95"><span class="toc-number">1.5.6.</span> <span class="toc-text">init()方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#run-%E6%96%B9%E6%B3%95"><span class="toc-number">1.5.7.</span> <span class="toc-text">run()方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#start-%E6%96%B9%E6%B3%95"><span class="toc-number">1.5.8.</span> <span class="toc-text">start()方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#sleep-%E6%96%B9%E6%B3%95"><span class="toc-number">1.5.9.</span> <span class="toc-text">sleep()方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#join-%E6%96%B9%E6%B3%95"><span class="toc-number">1.5.10.</span> <span class="toc-text">join()方法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#interrupt-%E6%96%B9%E6%B3%95"><span class="toc-number">1.6.</span> <span class="toc-text">interrupt()方法</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/design/she-ji-mo-shi/" title="无题"><img src="https://cdn.seovx.com/?mom=302" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/design/she-ji-mo-shi/" title="无题">无题</a><time datetime="2023-07-15T09:13:39.871Z" title="发表于 2023-07-15 17:13:39">2023-07-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/design/xing-wei-mo-shi/xing-wei-mo-shi/" title="无题"><img src="https://cdn.seovx.com/?mom=302" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/design/xing-wei-mo-shi/xing-wei-mo-shi/" title="无题">无题</a><time datetime="2023-07-15T09:13:37.615Z" title="发表于 2023-07-15 17:13:37">2023-07-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/design/jie-gou-mo-shi/jie-gou-mo-shi/" title="无题"><img src="https://cdn.seovx.com/?mom=302" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/design/jie-gou-mo-shi/jie-gou-mo-shi/" title="无题">无题</a><time datetime="2023-07-15T09:13:33.180Z" title="发表于 2023-07-15 17:13:33">2023-07-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/design/chuang-jian-mo-shi/chuang-jian-mo-shi/" title="无题"><img src="https://cdn.seovx.com/?mom=302" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/design/chuang-jian-mo-shi/chuang-jian-mo-shi/" title="无题">无题</a><time datetime="2023-07-15T09:13:23.913Z" title="发表于 2023-07-15 17:13:23">2023-07-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/java/java-duo-xian-cheng-bing-fa/java-duo-xian-cheng-bing-fa-xian-cheng/java-duo-xian-cheng-bing-fa-xian-cheng/" title="【Java 多线程并发】 线程"><img src="https://cdn.seovx.com/?mom=302" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【Java 多线程并发】 线程"/></a><div class="content"><a class="title" href="/java/java-duo-xian-cheng-bing-fa/java-duo-xian-cheng-bing-fa-xian-cheng/java-duo-xian-cheng-bing-fa-xian-cheng/" title="【Java 多线程并发】 线程">【Java 多线程并发】 线程</a><time datetime="2023-07-10T06:15:00.000Z" title="发表于 2023-07-10 14:15:00">2023-07-10</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By Bill Cipher</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>function addGitalkSource () {
+  const ele = document.createElement('link')
+  ele.rel = 'stylesheet'
+  ele.href= 'https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.css'
+  document.getElementsByTagName('head')[0].appendChild(ele)
+}
+
+function loadGitalk () {
+  function initGitalk () {
+    var gitalk = new Gitalk(Object.assign({
+      clientID: 'c61a274b6f5aa26a58f6',
+      clientSecret: '485a7761d321c8dcc5cae05d7256be9fb196d94a',
+      repo: 'yu627482453.github.io',
+      owner: 'yu627482453',
+      admin: ['yu627482453'],
+      id: '7c9527295a2a5c9e99377d8a41fbda04',
+      updateCountCallback: commentCount
+    },null))
+
+    gitalk.render('gitalk-container')
+  }
+
+  if (typeof Gitalk === 'function') initGitalk()
+  else {
+    addGitalkSource()
+    getScript('https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.js').then(initGitalk)
+  }
+}
+
+function commentCount(n){
+  let isCommentCount = document.querySelector('#post-meta .gitalk-comment-count')
+  if (isCommentCount) {
+    isCommentCount.innerHTML= n
+  }
+}
+
+if ('Gitalk' === 'Gitalk' || !true) {
+  if (true) btf.loadComment(document.getElementById('gitalk-container'), loadGitalk)
+  else loadGitalk()
+} else {
+  function loadOtherComment () {
+    loadGitalk()
+  }
+}</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

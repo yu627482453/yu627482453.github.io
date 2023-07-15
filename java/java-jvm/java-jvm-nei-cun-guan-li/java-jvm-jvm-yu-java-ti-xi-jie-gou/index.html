@@ -1,0 +1,559 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>【Java JVM】 JVM与Java体系结构 | 蝶梦庄生</title><meta name="keywords" content="Java"><meta name="author" content="Bill Cipher"><meta name="copyright" content="Bill Cipher"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="【Java JVM】 JVM与Java体系结构">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【Java JVM】 JVM与Java体系结构">
+<meta property="og:url" content="https://yu627482453.github.io/java/java-jvm/java-jvm-nei-cun-guan-li/java-jvm-jvm-yu-java-ti-xi-jie-gou/index.html">
+<meta property="og:site_name" content="蝶梦庄生">
+<meta property="og:description" content="【Java JVM】 JVM与Java体系结构">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.seovx.com/?mom=302">
+<meta property="article:published_time" content="2023-06-26T06:21:00.000Z">
+<meta property="article:modified_time" content="2023-06-26T06:21:00.000Z">
+<meta property="article:author" content="Bill Cipher">
+<meta property="article:tag" content="行动阶段&#x2F;完成">
+<meta property="article:tag" content="笔记空间&#x2F;KnowladgeSpace&#x2F;ProgramSpace&#x2F;BasicsSpace">
+<meta property="article:tag" content="细化主题&#x2F;Java">
+<meta property="article:tag" content="主题场景&#x2F;程序">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.seovx.com/?mom=302"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://yu627482453.github.io/java/java-jvm/java-jvm-nei-cun-guan-li/java-jvm-jvm-yu-java-ti-xi-jie-gou/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: undefined,
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: Bill Cipher","link":"链接: ","source":"来源: 蝶梦庄生","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '【Java JVM】 JVM与Java体系结构',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-06-26 14:21:00'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.2.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">240</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">69</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cdn.seovx.com/?mom=302')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">蝶梦庄生</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">【Java JVM】 JVM与Java体系结构</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-06-26T06:21:00.000Z" title="发表于 2023-06-26 14:21:00">2023-06-26</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-06-26T06:21:00.000Z" title="更新于 2023-06-26 14:21:00">2023-06-26</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Java/">Java</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="【Java JVM】 JVM与Java体系结构"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1>【Java JVM】 JVM与Java体系结构</h1>
+<h2 id="Metadata-25">Metadata</h2>
+<pre><code class="language-yml">title: 【Java JVM】 JVM与Java体系结构
+date: 2023-06-26 14:21
+tags:
+  - 行动阶段/完成
+  - 主题场景/程序
+  - 笔记空间/KnowladgeSpace/ProgramSpace/BasicsSpace
+  - 细化主题/Java
+categories:
+  - Java
+keywords:
+  - Java
+description: 【Java JVM】 JVM与Java体系结构
+</code></pre>
+<h2 id="概述-6">概述</h2>
+<p><strong>JVM 的整体结构</strong></p>
+<p><img src="/attachment/a9ccb623753dce919afda664344209f6.png" alt=""></p>
+<p><strong>Java 代码执行流程</strong></p>
+<p><img src="/attachment/3aac9ca7b7118b1d09ef502e5e72aa56.png" alt=""></p>
+<p><strong>JVM 的架构模型</strong></p>
+<p>基于栈式架构</p>
+<h2 id="【Java-JVM】-JVM与Java体系结构">【Java JVM】 JVM与Java体系结构</h2>
+<p><strong>JVM：跨语言的平台</strong></p>
+<p>Java 是目前应用最为广泛的软件开发平台之一。随着 Java 以及 Java 社区的不断壮大 Java 也早已不再是简简单单的一门计算机语言了，它更是一个平台、一种文化、一个社区。</p>
+<ul>
+<li>作为一个平台，Java 虚拟机扮演着举足轻重的作用
+<ul>
+<li>Groovy、Scala、JRuby、Kotlin 等都是 Java 平台的一部分</li>
+</ul>
+</li>
+<li>作为灯种文化，Java 几乎成为了“开源”的代名词。
+<ul>
+<li>第三方开源软件和框架。如 Tomcat、Struts，MyBatis，Spring 等。</li>
+<li>就连 JDK 和 JVM 自身也有不少开源的实现，如 openJDK、Harmony。</li>
+</ul>
+</li>
+<li>作为一个社区，Java 拥有全世界最多的技术拥护者和开源社区支持，有数不清的论坛和资料。从桌面应用软件、嵌入式开发到企业级应用、后台服务器、中间件，都可以看到 Java 的身影。其应用形式之复杂、参与人数之众多也令人咋舌。</li>
+</ul>
+<p><strong>字节码</strong></p>
+<ul>
+<li>我们平时说的 java 字节码，指的是用 java 语言编译成的字节码。准确的说任何能在 jvm 平台上执行的字节码格式都是一样的。所以应该统称为：<mark>jvm 字节码</mark>。</li>
+<li>不同的编译器，可以编译出相同的字节码文件，字节码文件也可以在不同的 JVM 上运行。</li>
+<li>Java 虚拟机与 Java 语言并没有必然的联系，它只与特定的二进制文件格式—Class 文件格式所关联，Class 文件中包含了 Java 虚拟机指令集（或者称为字节码、Bytecodes）和符号表，还有一些其他辅助信息。</li>
+</ul>
+<p><strong>多语言混合编程</strong></p>
+<ul>
+<li><mark>Java 平台上的多语言混合编程正成为主流，通过特定领域的语言去解决特定领域的问题是当前软件开发应对日趋复杂的项目需求的一个方向。</mark></li>
+<li>试想一下，在一个项目之中，并行处理用 Clojure 语言编写，展示层使用 JRuby/Rails，中间层则是 Java，每个应用层都将使用不同的编程语言来完成，而且，接口对每一层的开发者都是透明的，<mark>各种语言之间的交互不存在任何困难，就像使用自己语言的原生 API 一样方便，因为它们最终都运行在一个虚拟机之上。</mark></li>
+<li>对这些运行于 Java 虚拟机之上、Java 之外的语言，来自系统级的、底层的支持正在迅速增强，以 JSR-292 为核心的一系列项目和功能改进（如 Da Vinci Machine 项目、Nashorn 引擎、InvokeDynamic 指令、java.lang.invoke 包等），<mark>推动 Java 虚拟机从“Java 语言的虚拟机”向 “多语言虚拟机”的方向发展。</mark></li>
+</ul>
+<p><img src="/attachment/1035091e21fda5293e5dadeea0a612f6.png" alt=""></p>
+<h2 id="Java-发展的重大事件">## Java 发展的重大事件</h2>
+<ul>
+<li>1990 年，在 Sun 计算机公司中，由 Patrick Naughton、MikeSheridan 及 James Gosling 领导的小组 Green Team，开发出的新的程序语言，命名为 oak，后期命名为 Java</li>
+<li>1995 年，Sun 正式发布 Java 和 HotJava 产品，Java 首次公开亮相。</li>
+<li>1996 年 1 月 23 日，Sun Microsystems 发布了 JDK 1.0。</li>
+<li>1998 年，JDK1.2 版本发布。同时，sun 发布了 JSP/Servlet、EJB 规范，以及将 Java 分成了 J2EE、J2SE 和 J2ME。这表明了 Java 开始向企业、桌面应用和移动设备应用 3 大领域挺进。</li>
+<li>2000 年，JDK1.3 发布，<mark>Java HotSpot Virtual Machine 正式发布，成为 Java 的默认虚拟机。</mark></li>
+<li>2002 年，JDK1.4 发布，古老的 Classic 虚拟机退出历史舞台。</li>
+<li>2003 年年底，<mark>Java 平台的 Scala 正式发布，同年 Groovy 也加入了 Java 阵营。</mark></li>
+<li>2004 年，JDK1.5 发布。同时 JDK1.5 改名为 JavaSE5.0。</li>
+<li>2006 年，JDK6 发布。同年，<mark>Java 开源并建立了 OpenJDK</mark>。顺理成章，<mark>Hotspot 虚拟机也成为了 openJDK 中的默认虚拟机。</mark></li>
+<li>2007 年，<mark>Java 平台迎来了新伙伴 Clojure。</mark></li>
+<li>2008 年，Oracle 收购了 BEA，<mark>得到了 JRockit 虚拟机。</mark></li>
+<li>2009 年，Twitter 宣布把后台大部分程序从 Ruby 迁移到 Scala，这是 Java 平台的又一次大规模应用。</li>
+<li>2010 年，Oracle 收购了 Sun，<mark>获得 Java 商标和最真价值的 HotSpot 虚拟机</mark>。此时，Oracle 拥有市场占用率最高的两款虚拟机 HotSpot 和 JRockit，并计划在未来对它们进行整合：HotRockit</li>
+<li>2011 年，JDK7 发布。在 JDK1.7u4 中，<mark>正式启用了新的垃圾回收器 G1。</mark></li>
+<li>2017 年，JDK9 发布。<mark>将 G1 设置为默认 Gc，替代 CMS</mark></li>
+<li>同年，<mark>IBM 的 J9 开源</mark>，形成了现在的 Open J9 社区</li>
+<li>2018 年，Android 的 Java 侵权案判决，Google 赔偿 Oracle 计 88 亿美元</li>
+<li>同年，Oracle 宣告 JavaEE 成为历史名词 JDBC、JMS、Servlet 赠予 Eclipse 基金会</li>
+<li>同年，JDK11 发布，LTS 版本的 JDK，<mark>发布革命性的 ZGC，调整 JDK 授权许可</mark></li>
+<li>2019 年，JDK12 发布，加入 RedHat 领导开发的<mark>shenandoah GC</mark></li>
+</ul>
+<h2 id="JVM-的整体结构">JVM 的整体结构</h2>
+<p><img src="/attachment/a9ccb623753dce919afda664344209f6.png" alt=""></p>
+<h2 id="Java-代码执行流程">Java 代码执行流程</h2>
+<p><img src="/attachment/3aac9ca7b7118b1d09ef502e5e72aa56.png" alt=""></p>
+<h2 id="JVM-的架构模型">JVM 的架构模型</h2>
+<p>Java 编译器输入的指令流基本上是一种基于<mark>栈的指令集架构</mark>，另外一种指令集架构则是基于<mark>寄存器的指令集架构</mark>。</p>
+<p>具体来说：这两种架构之间的区别：</p>
+<p><strong>基于栈式架构的特点</strong></p>
+<ul>
+<li>设计和实现更简单，适用于资源受限的系统</li>
+<li>避开了寄存器的分配难题：使用零地址指令方式分配</li>
+<li>指令流中的指令大部分是零地址指令，其执行过程依赖于操作栈。指令集更小，编译器容易实现</li>
+<li>不需要硬件支持，可移植性更好，更好实现跨平台</li>
+</ul>
+<p><strong>基于寄存器架构的特点</strong></p>
+<ul>
+<li>典型的应用是 x86 的二进制指令集：比如传统的 PC 以及 Android 的 Davlik 虚拟机</li>
+<li>指令集架构则完全依赖硬件，可移植性差</li>
+<li>性能优秀和执行更高效</li>
+<li>花费更少的指令去完成一项操作</li>
+<li>在大部分情况下，基于寄存器架构的指令集往往都以一地址指令、二地址指令和三地址指令为主，而基于栈式架构的指令集却是以零地址指令为主</li>
+</ul>
+<h2 id="JVM-的生命周期">JVM 的生命周期</h2>
+<p><strong>虚拟机的启动</strong></p>
+<p>Java 虚拟机的启动是通过引导类加载器（bootstrap class loader）创建一个初始类（initial class）来完成的，这个类是由虚拟机的具体实现指定的。</p>
+<p><strong>虚拟机的执行</strong></p>
+<ul>
+<li>一个运行中的 Java 虚拟机有着一个清晰的任务：执行 Java 程序。</li>
+<li>程序开始执行时他才运行，程序结束时他就停止。</li>
+<li><mark>执行一个所谓的 Java 程序的时候，真真正正在执行的是一个叫做 Java 虚拟机的进程。</mark></li>
+</ul>
+<p><strong>虚拟机的退出</strong></p>
+<p>有如下的几种情况：</p>
+<ul>
+<li>程序正常执行结束</li>
+<li>程序在执行过程中遇到了异常或错误而异常终止</li>
+<li>由于操作系统用现错误而导致 Java 虚拟机进程终止</li>
+<li>某线程调用 Runtime 类或 system 类的 exit 方法，或 Runtime 类的 halt 方法，并且 Java 安全管理器也允许这次 exit 或 halt 操作。</li>
+<li>除此之外，JNI（Java Native Interface）规范描述了用 JNI Invocation API 来加载或卸载 Java 虚拟机时，Java 虚拟机的退出情况。</li>
+</ul>
+<h2 id="JVM-的发展历程">JVM 的发展历程</h2>
+<h3 id="Sun-Classic-VM">Sun Classic VM</h3>
+<ul>
+<li>早在 1996 年 Java1.0 版本的时候，Sun 公司发布了一款名为 sun classic VM 的 Java 虚拟机，它同时也是<mark>世界上第一款商用 Java 虚拟机</mark>，JDK1.4 时完全被淘汰。</li>
+<li>这款虚拟机内部只提供解释器。现在还有及时编译器，因此效率比较低，而及时编译器会把热点代码缓存起来，那么以后使用热点代码的时候，效率就比较高。</li>
+<li>如果使用 JIT 编译器，就需要进行外挂。但是一旦使用了 JIT 编译器，JIT 就会接管虚拟机的执行系统。解释器就不再工作。解释器和编译器不能配合工作。</li>
+<li>现在 hotspot 内置了此虚拟机。</li>
+</ul>
+<h3 id="Exact-VM">Exact VM</h3>
+<ul>
+<li>为了解决上一个虚拟机问题，jdk1.2 时，Sun 提供了此虚拟机。</li>
+<li>Exact Memory Management：准确式内存管理
+<ul>
+<li>也可以叫 Non-Conservative/Accurate Memory Management</li>
+<li>虚拟机可以知道内存中某个位置的数据具体是什么类型。</li>
+</ul>
+</li>
+<li>具备现代高性能虚拟机的维形
+<ul>
+<li>热点探测</li>
+<li>编译器与解释器混合工作模式</li>
+</ul>
+</li>
+<li>只在 solaris 平台短暂使用，其他平台上还是 classic vm
+<ul>
+<li>英雄气短，终被 Hotspot 虚拟机替换</li>
+</ul>
+</li>
+</ul>
+<h3 id="HotSpot-VM">HotSpot VM</h3>
+<ul>
+<li>HotSpot 历史
+<ul>
+<li>最初由一家名为“Longview Technologies”的小公司设计</li>
+<li>1997 年，此公司被 sun 收购；2009 年，Sun 公司被甲骨文收购。</li>
+<li>JDK1.3 时，HotSpot VM 成为默认虚拟机</li>
+</ul>
+</li>
+<li><mark>目前 Hotspot 占有绝对的市场地位，称霸武林。</mark>
+<ul>
+<li>不管是现在仍在广泛使用的 JDK6，还是使用比例较多的 JDK8 中，默认的虚拟机都是 HotSpot</li>
+<li>Sun / Oracle JDK 和 OpenJDK 的默认虚拟机</li>
+<li>因此本课程中默认介绍的虚拟机都是 HotSpot，相关机制也主要是指 HotSpot 的 Gc 机制。（比如其他两个商用虚机都没有方法区的概念）</li>
+</ul>
+</li>
+<li>从服务器、桌面到移动端、嵌入式都有应用。</li>
+<li>名称中的 HotSpot 指的就是它的热点代码探测技术。
+<ul>
+<li>通过计数器找到最具编译价值代码，触发即时编译或栈上替换</li>
+<li>通过编译器与解释器协同工作，在最优化的程序响应时间与最佳执行性能中取得平衡</li>
+</ul>
+</li>
+</ul>
+<h3 id="JRockit">JRockit</h3>
+<ul>
+<li>
+<p><mark>专注于服务器端应用</mark></p>
+<ul>
+<li>它可以不太关注程序启动速度，因此 JRockit 内部不包含解析器实现，全部代码都靠即时编译器编译后执行。</li>
+</ul>
+</li>
+<li>
+<p>大量的行业基准测试显示，<mark>JRockit JVM 是世界上最快的 JVM。</mark></p>
+<ul>
+<li>使用 JRockit 产品，客户已经体验到了显著的性能提高（一些超过了 70%）和硬件成本的减少（达 50%）。</li>
+</ul>
+</li>
+<li>
+<p>优势：全面的 Java 运行时解决方案组合</p>
+<ul>
+<li>JRockit 面向延迟敏感型应用的解决方案 JRockit Real Time 提供以毫秒或微秒级的 JVM 响应时间，适合财务、军事指挥、电信网络的需要</li>
+<li>MissionControl 服务套件，它是一组以极低的开销来监控、管理和分析生产环境中的应用程序的工具。</li>
+</ul>
+</li>
+<li>
+<p>2008 年，JRockit 被 oracle 收购。</p>
+</li>
+<li>
+<p>Oracle 表达了整合两大优秀虚拟机的工作，大致在 JDK8 中完成。整合的方式是在 HotSpot 的基础上，移植 JRockit 的优秀特性。</p>
+</li>
+<li>
+<p>高斯林：目前就职于谷歌，研究人工智能和水下机器人</p>
+</li>
+</ul>
+<h3 id="IBM-的-J9">IBM 的 J9</h3>
+<ul>
+<li>
+<p>全称：IBM Technology for Java Virtual Machine，简称 IT4J，内部代号：J9</p>
+</li>
+<li>
+<p>市场定位与 HotSpot 接近，服务器端、桌面应用、嵌入式等多用途 VM</p>
+</li>
+<li>
+<p>广泛用于 IBM 的各种 Java 产品。</p>
+</li>
+<li>
+<p>目前，有影响力的三大商用虚拟机之一，也号称是世界上最快的 Java 虚拟机。</p>
+</li>
+<li>
+<p>2017 年左右，IBM 发布了开源 J9VM，命名为 openJ9，交给 EClipse 基金会管理，也称为 Eclipse OpenJ9</p>
+</li>
+</ul>
+<h3 id="KVM-和-CDC-CLDC-Hotspot">KVM 和 CDC / CLDC Hotspot</h3>
+<ul>
+<li>
+<p>Oracle 在 Java ME 产品线上的两款虚拟机为：CDC/CLDC HotSpot Implementation VM</p>
+</li>
+<li>
+<p>KVM（Kilobyte）是 CLDC-HI 早期产品</p>
+</li>
+<li>
+<p>目前移动领域地位尴尬，智能机被 Android 和 iOS 二分天下。</p>
+</li>
+<li>
+<p>KVM 简单、轻量、高度可移植，面向更低端的设备上还维持自己的一片市场</p>
+<ul>
+<li>智能控制器、传感器</li>
+<li>老人手机、经济欠发达地区的功能手机</li>
+</ul>
+</li>
+<li>
+<p>所有的虚拟机的原则：一次编译，到处运行。</p>
+</li>
+</ul>
+<h3 id="Azul-VM">Azul VM</h3>
+<ul>
+<li>
+<p>前面三大“高性能 Java 虚拟机”使用在通用硬件平台上这里 Azul VW 和 BEA Liquid VM 是<mark>与特定硬件平台绑定、软硬件配合的专有虚拟机</mark></p>
+<ul>
+<li>高性能 Java 虚拟机中的战斗机。</li>
+</ul>
+</li>
+<li>
+<p>Azul VM 是 Azul Systems 公司在 HotSpot 基础上进行大量改进，运行于 Azul Systems 公司的专有硬件 Vega 系统上的 Java 虚拟机。</p>
+</li>
+<li>
+<p><mark>每个 Azul VM 实例都可以管理至少数十个 CPU 和数百 GB 内存的硬件资源，并提供在巨大内存范围内实现可控的 GC 时间的垃圾收集器、专有硬件优化的线程调度等优秀特性。</mark></p>
+</li>
+<li>
+<p>2010 年，AzulSystems 公司开始从硬件转向软件，发布了自己的 Zing JVM，可以在通用 x86 平台上提供接近于 Vega 系统的特性。</p>
+</li>
+</ul>
+<h3 id="Liquid-VM">Liquid VM</h3>
+<ul>
+<li>
+<p>高性能 Java 虚拟机中的战斗机。</p>
+</li>
+<li>
+<p>BEA 公司开发的，直接运行在自家 Hypervisor 系统上</p>
+</li>
+<li>
+<p>Liquid VM 即是现在的 JRockit VE（Virtual Edition），<mark>Liquid VM 不需要操作系统的支持，或者说它自己本身实现了一个专用操作系统的必要功能，如线程调度、文件系统、网络支持等。</mark></p>
+</li>
+<li>
+<p>随着 JRockit 虚拟机终止开发，Liquid vM 项目也停止了。</p>
+</li>
+</ul>
+<h3 id="Apache-Harmony">Apache Harmony</h3>
+<ul>
+<li>
+<p>Apache 也曾经推出过与 JDK1.5 和 JDK1.6 兼容的 Java 运行平台 Apache Harmony。</p>
+</li>
+<li>
+<p>它是 IBM 和 Intel 联合开发的开源 JVM，受到同样开源的 OpenJDK 的压制，Sun 坚决不让 Harmony 获得 JCP 认证，最终于 2011 年退役，IBM 转而参与 OpenJDK</p>
+</li>
+<li>
+<p>虽然目前并没有 Apache Harmony 被大规模商用的案例，但是它的 Java 类库代码吸纳进了 Android SDK。</p>
+</li>
+</ul>
+<h3 id="Micorsoft-JVM">Micorsoft JVM</h3>
+<ul>
+<li>
+<p>微软为了在 IE3 浏览器中支持 Java Applets，开发了 Microsoft JVM。</p>
+</li>
+<li>
+<p>只能在 Windows 平台下运行。但确是当时 Windows 下性能最好的 Java VM。</p>
+</li>
+<li>
+<p>1997 年，Sun 以侵犯商标、不正当竞争罪名指控微软成功，赔了 Sun 很多钱。微软 WindowsXP SP3 中抹掉了其 VM。现在 Windows 上安装的 jdk 都是 HotSpot。</p>
+</li>
+</ul>
+<h3 id="Taobao-JVM">Taobao JVM</h3>
+<ul>
+<li>
+<p>由 AliJVM 团队发布。阿里，国内使用 Java 最强大的公司，覆盖云计算、金融、物流、电商等众多领域，需要解决高并发、高可用、分布式的复合问题。有大量的开源产品。</p>
+</li>
+<li>
+<p><mark>基于 OpenJDK 开发了自己的定制版本 AlibabaJDK</mark>，简称 AJDK。是整个阿里 Java 体系的基石。</p>
+</li>
+<li>
+<p>基于 OpenJDK Hotspot VM 发布的国内第一个优化、<mark>深度定制且开源的高性能服务器版 Java 虚拟机</mark>。</p>
+<ul>
+<li>创新的 GCIH（GC invisible heap）技术实现了 off-heap，<mark>即将生命周期较长的 Java 对象从 heap 中移到 heap 之外，并且 GC 不能管理 GCIH 内部的 Java 对象，以此达到降低 GC 的回收频率和提升 GC 的回收效率的目的。</mark></li>
+<li>GCIH 中的<mark>对象还能够在多个 Java 虚拟机进程中实现共享</mark></li>
+<li>使用 crc32 指令实现 JVM intrinsic 降低 JNI 的调用开销</li>
+<li>PMU hardware 的 Java profiling tool 和诊断协助功能</li>
+<li>针对大数据场景的 ZenGc</li>
+</ul>
+</li>
+<li>
+<p>taobao vm 应用在阿里产品上性能高，硬件严重依赖 intel 的 cpu，损失了兼容性，但提高了性能</p>
+<ul>
+<li>目前已经在淘宝、天猫上线，把 oracle 官方 JvM 版本全部替换了。</li>
+</ul>
+</li>
+</ul>
+<h3 id="Dalvik-VM">Dalvik VM</h3>
+<ul>
+<li>
+<p>谷歌开发的，应用于 Android 系统，并在 Android2.2 中提供了 JIT，发展迅猛。</p>
+</li>
+<li>
+<p>Dalvik VM 只能称作虚拟机，而不能称作“Java 虚拟机”，它没有遵循 Java 虚拟机规范，不能直接执行 Java 的 Class 文件</p>
+</li>
+<li>
+<p>基于寄存器架构，不是 jvm 的栈架构。</p>
+</li>
+<li>
+<p>执行的是编译以后的 dex（Dalvik Executable）文件。执行效率比较高。</p>
+<ul>
+<li>它执行的 dex（Dalvik Executable）文件可以通过 class 文件转化而来，使用 Java 语法编写应用程序，可以直接使用大部分的 Java API 等。</li>
+</ul>
+</li>
+<li>
+<p>Android 5.0 使用支持提前编译（Ahead of Time Compilation，AoT）的 ART VM 替换 Dalvik VM。</p>
+</li>
+</ul>
+<h3 id="Graal-VM">Graal VM</h3>
+<ul>
+<li>
+<p>2018 年 4 月，oracle Labs 公开了 Graal VM，号称 “Run Programs Faster Anywhere”，野心勃勃。与 1995 年 java 的”write once，run anywhere"遥相呼应。</p>
+</li>
+<li>
+<p>Graal VM 在 HotSpot VM 基础上增强而成的跨语言全栈虚拟机，可以作为“任何语言” 的运行平台使用。语言包括：Java、Scala、Groovy、Kotlin；C、C++、Javascript、Ruby、Python、R 等</p>
+</li>
+<li>
+<p>支持不同语言中混用对方的接口和对象，支持这些语言使用已经编写好的本地库文件</p>
+</li>
+<li>
+<p>工作原理是将这些语言的源代码或源代码编译后的中间格式，通过解释器转换为能被 Graal VM 接受的中间表示。Graal VM 提供 Truffle 工具集快速构建面向一种新语言的解释器。在运行时还能进行即时编译优化，获得比原生编译器更优秀的执行效率。</p>
+</li>
+<li>
+<p>如果说 HotSpot 有一天真的被取代，Graal VM 希望最大。但是 Java 的软件生态没有丝毫变化。</p>
+</li>
+</ul>
+<h3 id="总结-2">总结</h3>
+<p>具体 JVM 的内存结构，其实取决于其实现，不同厂商的 JVM，或者同一厂商发布的不同版本，都有可能存在一定差异。主要以 Oracle HotSpot VM 为默认虚拟机。</p>
+<h2 id="参考书目">参考书目</h2>
+<p><img src="/attachment/67533b374f7f87d72e12fd1124acd359.png" alt=""></p>
+<p><img src="/attachment/4f8de9f88f1480adfdb444eaa3ff062c.png" alt=""></p>
+<p><img src="/attachment/aaef307175d242b5dd524fd424cc58a7.png" alt=""></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a target="_blank" rel="noopener" href="https://github.com/yu627482453">Bill Cipher</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://yu627482453.github.io/java/java-jvm/java-jvm-nei-cun-guan-li/java-jvm-jvm-yu-java-ti-xi-jie-gou/">https://yu627482453.github.io/java/java-jvm/java-jvm-nei-cun-guan-li/java-jvm-jvm-yu-java-ti-xi-jie-gou/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://yu627482453.github.io" target="_blank">蝶梦庄生</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E8%A1%8C%E5%8A%A8%E9%98%B6%E6%AE%B5-%E5%AE%8C%E6%88%90/">行动阶段/完成</a><a class="post-meta__tags" href="/tags/%E7%AC%94%E8%AE%B0%E7%A9%BA%E9%97%B4-KnowladgeSpace-ProgramSpace-BasicsSpace/">笔记空间/KnowladgeSpace/ProgramSpace/BasicsSpace</a><a class="post-meta__tags" href="/tags/%E7%BB%86%E5%8C%96%E4%B8%BB%E9%A2%98-Java/">细化主题/Java</a><a class="post-meta__tags" href="/tags/%E4%B8%BB%E9%A2%98%E5%9C%BA%E6%99%AF-%E7%A8%8B%E5%BA%8F/">主题场景/程序</a></div><div class="post_share"><div class="social-share" data-image="https://cdn.seovx.com/?mom=302" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/reward/wechat.jpg" target="_blank"><img class="post-qr-code-img" src="/img/reward/wechat.jpg" alt="wechat"/></a><div class="post-qr-code-desc">wechat</div></li><li class="reward-item"><a href="/img/reward/alipay.jpg" target="_blank"><img class="post-qr-code-img" src="/img/reward/alipay.jpg" alt="alipay"/></a><div class="post-qr-code-desc">alipay</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/java/java-jvm/java-jvm-nei-cun-guan-li/java-jvm-lei-jia-zai-zi-xi-tong/"><img class="prev-cover" src="https://cdn.seovx.com/?mom=302" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">【Java JVM】 类加载子系统</div></div></a></div><div class="next-post pull-right"><a href="/database/mysql/mysql-suo/"><img class="next-cover" src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">【MySQL】 锁</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/language/java/java-web/java-web/" title="Java Web"><img class="cover" src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-02-01</div><div class="title">Java Web</div></div></a></div><div><a href="/language/java/java-web/java-filter/" title="【Java】 Filter"><img class="cover" src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-02-01</div><div class="title">【Java】 Filter</div></div></a></div><div><a href="/language/java/java-web/java-listener/" title="【Java】 Listener"><img class="cover" src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-02-01</div><div class="title">【Java】 Listener</div></div></a></div><div><a href="/language/java/java-web/java-servlet/" title="【Java】 Servlet"><img class="cover" src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-02-01</div><div class="title">【Java】 Servlet</div></div></a></div><div><a href="/java/java-web/java-web/" title="Java Web"><img class="cover" src="https://cdn.seovx.com/?mom=302" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-02-01</div><div class="title">Java Web</div></div></a></div><div><a href="/java/java-web/java-filter/" title="【Java】 Filter"><img class="cover" src="https://cdn.seovx.com/?mom=302" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-02-01</div><div class="title">【Java】 Filter</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="gitalk-container"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Bill Cipher</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">240</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">69</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/yu627482453"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/yu627482453" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="/627482453@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">1.</span> <span class="toc-text">【Java JVM】 JVM与Java体系结构</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Metadata-25"><span class="toc-number">1.1.</span> <span class="toc-text">Metadata</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A6%82%E8%BF%B0-6"><span class="toc-number">1.2.</span> <span class="toc-text">概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E3%80%90Java-JVM%E3%80%91-JVM%E4%B8%8EJava%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84"><span class="toc-number">1.3.</span> <span class="toc-text">【Java JVM】 JVM与Java体系结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Java-%E5%8F%91%E5%B1%95%E7%9A%84%E9%87%8D%E5%A4%A7%E4%BA%8B%E4%BB%B6"><span class="toc-number">1.4.</span> <span class="toc-text">## Java 发展的重大事件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JVM-%E7%9A%84%E6%95%B4%E4%BD%93%E7%BB%93%E6%9E%84"><span class="toc-number">1.5.</span> <span class="toc-text">JVM 的整体结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Java-%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C%E6%B5%81%E7%A8%8B"><span class="toc-number">1.6.</span> <span class="toc-text">Java 代码执行流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JVM-%E7%9A%84%E6%9E%B6%E6%9E%84%E6%A8%A1%E5%9E%8B"><span class="toc-number">1.7.</span> <span class="toc-text">JVM 的架构模型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JVM-%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="toc-number">1.8.</span> <span class="toc-text">JVM 的生命周期</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JVM-%E7%9A%84%E5%8F%91%E5%B1%95%E5%8E%86%E7%A8%8B"><span class="toc-number">1.9.</span> <span class="toc-text">JVM 的发展历程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Sun-Classic-VM"><span class="toc-number">1.9.1.</span> <span class="toc-text">Sun Classic VM</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Exact-VM"><span class="toc-number">1.9.2.</span> <span class="toc-text">Exact VM</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HotSpot-VM"><span class="toc-number">1.9.3.</span> <span class="toc-text">HotSpot VM</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JRockit"><span class="toc-number">1.9.4.</span> <span class="toc-text">JRockit</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#IBM-%E7%9A%84-J9"><span class="toc-number">1.9.5.</span> <span class="toc-text">IBM 的 J9</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#KVM-%E5%92%8C-CDC-CLDC-Hotspot"><span class="toc-number">1.9.6.</span> <span class="toc-text">KVM 和 CDC &#x2F; CLDC Hotspot</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Azul-VM"><span class="toc-number">1.9.7.</span> <span class="toc-text">Azul VM</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Liquid-VM"><span class="toc-number">1.9.8.</span> <span class="toc-text">Liquid VM</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Apache-Harmony"><span class="toc-number">1.9.9.</span> <span class="toc-text">Apache Harmony</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Micorsoft-JVM"><span class="toc-number">1.9.10.</span> <span class="toc-text">Micorsoft JVM</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Taobao-JVM"><span class="toc-number">1.9.11.</span> <span class="toc-text">Taobao JVM</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Dalvik-VM"><span class="toc-number">1.9.12.</span> <span class="toc-text">Dalvik VM</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Graal-VM"><span class="toc-number">1.9.13.</span> <span class="toc-text">Graal VM</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93-2"><span class="toc-number">1.9.14.</span> <span class="toc-text">总结</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E4%B9%A6%E7%9B%AE"><span class="toc-number">1.10.</span> <span class="toc-text">参考书目</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/design/she-ji-mo-shi/" title="无题"><img src="https://cdn.seovx.com/?mom=302" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/design/she-ji-mo-shi/" title="无题">无题</a><time datetime="2023-07-15T09:13:39.871Z" title="发表于 2023-07-15 17:13:39">2023-07-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/design/xing-wei-mo-shi/xing-wei-mo-shi/" title="无题"><img src="https://cdn.seovx.com/?mom=302" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/design/xing-wei-mo-shi/xing-wei-mo-shi/" title="无题">无题</a><time datetime="2023-07-15T09:13:37.615Z" title="发表于 2023-07-15 17:13:37">2023-07-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/design/jie-gou-mo-shi/jie-gou-mo-shi/" title="无题"><img src="https://cdn.seovx.com/?mom=302" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/design/jie-gou-mo-shi/jie-gou-mo-shi/" title="无题">无题</a><time datetime="2023-07-15T09:13:33.180Z" title="发表于 2023-07-15 17:13:33">2023-07-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/design/chuang-jian-mo-shi/chuang-jian-mo-shi/" title="无题"><img src="https://cdn.seovx.com/?mom=302" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/design/chuang-jian-mo-shi/chuang-jian-mo-shi/" title="无题">无题</a><time datetime="2023-07-15T09:13:23.913Z" title="发表于 2023-07-15 17:13:23">2023-07-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/java/java-duo-xian-cheng-bing-fa/java-duo-xian-cheng-bing-fa-xian-cheng/java-duo-xian-cheng-bing-fa-xian-cheng/" title="【Java 多线程并发】 线程"><img src="https://cdn.seovx.com/?mom=302" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【Java 多线程并发】 线程"/></a><div class="content"><a class="title" href="/java/java-duo-xian-cheng-bing-fa/java-duo-xian-cheng-bing-fa-xian-cheng/java-duo-xian-cheng-bing-fa-xian-cheng/" title="【Java 多线程并发】 线程">【Java 多线程并发】 线程</a><time datetime="2023-07-10T06:15:00.000Z" title="发表于 2023-07-10 14:15:00">2023-07-10</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By Bill Cipher</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>function addGitalkSource () {
+  const ele = document.createElement('link')
+  ele.rel = 'stylesheet'
+  ele.href= 'https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.css'
+  document.getElementsByTagName('head')[0].appendChild(ele)
+}
+
+function loadGitalk () {
+  function initGitalk () {
+    var gitalk = new Gitalk(Object.assign({
+      clientID: 'c61a274b6f5aa26a58f6',
+      clientSecret: '485a7761d321c8dcc5cae05d7256be9fb196d94a',
+      repo: 'yu627482453.github.io',
+      owner: 'yu627482453',
+      admin: ['yu627482453'],
+      id: '869d737cb41c0b5462a480cfc4a449cf',
+      updateCountCallback: commentCount
+    },null))
+
+    gitalk.render('gitalk-container')
+  }
+
+  if (typeof Gitalk === 'function') initGitalk()
+  else {
+    addGitalkSource()
+    getScript('https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.js').then(initGitalk)
+  }
+}
+
+function commentCount(n){
+  let isCommentCount = document.querySelector('#post-meta .gitalk-comment-count')
+  if (isCommentCount) {
+    isCommentCount.innerHTML= n
+  }
+}
+
+if ('Gitalk' === 'Gitalk' || !true) {
+  if (true) btf.loadComment(document.getElementById('gitalk-container'), loadGitalk)
+  else loadGitalk()
+} else {
+  function loadOtherComment () {
+    loadGitalk()
+  }
+}</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

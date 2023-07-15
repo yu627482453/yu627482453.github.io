@@ -1,0 +1,758 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>【Java 多线程并发】 Condition条件锁 | 蝶梦庄生</title><meta name="keywords" content="Java"><meta name="author" content="Bill Cipher"><meta name="copyright" content="Bill Cipher"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="【Java 多线程并发】 Condition条件锁">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【Java 多线程并发】 Condition条件锁">
+<meta property="og:url" content="https://yu627482453.github.io/java/java-duo-xian-cheng-bing-fa/java-duo-xian-cheng-bing-fa-locks/java-duo-xian-cheng-bing-fa-condition-tiao-jian-suo/index.html">
+<meta property="og:site_name" content="蝶梦庄生">
+<meta property="og:description" content="【Java 多线程并发】 Condition条件锁">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.seovx.com/?mom=302">
+<meta property="article:published_time" content="2023-07-04T08:54:00.000Z">
+<meta property="article:modified_time" content="2023-07-04T08:54:00.000Z">
+<meta property="article:author" content="Bill Cipher">
+<meta property="article:tag" content="行动阶段&#x2F;完成">
+<meta property="article:tag" content="笔记空间&#x2F;KnowladgeSpace&#x2F;ProgramSpace&#x2F;BasicsSpace">
+<meta property="article:tag" content="细化主题&#x2F;Java">
+<meta property="article:tag" content="主题场景&#x2F;程序">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.seovx.com/?mom=302"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://yu627482453.github.io/java/java-duo-xian-cheng-bing-fa/java-duo-xian-cheng-bing-fa-locks/java-duo-xian-cheng-bing-fa-condition-tiao-jian-suo/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: undefined,
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: Bill Cipher","link":"链接: ","source":"来源: 蝶梦庄生","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '【Java 多线程并发】 Condition条件锁',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-07-04 16:54:00'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.2.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">240</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">69</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cdn.seovx.com/?mom=302')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">蝶梦庄生</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">【Java 多线程并发】 Condition条件锁</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-07-04T08:54:00.000Z" title="发表于 2023-07-04 16:54:00">2023-07-04</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-07-04T08:54:00.000Z" title="更新于 2023-07-04 16:54:00">2023-07-04</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Java/">Java</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="【Java 多线程并发】 Condition条件锁"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1>【Java 多线程并发】 Condition条件锁</h1>
+<h2 id="Metadata-51">Metadata</h2>
+<pre><code class="language-yml">title: 【Java 多线程并发】 Condition条件锁
+date: 2023-07-04 16:54
+tags:
+  - 行动阶段/完成
+  - 主题场景/程序
+  - 笔记空间/KnowladgeSpace/ProgramSpace/BasicsSpace
+  - 细化主题/Java
+categories:
+  - Java
+keywords:
+  - Java
+description: 【Java 多线程并发】 Condition条件锁
+</code></pre>
+<h2 id="概述-22">概述</h2>
+<p>条件锁中也维护了一个队列，为了和AQS的同步队列区分，我这里称为条件队列，firstWaiter是队列的头节点，lastWaiter是队列的尾节点。</p>
+<p><strong>Condition的条件队列和AQS的同步队列不完全一样</strong></p>
+<p>Condition的条件队列和AQS的同步队列都是通过节点类Node组成的。<br>
+但是AQS的队列头节点是不存在任何值的，是一个虚节点； Condition的队列头节点是存储着实实在在的元素值的，是真实节点。<br>
+而且条件队列是一个单向队列，同步队列是一个双向队列</p>
+<p><strong>await()方法</strong></p>
+<p>先释放锁-&gt;等待条件-&gt;再次获取锁的过程</p>
+<p><strong>signal()方法</strong></p>
+<p>调用signal()方法的线程调用unlock()方法才是真正唤醒阻塞在条件上的节点<br>
+被唤醒之后，被唤醒的节点会再次尝试获取锁</p>
+<p><img src="/attachment/f56b7827028739aaf2d301aee6eed091.png" alt=""></p>
+<h2 id="【Java-多线程并发】-Condition条件锁">【Java 多线程并发】 Condition条件锁</h2>
+<p>任何一个Java对象都天然继承于Object类，在线程间实现通信的往往会应用到Object的几个方法，比如wait()，wait(long timeout)，wait(long timeout, int nanos)与notify()，notifyAll()几个方法实现等待/通知机制，同样的， 在java Lock体系下依然会有同样的方法实现等待/通知机制。从整体上来看Object的wait和notify/notify是与对象监视器配合完成线程间的等待/通知机制，而Condition与Lock配合完成等待通知机制，前者是Java底层级别的，后者是语言级别的，具有更高的可控制性和扩展性。两者除了在使用方式上不同外，在功能特性上还是有很多的不同：</p>
+<p><img src="/attachment/8575714f75a435eb9c8206d8cab51d78.png" alt=""></p>
+<p>本章节我们就来详细讲解一下条件锁在Java中的实现。条件锁，就是指在获取锁之后发现当前业务场景自己无法处理，而需要等待某个条件的出现才可以继续处理时使用的一种锁。</p>
+<p>比如，在阻塞队列中，当队列中没有元素的时候是无法弹出一个元素的，这时候就需要阻塞在条件notEmpty上，等待其它线程往里面放入一个元素后，唤醒这个条件notEmpty，当前线程才可以继续去做“弹出一个元素”的行为。</p>
+<p>注意，这里的条件，必须是在<strong>获取锁之后去等待</strong>，对应到ReentrantLock的条件锁，就是获取锁之后才能调用condition.await()方法。</p>
+<p>在Java中，条件锁的实现都在AQS的ConditionObject类中，ConditionObject实现了Condition接口，所以ReentrantLock的条件锁是基于AQS实现的。下面我们通过一个例子来进入到条件锁的学习中。</p>
+<h2 id="使用案例-2">使用案例</h2>
+<pre><code class="language-java">public class ReentrantLockTest {
+    public static void main(String[] args) throws InterruptedException {
+        // 声明一个重入锁
+        ReentrantLock lock = new ReentrantLock();
+        // 声明一个条件锁
+        Condition condition = lock.newCondition();
+        // 创建一个线程并执行，该线程就是当达到条件锁条件后，来执行后续的相关逻辑的。可以看作是一个消费者
+        new Thread(()-&gt;{
+            try {
+                // 获取锁
+                lock.lock();  // 1
+                try {
+                    System.out.println("before await");  // 2
+                    // 等待条件   该线程执行到这里就会进入到阻塞状态，直到达到了条件后，由其他线程执行signal()方法来告知该线程已经达到条件了，该线程就会在这里被唤醒继续向下执行
+                    condition.await();  // 3
+                    System.out.println("after await");  // 10
+                } finally {
+                    // 释放锁
+                    lock.unlock();  // 11
+                }
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }).start();
+        
+        // 这里睡1000ms是为了让上面的线程先获取到锁
+        Thread.sleep(1000);
+        // main方法的当前线程来获取锁，该线程就是用来进行相关业务处理，进而达到条件锁条件的。可以看作是一个生产者
+        lock.lock();  // 4
+        try {
+            // 这里睡2000ms代表这个线程执行业务需要的时间，当完成这里的2000ms之后就认为是符合条件锁条件了
+            Thread.sleep(2000);  // 5
+            System.out.println("before signal");  // 6
+            // 通知条件已成立
+            condition.signal();  // 7
+            System.out.println("after signal");  // 8
+        } finally {
+            // 释放锁
+            lock.unlock();  // 9
+        }
+    }
+}
+</code></pre>
+<p>上面的代码很简单，一个线程等待条件，另一个线程通知条件已成立，后面的数字代表代码实际运行的顺序。</p>
+<p>由上面的例子我们也可以看出，await()和signal()方法都必须在获取锁之后释放锁之前使用；</p>
+<h2 id="源码分析-2">源码分析</h2>
+<h3 id="继承关系">继承关系</h3>
+<h4 id="Condition接口">Condition接口</h4>
+<pre><code class="language-java">package java.util.concurrent.locks;
+/**
+ * 条件对象接口
+ * @since 1.5
+ * @author Doug Lea
+ */
+public interface Condition {
+    /**
+     * 让线程进入等待，如果其他线程调用同一Condition对象的notify/notifyAll，那么等待的线程可能被唤醒
+     */
+    void await() throws InterruptedException;
+    /**
+     * 不抛出中断异常的await方法
+     */
+    void awaitUninterruptibly();
+    /**
+     * 带超时的await
+     */
+    long awaitNanos(long nanosTimeout) throws InterruptedException;
+    /**
+     * 带超时的await（可指定时间单位）
+     */
+    boolean await(long time, TimeUnit unit) throws InterruptedException;
+    /**
+     * 带超时的await（指定截止时间）
+     */
+    boolean awaitUntil(Date deadline) throws InterruptedException;
+    /**
+     * 唤醒等待的线程
+     */
+    void signal();
+    /**
+     * 唤醒所有线程
+     */
+    void signalAll();
+}
+</code></pre>
+<h4 id="ConditionObject内部类">ConditionObject内部类</h4>
+<pre><code class="language-java">//  AbstractQueuedSynchronizer.ConditionObject
+public class ConditionObject implements Condition, java.io.Serializable {
+    ...
+    ...
+}
+</code></pre>
+<h3 id="ConditionObject的主要属性">ConditionObject的主要属性</h3>
+<pre><code class="language-java">public class ConditionObject implements Condition, java.io.Serializable {
+    /** 
+        First node of condition queue.  
+        指向条件队列的第一个Node节点
+    */
+    private transient Node firstWaiter;
+    /** 
+        Last node of condition queue.   
+        指向条件队列的最后一个Node节点
+    */
+    private transient Node lastWaiter;
+ 
+    /** 
+        Mode meaning to reinterrupt on exit from wait  
+        REINTERRUPT表示当前线程在其他线程调用signal后被中断 
+    */
+    private static final int REINTERRUPT = 1;
+    /** 
+        Mode meaning to throw InterruptedException on exit from wait  
+        THROW_IE表示当前线程在其他线程调用signal前被中断
+    */
+    private static final int THROW_IE = -1;
+}
+</code></pre>
+<p>可以看到条件锁中也维护了一个队列，为了和AQS的同步队列区分，我这里称为条件队列，firstWaiter是队列的头节点，lastWaiter是队列的尾节点。</p>
+<p>ConditionObject中的条件队列和AQS中的同步队列使用的是相同的节点类型Node，但是两个队列还是有一些不同的，在后续会详细讲解。</p>
+<h3 id="lock-newCondition-方法">lock.newCondition()方法</h3>
+<p>新建一个条件锁。这里以ReetrantLock为例。</p>
+<pre><code class="language-java">public class ReentrantLock implements Lock, java.io.Serializable {
+    private final Sync sync;
+    // 创建条件锁
+    public Condition newCondition() {
+        return sync.newCondition();
+    }
+    /**
+     * 抽象内部类
+     */
+    abstract static class Sync extends AbstractQueuedSynchronizer {
+        // 条件锁
+        final ConditionObject newCondition() {
+            return new ConditionObject();
+        }
+    }
+}
+ 
+// AbstractQueuedSynchronizer.ConditionObject.ConditionObject()
+public ConditionObject() { }
+</code></pre>
+<p>新建一个条件锁最后就是调用的AQS中的ConditionObject类来实例化条件锁。</p>
+<h3 id="condition-await-方法">condition.await()方法</h3>
+<p>condition.await()方法，表明现在要等待条件的出现，只有满足条件之后获取锁的线程才可以继续向后执行。</p>
+<p>await()方法会新建一个节点放到条件队列中，接着完全释放锁，然后阻塞当前线程并等待条件的出现；</p>
+<h4 id="ConditionObject-await">ConditionObject.await()</h4>
+<pre><code class="language-java">// AbstractQueuedSynchronizer.ConditionObject.await()
+public final void await() throws InterruptedException {
+    // 如果线程中断了，抛出异常
+    if (Thread.interrupted())
+        throw new InterruptedException();
+    // 创建线程节点，并且添加节点到Condition的条件队列中，并返回该节点
+    Node node = addConditionWaiter();
+    // 完全释放当前线程获取的锁
+    // 因为锁是可重入的，所以这里要把获取的锁全部释放，这里用savedState记录一下该线程此时持有锁的数量，为了后续满足条件之后再让该线程重新获取相同数量的锁，恢复到最初的状态
+    int savedState = fullyRelease(node);
+    /*
+        中断标志，用来标识线程是否是被中断唤醒的
+        interruptMode = 0：表示不是被中断唤醒的
+        interruptMode != 0：表示是被中断唤醒的
+            interruptMode = REINTERRUPT = 1：表示当前线程在其他线程调用signal()之后被中断唤醒
+            interruptMode = THROW_IE = -1：表示当前线程在其他线程调用signal()之前被中断唤醒
+     */
+    int interruptMode = 0;
+    // 是否在同步队列中，如果该线程节点从条件队列移出到同步队列中，说明当前已经满足条件，线程已经被唤醒，则跳出循环
+    while (!isOnSyncQueue(node)) {
+        // 阻塞当前线程，等待满足条件后被唤醒
+        LockSupport.park(this);
+        
+        // 上面部分是调用await()时释放自己占有的锁，并阻塞自己等待条件的出现
+        // *************************分界线*************************  //
+        // 下面部分是条件已经出现，该线程被唤醒，尝试重新去获取锁继续向后执行
+        
+        // checkInterruptWhileWaiting()中会判断当前线程是否是被中断唤醒的
+        // 返回值非0表示是被中断唤醒的，会通过break跳出while。因为如果是中断唤醒的，有可能实际上该线程还没有等到条件满足的时候就被唤醒了，这样该线程的Node节点一定没有被转移到同步队列中，所以就不可能通过循环条件来跳出循环
+        // 只能是我们手动调用break来跳出循环，毕竟await()方法还是要响应中断的，不能在其他线程已经发出中断信号后，还让线程在这个循环里自选而不响应中断
+        if ((interruptMode = checkInterruptWhileWaiting(node)) != 0)
+            break;
+    }
+    
+    // 尝试获取锁，注意第二个参数，这里需要获取所的数量要和该线程最初持有锁的数量相同，使该线程恢复到最开始的持有锁的状态
+    // 如果没获取到会再次阻塞（这个方法这里就不贴出来了，有兴趣的翻翻上一章的内容）
+    /**
+        我们从两个条件分别去分析
+        1、acquireQueued(node, savedState)
+            尝试获取锁，注意第二个参数，这里需要获取所的数量要和该线程最初持有锁的数量相同，使该线程恢复到最开始的持有锁的状态，
+            该方法在之前ReentrantLock章节中已经讲解过了，在这个方法中线程就会不断地尝试获取锁，如果没获取到就会再次阻塞在这个位置，等到被唤醒后继续抢占锁，直到成功获取锁之后该方法才会返回。
+            该方法的返回值是中断标记，如果该线程是被中断信号唤醒并且抢占到锁的，就会返回true，如果线程不是被中断唤醒的，则返回false
+        
+        2、interruptMode != THROW_IE
+            interruptMode标识的是线程在等待条件满足被阻塞的过程当中，是否是被中断唤醒的
+            这里的条件interruptMode != THROW_IE表示该线程不是在其他线程调用signal()之前被中断唤醒的
+        所以第一个条件是表示该线程在重新获取锁的时被阻塞，然后又被唤醒重新获取到锁的过程中，是不是被中断唤醒的
+        第二个条件表示该线程被阻塞，等待条件满足的过程当中，是不是被中断唤醒的
+        第一个条件为true，说明该线程是在重新获取锁的过程中接收到过中断信号，也就说是这一次中断是在该线程等待条件被阻塞然后又被唤醒之后才发生的，这个中断信号一定是发生在其他线程调用signal()之后
+        第二个条件为true，说明该线程在其他线程调用signal之前没有接收到过中断信号
+        当两个条件都为true时，就会进入到if代码块中，将interruptMode = REINTERRUPT，也就是该线程收到了中断信号，并且是在其他线程调用signal()之后收到的中断信号
+        如果该线程实在signal之前被中断的，那么该线程的流程就到此结束了，需要从头再来获取锁，就不能执行后续的步骤了，也就不能进入到该if代码块中
+     */
+    if (acquireQueued(node, savedState) &amp;&amp; interruptMode != THROW_IE)
+        interruptMode = REINTERRUPT;
+    // 
+    /**
+        清除取消的节点
+        如果node.nextWaiter还指向节点，说明此时node节点没有从条件队列中移除，也就是说node节点是被中断信号唤醒的，而不是被signal()唤醒的
+        这种情况下就有可能存在被取消的节点还在条件队列中，就需要去执行以下清除取消状态节点（也就是非Node.CONDITION状态的节点）的方法
+        该条件成立的例子：
+            假设有三个线程thread0、thread1、thread2，三个线程依次调用同一个ConditionObject的await()方法，
+            之后三者均在上面while中被park，此时，外部线程中断thread0，thread0会执行到这里，此时thread0仍在条件队列中，并且它后面还有thread1和thread2两个节点，此时条件为true
+     */
+    if (node.nextWaiter != null) // clean up if cancelled
+        // 移除条件队列中所有不是Node.CONDITION状态的节点
+        unlinkCancelledWaiters();
+    // interruptMode != 0时，说明当前线程被中断，interruptMode为THROW_IE或REINTERRUPT
+    if (interruptMode != 0)
+        // 方法中会根据interruptMode的值做相应处理，来响应中断
+        reportInterruptAfterWait(interruptMode);
+}
+</code></pre>
+<h4 id="ConditionObject-addConditionWaiter">ConditionObject.addConditionWaiter()</h4>
+<pre><code class="language-java">// AbstractQueuedSynchronizer.ConditionObject.addConditionWaiter()
+// 为线程创建Node节点并将其添加到条件队列当中去
+private Node addConditionWaiter() {
+    // 获取条件队列中最后一个节点
+    Node t = lastWaiter;
+    /**
+     * 如果条件队列的尾节点已取消（非Node.CONDITION状态），从头节点开始清除所有已取消的节点
+     * 
+     * 该条件成立的例子：
+     *  1、假设有两个线程thread0、thread1，初始时，thread0在未持有锁的情况下调用AQS.CO.await()，
+     *     thread0执行到AQS.fullyRelease中时会将其对应节点的waitStatus字段设置为取消状态，
+     *     之后持有锁的thread1调用 AQS.CO.await()，会执行到这里，这是条件队列尾节点t.waitStatus为1
+     * 
+     *  2、假设有两个线程thread0、thread1，初始时，thread0持有锁，之后调用AQS.CO.await()释放锁并阻塞在LockSupport.park(this)处，
+     *     之后外部线程中断thread0，thread0被唤醒后会执行到AQS.transferAfterCancelledWait里的if处将t.waitStatus设置为0，
+     *     之后thread1获取到锁，执行到这里时，t.waitStatus为0
+     */
+    if (t != null &amp;&amp; t.waitStatus != Node.CONDITION) {
+        // 移除条件队列中所有不是Node.CONDITION状态的节点
+        unlinkCancelledWaiters();
+        // 重新获取最新的尾节点，经过unlinkCancelledWaiters()，lastWaiter可能已经改变
+        t = lastWaiter;
+    }
+    // 新建一个节点，将它的waitStatus等待状态设置为CONDITION
+    Node node = new Node(Thread.currentThread(), Node.CONDITION);
+    // 如果尾节点为空，则把新节点赋值给头节点（相当于初始化队列）
+    // 否则把新节点赋值给尾节点的nextWaiter指针
+    if (t == null)
+        firstWaiter = node;
+    else
+        t.nextWaiter = node;
+    // 更新尾节点指向
+    lastWaiter = node;
+    // 返回新节点
+    return node;
+}
+</code></pre>
+<h4 id="AbstractQueuedSynchronizer-fullyRelease">AbstractQueuedSynchronizer.fullyRelease()</h4>
+<pre><code class="language-java">// AbstractQueuedSynchronizer.fullyRelease()
+// 完全释放当前线程获取的锁
+final int fullyRelease(Node node) {
+    // 是否完全释放锁，true标识释放失败
+    boolean failed = true;
+    try {
+        // 获取状态变量的值，这个值代表着获取锁的个数
+        int savedState = getState();
+        // 一次性释放所有获得的锁
+        if (release(savedState)) {
+            // 成功释放锁，将failed置为false
+            failed = false;
+            // 返回该线程最初持有锁的个数
+            return savedState;
+        } else {
+            // 释放失败抛出异常
+            throw new IllegalMonitorStateException();
+        }
+    } finally {
+        // 如果释放失败，则将该节点的waitStatus设置为取消状态
+        if (failed)
+            node.waitStatus = Node.CANCELLED;
+    }
+}
+</code></pre>
+<h4 id="AbstractQueuedSynchronizer-isOnSyncQueue">AbstractQueuedSynchronizer.isOnSyncQueue()</h4>
+<pre><code class="language-java">// AbstractQueuedSynchronizer.isOnSyncQueue()
+// 判断当前线程节点是否在同步队列中
+final boolean isOnSyncQueue(Node node) {
+    // 如果等待状态是CONDITION，或者前一个指针为空，说明还没有移到AQS的队列中，返回false
+    if (node.waitStatus == Node.CONDITION || node.prev == null)
+        return false;
+    // 如果next指针有值，说明已经移到AQS的队列中了
+    if (node.next != null) // If has successor, it must be on queue
+        return true;
+    // 到这里说明node.waitStatus不为Node.CONDITION且node.prev不为null
+    // 从AQS的尾节点开始往前寻找看是否可以找到当前节点，找到了也说明已经在AQS的队列中了
+    return findNodeFromTail(node);
+}
+</code></pre>
+<h4 id="AbstractQueuedSynchronizer-findNodeFromTail">AbstractQueuedSynchronizer.findNodeFromTail()</h4>
+<pre><code class="language-java">// AbstractQueuedSynchronizer.findNodeFromTail()
+private boolean findNodeFromTail(Node node) {
+    Node t = tail;
+    for (;;) {
+        if (t == node)
+            return true;
+        if (t == null)
+            return false;
+        t = t.prev;
+    }
+}
+</code></pre>
+<h4 id="ConditionObject-checkInterruptWhileWaiting">ConditionObject.checkInterruptWhileWaiting()</h4>
+<pre><code class="language-java">// AbstractQueuedSynchronizer.ConditionObject.checkInterruptWhileWaiting()
+// 根据节点的中断情况来返回其中断标志
+private int checkInterruptWhileWaiting(Node node) {
+    /**
+     * 通过Thread.interrupted()来判断该线程是不是被中断，如果没有被中断则返回0
+     * 如果被中断了，则在通过transferAfterCancelledWait(node)来判断该线程是在其他线程调用signal()前被中断，还是调用signal()后被中断
+     *      返回THROW_IE表示当前线程在其他线程调用signal前被中断
+     *      返回REINTERRUPT表示当前线程在其他线程调用signal后被中断
+     *      具体的分界点就是node.waitStatus的值，若其值为Node.CONDITION，是signal前被中断，否则在signal后被中断
+     */
+    return Thread.interrupted() ?
+        (transferAfterCancelledWait(node) ? THROW_IE : REINTERRUPT) :
+        0;
+}
+</code></pre>
+<h4 id="ConditionObject-transferAfterCancelledWait">ConditionObject.transferAfterCancelledWait()</h4>
+<pre><code class="language-java">// AbstractQueuedSynchronizer.ConditionObject.transferAfterCancelledWait()
+// 返回true表示该节点是在调用signal()之前被中断的，返回false表示是调用signal()之后被中断的
+final boolean transferAfterCancelledWait(Node node) {
+    /**
+     * 如果node.waitStatus的值是Node.CONDITION，说明该节点还没有被signal()方法唤醒，也就是说该节点是在调用signal()前被中断的
+     * 
+     * 例子：
+     * 该条件为true的情形：
+     *      假设仅有thread0，thread0持有锁后调用AQS.CO.await()被park，
+     *      之后被外部线程中断，会执行到这里，此时条件为true
+     * 该条件为false的情形：
+     *      假设有两个线程thread0、thread1，thread0，thread0持有锁后调用AQS.CO.await()被park，
+     *      thread1获取到锁后调用AQS.CO.signal，之后会执行到AQS.transferForSignal的第一个if处，
+     *      该if语句执行完后，这里node.waitStatus被修改为0，所以thread0执行这里的if语句时会失败
+     */
+    if (compareAndSetWaitStatus(node, Node.CONDITION, 0)) {
+        // 被中断后就需要重新进入同步队列抢占锁，从头再来
+        enq(node);
+        return true;
+    }
+    // 到这里说明其他线程调用了signal()，将当前线程对应的节点加入同步队列，这里自旋等待入队完成
+    while (!isOnSyncQueue(node))
+        // 主动让出当前线程的CPU时间片
+        Thread.yield(); 
+    // 到这里就说明是在调用signal()之后被中断的，执行到这里的时候，这个线程节点已经进入到了同步队列中了，在后续的操作中就会执行acquireQueued(node, savedState)来不断尝试获取锁直到成功
+    return false;
+}  
+</code></pre>
+<h4 id="ConditionObject-unlinkCancelledWaiters">ConditionObject.unlinkCancelledWaiters()</h4>
+<pre><code class="language-java">// AbstractQueuedSynchronizer.ConditionObject.unlinkCancelledWaiters()
+// 清除掉条件队列中所有被取消的节点；
+private void unlinkCancelledWaiters() {
+    // 获取条件队列的头节点
+    Node t = firstWaiter;
+    Node trail = null;
+    /**
+     * 1、从firstWaiter开始，将整个链表中t.waitStatus != Node.CONDITION的节点移除掉；
+     * 2、节点移除后，将其前置节点的nextWaiter指向后置节点。
+     */
+    while (t != null) {
+        // 获取当前遍历到节点的下一个节点
+        Node next = t.nextWaiter;
+    
+        if (t.waitStatus != Node.CONDITION) {
+            /*
+            * 当前节点状态不是CONDITION：
+            * 将当前节点的nextWaiter设置为null。
+            * 如果trail是空，则将firstWaiter指向之前保存的t.nextWaiter,
+            * 否则将trail.nextWaiter指向之前保存的t.nextWaiter。
+            */
+            t.nextWaiter = null;
+            if (trail == null)
+                firstWaiter = next;
+            else
+                trail.nextWaiter = next;
+            if (next == null)
+                lastWaiter = trail;
+        }
+        else
+            trail = t;
+        t = next;
+    }
+}
+</code></pre>
+<h4 id="ConditionObject-reportInterruptAfterWait">ConditionObject.reportInterruptAfterWait()</h4>
+<pre><code class="language-java">// AbstractQueuedSynchronizer.ConditionObject.reportInterruptAfterWait()
+// 根据中断标识来进行不同的处理
+private void reportInterruptAfterWait(int interruptMode) throws InterruptedException {
+    // 如果当前线程在其他线程调用signal()之前被中断唤醒，则直接抛出异常响应中断
+    if (interruptMode == THROW_IE)
+        throw new InterruptedException();
+    // 如果当前线程在其他线程调用signal()之后被中断唤醒，这种情况不会对条件锁流程造成影响，则设置中断标志，但不会抛出异常中止执行
+    else if (interruptMode == REINTERRUPT)
+        selfInterrupt();
+}
+</code></pre>
+<h4 id="总结-8">总结</h4>
+<h5 id="Condition的条件队列和AQS的同步队列不完全一样">Condition的条件队列和AQS的同步队列不完全一样</h5>
+<p>Condition的条件队列和AQS的同步队列都是通过节点类Node组成的。<br>
+但是AQS的队列头节点是不存在任何值的，是一个虚节点； Condition的队列头节点是存储着实实在在的元素值的，是真实节点。<br>
+而且条件队列是一个单向队列，同步队列是一个双向队列</p>
+<h5 id="各种等待状态（waitStatus）的变化">各种等待状态（waitStatus）的变化</h5>
+<p>首先，在条件队列中，新建节点的初始等待状态是CONDITION（-2）；<br>
+其次，移到AQS的队列中时等待状态会更改为0（AQS队列节点的初始等待状态为0）；<br>
+然后，在AQS的队列中如果需要阻塞，会把它上一个节点的等待状态设置为SIGNAL（-1）；<br>
+最后，不管在Condition队列还是AQS队列中，已取消的节点的等待状态都会设置为CANCELLED（1）；<br>
+另外，后面我们在共享锁的时候还会讲到另外一种等待状态叫PROPAGATE（-3）。</p>
+<h5 id="相似的名称">相似的名称</h5>
+<p>AQS同步队列中下一个节点是next，上一个节点是prev；</p>
+<p>Condition条件队列中下一个节点是nextWaiter，没有上一个节点。</p>
+<h5 id="await-方法的流程">await()方法的流程</h5>
+<ol>
+<li>新建一个节点加入到条件队列中去；</li>
+<li>完全释放当前线程占有的锁；</li>
+<li>阻塞当前线程，并等待条件的出现；</li>
+<li>条件已出现（此时节点已经移到AQS的队列中），尝试获取锁；</li>
+</ol>
+<p>也就是说await()方法内部其实是<mark style="background: #FFB8EBA6;">先释放锁-&gt;等待条件-&gt;再次获取锁的过程</mark>。</p>
+<h3 id="condition-signal-方法">condition.signal()方法</h3>
+<p>condition.signal()方法通知条件已经出现。</p>
+<p>这个方法是由获取锁的其他线程执行的，用来唤醒正在阻塞等待满足条件的线程。</p>
+<p>signal()方法会寻找条件队列中第一个可用节点移到AQS队列中；</p>
+<h4 id="ConditionObject-signal">ConditionObject.signal()</h4>
+<pre><code class="language-java">// AbstractQueuedSynchronizer.ConditionObject.signal()
+public final void signal() {
+    // 如果不是当前线程占有着锁，调用这个方法抛出异常
+    // 说明signal()也要在获取锁之后执行
+    if (!isHeldExclusively())
+        throw new IllegalMonitorStateException();
+    // 获取条件队列的头节点，准备将条件队列头节点唤醒
+    Node first = firstWaiter;
+    // 如果有等待条件的节点，则通知它条件已成立
+    if (first != null)
+        doSignal(first);
+}
+</code></pre>
+<h4 id="ConditionObject-doSignal">ConditionObject.doSignal()</h4>
+<pre><code class="language-java">// AbstractQueuedSynchronizer.ConditionObject.doSignal()
+private void doSignal(Node first) {
+    // 从头节点开始遍历条件队列，仅唤醒第一个符合条件的线程
+    do {
+        // 将记录条件队列头节点的指向向后移动一位
+        if ( (firstWaiter = first.nextWaiter) == null)
+            // 如果移动后firstWaiter为null，说明已到队列尾部，将lastWaiter设置为null
+            lastWaiter = null;
+        // 将first与其后继节点断开，相当于把头节点从队列中出队
+        first.nextWaiter = null;
+    // 转移节点到AQS队列中
+    // 条件1：只要一个线程转移到AQS同步队列成功，transferForSignal返回true，就会终止该循环
+    // 条件2：用于判断是否遍历到了队列尾部
+    } while (!transferForSignal(first) &amp;&amp;
+             (first = firstWaiter) != null);
+}
+</code></pre>
+<h4 id="AbstractQueuedSynchronizer-transferForSignal">AbstractQueuedSynchronizer.transferForSignal()</h4>
+<pre><code class="language-java">// AbstractQueuedSynchronizer.transferForSignal()
+// 将节点从条件队列移动到同步队列，返回移动是否成功
+final boolean transferForSignal(Node node) {
+    // 把节点的状态更改为0，也就是说即将移到AQS队列中
+    // 如果失败了，说明节点已经被改成取消状态了
+    // 返回false，通过上面的循环可知会寻找下一个可用节点
+    if (!compareAndSetWaitStatus(node, Node.CONDITION, 0))
+        return false;
+    // 调用AQS的入队方法把节点移到AQS的队列中
+    // 注意，这里enq()的返回值是node的上一个节点，也就是旧尾节点
+    Node p = enq(node);
+    // 同步队列中上一个节点的等待状态
+    int ws = p.waitStatus;
+    /**
+     * 如果上一个节点已取消了，或者更新状态为SIGNAL失败（也是说明上一个节点已经取消了），则直接唤醒当前节点对应的线程
+     * 
+     * 问题：为什么只要符合这个条件if (ws &gt; 0 || !compareAndSetWaitStatus(p, ws, Node.SIGNAL))，就去执行 LockSupport.unpark(node.thread);来直接将线程节点唤醒呢？
+     * 因为执行到这个if条件时，当前的node节点已经在AQS的同步队列中了，然后符合这个if条件的情况就是此时node在同步队列中的前一个结点被取消了，
+     * 也就是当前节点的前一个结点的waitStatus状态已经不是SIGNAL，而是 CANCELLED了。
+     * 此时如果依然保持当前节点阻塞状态，因为它的前驱节点不是SIGNAL，就可能导致当前node节点无法正常被唤醒的情况。
+     * 所以这里安全起见，就先将当前node节点唤醒，唤醒后续继续执行await方法时，调用其中的acquireQueued(node, savedState)再重新根据之前讲过的规则判断当前节点是否可以被阻塞，
+     * 如果符合被阻塞条件，再去阻塞，如果不符合，再去按照我们以前讲过的ReetractLock中的逻辑去处理即可。
+     * 
+     * 但是如果前面的节点是SIGNAL，也就说明当前node节点是可以被唤醒的，所以就可以保持当前node节点的被唤醒状态了。
+     * 这样Node节点就会在AQS的同步队列中阻塞等待，等到轮到他抢占锁的时候，就会被唤醒，唤醒之后就会在await中继续向下执行了，然后使用acquireQueued(node, savedState)再去重新抢占锁，这个方法会一直等到抢占锁成功后才会返回
+     * 
+     * 总之执行完transferForSignal这个方法，一定能保证当前节点已经从条件队列中转移到了同步队列，也就是说此时已经符合了执行后续操作的条件，该线程可以继续尝试获取锁来执行后续的操作，
+     */
+    if (ws &gt; 0 || !compareAndSetWaitStatus(p, ws, Node.SIGNAL))
+        // node.thread会从await()里的park处被唤醒，因为已经在同步队列中了，因此会跳出while，
+        // 进入AQS.acquireQueued中，若此时p前面仍有节点等待获取锁或p前面没有节点了但调用signal()
+        // 的线程仍未释放锁，node.thread在尝试几次后最终仍会在AQS.parkAndCheckInterrupt中被park
+        LockSupport.unpark(node.thread);
+    // 如果更新上一个节点的等待状态为SIGNAL成功了
+    // 则返回true，这时doSignal()中的循环不成立了，退出循环，也就是只通知了一个节点
+    // 此时当前节点还是阻塞状态
+    // 也就是说调用signal()的时候并不会真正唤醒一个节点
+    // 只是把节点从条件队列移到AQS队列中
+    return true;
+}
+</code></pre>
+<h4 id="总结-9">总结</h4>
+<p>signal()方法的大致流程为：</p>
+<ol>
+<li>从条件队列的头节点开始寻找一个非取消状态的节点；</li>
+<li>把它从条件队列移到AQS队列；</li>
+<li>且只移动一个节点；</li>
+</ol>
+<p>注意，这里调用signal()方法后并不会真正唤醒一个节点，那么，唤醒一个节点是在什么时候呢？</p>
+<p>我们可以再回去看一下本文最开始的使用案例，在其他线程调用signal()方法后，该线程最终会执行lock.unlock()方法，此时才会真正唤醒一个正在同步队列中的节点，唤醒的这个节点如果曾经是条件节点被转移到条件队列中的话，就会继续执行await()方法“分界线”下面的代码。也就是说，在调用signal()方法的线程调用unlock()方法才是真正唤醒阻塞在条件上的节点（此时节点已经在AQS队列中）；被唤醒之后，被唤醒的节点会再次尝试获取锁，后面的逻辑与lock()的逻辑基本一致了。</p>
+<h3 id="condition-signalAll-方法">condition.signalAll()方法</h3>
+<p>AQS.CO.signalAll与AQS.CO.signal类似，区别是signalAll会将所有节点加入同步队列，除了doSignalAll方法以外，其他的方法都是一样的：</p>
+<pre><code class="language-java">private void doSignalAll(Node first) {
+    // 将条件队列的头节点和尾节点都置为null
+    lastWaiter = firstWaiter = null;
+    // 遍历条件队列，依次唤醒所有线程
+    do {
+        Node next = first.nextWaiter;
+        first.nextWaiter = null;
+        transferForSignal(first);
+        first = next;
+    } while (first != null);
+}
+</code></pre>
+<h2 id="总结流程图">总结流程图</h2>
+<p>下面这就就是整个条件锁流程的时序图：</p>
+<p><img src="/attachment/f56b7827028739aaf2d301aee6eed091.png" alt=""></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a target="_blank" rel="noopener" href="https://github.com/yu627482453">Bill Cipher</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://yu627482453.github.io/java/java-duo-xian-cheng-bing-fa/java-duo-xian-cheng-bing-fa-locks/java-duo-xian-cheng-bing-fa-condition-tiao-jian-suo/">https://yu627482453.github.io/java/java-duo-xian-cheng-bing-fa/java-duo-xian-cheng-bing-fa-locks/java-duo-xian-cheng-bing-fa-condition-tiao-jian-suo/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://yu627482453.github.io" target="_blank">蝶梦庄生</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E8%A1%8C%E5%8A%A8%E9%98%B6%E6%AE%B5-%E5%AE%8C%E6%88%90/">行动阶段/完成</a><a class="post-meta__tags" href="/tags/%E7%AC%94%E8%AE%B0%E7%A9%BA%E9%97%B4-KnowladgeSpace-ProgramSpace-BasicsSpace/">笔记空间/KnowladgeSpace/ProgramSpace/BasicsSpace</a><a class="post-meta__tags" href="/tags/%E7%BB%86%E5%8C%96%E4%B8%BB%E9%A2%98-Java/">细化主题/Java</a><a class="post-meta__tags" href="/tags/%E4%B8%BB%E9%A2%98%E5%9C%BA%E6%99%AF-%E7%A8%8B%E5%BA%8F/">主题场景/程序</a></div><div class="post_share"><div class="social-share" data-image="https://cdn.seovx.com/?mom=302" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/reward/wechat.jpg" target="_blank"><img class="post-qr-code-img" src="/img/reward/wechat.jpg" alt="wechat"/></a><div class="post-qr-code-desc">wechat</div></li><li class="reward-item"><a href="/img/reward/alipay.jpg" target="_blank"><img class="post-qr-code-img" src="/img/reward/alipay.jpg" alt="alipay"/></a><div class="post-qr-code-desc">alipay</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/java/java-duo-xian-cheng-bing-fa/java-duo-xian-cheng-bing-fa-locks/java-duo-xian-cheng-bing-fa-reentrantlock/"><img class="prev-cover" src="https://cdn.seovx.com/?mom=302" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">【Java 多线程并发】 ReentrantLock</div></div></a></div><div class="next-post pull-right"><a href="/java/java-duo-xian-cheng-bing-fa/java-duo-xian-cheng-bing-fa-locks/java-duo-xian-cheng-bing-fa-lock-jie-kou/"><img class="next-cover" src="https://cdn.seovx.com/?mom=302" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">【Java 多线程并发】 Lock接口</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/language/java/java-web/java-web/" title="Java Web"><img class="cover" src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-02-01</div><div class="title">Java Web</div></div></a></div><div><a href="/language/java/java-web/java-filter/" title="【Java】 Filter"><img class="cover" src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-02-01</div><div class="title">【Java】 Filter</div></div></a></div><div><a href="/language/java/java-web/java-listener/" title="【Java】 Listener"><img class="cover" src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-02-01</div><div class="title">【Java】 Listener</div></div></a></div><div><a href="/language/java/java-web/java-servlet/" title="【Java】 Servlet"><img class="cover" src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-02-01</div><div class="title">【Java】 Servlet</div></div></a></div><div><a href="/java/java-web/java-web/" title="Java Web"><img class="cover" src="https://cdn.seovx.com/?mom=302" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-02-01</div><div class="title">Java Web</div></div></a></div><div><a href="/java/java-web/java-filter/" title="【Java】 Filter"><img class="cover" src="https://cdn.seovx.com/?mom=302" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-02-01</div><div class="title">【Java】 Filter</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="gitalk-container"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Bill Cipher</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">240</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">69</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/yu627482453"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/yu627482453" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="/627482453@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">1.</span> <span class="toc-text">【Java 多线程并发】 Condition条件锁</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Metadata-51"><span class="toc-number">1.1.</span> <span class="toc-text">Metadata</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A6%82%E8%BF%B0-22"><span class="toc-number">1.2.</span> <span class="toc-text">概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E3%80%90Java-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%B9%B6%E5%8F%91%E3%80%91-Condition%E6%9D%A1%E4%BB%B6%E9%94%81"><span class="toc-number">1.3.</span> <span class="toc-text">【Java 多线程并发】 Condition条件锁</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E6%A1%88%E4%BE%8B-2"><span class="toc-number">1.4.</span> <span class="toc-text">使用案例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90-2"><span class="toc-number">1.5.</span> <span class="toc-text">源码分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%A7%E6%89%BF%E5%85%B3%E7%B3%BB"><span class="toc-number">1.5.1.</span> <span class="toc-text">继承关系</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Condition%E6%8E%A5%E5%8F%A3"><span class="toc-number">1.5.1.1.</span> <span class="toc-text">Condition接口</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ConditionObject%E5%86%85%E9%83%A8%E7%B1%BB"><span class="toc-number">1.5.1.2.</span> <span class="toc-text">ConditionObject内部类</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ConditionObject%E7%9A%84%E4%B8%BB%E8%A6%81%E5%B1%9E%E6%80%A7"><span class="toc-number">1.5.2.</span> <span class="toc-text">ConditionObject的主要属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#lock-newCondition-%E6%96%B9%E6%B3%95"><span class="toc-number">1.5.3.</span> <span class="toc-text">lock.newCondition()方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#condition-await-%E6%96%B9%E6%B3%95"><span class="toc-number">1.5.4.</span> <span class="toc-text">condition.await()方法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#ConditionObject-await"><span class="toc-number">1.5.4.1.</span> <span class="toc-text">ConditionObject.await()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ConditionObject-addConditionWaiter"><span class="toc-number">1.5.4.2.</span> <span class="toc-text">ConditionObject.addConditionWaiter()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#AbstractQueuedSynchronizer-fullyRelease"><span class="toc-number">1.5.4.3.</span> <span class="toc-text">AbstractQueuedSynchronizer.fullyRelease()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#AbstractQueuedSynchronizer-isOnSyncQueue"><span class="toc-number">1.5.4.4.</span> <span class="toc-text">AbstractQueuedSynchronizer.isOnSyncQueue()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#AbstractQueuedSynchronizer-findNodeFromTail"><span class="toc-number">1.5.4.5.</span> <span class="toc-text">AbstractQueuedSynchronizer.findNodeFromTail()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ConditionObject-checkInterruptWhileWaiting"><span class="toc-number">1.5.4.6.</span> <span class="toc-text">ConditionObject.checkInterruptWhileWaiting()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ConditionObject-transferAfterCancelledWait"><span class="toc-number">1.5.4.7.</span> <span class="toc-text">ConditionObject.transferAfterCancelledWait()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ConditionObject-unlinkCancelledWaiters"><span class="toc-number">1.5.4.8.</span> <span class="toc-text">ConditionObject.unlinkCancelledWaiters()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ConditionObject-reportInterruptAfterWait"><span class="toc-number">1.5.4.9.</span> <span class="toc-text">ConditionObject.reportInterruptAfterWait()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%80%BB%E7%BB%93-8"><span class="toc-number">1.5.4.10.</span> <span class="toc-text">总结</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#Condition%E7%9A%84%E6%9D%A1%E4%BB%B6%E9%98%9F%E5%88%97%E5%92%8CAQS%E7%9A%84%E5%90%8C%E6%AD%A5%E9%98%9F%E5%88%97%E4%B8%8D%E5%AE%8C%E5%85%A8%E4%B8%80%E6%A0%B7"><span class="toc-number">1.5.4.10.1.</span> <span class="toc-text">Condition的条件队列和AQS的同步队列不完全一样</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%90%84%E7%A7%8D%E7%AD%89%E5%BE%85%E7%8A%B6%E6%80%81%EF%BC%88waitStatus%EF%BC%89%E7%9A%84%E5%8F%98%E5%8C%96"><span class="toc-number">1.5.4.10.2.</span> <span class="toc-text">各种等待状态（waitStatus）的变化</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%9B%B8%E4%BC%BC%E7%9A%84%E5%90%8D%E7%A7%B0"><span class="toc-number">1.5.4.10.3.</span> <span class="toc-text">相似的名称</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#await-%E6%96%B9%E6%B3%95%E7%9A%84%E6%B5%81%E7%A8%8B"><span class="toc-number">1.5.4.10.4.</span> <span class="toc-text">await()方法的流程</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#condition-signal-%E6%96%B9%E6%B3%95"><span class="toc-number">1.5.5.</span> <span class="toc-text">condition.signal()方法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#ConditionObject-signal"><span class="toc-number">1.5.5.1.</span> <span class="toc-text">ConditionObject.signal()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ConditionObject-doSignal"><span class="toc-number">1.5.5.2.</span> <span class="toc-text">ConditionObject.doSignal()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#AbstractQueuedSynchronizer-transferForSignal"><span class="toc-number">1.5.5.3.</span> <span class="toc-text">AbstractQueuedSynchronizer.transferForSignal()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%80%BB%E7%BB%93-9"><span class="toc-number">1.5.5.4.</span> <span class="toc-text">总结</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#condition-signalAll-%E6%96%B9%E6%B3%95"><span class="toc-number">1.5.6.</span> <span class="toc-text">condition.signalAll()方法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93%E6%B5%81%E7%A8%8B%E5%9B%BE"><span class="toc-number">1.6.</span> <span class="toc-text">总结流程图</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/design/she-ji-mo-shi/" title="无题"><img src="https://cdn.seovx.com/?mom=302" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/design/she-ji-mo-shi/" title="无题">无题</a><time datetime="2023-07-15T09:13:39.871Z" title="发表于 2023-07-15 17:13:39">2023-07-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/design/xing-wei-mo-shi/xing-wei-mo-shi/" title="无题"><img src="https://cdn.seovx.com/?mom=302" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/design/xing-wei-mo-shi/xing-wei-mo-shi/" title="无题">无题</a><time datetime="2023-07-15T09:13:37.615Z" title="发表于 2023-07-15 17:13:37">2023-07-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/design/jie-gou-mo-shi/jie-gou-mo-shi/" title="无题"><img src="https://cdn.seovx.com/?mom=302" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/design/jie-gou-mo-shi/jie-gou-mo-shi/" title="无题">无题</a><time datetime="2023-07-15T09:13:33.180Z" title="发表于 2023-07-15 17:13:33">2023-07-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/design/chuang-jian-mo-shi/chuang-jian-mo-shi/" title="无题"><img src="https://cdn.seovx.com/?mom=302" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/design/chuang-jian-mo-shi/chuang-jian-mo-shi/" title="无题">无题</a><time datetime="2023-07-15T09:13:23.913Z" title="发表于 2023-07-15 17:13:23">2023-07-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/java/java-duo-xian-cheng-bing-fa/java-duo-xian-cheng-bing-fa-xian-cheng/java-duo-xian-cheng-bing-fa-xian-cheng/" title="【Java 多线程并发】 线程"><img src="https://cdn.seovx.com/?mom=302" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【Java 多线程并发】 线程"/></a><div class="content"><a class="title" href="/java/java-duo-xian-cheng-bing-fa/java-duo-xian-cheng-bing-fa-xian-cheng/java-duo-xian-cheng-bing-fa-xian-cheng/" title="【Java 多线程并发】 线程">【Java 多线程并发】 线程</a><time datetime="2023-07-10T06:15:00.000Z" title="发表于 2023-07-10 14:15:00">2023-07-10</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By Bill Cipher</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>function addGitalkSource () {
+  const ele = document.createElement('link')
+  ele.rel = 'stylesheet'
+  ele.href= 'https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.css'
+  document.getElementsByTagName('head')[0].appendChild(ele)
+}
+
+function loadGitalk () {
+  function initGitalk () {
+    var gitalk = new Gitalk(Object.assign({
+      clientID: 'c61a274b6f5aa26a58f6',
+      clientSecret: '485a7761d321c8dcc5cae05d7256be9fb196d94a',
+      repo: 'yu627482453.github.io',
+      owner: 'yu627482453',
+      admin: ['yu627482453'],
+      id: 'c997fcc7c41bba66ddaf3a3c87e48722',
+      updateCountCallback: commentCount
+    },null))
+
+    gitalk.render('gitalk-container')
+  }
+
+  if (typeof Gitalk === 'function') initGitalk()
+  else {
+    addGitalkSource()
+    getScript('https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.js').then(initGitalk)
+  }
+}
+
+function commentCount(n){
+  let isCommentCount = document.querySelector('#post-meta .gitalk-comment-count')
+  if (isCommentCount) {
+    isCommentCount.innerHTML= n
+  }
+}
+
+if ('Gitalk' === 'Gitalk' || !true) {
+  if (true) btf.loadComment(document.getElementById('gitalk-container'), loadGitalk)
+  else loadGitalk()
+} else {
+  function loadOtherComment () {
+    loadGitalk()
+  }
+}</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

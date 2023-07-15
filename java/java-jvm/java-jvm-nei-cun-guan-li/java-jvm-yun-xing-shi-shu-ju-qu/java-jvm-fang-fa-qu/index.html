@@ -1,0 +1,721 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>【Java JVM】 方法区 | 蝶梦庄生</title><meta name="keywords" content="Java/JVM"><meta name="author" content="Bill Cipher"><meta name="copyright" content="Bill Cipher"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="【Java JVM】 方法区">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【Java JVM】 方法区">
+<meta property="og:url" content="https://yu627482453.github.io/java/java-jvm/java-jvm-nei-cun-guan-li/java-jvm-yun-xing-shi-shu-ju-qu/java-jvm-fang-fa-qu/index.html">
+<meta property="og:site_name" content="蝶梦庄生">
+<meta property="og:description" content="【Java JVM】 方法区">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.seovx.com/?mom=302">
+<meta property="article:published_time" content="2023-06-27T13:38:00.000Z">
+<meta property="article:modified_time" content="2023-06-27T13:38:00.000Z">
+<meta property="article:author" content="Bill Cipher">
+<meta property="article:tag" content="行动阶段&#x2F;完成">
+<meta property="article:tag" content="笔记空间&#x2F;KnowladgeSpace&#x2F;ProgramSpace&#x2F;BasicsSpace">
+<meta property="article:tag" content="细化主题&#x2F;Java&#x2F;JVM">
+<meta property="article:tag" content="主题场景&#x2F;程序">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.seovx.com/?mom=302"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://yu627482453.github.io/java/java-jvm/java-jvm-nei-cun-guan-li/java-jvm-yun-xing-shi-shu-ju-qu/java-jvm-fang-fa-qu/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: undefined,
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: Bill Cipher","link":"链接: ","source":"来源: 蝶梦庄生","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '【Java JVM】 方法区',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-06-27 21:38:00'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.2.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">240</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">69</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cdn.seovx.com/?mom=302')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">蝶梦庄生</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">【Java JVM】 方法区</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-06-27T13:38:00.000Z" title="发表于 2023-06-27 21:38:00">2023-06-27</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-06-27T13:38:00.000Z" title="更新于 2023-06-27 21:38:00">2023-06-27</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Java/">Java</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="【Java JVM】 方法区"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1>【Java JVM】 方法区</h1>
+<h2 id="Metadata-83">Metadata</h2>
+<pre><code class="language-yml">title: 【Java JVM】 方法区
+date: 2023-06-27 21:38
+tags:
+  - 行动阶段/完成
+  - 主题场景/程序
+  - 笔记空间/KnowladgeSpace/ProgramSpace/BasicsSpace
+  - 细化主题/Java/JVM
+categories:
+  - Java
+keywords:
+  - Java/JVM
+description: 【Java JVM】 方法区
+</code></pre>
+<h2 id="概述-41">概述</h2>
+<p><img src="/attachment/59bb4b5b89aa44b67b0fee7cf403c301.png" alt=""></p>
+<p><img src="/attachment/9957ca7ad9cee8e8ce69426c98801ceb.png" alt=""></p>
+<p><strong>方法区</strong></p>
+<ul>
+<li>各个线程共享的内存区域。</li>
+<li>JVM 启动的时候被创建</li>
+<li>可以选择固定大小或者可扩展</li>
+<li>方法区的大小决定了系统可以保存多少个类</li>
+<li>如果系统定义了太多的类，导致方法区溢出</li>
+<li>关闭 JVM 就会释放这个区域的内存。</li>
+</ul>
+<p><strong>元空间与永久代最大的区别</strong></p>
+<p>元空间不在虚拟机设置的内存中，而是使用本地内存</p>
+<p><strong>内部结构</strong></p>
+<ul>
+<li>模数</li>
+<li>版本号</li>
+<li>运行时常量池
+<ul>
+<li>编译期生成的各种字面量与符号引用</li>
+<li>具有动态性</li>
+</ul>
+</li>
+<li>类型信息
+<ul>
+<li>完整有效名称</li>
+<li>直接父类的完整有效名</li>
+<li>访问修饰符</li>
+<li>直接接口的一个有序列表</li>
+</ul>
+</li>
+<li>域（Field）信息
+<ul>
+<li>域名称、域类型、域修饰符</li>
+</ul>
+</li>
+<li>方法（Method）信息
+<ul>
+<li>方法名称</li>
+<li>方法的返回类型（或 void）</li>
+<li>方法参数的数量和类型（按顺序）</li>
+<li>方法的修饰符（public，private，protected，static，final，synchronized，native，abstract 的一个子集）</li>
+<li>方法的字节码（bytecodes）、操作数栈、局部变量表及大小（abstract 和 native 方法除外）</li>
+<li>异常表（abstract 和 native 方法除外）
+<ul>
+<li>每个异常处理的开始位置、结束位置、代码处理在程序计数器中的偏移地址、被捕获的异常类的常量池索引</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>non-final 的类变量</li>
+<li>全局常量</li>
+<li>属性(Attribute)信息</li>
+</ul>
+<p><img src="/attachment/ae99a235f97699238faa0bc34df370a0.png" alt=""></p>
+<p><strong>方法区的演进</strong></p>
+<ul>
+<li>JDK1.6 永久代</li>
+<li>JDK1.7 去永久代 字符串常量池、静态变量移除，保存在堆中</li>
+<li>JDK1.8 元空间 类型信息，字段，方法，常量保存在本地内存的元空间，但字符串常量池、静态变量仍然在堆中。</li>
+</ul>
+<p><strong>方法区的垃圾回收</strong></p>
+<ul>
+<li>该类所有的实例都已经被回收</li>
+<li>加载该类的类加载器已经被回收</li>
+<li>该类对应的 java.lang.Class 对象没有在任何地方被引用</li>
+</ul>
+<h2 id="【Java-JVM】-方法区">【Java JVM】 方法区</h2>
+<p><img src="/attachment/c9b76c4abd5ef9039af1c0bbd217a852.png" alt=""></p>
+<p>从线程共享与否的角度来看</p>
+<p><img src="/attachment/5d178b8d683053e6e6bfba988dde8584.png" alt=""></p>
+<h2 id="栈、堆、方法区的交互关系">栈、堆、方法区的交互关系</h2>
+<p><img src="/attachment/59bb4b5b89aa44b67b0fee7cf403c301.png" alt=""></p>
+<h2 id="方法区的理解">方法区的理解</h2>
+<p>官方文档：<a target="_blank" rel="noopener" href="https://docs.oracle.com/javase/specs/jvms/se8/html/jvms-2.html#jvms-2.5.4">Chapter 2. The Structure of the Java Virtual Machine (oracle.com)</a></p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/ec22e5d6086dd6219195b2d886118d65.png" alt="image-20210510195446194"></p>
+<h3 id="方法区在哪里？">方法区在哪里？</h3>
+<p>《Java 虚拟机规范》中明确说明：“尽管所有的方法区在逻辑上是属于堆的一部分，但一些简单的实现可能不会选择去进行垃圾收集或者进行压缩。”但对于 HotSpotJVM 而言，方法区还有一个别名叫做 Non-Heap（非堆），目的就是要和堆分开。</p>
+<p>所以，<mark>方法区看作是一块独立于 Java 堆的内存空间</mark>。</p>
+<p><img src="/attachment/f0ae4b24c023d63d49c1f8ecc645940a.png" alt=""></p>
+<h3 id="方法区的基本理解">方法区的基本理解</h3>
+<ul>
+<li>方法区（Method Area）与 Java 堆一样，是各个线程共享的内存区域。</li>
+<li>方法区在 JVM 启动的时候被创建，并且它的实际的物理内存空间中和 Java 堆区一样都可以是不连续的。</li>
+<li>方法区的大小，跟堆空间一样，可以选择固定大小或者可扩展。</li>
+<li>方法区的大小决定了系统可以保存多少个类，如果系统定义了太多的类，导致方法区溢出，虚拟机同样会抛出内存溢出错误：<code>java.lang.OutOfMemoryError: PermGen space</code> 或者<code>java.lang.OutOfMemoryError: Metaspace</code>
+<ul>
+<li><mark>加载大量的第三方的 jar 包；Tomcat 部署的工程过多（30~50 个）；大量动态的生成反射类</mark></li>
+</ul>
+</li>
+<li>关闭 JVM 就会释放这个区域的内存。</li>
+</ul>
+<h3 id="HotSpot-中方法区的演进">HotSpot 中方法区的演进</h3>
+<p>在 jdk7 及以前，习惯上把方法区，称为永久代。jdk8 开始，使用元空间取代了永久代。</p>
+<p><img src="/attachment/483da7a8da89c592a8941c059481c81b.png" alt=""></p>
+<p>本质上，方法区和永久代并不等价。仅是对 hotspot 而言的。《Java 虚拟机规范》对如何实现方法区，不做统一要求。例如：BEA JRockit / IBM J9 中不存在永久代的概念。</p>
+<p>现在来看，当年使用永久代，不是好的 idea。导致 Java 程序更容易 OOM（超过<code>-XX:MaxPermsize</code>上限）</p>
+<p>本质上，方法区和永久代并不等价。仅是对 hotspot 而言的。《Java 虚拟机规范》对如何实现方法区，不做统一要求。例如：BEA JRockit / IBM J9 中不存在永久代的概念。</p>
+<p>现在来看，当年使用永久代，不是好的 idea。导致 Java 程序更容易 OOM（超过<code>-XX:MaxPermsize</code>上限）</p>
+<p><img src="/attachment/5e6a7171094285966c2bc887302b22b6.png" alt=""></p>
+<p>而到了 JDK8，终于完全废弃了永久代的概念，改用与 JRockit、J9 一样在本地内存中实现的元空间（Metaspace）来代替</p>
+<p><img src="/attachment/d6cbaba72c91d6e44cc16731113ce82c.png" alt=""></p>
+<p>元空间的本质和永久代类似，都是对 JVM 规范中方法区的实现。不过元空间与永久代最大的区别在于：<mark>元空间不在虚拟机设置的内存中，而是使用本地内存</mark></p>
+<p>永久代、元空间二者并不只是名字变了，内部结构也调整了</p>
+<p>根据《Java 虚拟机规范》的规定，如果方法区无法满足新的内存分配需求时，将抛出 OOM 异常</p>
+<h2 id="设置方法区大小与-OOM">设置方法区大小与 OOM</h2>
+<h3 id="设置方法区内存的大小">设置方法区内存的大小</h3>
+<p>方法区的大小不必是固定的，JVM 可以根据应用的需要动态调整。</p>
+<p><strong>jdk7 及以前</strong></p>
+<ul>
+<li><mark>通过<code>-XX:Permsize</code>来设置永久代初始分配空间。默认值是 20.75M</mark></li>
+<li><mark>通过<code>-XX:MaxPermsize</code>来设定永久代最大可分配空间。32 位机器默认是 64M，64 位机器模式是 82M</mark></li>
+<li>当 JVM 加载的类信息容量超过了这个值，会报异常<code>OutOfMemoryError:PermGen space</code>。</li>
+</ul>
+<p><img src="/attachment/06c458374ee1504b27422bf510f6601e.png" alt=""></p>
+<p><strong>JDK8 以后</strong></p>
+<ul>
+<li>元数据区大小可以使用参数 <code>-XX:MetaspaceSize</code> 和 <code>-XX:MaxMetaspaceSize</code>指定</li>
+<li>默认值依赖于平台。windows 下，<code>-XX:MetaspaceSize=21M -XX:MaxMetaspaceSize=-1//即没有限制</code>。</li>
+<li>与永久代不同，如果不指定大小，默认情况下，虚拟机会耗尽所有的可用系统内存。如果元数据区发生溢出，虚拟机一样会抛出异常<code>OutOfMemoryError:Metaspace</code></li>
+<li><code>-XX:MetaspaceSize</code>：设置初始的元空间大小。对于一个 64 位的服务器端 JVM 来说，其默认的<code>-XX:MetaspaceSize</code>值为 21MB。这就是初始的高水位线，一旦触及这个水位线，Full GC 将会被触发并卸载没用的类（即这些类对应的类加载器不再存活），然后这个高水位线将会重置。新的高水位线的值取决于 GC 后释放了多少元空间。如果释放的空间不足，那么在不超过<code>MaxMetaspaceSize</code>时，适当提高该值。如果释放空间过多，则适当降低该值。</li>
+<li>如果初始化的高水位线设置过低，上述高水位线调整情况会发生很多次。通过垃圾回收器的日志可以观察到 Full GC 多次调用。为了避免频繁地 GC，建议将<code>-XX:MetaspaceSize</code>设置为一个相对较高的值。</li>
+</ul>
+<p><strong>举例 1：《深入理解 Java 虚拟机》的例子</strong></p>
+<p><img src="/attachment/6467374ce758d46e32216db2aa383b4b.png" alt=""></p>
+<pre><code class="language-java">/**
+ * jdk8中：
+ * -XX:MetaspaceSize=10m-XX:MaxMetaspaceSize=10m
+ * jdk6中：
+ * -XX:PermSize=10m-XX:MaxPermSize=10m
+ */
+public class OOMTest extends ClassLoader{
+    public static void main(String[] args){
+        int j = 0;
+        try{
+            OOMTest test = new OOMTest();
+            for (int i=0;i&lt;10000;i++){
+                //创建Classwriter对象，用于生成类的二进制字节码
+                ClassWriter classWriter = new ClassWriter(0);
+                //指明版本号，public，类名，包名，父类，接口
+                classWriter.visit(Opcodes.V1_6, Opcodes.ACC_PUBLIC, "Class" + i, nu1l, "java/lang/Object", null);
+                //返回byte[]
+                byte[] code = classWriter.toByteArray();
+                //类的加载
+                test.defineClass("Class" + i, code, 0, code.length); //CLass对象
+                j++;
+            }
+        } finally{
+            System.out.println(j);
+        }
+    }
+}
+</code></pre>
+<h3 id="如何解决这些-OOM">如何解决这些 OOM</h3>
+<ol>
+<li>要解决 OOM 异常或 heap space 的异常，一般的手段是首先通过内存映像分析工具（如 Eclipse Memory Analyzer）对 dump 出来的堆转储快照进行分析，重点是确认内存中的对象是否是必要的，也就是要先分清楚到底是出现了内存泄漏（Memory Leak）还是内存溢出（Memory Overflow）</li>
+<li>如果是内存泄漏，可进一步通过工具查看泄漏对象到 GC Roots 的引用链。于是就能找到泄漏对象是通过怎样的路径与 GCRoots 相关联并导致垃圾收集器无法自动回收它们的。掌握了泄漏对象的类型信息，以及 GCRoots 引用链的信息，就可以比较准确地定位出泄漏代码的位置。</li>
+<li>如果不存在内存泄漏，换句话说就是内存中的对象确实都还必须存活着，那就应当检查虚拟机的堆参数（<code>-Xmx</code>与<code>-Xms</code>），与机器物理内存对比看是否还可以调大，从代码上检查是否存在某些对象生命周期过长、持有状态时间过长的情况，尝试减少程序运行期的内存消耗。</li>
+</ol>
+<h2 id="方法区的内部结构">方法区的内部结构</h2>
+<p><img src="/attachment/3a1be6724e8bacdfc29320ce5e72440c.png" alt=""></p>
+<h3 id="方法区（Method-Area）存储什么？">方法区（Method Area）存储什么？</h3>
+<p>《深入理解 Java 虚拟机》书中对方法区（Method Area）存储内容描述如下：</p>
+<blockquote>
+<p>它用于存储已被虚拟机加载的类型信息、常量、静态变量、即时编译器编译后的代码缓存等。</p>
+</blockquote>
+<p><img src="/attachment/9adfe27cfc53d473026f7dc917020b81.png" alt=""></p>
+<h3 id="方法区的内部结构-2">方法区的内部结构</h3>
+<h4 id="类型信息">类型信息</h4>
+<p>对每个加载的类型（类 class、接口 interface、枚举 enum、注解 annotation），JVM 必须在方法区中存储以下类型信息：</p>
+<ol>
+<li>这个类型的完整有效名称（全名=包名.类名）</li>
+<li>这个类型直接父类的完整有效名（对于 interface 或是 java.lang.object，都没有父类）</li>
+<li>这个类型的修饰符（public，abstract，final 的某个子集）</li>
+<li>这个类型直接接口的一个有序列表</li>
+</ol>
+<h4 id="域（Field）信息">域（Field）信息</h4>
+<p>JVM 必须在方法区中保存类型的所有域的相关信息以及域的声明顺序。</p>
+<p>域的相关信息包括：域名称、域类型、域修饰符（public，private，protected，static，final，volatile，transient 的某个子集）</p>
+<h4 id="方法（Method）信息">方法（Method）信息</h4>
+<p>JVM 必须保存所有方法的以下信息，同域信息一样包括声明顺序：</p>
+<ol>
+<li>方法名称</li>
+<li>方法的返回类型（或 void）</li>
+<li>方法参数的数量和类型（按顺序）</li>
+<li>方法的修饰符（public，private，protected，static，final，synchronized，native，abstract 的一个子集）</li>
+<li>方法的字节码（bytecodes）、操作数栈、局部变量表及大小（abstract 和 native 方法除外）</li>
+<li>异常表（abstract 和 native 方法除外）
+<ul>
+<li>每个异常处理的开始位置、结束位置、代码处理在程序计数器中的偏移地址、被捕获的异常类的常量池索引</li>
+</ul>
+</li>
+</ol>
+<h4 id="non-final-的类变量">non-final 的类变量</h4>
+<ul>
+<li>静态变量和类关联在一起，随着类的加载而加载，他们成为类数据在逻辑上的一部分</li>
+<li>类变量被类的所有实例共享，即使没有类实例时，你也可以访问它</li>
+</ul>
+<pre><code class="language-java">public class MethodAreaTest {
+    public static void main(String[] args) {
+        Order order = new Order();
+        order.hello();
+        System.out.println(order.count);
+    }
+}
+class Order {
+    public static int count = 1;
+    public static void hello() {
+        System.out.println("hello!");
+    }
+}
+</code></pre>
+<h4 id="补充说明：全局常量（static-final）">补充说明：全局常量（static final）</h4>
+<p>被声明为 final 的类变量的处理方法则不同，每个全局常量在编译的时候就会被分配了。</p>
+<h3 id="运行时常量池-VS-常量池">运行时常量池 VS 常量池</h3>
+<p><img src="/attachment/ade6b28e2aab25aabf0841ae68d8dc5c.png" alt=""></p>
+<ul>
+<li>方法区，内部包含了运行时常量池</li>
+<li>字节码文件，内部包含了常量池</li>
+<li>要弄清楚方法区，需要理解清楚 ClassFile，因为加载类的信息都在方法区。</li>
+<li>要弄清楚方法区的运行时常量池，需要理解清楚 ClassFile 中的常量池。</li>
+</ul>
+<p>官方文档：<a target="_blank" rel="noopener" href="https://docs.oracle.com/javase/specs/jvms/se8/html/jvms-4.html">https://docs.oracle.com/javase/specs/jvms/se8/html/jvms-4.html</a></p>
+<p><img src="/attachment/7c9c305ae5f1da388f4d3fd70682acf1.png" alt=""></p>
+<p>一个有效的字节码文件中除了包含类的版本信息、字段、方法以及接口等描述符信息外，还包含一项信息就是常量池表（Constant Pool Table），包括各种字面量和对类型、域和方法的符号引用</p>
+<h4 id="为什么需要常量池？">为什么需要常量池？</h4>
+<p>一个 java 源文件中的类、接口，编译后产生一个字节码文件。而 Java 中的字节码需要数据支持，通常这种数据会很大以至于不能直接存到字节码里，换另一种方式，可以存到常量池，这个字节码包含了指向常量池的引用。在动态链接的时候会用到运行时常量池，之前有介绍。</p>
+<p>比如：如下的代码：</p>
+<pre><code class="language-java">public class SimpleClass {
+    public void sayHello() {
+        System.out.println("hello");
+    }
+}
+</code></pre>
+<p>虽然只有 194 字节，但是里面却使用了 String、System、PrintStream 及 Object 等结构。这里的代码量其实很少了，如果代码多的话，引用的结构将会更多，这里就需要用到常量池了。</p>
+<p><img src="/attachment/268f5b17a7e86f22123b35e4f510550f.png" alt=""></p>
+<h4 id="常量池中有什么">常量池中有什么?</h4>
+<p>击中常量池内存储的数据类型包括：</p>
+<ul>
+<li>数量值</li>
+<li>字符串值</li>
+<li>类引用</li>
+<li>字段引用</li>
+<li>方法引用</li>
+</ul>
+<p>例如下面这段代码：</p>
+<pre><code class="language-java">public class MethodAreaTest2 {
+    public static void main(String args[]) {
+        Object obj = new Object();
+    }
+}
+</code></pre>
+<p><code>Object obj = new Object();</code>将会被翻译成如下字节码：</p>
+<pre><code class="language-java">0: new #2  // Class java/lang/Object
+1: dup
+2: invokespecial // Method java/lang/Object "&lt;init&gt;"() V
+</code></pre>
+<h4 id="小结-4">小结</h4>
+<p>常量池、可以看做是一张表，虚拟机指令根据这张常量表找到要执行的类名、方法名、参数类型、字面量等类型</p>
+<h3 id="运行时常量池">运行时常量池</h3>
+<ul>
+<li>运行时常量池（Runtime Constant Pool）是方法区的一部分。</li>
+<li><mark>常量池表（Constant Pool Table）是 Class 文件的一部分，用于存放编译期生成的各种字面量与符号引用，这部分内容将在类加载后存放到方法区的运行时常量池中。</mark></li>
+<li>运行时常量池，在加载类和接口到虚拟机后，就会创建对应的运行时常量池。</li>
+<li>JVM 为每个已加载的类型（类或接口）都维护一个常量池。池中的数据项像数组项一样，是通过<mark>索引访问</mark>的。</li>
+<li>运行时常量池中包含多种不同的常量，包括编译期就已经明确的数值字面量，也包括到运行期解析后才能够获得的方法或者字段引用。此时不再是常量池中的符号地址了，这里换为<mark>真实地址</mark>。</li>
+<li>运行时常量池，相对于 Class 文件常量池的另一重要特征是：具备<mark>动态性</mark>。</li>
+<li>运行时常量池类似于传统编程语言中的符号表（symboltable），但是它所包含的数据却比符号表要更加丰富一些。</li>
+<li>当创建类或接口的运行时常量池时，如果构造运行时常量池所需的内存空间超过了方法区所能提供的最大值，则 JVM 会抛 OutOfMemoryError 异常。</li>
+</ul>
+<h2 id="方法区使用举例">方法区使用举例</h2>
+<pre><code class="language-java">public class MethodAreaDemo {
+    public static void main(String args[]) {
+        int x = 500;
+        int y = 100;
+        int a = x / y;
+        int b = 50;
+        System.out.println(a+b);
+    }
+}
+</code></pre>
+<style>.admonition {
+  margin: 1.5625em 0;
+  padding: .6rem;
+  overflow: hidden;
+  font-size: 1.00rem;
+  page-break-inside: avoid;
+  border-left: .3rem solid #42b983;
+  border-radius: .3rem;
+  box-shadow: 0 0.1rem 0.4rem rgba(0,0,0,.05), 0 0 0.05rem rgba(0,0,0,.1);
+  background-color: #fafafa;
+}
+
+p.admonition-title {
+  position: relative;
+  margin: -.6rem -.6rem .8em -.6rem !important;
+  padding: .4rem .6rem .4rem 2.5rem;
+  font-weight: 700;
+  background-color:rgba(66, 185, 131, .1);
+}
+
+.admonition-title::before {
+  position: absolute;
+  top: .9rem;
+  left: 1rem;
+  width: 12px;
+  height: 12px;
+  background-color: #42b983;
+  border-radius: 50%;
+  content: ' ';
+}
+
+.info>.admonition-title, .todo>.admonition-title {
+  background-color: rgba(0,184,212,.1);
+}
+
+.warning>.admonition-title, .attention>.admonition-title, .caution>.admonition-title {
+  background-color: rgba(255,145,0,.1);
+}
+
+.failure>.admonition-title, .missing>.admonition-title, .fail>.admonition-title, .error>.admonition-title {
+  background-color: rgba(255,82,82,.1);
+}
+
+.admonition.info, .admonition.todo {
+  border-color: #00b8d4;
+}
+
+.admonition.warning, .admonition.attention, .admonition.caution {
+  border-color: #ff9100;
+}
+
+.admonition.failure, .admonition.missing, .admonition.fail, .admonition.error {
+  border-color: #ff5252;
+}
+
+.info>.admonition-title::before, .todo>.admonition-title::before {
+  background-color: #00b8d4;
+  border-radius: 50%;
+}
+
+.warning>.admonition-title::before, .attention>.admonition-title::before, .caution>.admonition-title::before {
+  background-color: #ff9100;
+  border-radius: 50%;
+}
+
+.failure>.admonition-title::before,.missing>.admonition-title::before,.fail>.admonition-title::before,.error>.admonition-title::before{
+  background-color: #ff5252;;
+  border-radius: 50%;
+}
+
+.admonition>:last-child {
+  margin-bottom: 0 !important;
+}
+</style>
+<div class="admonition note"><p class="admonition-title">图示</p><p>collapse: closed</p>
+<p><img src="/attachment/a0cbae16994f267abe7469e7c90c5c64.png" alt=""></p>
+<p><img src="/attachment/08de10e5a3cea7d1e03bbf7247a8c197.png" alt=""></p>
+<p><img src="/attachment/371f9178b2e0e72e91498dd53ca7c2cd.png" alt=""></p>
+<p><img src="/attachment/6f0329b172b363c0c0569a298c2f4a8a.png" alt=""></p>
+<p><img src="/attachment/54f8e88a4abf386f690b00a634eef544.png" alt=""></p>
+<p><img src="/attachment/8a37efa2b6d1dadb25195ffb942d8cf8.png" alt=""></p>
+<p><img src="/attachment/434386a161926b62dd266dc99a745e2f.png" alt=""></p>
+<p><img src="/attachment/c3cb4f8dae146ce212b3daddd02f2f2c.png" alt=""></p>
+<p><img src="/attachment/8068de277d82f56799e574d32bb02a72.png" alt=""></p>
+<p><img src="/attachment/fd5de0bb552d58443d1b0a2c61b161b9.png" alt=""></p>
+<p><img src="/attachment/0c3e93a35ceae3906fb9a48fff64f503.png" alt=""></p>
+<p><img src="/attachment/ca14a26ed49d0c8dfd7220054fbf17c7.png" alt=""></p>
+<p><img src="/attachment/b017ac4c80bd46c5a20fa05f24486df6.png" alt=""></p>
+<p><img src="/attachment/40bb954f71a88942c65355a8bda2a870.png" alt=""></p>
+<p><img src="/attachment/03b4a06d751e0c29afa8a4b94c4d9407.png" alt=""></p>
+<p><img src="/attachment/0449a069f07a07621612fa1a7e3ae498.png" alt=""></p>
+</div>
+<h2 id="方法区的演进细节">方法区的演进细节</h2>
+<ol>
+<li>首先明确：只有 Hotspot 才有永久代。BEA JRockit、IBMJ9 等来说，是不存在永久代的概念的。原则上如何实现方法区属于虚拟机实现细节，不受《Java 虚拟机规范》管束，并不要求统一</li>
+<li>Hotspot 中方法区的变化：</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">JDK1.6 及之前</th>
+<th style="text-align:left">有永久代（permanet），静态变量存储在永久代上</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>JDK1.7</strong></td>
+<td style="text-align:left"><strong>有永久代，但已经逐步 “去永久代”，字符串常量池，静态变量移除，保存在堆中</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>JDK1.8</strong></td>
+<td style="text-align:left"><strong>无永久代，类型信息，字段，方法，常量保存在本地内存的元空间，但字符串常量池、静态变量仍然在堆中。</strong></td>
+</tr>
+</tbody>
+</table>
+<p><img src="/attachment/61e3a169451be91df83a3b30133cc781.png" alt=""></p>
+<p><img src="/attachment/d5620302918b786b48da661e2bb30778.png" alt=""></p>
+<p><img src="/attachment/204b9a748ac6895316c6ef38add16858.png" alt=""></p>
+<h3 id="为什么永久代要被元空间替代？">为什么永久代要被元空间替代？</h3>
+<p>官网地址：<a target="_blank" rel="noopener" href="http://openjdk.java.net/jeps/122">JEP 122: Remove the Permanent Generation (java.net)</a></p>
+<p><img src="/attachment/fe8133a594e2af4b095c5546a3931390.png" alt=""></p>
+<p>JRockit 是和 HotSpot 融合后的结果，因为 JRockit 没有永久代，所以他们不需要配置永久代</p>
+<p>随着 Java8 的到来，HotSpot VM 中再也见不到永久代了。但是这并不意味着类的元数据信息也消失了。这些数据被移到了一个<mark>与堆不相连的本地内存区域，这个区域叫做元空间（Metaspace）</mark>。</p>
+<p>由于类的元数据分配在本地内存中，元空间的最大可分配空间就是系统可用内存空间。</p>
+<p>这项改动是很有必要的，原因有：</p>
+<ul>
+<li>为永久代设置空间大小是很难确定的。在某些场景下，如果动态加载类过多，容易产生 Perm 区的 oom。比如某个实际 Web 工 程中，因为功能点比较多，在运行过程中，要不断动态加载很多类，经常出现致命错误。</li>
+</ul>
+<pre><code class="language-java">"Exception in thread 'dubbo client x.x connector' java.lang.OutOfMemoryError:PermGen space"
+</code></pre>
+<p>而元空间和永久代之间最大的区别在于：元空间并不在虚拟机中，而是使用本地内存。 因此，默认情况下，元空间的大小仅受本地内存限制。</p>
+<ul>
+<li>对永久代进行调优是很困难的。</li>
+</ul>
+<p>有些人认为方法区（如 HotSpot 虚拟机中的元空间或者永久代）是没有垃圾收集行为的，其实不然。《Java 虚拟机规范》对方法区的约束是非常宽松的，提到过可以不要求虚拟机在方法区中实现垃圾收集。事实上也确实有未实现或未能完整实现方法区类型卸载的收集器存在（如 JDK 11 时期的 ZGC 收集器就不支持类卸载）。 一般来说这个区域的回收效果比较难令人满意，尤其是类型的卸载，条件相当苛刻。但是这部分区域的回收有时又确实是必要的。以前 Sun 公司的 Bug 列表中，曾出现过的若干个严重的 Bug 就是由于低版本的 HotSpot 虚拟机对此区域未完全回收而导致内存泄漏</p>
+<p>方法区的垃圾收集主要回收两部分内容：常量池中废弃的常量和不再使用的类型</p>
+<h3 id="StringTable-为什么要调整位置？">StringTable 为什么要调整位置？</h3>
+<p>jdk7 中将 StringTable 放到了堆空间中。因为永久代的回收效率很低，在 full gc 的时候才会触发。而 full gc 是老年代的空间不足、永久代不足时才会触发。</p>
+<p>这就导致 StringTable 回收效率不高。而我们开发中会有大量的字符串被创建，回收效率低，导致永久代内存不足。放到堆里，能及时回收内存。</p>
+<h3 id="静态变量存放在那里？">静态变量存放在那里？</h3>
+<pre><code class="language-java">/**
+ * 静态引用对应的对象实体始终都存在堆空间
+ * jdk7:
+ * -Xms200m -Xmx200m -XX:PermSize=300m -XX:MaxPermSize=300m -XX:+PrintGCDetails
+ * jdk8:
+ * -Xms200m -Xmx200m-XX:MetaspaceSize=300m -XX:MaxMetaspaceSize=300m -XX:+PrintGCDetails
+ */
+public class StaticFieldTest {
+    private static byte[] arr = new byte[1024 * 1024 * 100];
+    public static void main(String[] args) {
+        System.out.println(StaticFieldTest.arr);
+
+        try {
+            Thread.sleep(1000000);
+        } catch (InterruptedException e){
+            e.printStackTrace();
+        }
+    }
+}
+</code></pre>
+<pre><code class="language-java">/** * staticobj、instanceobj、Localobj存放在哪里？ */
+public class StaticobjTest {
+    static class Test {
+        static ObjectHolder staticobj = new ObjectHolder();
+        ObjectHolder instanceobj = new ObjectHolder();
+        void foo() {
+            ObjectHolder localobj = new ObjectHolder();
+            System.out.println("done");
+        }
+    }
+    private static class ObjectHolder {
+        public static void main(String[] args) {
+            Test test = new StaticobjTest.Test();
+            test.foo();
+        }
+    }
+}
+</code></pre>
+<p>使用 JHSDB 工具进行分析，这里细节略掉</p>
+<p><img src="/attachment/39c462e94e423a87a1d0b57682eeff48.png" alt=""></p>
+<p>staticobj 随着 Test 的类型信息存放在方法区，instanceobj 随着 Test 的对象实例存放在 Java 堆，localobject 则是存放在 foo()方法栈帧的局部变量表中。</p>
+<p><img src="/attachment/24be39b00b869cd685514171e5b30d43.png" alt=""></p>
+<p>测试发现：三个对象的数据在内存中的地址都落在 Eden 区范围内，所以结论：只要是对象实例必然会在 Java 堆中分配。</p>
+<p>接着，找到了一个引用该 staticobj 对象的地方，是在一个 java.lang.Class 的实例里，并且给出了这个实例的地址，通过 Inspector 查看该对象实例，可以清楚看到这确实是一个 java.lang.Class 类型的对象实例，里面有一个名为 staticobj 的实例字段：</p>
+<p>从《Java 虚拟机规范》所定义的概念模型来看，所有 Class 相关的信息都应该存放在方法区之中，但方法区该如何实现，《Java 虚拟机规范》并未做出规定，这就成了一件允许不同虚拟机自己灵活把握的事情。JDK7 及其以后版本的 HotSpot 虚拟机选择把静态变量与类型在 Java 语言一端的映射 class 对象存放在一起，存储于 Java 堆之中，从我们的实验中也明确验证了这一点</p>
+<h2 id="方法区的垃圾回收">方法区的垃圾回收</h2>
+<p>有些人认为方法区（如 Hotspot 虚拟机中的元空间或者永久代）是没有垃圾收集行为的，其实不然。《Java 虚拟机规范》对方法区的约束是非常宽松的，提到过可以不要求虚拟机在方法区中实现垃圾收集。事实上也确实有未实现或未能完整实现方法区类型卸载的收集器存在（如 JDK11 时期的 zGC 收集器就不支持类卸载）。</p>
+<p>一般来说<mark>这个区域的回收效果比较难令人满意，尤其是类型的卸载，条件相当苛刻</mark>。但是这部分区域的回收<mark>有时又确实是必要的</mark>。以前 sun 公司的 Bug 列表中，曾出现过的若干个严重的 Bug 就是由于低版本的 HotSpot 虚拟机对此区域未完全回收而导致内存泄漏。</p>
+<p><mark>方法区的垃圾收集主要回收两部分内容：常量池中废弃的常量和不再使用的类型。</mark></p>
+<p>先来说说方法区内常量池之中主要存放的两大类常量：字面量和符号引用。字面量比较接近 Java 语言层次的常量概念，如文本字符串、被声明为 final 的常量值等。而符号引用则属于编译原理方面的概念，包括下面三类常量：</p>
+<ul>
+<li>类和接口的全限定名</li>
+<li>字段的名称和描述符</li>
+<li>方法的名称和描述符</li>
+</ul>
+<p>HotSpot 虚拟机对常量池的回收策略是很明确的，<mark>只要常量池中的常量没有被任何地方引用，就可以被回收</mark>。</p>
+<p>回收废弃常量与回收 Java 堆中的对象非常类似。</p>
+<p>判定一个常量是否“废弃”还是相对简单，而要判定一个类型是否属于“不再被使用的类”的条件就比较苛刻了。需要同时满足下面三个条件：</p>
+<ul>
+<li><mark>该类所有的实例都已经被回收</mark>，也就是 Java 堆中不存在该类及其任何派生子类的实例。</li>
+<li><mark>加载该类的类加载器已经被回收</mark>，这个条件除非是经过精心设计的可替换类加载器的场景，如 OSGi、JSP 的重加载等，否则通常是很难达成的。</li>
+<li><mark>该类对应的 java.lang.Class 对象没有在任何地方被引用</mark>，无法在任何地方通过反射访问该类的方法。</li>
+</ul>
+<p>Java 虚拟机被允许对满足上述三个条件的无用类进行回收，这里说的仅仅是“被允许”，而并不是和对象一样，没有引用了就必然会回收。关于是否要对类型进行回收，HotSpot 虚拟机提供了<code>-Xnoclassgc</code>参数进行控制，还可以使用<code>-verbose:class</code> 以及 <code>-XX:+TraceClassLoading</code>、<code>-XX:+TraceClassUnLoading</code>查看类加载和卸载信息</p>
+<p>在大量使用反射、动态代理、CGLib 等字节码框架，动态生成 JSP 以及 OSGi 这类频繁自定义类加载器的场景中，<u>通常都需要 Java 虚拟机具备类型卸载的能力，以保证不会对方法区造成过大的内存压力</u>。</p>
+<h2 id="总结-19">总结</h2>
+<p><img src="/attachment/9957ca7ad9cee8e8ce69426c98801ceb.png" alt=""></p>
+<h2 id="常见面试题">常见面试题</h2>
+<p><mark>百度</mark>：</p>
+<p>说一下 JVM 内存模型吧，有哪些区？分别干什么的？</p>
+<p><mark>蚂蚁金服</mark>：</p>
+<p>Java8 的内存分代改进 JVM 内存分哪几个区，每个区的作用是什么？<br>
+一面：JVM 内存分布/内存结构？栈和堆的区别？堆的结构？为什么两个 survivor 区？<br>
+二面：Eden 和 survior 的比例分配</p>
+<p><mark>小米</mark>：</p>
+<p>jvm 内存分区，为什么要有新生代和老年代</p>
+<p><mark>字节跳动</mark>：</p>
+<p>二面：Java 的内存分区<br>
+二面：讲讲 vm 运行时数据库区 什么时候对象会进入老年代？</p>
+<p><mark>京东</mark>：</p>
+<p>JVM 的内存结构，Eden 和 Survivor 比例。<br>
+JVM 内存为什么要分成新生代，老年代，持久代。<br>
+新生代中为什么要分为 Eden 和 survivor。</p>
+<p><mark>天猫</mark>：</p>
+<p>一面：Jvm 内存模型以及分区，需要详细到每个区放什么。<br>
+一面：JVM 的内存模型，Java8 做了什么改</p>
+<p><mark>拼多多</mark>：</p>
+<p>JVM 内存分哪几个区，每个区的作用是什么？</p>
+<p><mark>美团</mark>：</p>
+<p>java 内存分配 jvm 的永久代中会发生垃圾回收吗？<br>
+一面：jvm 内存分区，为什么要有新生代和老年代？</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a target="_blank" rel="noopener" href="https://github.com/yu627482453">Bill Cipher</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://yu627482453.github.io/java/java-jvm/java-jvm-nei-cun-guan-li/java-jvm-yun-xing-shi-shu-ju-qu/java-jvm-fang-fa-qu/">https://yu627482453.github.io/java/java-jvm/java-jvm-nei-cun-guan-li/java-jvm-yun-xing-shi-shu-ju-qu/java-jvm-fang-fa-qu/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://yu627482453.github.io" target="_blank">蝶梦庄生</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E8%A1%8C%E5%8A%A8%E9%98%B6%E6%AE%B5-%E5%AE%8C%E6%88%90/">行动阶段/完成</a><a class="post-meta__tags" href="/tags/%E7%AC%94%E8%AE%B0%E7%A9%BA%E9%97%B4-KnowladgeSpace-ProgramSpace-BasicsSpace/">笔记空间/KnowladgeSpace/ProgramSpace/BasicsSpace</a><a class="post-meta__tags" href="/tags/%E7%BB%86%E5%8C%96%E4%B8%BB%E9%A2%98-Java-JVM/">细化主题/Java/JVM</a><a class="post-meta__tags" href="/tags/%E4%B8%BB%E9%A2%98%E5%9C%BA%E6%99%AF-%E7%A8%8B%E5%BA%8F/">主题场景/程序</a></div><div class="post_share"><div class="social-share" data-image="https://cdn.seovx.com/?mom=302" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/reward/wechat.jpg" target="_blank"><img class="post-qr-code-img" src="/img/reward/wechat.jpg" alt="wechat"/></a><div class="post-qr-code-desc">wechat</div></li><li class="reward-item"><a href="/img/reward/alipay.jpg" target="_blank"><img class="post-qr-code-img" src="/img/reward/alipay.jpg" alt="alipay"/></a><div class="post-qr-code-desc">alipay</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/java/java-jvm/java-jvm-nei-cun-guan-li/java-jvm-dui-xiang-shi-li-hua/"><img class="prev-cover" src="https://cdn.seovx.com/?mom=302" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">【Java JVM】 对象实例化</div></div></a></div><div class="next-post pull-right"><a href="/java/java-jvm/java-jvm-nei-cun-guan-li/java-jvm-yun-xing-shi-shu-ju-qu/java-jvm-dui/"><img class="next-cover" src="https://cdn.seovx.com/?mom=302" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">【Java JVM】 堆</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/java/java-jvm/java-jvm-nei-cun-guan-li/java-jvm-stringtable/" title="【Java JVM】 StringTable"><img class="cover" src="https://cdn.seovx.com/?mom=302" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-06-28</div><div class="title">【Java JVM】 StringTable</div></div></a></div><div><a href="/java/java-jvm/java-jvm-nei-cun-guan-li/java-jvm-nei-cun-guan-li/" title="【Java jVM】 内存管理"><img class="cover" src="https://cdn.seovx.com/?mom=302" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-07-01</div><div class="title">【Java jVM】 内存管理</div></div></a></div><div><a href="/java/java-jvm/java-jvm-nei-cun-guan-li/java-jvm-dui-xiang-shi-li-hua/" title="【Java JVM】 对象实例化"><img class="cover" src="https://cdn.seovx.com/?mom=302" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-06-27</div><div class="title">【Java JVM】 对象实例化</div></div></a></div><div><a href="/java/java-jvm/java-jvm-nei-cun-guan-li/java-jvm-zhi-xing-yin-qing/" title="【Java JVM】 执行引擎"><img class="cover" src="https://cdn.seovx.com/?mom=302" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-06-28</div><div class="title">【Java JVM】 执行引擎</div></div></a></div><div><a href="/java/java-jvm/java-jvm-nei-cun-guan-li/java-jvm-lei-jia-zai-zi-xi-tong/" title="【Java JVM】 类加载子系统"><img class="cover" src="https://cdn.seovx.com/?mom=302" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-06-26</div><div class="title">【Java JVM】 类加载子系统</div></div></a></div><div><a href="/java/java-jvm/java-jvm-zi-jie-ma-yu-lei-jia-zai/java-jvm-zi-jie-ma-zhi-ling-ji/" title="【Java JVM】 字节码指令集"><img class="cover" src="https://cdn.seovx.com/?mom=302" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-06-29</div><div class="title">【Java JVM】 字节码指令集</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="gitalk-container"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Bill Cipher</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">240</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">69</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/yu627482453"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/yu627482453" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="/627482453@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">1.</span> <span class="toc-text">【Java JVM】 方法区</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Metadata-83"><span class="toc-number">1.1.</span> <span class="toc-text">Metadata</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A6%82%E8%BF%B0-41"><span class="toc-number">1.2.</span> <span class="toc-text">概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E3%80%90Java-JVM%E3%80%91-%E6%96%B9%E6%B3%95%E5%8C%BA"><span class="toc-number">1.3.</span> <span class="toc-text">【Java JVM】 方法区</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%88%E3%80%81%E5%A0%86%E3%80%81%E6%96%B9%E6%B3%95%E5%8C%BA%E7%9A%84%E4%BA%A4%E4%BA%92%E5%85%B3%E7%B3%BB"><span class="toc-number">1.4.</span> <span class="toc-text">栈、堆、方法区的交互关系</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E5%8C%BA%E7%9A%84%E7%90%86%E8%A7%A3"><span class="toc-number">1.5.</span> <span class="toc-text">方法区的理解</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E5%8C%BA%E5%9C%A8%E5%93%AA%E9%87%8C%EF%BC%9F"><span class="toc-number">1.5.1.</span> <span class="toc-text">方法区在哪里？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E5%8C%BA%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%90%86%E8%A7%A3"><span class="toc-number">1.5.2.</span> <span class="toc-text">方法区的基本理解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HotSpot-%E4%B8%AD%E6%96%B9%E6%B3%95%E5%8C%BA%E7%9A%84%E6%BC%94%E8%BF%9B"><span class="toc-number">1.5.3.</span> <span class="toc-text">HotSpot 中方法区的演进</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AE%E6%96%B9%E6%B3%95%E5%8C%BA%E5%A4%A7%E5%B0%8F%E4%B8%8E-OOM"><span class="toc-number">1.6.</span> <span class="toc-text">设置方法区大小与 OOM</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AE%E6%96%B9%E6%B3%95%E5%8C%BA%E5%86%85%E5%AD%98%E7%9A%84%E5%A4%A7%E5%B0%8F"><span class="toc-number">1.6.1.</span> <span class="toc-text">设置方法区内存的大小</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%E8%BF%99%E4%BA%9B-OOM"><span class="toc-number">1.6.2.</span> <span class="toc-text">如何解决这些 OOM</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E5%8C%BA%E7%9A%84%E5%86%85%E9%83%A8%E7%BB%93%E6%9E%84"><span class="toc-number">1.7.</span> <span class="toc-text">方法区的内部结构</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E5%8C%BA%EF%BC%88Method-Area%EF%BC%89%E5%AD%98%E5%82%A8%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-number">1.7.1.</span> <span class="toc-text">方法区（Method Area）存储什么？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E5%8C%BA%E7%9A%84%E5%86%85%E9%83%A8%E7%BB%93%E6%9E%84-2"><span class="toc-number">1.7.2.</span> <span class="toc-text">方法区的内部结构</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%B1%BB%E5%9E%8B%E4%BF%A1%E6%81%AF"><span class="toc-number">1.7.2.1.</span> <span class="toc-text">类型信息</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9F%9F%EF%BC%88Field%EF%BC%89%E4%BF%A1%E6%81%AF"><span class="toc-number">1.7.2.2.</span> <span class="toc-text">域（Field）信息</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%EF%BC%88Method%EF%BC%89%E4%BF%A1%E6%81%AF"><span class="toc-number">1.7.2.3.</span> <span class="toc-text">方法（Method）信息</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#non-final-%E7%9A%84%E7%B1%BB%E5%8F%98%E9%87%8F"><span class="toc-number">1.7.2.4.</span> <span class="toc-text">non-final 的类变量</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A1%A5%E5%85%85%E8%AF%B4%E6%98%8E%EF%BC%9A%E5%85%A8%E5%B1%80%E5%B8%B8%E9%87%8F%EF%BC%88static-final%EF%BC%89"><span class="toc-number">1.7.2.5.</span> <span class="toc-text">补充说明：全局常量（static final）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%90%E8%A1%8C%E6%97%B6%E5%B8%B8%E9%87%8F%E6%B1%A0-VS-%E5%B8%B8%E9%87%8F%E6%B1%A0"><span class="toc-number">1.7.3.</span> <span class="toc-text">运行时常量池 VS 常量池</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%E5%B8%B8%E9%87%8F%E6%B1%A0%EF%BC%9F"><span class="toc-number">1.7.3.1.</span> <span class="toc-text">为什么需要常量池？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B8%B8%E9%87%8F%E6%B1%A0%E4%B8%AD%E6%9C%89%E4%BB%80%E4%B9%88"><span class="toc-number">1.7.3.2.</span> <span class="toc-text">常量池中有什么?</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B0%8F%E7%BB%93-4"><span class="toc-number">1.7.3.3.</span> <span class="toc-text">小结</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%90%E8%A1%8C%E6%97%B6%E5%B8%B8%E9%87%8F%E6%B1%A0"><span class="toc-number">1.7.4.</span> <span class="toc-text">运行时常量池</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E5%8C%BA%E4%BD%BF%E7%94%A8%E4%B8%BE%E4%BE%8B"><span class="toc-number">1.8.</span> <span class="toc-text">方法区使用举例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E5%8C%BA%E7%9A%84%E6%BC%94%E8%BF%9B%E7%BB%86%E8%8A%82"><span class="toc-number">1.9.</span> <span class="toc-text">方法区的演进细节</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E6%B0%B8%E4%B9%85%E4%BB%A3%E8%A6%81%E8%A2%AB%E5%85%83%E7%A9%BA%E9%97%B4%E6%9B%BF%E4%BB%A3%EF%BC%9F"><span class="toc-number">1.9.1.</span> <span class="toc-text">为什么永久代要被元空间替代？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#StringTable-%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E8%B0%83%E6%95%B4%E4%BD%8D%E7%BD%AE%EF%BC%9F"><span class="toc-number">1.9.2.</span> <span class="toc-text">StringTable 为什么要调整位置？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9D%99%E6%80%81%E5%8F%98%E9%87%8F%E5%AD%98%E6%94%BE%E5%9C%A8%E9%82%A3%E9%87%8C%EF%BC%9F"><span class="toc-number">1.9.3.</span> <span class="toc-text">静态变量存放在那里？</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E5%8C%BA%E7%9A%84%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6"><span class="toc-number">1.10.</span> <span class="toc-text">方法区的垃圾回收</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93-19"><span class="toc-number">1.11.</span> <span class="toc-text">总结</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E9%9D%A2%E8%AF%95%E9%A2%98"><span class="toc-number">1.12.</span> <span class="toc-text">常见面试题</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/design/she-ji-mo-shi/" title="无题"><img src="https://cdn.seovx.com/?mom=302" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/design/she-ji-mo-shi/" title="无题">无题</a><time datetime="2023-07-15T09:13:39.871Z" title="发表于 2023-07-15 17:13:39">2023-07-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/design/xing-wei-mo-shi/xing-wei-mo-shi/" title="无题"><img src="https://cdn.seovx.com/?mom=302" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/design/xing-wei-mo-shi/xing-wei-mo-shi/" title="无题">无题</a><time datetime="2023-07-15T09:13:37.615Z" title="发表于 2023-07-15 17:13:37">2023-07-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/design/jie-gou-mo-shi/jie-gou-mo-shi/" title="无题"><img src="https://cdn.seovx.com/?mom=302" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/design/jie-gou-mo-shi/jie-gou-mo-shi/" title="无题">无题</a><time datetime="2023-07-15T09:13:33.180Z" title="发表于 2023-07-15 17:13:33">2023-07-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/design/chuang-jian-mo-shi/chuang-jian-mo-shi/" title="无题"><img src="https://cdn.seovx.com/?mom=302" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/design/chuang-jian-mo-shi/chuang-jian-mo-shi/" title="无题">无题</a><time datetime="2023-07-15T09:13:23.913Z" title="发表于 2023-07-15 17:13:23">2023-07-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/java/java-duo-xian-cheng-bing-fa/java-duo-xian-cheng-bing-fa-xian-cheng/java-duo-xian-cheng-bing-fa-xian-cheng/" title="【Java 多线程并发】 线程"><img src="https://cdn.seovx.com/?mom=302" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【Java 多线程并发】 线程"/></a><div class="content"><a class="title" href="/java/java-duo-xian-cheng-bing-fa/java-duo-xian-cheng-bing-fa-xian-cheng/java-duo-xian-cheng-bing-fa-xian-cheng/" title="【Java 多线程并发】 线程">【Java 多线程并发】 线程</a><time datetime="2023-07-10T06:15:00.000Z" title="发表于 2023-07-10 14:15:00">2023-07-10</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By Bill Cipher</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>function addGitalkSource () {
+  const ele = document.createElement('link')
+  ele.rel = 'stylesheet'
+  ele.href= 'https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.css'
+  document.getElementsByTagName('head')[0].appendChild(ele)
+}
+
+function loadGitalk () {
+  function initGitalk () {
+    var gitalk = new Gitalk(Object.assign({
+      clientID: 'c61a274b6f5aa26a58f6',
+      clientSecret: '485a7761d321c8dcc5cae05d7256be9fb196d94a',
+      repo: 'yu627482453.github.io',
+      owner: 'yu627482453',
+      admin: ['yu627482453'],
+      id: 'a277a25f0bb86ae65eeb8e568c715f11',
+      updateCountCallback: commentCount
+    },null))
+
+    gitalk.render('gitalk-container')
+  }
+
+  if (typeof Gitalk === 'function') initGitalk()
+  else {
+    addGitalkSource()
+    getScript('https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.js').then(initGitalk)
+  }
+}
+
+function commentCount(n){
+  let isCommentCount = document.querySelector('#post-meta .gitalk-comment-count')
+  if (isCommentCount) {
+    isCommentCount.innerHTML= n
+  }
+}
+
+if ('Gitalk' === 'Gitalk' || !true) {
+  if (true) btf.loadComment(document.getElementById('gitalk-container'), loadGitalk)
+  else loadGitalk()
+} else {
+  function loadOtherComment () {
+    loadGitalk()
+  }
+}</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

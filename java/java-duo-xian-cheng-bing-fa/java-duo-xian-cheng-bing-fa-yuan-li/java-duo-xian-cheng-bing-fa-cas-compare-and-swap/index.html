@@ -1,0 +1,390 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>【Java 多线程并发】 CAS（Compare And Swap） | 蝶梦庄生</title><meta name="keywords" content="Java/多线程并发"><meta name="author" content="Bill Cipher"><meta name="copyright" content="Bill Cipher"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="【Java 多线程并发】 CAS（Compare And Swap）">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【Java 多线程并发】 CAS（Compare And Swap）">
+<meta property="og:url" content="https://yu627482453.github.io/java/java-duo-xian-cheng-bing-fa/java-duo-xian-cheng-bing-fa-yuan-li/java-duo-xian-cheng-bing-fa-cas-compare-and-swap/index.html">
+<meta property="og:site_name" content="蝶梦庄生">
+<meta property="og:description" content="【Java 多线程并发】 CAS（Compare And Swap）">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.seovx.com/?mom=302">
+<meta property="article:published_time" content="2023-07-03T15:52:00.000Z">
+<meta property="article:modified_time" content="2023-07-03T15:52:00.000Z">
+<meta property="article:author" content="Bill Cipher">
+<meta property="article:tag" content="行动阶段&#x2F;完成">
+<meta property="article:tag" content="笔记空间&#x2F;KnowladgeSpace&#x2F;ProgramSpace&#x2F;BasicsSpace">
+<meta property="article:tag" content="主题场景&#x2F;程序">
+<meta property="article:tag" content="细化主题&#x2F;Java&#x2F;多线程并发">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.seovx.com/?mom=302"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://yu627482453.github.io/java/java-duo-xian-cheng-bing-fa/java-duo-xian-cheng-bing-fa-yuan-li/java-duo-xian-cheng-bing-fa-cas-compare-and-swap/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: undefined,
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: Bill Cipher","link":"链接: ","source":"来源: 蝶梦庄生","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '【Java 多线程并发】 CAS（Compare And Swap）',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-07-03 23:52:00'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.2.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">240</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">69</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cdn.seovx.com/?mom=302')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">蝶梦庄生</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">【Java 多线程并发】 CAS（Compare And Swap）</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-07-03T15:52:00.000Z" title="发表于 2023-07-03 23:52:00">2023-07-03</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-07-03T15:52:00.000Z" title="更新于 2023-07-03 23:52:00">2023-07-03</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Java/">Java</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="【Java 多线程并发】 CAS（Compare And Swap）"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1>【Java 多线程并发】 CAS（Compare And Swap）</h1>
+<h2 id="Metadata-43">Metadata</h2>
+<pre><code class="language-yml">title: 【Java 多线程并发】 CAS（Compare And Swap）
+date: 2023-07-03 23:52
+tags:
+  - 行动阶段/完成
+  - 主题场景/程序
+  - 笔记空间/KnowladgeSpace/ProgramSpace/BasicsSpace
+  - 细化主题/Java/多线程并发
+categories:
+  - Java
+keywords:
+  - Java/多线程并发
+description: 【Java 多线程并发】 CAS（Compare And Swap）
+</code></pre>
+<h2 id="概述-14">概述</h2>
+<p>CAS 的全称为 <strong>Compare And Swap</strong>，直译就是比较交换。<br>
+是一条 <strong>CPU</strong> <strong>的原子指令</strong><br>
+其作用是让 CPU 先进行比较两个值是否相等，然后原子地更新某个位置的值<br>
+其实现方式是基于硬件平台的汇编指令</p>
+<p>它就是 CPU 的<strong>一条</strong>原子指令。过程是这样：它包含 3 个参数</p>
+<ul>
+<li>内存位置（V）、</li>
+<li>预期原值（E）</li>
+<li>新值 (N)。</li>
+</ul>
+<p>V 表示要更新变量的值，E 表示预期值，N 表示新值。仅当 V 值等于 E 值时，才会将 V 的值设为 N，如果 V 值和 E 值不同，则说明已经有其他线程做两个更新，则当前线程则什么都不做。</p>
+<p><strong>CAS的应用</strong></p>
+<ul>
+<li>非阻塞算法 （nonblocking algorithms）</li>
+</ul>
+<p><strong>CAS 底层原理</strong></p>
+<p>锁总线是通过 LOCK#信号实现的，锁缓存是通过缓存一致性协议实现的。</p>
+<p><strong>CAS 存在的问题</strong></p>
+<ul>
+<li>循环时间太长</li>
+<li>只能保证一个共享变量原子操作</li>
+<li>ABA 问题</li>
+<li>CAS 造成 Cache 一致性流量过大</li>
+</ul>
+<h2 id="锁机制存在的问题">锁机制存在的问题</h2>
+<p>在 JDK 5 之前 Java 语言是靠 synchronized 关键字保证同步的，这会导致有锁</p>
+<p><strong>锁机制存在以下问题：</strong></p>
+<p>（1）在多线程竞争下，加锁、释放锁会导致比较多的上下文切换和调度延时，引起性能问题。<br>
+（2）一个线程持有锁会导致其它所有需要此锁的线程挂起。<br>
+（3）如果一个优先级高的线程等待一个优先级低的线程释放锁会导致优先级倒置，引起性能风险。</p>
+<p>volatile 是不错的机制，它是通过汇编语言中的 LOCK 指令实现的，但是 volatile 不能保证原子性。因此对于同步最终还是要回到锁机制上来。</p>
+<p>独占锁是一种悲观锁，synchronized 就是一种独占锁，会导致其它所有需要锁的线程挂起，等待持有锁的线程释放锁。</p>
+<p>而另一个更加有效的锁就是乐观锁。所谓乐观锁就是，每次不加锁而是假设没有冲突而去完成某项操作，如果因为冲突失败就重试，直到成功为止。<strong>乐观锁的缺点是不能解决脏读的问题</strong>。乐观锁用到的机制就是 CAS，（Compare and Swap）。</p>
+<h2 id="什么是CAS">什么是CAS</h2>
+<p>CAS 的全称为 <strong>Compare And Swap</strong>，直译就是比较交换。是一条 <strong>CPU</strong> <strong>的原子指令</strong>，其作用是让 CPU 先进行比较两个值是否相等，然后原子地更新某个位置的值，其实现方式是基于硬件平台的汇编指令，在 intel 的 CPU 中，使用的是 cmpxchg 指令，就是说 CAS 是靠硬件实现的，从而在硬件层面提升效率。</p>
+<p>它是一个无锁的原子算法。所以它就是一个乐观锁，也就是不加锁。无锁也就没有加锁和解锁的过程，不存在阻塞，也就提高了效率，提高了 CPU 的吞吐量（单位时间内执行完成的操作条数就多了）</p>
+<p>它就是 CPU 的<strong>一条</strong>原子指令。过程是这样：它包含 3 个参数</p>
+<ul>
+<li>内存位置（V）、</li>
+<li>预期原值（E）</li>
+<li>新值 (N)。</li>
+</ul>
+<p>V 表示要更新变量的值，E 表示预期值，N 表示新值。仅当 V 值等于 E 值时，才会将 V 的值设为 N，如果 V 值和 E 值不同，则说明已经有其他线程做两个更新，则当前线程则什么都不做。最后，CAS 返回当前 V 的真实值（在 CAS 的一些特殊情况下将仅返回 CAS 是否成功，而不提取当前 值）。CAS 操作时抱着乐观的态度进行的，它总是认为自己可以成功完成操作。</p>
+<p>当多个线程同时使用 CAS 操作一个变量时，只有一个会胜出，并成功更新，其余均会失败。失败的线程不会挂起，仅是被告知失败，并且允许再次尝试，当然也允许实现的线程放弃操作。基于这样的原理，<mark style="background: #BBFABBA6;">CAS 操作即使没有锁，也可以发现其他线程对当前线程的干扰</mark>。</p>
+<p>与锁相比，使用 CAS 会使程序看起来更加复杂一些，但<strong>由于其非阻塞的，它对死锁问题天生免疫</strong>，并且，线程间的相互影响也非常小。更为重要的是，使用无锁的方式完全没有锁竞争带来的系统开销，也没有线程间频繁调度带来的开销，因此，它要比基于锁的方式拥有更优越的性能。</p>
+<p>简单的说，CAS 需要你额外给出一个期望值，也就是你认为这个变量现在应该是什么样子的。如果变量不是你想象的那样，那说明它已经被别人修改过了。你就需要重新读取，再次尝试修改就好了。</p>
+<h2 id="CAS的应用">CAS的应用</h2>
+<p>利用 CPU 的 CAS 指令，同时借助 JNI 来完成 Java 的非阻塞算法。其它<strong>原子操作</strong>都是利用类似的特性完成的。而整个 J.U.C 都是建立在 CAS 之上的，因此对于 synchronized 阻塞算法，J.U.C 在性能上有了很大的提升。</p>
+<h3 id="非阻塞算法-（nonblocking-algorithms）">非阻塞算法 （nonblocking algorithms）</h3>
+<p>非阻塞算法就是一个线程的失败或者挂起不应该影响其他线程的失败或挂起的算法。非阻塞算法就需要借助 CAS 操作来实现，这也是 CAS 的一个主要应用方向。</p>
+<p>现代的 CPU 提供了特殊的指令，可以自动更新共享数据，而且能够检测到其他线程的干扰，而 compareAndSet() 就用这些 CPU 提供的特殊指令代替了锁定。</p>
+<p>我们来看一下 AtomicInteger 类在没有锁的情况下是如何做到数据正确性的。</p>
+<pre><code class="language-java">public&nbsp;class&nbsp;AtomicInteger&nbsp;extends&nbsp;Number&nbsp;implements&nbsp;java.io.Serializable {
+&nbsp;&nbsp;&nbsp;&nbsp;private&nbsp;volatile&nbsp;int&nbsp;value;
+&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;final&nbsp;int&nbsp;get() {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;value;
+&nbsp;&nbsp;&nbsp;&nbsp;}
+&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;final&nbsp;int&nbsp;getAndIncrement() {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;(;;)&nbsp;{
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;current&nbsp;=&nbsp;get();
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;next&nbsp;=&nbsp;current&nbsp;+&nbsp;1;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(compareAndSet(current,&nbsp;next))
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;current;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+&nbsp;&nbsp;&nbsp;&nbsp;}
+&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;final&nbsp;boolean&nbsp;compareAndSet(int&nbsp;expect,&nbsp;int&nbsp;update) {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;unsafe.compareAndSwapInt(this,&nbsp;valueOffset,&nbsp;expect,&nbsp;update);
+&nbsp;&nbsp;&nbsp;&nbsp;}
+}
+</code></pre>
+<p>首先毫无疑问，在没有锁的机制下可能需要借助 volatile 原语，保证线程间的数据是可见的（共享的）。</p>
+<pre><code class="language-java">private&nbsp;volatile&nbsp;int&nbsp;value;&nbsp;
+</code></pre>
+<p>这样才获取变量的值的时候才能直接读取。</p>
+<pre><code class="language-java">public final int get() {
+    return value;
+}
+</code></pre>
+<p>然后来看看 ++i 是怎么做到的。</p>
+<pre><code class="language-java">public final int incrementAndGet() {
+    for (;;) {
+        int current = get();
+        int next = current + 1;
+        if (compareAndSet(current, next))
+            return next;
+    }
+}
+</code></pre>
+<p><strong>incrementAndGet()</strong> 采用了 CAS 操作，每次从内存中读取数据然后将此数据和 + 1 后的结果进行 CAS 操作，如果成功就返回结果，否则重试直到成功为止。</p>
+<p>incrementAndGet() 方法中的 compareAndSet() 方法则是利用 JNI 来完成 CPU 指令的操作。通过判断当前的值 this 还是不是等于一开始的值 expect，如果还等于 expect，就说明期间没有其他线程对该数据进行了修改，不会出现并发一场，那么就将 this 改成 update 更新后的数据。</p>
+<pre><code class="language-java">public final boolean compareAndSet(int expect, int update) {   
+    return unsafe.compareAndSwapInt(this, valueOffset, expect, update); // 仔细注意传进来的参数，理解该方法的作用
+}
+</code></pre>
+<p>整体的过程就是这样子的，通过 JNI（Java 本地调用）来调用 C 语言代码，然后 C 语言代码来调用 CPU 的 CAS 指令来完成 Java 的非阻塞算法。其它原子操作都是利用类似的特性完成的。</p>
+<p>其中</p>
+<pre><code class="language-java">unsafe.compareAndSwapInt(this,&nbsp;valueOffset,&nbsp;expect,&nbsp;update);
+</code></pre>
+<p>类似：</p>
+<pre><code class="language-java">if&nbsp;(this&nbsp;==&nbsp;expect)&nbsp;{
+&nbsp;&nbsp;&nbsp;&nbsp;this&nbsp;=&nbsp;update
+&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;true;
+}&nbsp;else&nbsp;{
+&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;false;
+}
+</code></pre>
+<blockquote>
+<p>Unsafe 是 CAS 的核心类， Java 无法直接访问底层操作系统，而是通过本地（ native ）方法来访问。不过尽管如此， JVM 还是开了一个后门： Unsafe ，它提供了硬件级别的原子操作， 这里的 compareAndSwapInt () 就是 Unsafe 类提供的硬件原子操作之一 。</p>
+</blockquote>
+<p>那么问题就来了，成功过程中需要2个步骤：比较this == expect，替换this = update，compareAndSwapInt如何这两个步骤的原子性呢？ 参考CAS的原理。</p>
+<h2 id="CAS-底层原理">CAS 底层原理</h2>
+<p>归功于硬件指令集的发展，实际上，我们可以使用同步将这两个操作变成原子的，但是这么做就没有意义了。所以我们只能靠硬件来完成，硬件保证一个从语义上看起来需要多次操作的行为只通过一条处理器指令就能完成。这类指令常用的有：</p>
+<ol>
+<li>测试并设置（Tetst-and-Set）</li>
+<li>获取并增加（Fetch-and-Increment）</li>
+<li>交换（Swap）</li>
+<li>比较并交换（Compare-and-Swap）</li>
+<li>加载链接 / 条件存储（Load-Linked/Store-Conditional）</li>
+</ol>
+<p><img src="/attachment/df0b42c0b6908e024bbe4ba8e51dca40.png" alt=""><br>
+SMP（对称多处理器）架构图</p>
+<ul>
+<li>BUS：总线</li>
+<li>每一个 CPU 都共用一根总线，与主内存相互交互。每一个 CPU 都有一个自己私有的 Cache</li>
+</ul>
+<p>CPU 实现原子指令有 3种方式：</p>
+<h3 id="处理器自动保证基本内存操作的原子性">处理器自动保证基本内存操作的原子性</h3>
+<p>首先<strong>处理器会自动保证基本的内存操作的原子性</strong>。处理器保证从系统内存当中读取或者写入一个字节是原子的，意思是当一个处理器读取一个字节时，其他处理器不能访问这个字节的内存地址。奔腾 6 和最新的处理器能自动保证单处理器对同一个缓存行里进行 16/32/64 位的操作是原子的，<strong>但是复杂的内存操作处理器不能自动保证其原子性</strong>，比如跨总线宽度，跨多个缓存行，跨页表的访问。但是处理器提供<strong>总线锁定</strong>和<strong>缓存锁定</strong>两个机制来保证复杂内存操作的原子性。</p>
+<h3 id="通过总线锁定来保证原子性">通过总线锁定来保证原子性</h3>
+<p><strong>总线锁定</strong>其实就是处理器使用了<strong>总线锁</strong>，所谓总线锁就是使用处理器提供的一个 LOCK# 信号，当一个处理器在总线上输出此信号时，其他处理器的请求将被阻塞住，那么该处理器可以独占共享内存。但是该方法成本太大。因此有了下面的方式。</p>
+<h3 id="通过缓存锁定来保证原子性">通过缓存锁定来保证原子性</h3>
+<p>在同一时刻我们只需保证对某个内存地址的操作是原子性即可，但总线锁定把 CPU 和内存之间通信锁住了，这使得锁定期间，其他处理器不能操作其他内存地址的数据，所以总线锁定的开销比较大，最近的处理器在某些场合下使用缓存锁定代替总线锁定。</p>
+<p>所谓<strong>缓存锁定</strong> 是指内存区域如果被缓存在处理器的缓存行中，并且在 Lock 操作期间被锁定，那么当它执行操作写回到内存时，处理器不在总线上输出 LOCK# 信号，而是修改内部的内存地址，并允许它的缓存一致性机制来保证操作的原子性，因为缓存一致性机制会阻止同时修改两个以上处理器缓存的内存区域数据（这里和 volatile 的可见性原理相同），当其他处理器回写已被锁定的缓存行的数据时，会使缓存行无效。</p>
+<p><strong>注意：有两种情况下处理器不会使用缓存锁定</strong></p>
+<ol>
+<li>当操作的数据不能被缓存在处理器内部，或操作的数据跨多个缓存行时，则处理器会调用总线锁定。</li>
+<li>有些处理器不支持缓存锁定，对于 Intel 486 和 Pentium 处理器，就是锁定的内存区域在处理器的缓存行也会调用总线锁定。</li>
+</ol>
+<h3 id="总结：">总结：</h3>
+<p>锁总线是通过 LOCK#信号实现的，锁缓存是通过缓存一致性协议实现的。</p>
+<h2 id="CAS-存在的问题">CAS 存在的问题</h2>
+<p>CAS 虽然高效地解决了原子操作，但是还是存在一些缺陷的，主要表现在三个方面：循环时间太长、只能保证一个共享变量原子操作、ABA 问题。</p>
+<h3 id="循环时间太长">循环时间太长</h3>
+<p>如果 CAS 一直不成功呢？这种情况绝对有可能发生，如果自旋 CAS 长时间地不成功，则会给 CPU 带来非常大的开销。在 JUC 中有些地方就限制了 CAS 自旋的次数，例如 BlockingQueue 的 SynchronousQueue。</p>
+<h3 id="只能保证一个共享变量原子操作">只能保证一个共享变量原子操作</h3>
+<p>看了 CAS 的实现就知道这只能针对一个共享变量，如果是多个共享变量就只能使用锁了，当然如果你有办法把多个变量整成一个变量，利用 CAS 也不错。从 Java1.5 开始 JDK 提供了 <strong>AtomicReference</strong> <strong>类</strong>来保证引用对象之间的原子性，你可以把多个变量放在一个对象里来进行 CAS 操作。</p>
+<h3 id="ABA-问题">ABA 问题</h3>
+<p>CAS 需要检查操作值有没有发生改变，如果没有发生改变则更新。但是存在这样一种情况：如果一个值原来是 A，变成了 B，然后又变成了 A，那么在 CAS 检查的时候会发现没有改变，但是实质上它已经发生了改变，这就是所谓的 ABA 问题。对于 ABA 问题其解决方案是加上版本号，即在每个变量都加上一个版本号，每次改变时加 1，即 A —&gt; B —&gt; A，变成 1A —&gt; 2B —&gt; 3A。</p>
+<p>从 Java1.5 开始 JDK 的 atomic 包里提供了一个类 AtomicStampedReference 来解决 ABA 问题。这个类的 compareAndSet 方法作用是首先检查当前引用是否等于预期引用，并且当前标志是否等于预期标志，如果全部相等，则以原子方式将该引用和该标志的值设置为给定的更新值。其实就类似于引入了版本概念，给每一个数据都有一个它唯一的版本号，通关检查版本号来判断数据是否被修改。</p>
+<h3 id="CAS-造成-Cache-一致性流量过大">CAS 造成 Cache 一致性流量过大</h3>
+<p>现在几乎所有的锁都是可重入的，即已经获得锁的线程可以多次锁住 / 解锁监视对象，按照之前的 HotSpot 设计，每次加锁 / 解锁都会涉及到一些 CAS 操作（比如对等待队列的 CAS 操作），CAS 操作会延迟本地调用 (<strong>使本地调用不是那么及时</strong>)，因此偏向锁的想法是 一旦线程第一次获得了监视对象，之后让监视对象 “偏向” 这个线程，之后的多次调用则可以避免 CAS 操作，说白了就是置个变量，如果发现为 true 则无需再走各种加锁 / 解锁流程。轻量级锁就是基于 CAS 操作的</p>
+<p>CAS 为什么会引入本地延迟？这要从 SMP（对称多处理器）架构说起，下图大概表明了 SMP 的结构：</p>
+<p><img src="/attachment/953db50e7be4081b1869c04a70ff43ae.png" alt=""><br>
+SMP（对称多处理器）架构</p>
+<p>其意思是 所有的 CPU 会共享一条系统总线（BUS），靠此总线连接主存。每个核都有自己的一级缓存，各核相对于 BUS 对称分布，因此这种结构称为 “对称多处理器”。</p>
+<p>而 CAS 的全称为 Compare-And-Swap，是一条 CPU 的原子指令，其作用是让 CPU 比较后原子地更新某个位置的值，其实现方式是<strong>基于硬件平台的汇编指令</strong>，就是说 CAS 是靠硬件实现的，JVM 只是<strong>封装了汇编调用</strong>，那些 AtomicInteger 类便是使用了这些封装后的接口。</p>
+<p>例如：Core1 和 Core2 可能会同时把主存中某个位置的值 Load 到自己的 L1 Cache 中，当 Core1 在自己的 L1 Cache 中修改这个位置的值时，会通过总线，使 Core2 中 L1 Cache 对应的值 “失效”，而 Core2 一旦发现自己 L1 Cache 中的值失效（称为 Cache 命中缺失）则会通过总线从内存中加载该地址最新的值，大家通过总线的来回通信称为 “<strong>Cache 一致性流量</strong>”，因为总线被设计为固定的 “通信能力”，如果 Cache 一致性流量过大，总线将成为瓶颈。而当 Core1 和 Core2 中的值再次一致时，称为 “<strong>Cache 一致性</strong>”，从这个层面来说，<strong>锁设计的终极目标便是减少 Cache 一致性流量</strong>。</p>
+<p>而 CAS 恰好会导致 Cache 一致性流量，如果有很多线程都共享同一个对象，当某个 Core CAS 成功时必然会引起<strong>总线风暴</strong>，这就是所谓的<strong>本地延迟</strong>，<strong>本质上偏向锁就是为了消除 CAS，降低 Cache 一致性流量</strong>。</p>
+<p><strong>相关参考：</strong></p>
+<p><strong><em>Cache 一致性：</em></strong><br>
+上面提到 Cache 一致性，其实是有协议支持的，现在通用的协议是 MESI（最早由 Intel 开始支持），具体参考：<a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/MESI_protocol">http://en.wikipedia.org/wiki/MESI_protocol</a>。</p>
+<p><strong><em>Cache 一致性流量的例外情况：</em></strong><br>
+其实也不是所有的 CAS 都会导致总线风暴，这跟 Cache 一致性协议有关，具体参考：<a target="_blank" rel="noopener" href="http://blogs.oracle.com/dave/entry/biased_locking_in_hotspot">http://blogs.oracle.com/dave/entry/biased_locking_in_hotspot</a></p>
+<p><strong><em>NUMA(Non Uniform Memory Access Achitecture）架构：</em></strong><br>
+与 SMP 对应还有非对称多处理器架构，现在主要应用在一些高端处理器上，主要特点是没有总线，没有公用主存，每个 Core 有自己的内存，针对这种结构此处不做讨论。</p>
+<h2 id="concurrent包的实现">concurrent包的实现</h2>
+<p>由于java的CAS同时具有 volatile 读和volatile写的内存语义，因此Java线程之间的通信现在有了下面四种方式：</p>
+<ul>
+<li>A线程写volatile变量，随后B线程读这个volatile变量。</li>
+<li>A线程写volatile变量，随后B线程用CAS更新这个volatile变量。</li>
+<li>A线程用CAS更新一个volatile变量，随后B线程用CAS更新这个volatile变量。</li>
+<li>A线程用CAS更新一个volatile变量，随后B线程读这个volatile变量。</li>
+</ul>
+<p>Java的CAS会使用现代处理器上提供的高效机器级别原子指令，这些原子指令以原子方式对内存执行读-改-写操作，这是在多处理器中实现同步的关键（从本质上来说，能够支持原子性读-改-写指令的计算机器，是顺序计算图灵机的异步等价机器，因此任何现代的多处理器都会去支持某种能对内存执行原子性读-改-写操作的原子指令）。同时，volatile变量的读/写和CAS可以实现线程之间的通信。把这些特性整合在一起，就形成了整个concurrent包得以实现的基石。如果我们仔细分析concurrent包的源代码实现，会发现一个通用化的实现模式：</p>
+<ol>
+<li>首先，声明共享变量为volatile；</li>
+<li>然后，使用CAS的原子条件更新来实现线程之间的同步；</li>
+<li>同时，配合以volatile的读/写和CAS所具有的volatile读和写的内存语义来实现线程之间的通信。</li>
+</ol>
+<p>AQS和非阻塞数据结构和原子变量类（java.util.concurrent.atomic包中的类），这些concurrent包中的基础类都是使用这种模式来实现的，而concurrent包中的高层类又是依赖于这些基础类来实现的。从整体来看，concurrent包的实现示意图如下：</p>
+<p><img src="/attachment/87c17fb1e48f847a8ea49684a4c78bbe.png" alt=""></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a target="_blank" rel="noopener" href="https://github.com/yu627482453">Bill Cipher</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://yu627482453.github.io/java/java-duo-xian-cheng-bing-fa/java-duo-xian-cheng-bing-fa-yuan-li/java-duo-xian-cheng-bing-fa-cas-compare-and-swap/">https://yu627482453.github.io/java/java-duo-xian-cheng-bing-fa/java-duo-xian-cheng-bing-fa-yuan-li/java-duo-xian-cheng-bing-fa-cas-compare-and-swap/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://yu627482453.github.io" target="_blank">蝶梦庄生</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E8%A1%8C%E5%8A%A8%E9%98%B6%E6%AE%B5-%E5%AE%8C%E6%88%90/">行动阶段/完成</a><a class="post-meta__tags" href="/tags/%E7%AC%94%E8%AE%B0%E7%A9%BA%E9%97%B4-KnowladgeSpace-ProgramSpace-BasicsSpace/">笔记空间/KnowladgeSpace/ProgramSpace/BasicsSpace</a><a class="post-meta__tags" href="/tags/%E4%B8%BB%E9%A2%98%E5%9C%BA%E6%99%AF-%E7%A8%8B%E5%BA%8F/">主题场景/程序</a><a class="post-meta__tags" href="/tags/%E7%BB%86%E5%8C%96%E4%B8%BB%E9%A2%98-Java-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%B9%B6%E5%8F%91/">细化主题/Java/多线程并发</a></div><div class="post_share"><div class="social-share" data-image="https://cdn.seovx.com/?mom=302" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/reward/wechat.jpg" target="_blank"><img class="post-qr-code-img" src="/img/reward/wechat.jpg" alt="wechat"/></a><div class="post-qr-code-desc">wechat</div></li><li class="reward-item"><a href="/img/reward/alipay.jpg" target="_blank"><img class="post-qr-code-img" src="/img/reward/alipay.jpg" alt="alipay"/></a><div class="post-qr-code-desc">alipay</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/java/java-duo-xian-cheng-bing-fa/java-duo-xian-cheng-bing-fa-yuan-li/java-duo-xian-cheng-bing-fa-aqs-abstract-queued-synchronizer/"><img class="prev-cover" src="https://cdn.seovx.com/?mom=302" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">【Java 多线程并发】 AQS（Abstract Queued Synchronizer）</div></div></a></div><div class="next-post pull-right"><a href="/java/java-duo-xian-cheng-bing-fa/java-duo-xian-cheng-bing-fa-yuan-li/java-duo-xian-cheng-bing-fa-synchronized/"><img class="next-cover" src="https://cdn.seovx.com/?mom=302" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">【Java 多线程并发】 synchronized</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/java/java-duo-xian-cheng-bing-fa/java-duo-xian-cheng-bing-fa-yuan-li/java-duo-xian-cheng-bing-fa-aqs-abstract-queued-synchronizer/" title="【Java 多线程并发】 AQS（Abstract Queued Synchronizer）"><img class="cover" src="https://cdn.seovx.com/?mom=302" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-07-04</div><div class="title">【Java 多线程并发】 AQS（Abstract Queued Synchronizer）</div></div></a></div><div><a href="/java/java-duo-xian-cheng-bing-fa/java-duo-xian-cheng-bing-fa-yuan-li/java-duo-xian-cheng-bing-fa-yuan-li/" title="【Java 多线程并发】 原理"><img class="cover" src="https://cdn.seovx.com/?mom=302" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-07-04</div><div class="title">【Java 多线程并发】 原理</div></div></a></div><div><a href="/java/java-duo-xian-cheng-bing-fa/java-duo-xian-cheng-bing-fa-yuan-li/java-duo-xian-cheng-bing-fa-java-nei-cun-mo-xing-ji-chu-zhi-shi/" title="【Java 多线程并发】 Java内存模型基础知识"><img class="cover" src="https://cdn.seovx.com/?mom=302" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-07-03</div><div class="title">【Java 多线程并发】 Java内存模型基础知识</div></div></a></div><div><a href="/java/java-duo-xian-cheng-bing-fa/java-duo-xian-cheng-bing-fa-yuan-li/java-duo-xian-cheng-bing-fa-fail-fast-kuai-su-shi-bai-ji-zhi/" title="【Java 多线程并发】 fail-fast(快速失败)机制"><img class="cover" src="https://cdn.seovx.com/?mom=302" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-07-04</div><div class="title">【Java 多线程并发】 fail-fast(快速失败)机制</div></div></a></div><div><a href="/java/java-duo-xian-cheng-bing-fa/java-duo-xian-cheng-bing-fa-yuan-li/java-duo-xian-cheng-bing-fa-synchronized/" title="【Java 多线程并发】 synchronized"><img class="cover" src="https://cdn.seovx.com/?mom=302" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-07-03</div><div class="title">【Java 多线程并发】 synchronized</div></div></a></div><div><a href="/java/java-duo-xian-cheng-bing-fa/java-duo-xian-cheng-bing-fa-yuan-li/java-duo-xian-cheng-bing-fa-volatile/" title="【Java 多线程并发】 volatile"><img class="cover" src="https://cdn.seovx.com/?mom=302" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-07-03</div><div class="title">【Java 多线程并发】 volatile</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="gitalk-container"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Bill Cipher</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">240</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">69</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/yu627482453"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/yu627482453" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="/627482453@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">1.</span> <span class="toc-text">【Java 多线程并发】 CAS（Compare And Swap）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Metadata-43"><span class="toc-number">1.1.</span> <span class="toc-text">Metadata</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A6%82%E8%BF%B0-14"><span class="toc-number">1.2.</span> <span class="toc-text">概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%94%81%E6%9C%BA%E5%88%B6%E5%AD%98%E5%9C%A8%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-number">1.3.</span> <span class="toc-text">锁机制存在的问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFCAS"><span class="toc-number">1.4.</span> <span class="toc-text">什么是CAS</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CAS%E7%9A%84%E5%BA%94%E7%94%A8"><span class="toc-number">1.5.</span> <span class="toc-text">CAS的应用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9D%9E%E9%98%BB%E5%A1%9E%E7%AE%97%E6%B3%95-%EF%BC%88nonblocking-algorithms%EF%BC%89"><span class="toc-number">1.5.1.</span> <span class="toc-text">非阻塞算法 （nonblocking algorithms）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CAS-%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86"><span class="toc-number">1.6.</span> <span class="toc-text">CAS 底层原理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%84%E7%90%86%E5%99%A8%E8%87%AA%E5%8A%A8%E4%BF%9D%E8%AF%81%E5%9F%BA%E6%9C%AC%E5%86%85%E5%AD%98%E6%93%8D%E4%BD%9C%E7%9A%84%E5%8E%9F%E5%AD%90%E6%80%A7"><span class="toc-number">1.6.1.</span> <span class="toc-text">处理器自动保证基本内存操作的原子性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%9A%E8%BF%87%E6%80%BB%E7%BA%BF%E9%94%81%E5%AE%9A%E6%9D%A5%E4%BF%9D%E8%AF%81%E5%8E%9F%E5%AD%90%E6%80%A7"><span class="toc-number">1.6.2.</span> <span class="toc-text">通过总线锁定来保证原子性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%9A%E8%BF%87%E7%BC%93%E5%AD%98%E9%94%81%E5%AE%9A%E6%9D%A5%E4%BF%9D%E8%AF%81%E5%8E%9F%E5%AD%90%E6%80%A7"><span class="toc-number">1.6.3.</span> <span class="toc-text">通过缓存锁定来保证原子性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93%EF%BC%9A"><span class="toc-number">1.6.4.</span> <span class="toc-text">总结：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CAS-%E5%AD%98%E5%9C%A8%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-number">1.7.</span> <span class="toc-text">CAS 存在的问题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BE%AA%E7%8E%AF%E6%97%B6%E9%97%B4%E5%A4%AA%E9%95%BF"><span class="toc-number">1.7.1.</span> <span class="toc-text">循环时间太长</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%AA%E8%83%BD%E4%BF%9D%E8%AF%81%E4%B8%80%E4%B8%AA%E5%85%B1%E4%BA%AB%E5%8F%98%E9%87%8F%E5%8E%9F%E5%AD%90%E6%93%8D%E4%BD%9C"><span class="toc-number">1.7.2.</span> <span class="toc-text">只能保证一个共享变量原子操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ABA-%E9%97%AE%E9%A2%98"><span class="toc-number">1.7.3.</span> <span class="toc-text">ABA 问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CAS-%E9%80%A0%E6%88%90-Cache-%E4%B8%80%E8%87%B4%E6%80%A7%E6%B5%81%E9%87%8F%E8%BF%87%E5%A4%A7"><span class="toc-number">1.7.4.</span> <span class="toc-text">CAS 造成 Cache 一致性流量过大</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#concurrent%E5%8C%85%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="toc-number">1.8.</span> <span class="toc-text">concurrent包的实现</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/design/she-ji-mo-shi/" title="无题"><img src="https://cdn.seovx.com/?mom=302" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/design/she-ji-mo-shi/" title="无题">无题</a><time datetime="2023-07-15T09:13:39.871Z" title="发表于 2023-07-15 17:13:39">2023-07-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/design/xing-wei-mo-shi/xing-wei-mo-shi/" title="无题"><img src="https://cdn.seovx.com/?mom=302" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/design/xing-wei-mo-shi/xing-wei-mo-shi/" title="无题">无题</a><time datetime="2023-07-15T09:13:37.615Z" title="发表于 2023-07-15 17:13:37">2023-07-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/design/jie-gou-mo-shi/jie-gou-mo-shi/" title="无题"><img src="https://cdn.seovx.com/?mom=302" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/design/jie-gou-mo-shi/jie-gou-mo-shi/" title="无题">无题</a><time datetime="2023-07-15T09:13:33.180Z" title="发表于 2023-07-15 17:13:33">2023-07-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/design/chuang-jian-mo-shi/chuang-jian-mo-shi/" title="无题"><img src="https://cdn.seovx.com/?mom=302" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/design/chuang-jian-mo-shi/chuang-jian-mo-shi/" title="无题">无题</a><time datetime="2023-07-15T09:13:23.913Z" title="发表于 2023-07-15 17:13:23">2023-07-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/java/java-duo-xian-cheng-bing-fa/java-duo-xian-cheng-bing-fa-xian-cheng/java-duo-xian-cheng-bing-fa-xian-cheng/" title="【Java 多线程并发】 线程"><img src="https://cdn.seovx.com/?mom=302" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【Java 多线程并发】 线程"/></a><div class="content"><a class="title" href="/java/java-duo-xian-cheng-bing-fa/java-duo-xian-cheng-bing-fa-xian-cheng/java-duo-xian-cheng-bing-fa-xian-cheng/" title="【Java 多线程并发】 线程">【Java 多线程并发】 线程</a><time datetime="2023-07-10T06:15:00.000Z" title="发表于 2023-07-10 14:15:00">2023-07-10</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By Bill Cipher</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>function addGitalkSource () {
+  const ele = document.createElement('link')
+  ele.rel = 'stylesheet'
+  ele.href= 'https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.css'
+  document.getElementsByTagName('head')[0].appendChild(ele)
+}
+
+function loadGitalk () {
+  function initGitalk () {
+    var gitalk = new Gitalk(Object.assign({
+      clientID: 'c61a274b6f5aa26a58f6',
+      clientSecret: '485a7761d321c8dcc5cae05d7256be9fb196d94a',
+      repo: 'yu627482453.github.io',
+      owner: 'yu627482453',
+      admin: ['yu627482453'],
+      id: 'f0f32346f05748ac8e176a4e40a2dc87',
+      updateCountCallback: commentCount
+    },null))
+
+    gitalk.render('gitalk-container')
+  }
+
+  if (typeof Gitalk === 'function') initGitalk()
+  else {
+    addGitalkSource()
+    getScript('https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.js').then(initGitalk)
+  }
+}
+
+function commentCount(n){
+  let isCommentCount = document.querySelector('#post-meta .gitalk-comment-count')
+  if (isCommentCount) {
+    isCommentCount.innerHTML= n
+  }
+}
+
+if ('Gitalk' === 'Gitalk' || !true) {
+  if (true) btf.loadComment(document.getElementById('gitalk-container'), loadGitalk)
+  else loadGitalk()
+} else {
+  function loadOtherComment () {
+    loadGitalk()
+  }
+}</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

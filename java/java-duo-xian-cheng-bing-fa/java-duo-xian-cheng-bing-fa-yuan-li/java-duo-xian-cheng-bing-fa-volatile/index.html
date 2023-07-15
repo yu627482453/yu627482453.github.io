@@ -1,0 +1,877 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>【Java 多线程并发】 volatile | 蝶梦庄生</title><meta name="keywords" content="Java/多线程并发"><meta name="author" content="Bill Cipher"><meta name="copyright" content="Bill Cipher"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="【Java 多线程并发】 volatile">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【Java 多线程并发】 volatile">
+<meta property="og:url" content="https://yu627482453.github.io/java/java-duo-xian-cheng-bing-fa/java-duo-xian-cheng-bing-fa-yuan-li/java-duo-xian-cheng-bing-fa-volatile/index.html">
+<meta property="og:site_name" content="蝶梦庄生">
+<meta property="og:description" content="【Java 多线程并发】 volatile">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.seovx.com/?mom=302">
+<meta property="article:published_time" content="2023-07-03T06:46:00.000Z">
+<meta property="article:modified_time" content="2023-07-03T06:46:00.000Z">
+<meta property="article:author" content="Bill Cipher">
+<meta property="article:tag" content="行动阶段&#x2F;完成">
+<meta property="article:tag" content="笔记空间&#x2F;KnowladgeSpace&#x2F;ProgramSpace&#x2F;BasicsSpace">
+<meta property="article:tag" content="主题场景&#x2F;程序">
+<meta property="article:tag" content="细化主题&#x2F;Java&#x2F;多线程并发">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.seovx.com/?mom=302"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://yu627482453.github.io/java/java-duo-xian-cheng-bing-fa/java-duo-xian-cheng-bing-fa-yuan-li/java-duo-xian-cheng-bing-fa-volatile/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: undefined,
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: Bill Cipher","link":"链接: ","source":"来源: 蝶梦庄生","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '【Java 多线程并发】 volatile',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-07-03 14:46:00'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.2.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">240</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">69</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cdn.seovx.com/?mom=302')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">蝶梦庄生</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">【Java 多线程并发】 volatile</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-07-03T06:46:00.000Z" title="发表于 2023-07-03 14:46:00">2023-07-03</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-07-03T06:46:00.000Z" title="更新于 2023-07-03 14:46:00">2023-07-03</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Java/">Java</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="【Java 多线程并发】 volatile"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1>【Java 多线程并发】 volatile</h1>
+<h2 id="Metadata-47">Metadata</h2>
+<pre><code class="language-yml">title: 【Java 多线程并发】 volatile
+date: 2023-07-03 14:46
+tags:
+  - 行动阶段/完成
+  - 主题场景/程序
+  - 笔记空间/KnowladgeSpace/ProgramSpace/BasicsSpace
+  - 细化主题/Java/多线程并发
+categories:
+  - Java
+keywords:
+  - Java/多线程并发
+description: 【Java 多线程并发】 volatile
+</code></pre>
+<h2 id="概述-18">概述</h2>
+<p><strong>volatile的原理</strong></p>
+<p>抽象上是 Load 屏障 和 Store 屏障</p>
+<p>volatile实现是靠lock指令（汇编语言的LOCK指令） + 缓存一致性协议<br>
+JVM会向处理器发送一条Lock前缀的指令，将这个变量所在缓存行的数据写会到系统内存</p>
+<ul>
+<li>可见性
+<ul>
+<li>JVM会向处理器发送一条lock前缀的指令，将这个缓存中的变量回写到系统主存中。</li>
+<li>每个处理会通过嗅探在总线上传播的数据来检查自己的缓存是否过期</li>
+</ul>
+</li>
+<li>有序性
+<ul>
+<li>Lock前缀指令实际上相当于一个内存屏障（也成内存栅栏）</li>
+<li>执行到内存屏障这句指令时，在它前面的操作已经全部完成。</li>
+</ul>
+</li>
+</ul>
+<p><strong>lock 指令</strong></p>
+<p>lock指令的几个作用</p>
+<ol>
+<li>锁总线</li>
+<li>lock后的写操作会向主内存中回写已修改的数据，同时让其它CPU相关缓存行（Cache Line）失效，从而重新从主存中加载最新的数据</li>
+<li>不是内存屏障却能完成类似内存屏障的功能，阻止屏障两边的指令重排序。</li>
+</ol>
+<p><strong>缓存一致性协议 MESI协议</strong></p>
+<p>只有当缓存行处于E或者M状态时，处理器才能去写它</p>
+<p><img src="/attachment/f11fb769b8aa060cd06c13d4ced9bcd8.png" alt=""></p>
+<ul>
+<li>读操作：不做任何事情，把Cache中的数据读到寄存器</li>
+<li>写操作：发出信号通知其他的CPU<mark style="background: #FFB8EBA6;">将该变量的Cache line置为无效</mark>，其他的CPU要访问这个变量的时候，只能从主内存中获取。</li>
+</ul>
+<p><strong>内存屏障(Memory Barrier)</strong></p>
+<ul>
+<li>在每个volatile写操作<strong>前</strong>插入StoreStore屏障，在写操作<strong>后</strong>插入StoreLoad屏障；</li>
+<li>在每个volatile读操作<strong>后</strong>插入LoadLoad屏障，在读操作<strong>后</strong>插入LoadStore屏障；</li>
+</ul>
+<p><strong>volatile特性</strong></p>
+<ul>
+<li>保证可见性</li>
+<li>保证有序性</li>
+<li>volatile不能保证原子性</li>
+</ul>
+<p><strong>适用条件</strong><br>
+1.运算结果并不依赖变量的当前值，或者能够确保只有单一的线程会修改变量的值。<br>
+2.该变量没有包含在具有其他变量的不变式中</p>
+<p><strong>相关场景</strong></p>
+<ul>
+<li>状态标记量（开关模式）</li>
+<li>一次性安全发布.双重检查锁定问题</li>
+</ul>
+<h2 id="引入-3">引入</h2>
+<h3 id="可见性问题：">可见性问题：</h3>
+<pre><code class="language-java">public class ReaderAndUpdater {
+    final static int MAX=5;
+    static int init_value=0;
+    public static void main(String[] args) {
+        new Thread(()-&gt;{
+			int localValue=init_value;
+			while(localValue&lt;MAX){
+				if(localValue!=init_value){
+					System.out.println("Reader:"+init_value);
+					localValue=init_value;
+				}
+			}
+        },"Reader").start();
+ 
+        new Thread(()-&gt;{
+            int localValue=init_value;
+            while(localValue&lt;MAX){
+                System.out.println("updater:"+(++localValue));
+                init_value=localValue;
+                try {
+                    TimeUnit.SECONDS.sleep(2);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        },"Updater").start();
+    }
+}
+</code></pre>
+<p>一个读线程，一个写线程。有一个全局静态变量init_value，每一个线程还有一个自己的局部变量localValue。写线程将自己的局部变量localValue自增，然后赋值给全局静态变量init_value。读线程当发现自己的本地局部变量与全局静态变量值不相同，则读入最新的全局静态变量init_value，然后更新自己的本地局部变量。</p>
+<p>运行结果：</p>
+<pre><code class="language-text">updater:1
+Reader:1
+updater:2
+updater:3
+updater:4
+updater:5
+</code></pre>
+<p>由结果可发现读线程感知不到写线程对init_value变量的更新，写线程读取到的全局静态变量一直没有被更新，还是旧值。这就出现了并发编程的可见性问题，读线程对写线程的数据修改结果不可见，使程序出现了问题。</p>
+<h3 id="重排序问题：">重排序问题：</h3>
+<pre><code class="language-java">public class NoVisibility {
+    private static boolean ready;
+    private static int number;
+    private static class ReaderThread extends Thread {
+        @Override
+        public void run() {
+            while(!ready) {
+                Thread.yield();
+            }
+            System.out.println(number);
+        }
+    }
+    public static void main(String[] args) {
+        new ReaderThread().start();
+        number = 42;
+        ready = true;
+    }
+}
+</code></pre>
+<p>NoVisibility可能会持续循环下去，因为读线程可能永远都看不到ready的值，这就是上面讲到的可见性问题。也有可能NoVisibility可能会输出0，因为读线程虽然看到了写入ready的值，但却没有看到之后写入number的值，<mark style="background: #FFB8EBA6;">在主线程对number和ready的赋值给颠倒了</mark>，这种现象被称为“<strong>重排序</strong>”。只要在某个线程中无法检测到重排序情况（即使在其他线程中可以明显地看到该线程中的重排序），那么就无法确保线程中的操作将按照程序中指定的顺序来执行。当主线程首先写入number，然后在没有同步的情况下写入ready，那么读线程看到的顺序可能与写入的顺序完全相反。</p>
+<p>在没有同步的情况下，编译器、处理器以及运行时等都可能对操作的执行顺序进行一些意想不到的调整。在缺乏足够同步的多线程程序中，要想对内存操作的执行顺序进行判断，无法得到正确的结论。</p>
+<h2 id="前言">前言</h2>
+<p>以上就是在并发编程中可能出现的问题，今天我们就在讲解一下使用volatile关键字来解决这些问题。</p>
+<p>我们知道volatile关键字的作用是保证变量在多线程之间的可见性，它是java.util.concurrent包的核心，没有volatile就没有这么多的并发类给我们使用。</p>
+<p>本文详细解读一下volatile关键字如何保证变量在多线程之间的可见性，在此之前，有必要讲解一下CPU缓存的相关知识，掌握这部分知识一定会让我们更好地理解volatile的原理，从而更好、更正确地地使用volatile关键字。</p>
+<h3 id="几个基本概念">几个基本概念</h3>
+<h4 id="内存可见性">内存可见性</h4>
+<p>在Java内存模型那一章我们介绍了JMM有一个主内存，每个线程有自己私有的工作内存，工作内存中保存了一些变量在主内存的拷贝。</p>
+<p>内存可见性，指的是线程之间的可见性，当一个线程修改了共享变量时，另一个线程可以读取到这个修改后的值。</p>
+<h4 id="重排序">重排序</h4>
+<p>为优化程序性能，对原有的指令执行顺序进行优化重新排序。重排序可能发生在多个阶段，比如编译重排序、CPU重排序等。</p>
+<h4 id="happens-before规则">happens-before规则</h4>
+<p>是一个给程序员使用的规则，只要程序员在写代码的时候遵循happens-before规则，JVM就能保证指令在多线程之间的顺序性符合程序员的预期。</p>
+<h3 id="CPU缓存">CPU缓存</h3>
+<h4 id="CPU多级缓存架构">CPU多级缓存架构</h4>
+<p>CPU缓存的出现主要是为了解决CPU运算速度与内存读写速度不匹配的矛盾，因为CPU运算速度要比内存读写速度快得多，举个例子：</p>
+<ul>
+<li>一次主内存的访问通常在几十到几百个时钟周期</li>
+<li>一次L1高速缓存的读写只需要1~2个时钟周期</li>
+<li>一次L2高速缓存的读写也只需要数十个时钟周期<br>
+这种访问速度的显著差异，导致CPU可能会花费很长时间等待数据到来或把数据写入内存。</li>
+</ul>
+<p>基于此，现在CPU大多数情况下读写都不会直接访问内存（CPU都没有连接到内存的管脚），取而代之的是CPU缓存（cache），CPU缓存是位于CPU与内存之间的临时存储器，它的容量比内存小得多但是交换速度却比内存快得多。而缓存中的数据是内存中的一小部分数据，但这一小部分是短时间内CPU即将访问的，当CPU调用大量数据时，就可先从缓存中读取，从而加快读取速度。</p>
+<p>按照读取顺序与CPU结合的紧密程度，CPU缓存可分为：</p>
+<ul>
+<li>一级缓存：简称L1 Cache，位于CPU内核的旁边，是与CPU结合最为紧密的CPU缓存</li>
+<li>二级缓存：简称L2 Cache，分内部和外部两种芯片，内部芯片二级缓存运行速度与主频相同，外部芯片二级缓存运行速度则只有主频的一半</li>
+<li>三级缓存：简称L3 Cache，部分高端CPU才有<br>
+每一级缓存中所存储的数据全部都是下一级缓存中的一部分，这三种缓存的技术难度和制造成本是相对递减的，所以其容量也相对递增。</li>
+</ul>
+<p>当CPU要读取一个数据时，首先从一级缓存中查找，如果没有再从二级缓存中查找，如果还是没有再从三级缓存中或内存中查找。一般来说每级缓存的命中率大概都有80%左右，也就是说全部数据量的80%都可以在一级缓存中找到，只剩下20%的总数据量才需要从二级缓存、三级缓存或内存中读取。</p>
+<h4 id="使用CPU缓存带来的问题">使用CPU缓存带来的问题</h4>
+<p><img src="/attachment/f7bcbc8390069369d10342cb9e31614f.png" alt=""></p>
+<p>当系统运行时，CPU执行计算的过程如下：</p>
+<ul>
+<li>程序以及数据被加载到主内存</li>
+<li>指令和数据被加载到CPU缓存</li>
+<li>CPU执行指令，把结果写到高速缓存</li>
+<li>高速缓存中的数据写回主内存</li>
+</ul>
+<p>如果服务器是单核CPU，那么这些步骤不会有任何的问题，但是如果服务器是多核CPU，每个CPU都有自己独享的Cache，那么问题来了，以Intel Core i7处理器的高速缓存概念模型为例（图片摘自《深入理解计算机系统》）：</p>
+<p><img src="/attachment/93c2f68a041ae60709e5a4cbc36e7956.png" alt=""></p>
+<p>试想下面一种情况：</p>
+<ul>
+<li>核0读取了一个字节，根据局部性原理，它相邻的字节同样被被读入核0的缓存</li>
+<li>核3做了上面同样的工作，这样核0与核3的缓存拥有同样的数据</li>
+<li>核0修改了那个字节，被修改后，那个字节被写回核0的缓存，但是该信息并没有写回主存</li>
+<li>核3访问该字节，由于核0并未将数据写回主存，数据不同步</li>
+</ul>
+<p>为了解决这个问题，CPU制造商制定了一个<mark style="background: #FF5582A6;">规则(MESI)</mark>：<br>
+当一个CPU修改缓存中的字节时，服务器中其他CPU会被通知，它们的缓存将视为无效，即将数据所对应的Cache Line置为无效。于是，在上面的情况下，核3发现自己的缓存中数据已无效，核0将立即把自己的数据写回主存，然后核3重新读取该数据。</p>
+<p><strong>反汇编Java字节码，查看汇编层面对volatile关键字做了什么</strong></p>
+<pre><code class="language-java">public class LazySingleton {
+    private static volatile LazySingleton instance = null;
+    public static LazySingleton getInstance() {
+        if (instance == null) {
+            instance = new LazySingleton();
+        }
+        return instance;
+    }
+    public static void main(String[] args) {
+        LazySingleton.getInstance();
+    }
+}
+</code></pre>
+<p>代码生成的汇编指令为：</p>
+<pre><code class="language-d">0x0000000002931351: lock add dword ptr [rsp],0h  ;
+*putstatic instance; - org.xrq.test.design.singleton.LazySingleton::getInstance@13 (line 14)
+</code></pre>
+<p>之所以定位到这两行是因为这里结尾写明了line 14，line 14即volatile变量instance赋值的地方。后面的add dword ptr [rsp],0h都是正常的汇编语句，意思是将双字节的栈指针寄存器+0，这里的关键就是add前面的lock指令，lock是汇编语言的命令，后面详细分析一下lock指令的作用和为什么加上lock指令后就能保证volatile关键字的内存可见性。</p>
+<p><strong>lock指令做了什么</strong></p>
+<p>这里的Lock是汇编语言指令，不是之前写过的Java内存模型指定的8中操作中的lock</p>
+<p>lock指令的几个作用：</p>
+<ol>
+<li>锁总线，其它CPU对内存的读写请求都会被阻塞，直到锁释放，不过实际后来的处理器都采用锁缓存替代锁总线（降低粒度，以前锁了总线，使总线只能被一个CPU独享，所有的CPU公用一条总线，那么所有的CPU就都不能使用，这样大大降低了吞吐量，影响效率。锁缓存行只是将该数据的缓存行锁住，让对其操作的CPU独占，其他的缓存行不受影响，其他CPU还能对别的数据进行操作），因为锁总线的开销比较大，锁总线期间其他CPU没法访问内存。（计算机组成原理中学的总线结构）（不管是锁总线还是锁缓存行，其根本目的就是使CPU对内存中某个数据的操作是独占的，在CPU1对一个数据操作时lock指令会锁总线或者通过缓存一致性协议来锁缓存行来使其他的CPU无法对该数据进行操作，使CPU1能独享给数据的操作权）</li>
+<li>lock后的写操作会向主内存中回写已修改的数据，同时让其它CPU相关缓存行（Cache Line）失效，从而重新从主存中加载最新的数据</li>
+<li>不是内存屏障却能完成类似内存屏障的功能，阻止屏障两边的指令重排序。</li>
+</ol>
+<p>以上可以看出lock指令就可以实现可见性和有序性。</p>
+<p>第一条中写了由于效率问题，实际后来的处理器都采用锁缓存来替代锁总线，这种场景下多缓存的数据一致是通过缓存一致性协议来保证的，我们来看一下什么是缓存一致性协议。</p>
+<h3 id="缓存一致性协议">缓存一致性协议</h3>
+<h4 id="缓存行（Cache-Line）的概念">缓存行（Cache Line）的概念</h4>
+<p>缓存是分段（line）的，一个段对应一块存储空间，我们称之为缓存行（Cache Line），它是CPU缓存中可分配的最小存储单元，大小32字节、64字节、128字节不等，这与CPU架构有关，通常来说是64字节。当CPU看到一条读取内存的指令时，它会把内存地址传递给一级数据缓存，一级数据缓存会检查它是否有这个内存地址对应的缓存段，如果没有就把整个缓存段从内存（或更高一级的缓存）中加载进来。注意，这里说的是一次加载整个缓存段，这就是上面提过的局部性原理</p>
+<p>缓存一致性协议有多种，但是日常处理的大多数计算机设备都属于"<strong>嗅探（snooping）</strong>"协议，它的基本思想是：</p>
+<ul>
+<li>所有内存的传输都发生在一条共享的总线上，而所有的处理器都能看到这条总线：缓存本身是独立的，但是内存是共享资源，所有的内存访问都要经过仲裁（同一个指令周期中，只有一个CPU缓存可以读写内存）。</li>
+<li>CPU缓存不仅仅在做内存传输的时候才与总线打交道，而是不停在嗅探总线上发生的数据交换，跟踪其他缓存在做什么。所以当一个缓存代表它所属的处理器去读写内存时，其它处理器都会得到通知，它们以此来使自己的缓存保持同步。只要某个处理器一写内存，其它处理器马上知道这块内存在它们的缓存段中已失效。</li>
+</ul>
+<p>MESI协议是当前最主流的<strong>缓存一致性</strong>协议，在MESI协议中，每个缓存行有4个状态，可用2个bit表示，它们分别是：</p>
+<p><img src="/attachment/f11fb769b8aa060cd06c13d4ced9bcd8.png" alt=""></p>
+<p>这里的I、S和M状态已经有了对应的概念：失效/未载入、干净以及脏的缓存段。所以这里新的知识点只有E状态，代表独占式访问，这个状态解决了"在我们开始修改某块内存之前，我们需要告诉其它处理器"这一问题：<mark style="background: #FFB86CA6;">只有当缓存行处于E或者M状态时，处理器才能去写它</mark>，也就是说只有在这两种状态下，处理器是独占这个缓存行的。当处理器想写某个缓存行时，如果它没有独占权，它必须先发送一条"我要独占权"的请求给总线，这会通知其它处理器把它们拥有的同一缓存段的拷贝失效（如果有）。只有在获得独占权后，处理器才能开始修改数据----并且此时这个处理器知道，这个缓存行只有一份拷贝，在我自己的缓存里，所以不会有任何冲突。</p>
+<p>反之，如果有其它处理器想读取这个缓存行（马上能知道，因为一直在嗅探总线），独占或已修改的缓存行必须先回到"共享"状态。如果是已修改的缓存行，那么还要先把内容回写到内存中。</p>
+<p>简单来说，MESI协议就是：</p>
+<ul>
+<li>读操作：不做任何事情，把Cache中的数据读到寄存器</li>
+<li>写操作：发出信号通知其他的CPU<mark style="background: #FFB8EBA6;">将该变量的Cache line置为无效</mark>，其他的CPU要访问这个变量的时候，只能从主内存中获取。</li>
+</ul>
+<h3 id="内存屏障-Memory-Barrier">内存屏障(Memory Barrier)</h3>
+<p>Memory barrier 能够让 CPU 或编译器在内存访问上有序。一个 Memory barrier 之前的内存访问操作必定先于Memory barrier之后的操作完成。</p>
+<p>Memory barrier是一种CPU指令，用于控制特定条件下的重排序和内存可见性问题。Java编译器也会根据内存屏障的规则禁止重排序。</p>
+<p>有的处理器的重排序规则较严，无需内存屏障也能很好的工作，Java编译器会在这种情况下不放置内存屏障。</p>
+<p>Memory Barrier可以被分为以下几种类型：</p>
+<ul>
+<li>LoadLoad屏障：对于这样的语句Load1; LoadLoad; Load2，在Load2及后续读取操作要读取的数据被访问前，保证Load1要读取的数据被读取完毕。</li>
+<li>StoreStore屏障：对于这样的语句Store1; StoreStore; Store2，在Store2及后续写入操作执行前，保证Store1的写入操作对其它处理器可见。</li>
+<li>LoadStore屏障：对于这样的语句Load1; LoadStore; Store2，在Store2及后续写入操作被刷出前，保证Load1要读取的数据被读取完毕。</li>
+<li>StoreLoad屏障：对于这样的语句Store1; StoreLoad; Load2，在Load2及后续所有读取操作执行前，保证Store1的写入对所有处理器可见。它的开销是四种屏障中最大的。在大多数处理器的实现中，这个屏障是个万能屏障，兼具其它三种内存屏障的功能</li>
+</ul>
+<h4 id="volatile语义中的内存屏障">volatile语义中的内存屏障</h4>
+<ul>
+<li>
+<p>在每个volatile写操作<strong>前</strong>插入StoreStore屏障，在写操作<strong>后</strong>插入StoreLoad屏障；</p>
+</li>
+<li>
+<p>在每个volatile读操作<strong>后</strong>插入LoadLoad屏障，在读操作<strong>后</strong>插入LoadStore屏障；</p>
+</li>
+<li>
+<p>volatile读：在每个volatile读后面分别插入LoadLoad屏障及LoadStore屏障（根据volatile重排序规则第一条），如下图所示<br>
+<img src="/attachment/78aa887b5f481c4d1bd54e8ac9dd0169.png" alt=""></p>
+</li>
+</ul>
+<p>​ LoadLoad屏障的作用：禁止上面的所有普通读操作和上面的volatile读操作进行重排序。<br>
+LoadStore屏障的作用：禁止下面的普通写和上面的volatile读进行重排序。</p>
+<ul>
+<li>volatile写：在每个volatile写前面插入一个StoreStore屏障（为满足volatile重排序规则第二条），在每个volatile写后面插入一个StoreLoad屏障（为满足volatile重排序规则第三条），如下图所示</li>
+</ul>
+<p><img src="/attachment/70f296e8770c588cf23a506d2d61ccc1.png" alt=""></p>
+<p>StoreStore屏障的作用：禁止上面的普通写和下面的volatile写重排序<br>
+StoreLoad屏障的作用：防止上面的volatile写与下面可能出现的volatile读/写重排序</p>
+<h4 id="final语义中的内存屏障">final语义中的内存屏障</h4>
+<ul>
+<li>新建对象过程中，构造体中对final域的初始化写入(StoreStore屏障)和这个对象赋值给其他引用变量，这两个操作不能重排序；</li>
+<li>初次读包含final域的对象引用和读取这个final域（LoadLoad屏障），这两个操作不能重排序；</li>
+</ul>
+<h4 id="汇编指令LOCK与内存屏障之间的关系？">汇编指令LOCK与内存屏障之间的关系？</h4>
+<p>LOCK汇编命令使相应的机器码指令中添加了相关内存屏障指令，也就是说汇编层面LOCK指令的功能是通过CPU层面的内存屏障机器码实现的。</p>
+<h2 id="volatile的原理">volatile的原理</h2>
+<p>由lock指令回看volatile变量读写。可以知道volatile实际是靠lock指令（这是汇编语言的LOCK指令，不是JMM中的lock操作，JMM中的lock操作是加锁，它是synchronized的实现基础）为基础来实现的。</p>
+<p>相信有了上面对于lock的解释，以及对CPU多级缓存架构以及JAVA内存模型的理解，volatile关键字的实现原理应该是一目了然了。由上面JMM的结构图可知，工作内存Work Memory其实就是对CPU寄存器和高速缓存的抽象，或者说每个线程的工作内存也可以简单理解为CPU寄存器和高速缓存。</p>
+<p>那么当写两条线程Thread-A与Threab-B同时操作主存中的一个volatile变量i时</p>
+<ul>
+<li>Thread-A写了变量i，那么：
+<ol>
+<li>Thread-A发出LOCK#指令</li>
+<li>发出的LOCK#指令锁总线（或锁缓存行），同时让Thread-B高速缓存中的缓存行内容失效</li>
+<li>Thread-A向主存回写最新修改的i</li>
+</ol>
+</li>
+<li>Thread-B读取变量i，那么：
+<ol>
+<li>Thread-B发现对应地址的缓存行被锁了，等待锁的释放，缓存一致性协议会保证它读取到最新的值，也就是当锁释放之后Thread-B发现对应的Cache Line已经失效了，只能去主内存中读取最新的值。</li>
+</ol>
+</li>
+</ul>
+<p>由此可以看出，volatile关键字的读和普通变量的读取相比基本没差别，差别主要还是在变量的写操作上。</p>
+<p>当对volatile变量进行写操作的时候，JVM会向处理器发送一条lock前缀的指令，将这个缓存中的变量回写到系统主存中。</p>
+<p>但是就算写回到内存，如果其他处理器缓存的值还是旧的，再执行计算操作就会有问题，所以在多处理器下，为了保证各个处理器的缓存是一致的，就会实现上面所讲的缓存一致性协议</p>
+<p><strong>缓存一致性协议</strong>：每个处理器通过<mark style="background: #FF5582A6;">嗅探</mark>在总线上传播的数据来检查自己缓存的值是不是过期了，当处理器发现自己缓存行对应的内存地址被修改，就会将当前处理器的缓存行设置成无效状态，当处理器要对这个数据进行修改操作的时候，会强制重新从系统内存里把数据读到处理器缓存里。</p>
+<p>所以，如果一个变量被volatile所修饰的话，在每次数据变化之后，其值都会被强制刷入主存。而其他处理器的缓存由于遵守了缓存一致性协议，也会把这个变量的值从主存加载到自己的缓存中。这就保证了一个volatile在并发编程中，其值在多个缓存中是可见的。</p>
+<p><strong>总结：</strong></p>
+<p>volatile可以保证线程可见性且提供了一定的有序性，但是无法保证原子性。在JVM底层volatile是采用“内存屏障”来实现的。观察加入volatile关键字和没有加入volatile关键字时所生成的汇编代码发现，加入volatile关键字时，会多出一个lock前缀指令，lock前缀指令实际上相当于一个内存屏障（也称内存栅栏），内存屏障会提供3个功能：</p>
+<ul>
+<li>它确保指令重排序时不会把其后面的指令排到内存屏障之前的位置，也不会把前面的指令排到内存屏障的后面；即在执行到内存屏障这句指令时，在它前面的操作已经全部完成；（保证有序性）</li>
+<li>它会强制将对缓存的修改操作立即写入主存；（保证可见性）</li>
+<li>如果是写操作，它会导致其他CPU中对应的缓存行无效。（保证可见性）</li>
+</ul>
+<h2 id="源码溯源">源码溯源</h2>
+<p>JVM会向处理器发送一条lock前缀的指令，将这个缓存中的变量回写到系统主存中。</p>
+<h3 id="Java代码层面">Java代码层面</h3>
+<p>volatile用来修饰Java变量 的代码示例</p>
+<pre><code class="language-java">public class TestVolatile {
+
+    public static volatile int counter = 1;
+
+    public static void main(String[] args){
+        counter = 2;
+        System.out.println(counter);
+    }
+}
+</code></pre>
+<h3 id="字节码层面">字节码层面</h3>
+<p>通过javac TestVolatile.java将类编译为class文件，再通过javap -v TestVolatile.class命令反编译查看字节码文件。</p>
+<p><img src="/attachment/7932fcba3d15c2c77b1a803e96f11aa1.png" alt=""></p>
+<p>可以看到，修饰counter字段的public、static、volatile关键字，在字节码层面分别是以下访问标志： ACC_PUBLIC, ACC_STATIC, ACC_VOLATILE</p>
+<p>volatile在字节码层面，就是使用访问标志：<strong>ACC_VOLATILE来表示</strong>，供后续操作此变量时判断访问标志是否为ACC_VOLATILE，来决定是否遵循volatile的语义处理。</p>
+<h3 id="JVM源码层面">JVM源码层面</h3>
+<ol>
+<li>openjdk8根路径/hotspot/src/share/vm/interpreter路径下的bytecodeInterpreter.cpp文件中，处理putstatic和putfield指令的代码：</li>
+</ol>
+<pre><code class="language-c">CASE(_putfield):
+CASE(_putstatic):
+    {
+          // .... 省略若干行 
+          // ....
+
+          // Now store the result 现在要开始存储结果了
+          // ConstantPoolCacheEntry* cache;     -- cache是常量池缓存实例
+          // cache-&gt;is_volatile()               -- 判断是否有volatile访问标志修饰
+          int field_offset = cache-&gt;f2_as_index();
+          if (cache-&gt;is_volatile()) { // ****重点判断逻辑**** 
+            // volatile变量的赋值逻辑
+            if (tos_type == itos) {
+              obj-&gt;release_int_field_put(field_offset, STACK_INT(-1));
+            } else if (tos_type == atos) {// 对象类型赋值
+              VERIFY_OOP(STACK_OBJECT(-1));
+              obj-&gt;release_obj_field_put(field_offset, STACK_OBJECT(-1));
+              OrderAccess::release_store(&amp;BYTE_MAP_BASE[(uintptr_t)obj &gt;&gt; CardTableModRefBS::card_shift], 0);
+            } else if (tos_type == btos) {// byte类型赋值
+              obj-&gt;release_byte_field_put(field_offset, STACK_INT(-1));
+            } else if (tos_type == ltos) {// long类型赋值
+              obj-&gt;release_long_field_put(field_offset, STACK_LONG(-1));
+            } else if (tos_type == ctos) {// char类型赋值
+              obj-&gt;release_char_field_put(field_offset, STACK_INT(-1));
+            } else if (tos_type == stos) {// short类型赋值
+              obj-&gt;release_short_field_put(field_offset, STACK_INT(-1));
+            } else if (tos_type == ftos) {// float类型赋值
+              obj-&gt;release_float_field_put(field_offset, STACK_FLOAT(-1));
+            } else {// double类型赋值
+              obj-&gt;release_double_field_put(field_offset, STACK_DOUBLE(-1));
+            }
+            // *** 写完值后的storeload屏障 ***
+            OrderAccess::storeload();
+          } else {
+            // 非volatile变量的赋值逻辑
+            if (tos_type == itos) {
+              obj-&gt;int_field_put(field_offset, STACK_INT(-1));
+            } else if (tos_type == atos) {
+              VERIFY_OOP(STACK_OBJECT(-1));
+              obj-&gt;obj_field_put(field_offset, STACK_OBJECT(-1));
+              OrderAccess::release_store(&amp;BYTE_MAP_BASE[(uintptr_t)obj &gt;&gt; CardTableModRefBS::card_shift], 0);
+            } else if (tos_type == btos) {
+              obj-&gt;byte_field_put(field_offset, STACK_INT(-1));
+            } else if (tos_type == ltos) {
+              obj-&gt;long_field_put(field_offset, STACK_LONG(-1));
+            } else if (tos_type == ctos) {
+              obj-&gt;char_field_put(field_offset, STACK_INT(-1));
+            } else if (tos_type == stos) {
+              obj-&gt;short_field_put(field_offset, STACK_INT(-1));
+            } else if (tos_type == ftos) {
+              obj-&gt;float_field_put(field_offset, STACK_FLOAT(-1));
+            } else {
+              obj-&gt;double_field_put(field_offset, STACK_DOUBLE(-1));
+            }
+          }
+          UPDATE_PC_AND_TOS_AND_CONTINUE(3, count);
+  }
+</code></pre>
+<ol start="2">
+<li>重点判断逻辑cache-&gt;is_volatile()方法，调用的是openjdk8根路径/hotspot/src/share/vm/utilities路径下的accessFlags.hpp文件中的方法，<strong>用来判断访问标记是否为volatile修饰</strong>。</li>
+</ol>
+<pre><code class="language-c">// Java access flags
+  bool is_public      () const         { return (_flags &amp; JVM_ACC_PUBLIC      ) != 0; }
+  bool is_private     () const         { return (_flags &amp; JVM_ACC_PRIVATE     ) != 0; }
+  bool is_protected   () const         { return (_flags &amp; JVM_ACC_PROTECTED   ) != 0; }
+  bool is_static      () const         { return (_flags &amp; JVM_ACC_STATIC      ) != 0; }
+  bool is_final       () const         { return (_flags &amp; JVM_ACC_FINAL       ) != 0; }
+  bool is_synchronized() const         { return (_flags &amp; JVM_ACC_SYNCHRONIZED) != 0; }
+  bool is_super       () const         { return (_flags &amp; JVM_ACC_SUPER       ) != 0; }
+  // 是否volatile修饰
+  bool is_volatile    () const         { return (_flags &amp; JVM_ACC_VOLATILE    ) != 0; }
+  bool is_transient   () const         { return (_flags &amp; JVM_ACC_TRANSIENT   ) != 0; }
+  bool is_native      () const         { return (_flags &amp; JVM_ACC_NATIVE      ) != 0; }
+  bool is_interface   () const         { return (_flags &amp; JVM_ACC_INTERFACE   ) != 0; }
+  bool is_abstract    () const         { return (_flags &amp; JVM_ACC_ABSTRACT    ) != 0; }
+  bool is_strict      () const         { return (_flags &amp; JVM_ACC_STRICT      ) != 0; }
+</code></pre>
+<ol start="3">
+<li>下面一系列的 if…else… 对<code>tos_type</code>字段的判断处理，是针对 java 基本类型和引用类型的赋值处理。如：</li>
+</ol>
+<pre><code class="language-c">obj-&gt;release_byte_field_put(field_offset, STACK_INT(-1));
+</code></pre>
+<p>对 byte 类型的赋值处理，调用的是<code>openjdk8根路径/hotspot/src/share/vm/oops</code>路径下的<code>oop.inline.hpp</code>文件中的方法：</p>
+<pre><code class="language-c">// load操作调用的方法
+inline jbyte oopDesc::byte_field_acquire(int offset) const                  
+{ return OrderAccess::load_acquire(byte_field_addr(offset));     }
+// store操作调用的方法
+inline void oopDesc::release_byte_field_put(int offset, jbyte contents)     
+{ OrderAccess::release_store(byte_field_addr(offset), contents); }
+</code></pre>
+<p>赋值的操作又被包装了一层，又调用的 <strong>OrderAccess::release_store</strong> 方法。</p>
+<ol start="4">
+<li>OrderAccess 是定义在<code>openjdk8根路径/hotspot/src/share/vm/runtime</code>路径下的<code>orderAccess.hpp</code>头文件下的方法，具体的实现是根据不同的操作系统和不同的 cpu 架构，有不同的实现。</li>
+</ol>
+<p>**强烈建议大家读一遍<code>orderAccess.hpp</code>文件中 30-240 行的注释！！！**你就会发现本文 1.2 章所介绍内容的来源，也是网上各种雷同文章的来源。</p>
+<p><code>orderAccess_linux_x86.inline.hpp</code>是 linux 系统下 x86 架构的实现：</p>
+<p><img src="/attachment/b67d2ab46a60f224477f01630cbc5e03.png" alt=""></p>
+<p>可以从上面看到，到 c++ 的实现层面，又使用 c++ 中的 volatile 关键字，用来修饰变量，通常用于建立语言级别的 memory barrier。在《C++ Programming Language》一书中对 volatile 修饰词的解释：</p>
+<p>A volatile specifier is a hint to a compiler that an object may change its value in ways not specified by the language so that aggressive optimizations must be avoided.</p>
+<p>含义就是：</p>
+<ul>
+<li>volatile 修饰的类型变量表示可以被某些编译器未知的因素更改（如：操作系统，硬件或者其他线程等）</li>
+<li>使用 volatile 变量时，避免激进的优化。即：系统总是重新从内存读取数据，即使它前面的指令刚从内存中读取被缓存，防止出现未知更改和主内存中不一致</li>
+</ul>
+<ol start="5">
+<li>步骤 3 中对变量赋完值后，程序又回到了 2.3.1 小章中第一段代码中一系列的 if…else… 对<code>tos_type</code>字段的判断处理之后。有一行关键的代码：<strong>OrderAccess::storeload();</strong> 即：只要 volatile 变量赋值完成后，都会走这段代码逻辑。</li>
+</ol>
+<p>它依然是声明在<code>orderAccess.hpp</code>头文件中，在不同操作系统或 cpu 架构下有不同的实现。<code>orderAccess_linux_x86.inline.hpp</code>是 linux 系统下 x86 架构的实现：</p>
+<p><img src="/attachment/15e70d6be28898e69c72b203490d4d6e.png" alt=""></p>
+<p>代码<code>lock; addl $0,0(%%rsp)</code> 其中的 <code>addl $0,0(%%rsp)</code> 是把寄存器的值加 0，相当于一个空操作（之所以用它，不用空操作专用指令 nop，是因为 lock 前缀不允许配合 nop 指令使用）</p>
+<p><strong>lock 前缀，会保证某个处理器对共享内存（一般是缓存行 cacheline，这里记住缓存行概念，后续重点介绍）的独占使用。它将本处理器缓存写入内存，该写入操作会引起其他处理器或内核对应的缓存失效。通过独占内存、使其他处理器缓存失效，达到了 “指令重排序无法越过内存屏障” 的作用</strong></p>
+<h3 id="汇编层面">汇编层面</h3>
+<p><img src="/attachment/c511c8c9ad6bde14440cc0f0d3a9e13c.png" alt=""></p>
+<p>又看到了<code>lock addl $0x0,(%rsp)</code>指令，熟悉的配方熟悉的味道，和上面 2.3 章中的<strong>步骤 5</strong> 一摸一样，其实这里就是步骤 5 中代码的体现。</p>
+<h2 id="volatile的用法">volatile的用法</h2>
+<p>volatile通常被比喻成"轻量级的synchronized"，也是Java并发编程中比较重要的一个关键字。和synchronized不同，volatile是一个变量修饰符，只能用来修饰变量。无法修饰方法及代码块等。</p>
+<p>volatile的用法比较简单，只需要在声明一个可能被多线程同时访问的变量时，使用volatile修饰就可以了。</p>
+<h2 id="volatile特性">volatile特性</h2>
+<p>让其他线程能够马上感知到某一线程多某个变量的修改（两种作用对应的实现原理见总结）：</p>
+<ul>
+<li>保证可见性</li>
+<li>保证有序性</li>
+<li>volatile不能保证原子性</li>
+</ul>
+<p><strong>线程写volatile变量的过程：</strong></p>
+<ol>
+<li>改变线程工作内存中volatile变量副本的值</li>
+<li>将改变的副本的值从工作内存中刷新到主内存中</li>
+</ol>
+<p><strong>线程读volatile变量的过程：</strong></p>
+<ol>
+<li>从主内存中读取volatile变量的最新值到工作内存中</li>
+<li>从工作内存中读取volatile变量的副本</li>
+</ol>
+<h3 id="保证可见性">保证可见性</h3>
+<p>保证不同线程对某个变量完成操作后结果及时可见，即该共享变量一旦改变所有线程立即可见</p>
+<ul>
+<li>Code
+<ul>
+<li>不加volatile，没有可见性，程序无法停止</li>
+<li>加了volatile，保证可见性，程序可以停止</li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-java">
+public class VolatileSeeDemo {
+
+    /**
+     * t1	-------come in
+     * main	 修改完成
+     * t1	-------flag被设置为false，程序停止
+     */
+    static volatile boolean flag = true;
+
+    public static void main(String[] args) {
+        new Thread(() -&gt; {
+            System.out.println(Thread.currentThread().getName() + "\t-------come in");
+            while (flag) {
+
+            }
+            System.out.println(Thread.currentThread().getName() + "\t-------flag被设置为false，程序停止");
+        }, "t1").start();
+
+        try {
+            TimeUnit.SECONDS.sleep(2);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        //更新flag值
+        flag = false;
+
+        System.out.println(Thread.currentThread().getName() + "\t 修改完成");
+    }
+}
+</code></pre>
+<ul>
+<li>volatile变量的读写过程（了解即可）</li>
+</ul>
+<p><img src="/attachment/8afe66257f86117f1b0744842bc6c0f5.png" alt=""></p>
+<h3 id="没有原子性">没有原子性</h3>
+<p>volatile变量的符合操作不具有原子性</p>
+<ul>
+<li>对于voaltile变量具备可见性，JVM只是保证从主内存加载到线程工作内存的值是最新的，也仅仅是数据加载时是最新的。但是多线程环境下，“数据计算”和“数据赋值”操作可能多次出现，若数据在加载之后，若主内存volatile修饰变量发生修改之后，线程工作内存的操作将会作废去读主内存最新值，操作出现写丢失问题。即各线程私有内存和主内存公共内存中变量不同步，进而导致数据不一致。由此可见volatile解决的是变量读时的可见性问题，但无法保证原子性，对于多线程修改主内存共享变量的场景必须加锁同步。</li>
+<li>至于怎么去理解这个写丢失的问题，就是再将数据读取到本地内存到写回主内存中有三个步骤：数据加载----&gt;数据计算----&gt;数据赋值，如果第二个线程在第一个线程读取旧值与写回新值期间读取共享变量的值，那么第二个线程将会与第一个线程一起看到同一个值，并执行自己的操作，一旦其中一个线程对volatile修饰的变量先行完成操作刷回主内存后，另一个线程会作废自己的操作，然后重新去读取最新的值再进行操作，这样的话，它自身的那一次操作就丢失了，这就造成了 线程安全失败，因此，这个问题需要使用synchronized修饰以保证线程安全性。</li>
+<li>结论：volatile变量不适合参与到依赖当前值的运算，如i++，i=i+1之类的，通常用来保存某个状态的boolean值或者int值，也正是由于volatile变量只能保证可见性，在不符合以下规则的运算场景中，我们仍然要通过加锁来保证原子性：
+<ul>
+<li>运算结果并不依赖变量的当前值，或者能够确保只有单一的线程修改变量的值</li>
+<li>变量不需要与其他的状态变量共同参与不变约束</li>
+</ul>
+</li>
+<li>面试回答为什么不具备原子性：举例i++的例子，在字节码文件中，i++分为三部，间隙期间不同步非原子操作
+<ul>
+<li>对于volatile变量，JVM只是保证从主内存加载到线程工作内存的值是最新的，也就是数据加载时是最新的，如果第二个线程在第一个线程读取旧值和写回新值期间读取i的域值，也就造成了线程安全问题。</li>
+</ul>
+</li>
+</ul>
+<p><img src="/attachment/e6280f56a76c62887b789f069b499d2d.png" alt=""></p>
+<h3 id="指令禁重排">指令禁重排</h3>
+<ul>
+<li>在每一个volatile写操作前面插入一个StoreStore屏障—&gt;StoreStore屏障可以保证在volatile写之前，其前面所有的普通写操作都已经刷新到主内存中。</li>
+<li>在每一个volatile写操作后面插入一个StoreLoad屏障—&gt;StoreLoad屏障的作用是避免volatile写与后面可能有的volatile读/写操作重排序</li>
+<li>在每一个volatile读操作后面插入一个LoadLoad屏障—&gt;LoadLoad屏障用来禁止处理器把上面的volatile读与下面的普通读重排序</li>
+<li>在每一个volatile读操作后面插入一个LoadStore屏障—&gt;LoadTore屏障用来禁止处理器把上面的volatile读与下面的普通写重排序</li>
+<li>案例说明（volatile读写前或后加了屏障保证有序性）：</li>
+</ul>
+<p><img src="/attachment/28cc869d1729448c9e9acc0d250ed018.png" alt=""></p>
+<p><img src="/attachment/c8c126ed739bad63ce7dca1d6fa09c3c.png" alt=""></p>
+<h3 id="如何正确使用volatile">如何正确使用volatile</h3>
+<ul>
+<li>单一赋值可以，但是含复合运算赋值不可以（i++之类的）
+<ul>
+<li>volatile int a = 10;</li>
+<li>volatile boolean flag = true;</li>
+</ul>
+</li>
+<li>状态标志，判断业务是否结束
+<ul>
+<li>作为一个布尔状态标志，用于指示发生了一个重要的一次性事件，例如完成初始化或任务结束</li>
+</ul>
+</li>
+</ul>
+<p><img src="/attachment/001e924264490fe1654ccc3c698e92b3.png" alt=""></p>
+<ul>
+<li>开销较低的读，写锁策略
+<ul>
+<li>当读远多于写，结合使用内部锁和volatile变量来减少同步的开销</li>
+<li>原理是：利用volatile保证读操作的可见性，利用synchronized保证符合操作的原子性</li>
+</ul>
+</li>
+</ul>
+<p><img src="/attachment/ddc8d085f7bae921d44e2f5a13ced119.png" alt=""></p>
+<ul>
+<li>DCL双端锁的发布
+<ul>
+<li>问题描述：首先设定一个加锁的单例模式场景<br>
+<img src="/attachment/dcdfca62edf442eb5bf9992ad5bea278.png" alt=""></li>
+<li>在单线程环境下（或者说正常情况下），在“问题代码处”，会执行以下操作，保证能获取到已完成初始化的实例：<br>
+<img src="/attachment/626a9420f3778cfa7f92bdb23cfac17e.png" alt=""></li>
+<li>隐患：在多线程环境下，在“问题代码处”，会执行以下操作，由于重排序导致2，3乱序，后果就是其他线程得到的是null而不是完成初始化的对象，其中第3步中实例化分多步执行（分配内存空间、初始化对象、将对象指向分配的内存空间），某些编译器为了性能原因，会将第二步和第三步重排序，这样某个线程肯能会获得一个未完全初始化的实例：<br>
+<img src="/attachment/377af1e539a4ed353aba82589f43a8bb.png" alt=""></li>
+<li>多线程下的解决方案：加volatile修饰<br>
+<img src="/attachment/5ce1cc04a61c92e6172c0fba8f94efd8.png" alt=""></li>
+</ul>
+</li>
+</ul>
+<h2 id="Volatile的适用场景">Volatile的适用场景</h2>
+<p>使用volatile修饰的变量最好满足以下条件:</p>
+<p>1.运算结果并不依赖变量的当前值，或者能够确保只有单一的线程会修改变量的值。</p>
+<ul>
+<li>不满足：num++、count = count * 5</li>
+<li>满足：boolean值变量，记录温度变化的变量等等</li>
+</ul>
+<p>2.该变量没有包含在具有其他变量的不变式中</p>
+<ul>
+<li>不满足：low &lt; up</li>
+</ul>
+<p>如果满足以上的条件的任意一个，就可以不用synchronized，用volatile就可以。一般的应用场景很多会不满足其中一个，所以volatile的使用没有synchronized这么广泛。</p>
+<h3 id="这里举几个比较经典的场景">这里举几个比较经典的场景:</h3>
+<h4 id="状态标记量（开关模式）-就是前面引入中重排序问题的例子">状态标记量（开关模式）,就是前面引入中重排序问题的例子.</h4>
+<pre><code class="language-java">public class ShutDowsnDemmo extends Thread{
+	private volatile boolean started=false;
+	@Override
+	void run() {
+		while(started){
+		     dowork();
+	    }
+    }
+ 
+	public void shutdown(){
+		started=false;
+	}
+}
+ 
+</code></pre>
+<p>状态标记两可以用作某种操作的开关，一个作业线程在关闭状态无法执行，它的开关标记是一个volatile修饰的变量，另一个线程修改该变量值，作业线程就能立刻感知到开关被修改，就能进入运行状态。</p>
+<h4 id="一次性安全发布-双重检查锁定问题-单例模式的双重检查-double-checked-locking-DCL">一次性安全发布.双重检查锁定问题(单例模式的双重检查  double-checked-locking  DCL).</h4>
+<pre><code class="language-java">public class Singleton {
+	private volatile static Singleton instance;
+	public static Singleton getInstance(){
+		 if(instance==null){
+		    synchronized (Singleton.class){
+		        instance=new Singleton();
+		    }
+		 }
+	    return instance;
+	}
+}
+</code></pre>
+<ul>
+<li>独立观察.如果系统需要使用最后登录的人员的名字,这个场景就很适合.</li>
+<li>开销较低的“读－写锁”策略.当读操作远远大于写操作,可以结合使用锁和volatile来提升性能.</li>
+</ul>
+<h2 id="Volatile不适用的场景">Volatile不适用的场景</h2>
+<p>不满足前面所讲的Volatile适用场景的条件的话，就说明需要保证原子性，就需要加锁（使用synchronized、lock或者java.util.concurrent中的Atomic原子类）来保证并发中的原子性。</p>
+<h4 id="volatile不适合复合操作">volatile不适合复合操作</h4>
+<p>例如，inc++不是一个原子性操作，可以由读取、加、赋值3步组成，所以结果并不能达到10000。</p>
+<pre><code class="language-java">public class Test {
+    public volatile int inc = 0;
+    public void increase() {
+        inc++;
+    }
+    public static void main(String[] args) {
+        final Test test = new Test();
+        for(int i=0;i&lt;10;i++){
+            new Thread(){
+                public void run() {
+                    for(int j=0;j&lt;1000;j++)
+                        test.increase();
+                };
+            }.start();
+        }
+        while(Thread.activeCount()&gt;1)  //保证前面的线程都执行完
+            Thread.yield();
+        System.out.println(test.inc);
+    }
+}
+</code></pre>
+<p><strong>解决方法:</strong></p>
+<ol>
+<li>采用synchronized</li>
+<li>采用Lock</li>
+<li>采用java并发包中的原子操作类，原子操作类是通过CAS循环的方式来保证其原子性的</li>
+</ol>
+<h2 id="volatile与synchronized的区别">volatile与synchronized的区别</h2>
+<h3 id="使用上的区别">使用上的区别</h3>
+<p>Volatile只能修饰变量，使用范围较小；synchronized可以修饰方法和语句块，作用域可以是对象或者类，适用范围更广</p>
+<h3 id="对原子性的保证">对原子性的保证</h3>
+<p>synchronized可以保证原子性，Volatile不能保证原子性</p>
+<h3 id="对可见性的保证">对可见性的保证</h3>
+<p>都可以保证可见性，但实现原理不同</p>
+<p>Volatile对变量加了lock，synchronized使用monitorEnter和monitorexit  monitor  JVM</p>
+<h3 id="对有序性的保证">对有序性的保证</h3>
+<p>Volatile能保证有序，synchronized可以保证有序性，但是代价（重量级）并发退化到串行</p>
+<h3 id="性能上的区别">性能上的区别</h3>
+<p>synchronized是靠加锁实现的，引起阻塞</p>
+<p>volatile是靠Lock指令实现的，不需要加锁，不会引起阻塞</p>
+<p>性能上volatile比synchronized要好，volatile 的读性能消耗与普通变量几乎相同，但是写操作稍慢，因为它需要在本地代码中插入许多内存屏障指令来保证处理器不发生乱序执行。但是volatile的性能比synchronized加锁好很多。</p>
+<h2 id="本章最后的小总结">本章最后的小总结</h2>
+<p>volatile是轻量级同步机制,与synchronized相比,他的开销更小一些,同时安全性也有所降低,在一些特定的场景下使用它可以在完成并发目标的基础上有一些性能上的优势.但是同时也会带来一些安全上的问题,且比较难以排查,使用时需要谨慎.volatile并不能保证操作的原子性,想要保证原子性请使用synchronized关键字加锁.</p>
+<h3 id="volatile可见性">volatile可见性</h3>
+<p>volatile关键字保证可见性：	对一个被volatile关键字修饰的变量<br>
+1	写操作的话，这个变量的最新值会立即刷新回到主内存中<br>
+2	读操作的话，总是能够读取到这个变量的最新值，也就是这个变量最后被修改的值<br>
+3	当某个线程收到通知，去读取volatile修饰的变量的值的时候，线程私有工作内存的数据失效，需要重新回到主内存中去读取最新的数据。</p>
+<h3 id="volatile没有原子性">volatile没有原子性</h3>
+<h3 id="volatile禁重排">volatile禁重排</h3>
+<p><img src="/attachment/f7798e274e55d71b905932b3553c0fdd.png" alt=""></p>
+<p><img src="/attachment/897c5ce8e3d6e8f55286c61692e56369.png" alt=""></p>
+<h3 id="凭什么我们Java写了一个volatile关键字，系统底层加入内存屏障？两者的关系如何勾搭？">凭什么我们Java写了一个volatile关键字，系统底层加入内存屏障？两者的关系如何勾搭？</h3>
+<p><img src="/attachment/905ef6901a4fa9f1399ba9e0f522cfda.png" alt=""></p>
+<h3 id="内存屏障是什么？">内存屏障是什么？</h3>
+<p>内存屏障能干吗？</p>
+<ul>
+<li>阻止屏障两边的指令重排序</li>
+<li>写操作时加入屏障，强制将线程私有工作内存的数据刷回主物理内存</li>
+<li>读操作时加入屏障，线程私有工作内存的数据失效，重新回到主物理内存中获取最新值</li>
+</ul>
+<h3 id="内存屏障四大指令">内存屏障四大指令</h3>
+<p><img src="/attachment/b3b40de918a933c5db700df2b302b2a6.png" alt=""></p>
+<h3 id="3句话总结">3句话总结</h3>
+<ul>
+<li>volatile写之前的操作，都禁止重排序到volatile之后</li>
+<li>volatile读之后的操作，都禁止重排序到volatile之前</li>
+<li>volatile写之后volatile读，禁止重排序</li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a target="_blank" rel="noopener" href="https://github.com/yu627482453">Bill Cipher</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://yu627482453.github.io/java/java-duo-xian-cheng-bing-fa/java-duo-xian-cheng-bing-fa-yuan-li/java-duo-xian-cheng-bing-fa-volatile/">https://yu627482453.github.io/java/java-duo-xian-cheng-bing-fa/java-duo-xian-cheng-bing-fa-yuan-li/java-duo-xian-cheng-bing-fa-volatile/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://yu627482453.github.io" target="_blank">蝶梦庄生</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E8%A1%8C%E5%8A%A8%E9%98%B6%E6%AE%B5-%E5%AE%8C%E6%88%90/">行动阶段/完成</a><a class="post-meta__tags" href="/tags/%E7%AC%94%E8%AE%B0%E7%A9%BA%E9%97%B4-KnowladgeSpace-ProgramSpace-BasicsSpace/">笔记空间/KnowladgeSpace/ProgramSpace/BasicsSpace</a><a class="post-meta__tags" href="/tags/%E4%B8%BB%E9%A2%98%E5%9C%BA%E6%99%AF-%E7%A8%8B%E5%BA%8F/">主题场景/程序</a><a class="post-meta__tags" href="/tags/%E7%BB%86%E5%8C%96%E4%B8%BB%E9%A2%98-Java-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%B9%B6%E5%8F%91/">细化主题/Java/多线程并发</a></div><div class="post_share"><div class="social-share" data-image="https://cdn.seovx.com/?mom=302" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/reward/wechat.jpg" target="_blank"><img class="post-qr-code-img" src="/img/reward/wechat.jpg" alt="wechat"/></a><div class="post-qr-code-desc">wechat</div></li><li class="reward-item"><a href="/img/reward/alipay.jpg" target="_blank"><img class="post-qr-code-img" src="/img/reward/alipay.jpg" alt="alipay"/></a><div class="post-qr-code-desc">alipay</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/java/java-duo-xian-cheng-bing-fa/java-duo-xian-cheng-bing-fa-ji-chu/java-duo-xian-cheng-bing-fa-suo/"><img class="prev-cover" src="https://cdn.seovx.com/?mom=302" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">【Java 多线程并发】 锁</div></div></a></div><div class="next-post pull-right"><a href="/java/java-duo-xian-cheng-bing-fa/java-duo-xian-cheng-bing-fa-yuan-li/java-duo-xian-cheng-bing-fa-java-nei-cun-mo-xing-ji-chu-zhi-shi/"><img class="next-cover" src="https://cdn.seovx.com/?mom=302" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">【Java 多线程并发】 Java内存模型基础知识</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/java/java-duo-xian-cheng-bing-fa/java-duo-xian-cheng-bing-fa-yuan-li/java-duo-xian-cheng-bing-fa-aqs-abstract-queued-synchronizer/" title="【Java 多线程并发】 AQS（Abstract Queued Synchronizer）"><img class="cover" src="https://cdn.seovx.com/?mom=302" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-07-04</div><div class="title">【Java 多线程并发】 AQS（Abstract Queued Synchronizer）</div></div></a></div><div><a href="/java/java-duo-xian-cheng-bing-fa/java-duo-xian-cheng-bing-fa-yuan-li/java-duo-xian-cheng-bing-fa-yuan-li/" title="【Java 多线程并发】 原理"><img class="cover" src="https://cdn.seovx.com/?mom=302" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-07-04</div><div class="title">【Java 多线程并发】 原理</div></div></a></div><div><a href="/java/java-duo-xian-cheng-bing-fa/java-duo-xian-cheng-bing-fa-yuan-li/java-duo-xian-cheng-bing-fa-cas-compare-and-swap/" title="【Java 多线程并发】 CAS（Compare And Swap）"><img class="cover" src="https://cdn.seovx.com/?mom=302" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-07-03</div><div class="title">【Java 多线程并发】 CAS（Compare And Swap）</div></div></a></div><div><a href="/java/java-duo-xian-cheng-bing-fa/java-duo-xian-cheng-bing-fa-yuan-li/java-duo-xian-cheng-bing-fa-java-nei-cun-mo-xing-ji-chu-zhi-shi/" title="【Java 多线程并发】 Java内存模型基础知识"><img class="cover" src="https://cdn.seovx.com/?mom=302" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-07-03</div><div class="title">【Java 多线程并发】 Java内存模型基础知识</div></div></a></div><div><a href="/java/java-duo-xian-cheng-bing-fa/java-duo-xian-cheng-bing-fa-yuan-li/java-duo-xian-cheng-bing-fa-fail-fast-kuai-su-shi-bai-ji-zhi/" title="【Java 多线程并发】 fail-fast(快速失败)机制"><img class="cover" src="https://cdn.seovx.com/?mom=302" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-07-04</div><div class="title">【Java 多线程并发】 fail-fast(快速失败)机制</div></div></a></div><div><a href="/java/java-duo-xian-cheng-bing-fa/java-duo-xian-cheng-bing-fa-yuan-li/java-duo-xian-cheng-bing-fa-synchronized/" title="【Java 多线程并发】 synchronized"><img class="cover" src="https://cdn.seovx.com/?mom=302" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-07-03</div><div class="title">【Java 多线程并发】 synchronized</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="gitalk-container"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Bill Cipher</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">240</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">69</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/yu627482453"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/yu627482453" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="/627482453@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">1.</span> <span class="toc-text">【Java 多线程并发】 volatile</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Metadata-47"><span class="toc-number">1.1.</span> <span class="toc-text">Metadata</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A6%82%E8%BF%B0-18"><span class="toc-number">1.2.</span> <span class="toc-text">概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%95%E5%85%A5-3"><span class="toc-number">1.3.</span> <span class="toc-text">引入</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%AF%E8%A7%81%E6%80%A7%E9%97%AE%E9%A2%98%EF%BC%9A"><span class="toc-number">1.3.1.</span> <span class="toc-text">可见性问题：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%87%8D%E6%8E%92%E5%BA%8F%E9%97%AE%E9%A2%98%EF%BC%9A"><span class="toc-number">1.3.2.</span> <span class="toc-text">重排序问题：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.4.</span> <span class="toc-text">前言</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%87%A0%E4%B8%AA%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="toc-number">1.4.1.</span> <span class="toc-text">几个基本概念</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%86%85%E5%AD%98%E5%8F%AF%E8%A7%81%E6%80%A7"><span class="toc-number">1.4.1.1.</span> <span class="toc-text">内存可见性</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%87%8D%E6%8E%92%E5%BA%8F"><span class="toc-number">1.4.1.2.</span> <span class="toc-text">重排序</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#happens-before%E8%A7%84%E5%88%99"><span class="toc-number">1.4.1.3.</span> <span class="toc-text">happens-before规则</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CPU%E7%BC%93%E5%AD%98"><span class="toc-number">1.4.2.</span> <span class="toc-text">CPU缓存</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#CPU%E5%A4%9A%E7%BA%A7%E7%BC%93%E5%AD%98%E6%9E%B6%E6%9E%84"><span class="toc-number">1.4.2.1.</span> <span class="toc-text">CPU多级缓存架构</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8CPU%E7%BC%93%E5%AD%98%E5%B8%A6%E6%9D%A5%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-number">1.4.2.2.</span> <span class="toc-text">使用CPU缓存带来的问题</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BC%93%E5%AD%98%E4%B8%80%E8%87%B4%E6%80%A7%E5%8D%8F%E8%AE%AE"><span class="toc-number">1.4.3.</span> <span class="toc-text">缓存一致性协议</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BC%93%E5%AD%98%E8%A1%8C%EF%BC%88Cache-Line%EF%BC%89%E7%9A%84%E6%A6%82%E5%BF%B5"><span class="toc-number">1.4.3.1.</span> <span class="toc-text">缓存行（Cache Line）的概念</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%85%E5%AD%98%E5%B1%8F%E9%9A%9C-Memory-Barrier"><span class="toc-number">1.4.4.</span> <span class="toc-text">内存屏障(Memory Barrier)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#volatile%E8%AF%AD%E4%B9%89%E4%B8%AD%E7%9A%84%E5%86%85%E5%AD%98%E5%B1%8F%E9%9A%9C"><span class="toc-number">1.4.4.1.</span> <span class="toc-text">volatile语义中的内存屏障</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#final%E8%AF%AD%E4%B9%89%E4%B8%AD%E7%9A%84%E5%86%85%E5%AD%98%E5%B1%8F%E9%9A%9C"><span class="toc-number">1.4.4.2.</span> <span class="toc-text">final语义中的内存屏障</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B1%87%E7%BC%96%E6%8C%87%E4%BB%A4LOCK%E4%B8%8E%E5%86%85%E5%AD%98%E5%B1%8F%E9%9A%9C%E4%B9%8B%E9%97%B4%E7%9A%84%E5%85%B3%E7%B3%BB%EF%BC%9F"><span class="toc-number">1.4.4.3.</span> <span class="toc-text">汇编指令LOCK与内存屏障之间的关系？</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#volatile%E7%9A%84%E5%8E%9F%E7%90%86"><span class="toc-number">1.5.</span> <span class="toc-text">volatile的原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%BA%90%E7%A0%81%E6%BA%AF%E6%BA%90"><span class="toc-number">1.6.</span> <span class="toc-text">源码溯源</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Java%E4%BB%A3%E7%A0%81%E5%B1%82%E9%9D%A2"><span class="toc-number">1.6.1.</span> <span class="toc-text">Java代码层面</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%97%E8%8A%82%E7%A0%81%E5%B1%82%E9%9D%A2"><span class="toc-number">1.6.2.</span> <span class="toc-text">字节码层面</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JVM%E6%BA%90%E7%A0%81%E5%B1%82%E9%9D%A2"><span class="toc-number">1.6.3.</span> <span class="toc-text">JVM源码层面</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B1%87%E7%BC%96%E5%B1%82%E9%9D%A2"><span class="toc-number">1.6.4.</span> <span class="toc-text">汇编层面</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#volatile%E7%9A%84%E7%94%A8%E6%B3%95"><span class="toc-number">1.7.</span> <span class="toc-text">volatile的用法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#volatile%E7%89%B9%E6%80%A7"><span class="toc-number">1.8.</span> <span class="toc-text">volatile特性</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%9D%E8%AF%81%E5%8F%AF%E8%A7%81%E6%80%A7"><span class="toc-number">1.8.1.</span> <span class="toc-text">保证可见性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B2%A1%E6%9C%89%E5%8E%9F%E5%AD%90%E6%80%A7"><span class="toc-number">1.8.2.</span> <span class="toc-text">没有原子性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8C%87%E4%BB%A4%E7%A6%81%E9%87%8D%E6%8E%92"><span class="toc-number">1.8.3.</span> <span class="toc-text">指令禁重排</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E6%AD%A3%E7%A1%AE%E4%BD%BF%E7%94%A8volatile"><span class="toc-number">1.8.4.</span> <span class="toc-text">如何正确使用volatile</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Volatile%E7%9A%84%E9%80%82%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-number">1.9.</span> <span class="toc-text">Volatile的适用场景</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%99%E9%87%8C%E4%B8%BE%E5%87%A0%E4%B8%AA%E6%AF%94%E8%BE%83%E7%BB%8F%E5%85%B8%E7%9A%84%E5%9C%BA%E6%99%AF"><span class="toc-number">1.9.1.</span> <span class="toc-text">这里举几个比较经典的场景:</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%8A%B6%E6%80%81%E6%A0%87%E8%AE%B0%E9%87%8F%EF%BC%88%E5%BC%80%E5%85%B3%E6%A8%A1%E5%BC%8F%EF%BC%89-%E5%B0%B1%E6%98%AF%E5%89%8D%E9%9D%A2%E5%BC%95%E5%85%A5%E4%B8%AD%E9%87%8D%E6%8E%92%E5%BA%8F%E9%97%AE%E9%A2%98%E7%9A%84%E4%BE%8B%E5%AD%90"><span class="toc-number">1.9.1.1.</span> <span class="toc-text">状态标记量（开关模式）,就是前面引入中重排序问题的例子.</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%80%E6%AC%A1%E6%80%A7%E5%AE%89%E5%85%A8%E5%8F%91%E5%B8%83-%E5%8F%8C%E9%87%8D%E6%A3%80%E6%9F%A5%E9%94%81%E5%AE%9A%E9%97%AE%E9%A2%98-%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F%E7%9A%84%E5%8F%8C%E9%87%8D%E6%A3%80%E6%9F%A5-double-checked-locking-DCL"><span class="toc-number">1.9.1.2.</span> <span class="toc-text">一次性安全发布.双重检查锁定问题(单例模式的双重检查  double-checked-locking  DCL).</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Volatile%E4%B8%8D%E9%80%82%E7%94%A8%E7%9A%84%E5%9C%BA%E6%99%AF"><span class="toc-number">1.10.</span> <span class="toc-text">Volatile不适用的场景</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#volatile%E4%B8%8D%E9%80%82%E5%90%88%E5%A4%8D%E5%90%88%E6%93%8D%E4%BD%9C"><span class="toc-number">1.10.0.1.</span> <span class="toc-text">volatile不适合复合操作</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#volatile%E4%B8%8Esynchronized%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">1.11.</span> <span class="toc-text">volatile与synchronized的区别</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E4%B8%8A%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">1.11.1.</span> <span class="toc-text">使用上的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%B9%E5%8E%9F%E5%AD%90%E6%80%A7%E7%9A%84%E4%BF%9D%E8%AF%81"><span class="toc-number">1.11.2.</span> <span class="toc-text">对原子性的保证</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%B9%E5%8F%AF%E8%A7%81%E6%80%A7%E7%9A%84%E4%BF%9D%E8%AF%81"><span class="toc-number">1.11.3.</span> <span class="toc-text">对可见性的保证</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%B9%E6%9C%89%E5%BA%8F%E6%80%A7%E7%9A%84%E4%BF%9D%E8%AF%81"><span class="toc-number">1.11.4.</span> <span class="toc-text">对有序性的保证</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%A7%E8%83%BD%E4%B8%8A%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">1.11.5.</span> <span class="toc-text">性能上的区别</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%AC%E7%AB%A0%E6%9C%80%E5%90%8E%E7%9A%84%E5%B0%8F%E6%80%BB%E7%BB%93"><span class="toc-number">1.12.</span> <span class="toc-text">本章最后的小总结</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#volatile%E5%8F%AF%E8%A7%81%E6%80%A7"><span class="toc-number">1.12.1.</span> <span class="toc-text">volatile可见性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#volatile%E6%B2%A1%E6%9C%89%E5%8E%9F%E5%AD%90%E6%80%A7"><span class="toc-number">1.12.2.</span> <span class="toc-text">volatile没有原子性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#volatile%E7%A6%81%E9%87%8D%E6%8E%92"><span class="toc-number">1.12.3.</span> <span class="toc-text">volatile禁重排</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%87%AD%E4%BB%80%E4%B9%88%E6%88%91%E4%BB%ACJava%E5%86%99%E4%BA%86%E4%B8%80%E4%B8%AAvolatile%E5%85%B3%E9%94%AE%E5%AD%97%EF%BC%8C%E7%B3%BB%E7%BB%9F%E5%BA%95%E5%B1%82%E5%8A%A0%E5%85%A5%E5%86%85%E5%AD%98%E5%B1%8F%E9%9A%9C%EF%BC%9F%E4%B8%A4%E8%80%85%E7%9A%84%E5%85%B3%E7%B3%BB%E5%A6%82%E4%BD%95%E5%8B%BE%E6%90%AD%EF%BC%9F"><span class="toc-number">1.12.4.</span> <span class="toc-text">凭什么我们Java写了一个volatile关键字，系统底层加入内存屏障？两者的关系如何勾搭？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%85%E5%AD%98%E5%B1%8F%E9%9A%9C%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-number">1.12.5.</span> <span class="toc-text">内存屏障是什么？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%85%E5%AD%98%E5%B1%8F%E9%9A%9C%E5%9B%9B%E5%A4%A7%E6%8C%87%E4%BB%A4"><span class="toc-number">1.12.6.</span> <span class="toc-text">内存屏障四大指令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%E5%8F%A5%E8%AF%9D%E6%80%BB%E7%BB%93"><span class="toc-number">1.12.7.</span> <span class="toc-text">3句话总结</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/design/she-ji-mo-shi/" title="无题"><img src="https://cdn.seovx.com/?mom=302" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/design/she-ji-mo-shi/" title="无题">无题</a><time datetime="2023-07-15T09:13:39.871Z" title="发表于 2023-07-15 17:13:39">2023-07-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/design/xing-wei-mo-shi/xing-wei-mo-shi/" title="无题"><img src="https://cdn.seovx.com/?mom=302" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/design/xing-wei-mo-shi/xing-wei-mo-shi/" title="无题">无题</a><time datetime="2023-07-15T09:13:37.615Z" title="发表于 2023-07-15 17:13:37">2023-07-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/design/jie-gou-mo-shi/jie-gou-mo-shi/" title="无题"><img src="https://cdn.seovx.com/?mom=302" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/design/jie-gou-mo-shi/jie-gou-mo-shi/" title="无题">无题</a><time datetime="2023-07-15T09:13:33.180Z" title="发表于 2023-07-15 17:13:33">2023-07-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/design/chuang-jian-mo-shi/chuang-jian-mo-shi/" title="无题"><img src="https://cdn.seovx.com/?mom=302" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/design/chuang-jian-mo-shi/chuang-jian-mo-shi/" title="无题">无题</a><time datetime="2023-07-15T09:13:23.913Z" title="发表于 2023-07-15 17:13:23">2023-07-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/java/java-duo-xian-cheng-bing-fa/java-duo-xian-cheng-bing-fa-xian-cheng/java-duo-xian-cheng-bing-fa-xian-cheng/" title="【Java 多线程并发】 线程"><img src="https://cdn.seovx.com/?mom=302" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【Java 多线程并发】 线程"/></a><div class="content"><a class="title" href="/java/java-duo-xian-cheng-bing-fa/java-duo-xian-cheng-bing-fa-xian-cheng/java-duo-xian-cheng-bing-fa-xian-cheng/" title="【Java 多线程并发】 线程">【Java 多线程并发】 线程</a><time datetime="2023-07-10T06:15:00.000Z" title="发表于 2023-07-10 14:15:00">2023-07-10</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By Bill Cipher</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>function addGitalkSource () {
+  const ele = document.createElement('link')
+  ele.rel = 'stylesheet'
+  ele.href= 'https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.css'
+  document.getElementsByTagName('head')[0].appendChild(ele)
+}
+
+function loadGitalk () {
+  function initGitalk () {
+    var gitalk = new Gitalk(Object.assign({
+      clientID: 'c61a274b6f5aa26a58f6',
+      clientSecret: '485a7761d321c8dcc5cae05d7256be9fb196d94a',
+      repo: 'yu627482453.github.io',
+      owner: 'yu627482453',
+      admin: ['yu627482453'],
+      id: '28e87307f0fe2a1ea5c54e6172d616b3',
+      updateCountCallback: commentCount
+    },null))
+
+    gitalk.render('gitalk-container')
+  }
+
+  if (typeof Gitalk === 'function') initGitalk()
+  else {
+    addGitalkSource()
+    getScript('https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.js').then(initGitalk)
+  }
+}
+
+function commentCount(n){
+  let isCommentCount = document.querySelector('#post-meta .gitalk-comment-count')
+  if (isCommentCount) {
+    isCommentCount.innerHTML= n
+  }
+}
+
+if ('Gitalk' === 'Gitalk' || !true) {
+  if (true) btf.loadComment(document.getElementById('gitalk-container'), loadGitalk)
+  else loadGitalk()
+} else {
+  function loadOtherComment () {
+    loadGitalk()
+  }
+}</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
